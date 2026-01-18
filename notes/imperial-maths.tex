@@ -1,0 +1,127 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Imperial maths}
+\date{}
+
+\begin{document}
+    
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 09/12/25}
+
+    \section{Catenaries}
+
+    Consider a chain of length $L$ and constant density per unit length $\rho_0$, hanging from fixtures $A$ and $B$ with $AB < L$. What will the shape of the chain be as it hangs?
+
+    Let us make the centre of the chain, $P$, the origin. Then $B = (x_0, y_0)$.
+
+    Pick an arbitrary point on the chain, $Q = (x, y)$, and consider the piece of chain $PQ$. Let us consider the forces acting:
+    \begin{itemize}
+        \item We have a tension force $\vec T(x)$, tangent to the chain at $Q$.
+        \item We have a constant tension $T_0$ tangent to the chain at $P$.
+        \item We have the weight due to gravity of $PQ$.
+    \end{itemize}
+    Horizontally, we have
+    \begin{align}
+        T_0 = T(x) \cos \theta
+    \end{align}
+    and vertically we have
+    \begin{align}
+        T(x) \sin \theta = PQ \rho_0 g
+    \end{align}
+    where $PQ$ is the length of the chain between $P$ and $Q$. Assuming the shape is given by $y(x)$, we can calculate
+    \begin{align}
+        PQ = \int_0^x \left(1 + y'^2\right)^{1/2} \; dx
+    \end{align}
+    Combining these equations, we have
+    \begin{align}
+        \rho_0 g \int_0^x \left(1 + y'^2\right)^{1/2} \; dt = T_0 \tan \theta = T_0 y'
+    \end{align}
+    since $\tan \theta = \frac{dy}{dx}$. To eliminate the integral, let us differentiate both sides to obtain
+    \begin{align*}
+        y'' = \frac{\rho_0g}{T_0}\left(1+y'^2\right)^{1/2}
+    \end{align*}
+    which is unfortunately non-linear. However, we might first wish to put $y' = p$, giving
+    \begin{align*}
+        \frac{dp}{dx} = \frac{\rho_0g}{T_0}\left(1+p^2\right)^{1/2}
+    \end{align*}
+    and this is now a separable equation! We have
+    \begin{align*}
+        \int \frac{1}{(1+p^2)^{1/2}} \; dp &= \int \frac{\rho_0g}{T_0} \; dx
+    \end{align*}
+    The right-hand side integral is simple, but for the left side, we need to use that
+    \[
+        \cosh^2 t - \sinh^2 t = 1 \iff \cosh^2 t = 1 + \sinh^2 t
+    \]
+    so we should substitute $p = \sinh t$, $dp = \cosh t \; dt$. We get
+    \begin{align*}
+        \int \frac{\cosh t}{(1+\sinh^2t)^{1/2}} \; dt &= \int 1 \; dt \\
+        &= t = \arsinh p \\
+        &= \arsinh\left(\frac{dy}{dx}\right)
+    \end{align*}
+    So we have
+    \begin{align*}
+        \arsinh\left(\frac{dy}{dx}\right) &= \frac{\rho_0g}{T_0}x + C
+    \end{align*}
+    for some constant $C$. In fact, since $y' = 0$ at $x=0$, $C = 0$. We have
+    \begin{align*}
+        \frac{dy}{dx} &= \sinh\left(\frac{\rho_0g}{T_0}x\right) \\
+        \implies y &= \frac{T_0}{\rho_0g}\cosh\left(\frac{\rho_0g}{T_0}x\right) + D
+    \end{align*}
+    Since $x=0$, $y=0$, we get
+    \[ 
+        D = -\frac{T_0}{\rho_0g}
+    \]
+    and hence we conclude
+    \[
+        \boxed{y = \frac{T_0}{\rho_0g}\left(\cosh\left(\frac{\rho_0g}{T_0}x\right)-1\right)}
+    \]
+    In practice, we probably wish to do this in terms of the length. We have
+    \begin{align*}
+        \frac{L}{2} &= \int_0^{x_0} \left(1+y'^2\right)^{1/2} \; dx \\
+        &= \frac{T_0}{\rho_0g}y' && \text{(by 4)}\\
+        &= \frac{T_0}{\rho_0g}\sinh\left(\frac{\rho_0g}{T_0}x\right)
+    \end{align*}
+    so we can numerically solve for $T_0$ in terms of $L$, $\rho_0$ and $g$. 
+    
+    \section{Power series solutions of differential equations}
+
+    Consider a simple differential equation:
+    \[
+        \frac{dy}{dx} = y
+    \]
+    with $y(0) = y_0$. We know the solution is given by $y = y_0e^x$. But let's try solving this another, more generalisable way. Suppose
+    \begin{align*}
+        y &= \sum_{n=0}^\infty a_n x^n \\
+        \implies y' &= \sum_{n=1}^\infty na_n x^{n-1}
+    \end{align*}
+    Thus we have
+    \begin{align*}
+        \sum_{n=0}^\infty a_n x^n &= \sum_{n=1}^\infty na_n x^{n-1} \\
+        &= \sum_{n=0}^\infty (n+1)a_{n+1}x^n
+    \end{align*}
+    Subtracting, we have
+    \begin{align*}
+        \implies \sum_{n=0}^\infty [a_n - (n+1)a_{n+1}]x^n &= 0 \\
+        \implies a_n &= (n+1)a_{n+1}
+    \end{align*}
+    for all $n$. From this it becomes clear that
+    \[
+        a_n = \frac{a_0}{n!}
+    \]
+    so
+    \begin{align*}
+        y &= \sum_{n=0}^\infty \frac{a_0}{n!} x^n \\
+        &= a_0 \sum_{n=0}^\infty \frac{1}{n!} x^n \\
+        &= a_0 e^x
+    \end{align*}
+    and the initial condition gives $a_0 = y_0$ as required.
+    
+    
+    
+    
+
+\end{document}

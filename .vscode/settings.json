@@ -1,0 +1,56 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "pdflatex ➞ build",
+            "tools": [
+                "pdflatex",
+                "pseudocleaner"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-output-directory=%WORKSPACE_FOLDER%/pdf/render",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-output-directory=%WORKSPACE_FOLDER%/pdf/render",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-output-directory=%WORKSPACE_FOLDER%/pdf/render",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pseudocleaner",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "Copy-Item -Path %WORKSPACE_FOLDER%/pdf/render/%DOCFILE%.pdf -Destination %WORKSPACE_FOLDER%/pdf/ -Force"
+            ]
+        }
+    ]
+}
