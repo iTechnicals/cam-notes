@@ -1,0 +1,122 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Analysis I}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 22/01/26}
+
+    Analysis is about things that are small, things that are large, and quantifyig how small or large they are.
+
+    \section{Numerical sequences and series}
+
+    \subsection{Basics}
+
+    \begin{definition}
+        A sequence $(x_n)_{n \in \NN}$ on a set $X$ is an enumerated list where each element is in $X$.
+        
+        In this chapter, $X \subseteq \RR$ or $X \subseteq \CC$.
+    \end{definition}
+
+    What does it mean for a sequence $(x_n)$ to converge to a point $x \in X$? What does it mean for $(x_n)$ to diverge to infinity?
+
+    For convergence, we want $|x_n - x|$ to be small. But what is small? In fact, we want $|x_n - x|$ to be arbitrarily small, i.e. smaller than any $\varepsilon > 0$ we choose. What really matters is the \emph{tail} of the sequence -- we can always ignore the first $N$ terms, and we should pick $N$ depending on $\varepsilon$.
+
+    For divergence to infinity, we want $|x_n|$ to get arbitrarily large, i.e. larger than any $L > 0$ we choose. Again, we ignore the first $N$ terms depending on $L$.
+    
+    \begin{definition}
+        We say $(x_n)$ converges to some finite $x$, $x_n \to x$, if, for any $\varepsilon > 0$, there exists $N(\varepsilon)$ such that $|x_n - x| < \varepsilon$ for all $n \geq N$.
+
+        We say $(x_n)$ diverges to infinity if, for any $L > 0$, there exists $N(L)$ such that $x_n > L$ for all $n \geq N$, analogously for negative infinity. For complex sequences, we must consider $|x_n|$.
+    \end{definition}
+    
+    \begin{example}
+        \begin{itemize}
+            \item Take $x_n = \frac{1}{n}$, then $x_n \to 0$ because $|x_n - 0| = \frac{1}{n} < \varepsilon$ for any $n \geq N = 1 + \lceil \frac{1}{\varepsilon} \rceil$.
+            \item Take $x_n = \frac{1}{2^n}$, then $x_n \to 0$ because $|x_n - 0| = \frac{1}{2^n} < \varepsilon$ for any $n \geq N = \max(1 + \lceil \log_2(\frac{1}{\varepsilon}) \rceil, 1)$.
+            \item Take $x_n = in$, then $x_n \to \infty$, since $\frac{x_n}{i} = n > L$ for any $n \geq N = 1 + \lceil L \rceil$.
+            \item Take $x_n = (-1)^n$, then $x_n$ doesn't converge or diverge to infinity.
+        \end{itemize}
+    \end{example}
+    
+    \begin{lemma}
+        If it exists, the limit of $(x_n)$ is unique.
+    \end{lemma}
+    
+    \begin{proof}
+        Suppose $x_n \to a$ and $x_n \to b$. Take $\varepsilon > 0$, then we have
+        \begin{align*}
+            &\exists N_1 = N_1(\varepsilon) \text{ s.t. } |x_n - a| < \varepsilon \; \forall n \geq N_1 \\
+            &\exists N_2 = N_2(\varepsilon) \text{ s.t. } |x_n - b| < \varepsilon \; \forall n \geq N_2 \\
+        \end{align*}
+        Now take $N = \max(N_1, N_2)$. We have
+        \begin{align*}
+            |a-b| &= |a-x_n+x_n-b| \\
+            &\leq |x_n-a|+|x_n-b| \\
+            &< 2\varepsilon
+        \end{align*}
+        for all $\varepsilon > 0$. It follows that $|a-b| = 0$, so $a=b$.
+    \end{proof}
+    
+    This justifies the notation $\lim_{n \to \infty} x_n = x$.
+
+    \begin{proposition}[Sandwich theorems]
+        Let $(x_n), (y_n), (z_n)$ be real sequences. Then
+        \begin{itemize}
+            \item If $x_n \leq y$ for all $n$ and $x_n \to x$, then $x \leq y$. Note that $x_n < y$ does not imply $x < y$.
+            \item If $x_n \to x$, $z_n \to x$ and $x_n \leq y_n \leq z_n$ for all $n$, then $y_n \to x$.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{proof}
+        Left as an exercise.
+    \end{proof}
+    
+    \begin{lemma}
+        Let $(x_n)$ be a complex sequence. Then $x_n \to x$ if and only if $\Re(x_n) \to \Re(x)$ and $\Im(x_n) \to \Im(x)$.
+    \end{lemma}
+    
+    \begin{proof}
+        Recall that, for $z \in \CC$, $|z| = \sqrt{\Re(z)^2 + \Im(z)^2}$.
+        \begin{itemize}
+            \item[$\implies$] Use $|\Re(z)| \leq |z|$ and $|\Im(z)| \leq |z|$ with $z = x_n - x$.
+            \item[$\impliedby$] Use $|z| \leq |\Re(z)| + |\Im(z)|$, again with $z = x_n - x$. Fixing $\varepsilon > 0$, we can get $|x_n - x| < 2\varepsilon$, so we're done.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{lemma}
+        Let $x_n \to x$, $y_n \to y$. Then $x_n + y_n \to x + y$, $x_ny_n \to xy$.
+    \end{lemma}
+    
+    \begin{proof}
+        The first part is analogous to the above result on complex sequences and is an exercise.
+
+        For the second part, we have
+        \begin{align*}
+            |x_ny_n - xy| &= |x_ny_n - xy_n + xy_n - xy| \\
+            &\leq |y_n||x_n-x| + |x||y_n-y|
+        \end{align*}
+        Now, for $\varepsilon > 0$, we can pick an $N$ to make $|x_n - x| < \varepsilon$, $|y_n - y| < \varepsilon$. Hence
+        \begin{align*}
+            |x_ny_n - xy| &< \varepsilon(|x| + |y_n|) \\
+            &< \varepsilon(|x| + Y) && \text{by \cref{convergent-bounded}, } Y>0
+        \end{align*}
+    \end{proof}
+    
+    \begin{lemma}
+        \label{convergent-bounded}
+        Convergent sequences are bounded.
+    \end{lemma}
+    
+    
+    
+    
+    
+    
+\end{document}

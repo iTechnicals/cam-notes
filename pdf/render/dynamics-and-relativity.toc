@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}The structure of the Newtonian universe}{1}{section.2}%
+\contentsline {subsection}{\numberline {1.1}Law of inertia}{1}{subsection.3}%
+\contentsline {subsection}{\numberline {1.2}Galilean relativity principle}{2}{subsection.6}%
+\contentsline {section}{\numberline {2}Forces}{2}{section.11}%
+\contentsline {subsection}{\numberline {2.1}Newton's second law}{2}{subsection.12}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

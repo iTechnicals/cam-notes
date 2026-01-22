@@ -1,0 +1,124 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Groups, rings and modules}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 22/01/26}
+
+    \section{Groups -- a reminder}
+
+    \begin{definition}
+        A \emph{group} is a triple $(G, \cdot, e)$ where $G$ is a set, 
+        \begin{align*}
+            \cdot: G \times G \to G
+        \end{align*}
+        is a function, and $e \in G$ such that
+        \begin{itemize}
+            \item \emph{Associativity}. $(a \cdot b) \cdot c = a \cdot (b \cdot c)$;
+            \item \emph{Identity}. For all $a \in G$, $a \cdot e = e \cdot a = a$;
+            \item \emph{Inverses}. For all $a \in G$, there exists $a^{-1} \in G$ such that $a \cdot a^{-1} = a^{-1} \cdot a = e$.
+        \end{itemize}
+        The size of $G$, $|G|$, is called the \emph{order} of the group. 
+    \end{definition}
+    
+    \begin{proposition}[Uniqueness of inverses]
+        Inverses are unique.
+    \end{proposition}
+
+    \begin{proof}
+        Left as an exercise (see 1A).
+    \end{proof}
+    
+    \begin{definition}[Subgroups]
+        If $G$ is a group and $H \subseteq G$, then we say $H$ is a \emph{subgroup} if
+        \begin{itemize}
+            \item $e \in H$;
+            \item for all $a$, $b \in H$, $a \cdot b \in H$;
+            \item $(H, \cdot, e)$ is a group.
+        \end{itemize}
+        In order to say item 3, we must first establish 1 and 2.
+    \end{definition}
+    
+    \begin{proposition}
+        A non-empty subset $H \subseteq G$ is a subgroup if and only if, for all $h_1$, $h_2 \in H$, $h_1h_2^{-1} \in H$.
+    \end{proposition}
+    
+    \begin{proof}
+        Left as an exercise (see 1A).
+    \end{proof}
+    
+    \begin{definition}
+        A group $G$ is called \emph{abelian} if, for all $g_1$, $g_2 \in G$, $g_1g_2 = g_2g_1$.
+    \end{definition}
+    
+    \begin{example}
+        \begin{itemize}
+            \item We have $(\ZZ, +)$, $(\QQ, +)$, $\RR$, $\CC$, $\ZZ/n\ZZ$.
+            \item The symmetric groups $S_n$: permutations of $\{1, \dots, n\}$ under composition. More generally for any set $X$, we have $\Sym(X)$.
+            \item The dihedral groups $D_{2n}$: the group of symmetries of a regular $n$-gon.
+            \item The general linear group over $\RR$, $\GL(n, \RR)$ or $\GL_n(\RR)$, is the set of $\{f: \RR^n \to \RR^n \mid f \text{ is an }\RR\text{-linear bijection}\}$. Since $\GL(n, \RR)$ is made of functions, we can think of it a subset of $\Sym(\RR^n)$. (Equivalently, it's the set of $n$ by $n$ invertible matrices with elements in $\RR$).
+        \end{itemize}
+        Some examples of subgroups:
+        \begin{itemize}
+            \item The even permutations $A_n \leq S_n$ (the alternating group);
+            \item Rotational symmetries of an $n$-goin, $C_n \leq D_{2n}$;
+            \item Determinant one matrices $\SL(n, \RR) \leq \GL(n, \RR)$.
+        \end{itemize}
+        Other examples include $C_2 \times C_2$, $Q_8 = \{\pm 1, \pm i, \pm j, \pm k\}$.        
+    \end{example}
+    
+    \begin{definition}
+        Let $G$ be a group, $g \in G$ and $H \leq G$ a subgroup. Then the \emph{left coset}
+        \begin{align*}
+            gH = \{gh: h \in H\}
+        \end{align*}
+    \end{definition}
+    Basic properties include that $g \in gH$, so cosets are non-empty. Also, cosets partition $G$ -- they have no non-trivial overlaps and every $g$ lies in some coset. Furthermore, the map
+    \begin{align*}
+        H &\to gH \\
+        h &\mapsto gh
+    \end{align*}
+    defines a bijection.
+    
+    \begin{theorem}[Lagrange]
+        If $G$ is a finite group and $H \leq G$ then
+        \begin{align*}
+            |G| = |H| \cdot |G:H|
+        \end{align*}
+        where $|G:H|$, the index of $H$ in $G$, is the number of cosets of $H$ in $|G|$.
+    \end{theorem}
+    
+    \begin{definition}
+        Let $G$ be a group and let $g \in G$. The \emph{order} of $g$, $\ord(g)$, is the smallest positive integer $n$ such that $g^n = e$, or infinity if no such $n$ exists.
+    \end{definition}
+    
+    \begin{proposition}
+        Let $g \in G$. Then, $\ord(g) \mid |G|$.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $g \in G$ and consider $H = \{e, g, g^2, \dots, g^{n-1}\}$ where $n = \ord(g)$. This is a subgroup: it is non-empty, and $g^r \cdot g^{-s} = g^{r-s} \in H$ (after potentially multiplying by $g^n = e$). Also, the elements of $H$ are distinct -- if $g^i = g^j$ for $0 \leq i < j \leq n$, then $g^{j-i} = e$, contradicting the minimality of $\ord(g)$. Hence $|H| = ord(g)$ -- now apply Lagrange.
+    \end{proof}
+    
+    \section{Normal subgroups, quotients and homomorphisms}
+
+    Let $H \leq G$. When are two cosets of $H$ in $G$ equal? If $gH = g'H$, then $g \in g'H$, so $g = g'h$ for some $h \in H$. In other words, $gH = g'H \iff (g')^{-1}g \in H$.
+
+    We denote the set of left cosets of $H \leq G$ by $G/H = \{gH: g \in G\}$. Does $G/H$ carry a natural group structure?
+    
+    
+
+    
+    
+    
+    
+    
+    
+\end{document}

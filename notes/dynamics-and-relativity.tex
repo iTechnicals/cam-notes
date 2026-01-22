@@ -1,0 +1,82 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Dynamics and relativity}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 22/01/26}
+
+    \section{The structure of the Newtonian universe}
+
+    \begin{itemize}
+        \item Three dimensional space endowed with a \emph{Cartesian reference frame} -- an origin and some axes.
+        \item Time can be labelled in an arbitrary reference frame, by a real number $t$.
+        \item A \emph{point particle} is an idealised object that is completely determined by its position at a given point in time, $\vec x(t)$. Its velocity
+        \begin{align*}
+            \vec v = \frac{d \vec x}{dt} = \left(\frac{dx_1}{dt}, \frac{dx_2}{dt}, \frac{dx_3}{dt}\right) = \dot{\vec x}
+        \end{align*}
+        is tangent to the trajectory. The acceleration
+        \begin{align*}
+            \vec a = \frac{d^2\vec x}{dt^2} = \left(\frac{d^2x_1}{dt^2}, \frac{d^2x_2}{dt^2}, \frac{d^2x_3}{dt^2}\right) = \ddot{\vec x} = \dot{\vec v}
+        \end{align*}
+    \end{itemize}
+    The above is \emph{not} sufficient to write down Newton's equations. Consider, for example, a free particle not experiencing any forces. The position of this particle is $\vec x(t)$, but which frame should we use?
+    
+    \subsection{Law of inertia}
+
+    \begin{proposition}[Law of inertia]
+        There exist \emph{inertial frames} in which a free particle has a constant velocity.
+    \end{proposition}
+    
+    This is an improved version of Newton's first law. Indeed, it is a true statement, but not an obvious one.
+
+    \subsection{Galilean relativity principle}
+    
+    \begin{definition}
+        A \emph{Galilean transformation} has the form
+        \begin{align*}
+            \vec x' = R \vec x + \vec k + \vec w t
+        \end{align*}
+        where $R \in SO(3)$, $\vec k$ is a translation vector, and $\vec w$ is a \emph{boost}. In particular, $\ddot{\vec x'} = \ddot{\vec x}$.
+    \end{definition}
+
+    \begin{proposition}[Galilean relativity principle]
+        A frame related to an inertial frame by a \emph{Galilean transformation} is also an inertial frame, and all laws of physics are the same in both frames.
+    \end{proposition}
+    
+    Example of a boost: dropping a ball on a boat moving at constant velocity.
+
+    Galilean invariance also restricts the forces that are possible (see example sheet). For example, there are no `special points' in the universe (or special directions, times, velocities, etc) -- they are all relative. This is \emph{not} the case for acceleration -- an object accelerating in one inertial frame is accelerating with the same magnitude in all inertial frames.
+
+    Galilean transformations form the \emph{Galilean group}, often supplemented by shifts in time, under which the laws of physics are also invariant. In particular, this implies that all inertial frames have the same time, called absolute time.
+
+    \section{Forces}
+
+    Once there is more than one particle in the universe, there will be interactions between them. In Newtonian physics, these are described by forces.
+
+    \subsection{Newton's second law}
+
+    In an inertial frame,
+
+    \begin{align*}
+        \dot{\vec p} = \vec F
+    \end{align*}
+    
+    where the \emph{momentum} $\vec p$ is $m \vec v$, where $m$ is the \emph{inertial mass}, mass for short. The mass is an additional property for point particles that we take to be constant in time unless otherwise stated.
+
+    The force $\vec F$ depends on the ongoing interactions, but it can only depend on $\vec x$ and $\vec v$. This implies that Newton's second law is a second-order differential equation, and that, given $\vec x$ and $\vec v$ at $t=0$ for all particles, Newton's equations will uniquely determine $\vec x(t)$ for all future times.
+
+    We should note that Newtonian mechanics has been superseded by quantum mechanics (for small things) and general relativity (for fast things).
+    
+    
+    
+    
+    
+    
+\end{document}
