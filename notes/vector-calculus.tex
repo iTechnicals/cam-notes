@@ -1,0 +1,154 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Vector Calculus}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 23/01/26}
+
+    \section{Preliminaries}
+
+    \subsection{Vector notation}
+
+    We will in general work in $\RR^3$, but sometimes $\RR^2$. In fact, most of our results will generalise to $\RR^n$.
+
+    We will write column vectors to save space when we mean row vectors, and we will use dot notation for differentiation (even though $t$ isn't really time).
+
+    If $\vec a$ and $\vec b$ are vectors, then the following hold:
+    \begin{align}
+        \dot{\vec a(t)} = \frac{d \vec a}{dt} &= \frac{d}{dt}(a_1, a_2, a_3) = (\dot a_1, \dot a_2, \dot a_3) \\
+        \frac{d}{dt}(\vec a \cdot \vec b) &= \dot {\vec a} \cdot \vec b + \vec a \cdot \dot {\vec b} \\
+        \frac{d}{dt}(\vec a \times \vec b) &= \dot {\vec a} \times \vec b + \vec a \times \dot{\vec b}
+    \end{align}
+    
+    and these results can be shown using suffix notation. Integration is also componentwise. We have therefore
+    \begin{align*}
+        \int_{t_1}^{t_2} \dot {\vec a}(t) \; dt = \vec a(t_2) - \vec a(t_1)
+    \end{align*}
+    
+    The modulus of a vector will be denoted by the same letter as the vector, but not bolded/underlined. So, for example, $r=|\vec r|$ (but $x$ means $x_1$, not $|\vec x|$).
+
+    Notationally, we might write $\partial_i$ for $\pd {}{x_i}$.
+
+    \subsection{The chain rule}
+
+    Recall that, if $f$ is a function of $\vec x$ which is itself a function of $t$, then
+    \begin{align*}
+        \frac{d}{dt} f(\vec x(t)) &= \pd{f}{x} \frac{dx}{dt} + \pd{f}{y} \frac{dy}{dt} + \pd{f}{z} \frac{dz}{dt} \\
+        &= \pd {f}{x_i} \frac{dx_i}{dt}
+    \end{align*}
+    If instead $\vec x = \vec x(\vec u)$, where $\vec u = (u_1, u_2, u_3) = (u, v, w)$, then
+    \begin{align*}
+        \pd{f}{u} &= \pd{f}{x} \pd{x}{u} + \pd{f}{y} \pd{y}{u} + \pd{f}{z} \pd{z}{u}
+    \end{align*}
+    and similarly for $\pd{f}{v}$ and $\pd{f}{w}$, i.e.
+    \begin{align*}
+        \pd {f}{u_i} = \pd {f}{x_i} \pd {x_i}{u_i}
+    \end{align*}
+    
+    \subsection{Taylor's theorem}
+
+    Recall that for a small vector displacement $\delta \vec x$,
+    \begin{align*}
+        f(\vec x + \delta \vec x) &= f(x + \delta x, y + \delta y, z + \delta z) \\
+        &= f(x, y, z) + \pd f x \delta x + \pd f y \delta y + \pd f z \delta z + \frac{1}{2!} \left(\delta x \pd{}{x} + \delta y \pd{}{y} + \delta z \pd {}{z}\right)^2f + \cdots
+    \end{align*}
+    or, in suffix notation,
+    \begin{align*}
+        f(\vec x + \delta \vec x) = f(\vec x) + \pd{f}{x_i} \delta x_i + O(|\delta \vec x|^2)
+    \end{align*}
+    
+    \subsection{Infinitesimals}
+    
+    In one dimension, we have from Taylor's theorem
+    \begin{align*}
+        \delta f = f(x + \delta x) - f(x) = f'(x) \delta x + O(\delta x^2)
+    \end{align*}
+    Taking $\delta x \to 0$, $\delta x$ and $\delta f$ become $dx$ and $df$, and we get the exact equality
+    \begin{align*}
+        df = f'(x) \D x
+    \end{align*}
+    If we want, we can even think of infinitesimals as numbers such that their squares are zero.
+
+    Note that infinitesimals have theiir own product and quotient rules, namely
+    \begin{align*}
+        d(fg) &= g \D f + f \D g \\
+        d\left(\frac f g\right) &= \frac{g \D f - f \D g}{g^2}
+    \end{align*}
+
+    We also get
+    \begin{align*}
+        df = \pd{f}{x_i} \D x_i
+    \end{align*}
+    
+    
+    
+    The modulus of an infinitesimal vector can be calculated using, for example
+    \begin{align*}
+        |d \vec x| = |dx| \sqrt{1 + \left(\frac{dy}{dx}\right)^2 + \left(\frac{dy}{dx}\right)^2}
+    \end{align*}
+    
+    If $dx$ and $dy$ are independent infinitesimals then $dx \D y$ is an infinitesimal area. But if $y$ depends on $x$ in some way then $dx \D y$ vanishes, since it's proportional to $dx^2$.
+    
+    \section{Vector differential operators}
+    
+    \begin{remark*}
+        What is an operator? It is a map between vector spaces of functions.
+    \end{remark*}
+
+    \subsection{Del}
+
+    The fundamental differential operator is \emph{del}:
+    \begin{align*}
+        \grad = \begin{pmatrix}
+         \pd{}{x} \\
+         \pd{}{y} \\
+         \pd{}{z} \\
+        \end{pmatrix}
+    \end{align*}
+    
+    We can also write
+    \begin{align*}
+        \grad = \vec e_1 \pd{}{x_1} + \vec e_2 \pd{}{x_2} + \vec e_3 \pd{}{x_3} = \vec e_i \pd{}{x_i}
+    \end{align*}
+    where $\{\vec e_1, \vec e_2, \vec e_3\}$ is the canonical basis for $\RR^3$.
+    
+    \subsection{Gradient}
+
+    When del is applied to a scalar field $f(\vec x)$, it is known as the \emph{gradient} operator:
+    \begin{align*}
+        \Aboxed{\grad f = \begin{pmatrix}
+         \pd{f}{x} \\
+         \pd{f}{y} \\
+         \pd{f}{z} \\
+        \end{pmatrix}}
+    \end{align*}
+    This can also be denoted $\mathrm{grad} f$.
+    
+    In suffix notation, we have
+    \begin{align*}
+        (\grad f)_i &= \pd{f}{x_i} \\
+        \iff \grad f &= \pd{f}{x_i} \vec e_i
+    \end{align*}
+    
+    \begin{example}
+        \begin{itemize}
+            \item If $f(\vec x) = |\vec x|^2 = x^2 + y^2 + z^2$, then $\grad f = (2x, 2y, 2z) = 2\vec x$. Alternatively, $\pd{}{x_i}(x_jx_j) = 2x_i \delta_{ij} = 2x_i$ (the $\delta_{ij}$ comes from $\pd{x_j}{x_i}$).
+        \end{itemize}
+        
+        
+    \end{example}
+    
+    
+    
+    
+    
+    
+    
+\end{document}
