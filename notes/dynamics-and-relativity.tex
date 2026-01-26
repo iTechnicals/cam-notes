@@ -43,7 +43,7 @@
         \begin{align*}
             \vec x' = R \vec x + \vec k + \vec w t
         \end{align*}
-        where $R \in SO(3)$, $\vec k$ is a translation vector, and $\vec w$ is a \emph{boost}. In particular, $\ddot{\vec x'} = \ddot{\vec x}$.
+        where $R \in O(3)$, $\vec k$ is a translation vector, and $\vec w$ is a \emph{boost}. In particular, $\ddot{\vec x'} = \ddot{\vec x}$.
     \end{definition}
 
     \begin{proposition}[Galilean relativity principle]
@@ -70,9 +70,155 @@
     
     where the \emph{momentum} $\vec p$ is $m \vec v$, where $m$ is the \emph{inertial mass}, mass for short. The mass is an additional property for point particles that we take to be constant in time unless otherwise stated.
 
-    The force $\vec F$ depends on the ongoing interactions, but it can only depend on $\vec x$ and $\vec v$. This implies that Newton's second law is a second-order differential equation, and that, given $\vec x$ and $\vec v$ at $t=0$ for all particles, Newton's equations will uniquely determine $\vec x(t)$ for all future times.
+    The force $\vec F$ depends on the ongoing interactions, but it can only depend (axiomatically) on $\vec x$ and $\vec v$. This implies that Newton's second law is a second-order differential equation, and that, given $\vec x$ and $\vec v$ at $t=0$ for all particles, Newton's equations will uniquely determine $\vec x(t)$ for all future times.
 
     We should note that Newtonian mechanics has been superseded by quantum mechanics (for small things) and general relativity (for fast things).
+    
+    \subsection{Conservative forces}
+
+    \begin{definition}
+        A force $\vec F$ is called \emph{conservative} if it can be written\begin{align*}
+            \vec F = -\grad V
+        \end{align*}
+        for some \emph{potential} scalar field $V$.
+    \end{definition}
+    
+    For example, \emph{gravitational potential energy} of a particle of mass $m$ at $\vec x$ due to a particle of mass $M$ at $\vec x_0$ is
+    \begin{align*}
+        V = -\frac{GMm}{|\vec x - \vec x_0|}
+    \end{align*}
+    where $G$ is a constant.
+
+    Now we can get the force by taking the gradient. First,
+    \begin{align*}
+        \partial_i \left(|\vec x-\vec x_0|^2\right) = 2|\vec x - \vec x_0| \partial_i |\vec x - \vec x_0|
+    \end{align*}
+    But also,
+    \begin{align*}
+        \partial_i \left(|\vec x-\vec x_0|^2\right) &= \partial_i \left((\vec x-\vec x_0)_j(\vec x-\vec x_0)_j\right) \\
+        &= 2(\vec x - \vec x_0)_j \partial_i(x_j - (x_0)_j) \\
+        &= 2(\vec x - \vec x_0)_j \delta_{ij} \\
+        &= 2(\vec x - \vec x_0)_i
+    \end{align*}
+    and so we have
+    \begin{align*}
+        \partial_i|\vec x - \vec x_0| &= \frac{(\vec x - \vec x_0)_i}{|\vec x - \vec x_0|} \\
+        \implies \Aboxed{\grad |\vec x - \vec x_0| &= \frac{\vec x - \vec x_0}{|\vec x - \vec x_0|}}
+    \end{align*}
+    Hence
+    \begin{align*}
+        \vec F = -\grad V = -GMm \frac{\vec x - \vec x_0}{|\vec x - \vec x_0|^3}
+    \end{align*}
+    Let $\vec r = \vec x - \vec x_0$, then
+    \begin{align*}
+        \vec F = -\frac{GMm}{r^2} \hvec r
+    \end{align*}
+    where $\hvec r = \vec r / r$ is a unit vector. Thus we have the inverse square law of gravity.
+
+    \begin{remark*}
+        Sometimes we write $V = m\Phi$ where $\Phi = -\frac{GM}{|\vec x - \vec x_0|}$ is called the \emph{gravitational potential}. 
+    \end{remark*}
+    
+    Near the surface of the Earth, take $\vec x_0 = \vec 0$, and $|\vec x| = R + z$, where $R$ is the radius of the Earth and $z \ll R$. Then
+
+    \begin{align*}
+        \Phi(R + z) &= -\frac{GM}{R+z} \\
+        &= -\frac{GM}{R}\left[1-\frac{z}{R}+\frac{z^2}{R^2} + \cdots\right] \\
+        &\approx \text{constant} + \underbrace{\frac{GM}{R^2}}_{g}z
+    \end{align*}
+    where $g \approx 9.8 \si{ms^{-2}}$. Since the constant will drop out when taking the gradient, we ignore it, so we have
+    \begin{align*}
+        \Phi &\approx gz \\
+        \implies \vec F &= -mg \hvec z
+    \end{align*}
+    
+    This force leads to the simplest non-trivial example of motion due to a force. By Newton's second law, we have
+    \begin{align*}
+        m \ddot{\vec x} = m \vec g
+    \end{align*}
+    where $\vec g = (0, 0, -g)$. We need only consider the $z$ component, which gives
+    \begin{align*}
+        m \ddot z &= -mg \\
+        \implies \dot z &= v_0 - gt \\
+        \implies z &= z_0 + v_0t - \frac{1}{2}gt^2
+    \end{align*}
+    for an initial height $z_0$ and an initial velocity $v_0$.
+
+    \subsection{Energy}
+
+    \begin{proposition}
+        Conservative forces have a \emph{conserved energy}
+        \begin{align*}
+            E &= \frac{1}{2} m \dot{\vec x} \cdot \dot{\vec x} + V(\vec x) \\
+            &= \frac{1}{2} m \dot x_i \dot x_i + V(\vec x)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \frac{dE}{dt} &= m \dot x_i\ddot x_i + \pd{V}{x_i} \dot x_i \\
+            &= m \dot x_i \left(m \ddot x_i + \pd{V}{x_i}\right) \\
+            &= 0 && (m \ddot{\vec x} = -\grad V)
+        \end{align*}
+    \end{proof}
+    
+    \begin{example}
+        Suppose we throw an object into space and want it to never fall back down. The minimal velocity required is called the escape velocity.
+
+        When the object is thrown, its energy is
+        \begin{align*}
+            E = \frac{1}{2}mv^2 - \frac{GMm}{R}
+        \end{align*}
+
+        To not fall back, the object must reach $|\vec x| \to \infty$ without the velocity going to zero. We have
+        \begin{align*}
+            E_\infty = \frac{1}{2}mv_{\infty}^2 - 0
+        \end{align*}
+        By conservation of energy, $E = E_\infty$, and so to make $v_\infty > 0$ we must have
+        \begin{align*}
+            \frac{1}{2}mv^2 &> \frac{GMm}{R} \\
+            \implies v^2 &> \frac{2GM}{R} \\
+            \implies v &> \sqrt{\frac{2GM}{R}}
+        \end{align*}
+        which is approximately $10\si{kms^{-1}}$ for Earth.
+        
+        Note: the mass cancels in $v_\text{escape}$ because the \emph{gravitational mass} (from the inverse square law) is equal to the \emph{inertial mass} (that appears in Newton's second).
+    \end{example}
+    
+    \begin{proposition}[Principle of equivalence]
+        Objects have the same gravitational and inertial masses.
+    \end{proposition}
+
+    \begin{remark*}
+        This is not known and there is no reason why we would expect this to be true -- whether there may be tiny deviations between the masses is under investigation.
+    \end{remark*}
+    
+    It's useful to write energy as $E = T + V$, where $T$ is the \emph{kinetic energy} $\frac{1}{2}m \dot{\vec x} \cdot \dot{\vec x}$. 
+
+    \begin{definition}
+        The \emph{work done} by a force as a particle moves along a trajectory $C$ is given by
+        \begin{align*}
+            W = \int_C \vec F \cdot d \vec x
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}
+        For a conservative force, the work done along a trajectory only depends on the endpoints of the trajectory, not on the path itself.
+    \end{proposition}
+    
+    \begin{proof}[Proof 1]
+        We have
+        \begin{align*}
+            W = \int_C \vec F \cdot d \vec x = \int_{t_1}^{t_2} \vec F \cdot \frac{d \vec x}{dt} \D t
+        \end{align*}
+        
+        
+    \end{proof}
+    
+    
+    
+    
     
     
     

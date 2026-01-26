@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  22 JAN 2026 09:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  24 JAN 2026 09:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -451,7 +451,7 @@ Package: thm-restate 2023/05/04 v0.76
 Package: thm-amsthm 2023/05/04 v0.76
 \thmt@style@headstyle=\toks33
 ))
-Package hyperref Info: Option `hypertexnames' set `false' on input line 449.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 456.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/zref/zref-abspage.sty
@@ -745,20 +745,20 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package thmtools Info: Key `mdframed' (with value `style=mdbluebox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmbluebox' on input line 484.
+(thmtools)             that uses `style=thmbluebox' on input line 491.
 Package thmtools Info: Key `mdframed' (with value `style=mdredbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmredbox' on input line 504.
+(thmtools)             that uses `style=thmredbox' on input line 511.
 Package thmtools Info: Key `mdframed' (with value `style=mdgreenbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmgreenbox' on input line 524.
+(thmtools)             that uses `style=thmgreenbox' on input line 531.
 Package thmtools Info: Key `mdframed' (with value `style=mdblackbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmblackbox' on input line 542.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 573.
+(thmtools)             that uses `style=thmblackbox' on input line 549.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 580.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2023/05/04 v0.76
 )
@@ -1173,9 +1173,39 @@ Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 103.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 140.
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 140.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 150.
+Package hyperref Info: bookmark level for unknown lemma defaults to 0 on input line 150.
 
 
-[3] (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/groups-rings-modules.aux)
+[3]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 174.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 192.
+Package hyperref Info: bookmark level for unknown remark* defaults to 0 on input line 192.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 199.
+
+
+[4]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 222.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 230.
+
+
+[5] (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/groups-rings-modules.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1184,18 +1214,18 @@ Package rerunfilecheck Info: File `groups-rings-modules.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 41663 strings out of 473579
- 885943 string characters out of 5725188
- 1949960 words of memory out of 5000000
- 63759 multiletter control sequences out of 15000+600000
- 574513 words of font info for 129 fonts, out of 8000000 for 9000
+ 41789 strings out of 473579
+ 888041 string characters out of 5725188
+ 1952960 words of memory out of 5000000
+ 63832 multiletter control sequences out of 15000+600000
+ 577235 words of font info for 149 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 138i,20n,145p,10969b,1195s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 138i,21n,145p,10969b,1195s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/groups-rings-modules.pdf (3 pages, 187285 bytes).
+Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/groups-rings-modules.pdf (5 pages, 204497 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 115 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 500000)
- 34941 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 209 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 41085 words of extra memory for PDF output out of 42996 (max. 10000000)
 

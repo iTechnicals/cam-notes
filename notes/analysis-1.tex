@@ -107,12 +107,83 @@
             |x_ny_n - xy| &< \varepsilon(|x| + |y_n|) \\
             &< \varepsilon(|x| + Y) && \text{by \cref{convergent-bounded}, } Y>0
         \end{align*}
+        and so picking $\varepsilon = \frac{\varepsilon'}{|x| + Y}$ shows the result.
     \end{proof}
+    
+    \begin{definition}[Bounded sequences]
+        We say $(x_n)$ is \emph{bounded} if there exists $M > 0$ such that $|x_n| \leq M$ for all $n$, or, equivalently, if $\sup |x_n| \leq M$.
+    \end{definition}
     
     \begin{lemma}
         \label{convergent-bounded}
         Convergent sequences are bounded.
     \end{lemma}
+    
+    \begin{proof}
+        Take $\varepsilon = 1$, then there exists $N$ such that $|x_n - x| \leq 1$ for any $n \geq N$, and so $|x_n| \leq 1 + |x|$ for any $n \geq N$. But for $n < N$, $|x_n| \leq \max_{1 \leq i < N}|x_n| < \infty$.
+    \end{proof}
+    
+    \begin{definition}[Monotone sequences]
+        We say a real sequence $(x_n)$ is \emph{monotone} if either
+        \begin{itemize}
+            \item it is increasing;
+            \item or it is decreasing.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{proposition}[Monotone convergence theorem]
+        \label{monotone-convergence}
+        Every bounded monotone sequence converges.
+    \end{proposition}
+    
+    \begin{proof}[Proof sketch]
+        Without loss of generality, suppose the sequence is strictly increasing. Using the least upper bound property, we can show that $x_n \to \sup\{x_n\}$.
+    \end{proof}
+    
+    Can we strengthen to non-monotonic sequences? Clearly not fully, since $x_n = (-1)^n$ is bounded but not convergent. But, if we delete all the even terms, then it indeed becomes convergent.
+    
+    \subsection{Bolzano-Weierstrass theorem}
+
+    \begin{theorem}[Bolzano-Weierstrass]
+        If $(x_n)$ is a real bounded sequence, then it has at least one convergent subsequence.
+    \end{theorem}
+    
+    \begin{definition}[Subsequences]
+        Given a sequence $(x_n)$, a subsequence of $(x_n)$ is a sequence of the form $(x_{n_k})_{k \in \NN}$, where $(n_k)$ is a strictly increasing sequence of natural numbers.
+    \end{definition}
+    
+    \begin{lemma}
+        If $x_n \to x$, then any subsequence $(x_{n_k})$ of $(x_n)$ must converge to $x$.
+    \end{lemma}
+    
+    \begin{proof}
+        Since $n_k < n_{k+1}$, $n_{k+1} \geq n_k + 1$. By induction, we can show $n_k \geq k$.
+
+        Now, take $\varepsilon > 0$, so we have $N(\varepsilon)$ such that $|x_n-x| < \varepsilon$ for any $n \geq N$. So, if $k \geq N$, then $n_k \geq k \geq N$, and so $|x_{n_k}-x|<\varepsilon$, so $\lim_{k \to \infty}x_{n_k} = x$ as required.
+    \end{proof}
+    
+    \begin{proposition}[Nested interval property]
+        \label{nested-interval}
+        Let $(I_n)_{n \in \NN}$ be a sequence of closed intervals in $\RR$ satisfiyng $I_{n+1} \subseteq I_n$ for every $n \in \NN$, and suppose $I_n = [a_n, b_n]$. If $b_n - a_n = |I_n| \to 0$ as $n \to \infty$, then $\bigcap_{n \in \NN} I_n$ contains exactly one point.
+    \end{proposition}
+    
+    \begin{proof}
+        We can see that $(a_n)$ and $(b_n)$ are bounded monotone sequences, so we probably want to apply \cref{monotone-convergence}. Indeed, we have $a_n \to a$, $b_n \to b$. Since limits preserve inequalities and $a_n \leq b_n$, we have $a \leq b$. Now we are ready to show the result.
+        \begin{itemize}
+            \item \emph{Existence}. For all $k \geq n$, $a_k \in [a_k, b_k] \subseteq [a_n, b_n]$, and so $a_n \leq a_k \leq b_n$. Taking $k$ to infinity, we have $a_n \leq a \leq b_n$ for every $n$, so $a \in I_n$ for every $n$, so it is in their intersection.
+            \item \emph{Uniqueness}. We know $b_n - a_n \to b - a$. But we know $b_n - a_n \to 0$, so $a = b$. Hence, if $x$ is in the intersection, $a_n \leq x \leq b_n$ for all $n$, so $a \leq x \leq a$, and hence $x=a$ as required.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{proof}[Proof of theorem]
+        We are given $(x_n)$ and $M > 0$ such that $|x_n| \leq M$ for any $n$. We will construct a series of nested intervals from which we can sample our subsequence and apply \cref{nested-interval}.
+
+        Let $a_1 = -M$, $b_1 = M$, so $I_1 = [-M, M] \supset (x_n)$. Now take $c = \frac{a_1+b_1}{2}$. Then, at least one of the halves $[a_1, c]$ and $[c, b_1]$ will have infinitely many elements of $(x_n)$ -- we take $I_2$ to be a half that has infinitely many elements. Continue inductively to get $(I_n)$, which are nested by construction and all of which have infinitely many elements of the sequence -- and by \cref{nested-interval}, there exists exactly one $x$ in their intersection.
+        
+        We choose $(x_{n_k})$ as follows: pick $n_1$ such that $x_{n_1} \in I_1$. Then $I_2$ has infinitely many elements of $(x_n)$ with index greater than $n_1$, so pick $n_2 > n_1$ such that $x_{n_2} \in I_2$. Continue inductively.
+
+        We have $x_{n_k} \in I_k$ for every $k$, so $x_{n_k} \in \bigcap_{n \geq k} I_n$, and so $x_{n_k} \to x$.
+    \end{proof}
     
     
     

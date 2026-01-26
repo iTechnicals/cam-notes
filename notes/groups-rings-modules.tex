@@ -112,6 +112,150 @@
     Let $H \leq G$. When are two cosets of $H$ in $G$ equal? If $gH = g'H$, then $g \in g'H$, so $g = g'h$ for some $h \in H$. In other words, $gH = g'H \iff (g')^{-1}g \in H$.
 
     We denote the set of left cosets of $H \leq G$ by $G/H = \{gH: g \in G\}$. Does $G/H$ carry a natural group structure?
+
+    \lecture{Lecture 2 -- 24/01/26}
+
+    We propose the `natural' group structure:
+    \begin{align*}
+        g_1H \cdot g_2H = (g_1g_2)H
+    \end{align*}
+    
+    But this rule may depend on the coset representatives we pick. We must check that it doesn't. Suppose $g_2H = g_2'H$, so $g_2' = g_2h$ for some $h \in H$. Then
+    \begin{align*}
+        g_1H \cdot g_2'H = (g_1g_2')H = g_1g_2hH = g_1g_2H
+    \end{align*}
+    
+    On the other hand, if $g_1H = g_1'H$, so $g_1' = g_1h$ for $h \in H$. Then
+    \begin{align*}
+        g_1'H \cdot g_2H = g_1hg_2H
+    \end{align*}
+    
+    and that is not automatically equal to $g_1g_2H$ -- we need $g_2^{-1}hg_2 \in H$ to hold for all $g_2 \in G$, $h \in H$.
+
+    \begin{definition}[Normal subgroups]
+        A subgroup $H \leq G$ is \emph{normal} if, for all $g \in G$, $h \in H$, $ghg^{-1} \in H$. We write this as $H \norm G$.
+    \end{definition}
+    
+    \begin{remark}
+        When $H \norm G$, then $G/H$ inherits a group structure by the rule above. We will refer to this as the \emph{quotient group of $G$ by $H$}.
+    \end{remark}
+    
+    \begin{definition}[Homomorphisms]
+        Let $G$ and $H$ be groups. A homomorphism from $G$ to $H$ is a function $f: G \to H$ such that, for all $g_1$, $g_2 \in G$, $f(g_1 g_2) = f(g_1) f(g_2)$.
+    \end{definition}
+    
+    Results such as $f(e_G) = e_H$ follow immediately.
+    
+    \begin{lemma}
+        If $f: G \to H$ is a homomorphism, then $f(g^{-1}) = f(g)^{-1}$.
+    \end{lemma}
+    
+    \begin{proof}
+        Calculate $f(g \cdot g^{-1})$ in two ways.
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item $f(gg^{-1}) = f(e_G) = e_H$;
+            \item $f(gg^{-1}) = f(g) f(g^{-1})$
+        \end{enumerate}
+        so $f(g) f(g^{-1}) = e_H$ and the result follows.        
+    \end{proof}
+    
+    \begin{definition}
+        Let $f: G \to H$ be a homomorphism. The \emph{kernel} of $f$ is
+        \begin{align*}
+            \ker f = \{g \in G : f(g) = e_H\}
+        \end{align*}
+        and the \emph{image} of $f$ is
+        \begin{align*}
+            \Im f = \{h \in H: h = f(g) \text{ for some } g\}
+        \end{align*}     
+    \end{definition}
+    
+    \begin{proposition}
+        Let $f: G \to H$ be a homomorphism. Then $\ker f \norm G$ and $\Im f \leq H$.
+    \end{proposition}
+    
+    \begin{proof}
+        Observe $e \in \ker f$ so $\ker f$ non-empty. Now, if $x, y \in \ker f$, then
+        \begin{align*}
+            f(xy^{-1}) = f(x)f(y)^{-1} = e
+        \end{align*}
+        so $xy^{-1} \in \ker f$. For normality, let $x \in G$ and $g \in \ker f$. Now
+        \begin{align*}
+            f(xgx^{-1}) = f(x) e f(x)^{-1} = e
+        \end{align*}
+        so $xgx^{-1} \in \ker f$ and hence $\ker f \norm G$.
+        
+        For the image, observe that, if $a$, $b \in \Im f$ with $a = f(x)$, $b = f(y)$, then $ab^{-1} = f(xy^{-1}) \in \Im f$.
+    \end{proof}
+    
+    \begin{remark*}
+        Observe $f: G \to G/H$ taking $g \mapsto gH$ is a homomorphism. This is a nice way of expressing its `naturalness'.
+    \end{remark*}
+    
+    \begin{definition}
+        A homomorphism $f: G \to H$ is an \emph{isomorphism} if it is a bijection. Two groups $G$ and $H$ are said to be \emph{isomorphic}, $G \cong H$, if there exists an isomorphism between them.
+    \end{definition}
+    
+    \begin{theorem}[First isomorphism theorem]
+        Let $f: G \to H$ be a homomorphism, then $\ker f$ is normal in $G$ and the homomorphism
+        \begin{align*}
+            G/\ker f &\to \Im f \\
+            g \ker f &\mapsto f(g)
+        \end{align*}
+        is an isomorphism. In particular, $G/\ker f \cong \Im f$.                
+    \end{theorem}
+    
+    \begin{proof}
+        We have already shown the normality result. Consider the map
+        \begin{align*}
+            \phi: G/\ker f &\to \Im f \\
+            g\ker f &\mapsto f(g)
+        \end{align*}
+        \begin{itemize}
+            \item \emph{$\phi$ is well-defined}. If $g \ker f = g'\ker f$, then $g'g^{-1} \in \ker f$, so $f(g'g^{-1})= e$ which gives $f(g) = f(g')$ as required.
+            \item \emph{$\phi$ is surjective}. Let $h \in \Im f$. Then $h = f(g)$ for some $g \in G$, and so $h = \phi(g \ker f)$.
+            \item \emph{$\phi$ is injective}. Suppose $\phi(g \ker f) = \phi(g' \ker f)$, then $f(g) = f(g')$. But then $g'g^{-1} \in \ker f$, so $g \ker f = g' \ker f$.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{example}
+        Consider the homomorphism
+        \begin{align*}
+            \exp: (\CC, +) &\to (\CC^*, \times) \\
+            z &\mapsto e^z
+        \end{align*}
+        Then $\ker \exp = 2\pi i\ZZ$, so $\CC^* \cong \CC/2\pi i \ZZ$.
+    \end{example}
+    
+    \begin{theorem}[Second isomorphism theorem]
+        Let $H \leq K$ and $K \norm G$. Then
+        \begin{align*}
+            HK = \{hk : h \in H, k \in K\}
+        \end{align*}
+        is a subgroup of $G$. Furthermore, $H \cap K$ is normal in $H$, and there is an isomorphism $HK/K \cong H/H \cap K$.
+    \end{theorem}
+    
+    \begin{proof}
+        We will show the results in order.
+        \begin{itemize}
+            \item \emph{$HK$ is a subgroup}. It contains $e_G$, so is non-empty. Now consider $x = hk$ and $y = h'k'$. We'll show $yx^{-1} \in HK$. Observe
+            \begin{align*}
+                yx^{-1} &= h'k'(hk)^{-1} \\
+                &= h'k'k^{-1}h^{-1} \\
+                &= (h'h^{-1})h(k'k^{-1})h^{-1} \\
+                &= h'h^{-1}k''
+            \end{align*}
+            by normality of $K$.
+            
+        \end{itemize}
+        
+        
+    \end{proof}
+    
+    
+    
+    
+    
     
     
 
