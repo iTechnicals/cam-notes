@@ -1,9 +1,11 @@
 \contentsline {section}{\numberline {1}Preliminaries}{1}{section.2}%
 \contentsline {subsection}{\numberline {1.1}Vector notation}{1}{subsection.3}%
 \contentsline {subsection}{\numberline {1.2}The chain rule}{2}{subsection.7}%
-\contentsline {subsection}{\numberline {1.3}Taylor's theorem}{2}{subsection.8}%
-\contentsline {subsection}{\numberline {1.4}Infinitesimals}{2}{subsection.9}%
-\contentsline {section}{\numberline {2}Vector differential operators}{3}{section.10}%
-\contentsline {subsection}{\numberline {2.1}Del}{3}{subsection.12}%
-\contentsline {subsection}{\numberline {2.2}Gradient}{3}{subsection.13}%
+\contentsline {subsection}{\numberline {1.3}Taylor's theorem}{2}{subsection.10}%
+\contentsline {subsection}{\numberline {1.4}Infinitesimals}{2}{subsection.11}%
+\contentsline {section}{\numberline {2}Vector differential operators}{3}{section.14}%
+\contentsline {subsection}{\numberline {2.1}Del}{3}{subsection.16}%
+\contentsline {subsection}{\numberline {2.2}Gradient}{3}{subsection.17}%
+\contentsline {subsection}{\numberline {2.3}Divergence}{5}{subsection.25}%
+\contentsline {subsection}{\numberline {2.4}Curl}{5}{subsection.28}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

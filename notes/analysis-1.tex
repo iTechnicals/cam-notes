@@ -182,8 +182,103 @@
         
         We choose $(x_{n_k})$ as follows: pick $n_1$ such that $x_{n_1} \in I_1$. Then $I_2$ has infinitely many elements of $(x_n)$ with index greater than $n_1$, so pick $n_2 > n_1$ such that $x_{n_2} \in I_2$. Continue inductively.
 
-        We have $x_{n_k} \in I_k$ for every $k$, so $x_{n_k} \in \bigcap_{n \geq k} I_n$, and so $x_{n_k} \to x$.
+        We have $x_{n_k} \in I_k$ for every $k$, so $x_{n_k} \in \bigcap_{n \leq k} I_n$, and so $x_{n_k} \to x$.
     \end{proof}
+
+    \begin{corollary}
+        The Bolzano-Weierstrass theorem holds in $\CC$.
+    \end{corollary}
+    
+    
+    
+    \subsection{Cauchy sequences}
+
+    A Cauchy sequence is a sequence in which the elements are getting closer as the sequence progresses.
+
+    \begin{definition}
+        A sequence $(x_n)$ on $X \subseteq \CC$ is \emph{Cauchy} if, for any $\varepsilon > 0$, there exists $N$ such that, for all $n, m \geq N$, $|x_n - x_m| < \varepsilon$.
+    \end{definition}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item Take $x_n = \frac{1}{n}$. Assume wlog $m \geq n$. Then
+            \begin{align*}
+                \left|\frac 1 n - \frac 1 m\right| = \frac 1 n - \frac 1 m = \frac{m-n}{mn} \leq \frac{1}{n} < \eps
+            \end{align*}
+            and this holds for any $m \geq n \geq N = \left\lceil\frac1 \eps\right\rceil + 1$. So $(x_n)$ is Cauchy.
+            \item Take $x_n = (-1)^n$. This is not a Cauchy sequence -- take $n = 2k$, $m = 2k+1$ for any $k \in \NN$, so $|x_n - x_m| = 2$. Hence we can't take $\eps < 2$.
+            \item Take $(x_n)$ on $\QQ$ defined by truncation of the decimal expansion of $\sqrt 2$. Assume wlog $m \geq n$, so
+            \begin{align*}
+                \left|x_n - x_m\right| < 10^{-(n-1)} \to 0
+            \end{align*}
+            Note that this sequence does not converge in $\QQ$.
+        \end{itemize}
+    \end{example*}
+    
+    \begin{lemma}
+        If $(x_n)$ is Cauchy, then it is bounded.
+    \end{lemma}
+    
+    \begin{proof}
+        Take $\varepsilon = 1$. Then we have $N$ such that
+        \begin{align*}
+            |x_n - x_N| < 1
+        \end{align*}
+        for any $n \geq N$ (we have fixed $m = N$). So $|x_n| < 1 + |x_N|$.
+    \end{proof}
+    
+    \begin{lemma}
+        A complex sequence $(x_n)$ is Cauchy if and only if $(\Re x_n)$ and $(\Im x_n)$ are both Cauchy.
+    \end{lemma}    
+    
+    \begin{lemma}
+        If $x_n \to x$, then $(x_n)$ is Cauchy.
+    \end{lemma}
+    
+    \begin{proof}
+        For any $\eps > 0$, we have $N$ such that
+        \begin{align*}
+            |x_n - x_m| &\leq |x_n - x| + |x_m - x| \\
+            &\leq 2\varepsilon
+        \end{align*}
+        for $n$, $m \geq N$. This completes the proof.        
+    \end{proof}
+    Is the converse true? Not in $\QQ$ at least -- see $\sqrt 2$ example. But we can still aspire to the converse being true in $\RR$.
+
+    \begin{theorem}[Completeness of $\RR$ and $\CC$]
+        Every Cauchy sequence in $\RR$ or $\CC$ converges.
+    \end{theorem}
+    
+    \begin{proof}
+        Suppose $(x_n)$ is Cauchy. Then it is bounded, and so by Bolzano-Weierstrass it has a convergent subsequence $(x_{n_k})$ converging to some $x$. We claim $x_n \to x$. Observe
+        \begin{align*}
+            |x_n - x| \leq |x_n - x_{n_k}| + |x_{n_k} - x|
+        \end{align*}
+        Taking $\eps > 0$, Cauchy gives $|x_n - x_{n_k}| < \eps$ for $n$, $n_k \geq N_1$, and $x_{n_k} \to x$ gives $|x_{n_k} - x| < \eps$ for $k \geq N_2$. Fixing $k \geq N_2$ such that $n_k \geq N_1$, we have $|x_n - x| < 2\eps$ for every $n \geq N_1$, which suffices for the result.        
+    \end{proof}
+    
+    \begin{remark*}
+        This is nice -- it's our first way to prove convergence without having to guess the limit.
+    \end{remark*}
+    
+    \subsection{Series and convergent series}
+
+    \begin{definition}
+        Let $(a_n)$ be a sequence in $\RR$ or $\CC$. We say that $\sum_{n=1}^\infty a_n$ is a \emph{series}, and we say it converges if the sequence of partial sums $s_k = \sum_{n=1}^k a_n$ converges to some finite $s$. In this case, $s$ is called the sum of the series, and we write
+        \begin{align*}
+            s = \sum_{n=1}^\infty a_n
+        \end{align*}        
+    \end{definition}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item $\sum_{n=1}^\infty n$ does not converge: $s_k = \frac{n(n+1)}2$.
+            \item geometric series: $\sum_{n=1}^\infty r^n$ converges iff $|r| < 1$. We have $s_k = \frac{1-r^k}{1-r}$ (unless $r=1$).
+        \end{itemize}
+        
+        
+    \end{example*}
+    
     
     
     

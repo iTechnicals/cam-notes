@@ -120,9 +120,141 @@
         \item Suppose $f: \{1, \dots, k\} \to \{1, \dots, n\}$ (with $k \leq n$). $f$ is \emph{strictly increasing} if $x < y \implies f(x) < f(y)$, and $f$ is \emph{increasing} if $x < y \implies f(x) \leq f(y)$.
         
         How many strictly increasing $f: \{1, \dots, k\} \to \{1, \dots, n\}$ are there? Such a function is determined uniquely by its range, so there are $\binom n k$ of them.
+
+        What about increasing functions? Let's define a bijection
+        \begin{align*}
+            \{f: \{1, \dots, k\} \to \{1, \dots, n\}\text{ inc.}\} &\to \{f: \{1, \dots, k\} \to \{1, n+k-1\} \text{ strictly inc.}\}
+        \end{align*}
+        which takes $f$ to $g$ with $g(i) = f(i) + i - 1$. Hence we have $\binom{n+k-1}{k}$ such functions.
     \end{enumerate}
 
+    \begin{definition}[Asymptotic notation]
+        If $(a_n)$ and $(b_n)$ are sequences, we write $a_n \sim b_n$ if
+        \begin{align*}
+            \lim_{n \to \infty} \frac{a_n}{b_n} = 1
+        \end{align*}
+    \end{definition}
+    
+    
 
+    \begin{theorem}[Stirling]
+        \[
+            n! \sim n^n \sqrt{2\pi n} e^{-n}
+        \]
+        as $n \to \infty$.        
+    \end{theorem}
+    
+    \begin{proof}[Weaker statement]
+        We shall first show a weaker statement, that $\log n! \sim n \log n$.
+
+        Define $l_n = \log n! = \log 2 + \dots + \log n$. We have
+        \begin{align*}
+            \log \lfloor x \rfloor \leq \log x \leq \log \lfloor x+1 \rfloor
+        \end{align*}
+        Integrating from 1 to $n$ gives
+        \begin{align*}
+            \sum_{k=1}^{n-1} \log k &\leq \int_1^n \log x \; dx \leq \sum_{k=1}^{n} \log k \\
+            \implies l_{n-1} &\leq n \log n - n + 1 \leq l_n \\
+            \implies n \log n - n + 1 &\leq l_n \leq (n+1) \log (n+1) - (n+1) + 1
+        \end{align*}
+        Now the result follows by dividing through by $n \log n$ and taking the limit.
+    \end{proof}
+    
+    \begin{proof}[Non-examinable proof of Stirling]
+        For every twice-differentiable $f: \RR \to \RR$, for all $a < b$, we have
+        \begin{align*}
+            \int_a^b f(x) \; dx = \frac{f(a) + f(b)}{2}(b-a) - \frac{1}{2} \int_a^b (x-a)(b-x)f''(x) \; dx
+        \end{align*}
+        obtained by integrating twice by parts. Put $f = \log$, $a = k$, $b = k+1$ for $k \in \NN$, to get
+        \begin{align*}
+            \int_k^{k+1} \log x \; dx = \frac{\log k + \log(k+1)}{2} + \frac{1}{2} \int_{k}^{k+1} \frac{(x-k)(k+1-x)}{x^2} \; dx
+        \end{align*}
+        Summing from $k=1$ to $n-1$, we have
+        \begin{align*}
+            \int_1^n \log x \; dx = \frac{\log(n-1)! + \log n!}{2} + \sum_{k=1}^{n-1} a_k
+        \end{align*}
+        where $a_k = \frac 1 2 \int_0^1 \frac{x(1-x)}{(x+k)^2} \; dx$. Hence
+        \begin{align*}
+            n \log n - n + 1 = \log n! - \frac{\log n}{2} + \sum_{k=1}^{n-1} a_k
+        \end{align*}
+        and so
+        \begin{align*}
+            \log n! &= n \log n - n + 1 + \frac{\log n}{2} - \sum_{k=1}^{n-1} a_k \\
+            \implies n! &= n^n \cdot e^{-n} \cdot \sqrt{n} \cdot \exp\left(1-\sum_{k=1}^{n-1} a_k\right)
+        \end{align*}
+        Let us now consider
+        \begin{align*}
+            a_k &= \frac{1}{2} \int_0^1 \frac{x(1-x)}{(x+k)^2} \; dx \\
+            &\leq \frac{1}{2} \int_0^1 \frac{1}{2k^2} \int_0^1 x(1-x) \; dx \\
+            &= \frac{1}{12k^2}
+        \end{align*}
+        and so $\sum_{k=1}^\infty a_k < \infty$. Now put
+        \begin{align*}
+            A &= \exp\left(1 - \sum_{k=1}^\infty a_k\right) \\
+            \implies n! &= n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A \cdot \underbrace{\exp\left(\sum_{k=n}^\infty a_k\right)}_{\to 1 \text{ as } n \to \infty} \\
+            \implies \frac{n!}{n^ne^{-n}\sqrt{n}} &\to A \text{ as } n \to \infty
+        \end{align*}
+        It remains to show that $A = \sqrt{2\pi}$. Consider
+        \begin{align*}
+            2^{-2n}\binom{2n}{n} &= 2^{-2n} \frac{(2n)!}{(n!)^2} \\
+            &\sim \frac{2^{-2n} (2n)^{2n} e^{-2n} \sqrt{2n} A}{n^{2n}e^{-2n}nA^2} \\
+            &= \frac{\sqrt 2}{A \sqrt n}
+        \end{align*}
+        Now, we shall use a different method to show
+        \begin{align*}
+            2^{-2n} \binom{2n}{n} \sim \frac{1}{\sqrt{\pi n}} \text{ as }n \to \infty
+        \end{align*}
+        Consider
+        \begin{align*}
+            I_n &= \int_0^{\pi/2} \cos^n \theta \; d\theta
+        \end{align*}
+        We have $I_0 = \frac{\pi}{2}$, $I_1 = 1$, and, by integrating by parts, we have
+        \begin{align*}
+            I_n = \frac{n-1}{n} I_{n-2} && (*)
+        \end{align*}
+        so that
+        \begin{align*}
+            I_{2n} &= \frac{2n-1}{2n} I_{2n-2} \\
+            &= \dots = \frac{(2n-1)(2n-3)\cdots 3 \cdot 1}{(2n)(2n-2) \cdots 2} \cdot \frac{\pi}{2} \\
+            &= \frac{2n(2n-1)(2n-2) \cdots 3 \cdot 2 \cdot 1}{2n \cdot 2n \cdot (2n-2) \cdot (2n-2) \cdots 2 \cdot 2} \cdot \frac{\pi}{2} \\
+            &= \frac{(2n)!}{2^{2n}(n!)^2} \cdot \frac{\pi}{2} \\
+            &= \frac{\pi}{2} \cdot 2^{-2n} \binom{2n}{n}
+        \end{align*}
+        and we can similarly obtain
+        \begin{align*}
+            I_{2n+1} &= \frac{2n \cdots 4 \cdot 2}{(2n+1) \cdots 3 \cdot 1} \cdot 1 \\
+            &= \frac{1}{2n+1} \left(2^{-2n} \binom{2n}{n}\right)^{-1}
+        \end{align*}
+        Now, we want to show that $\frac{I_{2n}}{I_{2n+1}} \to 1$ as $n \to \infty$. By $(*)$, we have
+        \begin{align*}
+            \frac{I_n}{I_{n-2}} \to 1 \text{ as } n \to \infty
+        \end{align*}
+        But $I_n = \int_0^{\pi/2} \cos^n \theta \; d\theta$, so $I_n$ is decreasing in $n$. This gives
+        \begin{align*}
+            \frac{I_{2n}}{I_{2n-2}} \leq \frac{I_{2n}}{I_{2n+1}} \leq \frac{I_{2n-1}}{I_{2n+1}}
+        \end{align*}
+        which shows the result by sandwich. Hence, we get, as $n \to \infty$,
+        \begin{align*}
+            \frac{\frac{\pi}2 \cdot 2^{-2n} \cdot \binom{2n}{n}}{\frac{1}{2n+1} \cdot \left(2^{-2n} \binom{2n}{n}\right)^{-1}} &\to 1 \\ \implies \left(2^{-2n} \binom{2n}{n}\right)^2 &\sim \frac{1}{\pi n}
+        \end{align*}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    \end{proof}
+    
+    
     
     
 

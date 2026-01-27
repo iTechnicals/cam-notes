@@ -7,6 +7,7 @@
 \RequirePackage{tabularx}
 \RequirePackage{quiver}
 \RequirePackage{siunitx}
+\RequirePackage{stmaryrd}
 
 \newcommand{\multiline}[2][c]{%
     \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}

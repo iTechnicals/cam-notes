@@ -789,20 +789,20 @@
     \begin{definition}[Levi-Civita epsilon]
         The \emph{Levi-Civita epsilon} is given by
         \begin{align*}
-            \varepsilon_{ijk} =
+            \lv{ijk} =
             \begin{cases}
                 1 & (i, j, k) \text{ is an even permutation of } (1, 2, 3) \\
                 -1 & (i, j, k) \text{ is an odd permutation of } (1, 2, 3) \\
                 0 & \text{o/w}
             \end{cases}
         \end{align*}
-        Simply, $\varepsilon_{123} = \varepsilon_{231} = \varepsilon_{312} = 1$, $\varepsilon_{132} = \varepsilon_{213} = \varepsilon_{321} = -1$, and 0 otherwise.
+        Simply, $\lv{123} = \lv{231} = \lv{312} = 1$, $\lv{132} = \lv{213} = \lv{321} = -1$, and 0 otherwise.
 
         Now it is \emph{antisymmetric}.
     \end{definition}
     Now we can also derive the coordinate cross product:
     \[
-        \vec a \times \vec b = \sum_{i,j,k=1}^3 \varepsilon_{ijk} a_i b_j \vec e_k
+        \vec a \times \vec b = \sum_{i,j,k=1}^3 \lv{ijk} a_i b_j \vec e_k
     \]
 
     \begin{definition}[Einstein's summation convention]
@@ -813,8 +813,8 @@
         \begin{enumerate}[label=\protect\circled{\arabic*}]
             \item $a_i \delta_{ij} = a_j$ means $\sum_i a_i \delta_{ij} = a_j$.
             \item $\vec a \cdot \vec b = \delta_{ij} a_i b_j = a_ib_i$ means $\vec a \cdot \vec b = \sum_{i,j} \delta_{ij} a_i b_j = \sum_i a_i b_i$.
-            \item $(\vec a \times \vec b)_i = \varepsilon_{ijk} a_j b_k$
-            \item $\vec a \cdot (\vec b \times \vec c) = \varepsilon_{ijk} a_i b_j c_k$
+            \item $(\vec a \times \vec b)_i = \lv{ijk} a_j b_k$
+            \item $\vec a \cdot (\vec b \times \vec c) = \lv{ijk} a_i b_j c_k$
             \item $\delta_{ii} = 3$.
         \end{enumerate}
         
@@ -823,10 +823,10 @@
     
     \begin{proposition}[Identities of Kronecker delta + Levi-Civita epsilon]
         \begin{itemize}
-            \item $\varepsilon_{ijk} \varepsilon_{pqr} = \delta_{ip} \delta_{jq} \delta_{kr} - \delta_{jp} \delta_{iq} \delta_{kr} + \delta_{jp} \delta_{kq} \delta_{ir} - \delta_{kp} \delta_{jq} \delta_{ir} + \delta_{kp} \delta_{iq} \delta_{ji} - \delta_{ip} \delta_{kq} \delta_{ji}$;
-            \item $\varepsilon_{ijk}\varepsilon_{pqk} = \delta_{ip} \delta_{jq} - \delta_{iq} \delta_{jp}$;
-            \item $\varepsilon_{ijk} \varepsilon_{pjk} = 2 \delta_{ip}$;
-            \item $\varepsilon_{ijk} \varepsilon_{ijk} = 6$.
+            \item $\lv{ijk} \lv{pqr} = \delta_{ip} \delta_{jq} \delta_{kr} - \delta_{jp} \delta_{iq} \delta_{kr} + \delta_{jp} \delta_{kq} \delta_{ir} - \delta_{kp} \delta_{jq} \delta_{ir} + \delta_{kp} \delta_{iq} \delta_{ji} - \delta_{ip} \delta_{kq} \delta_{ji}$;
+            \item $\lv{ijk}\lv{pqk} = \delta_{ip} \delta_{jq} - \delta_{iq} \delta_{jp}$;
+            \item $\lv{ijk} \lv{pjk} = 2 \delta_{ip}$;
+            \item $\lv{ijk} \lv{ijk} = 6$.
         \end{itemize}
     \end{proposition}
 
@@ -838,9 +838,9 @@
     
     \begin{proof}
         \begin{align*}
-            [\vec a \times (\vec b \times \vec c)]_i &= \varepsilon_{ijk} a_j (\vec b \times \vec c)_k \\
-            &= \varepsilon_{ijk}a_j \varepsilon_{kpq} b_p c_q \\
-            &= \varepsilon_{ijk} \varepsilon_{pqk} a_j b_p c_q \\
+            [\vec a \times (\vec b \times \vec c)]_i &= \lv{ijk} a_j (\vec b \times \vec c)_k \\
+            &= \lv{ijk}a_j \lv{kpq} b_p c_q \\
+            &= \lv{ijk} \lv{pqk} a_j b_p c_q \\
             &= (\delta_{ip} \delta_{jq} - \delta_{iq} \delta_{jp}) a_j b_p c_q \\
             &= a_j b_i c_j - a_j b_j c_i \\
             &= (\vec a \cdot \vec c) b_i - (\vec a \cdot \vec b) c_i \\
@@ -865,9 +865,9 @@
     \begin{proof}
         \begin{align*}
             \mathrm{LHS} &= (\vec a \times \vec b)_i \cdot (\vec b \times \vec c)_i && \text{Einstein: summing over } i\\
-            &= \varepsilon_{ijk}a_jb_k \cdot \varepsilon_{ipq}b_pc_q \\
-            &= \varepsilon_{ijk}\varepsilon_{ipq}a_jb_kb_pc_q \\
-            &= \varepsilon_{jki}\varepsilon_{pqi}a_jb_kb_pc_q \\
+            &= \lv{ijk}a_jb_k \cdot \lv{ipq}b_pc_q \\
+            &= \lv{ijk}\lv{ipq}a_jb_kb_pc_q \\
+            &= \lv{jki}\lv{pqi}a_jb_kb_pc_q \\
             &= (\delta_{jp}\delta_{kq} - \delta_{jq}\delta_{kp})a_jb_kb_pc_q \\
             &= a_jb_kb_jc_k - a_jb_kb_kc_j \\
             &= \underbrace{a_jb_j} \underbrace{b_kc_k} - \underbrace{a_jc_j} \underbrace{b_kb_k} \\
@@ -975,7 +975,7 @@
     \begin{definition}[Generalised Levi-Civita epsilon]
         The generalised Levi-Civita epsilon is given by
         \begin{align*}
-            \varepsilon_{a_1a_2\dots a_n} =
+            \lv{a_1a_2\dots a_n} =
             \begin{cases}
                 1 & (a_1, a_2, \dots, a_n) \text{ is an even permutation of } (1, 2, \dots, n) \\
                 -1 & (a_1, a_2, \dots, a_n) \text{ is an odd permutation of } (1, 2, \dots, n) \\
@@ -988,7 +988,7 @@
     In $\RR^2$, this gives us a new scalar product:
 
     \[
-        [\vec a, \vec b] = \varepsilon_{ij}a_ib_j = a_1b_2 - a_2b_1
+        [\vec a, \vec b] = \lv{ij}a_ib_j = a_1b_2 - a_2b_1
     \]
 
     Geometrically, it represents the signed area of a parallelogram spanned by $\vec a$ and $\vec b$.
@@ -1558,7 +1558,7 @@
             \item \emph{Rotations about an arbitrary vector}. Suppose we have a unit vector $\hvec n$ to rotate about, and our rotation takes $\vec x$ to $\vec x' = R \vec x$. Then
             \begin{align*}
                 \vec x' &= (\cos \theta) \vec x + (1 - \cos \theta) (\hvec n \cdot \vec x) \hvec n + (\sin \theta) \hvec n \times \vec x \\
-                R_{ij} &= (\cos \theta) \delta_{ij} + (1 - \cos \theta) n_i n_j - (\sin \theta) \varepsilon_{ijk} n_k
+                R_{ij} &= (\cos \theta) \delta_{ij} + (1 - \cos \theta) n_i n_j - (\sin \theta) \lv{ijk} n_k
             \end{align*}
             To derive this, let us represent our vector as
             \[
@@ -2057,14 +2057,14 @@
 
     Let us attempt once again to find such an $\tilde M$. Recalling that the scalar triple product was the 3D analogue of our second 2D inner product, we might wish to consider
     \[
-        [\vec a, \vec b, \vec c] = \vec a \cdot (\vec b \times \vec c) = \varepsilon_{ijk}a_ib_jc_k
+        [\vec a, \vec b, \vec c] = \vec a \cdot (\vec b \times \vec c) = \lv{ijk}a_ib_jc_k
     \]
     We then define the determinant to be the signed volume of the parallelepiped spanned by the image of the canonical basis:
     \begin{align*}
         \det M = [M\vec e_1, M\vec e_2, M \vec e_3] &= [\vec C_1(M), \vec C_2(M), \vec C_3(M)] \\
         &= [M_{i1}\vec e_i, M_{j2}\vec e_j, M_{k3}\vec e_k] \\
         &= M_{i1}M_{j2}M_{k3} [\vec e_i, \vec e_j, \vec e_k] \\
-        &= M_{i1}M_{j2}M_{k3} \varepsilon_{ijk}
+        &= M_{i1}M_{j2}M_{k3} \lv{ijk}
     \end{align*}
     which we denote by
     \[
@@ -2189,7 +2189,7 @@
     
     \begin{definition}[Generalised Levi-Civita epsilon]
         \[
-            \varepsilon_{j_1\cdots j_n} = \begin{cases}
+            \lv{j_1\cdots j_n} = \begin{cases}
                 +1 & (j_1, \dots, j_n) \text{ is an even permutation of } (1, \dots, n) \\
                 -1 & (j_1, \dots, j_n) \text{ is an odd permutation of } (1, \dots, n) \\
                 0 & \text{o/w}
@@ -2204,7 +2204,7 @@
     \begin{definition}
         For vectors $\vec v_1, \dots, \vec v_n$ in $\RR^n$ or $\CC^n$, the rank $n$ \emph{alternating form} is given by
         \begin{align*}
-            [\vec v_1, \dots, \vec v_n] &= \varepsilon_{j_1\dots j_n}(\vec v_1)_{j_1}\dots (\vec v_n)_{j_n} \\
+            [\vec v_1, \dots, \vec v_n] &= \lv{j_1\dots j_n}(\vec v_1)_{j_1}\dots (\vec v_n)_{j_n} \\
             &= \sum_{\rho \in S_n} \varepsilon(\rho) (\vec v_1)_{\rho(1)}\dots (\vec v_n)_{\rho(n)}
         \end{align*}
         Properties of alternating forms:
@@ -2256,7 +2256,7 @@
             for suitable $u_{ij}$. It follows that
             \begin{align*}
                 1 = [\vec e_1, \dots, \vec e_n] &= u_{i_11}\dots u_{i_nn} [\vec v_{i_1}\dots \vec v_{i_n}] \\
-                &= u_{i_11}\dots u_{i_nn} \varepsilon_{i_1\dots i_n}[\vec v_1, \dots, \vec v_n]
+                &= u_{i_11}\dots u_{i_nn} \lv{i_1\dots i_n}[\vec v_1, \dots, \vec v_n]
             \end{align*}
             and so clearly $[\vec v_1, \dots, \vec v_n] \neq 0$.
         \end{itemize}
@@ -2273,7 +2273,7 @@
         \begin{align*}
             \det M &= [\vec C_1, \dots, \vec C_n] \\
             &= [M \vec e_1, \dots, M \vec e_n] \\
-            &= \varepsilon_{j_1\dots j_n}M_{j_11}\dots M_{j_nn} \\
+            &= \lv{j_1\dots j_n}M_{j_11}\dots M_{j_nn} \\
             &= \sum_{\rho \in S_n} \varepsilon(\rho) M_{\rho(1)1}\cdots M_{\rho(n)n}
         \end{align*}
         We may also denote it by
@@ -2402,8 +2402,8 @@
     \begin{proof}
         We will introduce the bar notation to indicate part of a list or product which is missed out. So, for example, $\{1, 2, 3, \bar 4, 5\} = \{1, 2, 3, 5\}$. Then
         \begin{align*}
-            \det M &= \sum_{i_1, \dots, i_n = 1}^n \varepsilon_{i_1 \dots i_n}M_{i_11}\dots M_{i_nn} \\
-            &= \sum_{i_j=1}^n M_{i_jj} \sum_{i_1, \dots, \overline{i_j}, \dots, i_n=1}^n \varepsilon_{i_1 \dots i_n} M_{i_11} \dots \overline{M_{i_jj}} \dots M_{i_nn}
+            \det M &= \sum_{i_1, \dots, i_n = 1}^n \lv{i_1 \dots i_n}M_{i_11}\dots M_{i_nn} \\
+            &= \sum_{i_j=1}^n M_{i_jj} \sum_{i_1, \dots, \overline{i_j}, \dots, i_n=1}^n \lv{i_1 \dots i_n} M_{i_11} \dots \overline{M_{i_jj}} \dots M_{i_nn}
         \end{align*}
         Consider now $\sigma \in S_n$ the permutation that takes $i_j$ to the $j^\text{th}$ position, and leaves everything else in its original order:
         \begin{align*}
@@ -2444,12 +2444,12 @@
         \]
         from which it follows that
         \begin{align*}
-            \varepsilon(\rho\sigma) = \varepsilon_{i_1 \dots i_n} &= \varepsilon(\rho)\varepsilon(\sigma) \\
-            &= (-1)^{j-i_j}\varepsilon_{i_1 \dots \overline{i_j} \dots i_n}
+            \varepsilon(\rho\sigma) = \lv{i_1 \dots i_n} &= \varepsilon(\rho)\varepsilon(\sigma) \\
+            &= (-1)^{j-i_j}\lv{i_1 \dots \overline{i_j} \dots i_n}
         \end{align*}
         Hence we can rewrite:
         \begin{align*}
-            \det M &= \sum_{i_j=1}^n M_{i_jj} \sum_{i_1, \dots, \overline{i_j}, \dots, i_n=1}^n (-1)^{j-i_j} \varepsilon_{i_1 \dots \overline{i_j} \dots i_n} M_{i_11} \dots \overline{M_{i_jj}} \dots M_{i_nn} \\
+            \det M &= \sum_{i_j=1}^n M_{i_jj} \sum_{i_1, \dots, \overline{i_j}, \dots, i_n=1}^n (-1)^{j-i_j} \lv{i_1 \dots \overline{i_j} \dots i_n} M_{i_11} \dots \overline{M_{i_jj}} \dots M_{i_nn} \\
             &= \sum_{i_j=1}^n M_{i_jj}(-1)^{j-i_j}M^{i_jj} \\
             &= \sum_{i_j=1}^n M_{i_jj} \Delta_{ij} \\
             &= \sum_{i=1}^n M_{ij} \Delta_{ij}
@@ -2457,7 +2457,7 @@
     \end{proof}
 
     \begin{remark*}
-        The `technical' part of this argument which makes the proof so involved is really just rigorously justifying an expression for $\varepsilon_{i_1 \dots i_n}$ in terms of $\varepsilon_{i_1 \dots \overline{i_j} \dots i_n}$. The proof is not theoretically difficult.
+        The `technical' part of this argument which makes the proof so involved is really just rigorously justifying an expression for $\lv{i_1 \dots i_n}$ in terms of $\lv{i_1 \dots \overline{i_j} \dots i_n}$. The proof is not theoretically difficult.
     \end{remark*}
     
     Reasoning as above, since $\vec C_k = \sum_i M_{ik} \vec e_i$, then
@@ -2839,7 +2839,7 @@
         From the definition of the determinant,
         \begin{align*}
             \chi_A(t) &= \det(A - t I) \\
-            &= \varepsilon_{j_1\dots j_n}(A_{j_11}-t\delta_{j_11})\dots(A_{j_nn}-t\delta_{j_nn}) \\
+            &= \lv{j_1\dots j_n}(A_{j_11}-t\delta_{j_11})\dots(A_{j_nn}-t\delta_{j_nn}) \\
             &= c_0 + c_1t + \dots + c_nt^n
         \end{align*}
         for some constants $c_0, \dots, c_n$.

@@ -210,18 +210,136 @@
     \begin{proof}[Proof 1]
         We have
         \begin{align*}
-            W = \int_C \vec F \cdot d \vec x = \int_{t_1}^{t_2} \vec F \cdot \frac{d \vec x}{dt} \D t
+            W = \int_C \vec F \cdot d \vec x &= \int_{t_1}^{t_2} \vec F \cdot \frac{d \vec x}{dt} \D t \\
+            &= m \int_{t_1}^{t_2} \ddot{\vec x} \cdot \dot{\vec x} \D t \\
+            &= \frac{1}{2}m \int_{t_1}^{t_2} \frac{d}{dt}(\dot{\vec x} \cdot \dot{\vec x}) \D t \\
+            &= T(t_2) - T(t_1) \\
+            &= V(t_1) - V(t_2) && (T_2 + V_2 = T_1 + V_1) \\
+            &= V(\vec x(t_1)) - V(\vec x(t_2)) \\
+            &= V(\vec x_1) - V(\vec x_2)
         \end{align*}
-        
-        
+        from which it's obvious that the work done only depends on the endpoints.
     \end{proof}
     
+    \begin{proof}[Proof 2]
+        We have
+        \begin{align*}
+            W = \int_C \vec F \cdot d \vec x &= -\int_C \grad V \cdot d \vec x \\
+            &= V(x_1) - V(x_2)
+        \end{align*}
+    \end{proof}
+    
+    \subsection{Electromagnetic forces}
+
+    Forces that depend on velocity typically don't have a conserved energy (e.g. friction), but the Lorentz force is an exception.
+
+    Electromagnetic fields $\vec E$ and $\vec B$ exert the following force on a particle with \emph{charge} $q$:
+    \begin{align*}
+        \V F = q\left[\V E(\V x) + \dot{\V x} \times \V B(\V x)\right]
+    \end{align*}
+    
+    We will restrict to static electromagnetic fields, in which case we have
+    \begin{align*}
+        \V E = -\grad \Phi
+    \end{align*}
+    
+    for some electric potential $\Phi$. We claim the conserved energy is $E = \frac{1}{2}m \dot{\V x}^2 + q\Phi(\V x)$. We have
+
+    \begin{align*}
+        \frac{dE}{dt} &= m \ddot{\V x} \cdot \dot{\V x} + q \grad \Phi \cdot \dot{\V x} \\
+        &= (\V F + q \grad \Phi) \cdot \dot{\V x} \\
+        &= q(\dot{\V x} \times \V B) \cdot \dot{\V x} \\
+        &= 0
+    \end{align*}
+    
+    The velocity-dependent force is orthogonal to the trajectory of the particle, so it does no work on the particle and energy is still conserved.
+
+    Electric forces are similar to gravitational ones: the potential $\Phi$ at $\V x$ due to another particle of charge $Q$ at $\V x_0$ is
+    \begin{align*}
+        \Phi = \frac{Q}{4 \pi \eps_0} \cdot \frac{1}{|\V x - \V x_0|}
+    \end{align*}
+    where $\eps_0$ is the \emph{permittivity of free space}. Just like with gravity, this leads to an inverse square law called the \emph{Coulomb force}.
+
+    An important distinction from gravity is that charges can be positive or negative, but mass is always positive. 
+
+    Magnetic forces are different. A charged particle in a magnetic field obeys
+    \begin{align*}
+        m \ddot{\V x} = q \dot{\V x} \times \vec B
+    \end{align*}
+    This is a vector differential equation, which we can solve by writing out in Cartesian coordinates (we will also take $\V B$ constant and in the $z$-direction, $\V B = (0, 0, B) = B \hvec z$). The equations become
+    \begin{align*}
+        m \ddot x &= q \dot y B && (1)\\
+        m \ddot y &= -q \dot x B && (2)\\
+        m \ddot z &= 0 && (3)
+    \end{align*}
+    
+    The first thing we can observe is that $z = z_0 + v_zt$, that is, the particle moves with constant velocity in the $z$-direction. Now, differentiating (1) and subbing into (2), we have
+    \begin{align*}
+        m \dddot{x} = q \ddot{y} B = -\frac{q^2\dot x B^2}{m}
+    \end{align*}
+    and this is a second-order equation for $\dot x$ -- we have
+    \begin{align*}
+        \dot x = \tilde{A} \sin(\omega t + \phi)
+    \end{align*}
+    where $\omega = \frac{qB}{m}$ is the \emph{cyclotron frequency}. Hence
+    \begin{align*}
+        \Aboxed{x = x_0 + A \cos(\omega t + \phi)}
+    \end{align*}
+    Plugging into (1), we have
+    \begin{align*}
+        qB \dot y &= -mA \omega^2 \cos(\omega t + \phi) \\
+        \implies \Aboxed{y &= y_0 - A \sin(\omega t + \phi)}
+    \end{align*}
+    
+    Hence, the particle is moving in a circle in the $x$-$y$ plane while moving with a constant velocity in the $z$-direction.
+
+    DIAGRAM.
+
+    Alternatively, let $\xi = x + iy$, and write $(1) + i(2)$. We have
+    \begin{align*}
+        m \ddot \xi = -iqB \dot \xi
+    \end{align*}
+    which we can solve nice and easily: $\xi = c_1 e^{-i\omega t} + c_2$. Let's put
+    \begin{align*}
+        c_1 &= Ae^{-i\phi} \\
+        c_2 &= x_0 + iy_0
+    \end{align*}
+    Plugging in and taking real and imaginary parts, we recover the exact same solution as before.
+
+    \begin{remark*}
+        There is something `complex' underlying cyclotron motion -- c.f. quantum Hall effect.
+    \end{remark*}
+    
+    \subsection{Motion in one dimension}
+
+    Often, problems involving higher dimensions can be reduced to one-dimensional motion. In such a case, we have
+    \begin{align*}
+        m \ddot x = F_x
+    \end{align*}
+    If $F_x$ is independent of velocity, it can always be written as the gradient of a potential by setting
+    \begin{align*}
+        V(x) = -\int_{x_0}^x F_x(x') dx'
+    \end{align*}
+    for an arbitrary reference point $x_0$. So the energy
+    \begin{align*}
+        E = \frac{1}{2} m \dot x^2 + V(x)
+    \end{align*}
+    is always conserved. Then, putting $E = $ constant, we get a first-order differential equation for $x(t)$ which is easily integrated: we have
+    \begin{align*}
+        \dot x &= \pm \sqrt{\frac 2 m \left(E - V(x)\right)} \\
+        \implies t - t_0 &= \pm \int_{x_0}^x \frac{1}{\sqrt{\frac 2 m \left(E - V(x')\right)}} \D x'
+    \end{align*}
+    and so solving Newton's equations in one dimension essentially just amounts to doing this integral.
     
     
     
     
     
     
+    
+    
+    
+
     
     
     
