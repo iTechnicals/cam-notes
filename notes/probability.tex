@@ -67,19 +67,19 @@
         \begin{itemize}
             \item \emph{Rolling a fair die}. Then $\Omega = \{1, 2, 3, 4, 5, 6\}$, $\mathcal F = \mathcal P(\Omega)$, and
             \begin{align*}
-                \PP(A) = \frac{|A|}{6}
+                \PP(A) = \frac{\mid A\mid }{6}
             \end{align*}
             since all outcomes are equally likely.
     
-            \item $\Omega = \{\omega_1, \dots, \omega_n\}$, $\mathcal F = \mathcal P(\Omega)$, $\PP(A) = \frac{|A|}{|\Omega|}$ models the experiment of picking an element of $\Omega$ uniformly at random.
+            \item $\Omega = \{\omega_1, \dots, \omega_n\}$, $\mathcal F = \mathcal P(\Omega)$, $\PP(A) = \frac{\mid A\mid }{\mid \Omega\mid }$ models the experiment of picking an element of $\Omega$ uniformly at random.
             
-            \item \emph{Picking balls from a bag}. Suppose we have $n$ balls labelled $\{1, \dots, n\}$, and we pick $k \leq n$ balls uniformly at random without replacement. Then $\Omega = \{A:  A \subseteq \{1, \dots, n\}, |A| = k\}$, so $|\Omega| = \binom n k$ and $\PP(\{\omega\}) = \binom n k ^{-1}$ for any $\omega \in \Omega$.
+            \item \emph{Picking balls from a bag}. Suppose we have $n$ balls labelled $\{1, \dots, n\}$, and we pick $k \leq n$ balls uniformly at random without replacement. Then $\Omega = \{A:  A \subseteq \{1, \dots, n\}, \mid A\mid  = k\}$, so $\mid \Omega\mid  = \binom n k$ and $\PP(\{\omega\}) = \binom n k ^{-1}$ for any $\omega \in \Omega$.
             
-            \item \emph{A deck of 52 cards}. Take a well-shuffled deck of 52 cards. Then $\Omega = \{\text{all permutations of 52 cards}\}$, so $|\Omega| = 52!$.
+            \item \emph{A deck of 52 cards}. Take a well-shuffled deck of 52 cards. Then $\Omega = \{\text{all permutations of 52 cards}\}$, so $\mid \Omega\mid  = 52!$.
             
             What is, for example, $\PP(\text{top 2 cards are aces})$? It is $\frac{4 \cdot 3 \cdot 50!}{52!}$.
 
-            \item \emph{Largest digit}. Consider a string of $n$ random digits from 0 up to 9. Then $\Omega = \{0, \dots, 9\}^n$, $|\Omega| = 10^n$.
+            \item \emph{Largest digit}. Consider a string of $n$ random digits from 0 up to 9. Then $\Omega = \{0, \dots, 9\}^n$, $\mid \Omega\mid  = 10^n$.
             
             Consider the events $A_k = \{\text{no digit exceeds $k$}\}$, $B_k = \{\text{largest digit is $k$}\}$. Then
             \begin{align*}
@@ -89,7 +89,7 @@
 
             \item \emph{Birthday problem}. There are $n$ people. What is the probability that at least 2 of them share the same birthday?
             
-            Assume each birthday is equally likely to be one of $\{1, \dots, 365\}$. Then $\Omega = \{1, \dots, 365\}^n$, $|\Omega| = 365^n$, and $\PP(\{\omega\}) = \frac{1}{365^n}$.
+            Assume each birthday is equally likely to be one of $\{1, \dots, 365\}$. Then $\Omega = \{1, \dots, 365\}^n$, $\mid \Omega\mid  = 365^n$, and $\PP(\{\omega\}) = \frac{1}{365^n}$.
 
             Let $A = \{\text{at least 2 people have the same birthday}\}$. Instead we count $A^\comp = \{\text{all birthdays different}\}$.
 
@@ -107,7 +107,7 @@
     Let us introduce some notions.
 
     \begin{enumerate}
-        \item Let $\Omega$ be a finite set with $|\Omega| = n$. We want to partition $\Omega$ into $k$ disjoint subsets $\Omega_1, \dots, \Omega_k$ with $|\Omega_i| = n_i$ and $\sum n_i = n$. How many ways are there to do this? It is
+        \item Let $\Omega$ be a finite set with $\mid \Omega\mid  = n$. We want to partition $\Omega$ into $k$ disjoint subsets $\Omega_1, \dots, \Omega_k$ with $\mid \Omega_i\mid  = n_i$ and $\sum n_i = n$. How many ways are there to do this? It is
 
         \begin{align*}
             M &= \binom n {n_1} \cdot \binom {n-n_1} {n_2} \dots \binom{n-(n_1 + \dots + n_{k-1})}{n_k} \\
@@ -135,6 +135,7 @@
         \end{align*}
     \end{definition}
     
+    \subsection{Stirling's formula}
     
 
     \begin{theorem}[Stirling]
@@ -236,28 +237,534 @@
         which shows the result by sandwich. Hence, we get, as $n \to \infty$,
         \begin{align*}
             \frac{\frac{\pi}2 \cdot 2^{-2n} \cdot \binom{2n}{n}}{\frac{1}{2n+1} \cdot \left(2^{-2n} \binom{2n}{n}\right)^{-1}} &\to 1 \\ \implies \left(2^{-2n} \binom{2n}{n}\right)^2 &\sim \frac{1}{\pi n}
+        \end{align*}        
+    \end{proof}
+    
+    \begin{proposition}[Countable subadditivity]
+        Let $(A_n)$ be a collection of events in $\mathcal F$. Then
+        \begin{align*}
+            \PP\left(\bigcup A_n\right) \leq \sum \PP(A_n)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Let $B_1 = A_1$, and for $n \geq 2$, let $B_n = A_n \setminus (A_1 \cup \cdots \cup A_{n-1})$. By definition, it's immediate that $(B_n)$ is a disjoint collection of sets in $\mathcal F$, and $\bigcup B_n = \bigcup A_n$, so
+        \begin{align*}
+            \PP\left(\bigcup A_n\right) = \PP\left(\bigcup B_n\right) &= \sum \PP(B_n) \\
+            &\leq \sum \PP(A_n)
+        \end{align*}
+        since $B_n \subseteq A_n$ for all $n$.
+    \end{proof}
+    
+    \begin{proposition}[Continuity of probability measures]
+        Take a sequence of events $(A_n)_{n \in \NN}$ such that $A_n \subseteq A_{n+1}$ for all $n$ -- we say $(A_n)$ is an \emph{increasing} sequence.
+
+        Then $\PP(A_n)$ is increasing and converges. In particular,
+        \begin{align*}
+            \PP(A_n) \to \PP\left(\bigcup A_n\right)
+        \end{align*}
+        as $n \to \infty$.
+    \end{proposition}
+    
+    \begin{proof}
+        Define $B_1 = A_1$, and for $n \geq 2$, let $B_n = A_n \setminus (A_1 \cup \cdots \cup A_n)$. Then
+        \begin{align*}
+            \bigcup_{k=1}^n B_k = A_n
+        \end{align*}
+        and the $B_n$'s are disjoint.Then
+        \begin{align*}
+            \PP(A_n) &= \PP\left(\bigcup_{k=1}^n B_k\right) \\
+            &= \sum_{k=1}^n \PP(B_k) \to \sum_{k=1}^\infty \PP(B_k)
+        \end{align*}
+        Also,
+        \begin{align*}
+            \sum_{k=1}^\infty \PP(B_k) &= \PP\left(\bigcup B_k\right) \\
+            &= \PP\left(A_k\right)
+        \end{align*}
+    \end{proof}
+    
+    \begin{corollary}
+        Analogously, take a sequence of events $(A_n)$ such that $A_{n+1} \subseteq A_n$ for all $n$ -- we say $(A_n)$ is a decreasing sequence. Then
+        \begin{align*}
+            \PP(A_n) \to \PP\left(\bigcap A_n\right)
+        \end{align*}
+    \end{corollary}
+    
+    \begin{proof}
+        Take complements and use the previous claim.
+    \end{proof}
+    
+    \begin{proposition}[Inclusion-exclusion formula for probability measures]
+        Let $A_1, \dots, A_n \in \mathcal F$. Then
+        \begin{align*}
+            \PP\left(\bigcup A_i\right) = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \cdots \cap A_{i_k})
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        We proceed by induction.
+
+        \emph{Base case}. ADD
+
+        \emph{Inductive step}. We have
+        \begin{align*}
+            \PP\left(\bigcup_{i=1}^n A_i\right) &= \PP\left(\left(\bigcup_{i=1}^{n-1} A_i\right) \cup A_n\right) \\
+            &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\bigcup_{i=1}^{n-1} A_i \cap A_n\right) \\
+            &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\left(\bigcup_{i=1}^{n-1} A_i\right) \cap A_n\right) \\
+            &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\bigcup_{i=1}^{n-1} \underbrace{\left(A_i \cap A_n\right)}_{B_i}\right)
+        \end{align*}
+        Applying the inductive hypothesis, we get
+        \begin{align*}
+            \PP\left(\bigcup_{i=1}^{n-1} A_i\right) &= \sum_{k=1}^{n-1} (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n-1} \PP(A_{i_1} \cap \dots \cap A_{i_k}) \\
+            \PP\left(\bigcup_{i=1}^{n-1} B_i\right) &= \sum_{k=1}^{n-1} (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n-1} \PP(A_{i_1} \cap \dots \cap A_{i_k} \cap A_n)
+        \end{align*}
+        and subbing this in, we will find that everything works out.
+    \end{proof}
+    
+    \begin{proposition}[Bonferroni inequalities]
+        Let $A_1, \dots, A_n$ be events. Then
+        \begin{align*}
+            \PP\left(\bigcup A_i\right) \begin{cases}
+                \displaystyle \leq \sum_{k=1}^r (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \cdots \cap A_{i_k}) & \text{if } r \text{ odd} \\
+                \displaystyle \geq \sum_{k=1}^r (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \cdots \cap A_{i_k}) & \text{if } r \text{ even} 
+            \end{cases}
+        \end{align*}
+        where those sums are just truncated expansions of inclusion-exclusion.
+    \end{proposition}
+    
+    \begin{proof}
+        We induct again.
+
+        \emph{Base case}. $\PP(A \cup B) = \PP(A) + \PP(B) - \PP(A \cap B) \leq \PP(A) + \PP(B)$
+
+        \emph{Inductive step}. Suppose $r$ is odd. Then
+        \begin{align*}
+            \PP\left(\bigcup_{i=1}^n A_i\right) &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\bigcup_{i=1}^{n-1} \underbrace{\left(A_i \cap A_n\right)}_{B_i}\right)
+        \end{align*}
+        By the inductive hypotheses,
+        \begin{align*}
+            \PP\left(\bigcup_{i=1}^{n-1} A_i\right) &\leq \sum_{k=1}^{r} (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n-1} \PP(A_{i_1} \cap \dots \cap A_{i_k}) \\
+            \PP\left(\bigcup_{i=1}^{n-1} (A_i \cap A_n)\right) &\geq \sum_{k=1}^{r-1} (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n-1} \PP(A_{i_1} \cap \dots \cap A_{i_k} \cap A_n)
+        \end{align*}
+        where in the former, we choose to apply the identity for odd $r$, and in the latter, we apply it for even $r-1$. Substituting much as for the proof of the inclusion-exclusion formula, we obtain the result. The even case is analogous.
+    \end{proof}
+    
+    Let us now consider the special case where $\Omega$ is a finite set and $\PP(A) = \mid A\mid /\mid \Omega\mid $. Then we have
+
+    \begin{corollary}[Inclusion-exclusion principle for sets]
+        Suppose $\Omega$ is finite. Then
+        \begin{align*}
+            \mid A_1 \cup \dots \cup A_n\mid  = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \mid A_{i_1} \cap \dots \cap A_{i_n}\mid 
+        \end{align*}
+    \end{corollary}
+    
+    \begin{proof}
+        Consider the probability space $(\Omega, \mathcal F, \PP)$ where $\PP(A) = \mid A\mid /\mid \Omega\mid $. Then, apply inclusion-exclusion and cancel $1/\mid \Omega\mid $ from both sides.
+    \end{proof}
+    
+    \section{Basic applications}
+
+    \subsection{Counting surjections}
+
+    Define a probability space as follows:
+    \begin{align*}
+        \Omega &= \{f: \{1, \dots, n\} \to \{1, \dots, m\}\} \\
+        A &= \{f \in \Omega: f \text{ is a surjection}\}
+    \end{align*}
+    What is $\mid A\mid $? Let us define a set of events
+    \begin{align*}
+        A_i = \{f \in \Omega: i \notin \{f(1), \dots, f(n)\}\}, \, i \in \{1, \dots, m\}
+    \end{align*}
+    so that
+    \begin{align*}
+        A &= A_1^\comp \cap \dots \cap A_m^\comp = (A_1 \cup \dots \cup A_m)^\comp \\
+        \implies \mid A\mid  &= \mid \Omega\mid  - \mid A_1 \cup \dots \cup A_m\mid  \\
+        &= \mid \Omega\mid  - \sum_{k=1}^m (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq m} \mid A_{i_1} \cap \dots \cap A_{i_k}\mid  \\
+        &= \underbrace{\mid \Omega\mid }_{m^n} - \sum_{k=1}^m (-1)^{k+1} \binom{m}{k} (m-k)^n \\
+        &= \sum_{k=0}^m (-1)^k \binom{m}{k} (m-k)^n
+    \end{align*}
+    
+    \lecture{Lecture 4 -- 30/01/26}
+
+    \subsection{Counting derangements}
+
+    \begin{definition}
+        A \emph{derangement} is a permutation with no fixed points.
+    \end{definition}
+    Let
+    \begin{align*}
+        \Omega &= \{\text{permutations of } \{1, \dots, n\}\} \\
+        A &= \{\text{derangements}\}
+    \end{align*}
+    Let
+    \begin{align*}
+        A_i = \{f \in \Omega: f(i) = i\}
+    \end{align*}
+    so that
+    \begin{align*}
+        A = A_1^\comp \cap \dots \cap A_n^\comp = (A_1 \cup \dots \cup A_n)^\comp \\
+        \implies \PP(A) = 1 - \PP\left(\bigcup A_i\right) &= 1 - \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \underbrace{\PP(A_{i_1} \cap \dots \cap A_{i_k})}_{\frac{(n-k)!}{n!}} \\
+        &= 1 - \sum_{k=1}^n (-1)^{k+1} \binom n k \frac{(n-k)!}{n!} \\
+        &= 1 - \sum_{k=1}^n (-1)^{k+1} \frac{1}{k!} \\
+        &= \sum_{k=0}^n \frac{(-1)^k}{k!} \to e^{-1}
+    \end{align*}
+    
+    \section{Independence and conditional probability}
+    
+    \begin{definition}[Independence]
+        Let $A$, $B \in \mathcal F$. We say $A$ and $B$ are \emph{independent} and write $A \perp B$ if
+        \begin{align*}
+            \PP(A \cap B) = \PP(A) \PP(B)
+        \end{align*}
+        Likewise, a countable collection of events $(A_n)_{n \in \NN}$ is said to be independent if, for distinct $i_1, \dots, i_k$,
+        \begin{align*}
+            \PP(A_{i_1} \cap \dots \cap A_{i_k}) = \prod_{j=1}^k \PP(A_{i_j})
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        Pairwise independence of events does not imply independence.
+    \end{remark*}
+    
+    \begin{example*}
+        Toss a fair coin twice. We have
+        \begin{align*}
+            \Omega &= \{(0, 0), (0, 1), (1, 0), (1, 1)\} \\
+            \PP(\{\omega\}) &= \frac 1 4
+        \end{align*}
+        Let
+        \begin{align*}
+            A &= \{(0, 0), (0, 1)\} \\
+            B &= \{(0, 0), (1, 0)\} \\
+            C &= \{(1, 0), (0, 1)\}
+        \end{align*}
+        We have $\PP(A) = \PP(B) = \PP(C)$, and furthermore we can check that $A \perp B$, $A \perp C$ and $B \perp C$. But $\\P(A \cap B \cap C) = \PP(\emptyset) = 0$, so they are not independent.
+    \end{example*}
+    
+    \begin{proposition}
+        If $A$ is independent of $B$, then $A$ is independent of $B^\comp$.
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \PP(A \cap B^\comp) &= \PP(A) - \PP(A \cap B) \\
+            &= \PP(A)(1 - \PP(B)) \\
+            &= \PP(A)\PP(B^\comp)
+        \end{align*}
+    \end{proof}
+    
+    \begin{definition}[Conditional probability]
+        Take a probability space $(\Omega, \mathcal F, \PP)$ and $B \in \mathcal F$ with $\PP(B) > 0$. For $A \in \mathcal F$ we write the \emph{conditional probability of $A$ given $B$} 
+        \begin{align*}
+            \PP(A \mid  B) = \frac{\PP(A \cap B)}{\PP(B)}
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        Notably, if $A \perp B$, then $\PP(A \mid  B) = \PP(A)$, as we would expect.
+    \end{remark*}
+    
+    \begin{proposition}[Countable additivity for conditional probability]
+        Suppose $(A_n)_{n \in \NN}$ is a disjoint sequence in $\mathcal F$. Then
+        \begin{align*}
+            \PP\left(\bigcup A_n \mid  B \right) = \sum \PP(A_n \mid  B)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \PP\left(\bigcup A_n \mid  B\right) &= \frac{\PP\left(\bigcup A_n \cap B\right)}{\PP(B)} \\
+            &= \frac{\PP\left(\bigcup (A_n \cap B)\right)}{\PP(B)} \\
+            &= \sum \frac{\PP(A_n \cap B)}{\PP(B)} \\
+            &= \sum \PP(A_n \mid  B)
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}[Law of total probability]
+        Suppose $(B_n)_{n \in \NN}$ is a disjoint collection in $\mathcal F$, $\bigcup B_n = \Omega$, and $\PP(B_n) > 0$ for every $n$. Let $A \in \mathcal F$, then
+        \begin{align*}
+            \PP(A) = \sum_n \PP(A \mid  B_n) \PP(B_n)
+        \end{align*}
+    \end{proposition}
+
+    \begin{proof}
+        We have
+        \begin{align*}
+            \PP(A) &= \PP\left(A \cap \left(\bigcup B_n\right)\right) \\
+            &= \PP\left(\bigcup (B_n \cap A)\right) \\
+            &= \sum \PP(B_n \cap A) \\
+            &= \sum \PP(A \mid  B_n) \PP(B_n)
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}[Bayes' theorem]
+        Suppose $(B_n)$ are disjoint, $\bigcup B_n = \Omega$ and $P(B_n) > 0$ for every $n$. Let $A \in \mathcal F$, then
+        \begin{align*}
+            \PP(B_n \mid  A) = \frac{\PP(A \mid  B_n) \cdot \PP(B_n)}{\sum_k \PP(A \mid  B_k)\PP(B_k)}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}[Proof sketch]
+        Use the definitions of $\PP(B_n \mid  A) $ and $\PP(A \mid  B_n)$, and expand the bottom using the law of total probability.
+    \end{proof}
+    
+    This formula is the basis of so-called Bayesian statistics. We know the probability of $\PP(B_n)$ and we have a model which gives us $\PP(A \mid  B_n)$. With the formula, we find the \emph{posterior} probability of $B_n$ given that $A$ occurred.
+    
+    \begin{example*}[False positives for a rare condition]
+        Suppose that condition $A$ affects $0.1\%$ of the population. We have a medical test which is positive for $98\%$ of the affected population and $1\%$ of the unaffected population. What is the probability that a random individual who tests positive has the disease?
+
+        Put $A = \{\text{individual suffers from }A\}$, $P = \{\text{individual tests positive}\}$. We have $\PP(A) = 0.001$, $\PP(P \mid  A) = 0.98$, $\PP(P \mid  A^\comp) = 0.01$, so
+        \begin{align*}
+            \PP(A \mid  P) &= \frac{\PP(P \mid  A) \PP(A)}{\PP(P \mid  A)\PP(A) + \PP(P\mid A^\comp)\PP(A^\comp)} \\
+            &= 0.089
+        \end{align*}
+        In particular, we can see
+        \begin{align*}
+            \PP(A \mid  P) = \frac{1}{1 + \frac{\PP(P\mid A^\comp)\PP(A^\comp)}{\PP(P \mid  A)\PP(A)}}
+        \end{align*}
+        Since $\PP(A^\comp)$ and $\PP(P\mid A)$ are both very close to one, the relevant ratio is
+        \begin{align*}
+            \frac{\PP(P \mid  A^\comp)}{\PP(A)}
+        \end{align*}
+        But since $\PP(P \mid  A^\comp) \gg \PP(A)$, this causes a very small value for $\PP(A \mid  P)$.
+    \end{example*}
+
+    \lecture{Lecture $n$}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item What is the probability that I have two boys given that I have two children one of whom is a boy?
+            
+            Since no further information is given, we take all outcomes to be equally likely. Let
+            \begin{align*}
+                \text{BG} &= \{\text{elder child a boy, younger a girl}\}
+            \end{align*}
+            with GB, BB, GG defined analogously. Then we want
+            \begin{align*}
+                \PP(\text{BB} \mid  \text{BB} \cup \text{BG} \cup \text{GB}) &= \frac{\PP(\text{BB})}{\PP(\text{BB} \cup \text{BG} \cup \text{GB})} \\
+                &= \frac{\frac 1 4}{\frac 3 4} = \frac 1 3 
+            \end{align*}
+            \item What about $\PP(\text{both boys} \mid \text{eldest a boy})$? This is
+            \begin{align*}
+                \PP(\text{BB} \mid  \text{BB} \cup \text{BG}) = \frac 1 2
+            \end{align*}
+            \item What about $\PP(\text{both boys} \mid \text{one a boy born on a Thursday})$?
+            Denote a boy born on Thursday by T, a boy not born on Thursday by N, and a girl by G. Then we want
+            \begin{align*}
+                &\; \PP(\text{TT} \cup \text{TN} \cup \text{NT} \mid \text{TT} \cup \text{TG} \cup \text{GT} \cup \text{TN} \cup \text{NT}) \\
+                =&\; \frac{\PP(\text{TT} \cup \text{TN} \cup \text{NT})}{\PP(\text{TT} \cup \text{TG} \cup \text{GT} \cup \text{TN} \cup \text{NT})} \\
+                =&\; \frac{\left(\frac 1 2 \cdot \frac 1 7\right)^2 + \left(\frac 1 2 \cdot \frac 1 7\right)\left(\frac 1 2 \cdot \frac 6 7\right) + \left(\frac 1 2 \cdot \frac 6 7\right)\left(\frac 1 2 \cdot \frac 1 7\right)}{\left(\frac 1 2 \cdot \frac 1 7\right)^2 + \left(\frac 1 2 \cdot \frac 1 7\right)\cdot \frac 1 2 + \frac 1 2 \cdot \left(\frac 1 2 \cdot \frac 1 7\right) + \left(\frac 1 2 \cdot \frac 1 7\right)\left(\frac 1 2 \cdot \frac 6 7\right) + \left(\frac 1 2 \cdot \frac 6 7\right)\left(\frac 1 2 \cdot \frac 1 7\right)} \\
+                =&; \frac{13}{27}
+            \end{align*}
+            Morally speaking, we're providing information that helps specify the boy in question more, which brings the probability closer to a half.
+        \end{itemize}
+    \end{example*}
+    
+    \begin{example*}[Simpson's paradox]
+        Consider the following data:
+        \begin{center}
+            \begin{tabular}{l | c c c}
+                \emph{All applicants} & Admitted & Rejected & \% Admitted \\
+                \hline
+                State & 25 & 25 & 50\% \\
+                Indep. & 28 & 22 & 56\%
+            \end{tabular}
+        \end{center}
+        \begin{center}        
+            \begin{tabular}{l | c c c}
+                \emph{London schools} & Admitted & Rejected & \% Admitted \\
+                \hline
+                State & 15 & 22 & 41\% \\
+                Indep. & 5 & 8 & 38\%
+            \end{tabular}
+        \end{center}
+        \begin{center}    
+            \begin{tabular}{l | c c c}
+                \emph{Cambridge schools} & Admitted & Rejected & \% Admitted \\
+                \hline
+                State & 10 & 3 & 77\% \\
+                Indep. & 23 & 14 & 62\%
+            \end{tabular}
+        \end{center}
+        -- paradoxically, the state admission rate is higher when the school locations are taken individually, but the independent admission right is higher for the combined data. This phenomenon is called \emph{confounding}, and arises when we aggregate data from disparate populations.
+
+        Let 
+        \begin{align*}
+            A &= \{\text{individual is admitted}\} \\
+            B &= \{\text{individual from London}\} \\ 
+            C &= \{\text{individual from state school}\}
+        \end{align*}
+        Then
+        \begin{align*}
+            \PP(A \mid B \cap C) &> \PP(A \mid B \cap C^\comp) \\
+            \PP(A \mid B^\comp \cap C) &> \PP(A \mid B^\comp \cap C^\comp) \\
+            \text{but } \PP(A \mid C) &< \PP(A \mid C^\comp)
+        \end{align*}
+        Let's examine how this can happen. We have
+        \begin{align*}
+            \PP(A \mid C) &= \PP(A \cap B \mid C) + \PP(A \cap B^\comp \mid C) \\
+            &= \frac{\PP(A \cap B \cap C)}{\PP(C)} + \frac{\PP(A \cap B^\comp \cap C)}{\PP(C)} \\
+            &= \frac{\PP(A \mid B \cap C)\PP(B \cap C)}{\PP(C)} + \frac{\PP(A \mid B^\comp \cap C)\PP(B^\comp \cap C)}{\PP(C)} \\
+            &= \PP(A \mid B \cap C)\PP(B \mid C) + \PP(A \mid B^\comp \cap C^\comp)\PP(B^\comp \mid C^\comp) \\
+            &> P(A \mid B \cap C^\comp)\PP(B \mid C) + \PP(A \mid B^\comp \cap C^\comp)\PP(B^\comp \mid C)
+        \end{align*}
+        by the first two inequalities from above. Now, if $\PP(B \mid C) = \PP(B \mid C^\comp)$, then we would get $\PP(A \mid C) > \PP(A \mid C^\comp)$, which is the intuitive expectation -- but here this does not hold, and so we can make the `paradox' hold.
+
+        Even more simply, this is just the fact that, if $\frac{a_1}{a_2} > \frac{b_1}{b_2}$ and $\frac{c_1}{c_2} > \frac{d_1}{d_2}$, it does not necessarily hold that $\frac{a_1+c_1}{a_2+c_2} > \frac{b_1+d_1}{b_2+d_2}$.       
+    \end{example*}
+    
+    \section{Probability distributions}
+
+    \subsection{Discrete probability distributions}
+
+    Take a probability space $(\Omega, \mathcal F, \PP)$ with $\Omega$ either finite or countable -- that is, $\Omega = \{\omega_1, \omega_2, \dots\}$. As normal, we take $\mathcal F = \mathcal P(\Omega)$, and so we need only care about $\PP(\{\omega_i\})$ for every $i$.
+
+    \begin{definition}[Discrete probability distributions]
+        For such a setup, we call the sequence of probabilities $\left(\PP(\{\omega_i\})\right)_i$ a \emph{discrete probability distribution}. We may also write $p_i = \PP(\{\omega_i\})$.
+    \end{definition}
+
+    Let us consider some examples of discrete probability distributions.
+    
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item \emph{Bernoulli distribution}. The Bernoulli distribution models the outcome of a toss of a biased coin. We have $\Omega = \{0, 1\}$, $p_0 = \PP(\{0\}) = 1 - p$, $p_1 = \PP(\{1\}) = p$ for some $p$ with $p \in [0, 1]$.
+        \item \emph{Binomial distribution}. We denote this $\Bin(n, p)$, with $n \in \NN$, $p \in [0, 1]$. It models the number of heads seen for $n$ independent tosses of a $p$-biased coin. We have
+        \begin{align*}
+            \Omega &= \{0, 1, \dots, n\} \\
+            p_k &= \binom n k p^k (1-p)^{n-k} 
+        \end{align*}
+        \item \emph{Multinomial distribution}. We denote this $\M(n, p_1, \dots, p_k)$, where $p_i \geq 0$, $\sum p_i = 1$. Given $k$ boxes and $n$ balls placed in box $i$ with $p_i$, the multinomial distribution gives the probability of $n_l$ balls in box $l$ for every $n$. We have
+        \begin{align*}
+            \Omega &= \left\{(n_1, \dots, n_k) \in \NN^k: \sum_{i=1}^k n_i = n\right\} \\
+            \PP(n_1, \dots, n_k) &= \binom n {n_1} n_1^{p_1} \cdot \binom {n-n_1}{n_2} p_2^{n_2} \cdots \binom{n-n_1-\dots-n_{k-1}}{n_k} p_k^{n_k} \\
+            &= \binom n {n_1, n_2, \dots, n_k} p_1^{n_1} p_2^{n_2} \dots p_k^{n_k}
+        \end{align*}
+        \item \emph{Geometric distribution}. The geometric distribution gives the probabiity that the first heads achieved on a $p$-coin is after $k$ tosses:
+        \begin{align*}
+            \Omega &= \{1, 2, \dots\} \\
+            p_k &= (1-p)^{k-1}p
+        \end{align*}
+        Alternatively, we might want to model the probability that we see $k$ tails before the first heads:
+        \begin{align*}
+            \Omega &= \{0, 1, \dots\} \\
+            p_k' &= (1-p)^kp
+        \end{align*}
+        \item \emph{Poisson distribution}. Suppose customers arrive into a shop in $[0, 1]$. Discretise $[0, 1]$ into $\left\{\left[\frac{i-1}{N}, \frac{i}{N}\right]\right\}, i = 1, \dots, N$, $N \in \NN$. Independently, in each interval, a customer arrives with probability $p$, and doesn't arrive with probability $1-p$.
+        
+        Then
+        \begin{align*}
+            \PP(k \text{ customers have arrived}) = \binom N k p^k (1-p)^{N-k}
+        \end{align*}
+        -- in other words, this follows a binomial distribution. Now, take $p = \frac{\lambda} N$, so
+        \begin{align*}
+            \PP(k \text{ customers have arrived}) &= \frac{N!}{k!(N-k)!}\left(\frac{\lambda}{N}\right)^k\left(1-\frac{\lambda}{N}\right)^{N-k} \\
+            &= \frac{\lambda^k}{k!} \cdot \underbrace{\frac{N(N-1)\dots(N-k+1)}{N^k}}_{\to 1} \underbrace{\left(1-\frac{\lambda}{N}\right)^{N-k}}_{\to e^{-\lambda}} \\
+            &\to e^{-\lambda}\frac{\lambda^k}{k!}
+        \end{align*}
+        as $N \to \infty$. Hence we have
+        \begin{align*}
+            \Omega &= \{0, 1, 2, \dots\} \\
+            p_k &= e^{-\lambda}\frac{\lambda^k}{k!}
+        \end{align*}
+        and we denote this $\Poi(\lambda)$.
+    \end{enumerate}
+    
+    \subsection{Random variables}
+
+    \begin{definition}
+        Given a probability space $(\Omega, \mathcal F, \PP)$, a \emph{random variable} is a function
+        \begin{align*}
+            X: \Omega \to \RR
+        \end{align*}
+        satisfying
+        \begin{align*}
+            \{\omega \in \Omega : X(\omega) \leq x\} \in \mathcal F
+        \end{align*}
+        for any $x$. We have the shorthand notation $\{X \leq x\}$ to refer to $\{\omega \in \Omega: X(\omega) \leq x\}$, and $\{X \in A\} = \{\omega \in \Omega: X(\omega) \in A\}$.
+    \end{definition}
+    
+    \begin{definition}
+        Let $A \in \mathcal F$. Define the \emph{indicator} of $A$
+        \begin{align*}
+            1_A(\omega) = 1(\omega \in A) = \begin{cases}
+                1 & \omega \in A \\
+                0 & \omega \notin A
+            \end{cases}
+        \end{align*}
+        Since $A \in \mathcal F$, $1_A$ is a random variable.        
+    \end{definition}
+
+    \begin{definition}
+        Suppose $X$ is a random variable. The \emph{probability distribution function} of $X$ is given by
+        \begin{align*}
+            F_X(x): \RR &\to [0, 1] \\
+            x &\mapsto \PP(\{\omega \in \Omega: X(\omega) \leq x\}) = \PP(X \leq x)
+        \end{align*}
+    \end{definition}
+    
+    \begin{definition}
+        $X = (X_1, \dots, X_n)$ is called a \emph{random variable in $\RR^n$} if
+        \begin{align*}
+            (X_1, \dots, X_n): \Omega \to \RR^n
+        \end{align*}
+        is a function such that, for any $x_1, \dots, x_n$,
+        \begin{align*}
+            \{\omega: X_1(\omega) \leq x_1, \dots, X_n(\omega) \leq x_n\} \in \mathcal F
+        \end{align*}
+        which we denote with the shorthand $\{X_1 \leq x_1, \dots, X_n \leq x_n\}$.
+    \end{definition}
+    
+    Note that $(X_1, \dots, X_n)$ is a random variable if and only if all of $X_1, \dots, X_n$ are.
+
+    \begin{definition}
+        A random variable $X$ is called \emph{discrete} if it takes values in some countable set $S$.
+    \end{definition}
+    
+    \begin{definition}
+        For a discrete random variable, we are able to write
+        \begin{align*}
+            p_x = \PP(X = x) = \PP({\omega: X(\omega) = x})
+        \end{align*}
+        Then, $(p_x)_{x \in S}$ is called the \emph{probability mass function} of $X$.        
+    \end{definition}
+    
+    Now we are able to say things like
+    \begin{align*}
+        \text{for any }A \subseteq S, \PP(X \in A) = \sum_{x \in A}p_x
+    \end{align*}
+    If $p_x$ follows a given distribution, then we say $X$ is a random variable with that distribution or a random variable following that distribution.
+    
+    \begin{definition}
+        Let $X_1, \dots, X_n$ be discrete random variables with values in $S_1, \dots, S_n$. They are called \emph{independent} if
+        \begin{align*}
+            \PP(X_1 = x_1, \dots, X_n = x_n) = \PP(X_1 = x_1) \dots \PP(X_n = x_n)
+        \end{align*}
+        for all $x_1 \in S_1, \dots, x_n \in S_n$.
+    \end{definition}
+    
+    \begin{example}
+        Toss a $p$-coin $N$ times independently. Then
+        \begin{align*}
+            \Omega = \{0, 1\}^N
+        \end{align*}
+        and every $\omega \in Omega$ is of the form $(\omega_1, \dots, \omega_N)$, where $\omega_i$ is the $i^\text{th}$ outcome. Hence
+        \begin{align*}
+            p_{\omega} = \PP(\{\omega\}) = \prod_{k=1}^N p^{\omega_k} (1-p)^{1-\omega_k}
+        \end{align*}
+        Let us also define random variables $X_k$ for each $k$, satisfying $X_k(\omega) = \omega_k$. Clearly $X_k$ is a Bernoulli r.v. of parameter $p$. We claim $X_1, \dots, X_N$ are independent: we have
+        \begin{align*}
+            P(X_1 = x_1, \dots, X_N = x_N) &= \prod_{k=1}^N p^{x_\omega}(1-p)^{1-x_\omega} \\
+            &= \prod_{k=1}^N \PP(X_i = x_i)
         \end{align*}
         
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    \end{proof}
+    \end{example}
     
     
     
-    
-
     
     
     

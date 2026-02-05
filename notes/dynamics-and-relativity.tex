@@ -330,16 +330,457 @@
         \implies t - t_0 &= \pm \int_{x_0}^x \frac{1}{\sqrt{\frac 2 m \left(E - V(x')\right)}} \D x'
     \end{align*}
     and so solving Newton's equations in one dimension essentially just amounts to doing this integral.
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+    \lecture{Lecture 4 -- 29/01/26}
+
+    \noindent From
+    \begin{align*}
+        E = \frac{1}{2} \dot{x} \cdot \dot{x} + V(x)
+    \end{align*}
+    we conclude that $E > V(x)$. This restricts the range of where the particle can possibly be. The points where $E = V(x)$ and $\dot{x} = \vec 0$ are called \emph{turning points}, since the particle typically `bounces off' the potential barrier at these points. Depending on whether there are potential barriers on all sides or just a few, the motion of the particle may be \emph{bounded} or \emph{unbounded}.
+
+    A special case occurs when $E = V(x)$ and $V'(x) = 0$. These are called \emph{equilibrium points} -- the particle can sit indefinitely. At such a point, we have
+    \begin{align*}
+        m \ddot x &= -V'(x) = 0 \\
+        E &= \frac 1 2 m \dot x^2 + V(x) \\
+        \implies \Aboxed{\dot x &= \ddot x = 0}
+    \end{align*}
+    
+    Furthermore, motion near an equilibrium point is especially simple. Let $x_0$ be an equilibrium point, and Taylor expand:
+    \begin{align*}
+        V(x) \approx V(x_0) + \underbrace{(x-x_0)V'(x_0)}_0 + \frac{1}{2}(x-x_0)^2 V''(x_0)
+    \end{align*}
+    If $V''(x_0) > 0$, this is the potential for a harmonic oscillator. We end up with
+    \begin{align*}
+        m \ddot x &= -V'(x) = -(x-x_0)V''(x_0) \\
+        \implies x &= x_0 + A \cos(\omega t + \phi)
+    \end{align*}
+    so we have oscillations with frequency $\omega = (V''(x_0)/m)^{1/2}$.
+
+    If the amplitude $A$ is small enough, then we can neglect higher-order terms in the Taylor expansion and the solution is self-consistent (we won't end up getting too far from the potential well). This is called a \emph{stable equilibrium point}.
+
+    If instead $V''(x_0) < 0$, we have an unstable equilibrium point:
+    \begin{align*}
+        x = x_0 + Ae^{\gamma t} + Be^{-\gamma t}
+    \end{align*}
+    where $\gamma = \sqrt{-V''(x_0)/m}$. If $A \neq 0$, then we will move far from the equilibrium point and so the Taylor expansion will break down.
+
+    The case where $A=0$ corresponds to the particle having just enough energy to reach a maximum of the potential somewhere else.
+
+    If $V''(x_0) = 0$, we simply go to a higher order of the Taylor expansion.
+    
+    \subsection{Dimensional analysis}
+
+    Dimensional analysis is a way to get information about solutions to equations without actually solving them.
+
+    At a mathematical level, it is the ability to rescale variables to remove certain constants from equations.
+
+    Consider the equation for a pendulum,
+    \begin{align*}
+        \frac{d^2\theta}{dt^2} = -\frac g l \sin \theta
+    \end{align*}
+    and let us attempt to find the period of $\theta$. First, we substitute $t = \sqrt{\frac l g} \tau$. We then have
+    \begin{align*}
+        \theta(t(\tau)) = F(\tau) \\
+        \frac{d^2F}{d\tau^2} = -\sin F
+    \end{align*}
+    Clearly now the solution must be some function $f(\tau)$ -- it cannot possibly depend on $g$ and $l$. We conclude that the period $\Delta \tau$ satisfies
+    \begin{align*}
+        F(\tau) &= F(\tau + \Delta \tau) \\
+        \implies F\left(\sqrt{\frac g l} t\right) &= F\left(\sqrt{\frac g l} t + \Delta \tau\right) \\
+        &= F\left(\sqrt{\frac g l}\left(t + \sqrt{\frac l g} \Delta \tau\right)\right) \\
+        &= \theta\left(t + \sqrt{\frac l g }\Delta \tau\right)
+    \end{align*}
+    and so, without ever solving the eqation, we conclude that the period of a pendulum is proportional to the square root of its length.
+
+    In general the necessary rescaling may not be obvious. By endowing our constants and variables with so-called `dimensions', we can perform this sort of analysis much more easily. Our basic dimensions are
+    \begin{itemize}
+        \item \emph{length}, $L$;
+        \item \emph{time}, $T$;
+        \item and \emph{mass}, $M$.
+    \end{itemize}
+    Then we have results such as
+    \begin{align*}
+        [\dot x] &= \si{LT^{-1}} \\
+        [\ddot x] &= \si{LT^{-2}} \\
+        [F] &= \si{MLT^{-2}} \\
+        [E] &= \si{ML^2T^{-2}}
+    \end{align*}
+    There may be other dimensions to keep track of, depending on the problem.
+
+    \begin{theorem}
+        For all physical laws, the dimensions of the left and right hand sides are equal.
+    \end{theorem}
+
+    \begin{corollary}
+        All arguments of non-trivial functions, i.e. those involving sums of different powers, must be dimensionless.
+    \end{corollary}
+    
+    \begin{example*}[Pendulum revisited]
+        We have $[g] = \si{LT^{-2}}$, $[l] = \si{L}$, $[m] = \si{M}$, $[\theta_0] = 1$. We want the period $T$ to have $[T] = \si{T}$. So we let
+        \begin{align*}
+            T &= f(\theta_0) g^A l^B m^C \\
+            \implies [T] &= [g]^A [l]^B [m]^C \\
+            &= \si{L^A T^{-2A} L^B M^C}
+        \end{align*}
+        and we end up with the system
+        \begin{align*}
+            0 &= C \\
+            0 &= A + B \\
+            1 &= 2A
+        \end{align*}
+        which gives $T = f(\theta_0) \sqrt{\frac l g}$, as before.
+    \end{example*}
+    
+    If $A$, $B$, $C$ are not all fixed, we have a dimensionless ratio and it will be necessary to apply some more thought.
+
+    \lecture{Lecture 5 -- 31/01/26}
+
+    \subsection{Friction}
+
+    Friction is not a fundamental force of nature, but a force that arises from complicated interactions that we don't want to consider in full detail.
+
+    In particular, an object passing through a medium such as air or water experiences microscopic forces between it and the medium -- these forces cause momentum to be lost into the medium.
+
+    In part because of this, friction
+    \begin{itemize}
+        \item does not conserve energy (of the object);
+        \item is \emph{irreversible} -- energy is lost by the object and never gained. This is closely related to the second law. In particular, the sign of a friction force must be such that it slows the object down. This implies, among other things, that friction depends on velocity.
+    \end{itemize}
+    Let us consider two important cases:
+
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item \emph{Linear drag}. We have $\V F = -k_1 \V v$.
+        \item \emph{Quadratic drag}. We have $\V F = -k_2 |\V v| \V v$.
+    \end{enumerate}
+    where $k_1$ and $k_2$ are called \emph{coefficients of friction}.
+
+    Quadratic drag is more intuitive since collisions per unit time and momentum lost in each collision are both proportional to the particle's velocity.
+
+    Furthermore, the number of collisions should be proportional to the density of the medium, as well as the cross-sectional area of the object, so the force should also be proportional to these. Now, we can provisionally check units:
+    \begin{align*}
+        [F] &= \si{MLT^{-2}} \\
+        [k_2v^2] &= \si{ML^{-3}L^2L^2T^{-2}}
+    \end{align*}
+    and these are equal, suggesting we have probably accounted for the main factors influencing $k_2$.
+
+    What about linear drag? Linear drag depends on viscous effects -- the fact than an object drags the medium along with it as it moves and, as we move closer to the object, the velocity of the medium approaches $v$. It can then be shown that the momentum loss here is in fact linear in the velocity.
+    
+    \begin{example*}[Stokes' law]
+        For a spherical object, we have linear drag, and the coefficient is
+        \begin{align*}
+            k_1 = 6\pi \eta L
+        \end{align*}
+        where $\eta$ is the viscosity.
+    \end{example*}
+    
+    In general, we see both linear and quadratic drag, and which one dominates depends on the ratios of certain quantities. For example, taking $k_1$ equal to the value for Stokes' law above, we have
+    \begin{align*}
+        \frac{F_\text{quad}}{F_\text{lin}} \sim \frac{\rho A v^2}{\eta L v} \sim \frac{\rho L v}{\eta} = R
+    \end{align*}
+    and this $R$ is called the \emph{Reynolds number}.
+
+    We are also yet to come onto \emph{dry friction}, in other words the friction between two rigid bodies.
+
+    \subsubsection{Terminal velocity}
+
+    Consider a particle falling under gravity with quadratic drag. For the $z$-component, we have
+    \begin{align*}
+        m \frac{dv}{dt} = -mg+kv^2
+    \end{align*}
+    When the velocity is constant, the left hand side is zero, so we have
+    \begin{align*}
+        mg &= kv^2 \\
+        \implies v_\text{term} &= \sqrt{\frac{mg}{k}}
+    \end{align*}
+    Unlike escape velocity, we still have a mass here, so heavier objects reach a larger terminal velocity.
+
+    We can solve this equation analytically, but we can ask simple questions like: on what timescale does the object reach its terminal velocity? Since this should only depend on mass, gravity and $k$, we can apply dimensional analysis:
+    \begin{align*}
+        t &\propto m^A g^B k^C \\
+        \implies \si{T} &= \si{M^AL^BT^{-2B}M^CL^{-C}} \\
+        \implies &\begin{cases}
+            A = -\frac 1 2 \\
+            B = -\frac 1 2 \\
+            C = \frac 1 2 
+        \end{cases}
+    \end{align*}
+    and so
+    \begin{align*}
+        t_0 = \sqrt{\frac{m}{kg}}
+    \end{align*}
+    Hence, we know that $v$ as a function of time takes the form
+    \begin{align*}
+        v = v_\text{term} F\left(\frac t {t_0}\right)
+    \end{align*}
+    and so $t_0$ is the timescale on which the object reaches its terminal velocity.    
+
+    We should also note that we can have terminal velocities arise from movement in the full 3 dimensions, giving the vector differential equation
+    \begin{align*}
+        m \frac{d \V v}{dt} = m \V g - k|\V v|\V v
+    \end{align*}
+    
+    \subsubsection{Damping}
+
+    Friction also arises as a damping force in motion around an equilibrium point. For small oscillations, the linear drag is typically more important, giving the equation (in one dimension)
+    \begin{align*}
+        \ddot x = -\omega_0^2 x - 2\alpha \dot x
+    \end{align*}
+    We have the solution
+    \begin{align*}
+        x = e^{-\alpha t}\left(A_+ e^{i\Omega t} + A_- e^{-i\Omega t}\right)
+    \end{align*}
+    where $\Omega = \Re\left(\sqrt{\omega_0^2-\alpha^2}\right)$. We have three cases:
+    \begin{itemize}
+        \item \emph{$\omega_0^2 > \alpha^2$: Underdamping}. Here we have decaying oscillations
+        \item \emph{$\omega_0^2 < \alpha^2$: Underdamping}. Here we have exponential decay.
+        \item \emph{$\omega_0^2 = \alpha^2$: Critical damping}. Here we have a repeated root and instead get $x = (A + Bt)e^{-\alpha t}$.
+    \end{itemize}
+    
+    \begin{remark*}
+        $x$ and $\ddot x$ are invariant under \emph{time reversal}, $t \to -t$. But $\dot x$ is not. As far as we know, all laws of nature are invariant under \emph{CPT}, or charge-parity-time, symmetry, i.e. taking $q \to -q$, $\V x \to -\V x$ and $t \to -t$. But friction forces are odd under time reversal (and lack charge to compensate), so they are not fundamental.
+    \end{remark*}
+    
+    \section{Central forces}
+
+    An important class of potentials (gravity, electrostatics) only depend on the distance to the origin (or some other point) -- we have
+    \begin{align*}
+        V(\V x) = V(|\V x|) = V(r)
+    \end{align*}
+    \begin{proposition}
+        For such a potential, the corresponding force points towards or away from the origin.
+        \label{central-forces}
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \V F = -\grad V &= -\frac{dV}{dr}\grad r \\
+            &= -\frac{dV}{dr} \hvec x
+        \end{align*}
+        which is what we wanted.
+    \end{proof}
+    
+    \subsection{Conservation of angular momentum}
+
+    The most important fact about central forces is that they conserve angular momentum.
+
+    \begin{definition}[Angular momentum]
+        The \emph{angular momentum} of an object with position vector $\V x$ is given by
+        \begin{align*}
+            \V L = m \V x \times \dot{\V x} = \V x \times \V p
+        \end{align*}
+    \end{definition}
+    We can see that $\V L$ is orthogonal to both position and velocity/momentum. It is important to note that $\V L$ is defined relative to a particular origin -- here we are taking the origin at $\V x = \V 0$, the same point as the centre of the central potential.
+
+    For a general force $\V F$, we have
+    \begin{align*}
+        \frac{d\V L}{dt} &= m \frac{d}{dt}(\V x \times \dot{\V x}) \\
+        &= m(\dot{\V x} \times \dot{\V x} + \V x \times \ddot{\V x}) \\
+        &= \V x \times \V F = \V G
+    \end{align*}
+    where $\V G$ is defined to be the \emph{torque}, the angular analogue of force.
+    
+    \begin{proposition}
+        Central forces conserve angular momentum.
+    \end{proposition}
+    
+    \begin{proof}
+        By \cref{central-forces}, we have $\V F \parallel \V x$ for such a force. Then $\frac{d\V L}{dt} = \V x \times \V F = \V 0$.
+    \end{proof}
+    
+    Furthermore, because $\V L$ is constant, and $\V x$ and $\dot{\V x}$ obey
+    \begin{align*}
+        \V L \cdot \V x &= 0 \\
+        \V L \cdot \dot{\V x} &= 0
+    \end{align*}
+    we can see that $\V x$ and $\dot{\V x}$ are constrained to a plane orthogonal to $\V L$. So, for such a force, we can reduce to a two-dimensional case.
+    
+    \subsection{Polar coordinates in the plane}
+
+    Consider coordinates $r$ and $\theta$, with
+    \begin{align*}
+        x &= r \cos \theta \\
+        y &= r \sin \theta
+    \end{align*}
+    We would like to define some basis vectors $\hvec r$ and $\hvec \theta$ in polar coordinates. In Cartesian coordinates, we have
+    \begin{align*}
+        \hvec r = \begin{pmatrix}
+         \cos \theta \\
+         \sin \theta \\
+        \end{pmatrix}, \; \hvec \theta = \begin{pmatrix}
+         -\sin \theta \\
+         \cos \theta \\
+        \end{pmatrix}
+    \end{align*}
+    and this is indeed an orthnormal basis. Of course, this basis will change as the particle moves, so care will be needed. In particular, we have
+    \begin{align*}
+        \frac{d \hvec r}{d \theta} = \hvec \theta, \; \frac{d\hvec \theta}{d \theta} = -\hvec r
+    \end{align*}
+    Let us now attempt to write Newton's equations in polar coordinates. We have
+    \begin{align*}
+        \V x &= r \hvec r \\
+        \implies \dot{\V x} &= \dot r \hvec r + r \dot{\hvec r} \\
+        &= \dot r \hvec r + r \frac{d \hvec r}{d \theta} \dot{\theta} \\
+        &= \dot r \hvec r + r \dot{\theta} \hvec{\theta} \\
+        \implies \ddot{\V x} &= \ddot r \hvec r + 2 \dot r \dot{\theta} \hvec{\theta} + r \ddot{\theta} \hvec{\theta} - r \dot{\theta}^2 \hvec r \\
+        &= \boxed{(\ddot r - r\dot{\theta}^2)\hvec r + (r \ddot \theta + 2 \dot r \dot \theta)\hvec \theta}
+    \end{align*}
+    
+    \begin{example}[Circular motion at constant angular speed]
+        We have
+        \begin{align*}
+            \dot r = 0, \; \dot \theta &= \omega \\
+            \ddot r = 0, \; \ddot \theta &= 0
+        \end{align*}
+        Then
+        \begin{align*}
+            \ddot{\V x} = -r\omega^2 \hvec r
+        \end{align*}
+        -- that is, circular motion requires centripetal force towards the origin.
+    \end{example}
+    
+    To write down Newton's equations for a central force, we can equate radial and angular components. We have
+    \begin{align*}
+        r \ddot \theta + 2 \dot r \dot \theta &= 0 \\
+        m\left(\ddot r - r \dot{\theta}^2\right) &= -\frac{dV}{dr}
+    \end{align*}
+    Focusing for now on the easier-looking $\hvec \theta$ equation, we have
+    \begin{align*}
+        \frac 1 r \frac{d}{dt}(r^2 \dot \theta) &= 0 \\
+        \implies l = r^2 \dot \theta &= \text{const.}
+    \end{align*}
+    In fact, this quantity $l$ is (nearly) the magnitude of the angular momentum. We have
+    \begin{align*}
+        \V L &= m \V x \times \dot{\V x} \\
+        &= mr \hvec r \times (\dot r \hvec r + r \dot \theta \hvec \theta) \\
+        &= mr^2 \dot \theta \hvec r \times \hvec \theta \\
+        \implies |\V L| &= ml
+    \end{align*}
+    but we often call $l$ the angular momentum regardless.
+
+    Now, let us focus on the $\hvec r$ equation. Applying the definition of $l$, we have
+    \begin{align*}
+        m(\ddot r - r\frac{l^2}{r^4}) &= -\frac{dV}{dr} \\
+        \implies m \ddot r &= -\frac{dV_\text{eff}}{dr}
+    \end{align*}
+    where the \emph{effective potential} is
+    \begin{align*}
+        V_\text{eff}(r) = V(r) + \frac{ml^2}{2r^2}
+    \end{align*}
+    and now we've finally reduced to a one-dimensional problem.
+
+    \subsection{The effective potential}
+
+    Consider a potential $V(r) = -\frac k r$, such as in gravity. Let us now plot $V_\text{eff}$ against $r$ -- we have DIAGRAM. For small $r$, the $\frac{ml^2}{2r^2}$ term is most important, while for large $r$, the $-\frac k r$ dominates. This phenomenon is called the \emph{centrifugal barrier} -- conservation of angular momentum prevents the particle from getting too close to the origin. This is why orbits happen!
+
+    We can also see the effective potential by looking at the conserved energy. We have
+    \begin{align*}
+        E &= \frac 1 2 m \dot{\V x} \cdot \dot{\V x} + V(r) \\
+        &= \frac 1 2 m(\dot{r}^2 + r^2 \dot{\theta}^2) + V(r) \\
+        &= \frac 1 2 m\dot{r}^2 + V(r) + \frac{ml^2}{2r^2} \\
+        &= \frac 1 2 m\dot{r}^2 + V_\text{eff}(r)
+    \end{align*}
+    and here it's clear that the centrifugal barrier is just a product of the angular kinetic energy.
+
+    DIAGRAM: horizontal energy lines on the potential graph correspond to hyperbolic, parabolic, elliptical and circular orbits. Closest point for elliptical periapsis/perihelion, furthest apoapsis/aphelion.
+
+    Let us quickly consider a world in which the potential takes the form $-kr^{-n}$, $n > 2$. Then
+
+    DIAGRAM: potential graph, inverted.
+
+    Now we don't have any stable orbits! In fact, gravity in $d$ spatial dimensions has $V \propto \frac 1 {r^{d-2}}$ -- so circular orbits are only stable in dimensions $d < 4$.
+
+    Let us now solve the equations of motion.
+
+    \subsection{The orbit equation}
+
+    The cleanest solution starts with a clever change of variables, to $u = \frac 1 r$. We now want to find the orbit equation for $u(\theta)$ (instead of $r(t)$). We have
+
+    \begin{align*}
+        \frac{dr}{dt} &= \frac{dr}{d\theta} \dot \theta = \frac{dr}{d\theta} \frac{l}{r^2} = -l \frac{du}{d\theta} \\
+        \frac{d^2r}{dt^2} &= \frac{d}{dt}\left(-l \frac{du}{d\theta}\right) = -l \frac{d^2u}{d\theta^2}\dot \theta = -l^2u^2 \frac{d^2u}{d\theta^2}
+    \end{align*}
+    We now have
+    \begin{align*}
+        m \ddot r - \frac{ml^2}{r^3} &= F(r) \\
+        \implies -l^2mu^2 \frac{d^2u}{d\theta^2} - mu^3l^2 &= F\left(\frac 1 u\right) \\
+        \implies \frac{d^2u}{d\theta^2} + u &= -\frac{1}{ml^2u^2}F\left(\frac 1 u\right)
+    \end{align*}
+    Of course, in our case, we have $V = -\frac{km}{r}$ (where $k = GM$). This gives
+    \begin{align*}
+        \frac{d^2u}{d\theta^2} + u = \frac{k}{l^2} \\
+        \implies u = A \cos (\theta - \theta_0) + \frac{k}{l^2}
+    \end{align*}
+    We can see that $u$ is largest at $\theta = \theta_0$, so $r$ is smallest there -- this is the periapsis. We will choose our axes such that $\theta_0 = 0$. We obtain
+    \begin{align*}
+        \Aboxed{r = \frac{r_0}{e \cos \theta + 1}}
+    \end{align*}
+    where $r_0 = \frac{l^2}{k}$ is a fixed constant, and $e$ is a constant of integration. This is a conic section!
+
+    The constant of integration $e$ is called the \emph{eccentricity}. We have that
+    \begin{itemize}
+        \item $e = 0$ is a \emph{circular orbit};
+        \item $0 < e < 1$ is a \emph{elliptical orbit};
+        \item $e = 1$ is a \emph{parabolic} orbit;
+        \item $e > 1$ is a \emph{hyperbolic} orbit.
+    \end{itemize}
+    
+    Let us consider the elliptical case. We have
+    \begin{align*}
+        r_0 - re\cos \theta &= r^2 \\
+        \implies (r_0-ex)^2 &= x^2 + y^2 \\
+        \implies \frac{(x-x_c)^2}{a^2} + \frac{y^2}{b^2} &= 1
+    \end{align*}
+    where $r=0$ is the \emph{focus}, not the centre. The semi-axes $a$ and $b$ are given in terms of $e$ and $r_0$, as is $x_c$.
+
+    Planets in the solar system have small $e$. The most elliptical orbit, Mercury, has $e \approx 0.2$. Halley's comet, on the other hand, has $e \approx 0.97$.
+
+    Let us consider the parabolic case. We have
+    \begin{align*}
+        r_0^2 - 2r_0x + x^2 &= x^2 + y^2 \\
+        \implies r_0^2 - 2r_0x &= y^2
+    \end{align*}
+    In the hyperbolic case, we see that $r \to \infty$ at $\cos \theta = -\frac 1 e$ (in particular, $\theta > \pi/2$, so with our convention of $\theta_0 = 0$, it goes to infinity on the left).
+
+    One important result allows us to evaluate the energy of a particular solution. We have
+    \begin{align*}
+        E &= \frac 1 2 m \dot r^2 + \frac{ml^2}{2r^2} - \frac{km}r \\
+        &= \cdots \\
+        &= \frac{mk^2}{2l^2}(e^2-1)
+    \end{align*}
+    
+    \subsection{Kepler's laws}
+    
+    Historically, these laws were derived before the orbit equation was ever solved. Kepler derived them empirically, while Newton justified them mathematically.
+
+    \begin{proposition}[Kepler's first law]
+        Each planet moves in an ellipse, with the sun at one focus.
+    \end{proposition}
+
+    \begin{proposition}[Kepler's second law]
+        The line between a planet and the sun sweeps out equal areas in equal times.
+
+        DIAGRAM
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \delta A &= \frac 1 2 r^2 \delta \theta \\ 
+            \implies \dot A &= \frac 1 2 r^2 \dot \theta \\
+            &= \frac l 2
+        \end{align*}
+        which is constant by conservation of angular momentum.
+    \end{proof}
+    
+    
+    
+    
+     
+    
+    
+    
     
     
     

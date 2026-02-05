@@ -208,13 +208,13 @@
     \begin{proof}
         We have already shown the normality result. Consider the map
         \begin{align*}
-            \phi: G/\ker f &\to \Im f \\
+            \varphi: G/\ker f &\to \Im f \\
             g\ker f &\mapsto f(g)
         \end{align*}
         \begin{itemize}
-            \item \emph{$\phi$ is well-defined}. If $g \ker f = g'\ker f$, then $g'g^{-1} \in \ker f$, so $f(g'g^{-1})= e$ which gives $f(g) = f(g')$ as required.
-            \item \emph{$\phi$ is surjective}. Let $h \in \Im f$. Then $h = f(g)$ for some $g \in G$, and so $h = \phi(g \ker f)$.
-            \item \emph{$\phi$ is injective}. Suppose $\phi(g \ker f) = \phi(g' \ker f)$, then $f(g) = f(g')$. But then $g'g^{-1} \in \ker f$, so $g \ker f = g' \ker f$.
+            \item \emph{$\varphi$ is well-defined}. If $g \ker f = g'\ker f$, then $g'g^{-1} \in \ker f$, so $f(g'g^{-1})= e$ which gives $f(g) = f(g')$ as required.
+            \item \emph{$\varphi$ is surjective}. Let $h \in \Im f$. Then $h = f(g)$ for some $g \in G$, and so $h = \varphi(g \ker f)$.
+            \item \emph{$\varphi$ is injective}. Suppose $\varphi(g \ker f) = \varphi(g' \ker f)$, then $f(g) = f(g')$. But then $g'g^{-1} \in \ker f$, so $g \ker f = g' \ker f$.
         \end{itemize}
     \end{proof}
     
@@ -248,15 +248,15 @@
             by normality of $K$.
             \item \emph{$H \cap K$ is a kernel}. Consider
             \begin{align*}
-                \phi: H &\to G/K \\
+                \varphi: H &\to G/K \\
                 h &\mapsto hK
             \end{align*}
             by restricitng the domain from $G \to G/K$ -- the kernel is $H \cap K$.
             \item \emph{Final statement}. By the first isomorphism theorem, we have
             \begin{align*}
-                \Im \phi \cong H/(H \cap K)
+                \Im \varphi \cong H/(H \cap K)
             \end{align*}
-            so we must show $\Im \phi \cong HK/K$. But $\Im \phi$ is the set of $K$-cosets in $G$ that are representable by elements of $H$, i.e. $\{hK : h \in H\} \subseteq G/K = HK/K$.
+            so we must show $\Im \varphi \cong HK/K$. But $\Im \varphi$ is the set of $K$-cosets in $G$ that are representable by elements of $H$, i.e. $\{hK : h \in H\} \subseteq G/K = HK/K$.
         \end{itemize}
     \end{proof}
     
@@ -282,14 +282,14 @@
     \begin{proof}
         Define a map
         \begin{align*}
-            \phi: G/K &\to G/L \\
+            \varphi: G/K &\to G/L \\
             gK &\mapsto gL
         \end{align*}
         \begin{itemize}
-            \item \emph{$\phi$ is well-defined}. If $gK = g'K$, then $g'g^{-1} \in K \subseteq L \implies gL = g'L$.
-            \item \emph{$\phi$ is a homomorphism}. Clear.
+            \item \emph{$\varphi$ is well-defined}. If $gK = g'K$, then $g'g^{-1} \in K \subseteq L \implies gL = g'L$.
+            \item \emph{$\varphi$ is a homomorphism}. Clear.
         \end{itemize}
-        We have $\ker \phi = \{gK: gL = L\} = \{gK: g \in L\} = L/K$. Hence we are done by the first isomorphism theorem.
+        We have $\ker \varphi = \{gK: gL = L\} = \{gK: g \in L\} = L/K$. Hence we are done by the first isomorphism theorem.
     \end{proof}
     
     \begin{definition}[Simplicity]
@@ -347,6 +347,275 @@
         $\sign$ is a homomorphism, and is surjective when $n \geq 3$.
         
     \end{itemize}
+    
+    Let $X$ be a set and $G$ a group, and consider a homomorphism $G \to \Sym(X)$. This is called a \emph{permutation representation} of $G$.
+
+    \begin{definition}[Group actions]
+        An \emph{action} of a group $G$ on a set $X$ is a function
+        \begin{align*}
+            G \times X &\to X \\
+            (g, x) &\mapsto g \cdot x
+        \end{align*}
+        such that
+        \begin{itemize}
+            \item $e \cdot x = x$ for all $x \in X$;
+            \item $g_1 \cdot (g_2 x) = (g_1g_2) \cdot x$ for all $g_1, g_2 \in G$ and $x \in X$.
+        \end{itemize}
+        We say $G \acts X$.
+    \end{definition}
+    
+    We should note the bijection between permutation representations and group actions.
+
+    \begin{proposition}
+        The map $a$ is a bijection.
+        \begin{align*}
+        a: \{\text{homomorphisms } G \to \Sym(X)\} &\longrightarrow \{\text{actions } G \acts X\} \\
+        \varphi: G \to \Sym(X) &\longmapsto a(\varphi): G \times X \to X: (g, x) \mapsto \varphi(g) \cdot x
+    \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Let us simply construct an inverse. Let $\cdot: G \times X \to X$ be an action. Define
+        \begin{align*}
+            \varphi: G &\to \Sym(X) \\
+            g &\mapsto \varphi(g) := [g \cdot: X \to X]
+        \end{align*}
+        This is a permutation as $(g^{-1}) \cdot: X \to X$ is the inverse. Indeed,
+        \begin{align*}
+            \varphi(g^{-1})(\varphi(g)(x)) &= g^{-1} \cdot (g \cdot x) \\
+            &= (g^{-1}g)x \\
+            &= x
+        \end{align*}
+        To see that this rule gives a homomorphism is simple.
+    \end{proof}
+    
+    We have some notation:
+    \begin{itemize}
+        \item $G^X = \Im \phi \leq \Sym(X)$;
+        \item $G_X = \ker \phi \triangleleft G$
+    \end{itemize}
+    It is a special case of the first isomorphism theorem that $G^X \cong G/G_X$.
+    
+    \begin{example}
+        Let $G$ be the symmetry group of the unit cube, and let $X$ be the set of the cube's diagonals. Clearly $G$ acts on $X$. We have hence
+        \begin{align*}
+            \phi: G \to \Sym(X) \cong S_4
+        \end{align*}
+        We can see $\Im \phi \cong S_4$, since we can swap any two diagonals -- then these transpositions generate the whole symmetric group. Furthermore, $\ker \phi = \{e, s\}$, where $s$ sends every vertex to its opposite. As an immediate consequence, we conclude $|G| = 48$.
+    \end{example}
+    
+    \begin{example}
+        For any group $G$, we can make $G$ act on itself (as a set) by
+        \begin{align*}
+            G \times G &\to G \\
+            (g, g_1) &\mapsto gg_1
+        \end{align*}
+        which gives $\phi: G \to \Sym(G)$. The kernel $\ker \phi = \{e\}$, and so $\phi$ is injective -- we conclude that $G$ is isomorphic to a subgroup of $\Sym(G)$ by the first isomorphism theorem.
+    \end{example}
+    
+    \begin{example}
+        Let $H \leq G$ and $X = G/H$. Then $G \acts X$ by
+        \begin{align*}
+            (g, g_1H) \to gg_1H
+        \end{align*}
+        We get a homomorphism $\phi: G \to \Sym(X)$. Consider the kernel -- it is clear that $\ker \phi \subseteq H$. But more is true. If $g in \ker \phi$, then
+        \begin{align*}
+            gg_1H &= g_1H \\
+            \implies g_1^{-1}gg_1 &\in H \\
+            \implies \ker \phi &\subseteq \bigcap_{g_1 \in G}g_1Hg_1^{-1}
+        \end{align*}
+        that is, $g$ is contained in every conjugate of $H$. Furthermore, this containment is reversible: suppose $g \in \bigcap_{g_1 \in G} g_1Hg_1^{-1}$. Then $gg_1H = g_1H$, so $g \in \ker \phi$. We conclude
+        \begin{align*}
+            \ker \phi = \bigcap_{g_1 \in G} g_1Hg_1^{-1}
+        \end{align*}
+        If $H$ were normal, we would just have H on the right-hand side -- but when $H$ is not normal, we have an interesting way to make a smaller normal subgroup, $\ker \phi$, out of $H$.
+    \end{example}
+    
+    \begin{theorem}
+        Let $G$ be finite and let $H \leq G$ be of index $n$. Then, there exists a normal $K \triangleleft G$ with $K \subseteq H$ such that $G/K$ is isomorphic to a subgroup of $S_n$. Thus $|G/K|$ divides $n!$, and $|G/K| \geq n$.
+    \end{theorem}
+    
+    \begin{proof}
+        Consider $\phi: G \to \Sym(G/H)$ from the example. The kernel, call it $K$, is normal. We have shown it is contained in $H$ already -- applying the first isomorphism theorem, we have
+        \begin{align*}
+            G/K \cong \Im \phi \leq \Sym(G/H) \cong S_n
+        \end{align*}
+        Lagrange gives $|G/K|$ divides $n!$, and $K \leq H$, so $|G/K| \geq |G/H| = n$.
+    \end{proof}
+    
+    \begin{corollary}
+        Let $G$ be a non-abelian simple group. Let $H \leq G$ be a proper subgroup with index $n > 1$. Then $G$ is isomorphic to a subgroup of $A_n$ with $n \geq 5$.
+    \end{corollary}
+    
+    \lecture{Lecture $n$}
+
+    \lecture{Lecture $n+1$}
+
+    \emph{Claim 3}. Any non-trivial $H \norm A_n$ contains a 3-cycle.
+
+
+    \begin{itemize}
+        \item If $H$ contains an element of the form $\sigma = (1 \; 2 \; \dots \; \gamma)\tau$ with $\tau$ disjoint from $(1 \; 2 \; \dots \; \gamma)$ and $\gamma \geq 4$, then normality of $H$ gives that $\delta^{-1}\sigma\delta \in H$, so furthermore $\sigma^{-1}\delta^{-1}\sigma\delta \in H$. Since $\tau$ misses 1, 2, 3, it commutes with $\delta$, and with $(1 \; 2 \; \dots \; \gamma)$ by assumption.
+
+        Then, expanding $\sigma^{-1}\delta^{-1}\sigma\delta$ out, we get $(2 \; 3 \; \gamma)$, so we have our 3-cycle.
+
+        \item If $H$ contains an element of the form $\sigma = (1 \; 2 \; 3)(4 \; 5 \; 6)\tau$ in a disjoint cycle decomposition, take $\delta = (1 \; 2 \; 4)$ and calculate $\sigma^{-1}\delta^{-1}\sigma\delta$ -- this is a 5-cycle, bringing us into case 1.
+        
+        \item If $H$ contains $\sigma = (1 \; 2 \; 3)\tau$ where $\tau$ is a product of disjoint transpositions (if $\tau$ contained anything longer, we could relabel and apply cases 1 or 2). Then $\sigma^2$ is a 3-cycle.
+        
+        \item If $H$ contains $\sigma = (1 \; 2)(3 \; 4)\tau$ where $\tau$ is a product of disjoint transpositions, let $\delta = (1 \; 2 \; 3)$ and consider $\mu = \sigma^{-1}\delta^{-1}\sigma\delta = (1 \; 4)(2 \; 3)$. Then let $\nu = (1 \; 5 \; 2)\mu (1 \; 2 \; 5) = (1 \; 3)(4 \; 5)$ -- since $\mu\nu = (1 \; 2 \; 3 \; 4 \; 5)$, we are in case 1.
+    \end{itemize}
+    This covers all cases up to relabelling.
+    
+    \section{Finite $p$-groups}
+
+    Let $p$ be a prime. Groups of order $p^n$ for some $n$ are called \emph{$p$-groups}.
+
+    \begin{theorem}
+        Let $G$ be a $p$-group. Then the centre of $G$ is non-trivial.
+        \label{centre-nontrivial}
+    \end{theorem}
+    
+    \begin{proof}
+        Let $G$ act on itself by conjugation. The centre $Z(G)$ is the set of all size one orbits. Since the orbits partition $G$, we have
+        \begin{align*}
+            |G| = p^n = |Z(G)| + \sum \text{sizes of conjugacy classes of size} >1
+        \end{align*}
+        We know conjugacy classes have sizes dividing $p^n$. Hence, if a conjugacy class has size larger than 1, it is a multiple of $p$. Then $Z(G)$ is a difference of multiples of $p$ and the result follows
+    \end{proof}
+    
+    \begin{theorem}
+        A group of size $p^2$ is abelian.
+    \end{theorem}
+    
+    \begin{lemma}
+        If $G/Z(G)$ is cyclic, then $G$ is abelian.
+        \label{cyclic-abelian}
+    \end{lemma}
+    
+    \begin{proof}[Proof of lemma]
+        We have a coset $xZ(G)$ in $G/Z(G)$ that generates $G/Z(G)$, so every coset has the form $x^mZ(G)$. This means every $G$ can be written as $g=x^mz$ for some $m$ and $z \in Z(G)$. From this the result immediately follows.
+    \end{proof}
+    
+    \begin{proof}[Proof of theorem]
+        By \cref{centre-nontrivial}, $Z(G)$ is either $G$ or has size $p$. In the former case we are done -- in the latter case, $G/Z(G) \cong C_p$, which is cyclic, so, by \cref{cyclic-abelian}, $G$ is abelian.
+    \end{proof}
+    
+    \begin{theorem}
+        Let $G$ be a $p$-group of size $p^n$. Then $G$ has a subgroup of size $k$ for all $0 \leq k \leq n$.
+    \end{theorem}
+    
+    \begin{proof}
+        We induct on $n$.
+        \emph{Base case}. $n=1$, the result is clear.s
+        \emph{Inductive step}. Suppose $n > 1$. If $k=0$, take $\{e\}$. Otherwise, note $Z(G)$ is non-trivial. Let $x \in Z(G)$ with $x \neq e$, and its order is a power of $p$ -- if we replace $x$ with some power of $x$, say $x'$, we can produce an element of order $p$. Then $\gen x'$ has order $p$ and is normal.
+
+        Now consider $G/\gen x'$. This is a group of size $p^{n-1}$, and so it contains a subgroup, say $L$. of size $p^{k-1}$ by induction. By the correspondence of subgroups, we find $K \leq G$ containing $\gen x'$ such that $K/\gen x' \cong L$. But then $|K| = p^k$, as required.
+    \end{proof}
+    
+    \section{Finite abelian groups}
+
+    \begin{theorem}[Classification of finite abelian groups]
+        \label{classification-finite-abelian}
+        Let $G$ be a finite abelian group. There exist positive integers $d_1, \dots, d_r$ such that
+        \begin{align*}
+            G \cong C_{d_1} \times \dots \times C_{d_r}
+        \end{align*}
+        Furthermore, we can choose the $d_i$ such that $d_{i+1} \mid d_i$, in which case the expression is unique.
+    \end{theorem}
+    
+    \begin{example}
+        Consider, for example, abelian groups of order 8 -- they are exactly $C_8$, $C_4 \times C_2$, and $C_2 \times C_2 \times C_2$.
+    \end{example}
+    
+    \begin{lemma}[Chinese remainder theorem]
+        \label{crt}
+        If $n$ and $m$ are coprime, then $C_n \times C_m \cong C_{nm}$.
+    \end{lemma}
+    
+    \begin{proof}
+        It suffices to find an order $mn$ element of $C_n \times C_m$. If $g \in C_n$ has order $n$ and $h \in C_m$ has order $m$, then consider $(g, h) \in C_n \times C_m$. Suppose it has order $k$, then $g^k = h^k = e$, so that $n \mid k$ and $m \mid k$. But then $nm \mid k$, and $k \mid nm$ by Lagrange, so $k=mn$ as required.
+    \end{proof}
+    
+    \lecture{Lecture 7 -- 05/02/26}
+
+    \begin{corollary}
+        Let $G$ be finite and abelian, then we have
+        \begin{align*}
+            G \cong C_{l_1} \times \dots \times C_{l_n}
+        \end{align*}
+        where each $l_i$ is a prime power.        
+    \end{corollary}
+    
+    \begin{proof}
+        The result follows from \cref{classification-finite-abelian} and \cref{crt}.
+    \end{proof}
+    
+    \section{Sylow theorems}
+
+    Let $G$ be a finite group of size $p^am$ where $p \nmid m$ and $p$ is some prime. A \emph{Sylow subgroup} of $G$ is a subgroup of order $p^a$.
+
+    \begin{theorem}[Sylow theorems]
+        Let $G$ be a finite group and $p$ a prime.
+        \begin{enumerate}
+            \item The set $\Syl_p(G) = \{P \leq G: P \text{ is Sylow-}p\}$ is non-empty;
+            \item any $H$, $H' \in \Syl_p(G)$ are conjugate;
+            \item if $n_p = |\Syl_p(G)|$, then $n_p \equiv 1 \pmod p$, and $n_p \mid |G|$ (so $n_p \mid m$).
+        \end{enumerate}
+    \end{theorem}
+    
+    \begin{corollary}
+        $\Syl_p(G) = \{P\}$ if and only if $P$ is normal.
+    \end{corollary}
+    
+    \begin{proof}
+        For any $g \in G$, $gPg^{-1}$ is isomorphic as a group to $P$, so it is also a Sylow $p$-subgroup.
+    \end{proof}
+    
+    \begin{corollary}
+        \label{non-abelian-simple}
+        Let $G$ be non-abelian and simple and suppose $p \mid |G|$. Then $|G|$ divides $\frac{n_p!}{2}$ and $n_p \geq 5$.
+    \end{corollary}
+    
+    \begin{proof}
+        The conjugation action of $G$ on $\Syl_p(G)$ gives a homomorphism
+        \begin{align*}
+            \phi: G \to \Sym(\Syl_p(G)) \cong S_{n_p}
+        \end{align*}
+        By simplicity of $G$, $\ker \phi = \{e\}$ or $G$. If $\ker \phi = G$, then $gPg^{-1} = P$ for all $g \in G$, so $P$ is normal. Since $P \neq \{e\}$, $P = G$. But $Z(P) \norm P$ non-trivially, which is a contradiction. Hence $\phi$ is injective, so $G$ isomorphic to a subgroup of $S_{n_p}$. Consider now
+        \[\begin{tikzcd}
+            G & {S_{n_p}} & {\{\pm1\}}
+            \arrow["\phi", from=1-1, to=1-2]
+            \arrow["\sign", from=1-2, to=1-3]
+        \end{tikzcd}\]
+        If the composition is surjective, then $\ker(\sign \circ \phi)$ is an index 2 subgroup of $G$. But $G$ is simple, so this is impossible, (since $G \neq C_2$). In other words, $\Im \phi \subseteq A_{n_p}$, and the result follows by Lagrange. Finally, all non-abelian subgroups of $A_2$, $A_3$ and $A_4$ are not simple.
+    \end{proof}
+    
+    \begin{example*}
+        Suppose $G$ has size $11 \times 12 = 132$. If $G$ is simple, then none of the $n_p$'s are equal to 1. Furthermore, there are 12 Sylow-11 subgroups, since $n_11 \equiv 1 \pmod 11$ and $n_11 \mid 12$.
+
+        Similarly, $n_3 \equiv 1 \pmod 3$, and $n_3 \mid 44$, so $n_3 = 4$ or $22$ -- by \cref{non-abelian-simple}, $n_3 = 22$. Any two Sylow 11-subgroups intersect only at $\{e\}$, so we already have 120 elements. We also have at least 44 elements of order 3, which is impossible, so no such simple $G$ exists.
+    \end{example*}
+    
+    \begin{proof}[Proof of Sylow part 1]
+        We will try and produce a Sylow $p$-subgroup as a stabiliser of an element in an appropriate action.
+
+        Let $|G| = n = p^am$, of course $p \nmid m$. Let $\Omega = \{X \subseteq G : |X| = p^a\}$. Let $G$ act on $\Omega$ by $g \cdot \{g_1, \dots, g_{p^a}\} = \{gg_1, \dots, gg_{p^a}\}$.
+
+        \emph{Claim 1.} We have $|\Omega| = \binom n {p^a} = m \not\equiv 0\pmod p$.
+
+        \emph{Proof.} Expand $(1+x)^n$ mod $p$.
+
+        \emph{Claim 2.} Suppose $U \in \Omega$ and $H \leq G$ stabilises $U$, then $|H| \mid |U|$.
+
+        \emph{Proof.} We have $hU = U$ for all $h \in H$. In other words, for all $u \in U$, the coset $Hu$ is contained in $U$. Furthermore, every $u \in U$ lies in some coset of $H$, and the cosets are disjoint, so the cosets partition $U$. We get $|H| \mid |U|$.
+
+        We now know $|\Omega| \neq 0 \pmod p$, and $|\Omega| = |O_1| + \dots + |O_r|$ where the $O_i$ are the orbits of the action. Since $p \nmid |\Omega|$, there exists an orbit, say $\Theta$, whose size is coprime to $p$.
+
+        Let $T \in \Theta$. By the orbit-stabiliser theorem, $|G| = |\Theta|\cdot|\Stab(T)|$, so $p^am = |\Theta||\Stab(T)|$. By claim 2, $|\Stab(T)|$ divides $p^a$, but there are no factors of $p$ in $\Theta$, so we are done.
+    \end{proof}
+    
+    
     
     
     

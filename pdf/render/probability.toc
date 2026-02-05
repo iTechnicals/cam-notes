@@ -1,3 +1,11 @@
 \contentsline {section}{\numberline {1}Fundamentals}{1}{section.2}%
 \contentsline {subsection}{\numberline {1.1}Combinatorial analysis}{3}{subsection.12}%
+\contentsline {subsection}{\numberline {1.2}Stirling's formula}{4}{subsection.17}%
+\contentsline {section}{\numberline {2}Basic applications}{9}{section.32}%
+\contentsline {subsection}{\numberline {2.1}Counting surjections}{9}{subsection.33}%
+\contentsline {subsection}{\numberline {2.2}Counting derangements}{10}{subsection.34}%
+\contentsline {section}{\numberline {3}Independence and conditional probability}{11}{section.37}%
+\contentsline {section}{\numberline {4}Probability distributions}{16}{section.56}%
+\contentsline {subsection}{\numberline {4.1}Discrete probability distributions}{16}{subsection.57}%
+\contentsline {subsection}{\numberline {4.2}Random variables}{17}{subsection.65}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

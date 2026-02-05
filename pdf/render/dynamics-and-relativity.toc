@@ -7,4 +7,14 @@
 \contentsline {subsection}{\numberline {2.3}Energy}{4}{subsection.17}%
 \contentsline {subsection}{\numberline {2.4}Electromagnetic forces}{6}{subsection.29}%
 \contentsline {subsection}{\numberline {2.5}Motion in one dimension}{8}{subsection.31}%
+\contentsline {subsection}{\numberline {2.6}Dimensional analysis}{9}{subsection.32}%
+\contentsline {subsection}{\numberline {2.7}Friction}{11}{subsection.38}%
+\contentsline {subsubsection}{\numberline {2.7.1}Terminal velocity}{12}{subsubsection.42}%
+\contentsline {subsubsection}{\numberline {2.7.2}Damping}{12}{subsubsection.43}%
+\contentsline {section}{\numberline {3}Central forces}{13}{section.45}%
+\contentsline {subsection}{\numberline {3.1}Conservation of angular momentum}{13}{subsection.48}%
+\contentsline {subsection}{\numberline {3.2}Polar coordinates in the plane}{14}{subsection.53}%
+\contentsline {subsection}{\numberline {3.3}The effective potential}{15}{subsection.56}%
+\contentsline {subsection}{\numberline {3.4}The orbit equation}{16}{subsection.57}%
+\contentsline {subsection}{\numberline {3.5}Kepler's laws}{17}{subsection.58}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

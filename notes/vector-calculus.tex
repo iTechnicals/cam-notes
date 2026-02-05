@@ -43,7 +43,7 @@
         \begin{align*}
             \frac{d}{dt} f(\vec x(t)) &= \pd{f}{x} \frac{dx}{dt} + \pd{f}{y} \frac{dy}{dt} + \pd{f}{z} \frac{dz}{dt} \\
             &= \pd {f}{x_i} \frac{dx_i}{dt}
-        \end{align*}
+        \end{align*} \label{1.1}
     \end{proposition}
     
     
@@ -64,9 +64,14 @@
         &= f(x, y, z) + \pd f x \delta x + \pd f y \delta y + \pd f z \delta z + \frac{1}{2!} \left(\delta x \pd{}{x} + \delta y \pd{}{y} + \delta z \pd {}{z}\right)^2f + \cdots
     \end{align*}
     or, in suffix notation,
-    \begin{align*}
-        f(\vec x + \delta \vec x) = f(\vec x) + \pd{f}{x_i} \delta x_i + O(|\delta \vec x|^2)
-    \end{align*}
+    \begin{proposition}
+        \label{1.2} \[
+            f(\vec x + \delta \vec x) = f(\vec x) + \pd{f}{x_i} \delta x_i + O(|\delta \vec x|^2)
+        \]
+    \end{proposition}
+    
+    
+    
     
     \subsection{Infinitesimals}
     
@@ -88,14 +93,10 @@
 
     We also get
     \begin{proposition}
-        
-        \begin{align*}
-            df = \pd{f}{x_i} \D x_i && (1.3)
-        \end{align*}
+        \label{1.3} \[
+            df = \pd{f}{x_i} \; dx_i
+        \]
     \end{proposition}
-    
-    
-    
     
     
     The modulus of an infinitesimal vector can be calculated using, for example
@@ -168,7 +169,7 @@
     We have some new opportunities for notation now -- for example, we can rewrite (1.1) as
 
     \begin{proposition}
-        \[
+        \label{2.1} \[
             \frac{d}{dt} f(\vec x(t)) = \dot{\vec x} \cdot \grad f
         \]
     \end{proposition}
@@ -176,7 +177,7 @@
     and (1.3) as
 
     \begin{proposition}
-        \[
+        \label{2.2} \[
             df = \grad f \cdot \D x
         \]
     \end{proposition}
@@ -286,15 +287,585 @@
                 (\curl (A \vec x))_i = \lv{ijk} \pd{}{x_j} A_{kl}x_l = \lv{ijk} A_{kj}
             \end{align*}
             But $\lv{ijk}$ is antisymmetric while $A_{kj}$ is symmetric, so the terms cancel in pairs and we get $\curl (A \vec x) = \vec 0$.
-            
-            
         \end{itemize}
-        
-        
     \end{example*}
     
+    \subsection{Directional derivatives}
+
+    Given a \emph{vector} field $\V u$ we can define a scalar \emph{operator}
+    \begin{align*}
+        \V u \cdot \grad = u_1 \pd{}{x_1} + u_2 \pd{}{x_2} + u_3 \pd{}{x_3} = u_i \pd{}{x_i}
+    \end{align*}
+    We can then apply this operator to a \emph{scalar} field $f$:
+    \begin{align*}
+        (\V u \cdot \grad)f = u_1 \pd{f}{x_1} + u_2 \pd{f}{x_2} + u_3 \pd{f}{x_3} = u_i \pd{f}{x_i}
+    \end{align*}
+    But, happily, it turns out
+    \begin{align*}
+        (\V u \cdot \grad)f = \left(u_i \pd{}{x_i}\right)f = u_i \pd{f}{x_i} = \V u \cdot (\grad f)
+    \end{align*}
+    and so we can omit the brackets.
     
 
+    However, we can also apply $\V u \cdot \grad$ to a \emph{vector} field $\V F$:
+    \begin{align*}
+        (\V u \cdot \grad) \V F = u_1 \pd{}{x_1} \V F + u_2 \pd{}{x_2} \V F + u_3 \pd{}{x_3} \V F
+    \end{align*}
+    so that
+    \begin{align*}
+        ((\V u \cdot \grad) \V F)_i = u_j \pd{F_i}{x_j}
+    \end{align*}
+    and this gives us a \emph{vector} field back. Disturbingly, the brackets here \emph{are} important, since $\V u \cdot (\grad \V F)$ is the gradient of a vector which isn't defined. However, we omit them anyway (since there's no ambiguity).
+    
+    \begin{example*}
+        Take $\V u = (0, x, y)$ and $\V F = (yz, 0, x)$. Then $\V u \cdot \grad = x \pd{}{y} + y \pd{}{z}$, so $(\V u \cdot \grad) \V F = (xz + y^2, 0, 0)$.
+    \end{example*}
+    
+    \begin{definition*}
+        Given a unit vector $\hvec n$, the \emph{directional derivative} $D_{\hvec n}f$ of $f$ at $\V x$ is defined to be the one-dimensional derivative of $f$ along the line from $\V x$ parallel to $\hvec n$. That is, if we make $g(t) = f(\V x + t \hvec n)$, then
+        \begin{align*}
+            D_{\hvec n}f(\V x) = g'(0) = \hvec n \cdot \grad f(\V x)
+        \end{align*}
+        by \cref{2.1}. Then $D_{\hvec n} = \hvec n \cdot \grad$, and so the operator $\V u \cdot \grad$ is also called the directional derivative (even for non-unit vectors $\V u$).    
+    \end{definition*}
+    
+    \subsection{Level surfaces and the gradient}
+
+    \begin{definition*}
+        In 3D, a \emph{level surface} of a function $f(\V x)$ is a two-dimensional surface satisfying $f(\V x) = c$ for some constant $c$. In 2D, these are just curves which we refer to as \emph{contours}.
+    \end{definition*}
+    
+    \begin{proposition*}
+        The gradient of $f$ is always normal to a level surface.
+    \end{proposition*}
+    
+    \begin{proof}
+        Starting at $\V x$ on the surface, consider a displacement $d\V x$ within the surface. Because $f = c$, $df = 0$ for this displacement, so, by \cref{2.2}, $\grad f \cdot d \V x = df = 0$ for all $d \V x$ lying in the surface. So $\grad f$ is perpendicular to all of these and hence is perpendicular to the surface.
+    \end{proof}
+    
+    \begin{example*}
+        Take $f(\V x) = |\V x|^2$, so $\grad f = 2 \V x$. Since this is simply radially outwards, we conclude the level surfaces are spheres centred at the origin.
+    \end{example*}
+    
+    \begin{proposition*}
+        $\grad f$ always points in the direction in which $f$ grows the most rapidly.
+    \end{proposition*}
+    
+    \begin{proof}
+        Consider $D_{\hvec n}f = \hvec n \cdot \grad f$ for an arbitrary unit vector $\hvec n$. Clearly $\hvec n \cdot \grad f$ is maximised when $\hvec n$ and $\grad f$ are parallel, and in particular this maximum is $|\grad f|$.
+    \end{proof}
+    
+    
+    \begin{remark*}
+        We can think of level surfaces in two different ways, and endow them with different grads. Suppose we have a ground level $z = h(x, y)$ (imagine hills). Working in 2D, we have that $\grad h$ points in the direction that is steepest uphill (or the projection of that onto the $x$-$y$ plane). On the other hand, if we consider $f(x, y, z) = z - h(x, y)$ (which defines the exact same surface), then the level surface $f = 0$ has $\grad f$ pointing normal to the surface.
+    \end{remark*}
+    
+    \subsection{Various vector differential identities}
+
+    The following important identities can be proven using suffix notation.
+
+    \begin{proposition}
+        \[
+            \grad(fg) = f \grad g + g \grad f
+        \]
+    \end{proposition}
+    
+    \begin{proposition}
+        \[
+            \grad(f(g(\V x))) = f'(g(\V x))\grad g
+        \]
+    \end{proposition}
+
+    \begin{proposition}
+        \label{2.5}\[
+            \grad\cdot (f \V F) = f \grad \cdot \V F + \V F \cdot \grad f
+        \]
+    \end{proposition}
+
+    \begin{proof}
+        We have
+        \begin{align*}
+            \grad \cdot (f \V F) &= \pd{}{x_i}(fF_i) \\
+            &= \pd{f}{x_i}F_i + f\pd{F_i}{x_i} \\
+            &= \grad f \cdot \V F + f \grad \cdot \V F
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}
+        \[
+            \grad \times (f \V F) = f \grad \times \V F + \grad f \times \V F
+        \]
+    \end{proposition}
+
+    The above propositions should be memorised -- it is not necessary to memorise the following propositions, but one should be able to produce proofs of them.
+    
+    \begin{proposition}
+        \[
+            \grad(\V F \cdot \V G) = \V F \times (\grad \times \V G) + (\V F \cdot \grad) \V G + \V G \times (\grad \times \V F) + (\V G \cdot \grad)\V F
+        \]
+    \end{proposition}
+    
+    \begin{proof}
+        Counterintuitively, let us start with
+        \begin{align*}
+            (\V F \times (\grad \times \V G))_i &= \lv{ijk}F_j\lv{klm}\pd{}{x_l}G_m \\
+            &= (\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})F_j \pd{G_m}{x_l} \\
+            &= F_j \pd{G_j}{x_i} - F_j \pd{G_i}{x_j}
+        \end{align*}
+        Adding to a similar expression for $(\V G \times (\grad \times \V F))_i$, we get
+        \begin{align*}
+            &\;F_j \pd{G_j}{x_i} - F_j \pd{G_i}{x_j} + G_j \pd{F_j}{x_i} - G_j \pd{F_i}{x_j} \\
+            =&\; \underbrace{F_j \pd{G_j}{x_i} + G_j \pd{F_j}{x_i}}_{\pd{}{x_i}(F_jG_j)} - F_j \pd{G_i}{x_j} - G_j \pd{F_i}{x_j} \\
+            =&\; (\grad(\V F \cdot \V G))_i - ((\V F \cdot \grad)\V G)_i - ((\V G \cdot \grad)\V F)_i
+        \end{align*}
+        and the result follows.
+    \end{proof}
+
+    \begin{proposition}
+        \[
+            \grad \cdot (\V F \times \V G) = -\V F \cdot (\grad \times \V G) + \V G \cdot (\grad \times \V F)
+        \]
+    \end{proposition}
+    
+    \begin{proposition}
+        \[
+            \grad \times (\V F \times \V G) = (\grad \cdot \V G) \V F - (\grad \cdot \V F)\V G + (\V G \cdot \grad)\V F - (\V F \cdot \grad)\V G
+        \]
+    \end{proposition}
+    
+    \begin{remark*}
+        We must not use the formulae $\V a \cdot (\V b \times \V c) = (\V a \times \V b) \cdot \V c$ or $\V a \times (\V b \times \V c) = (\V a \cdot \V c) \V b - (\V a \cdot \V b)\V c$, since our derivations assumed certain commutativity and anti-commutativity properties that don't hold for operators.
+    \end{remark*}
+    
+    We have one more very useful identity.
+
+    \begin{proposition}
+        \[
+            \pd{r}{x_i} = \frac{x_i}{r}
+        \]
+    \end{proposition}
+    
+    \begin{proof}
+        We have $r^2 = x_jx_j$, so $2r \pd{r}{x_i} = 2x_j \pd{x_j}{x_i} = 2x_j \delta_{ij} = 2x_i$.
+    \end{proof}
+    
+    \begin{corollary}
+        \label{2.11}\[
+            \grad f(r) = f'(r) \V e_r
+        \]
+        where $\V e_r = \V r / r$.
+    \end{corollary}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \pd{}{x_i} f(r) = f'(r) \pd{r}{x_i} = f'(r) \frac{x_i}{r}
+        \end{align*}
+    \end{proof}
+    
+    \begin{example*}
+        Using \cref{2.5} and \cref{2.11}, we have
+        \begin{align*}
+            \grad \cdot (r^3 \V r) &= r^3 \grad \cdot \V R + \V r \cdot \grad r^3 \\
+            &= 3r^3 + \V r \cdot 3r^2 \V e_r \\
+            &= 3r^3 + \V r \cdot 3 r \V r \\
+            &= 6r^3
+        \end{align*}
+    \end{example*}
+    
+    To deal with the modulus of a vector field, we can do
+    \begin{align*}
+        \pd{}{x_i} |\V F| = \pd{}{x_i} \sqrt{F_jF_j} = \frac{1}{2|\V F|} \pd{}{x_i} (F_jF_j) = \frac{1}{|\V F|}F_j \pd{F_j}{x_i}
+    \end{align*}
+    
+    \subsection{The Laplacian}
+
+    \begin{definition*}
+        The \emph{Laplacian} of a scalar field is
+        \begin{align*}
+            \grad^2 f &= \grad \cdot (\grad f) \\
+            &= \pd{^2f}{x^2} + \pd{^2f}{y^2} + \pd{^2f}{z^2} \\
+            &= \pd{^2f}{x_i\partial x_i}
+        \end{align*}
+    \end{definition*}
+    It may also be denoted $\Delta f$.
+    
+    \begin{example*}
+        \begin{itemize}
+            \item If $f(\V x) = \alpha x^2 + \beta y^2 + \gamma z^2$, then
+            \begin{align*}
+                \left(\pd{^2}{x^2} + \pd{^2}{y^2} + \pd{^2}{z^2}\right)(\alpha x^2 + \beta y^2 + \gamma z^2) = 2(\alpha + \beta + \gamma)
+            \end{align*}
+            \item $\grad^2 |\V x|^2 = \grad^2(x^2+y^2+z^2) = 6$.
+            \item If $f(\V x) = (\V a \cdot \V x)^2$,
+            \begin{align*}
+                \grad^2 f &= \grad \cdot (\grad f) \\
+                &= \grad \cdot (2(\V a \cdot \V x)\grad(\V a \cdot \V x)) \\
+                &= \grad (2(\V a \cdot \V x)\V a) \\
+                &= 2(\V a \cdot \V x)\grad \cdot \V a + 2 \V a \cdot \grad(\V a \cdot \V x) \\
+                &= 2 \V a \cdot \V a \\
+                &= 2|\V a|^2
+            \end{align*}
+            Alternatively, and perhaps more easily,
+            \begin{align*}
+                \grad^2 f &= \grad^2(a_1^2x^2 + a_2^2y^2 + a_3^2z^2 + 2a_1a_2xy + 2a_1a_3xz + 2a_2a_3yz) \\
+                &= 2(a_1^2 + a_2^2 + a_3^2) \\
+                &= 2|\V a|^2
+            \end{align*}
+        \end{itemize}
+    \end{example*}
+    
+    Functions that satisfy $\grad^2 f = 0$ (Laplace's equation) are called \emph{harmonic}.
+
+    We often have spherically symmetric functions, i.e. those for which $f = f(r)$. In that case,
+
+    \begin{align*}
+        \grad^2 f(r) &= \grad \cdot (\grad f(r)) \\
+        &= \grad \cdot (f'(r) \V e_r) \\
+        &= \pd{}{x_i} \left(\frac{f'(r)}{r} x_i\right) \\
+        &= \frac{rf''(r) - f'(r)}{r^2} \frac{x_i}{r} x_i + \frac{f'(r)}{r} \delta_{ii} \\
+        &= f''(r) + \frac{2f'(r)}{r}
+    \end{align*}
+    This can also be written $\frac{1}{r^2} \frac{d}{dr} (r^2 f'(r))$ or $\frac{1}{r} \frac{d^2}{dr^2}(rf)$.
+
+    \begin{remark*}
+        As we can see, the only thing that depends on the dimension is $\delta_{ii}$. So, if we were in 2D, we would have $f''(r) + \frac{f'(r)}{r}$ instead.
+    \end{remark*}
+    For example, $\grad^2 |\V x|^2 = \grad^2f$ with $f(r) = r^2$, so $\grad^2 f = 2 + \frac{4r}{r} = 6$.
+
+    For a vector field $\V F(\V x)$, we can't define $\grad^2 \V F$ as $\grad \cdot (\grad \V F)$, since $\grad \V F$ is undefined. Instead, we say
+    \begin{align*}
+        \grad^2 \V F = (\grad^2 F_1, \grad^2 F_2, \grad^2 F_3)
+    \end{align*}
+    An alternative definition that is coordinate-independent is
+    \begin{align*}
+        \grad^2 \V F = \grad(\grad \cdot \V F) - \grad \times (\grad \times \V F)
+    \end{align*}
+    but the first definition is preferable for calculations. To show they are equivalent, we have
+    \begin{align*}
+        (\curl(\curl \V F))_i &= \lv{ijk} \pd{}{x_j} \lv{klm} \pd{F_m}{x_l} \\
+        &= \pd{^2F_j}{x_i \partial x_j} - \pd{^2F_i}{x_j \partial x_j} \\
+        &= \pd{}{x_i} (\grad \cdot \V F) - \grad^2(F_i)
+    \end{align*}
+    
+    \subsection{Irrotational and conservative vector fields}
+
+    Consider a vector field $\V F$ defined in a domain $\mathscr D \subseteq \RR^3$.
+
+    \begin{definition*}
+        If $\V F$ satisfies $\curl \V F = \V 0$ in $\mathscr D$, it is \emph{irrotational} there.
+    \end{definition*}
+
+    \begin{definition*}
+        If instead there exists a single-valued scalar field $f$ defined in $\mathscr D$ such that $\V F = \grad f$, then $\V F$ is said to be \emph{conservative}, and $f$ is known as a \emph{scalar potential} for $\V F$. Sometimes the sign of $f$ is changed, so $\V F = -\grad f$.
+    \end{definition*}
+    
+    \begin{proposition}
+        A vector field is conservative if and only if it is irrotational.
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] If $\V F = \grad f$, then $\curl \V F = \curl (\grad f)$. But
+            \begin{align*}
+                (\curl (\grad f))_i = \lv{ijk} \pd{}{x_i} \pd{f}{x_k}
+            \end{align*}
+            and $\lv{ijk}$ is antisymmetric while $\pd{^2f}{x_jx_k}$ is symmetric, so the terms cancel in pairs.
+            \item[$\impliedby$] The converse holds only if $\mathscr D$ is \emph{simply connected}. The result will be shown in a later section.            
+        \end{itemize}
+    \end{proof}
+    
+    \begin{definition*}
+        A \emph{simply connected domain} $\mathscr D$ is a connected domain in which any closed curve can be shrunk continuously to a point.
+    \end{definition*}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item $\RR^3$ is simply connected.
+            \item $\RR^3 \setminus \{(x, 0, 0): x \in \RR\}$ is not simply connected - take a curve wrapped around the $x-axis$.
+            \item $\RR^3 \setminus \{(x, 0, 0): x \geq 0\}$ is simply connected.
+            \item $\RR^3 \setminus \{\V 0\}$ is simply connected.
+        \end{itemize}
+        Importantly, consider $\V F(\V x) = \frac{1}{x^2+y^2}(-y, x, 0)$. We can see that $\V F$ is irrotational. We can also see that $f(\V x) = \arctan(y/x)$ satisfies $\V F = \grad f$ -- but $f$ is not a single-valued function -- or, if we choose the principal value, it's not continous. Indeed, the domain of $\V F$ is not simply connected, since it is undefined on the $z$-axis.
+    \end{example*}
+
+    \lecture{Lecture $n$}
+    
+    \subsection{Solenoidal/incompressible vector fields}
+
+    \begin{definition*}
+        A vector field $\V F$ is \emph{solenoidal} (or \emph{divergence-free}) in a domain $\mathscr D$ if $\div \V F = 0$ there.
+    \end{definition*}
+    
+    \begin{remark*}
+        The nomenclature arises from magnetic fields, which are always solenoidal (this is actually equivalent to the non-existence of magnetic monopoles). In fluid dynamics, on the other hand, such fields are called incompressible.
+    \end{remark*}
+    
+    If there exists a vector field $\V A$ in $\mathscr D$ such that $\V F = \curl \V A$, then $\V F$ is certainly solenoidal because
+    \begin{align*}
+        \div(\curl \V A) = \pd{}{x_i} \lv{ijk} \pd{A_k}{x_j} = 0
+    \end{align*}
+    Such an $\V A$ is called a \emph{vector potential}. The converse also holds in a suitable domain $\mathscr D$. 
+    
+    \begin{remark*}
+        For the converse to hold, we need $\mathscr D$ to be simply connected, and we also need \emph{surfaces} in $\mathscr D$ to be able to be shrunk to a point. But this is complicated and non-examinable.
+    \end{remark*}
+    
+    \section{Orthogonal curvilinear coordinate systems}
+
+    \subsection{General curvilinear coordinate systems}
+
+    \begin{definition*}
+        A \emph{curvilinear coordinate system} in 3D is a parameterisation $(u, v, w)$ of $\RR^3$ -- in other words, a surjective map $\V x(u, v, w)$ from a subset of $\RR^3$ to $\RR^3$.
+    \end{definition*}
+    
+    A well-known example in $\RR^2$ is plane polar coordinates.
+
+    \begin{remark*}
+        Ideally, the map $\V x$ would be invertible, but in practice most coordinate systems fail to be invertible at points -- for example, we can't invert at the origin in polar coordinates.
+    \end{remark*}
+    We define the \emph{scale factors}
+    \begin{align*}
+        h_u = \left|\pd{\V x}{u}\right|,\quad h_v = \left|\pd{\V x}{v}\right|,\quad h_w = \left|\pd{\V x}{w}\right|
+    \end{align*}
+    and corresponding unit vectors
+    \begin{align*}
+        \V e_u = \frac 1{h_u} \pd{\V x}{u}, \quad \V e_v = \frac 1{h_v} \pd{\V x}{v}, \quad \V e_w = \frac 1{h_w} \pd{\V x}{w}
+    \end{align*}
+    \begin{definition*}
+        An \emph{orthogonal curvilinear coordinate system} is one in which $\V e_u$, $\V e_v$, $\V e_w$ are mutually orthogonal, and we normally re-order them to form a right-handed set. This allows them to be used as a basis.
+    \end{definition*}
+    Importantly, this basis is \emph{local} -- the basis vectors depend on position. For example, a vector field $\V F(\V x)$ can be expressed at $\V x$ in terms of its components relative to the basis vectors at $\V x$ -- so $\V F = F_u \V e_u + F_v \V e_v + F_w \V e_w$. But even if $\V F$ is a constant vector, \emph{its components won't be}.
+    
+    By extending \cref{1.3} to the vector function $\V x(u, v, w)$, we have the following result:
+    \begin{proposition}
+        \label{3.1}\begin{align*}
+            d\V x &= \pd{\V x}{u} \D u + \pd{\V x}{v} \D v + \pd{\V x}{w} \D w \\
+            &= h_u \D u \V e_u + h_v \D v \V e_v + h_w \D w \V e_w
+        \end{align*}
+    \end{proposition}
+    whereas in Cartesian coordinates it would simply be $\D u \V e_u + \D v \V e_v + \D w \V e_w$. Similarly, the position vector is \emph{not} given by $u \V e_u + v \V e_v + w \V e_w$ -- there is a difference between the coordinates $(u, v, w)$ and the position vector $\V x(u, v, w)$.
+
+    Consider a displacement that keeps $u$ fixed, but allows $v$ and $w$ to vary. Then, from \cref{3.1}, $d\V x$ is a linear combination of $\V e_v$ and $\V e_w$, so $d\V x \perp \V e_u$ for all possible $d\V x$. Hence $\V e_u$ is perpendicular to any surface of constant $u$, and similarly for $\V e_v$ and $\V e_w$. So surfaces of constant $u$, constant $v$ and constant $w$ all intersect orthogonally at any given point.
+
+    \subsection{Cylindrical polar coordinates}
+
+    \begin{definition*}
+        Cylindrical polar coordinates are given by
+        \begin{align*}
+            x &= \rho \cos \phi \\
+            y &= \rho \sin \phi \\
+            z &= z
+        \end{align*}
+        DIAGRAM!
+        where $\rho \geq 0$ and $\phi$ can be restricted to $[0, 2\pi)$, but doesn't need to be. We can invert this using
+        \begin{align*}
+            \rho &= \sqrt{x^2+y^2} \\
+            \tan \phi &= y/x \\
+            z &= z
+        \end{align*} 
+    \end{definition*}
+    
+    Then surfaces of constant $\rho$ are cylinders around the $z$-axis; of constant $\phi$ are vertical planes through the $z$-axis; and of constant $z$ are horizontal planes. 
+    
+    Different notations are used -- notably $r$ for $\rho$ and $\theta$ for $\phi$.
+
+    We have the following results about cylindrical polar coordinates:
+    \begin{proposition}
+        \label{3.2} \begin{align*}
+            h_\rho &= 1 && h_\phi = \rho && h_z = 1 \\
+            \V e_\rho &= \begin{pmatrix}
+             \cos \phi \\
+             \sin \phi \\
+             0 \\
+            \end{pmatrix} && \V e_\phi = \begin{pmatrix}
+             -\sin \phi \\
+             \cos \phi \\
+             0 \\
+            \end{pmatrix} && \V e_z = \begin{pmatrix}
+             0 \\
+             0 \\
+             1 \\
+            \end{pmatrix}
+        \end{align*}
+    \end{proposition}
+    
+    We can confirm that $\{\V e_\rho, \V e_\phi, \V e_z\}$ is orthonormal and right-handed. From \cref{3.1} we obtain
+    \begin{align*}
+        d \V x = \D \rho \V e_\rho + \rho \D \phi \V e_\phi + dz\, \V e_z
+    \end{align*}
+    and
+    \begin{proposition}
+        \label{3.3} \[
+            \V x = \rho \V e_\rho + z \V e_z
+        \]
+    \end{proposition}
+    with no $\phi \V e_\phi$ -- because $\V e_\rho$'s already got $\phi$ in it.
+    
+    \subsection{Spherical polar coordinates}
+
+    \begin{definition*}
+        \emph{Spherical polar coordinates} are given by
+        \begin{align*}
+            x &= r \sin \theta \cos \phi \\
+            y &= r \sin \theta \sin \phi \\
+            z &= r \cos \theta
+        \end{align*}
+        where $r \geq 0$, $\theta \in [0, \pi]$, and $\phi$ can be restricted to $[0, 2\pi)$ -- DIAGRAM!! We can invert this using
+        \begin{align*}
+            r &= \sqrt{x^2+y^2+z^2} \\
+            \tan \theta &= \frac{\sqrt{x^2+y^2}}{z} \\
+            \tan \phi &= y/x
+        \end{align*}
+    \end{definition*}
+    
+    Then surfaces of constant $r$ are spheres centred at the origin; of constant $\theta$ are cones with apex at the origin; and of constant $\phi$ are vertical planes through the $z$-axis.
+
+    \begin{remark*}
+        Some people order the coordinates as $(r, \phi, \theta)$ instead. Some swap the definitions of $\phi$ and $\theta$. Some do both. Some replace $\theta$ with $\frac{\pi}{2} - \theta$. This can be extremely confusing.
+    \end{remark*}
+    
+    \begin{proposition}
+        \label{3.4} For spherical polar coordinates, \begin{align*}
+            h_r &= 1 && h_\theta = r && h_\phi = r \sin \theta \\
+            \V e_r &= \begin{pmatrix}
+             \sin \theta \cos \phi \\
+             \sin \theta \sin \phi \\
+             \cos \theta \\
+            \end{pmatrix} && \V e_\theta = \begin{pmatrix}
+             \cos \theta \cos \phi \\
+             \cos \theta \sin \phi \\
+             -\sin \theta \\
+            \end{pmatrix} && \V e_\phi = \begin{pmatrix}
+             -\sin \phi \\
+             \cos \phi \\
+             1 \\
+            \end{pmatrix}
+        \end{align*}
+    \end{proposition}
+
+    We also have
+    
+    \begin{proposition}
+        \label{3.5} \[
+            \V x = r \V e_r
+        \]
+    \end{proposition}
+    Finally, from \cref{3.1} we obtain
+    \begin{align*}
+        d\V x = dr\, \V e_r + r \D \theta \V e_\theta + r \sin \theta \D \phi \V e_\phi
+    \end{align*}
+    
+    \subsection{Vector differential operators in orthogonal curvilinear coordinate systems}
+
+    \subsubsection{General orthogonal curvilinear coordinate systems}
+
+    If we have a function expressed in terms of $u$, $v$, $w$, i.e. in arbitrary orthogonal curvilinear coordinates, we would like to be able to express $\grad f$ in terms of $u$, $v$, $w$ as well. Observe firstly that
+    \begin{align*}
+        \grad f \cdot \V e_u = \pd{f}{x_i} \frac 1 {h_u}\pd{x_i}{u} = \frac 1 {h_u} \pd{f}{u}
+    \end{align*}
+    
+    \lecture{Lecture $n+1$ -- 04/02/26}
+
+    Since $\{\V e_u, \V e_v, \V e_w\}$ form an orthonormal set, doing these for each of the basis vectors will give us the components of $\grad f$ along each basis vector. We have
+    \begin{align*}
+        \grad f = \frac 1 {h_u} \pd f u \V e_u + \frac 1 {h_v} \pd f v \V e_v + \frac 1 {h_w} \pd f w \V e_w
+    \end{align*}
+    and furthermore, we can take out the $f$ to get
+    \begin{proposition}
+        \label{3.6} \[
+            \grad = \frac 1 {h_u} \V e_u \pd {} u + \frac 1 {h_v} \V e_v \pd {} v + \frac 1 {h_w} \V e_w \pd {} w
+        \]
+    \end{proposition}
+    Calculating the divergence, curl and Laplacian of a vector field in general orthogonal curvilinear coordinates is extremely messy. There are a range of ways to do it -- we will see the best method in section 6.5.
+
+    ADD THEM IN
+
+    \subsubsection{Cylindrical polar coordinates}
+    
+    For a scalar field $f(\rho, \phi, z)$ and vector field $F_\rho \V e_\rho + F_\phi \V e_\phi + F_z \V e_z$, we obtain
+    \begin{align*}
+        \grad f &= \pd f \rho \V e_\rho + \frac 1 \rho \pd f \phi \V e_\phi + \pd f z \V e_z \\
+        \div \V F &= \frac 1 \rho \pd{}\rho(\rho F_\rho) + \frac 1 \rho \pd{F_\phi}{\phi} + \pd{F_z}{z} \\
+        \curl \V F &= \left(\frac 1 \rho \pd{F_z}{\phi} - \pd{F_\phi}{z}\right)\V e_\rho + \left(\pd{F_\rho}z - \pd{F_z}\rho\right)\V e_\phi + \frac 1 \rho \left(\pd{}{\rho}(\rho F_\phi)-\pd{F_\rho}{\phi}\right)\V e_z \\
+        \grad^2f &= \pd{^2f}{\rho^2} + \frac 1 \rho \pd{f}{\rho} + \frac 1 {\rho^2} \pd{^2f}{\phi^2} + \pd{^2f}{z^2}
+    \end{align*}
+
+    It is required to know $\grad f$ and the radial terms of $\grad^2 f$ by heart. It is not necessary to learn div and curl.
+    
+    Usefully, if we want to get the operators for plane polar coordinates, we can just throw out all terms involving $z$.
+
+    \subsubsection{Spherical polar coordinates}
+
+    For $f(r, \theta, \phi)$ and $F_r \V e_r + F_\theta \V e_\theta + F_\phi \V e_\phi$, we have
+    \begin{align*}
+        \grad f &= \pd{f}{r} \V e_r + \frac 1 r \pd{f}{\theta} \V e_\theta + \frac 1{r \sin \theta} \pd f \phi \V e_\phi \\
+        \div \V F &= \frac 1 {r^2} \pd{} r (r^2F_r) + \frac 1 {r \sin \theta} \pd{}{\theta} (F_\theta \sin \theta) + \frac 1 {r \sin \theta} \pd{F_\phi}{\phi} \\
+        \curl \V F &= \frac 1 {r \sin \theta}\left(\pd{} \theta (F_\phi \sin \theta)-\pd{F_\theta}{\phi}\right)\V e_r + \\
+        &\qquad \frac 1 r \left(\frac 1 {\sin \theta} \pd{F_r}{\phi} - \pd{} r (rF_\phi)\right)\V e_\theta + \\
+        &\qquad \frac 1 r \left(\pd{}r(r F_\theta)-\pd{F_r}{\theta}\right)\V e_\phi \\
+        \grad^2 f &= \pd{^2f}{r^2} + \frac 2 r \pd f r + \frac 1 {r^2 \sin \theta} \pd{} \theta \left(\pd f \theta \sin \theta\right) + \frac 1 {r^2 \sin^2 \theta} \pd{^2f}{\phi^2}
+    \end{align*}
+    Again, it is required to know only $\grad f$ and the radial terms of $\grad^2 f$ by heart.
+    
+    \begin{example*}
+        \begin{itemize}
+            \item Let $f(\V x) = |\V x|^2$ and $\V F(\V x) = \V x$. We have already obtained $\grad f = 2x$ and $\div \V F = 3$ using Cartesian coordinates.
+            
+            Instead working in cylindricals, we have $\V x = \rho \V e_\rho + z \V e_z$, so $f(\rho, \phi, z) = \rho^2 + z^2$, while $F_\rho = \rho$, $F_\phi = 0$, $F_z = z$. Now we can apply the formulae:
+            \begin{align*}
+                \grad f &= \pd f \rho \V e_\rho + \frac 1 \rho \pd f \phi \V e_\phi + \pd f z \V e_z = 2\rho \V e_\rho + 2z \V e_z = 2\V x \\
+                \div \V F &= \frac 1 \rho \pd{}\rho(\rho F_\rho) + \frac 1 \rho \pd{F_\phi}{\phi} + \pd{F_z}{z} = 2 + 1 = 3
+            \end{align*}
+            \item In sphericals, we have $\V x = r \V e_r$, so $f(r, \theta, \phi) = r^2$, while $F_r = r$, $F_\theta = 0$, $F_\phi = 0$. Hence
+            \begin{align*}
+                \grad f &= \pd{f}{r} \V e_r + = 2r \V e_r = 2 \V x \\
+                \div \V F &= \frac 1 {r^2} \pd{} r (r^2F_r) = \frac 1 {r^2} \pd{} r (r^3) = 3
+            \end{align*}
+            \item Consider the gravitational force field $\V F = -(GMm/r^2)\V e_r$ of a fixed mass $M$ at the origin acting on another mass $m$. We have
+            \begin{align*}
+                \div \V F = -\frac 1 {r^2} \pd{} r (r^2 \cdot \frac{GMm}{r^2}) &= 0 
+            \end{align*}
+            \item The following simple example shows how we could obtain the expressions given above. Consider a simplified field of the form $\V F = \alpha(\theta) \V e_\theta$. We have
+            \begin{align*}
+                \curl \V F &= \left(\pd{}{r} \V e_r + \frac 1 r \pd{}{\theta} \V e_\theta + \frac 1{r \sin \theta} \pd {} \phi \V e_\phi\right) \times (\alpha(\theta)\V e_\theta) \\
+                &= \V e_r \times \alpha(\theta) \pd{\V e_\theta}{r} + \frac 1 r \V e_\theta \times \pd{} \theta (\alpha(\theta) \V e_\theta) + \frac 1 {r \sin \theta} \V e_\phi \times \alpha(\theta) \pd{\V e_\theta}{\phi} \\
+                &= ...
+            \end{align*}
+        \end{itemize}
+    \end{example*}
+    
+    \section{Differential geometry of curves, surfaces and volumes}
+
+    \subsection{Curves and arc length}
+
+    \begin{definition*}
+        A \emph{curve} $C$ is a map $\V x: [a, b] \subset \RR \to \RR^3$, in other words $\V x(t) = (x(t), y(t), z(t))$ for $a \leq t \leq b$. We say that the curve is \emph{parameterised} by $t$. A curve is \emph{closed} if $\V x(a) = \V x(b)$.
+    \end{definition*}
+    
+    In this course we will require that curves be continuous and piecewise smooth (infinitely differentiable everywhere except a finite number of points).
+
+    Normally, we will use the word curve to refer to the \emph{image} of the map $C$, not the map itself.
+
+    \begin{definition*}
+        The \emph{arc length} of a curve is given by
+        \begin{align*}
+            s = \int ds = \int |\dot{\V x}(t)| \D t
+        \end{align*}        
+    \end{definition*}
+    This is motivated by
+    \begin{align*}
+        \delta s = |\delta \V x| &= \sqrt{\delta x^2 + \delta y^2 + \delta z^2} \\
+        &= \sqrt{\left(\frac{\delta x}{\delta t}\right)^2+\left(\frac{\delta y}{\delta t}\right)^2+\left(\frac{\delta z}{\delta t}\right)^2}
+    \end{align*}
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 \end{document}

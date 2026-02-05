@@ -274,10 +274,446 @@
         \begin{itemize}
             \item $\sum_{n=1}^\infty n$ does not converge: $s_k = \frac{n(n+1)}2$.
             \item geometric series: $\sum_{n=1}^\infty r^n$ converges iff $|r| < 1$. We have $s_k = \frac{1-r^k}{1-r}$ (unless $r=1$).
+            \item $\sum_{n=1}^infty \frac{1}{n(n+1)}$ conerges to 1. We have
+            \begin{align*}
+                s_k = \sum_{n=1}^k \frac{1}{n(n+1)} = \sum_{n=1}^k \left(\frac 1 n - \frac 1 {n+1}\right) = 1 - \frac{1}{k+1} \to 1
+            \end{align*}
         \end{itemize}
-        
-        
     \end{example*}
+    
+    \begin{lemma}
+        Fix $\lambda \in \CC$. If $\sum a_n$ and $\sum b_n$ converge, then $\sum(\lambda a_n + b_n)$ also converges
+    \end{lemma}
+    
+    \begin{proof}
+        Exercise.
+    \end{proof}
+    
+    As usual, we should understand that the tail of the series is what is significant to its convergence.
+
+    \begin{lemma}
+        If $a_n = b_n$ for all $n \geq N$, then $\sum a_n$ converges if and only if $\sum b_n$ converges.
+    \end{lemma}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            r_k &= \sum_{n=1}^k b_n \\
+            &= \sum_{n=1}^{N-1} b_n + \sum_{n=N}^k a_n \\
+            &= \underbrace{\sum_{n=1}^{N-1} a_n}_{s_k} + \sum_{n=1}^{N-1} (b_n-a_n)
+        \end{align*}
+        Taking limits, we conclude that
+        \begin{align*}
+            \lim_{k \to \infty} r_k = \lim_{k \to \infty} s_k + C
+        \end{align*}
+        which concludes.        
+    \end{proof}
+    
+    \begin{proposition}[$n^\text{th}$ term test]
+        If $\sum a_n$ converges, then $a_n \to 0$.
+    \end{proposition}
+    
+    \begin{remark}
+        The converse does not hold. Consider the harmonic series. We have
+        \begin{align*}
+            s_k = \sum_{n=1}^k \frac 1 n
+        \end{align*}
+        Observe
+        \begin{align*}
+            s_{2k} &= s_k + \frac{1}{n+1} + \dots + \frac{1}{n+n} \\
+            &\geq s_k + \frac 1 {2n} + \dots + \frac 1 {2n} \\
+            &= s_k + \frac{1}{2}
+        \end{align*}
+        Hence $s_k$ is not Cauchy, so it does not converge.
+    \end{remark}
+    
+    \begin{proof}
+        $\sum a_n$ converges $\implies$ $s_k$ converges, so $(s_k)$ is Cauchy. Then $s_{k+1} - s_k = a_{k+1} \to 0$.
+    \end{proof}
+    
+    Let's first focus on tests for the convergence of $\sum a_n$, where $a_n \geq 0$ for all $n$.
+
+    \begin{proposition}[Comparison test]
+        Suppose we have sequences satisfying $0 \leq b_n \leq a_n$ for all $n$. Then $\sum a_n$ converges $\implies \sum b_n$ converges.
+    \end{proposition}
+    
+    \begin{proof}
+        Set $s_k$ and $r_k$ to be the partial sums of $a_n$, $b_n$ respectively. Since $a_n$, $b_n \geq 0$, $(s_k)$ and $(r_k)$ are increasing. Furthermore, $s_k \to s \implies s_k \leq s$. But      
+        \begin{align*}
+            b_n \leq a_n \implies \sum_{n=1}^k b_n \leq \sum_{n=1}^k a_n
+        \end{align*}
+        so $r_k \leq s_k$, and hence $r_k$ converges by the monotone convergence theorem.
+    \end{proof}
+    
+    \begin{example}
+        $\sum_{n=1}^\infty \frac 1 {n^2}$ converges. We have
+        \begin{align*}
+            \sum_{n=1}^\infty \frac 1 {n^2} = 1 + \sum_{n=2}^\infty \frac 1 {n^2} = 1 + \sum_{n=1}^\infty \frac 1 {(n+1)^2}
+        \end{align*}
+        But then
+        \begin{align*}
+            0 \leq \frac 1 {(n+1)^2} \leq \frac 1 {n(n+1)}
+        \end{align*}
+        and we know $\sum \frac 1 {n(n+1)} \to 1$. So $\frac 1 {n^2}$ converges by the comparison test.
+    \end{example}
+    
+    \begin{proposition}[Root test]
+        Suppose $a_n \geq 0$ for all $n$. Suppose there exists $a$ such that $a = \lim_{n \to \infty} a_n^{1/n}$. If
+        \begin{itemize}
+            \item $a < 1$, then $\sum a_n$ converges;
+            \item $a > 1$, then $\sum a_n$ diverges;
+            \item $a = 1$, then the test is inconclusive.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{proof}
+        If $a > 1$, then we have $N$ such that $a_n^{1/n} > 1$ for any $n \geq N$. But then $a_n > 1$, so $a_n \not\to 0$, and we fail the $n^\text{th}$ term test. Hence the series diverges.
+
+        If $a < 1$, then we can find $r \in \RR$ with $a < r < 1$. Then we have $N$ such that $a_n^{1/n} < r$ for any $n \geq N$. But then $a_n < r^n$ for all $n \geq N$. By the comparison test on the tails with a geometric series, $\sum a_n$ converges.
+    \end{proof}
+    
+    \begin{example}
+        \begin{itemize}
+            \item Consider $\sum \frac 1{2^n}$, then $a_n^{1/n} = \frac{1}{2}$, so $\sum a_n$ converges.
+            \item Consider $\sum 4^n$, then $a_n^{1/n} = 4$, so $\sum a_n$ does not converge.
+        \end{itemize}
+    \end{example}
+
+    \begin{proposition}[Ratio test]
+        If $a_n \geq 0$ for all $n$ and $\frac{a_{n+1}}{a_n} \to a$ for some finite $a$, then if
+        \begin{itemize}
+            \item $a < 1$, then $\sum a_n$ converges;
+            \item $a > 1$, then $\sum a_n$ diverges;
+            \item $a = 1$, then the test is inconclusive.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{example}
+        \begin{itemize}
+            \item If we check $\sum \frac 1 n$ and $\sum \frac 1 {n^2}$, we see both lie in the inconclusive regions for both tests.
+            \item Let us consider $\sum \frac{n}{2^n}$. The ratio test gives
+            \begin{align*}
+                \frac{a_{n+1}}{a_n} = \frac{\frac{n+1}{2^{n+1}}}{\frac{n}{2^n}} = \frac{n+1}{2n} \to \frac 1 2
+            \end{align*}
+            which is nice. If instead we use the root test, then
+            \begin{align*}
+                \left(\frac n {2^n}\right)^{\frac 1 n} = \frac{n^{1/n}}{2} \to \frac 1 2
+            \end{align*}
+            But actually showing that $n^{1/n} \to 1$ is non-trivial... we need to apply l'H\^opital. Observe
+            \begin{align*}
+                n^{1/n} = e^{\log(n^{1/n})} = e^{\frac 1 n \log n} \to e^0 = 1
+            \end{align*}
+            
+            
+            \item If the ratio test is conclusive for a sequence, then the root test is also conclusive, but not the converse:
+            \begin{align*}
+                a_n = \begin{cases}
+                    2^{-n} & n \text{ even} \\
+                    2^{-n+1} & n \text{ odd}
+                \end{cases}
+            \end{align*}
+            Then the limit of ratios does not exist, but the root test shows convergence.            
+        \end{itemize}
+    \end{example}
+    
+    \lecture{Lecture $n$}
+
+    \begin{proposition}[Integral test]
+        Suppose $f: [1, \infty) \to [0, \infty)$ is a continous decreasing function (and hence integrable in $[1, N]$ for each $N \in \NN$), and define $a_n = f(n)$. Then
+        \begin{align*}
+            \sum a_n \text{ converges } \iff \lim_{n \to \infty} \int_1^n f(t) \; dt \text{ exists}
+        \end{align*}
+        Furthermore, as $k \to \infty$,
+        \begin{align*}
+            \sum^k a_n - \int_1^k f(x) \; dx \to l \text{ for some }l \in [0, f(1)]
+        \end{align*}        
+    \end{proposition}
+
+    \begin{proof}
+        Observe (DIAGRAM)
+        \begin{align*}
+            s_k - a_1 &= \sum_{n=2}^k a_n \leq \int_1^k f(t) \; dt \\
+            s_{k-1} &= \sum_{n=1}^{k-1} a_n \geq \int_1^k f(t) \; dt
+        \end{align*}
+        Now
+        \begin{itemize}
+            \item[$\implies$] $\int_1^k f(t) \; dt \leq s_{k-1} \leq s$ since $s_k$ is increasing and converges by assumption. Hence $(\int_1^k f(t) \; dt)_k$ converges by MCT.
+            \item[$\impliedby$] $s_k \leq a_1 + \int_1^k f(t) \; dt \leq a_1 + \lim_{k \to \infty}\int_1^k f(t) \; dt$. Hence $s_k$ converges by MCT. 
+        \end{itemize}
+        For the last part, let
+        \begin{align*}
+            b_k = \sum^k a_n - \int_1^k f(x) \; dx
+        \end{align*}
+        We have
+        \begin{align*}
+            b_k - b_{k-1} = a_k - \int_{k-1}^k f(t) \; dt = f(k) \cdot 1 - \int_{k-1}^k f(t) \; dt \leq 0
+        \end{align*}
+        and
+        \begin{align*}
+            \sum_{n=1}^{k-1} a_n &\geq \int_1^k f(t) \; dt \\
+            \implies \sum_{n=1}^k - \int_1^k f(t) \; dt &\geq a_k \\
+            \implies b_k &\geq a_k = f(k) \geq 0
+        \end{align*}
+        Hence $b_k$ is decreasing and bounded below, so converges to some $l \in \RR$. Since $0 \leq b_k \leq b_1 = a_1 = f(1)$, we conclude $0 \leq l \leq f(1)$.
+    \end{proof}
+
+    \begin{example}
+        \begin{itemize}
+            \item $\sum \frac 1 {n^p}$ converges if and only if $p > 1$, since
+            \begin{align*}
+                \lim_{x \to \infty}\int_1^x \frac{1}{t^p} \; dt = \lim_{x \to \infty} \begin{cases}
+                    \frac{1}{1-p}x^{1-p} & p \neq 1 \\
+                    \log x & p = 1
+                \end{cases}
+            \end{align*}
+            \item $\sum \frac 1 {n \log n}$ diverges, since
+            \begin{align*}
+                \int \frac 1 {t \log t} \; dt = \log \log t + C
+            \end{align*}
+            \item $\sum \frac 1 {n \log^2 n}$ converges, since
+            \begin{align*}
+                \int \frac 1 {t \log^2 t} \; dt = -\frac 1 {\log t} + C
+            \end{align*}
+        \end{itemize}
+    \end{example}
+    
+    \begin{proposition}[Cauchy condensation test, non-examinable]
+        Let $a_n \geq 0$ and $(a_n)$ be decreasing. Then $\sum a_n$ converges if and only if $\sum 2^n a_{2^n}$ converges.
+    \end{proposition}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            \int_1^x f(t) \; dt = \log 2 \int_0^{2^x} 2^t f(2^t) \; dt
+        \end{align*}
+        Then, by the integral test, we conclude
+        \begin{align*}
+            \sum a_n \text{ converges}\iff \lim_{y \to \infty}\int_0^y 2^t f(2^t) \; dt \text{ exists}
+        \end{align*}
+        While we may be tempted to try and conclude here, it is not known that $g(t) = 2^t f(2^t)$ is decreasing. 
+
+        MIUST CHECK BACK.
+        
+        
+    \end{proof}
+    
+    
+    
+    
+    
+    
+    
+
+    \begin{proposition}[Alternating series test]
+        Let $(a_n)$ be a decreasing sequence, and suppose $a_n \geq 0$, $a_n \to 0$. Then $\sum (-1)^{n+1}a_n$ converges.
+    \end{proposition}
+    
+    \lecture{Lecture $n+1$}
+
+    \begin{proof}
+        Set $s_k = \sum^k (-1)^{n+1} a_n$. Then
+        \begin{align*}
+            s_{2k} = \underbrace{(a_1 - a_2)}_{\geq 0} + \underbrace{(a_3 - a_4)}_{\geq 0} + \dots + \underbrace{(a_{2k-1} - a_{2k})}_{\geq 0}
+        \end{align*}
+        and so $s_2 \leq s_4 \leq \cdots$. Likewise, $s_1 \geq s_3 \geq \cdots$. Moreover, $s_{2k+1} - s_{2k} = a_{2k+1} \geq 0$, so that
+        \begin{align*}
+            s_2 \leq s_{2k} \leq s_{2k+1} \leq s_1
+        \end{align*}
+        so $s_{2k+1}$ is bounded below by $s_2$, and $s_{2k}$ is bounded above by $s_1$. Hence, by the monotone convergence theorem, we have $s_{2k} \to s$, $s_{2k+1} \to \tilde s$. Now, note $s_{2k+1}-s_{2k} = a_{2k+1} \to 0$, and so $s = \tilde s$.
+
+        Finally, let us show $s_n$ converges. We have for every $\varepsilon > 0$ an $N_1$ such that $|s_{2k}-s| < \varepsilon$ for any $k \geq N_1$, and an $N_2$ such that $|s_{2k+1}-s| < \varepsilon$ for any $k \geq N_2$. But then, taking $N = 2\max(N_1, N_2)+1$, we can see that $|s_k - s| < \varepsilon$ for any $k \geq N$.
+    \end{proof}
+    
+    \begin{proposition}[Dirichlet test]
+        Let $(a_n)$ be a decreasing sequence, and suppose $a_n \geq 0$, $a_n \to 0$. Let $(b_n)$ be another sequence such that $s_k = (\sum^k b_n)$ is bounded. Then $\sum a_nb_n$ converges.
+    \end{proposition}
+    
+    \begin{proof}
+        An exercise.
+    \end{proof}
+    
+    \begin{definition}[Absolute convergence]
+        We say $\sum a_n$ is \emph{absolutely convergent} if $\sum |a_n|$ is convergent.
+    \end{definition}
+    
+    \begin{lemma}
+        If $\sum a_n$ converges absolutely, then $\sum a_n$ converges.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $s_k = \sum^k a_n$, $r_k = \sum^k |a_n|$. Observe
+        \begin{align*}
+            |s_k - s_l| &= \left|\sum_{n=l+1}^k a_n\right| \\
+            &\leq \sum_{n=l+1}^k |a_n| \\
+            &= r_k - r_l \\
+            &= |r_k - r_l|
+        \end{align*}
+        Hence $r_k$ convergent $\implies r_k$ Cauchy $\implies s_k$ Cauchy $\implies s_k$ convergent.        
+    \end{proof}
+    
+    \begin{remark*}
+        This is awesome, because we can show absolute convergence using all our tests for series with positive terms (the converse is clearly false).
+    \end{remark*}
+    
+    We sometimes call sequences that are convergent but not absolutely convergent conditionally convergent. Conditionally convergent sequences are weird.
+
+    \begin{example}
+        Consider
+        \begin{align*}
+            \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = 1 - \frac 1 2 + \frac 1 3 - \frac 1 4 + \frac 1 5 - \frac 1 6 + \cdots
+        \end{align*}
+        Rearranging terms on the right, we produce
+        \begin{align*}
+            &\;\left(1 - \frac 1 2\right) - \frac 1 4 + \left(\frac 1 3 - \frac 1 6\right) - \frac 1 8 + \left(\frac 1 5 - \frac 1 {10}\right) - \frac 1 {12} + \left(\frac 1 7 - \frac 1 {14}\right) + \cdots \\
+            =&\; \frac 1 2 - \frac 1 4 + \frac 1 6 - \frac 1 8 + \frac 1 {10} - \frac 1 {12} + \frac 1 {14} \\
+            =&\; \frac 1 2 \left(1 - \frac 1 2 + \frac 1 3 - \frac 1 4 + \frac 1 5 - \frac 1 6 + \cdots\right)
+        \end{align*}
+        so we've produced a different value by rearranging the terms. For a conditionally convergent series, the order of the terms matters.       
+    \end{example}
+    
+    \begin{proposition}[Rearrangements under absolute convergence]
+        Let $\sigma: \NN \to \NN$ be a bijection. Let $a'_n = a_{\sigma(n)}$. Then, if $\sum a_n$ is absolutely convergent, $\sum a_n' = \sum a_n$.        
+    \end{proposition}
+    
+    \begin{proof}
+        Let $s_k = \sum^k a_n$, and suppose $s_k \to s$. Then, for any $\eps$ we have $N$ such that, for $k \geq N$,
+        \begin{align*}
+            |s_k - s| < \eps \text{ and } \sum_{k > N} |a_n| < \eps
+        \end{align*}
+        Furthermore, there exists $N_1 \geq N$ such that $a_1, \dots, a_N$ are included in $a_1', \dots, a_N'$. Hence, for $m \geq N_1$, 
+        \begin{align*}
+            \sum^m a_n' &= \underbrace{\sum^N a_n}_{s_N} + \;(m-N\text{ terms of }(a_n)\text{ with index}\geq N) \\
+            \implies \left|\sum^m a_n'-s\right| &\leq \underbrace{|s_N - s|}_{<\eps} + \underbrace{\sum_{k > N}|a_n|}_{<\eps} \\
+            &< 2\eps
+        \end{align*}
+        which was what we wanted.
+    \end{proof}
+    
+    \section{Continuity of functions}
+
+    \subsection{Limits of functions}
+
+    Take $f: \CC \to \CC$. We want to define what we mean by $f(z) \to y$ as $z \to a$, even if $a \notin X$. A classic example is $\frac{\sin x}{x}$ at $a=0$ -- even though 0 is not in the domain, there are points in the domain that are very close to 0, so it feels like we should be able to assign 0 some value.
+
+    \begin{definition}[Accumulation point]
+        Let $X \subseteq \CC$. We say $X$ is an \emph{accumulation point} for $X$ if, for any $\delta > 0$, there exists $z \in X \setminus \{a\}$ such that $|z-a| < \delta$. Otherwise, we say $a$ is \emph{isolated}.
+    \end{definition}
+    
+    \begin{example}
+        \begin{itemize}
+            \item Take $X = \{0\} \cup [1, 2]$ -- then 0 is an isolated point, but all points in $[1, 2]$ are accumulation points.
+            \item Take $S = \{|z| = 1\}$ -- these are accumulation points for the set $D = \{|z| < 1\}$ (also, every point in $D$ is an accumulation point for $D$).
+        \end{itemize}
+    \end{example}
+    
+    \begin{lemma}
+        Let $X \subseteq \CC$, $a \in \CC$. Then $a$ is an accumulation point for $X$ if and only if there exists $(x_n)$ in $X \setminus \{a\}$ such that $x_n \to a$.
+    \end{lemma}
+    
+    Let's return to thinking about $f(z) \to y$ as $z \to a$. We should be able to make sense of this if $a$ is either in the domain of $f$, or is an accumulation point for the domain of $f$.
+    
+    \begin{definition}
+        Let $f: X \subseteq \CC \to \CC$. Let $a \in X$ or $a$ an accumulation point of $X$. Then we say $f(z) \to y$ as $z \to a$ if, for any $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta, z \in X \implies |f(z)-f(a)| < \eps$.
+
+        Furthermore, if $a$ is an accumulation point but not in the domain, we say $f(z) \to \infty$ as $z \to a$ if
+        \begin{itemize}
+            \item $f(z)/|f(z)| \to l$ for some $l \in \CC$;
+            \item and, for any $L > 0$, there exists $\delta = \delta(L)$ such that $|z-a| < \delta, z \in X \implies |f(z)| > L$.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{remark}
+        If $a$ is an isolated point of $X$, then we can always find $\delta$ sufficiently small such that $|z-a| < \delta, z \in X \iff z = a$. Hence $f(z) \to f(a)$ as $z \to a$ trivially.
+
+        If $f$ diverges at $a$, then $a \notin X$, which is why we require $a \in X$ as part of the definition.
+    \end{remark}
+    
+    \begin{example}
+        Take $f(x) = \frac{\sin x}{x}$ with domain $\RR \setminus \{0\}$. We claim $\frac{\sin x}{x} \to 1$ as $x \to 0$.
+        
+        Recall the geometric argument that shows $\cos x < \frac{\sin x}{x} < 1$ for every $x \in (0, \frac{\pi}2)$. Hence
+        \begin{align*}
+            \left|\frac{\sin x}x - 1\right| < \left|1-\cos x\right| = 2\sin^2\left(\frac x 2\right) < \frac{x^2}{2}
+        \end{align*}
+        Hence, for any $\eps > 0$, choosing $\delta = \sqrt{2\eps}$ gives the result.
+        
+    \end{example}
+    
+    \begin{lemma}
+        Let $f: X \subseteq \CC \to \CC$, and take $a \in \CC$ either in $X$ or an accumulation point of $X$. Then
+        \begin{itemize}
+            \item $f(z) \to y$ as $z \to a$ if and only if $f(z_n) \to y$ for every sequence $(z_n)$ on $X$ with $z_n \to a$;
+            \item $f(z)$ diverges as $z \to a$ if and only if $f(z_n)$ diverges for every sequence $(z_n)$ on $X$ with $z_n \to a$.
+        \end{itemize}
+    \end{lemma}
+    
+    \begin{lemma}
+        If $f: X \subseteq \CC \to \CC$ has a limit at $a \in \CC$, then this limit is unique.
+    \end{lemma}
+
+    \begin{proof}
+        Suppose $f(z) \to x$ and $f(z) \to y$ as $z \to a$. Then
+        \begin{align*}
+            |x-y| &\leq |x-f(z)| + |f(z)-y|
+        \end{align*}
+        Taking the limit as $z \to a$, we have
+        \begin{align*}
+            |x-y| &\leq 0 + 0
+        \end{align*}
+        so $x=y$ as required.        
+    \end{proof}    
+    
+    \begin{remark*}
+        This justifies the notation $\lim_{z \to a} f(z) = y$.
+    \end{remark*}
+    
+    \begin{lemma}
+        Let $f$, $g: X \subseteq \CC \to \CC$, and $a \in \CC$ either in $X$ or an accumulation point of $X$. Suppose $\lim_{z \to a}f(z) = y$, $\lim_{z \to a}g(z) = x$. Then
+        \begin{align*}
+            \lim_{z \to a} f(z) + g(z) &= y + x \\
+            \lim_{z \to a} f(z)g(z) &= yx
+        \end{align*}
+        If $g(z) \neq 0$ for any $z \in X$, and $x \neq 0$, then
+        \begin{align*}
+            \lim_{z \to a} \frac{f(z)}{g(z)} = \frac{y}{x}
+        \end{align*}
+    \end{lemma}
+    
+    \subsection{Continuity of functions}
+
+    \begin{definition}
+        Let $f: X \subseteq \CC \to \CC$. Then $f$ is continuous at $a \in X$ if
+        \begin{align*}
+            f(a) = \lim_{z \to a}f(z)
+        \end{align*}
+        or, equivalently, for every $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta$, $z \in X \implies |f(z)-f(a)| < \eps$.        
+    \end{definition}
+
+    \begin{definition}
+        Let $f: X \subseteq \CC \to \CC$. We say $f$ is continuous if it is continuous at every point in $X$.
+    \end{definition}
+
+    \begin{example}
+        \begin{itemize}
+            \item $f(z) = z$ is continuous.
+            \item Consider \begin{align*}
+                f(x) = \begin{cases}
+                    \sin\left(\frac 1 x\right) & x \neq 0 \\
+                    0 & x = 0
+                \end{cases}
+            \end{align*}
+            This function is not continuous.
+        \end{itemize}
+    \end{example}
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

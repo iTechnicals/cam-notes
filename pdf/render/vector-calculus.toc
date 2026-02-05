@@ -1,11 +1,27 @@
-\contentsline {section}{\numberline {1}Preliminaries}{1}{section.2}%
-\contentsline {subsection}{\numberline {1.1}Vector notation}{1}{subsection.3}%
+\contentsline {section}{\numberline {1}Preliminaries}{2}{section.2}%
+\contentsline {subsection}{\numberline {1.1}Vector notation}{2}{subsection.3}%
 \contentsline {subsection}{\numberline {1.2}The chain rule}{2}{subsection.7}%
 \contentsline {subsection}{\numberline {1.3}Taylor's theorem}{2}{subsection.10}%
-\contentsline {subsection}{\numberline {1.4}Infinitesimals}{2}{subsection.11}%
-\contentsline {section}{\numberline {2}Vector differential operators}{3}{section.14}%
-\contentsline {subsection}{\numberline {2.1}Del}{3}{subsection.16}%
-\contentsline {subsection}{\numberline {2.2}Gradient}{3}{subsection.17}%
-\contentsline {subsection}{\numberline {2.3}Divergence}{5}{subsection.25}%
-\contentsline {subsection}{\numberline {2.4}Curl}{5}{subsection.28}%
+\contentsline {subsection}{\numberline {1.4}Infinitesimals}{3}{subsection.13}%
+\contentsline {section}{\numberline {2}Vector differential operators}{3}{section.16}%
+\contentsline {subsection}{\numberline {2.1}Del}{4}{subsection.18}%
+\contentsline {subsection}{\numberline {2.2}Gradient}{4}{subsection.19}%
+\contentsline {subsection}{\numberline {2.3}Divergence}{5}{subsection.27}%
+\contentsline {subsection}{\numberline {2.4}Curl}{6}{subsection.30}%
+\contentsline {subsection}{\numberline {2.5}Directional derivatives}{6}{subsection.33}%
+\contentsline {subsection}{\numberline {2.6}Level surfaces and the gradient}{7}{subsection.36}%
+\contentsline {subsection}{\numberline {2.7}Various vector differential identities}{8}{subsection.42}%
+\contentsline {subsection}{\numberline {2.8}The Laplacian}{10}{subsection.63}%
+\contentsline {subsection}{\numberline {2.9}Irrotational and conservative vector fields}{12}{subsection.67}%
+\contentsline {subsection}{\numberline {2.10}Solenoidal/incompressible vector fields}{13}{subsection.74}%
+\contentsline {section}{\numberline {3}Orthogonal curvilinear coordinate systems}{13}{section.78}%
+\contentsline {subsection}{\numberline {3.1}General curvilinear coordinate systems}{13}{subsection.79}%
+\contentsline {subsection}{\numberline {3.2}Cylindrical polar coordinates}{14}{subsection.85}%
+\contentsline {subsection}{\numberline {3.3}Spherical polar coordinates}{15}{subsection.91}%
+\contentsline {subsection}{\numberline {3.4}Vector differential operators in orthogonal curvilinear coordinate systems}{16}{subsection.98}%
+\contentsline {subsubsection}{\numberline {3.4.1}General orthogonal curvilinear coordinate systems}{16}{subsubsection.99}%
+\contentsline {subsubsection}{\numberline {3.4.2}Cylindrical polar coordinates}{16}{subsubsection.102}%
+\contentsline {subsubsection}{\numberline {3.4.3}Spherical polar coordinates}{17}{subsubsection.103}%
+\contentsline {section}{\numberline {4}Differential geometry of curves, surfaces and volumes}{18}{section.105}%
+\contentsline {subsection}{\numberline {4.1}Curves and arc length}{18}{subsection.106}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
