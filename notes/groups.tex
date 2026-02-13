@@ -544,7 +544,7 @@
     \begin{definition}[Image and kernel]
         Let $\phi: G \to H$ be a homomorphism.
         \begin{itemize}
-            \item The \emph{image} of $\phi$, $\Im \phi $, is $\{h \in H: h = \phi(g) \text{ for some } g \in G\}$. (DIAGRAM)
+            \item The \emph{image} of $\phi$, $\im \phi $, is $\{h \in H: h = \phi(g) \text{ for some } g \in G\}$. (DIAGRAM)
             \item The \emph{kernel} of $\phi$, $\ker \phi$, is $\{g \in G: \phi(g) = e_H\}$.
         \end{itemize}        
     \end{definition}
@@ -552,14 +552,14 @@
     \begin{proposition}
         If $\phi: G \to H$ is a homomorphism, then
         \begin{enumerate}
-            \item $\Im \phi \leq H$;
+            \item $\im \phi \leq H$;
             \item $\ker \phi \leq G$.
         \end{enumerate}
     \end{proposition}
     
     \begin{proof}
         \begin{enumerate}
-            \item $e_H = \phi(e_G) \in \Im \phi$, so we have the identity. $\phi(g_1)\phi(g_2) = \phi(g_1g_2) \in \Im \phi$, so we have closure. Finally, by \cref{homomorphism-identity-inverse}, $\phi(g)^{-1} = \phi(g^{-1}) \in \Im \phi$, so we have inverse.
+            \item $e_H = \phi(e_G) \in \im \phi$, so we have the identity. $\phi(g_1)\phi(g_2) = \phi(g_1g_2) \in \im \phi$, so we have closure. Finally, by \cref{homomorphism-identity-inverse}, $\phi(g)^{-1} = \phi(g^{-1}) \in \im \phi$, so we have inverse.
             \item $\phi(e_G) = e_H$, so $e_G \in \ker \phi$, so we have the identity. For $g_1, g_2 \in \ker \phi$, $\phi(g_1g_2) = \phi(g_1)\phi(g_2) = e_H \cdot e_H = e_H$, so $g_1g_2 \in \ker \phi$, so we have closure. Finally, by \cref{homomorphism-identity-inverse}, $\phi(g^{-1}) = \phi(g)^{-1} = e_H^{-1} = e_H$, so we have inverse.
         \end{enumerate}
     \end{proof}
@@ -567,11 +567,9 @@
     \begin{remark*}
         Let $\phi: G \to H$ be a homomorphism.
         \begin{enumerate}
-            \item $\phi$ is \emph{surjective} if and only if $\Im \phi = H$;
+            \item $\phi$ is \emph{surjective} if and only if $\im \phi = H$;
             \item $\phi$ is \emph{injective} if and only if $\ker \phi = \{e_H\}$.
         \end{enumerate}
-        
-        
     \end{remark*}
     
     \lecture{Lecture 7 -- 24/10/25}
@@ -787,7 +785,7 @@
         \[
             \phi: G \to \Sym(X)
         \]
-        Let $H = \Im \phi \leq \Sym(X)$, so we may view $\phi$ as a homomorphism $G \to H$, and we claim this is in fact an isomorphism. It is surjective by the definition of $H$, so it remains to show it is injective. For this we will claim $\ker \phi = \{e\}$. Observe $g \in \ker \phi \implies \phi(g) = \id_X$, so $g\gamma = \gamma$ for all $\gamma \in G$. From this it is clear that $g = e$. Thus $G \cong H \leq \Sym(X)$, which was what we wanted. Since $G = X$, it is certainly true that $|G| < \infty \implies |X| < \infty$.
+        Let $H = \im \phi \leq \Sym(X)$, so we may view $\phi$ as a homomorphism $G \to H$, and we claim this is in fact an isomorphism. It is surjective by the definition of $H$, so it remains to show it is injective. For this we will claim $\ker \phi = \{e\}$. Observe $g \in \ker \phi \implies \phi(g) = \id_X$, so $g\gamma = \gamma$ for all $\gamma \in G$. From this it is clear that $g = e$. Thus $G \cong H \leq \Sym(X)$, which was what we wanted. Since $G = X$, it is certainly true that $|G| < \infty \implies |X| < \infty$.
     \end{proof}
     
     It turns out actions are extremely useful and we can use them to learn a great deal about groups.
@@ -1570,7 +1568,7 @@
     \begin{theorem}[Isomorphism theorem]
         If $\phi: G \to H$ is a homomorphism, then
         \[
-            G/\ker \phi \cong \Im \phi
+            G/\ker \phi \cong \im \phi
         \]
         \label{isomorphism-theorem}
     \end{theorem}
@@ -1578,7 +1576,7 @@
     \begin{proof}
         Since $\ker \phi \triangleleft G$, the quotient $G/\ker \phi$ is indeed a group. Let's define
         \begin{align*}
-            \bar\phi: G/\ker\phi &\to \Im \phi \\
+            \bar\phi: G/\ker\phi &\to \im \phi \\
             g \ker \phi &\mapsto \phi(g)
         \end{align*}
         We must perform all the usual checks.
@@ -1599,7 +1597,7 @@
                 &= \bar\phi(g_1 \ker \phi)\bar\phi(g_2 \ker \phi)
             \end{align*}
             \item \emph{Injective}. If $\bar\phi(g \ker \phi) = e$, then $\phi(g) = \bar\phi(g \ker \phi) = e$, so $g \in \ker \phi$. Hence $g \ker \phi = \ker \phi$, and so $\ker \bar\phi = \{\ker \phi\}$ is trivial, hence $\bar\phi$ is injective as required.
-            \item \emph{Surjective}. An element of $\Im \phi$ looks like $\phi(g)$, which is $\bar\phi(g \ker \phi)$ as required.           
+            \item \emph{Surjective}. An element of $\im \phi$ looks like $\phi(g)$, which is $\bar\phi(g \ker \phi)$ as required.           
         \end{itemize}
     \end{proof}
     
@@ -2039,7 +2037,7 @@
         The \emph{special linear group} $\SL_n(\RR) = \ker (\det) = \{A \in M_n(\RR): \det A = 1\}$.
     \end{definition}
     
-    By \cref{isomorphism-theorem} (the isomorphism theorem), $\SL_n(\RR) \triangleleft \GL_n(\RR)$, and $\GL_n(\RR) / \SL_n(\RR) \cong \Im(\det) \cong \RR_\times$ -- it's fairly clear to see that any real number can arise as a determinant.
+    By \cref{isomorphism-theorem} (the isomorphism theorem), $\SL_n(\RR) \triangleleft \GL_n(\RR)$, and $\GL_n(\RR) / \SL_n(\RR) \cong \im(\det) \cong \RR_\times$ -- it's fairly clear to see that any real number can arise as a determinant.
 
     Furthermore, everything above still works with $\CC$, so we can talk about $\GL_n(\CC)$, $\SL_n(\CC)$, and analogously we have $\GL_n(\CC) / \SL_n(\CC) \cong \CC_\times$.
     
@@ -2113,7 +2111,7 @@
              c & d \\
             \end{pmatrix} &\mapsto \left(z \mapsto \frac{az+b}{cz+d}\right)
         \end{align*}
-        By our computation of multiplication in $\mathcal M$, $\Phi$ is a homomorphism, and it's clearly surjective, so $\Im \Phi = \mathcal M$. Furthermore, a matrix $M$ is in $\ker \Phi$ if and only if its image fixes $0$, $1$ and $\infty$ Then
+        By our computation of multiplication in $\mathcal M$, $\Phi$ is a homomorphism, and it's clearly surjective, so $\im \Phi = \mathcal M$. Furthermore, a matrix $M$ is in $\ker \Phi$ if and only if its image fixes $0$, $1$ and $\infty$ Then
         \begin{itemize}
             \item $M$ fixes 0 $\implies b = 0$;
             \item $M$ fixes 1 $\implies a = d$;
@@ -2427,9 +2425,9 @@
         \]
         The rotation around the axis through an opposite pair of vertices gives rise to a 3-cycle. There are ten different pairs of opposite vertices, so we get ten pairs of 3-cycles which are one another's inverses -- that way, we get all 20 3-cycles in $S_5$.
 
-        We claim that $A_5$ is generated by 3-cycles. Since the 3-cycles form a conjugacy class, we know the subgroup generated by 3-cycles is normal in $A_5$ but, since $A_5$ is simple, it must be $A_5$ itself. Hence, $A_5 \leq \Im \theta$, but
+        We claim that $A_5$ is generated by 3-cycles. Since the 3-cycles form a conjugacy class, we know the subgroup generated by 3-cycles is normal in $A_5$ but, since $A_5$ is simple, it must be $A_5$ itself. Hence, $A_5 \leq \im \theta$, but
         \[
-            60 = |G_0| \geq |\Im \theta| \geq |A_5| = 60
+            60 = |G_0| \geq |\im \theta| \geq |A_5| = 60
         \]
         so $\theta$ is an isomorphism -- $G_0 \cong A_5$.
 

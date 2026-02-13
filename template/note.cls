@@ -8,6 +8,7 @@
 \RequirePackage{quiver}
 \RequirePackage{siunitx}
 \RequirePackage{stmaryrd}
+\RequirePackage{centernot}
 
 \newcommand{\multiline}[2][c]{%
     \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}

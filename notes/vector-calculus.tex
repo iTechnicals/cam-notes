@@ -843,7 +843,7 @@
         A \emph{curve} $C$ is a map $\V x: [a, b] \subset \RR \to \RR^3$, in other words $\V x(t) = (x(t), y(t), z(t))$ for $a \leq t \leq b$. We say that the curve is \emph{parameterised} by $t$. A curve is \emph{closed} if $\V x(a) = \V x(b)$.
     \end{definition*}
     
-    In this course we will require that curves be continuous and piecewise smooth (infinitely differentiable everywhere except a finite number of points).
+    In this course we will require that curves be continuous and piecewise smooth (infinitely differentiable everywhere except a finite number of points). DIAGRAM: mostly smooth but a few spiky points.
 
     Normally, we will use the word curve to refer to the \emph{image} of the map $C$, not the map itself.
 
@@ -856,9 +856,433 @@
     This is motivated by
     \begin{align*}
         \delta s = |\delta \V x| &= \sqrt{\delta x^2 + \delta y^2 + \delta z^2} \\
-        &= \sqrt{\left(\frac{\delta x}{\delta t}\right)^2+\left(\frac{\delta y}{\delta t}\right)^2+\left(\frac{\delta z}{\delta t}\right)^2}
+        &= \sqrt{\left(\frac{\delta x}{\delta t}\right)^2+\left(\frac{\delta y}{\delta t}\right)^2+\left(\frac{\delta z}{\delta t}\right)^2} \\
+        &= \left|\frac{\delta \V x}{\delta t}\right|\delta t
+    \end{align*}
+    which, taking the limit, gives
+    \begin{proposition}
+        \label{4.1 }\[
+            \frac{ds}{dt} = |\dot{\V x}|
+        \]
+    \end{proposition}
+    
+    Thus we obtain $s$ as a function of $t$ which we can, at least theoretically, invert to reparameterise a curve in terms of its arc length, which could be quite useful -- the so-called \emph{natural parameterisation}.
+    
+    \begin{itemize}
+        \item Given two curves $C_1$ and $C_2$ with matching end-points, we define the curve $C_1 + C_2$ to be the two curves joined end-to-end.
+        \item The curve $-C$ is the curve $C$ traversed in the opposite direction -- $\V x_{-C}(t) = \V x_C(a+b-t)$.
+    \end{itemize}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item Consider $\V x(t) = (at^2, 2at, 0)$, $t \in [-1, 1]$. This is a parameterisation (the standard one) of the parabola $y^2=4ax$ between $y= \pm 2a$.
+            \item $\V x(t) = (a \cos t, b \sin t, 0)$, $t \in [0, \pi]$ is a parameterisation of the upper half of the ellipse $x^2/a^2+y^2/b^2=1$.
+            \item $\V x(t) = (\cos t, \sin t, t)$ is a helix. In cylindrical polars, $\rho = 1$, $\phi = t$, $z = t$, in other words the curve winds its way around the unit cylinder.
+        \end{itemize}
+        When drawing our curves, we should add an arrow to indicate the direction in which $t$ increases.
+    \end{example*}
+    
+    \begin{example*}[Bonus non-examinable!]
+        Let $R(t) = 2 + \cos \alpha t$ and $\V x(t) = (R(t) \cos \beta t, R(t) \sin \beta t, \sin \alpha t)$. This curve winds its way around the torus given in cylindrical polars by $(\rho-2)^2 + z^2 = 1$. If $\alpha/\beta \in \QQ$, the curve closes on itself -- in fact, if $\alpha/\beta = p/q$ where $p$ and $q$ are coprime integers, then we have the \emph{torus knot} $K_{q, p}$. But if $\alpha/\beta \notin \QQ$, the curve covers the entire torus.
+    \end{example*}
+    
+    \subsection{The Frenet-Serret equations}
+
+    We will assume in this section that $\V x$ is parameterised by arc length $s$. If it is not, then the following results \emph{do not apply}. For clarity, we will use primes to denote differentiation with respect to this canonical parameterisation. We define
+    \begin{proposition}
+        \begin{align*}
+            \V t &= \V x' && \text{the \emph{tangent} vector} \\
+            \V n &= \frac 1 {|\V x''|}\V x'' && \text{the \emph{principal normal} vector} \\
+            \V b &= \V t \times \V n && \text{the \emph{binormal} vector}
+        \end{align*}
+    \end{proposition}
+
+    \begin{proposition}[Frenet-Serret equations]
+        \begin{align*}
+            \V t' &= \kappa \V n \\
+            \V n' &= \tau \V b - \kappa \V t \\
+            \V b' &= -\tau \V n
+        \end{align*}
+        where $\kappa = |\V x''|$ and $\tau = -\V b' \cdot \V n$ are scalars, not necessarily constant, called the \emph{curvature} and \emph{torsion} of the curve respectively.
+    \end{proposition}
+    
+    \begin{proof}
+        First, $ds = |d \V x|$, so $|\frac{d \V x}{ds}| = 1$ -- hence $|\V t| = 1$. Now $\kappa = |\V x''| = |\V t'|$, so $\V n = \V t'/\kappa$ by definition. Hence $|\V n| = 1$ and $\V t' = \kappa \V n$ (later on we'll worry about $\kappa = 0$).
+
+        Differentiating $\V t \cdot \V t = 1$ gives $2\V t \cdot \V t' = 0$, so $\V t \cdot \V n = 0$, that is $\V t \perp \V n$. Then, by the definition $\V b = \V t \times \V n$, we can be sure $\{\V t, \V n, \V b\}$ is orthonormal and right-handed. This set (which depends on the position along the curve) is known as the \emph{moving trihedral}.
+
+        Now $\V b \cdot \V b = 1$, so $\V b \cdot \V b' = 0$, and $\V t \cdot \V b = 0$, so 
+        \begin{align*}
+            0 &= \V t' \cdot \V b + \V t \cdot \V b' \\
+            &= \kappa \V n \cdot \V b + \V t \cdot \V b' \\
+            &= \V t \cdot \V b'
+        \end{align*}
+        Therefore $\V b' \perp \V t$ and $\V b' \perp \V b$, so it must be that $\V b' \parallel \V n$ and, from the definition of $\tau$, $\V b' = -\tau \V n$.
+
+        Finally, $\V n = \V b \times \V t$, so
+        \begin{align*}
+            \V n' = \V b' \times \V t + \V b \times \V t' = \tau \V n \times \V t + \V b \times \kappa \V n = \tau \V b - \kappa \V t
+        \end{align*}
+        as required.
+
+        Let's now worry about $\kappa = 0$. In that case, $\V n$, $\V b$ and $\tau$ are also all undefined. If $\kappa = 0$ everywhere, the curve is just a straight line.
+    \end{proof}
+    
+    \begin{definition*}
+        The \emph{radius of curvature} is defined as $R = \kappa^{-1}$.
+    \end{definition*}
+    
+    At a point $\V x$, the \emph{osculating plane} is the plane that passes through $\V x$ and is spanned by $\V t$ and $\V n$. Then a circle of radius $R$ centred at $\V x + R \V n$ is the best possible approximation of the curve at $\V x$ by a circle -- it has the same values of $\V x$, $\V x'$ and $\V x''$ as the curve itself (as well as $\kappa$, of course).
+
+    DIAGRAM: diagram.
+    
+    \subsection{Using the Frenet-Serret equations with other parameterisations}
+
+    One option is always to simply reparameterise our curve in terms of $s$. But this is not really necessary. Instead, we can simply apply the chain rule:
+    \begin{align*}
+        \V t &= \V x' = \frac{d \V x}{dt} \frac{dt}{ds} = \frac{\dot{\V x}}{|\dot{\V x}|} \\
+        \V x'' &= \frac{d\V t}{ds} = \frac{d \V t}{dt} \frac{dt}{ds} = \frac{\dot{\V t}}{|\dot{\V x}|}
+    \end{align*}
+    so that $\kappa = \frac{|\dot{\V t}|}{|\dot{\V x}|}$, $\V n = $
+    
+    \begin{example*}
+        Consider $\V x(t) = (\frac 1 {\sqrt 2}t^2, t, t)$. Then $\dot{\V x} = (\sqrt 2 t, 1, 1)$, so $\frac{ds}{dt} = |\dot{\V x}| = \sqrt 2 \sqrt{1 + t^2}$. Hence
+        \begin{align*}
+            \V t &= \V x' = \frac{\dot{\V x}}{|\dot{\V x}|} = \frac{1}{\sqrt 2 \sqrt{1+t^2}}(\sqrt 2 t, 1, 1) \\
+            \dot{\V t} &= \frac{1}{\sqrt 2 (1+t^2)^{3/2}}(\sqrt 2, -t, -t) \\
+            \kappa &= |\V t'| = \frac{|\dot{\V t}|}{|\dot{\V x}|} = \frac 1{\sqrt 2 (1+t^2)^{3/2}}
+        \end{align*}
+        DIAGRAM: diagram
+    \end{example*}
+    
+    \subsection{Surfaces, surface elements and the normal}
+
+    \begin{definition*}
+        A \emph{surface} is a map $\V x: U \subseteq \RR^2 \to \RR^3$. We typically use $u$ and $v$ to refer to the arguments of $\V x$.
+    \end{definition*}
+    
+    As with curves, we will normally refer to the image of the map, not the map itself.
+    
+    \begin{example*}
+        We might wish to make a hemispherical surface, $H_R = \{\V x: |\V x| = R, z < 0\}$. We can use spherical polar coordinates to parameterise this as
+        \begin{align*}
+            \V x(\theta, \phi) = \begin{pmatrix}
+             R \sin \theta \cos \phi \\
+             R \sin \theta \sin \phi \\
+             R \cos \theta  \\
+            \end{pmatrix}
+        \end{align*}
+        with $\theta \in (\pi/2, \pi]$, $\phi \in [0, 2\pi)$.
+    \end{example*}
+    
+    \begin{lemma*}
+        Given a parallelogram with two sides $\V a$ and $\V b$, its area is $|\V a \times \V b|$.
+    \end{lemma*}
+    
+    Consider now a region lying between curves of constant $u$ and curves of constant $v$. What is the area of such a region?
+
+    Suppose we have two such curves meeting at $\V x(u, v)$, and nearby curves at constant $u + \delta u$ and $v + \delta v$. The part of $S$ bounded by these curves forms, at lowest order, a very small parallelogram, with sides given by
+    \begin{align*}
+        \V x(u + \delta u, v) - \V x(u, v) &= \pd{\V x}{u}\delta u \\
+        \V x(u, v + \delta v) - \V x(u, v) &= \pd{\V x}{v}\delta v 
+    \end{align*}
+    Hence, by the lemma, the area of the region is given by
+    \begin{proposition}
+        \[
+            dS = \left|\pd{\V x}{u} \times \pd{\V x}{v}\right|\D u \D v
+        \]
+    \end{proposition}
+    This infinitesimal parallelogram is referred to as a \emph{surface element}.
+    \begin{remark*}
+        Importantly, the normal to the surface at $\V x$ is parallel to $\pd{\V x}{u} \times \pd{\V x}{v}$.
+    \end{remark*}
+    
+    \subsection{Volumes and volume elements}
+
+    \begin{definition*}
+        A \emph{volume} is a map $\V x: U \subseteq \RR^3 \to \RR^3$. We typically use $u$, $v$ and $w$ to refer to the arguments of $\V x$.
+    \end{definition*}
+    
+    \begin{example*}
+        To parameterise a sphere, we can do a similar thing to before, but let $r \in [0, R]$.
+    \end{example*}
+    
+    Similarly, we can divide our volumes into regions lying between \emph{surfaces} of constant $u$, $v$ and $w$. To lowest order, these regions are \emph{parallelepipeds} with sides $\pd{\V x}{u} \delta u$, $\pd{\V x}{v} \delta v$ and $\pd{\V x}{w} \delta w$. Hence the volume element is given by
+    \begin{proposition}
+        \[
+            dV = \left|\pd{\V x}{u} \cdot \left(\pd{\V x}{v} \times \pd{\V x}{w}\right)\right| \D u \D v \D w
+        \]
+    \end{proposition}
+    
+    \section{Line, area, surface and volume integrals}
+
+    \subsection{Line integrals}
+
+    \begin{definition*}
+        Given a curve $C$ parameterised by $t \in [a, b]$, the \emph{line integral} of a vector field $\V F$ along $C$ is
+        \begin{align*}
+            \Aboxed{\int_C \V F \cdot d \V x = \int_a^b \V F(\V x(t)) \cdot \frac{d \V x}{dt} \D t}
+        \end{align*}
+        An alternative but equivalent definition is to return to a Riemann sum: we define
+        \begin{align*}
+            \int_C \V F \cdot d \V x &= \lim_{\Delta \to 0}\sum_{n=0}^{N-1} \V F(\V x_n) \cdot \delta \V x_n
+        \end{align*}
+    \end{definition*}
+    
+    \begin{remark*}
+        We can also take a line integral on a scalar field, or take a line integral while crossing (!) $\V F$ with $d \V x$ instead of dotting.
+    \end{remark*}
+    
+    If $C$ is a closed curve, then the line integral around the whole curve has a special notation
+    \begin{align*}
+        \oint_C \V F \cdot d \V x
+    \end{align*}
+    and this is sometimes known as the \emph{circulation} of $\V F$ around $C$. It also doesn't matter where we start along such a curve, so long aswe go all the way around.
+
+    We have some elementary properties of line integrals:
+    \begin{itemize}
+        \item $\int_{-C} \V F \cdot d \V x = -\int_C \V F \cdot d \V x$;
+        \item $\int_{C_1+C_2} \V F \cdot d \V x = \int_{C_1} \V F \cdot d \V x + \int_{C_2} \V F \cdot d \V x$.
+    \end{itemize}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item Consider $\V F = (y, -x, 0)$, and $C$ the straight line joining $(-1, 0, 0)$ to $(1, 0, 0)$. Parameterise the curve as $\V x = (t, 0, 0)$ for $t \in [-1, 1]$. Then $\V F(\V x(t)) = (0, -t, 0)$, and $\dot{\V x} = (1, 0, 0)$, so $\int_{C_1} \V F \cdot d \V x = 0$.
+            \item Consider $\V F = (3x^2, 2y, 0)$ on the same line. We obtain $\V F \cdot \dot{\V x} = (3t^2, 0, 0) \cdot (1, 0, 0)$ and so $\int_{C_1} \V F \cdot d \V x = \int_{-1}^1 3t^2 \D t = 2$.
+            \item Consider $\V F = (y, -x, 0)$ along the curve $C_2$ joining $(-1, 0, 0)$ to $(1, 0, 0)$ parameterised as $\V x = (t-1, t(t-2), t(t^2-4))$ for $t \in [0, 2]$. We have
+            \begin{align*}
+                \V F &= (t(t-2), 1-t, 0) && \V x = (1, 2t-2, 3t^2-4)
+            \end{align*}
+            so
+            \begin{align*}
+                \int_{C_2} \V F \cdot d \V x &= \int_0^2 t(t-2) - 2(t-1)^2 \D t \\
+                &= -\frac 8 3
+            \end{align*}
+            \item Consider $\V F = (3x^2, 2y, 0)$ along $C_2$. We have
+            \begin{align*}
+                \int_{C_2} \V F \cdot d \V x &= \int_0^2 (3(t-1)^2, 2t(t-2), 0) \cdot (1, 2t-2, 3t^2-4) \D t \\
+                &= \int_0^2 4t^3 - 9t^2 + 2t - 3 \D t \\
+                &= 2
+            \end{align*}
+            \item What is the work done by a force field $\V F = (y^2e^x, e^y + 2ye^x, 0)$ moving a particle along $C_3$, which is the ellipse $x^2/a^2 + y^2/b^2 = 1$ in the $(x, y)$-plane starting at $(a, 0, 0)$ and going anticlockwise to $(0, b, 0)$?    
+            
+            First, we need to parameterise the curve by $\V x(\theta) = (a \cos \theta, b \sin \theta, 0)$ for $\theta \in [0, \pi/2]$. Then
+            \begin{align*}
+                \V F(\V x(\theta)) = (b^2 \sin^2 \theta \, e^{a \cos \theta}, e^{b \sin \theta} + 2b \sin \theta \, e^{a \cos \theta}, 0)
+            \end{align*}
+            so that
+            \begin{align*}
+                \V F \cdot \frac{d \V x}{d \theta} = -ab^2 \sin^3 \theta \, e^{a \cos \theta} + b \cos \theta \, e^{b \sin \theta}+ 2b^2 \sin \theta \cos \theta \, e^{a \cos \theta}
+            \end{align*}
+            so
+            \begin{align*}
+                \int_{C_3} \V F \cdot d \V x &= [e^{b \sin \theta}]^{\pi/2}_0 + \int_0^{\pi/2} b^2 \sin \theta \, e^{a \cos \theta} (-a + 2 \cos \theta + a \cos^2 \theta) \D \theta \\
+                &= e^b - 1 + \int_1^0 b^2 e^{au} (a^2-2u-au^2) \D u \qquad (u = \cos \theta) \\
+                &= e^b - 1 + [b^2e^{au}(1-u^2)]^0_1 \\
+                &= e^b - 1 + b^2
+            \end{align*}
+            Around the whole ellipse, starting at $(a, 0, 0)$ and going anticlockwise all the way round, we would find $\oint \V F \cdot d \V x = 0$.
+        \end{itemize}
+    \end{example*}
+    
+    \begin{example*}
+        Let's do one in cylindrical polar coordinates! Consider $\V F = z \V e_\phi$ on the path $\rho = z^2$, $\phi = \pi z$ from $z = 0$ to $z=1$. Here, we have
+        \begin{align*}
+            d \V x &= \D \rho \V e_\rho + \rho \D \phi \V e_\phi + dz\, \V e_z \\
+            &= (2z \V e_\rho + \pi \rho \V e_\phi + \V e_z) \D z
+        \end{align*}
+        and, on the curve, this gives $\V F \cdot d \V x = \pi \rho z \D z = \pi z^3 \D z$. Hence
+        \begin{align*}
+            \int \V F \cdot d \V x = \int_0^1 \pi z^3 \D z = \pi/4
+        \end{align*}
+    \end{example*}
+    
+    \subsection{Path independence}
+
+    \begin{definition*}[Exact differential forms -- reminder]
+        We say that a differential form $\V F \cdot d \V x$ is \emph{exact} if there exists a single-valued scalar field $f(\V x)$ such that $\V F \cdot d \V x = \D f$ for all $d \V x$.
+    \end{definition*}
+    
+    From \cref{2.2}, we know that $df = \grad f \cdot d \V x$ -- so $\V F \cdot d \V x$ is exact if and only if there exists a single-valued function $f$ such that $\V F = \grad f$, i.e. if $\V F$ is a conservative vector field.
+
+    If $\V F$ is a conservative vector field, and $C$ is a path from $\V a$ to $\V b$, then
+    \begin{align*}
+        \int_C \V F \cdot d \V x = \int_C df = f(\V b) - f(\V a)
+    \end{align*}
+    and this is notably independent of the particular path. So we can, if we like, write
+    \begin{align*}
+        \int_{\V a}^{\V b} \V F \cdot d \V x
     \end{align*}
     
+    In particular, we have the important result that, if $C$ is a closed curve,
+    \begin{align*}
+        \oint_C \V F \cdot d \V x = 0
+    \end{align*}
+    for any conservative $\V F$, since $\V b = \V a$ and $f$ is single-valued.
+
+    Now we have the awesome result for vector fields $\V F$ in a simply-connected domain:
+
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item $\V F$ is a conservative vector field;
+        \item there exists a single-valued function $f(\V x)$ such that $\V F = \grad f$;
+        \item $\V F \cdot d \V x$ is an exact differential;
+        \item $\V F$ is irrotational;
+        \item $\grad \times \V F = \V 0$;
+        \item $\pd{F_i}{x_j} = \pd{F_j}{x_i}$ for all $i, j$;
+        \item for any $\V a$, $\V b$ in the domain, $\int_{\V a}^{\V b} \V F \cdot d \V x$ is path-independent;
+        \item $\oint_C \V F \cdot d \V x = 0$ for all closed curves $C$ in the domain.
+    \end{enumerate}
+    To prove $\circled 8 \implies \circled 7$ and $\circled 7 \implies \circled 2$ is non-trivial and we'll have to wait until section 6.4.
+
+    \begin{example*}
+        Now we can revisit some of our earlier examples with a new zest. Observe
+        \begin{itemize}
+            \item for the field $\V F = (y, -x, 0)$, we have $\curl \V F = (0, 0, -2) \neq \V 0$, so $\V F$ is not conservative - indeed, we obtained different values for different paths.
+            \item for the field $\V F = (3x^2, 2y, 0)$, we have $\curl \V F = 0$, or $\V F = \grad(x^3 + y^2)$, and indeed we obtained the same answers for both paths.
+            \item for the field $\V F = (y^2e^x, e^y+2ye^x, 0)$, we have $\V F = \grad(e^y + y^2e^x)$, so we can avoid all the integration and directly obtain
+            \begin{align*}
+                \int_{C_3} \V F \cdot d \V x = \left[e^y + y^2e^x\right]^{(0, b, 0)}_{(a, 0, 0)} = e^b + b^2 - 1
+            \end{align*}
+            \item for the field $\V F = 0 \V e_\rho + z \V e_\phi + 0 \V e_z$, we have $\curl (z \V e_\phi) = -\V e\rho \neq 0$. But in fact, even if $\curl \V F$ had vanished, we still could not have concluded that $\V F$ is conservative, because $\V e_\phi$ is undefined on the $z$-axis and so the domain is not simply connected.            
+        \end{itemize}
+    \end{example*}
+    
+    \subsection{Area integrals}
+
+    To integrate over a region $A \subset \RR^2$, we cover $A$ with a large number of small disjoint subsets $\delta A_i$. Then
+    \begin{align*}
+        \int_A f(x, y) \D A = \lim_{\Delta \to 0} \sum_{i=1}^N f(x_i, y_i) \delta A_i
+    \end{align*}
+    where in particular $\Delta$ is the maximum linear dimension of any of the $\delta A_i$.
+
+    Informally, we can think of $\int_A f(x, y) \D A$ as the volume under the graph of $z = f(x, y)$, in analogy with the 1D case.
+
+    Note that $A$ refers to the region, as well as its area: we have
+    \begin{align*}
+        A = \int_A 1 \D A
+    \end{align*}
+    
+    The most obvious way to divide $A$ up is with rectangles parallel to the $x$ and $y$ axes, each with area $\delta x \delta y$. Summing over a horizontal strip with a fixed value of $y$, with constant height $\delta y$ and letting $\delta x \to 0$, we obtain
+    
+    \begin{align*}
+        \left(\int_{X(y)} f(x, y) \D x\right)\delta y
+    \end{align*}
+    where, for each $y$, $X(y) = \{x: (x, y) \in A\}$. We then sum these over the range of $y$, taking $\delta y \to 0$, to obtain
+    \begin{align*}
+        \int_{y_{\min}}^{y_{\max}}\left(\int_{X(y)} f(x, y) \D x\right)\D y
+    \end{align*}
+    But we could have equally well done this the other way to obtain 
+    \begin{align*}
+        \int_{x_{\min}}^{x_{\max}}\left(\int_{Y(x)} f(x, y) \D y\right)\D x
+    \end{align*}
+    
+    \begin{proposition*}[Fubini's theorem]
+        For any reasonable function $f$ over a reasonable $A$, both of these are equal to $\int_A f(x, y) \D A$.
+    \end{proposition*}
+    
+    \begin{remark*}
+        Only very basic conditions are needed. For example, if $f$ is piecewise continuous and the boundary of $A$ is a finite piecewise smooth curve, then Fubini's theorem holds.
+    \end{remark*}
+    
+    Other notations for $\int_A f(x, y) \D A$ include $\int_A f(x, y) \D x \D y$, $\int_A f(\V x) d^2 \V x$, $\iint_A f(x, y) \D A$, $\int_A f(x, y) \D S$ and even $\int dx \int dy\, f(x, y)$.
+
+    \begin{example*}
+        Let us integrate $f(x, y) = xy^2$ over $A$, a triangle with vertices at $(0, 0)$, $(1, 1)$ and $(1, -1)$ (DIAGRAM). We have
+        \begin{align*}
+            \int_A f(x, y) \D A &= \int_0^1 \int_{-x}^x xy^2 \D y dx \\
+            &= \int_0^1 x\left[\frac 1 3 y^3\right]^x_{-x} \D x \\
+            &= \int_0^1 \frac 2 3 x^4 \D x = \frac 2 {15}
+        \end{align*}
+        Alternatively, we could have done
+        \begin{align*}
+            \int_A xy^2 \D A &= \int_{-1}^1 \int_{|y|}{1} xy^2 \D x dy \\
+            &= \int_{-1}^1 y^2 \left[\frac 1 2 x^2\right]_{|y|}^1 \\
+            &= \int_{-1}^1 \frac 1 2 y^2 (1-y^2) \D y \\
+            &= \frac 2 {15}
+        \end{align*}
+        Importantly, the inside integral should have limits specified in terms of $x$ or $y$.       
+    \end{example*}
+    
+    In the special case that $A$ is a rectangle $[a, b] \times [c, d]$ and $f$ is separable, i.e. $f(x, y) = g(x)h(y)$, then
+    \begin{align*}
+        \int_A f(x, y) \D A = \left(\int_a^b g(x) \D x\right)\left(\int_c^d h(y) \D y\right)
+    \end{align*}
+    
+    \subsection{Change of variables for area integrals}
+
+    \begin{proposition*}
+        Let $(u, v) \mapsto (x, y)$ be a bijection from a region $A'$ in the $(u, v)$-plane to a region $A$ in the $(x, y)$-plane. Then
+        \begin{align*}
+            \int_A f(x, y) \D x dy = \int_{A'} F(u, v) \left|\pd{(x,y)}{(u, v)}\right| \D u dv \\
+        \end{align*}
+        where $F(u, v) = f(x(u, v), y(u, v))$ and
+        \begin{align*}
+            J = \pd{(x,y)}{(u, v)} = \det \begin{pmatrix}
+            \pd x u & \pd x v \\
+            \pd y u & \pd y v \\
+            \end{pmatrix}
+        \end{align*}
+        is called the \emph{Jacobian} of the transformation. Importantly, it is the \emph{modulus} of the Jacobian that appears in the integral.
+    \end{proposition*}
+    
+    \begin{remark*}
+        We often call capital $F$ little $f$ instead, although this is an obvious abuse of notation.
+    \end{remark*}
+    
+    \begin{proof}
+        Let us divide $A$ up using curves of constant $u$ and $v$. The area of each region is given by
+        \begin{align*}
+            \left|\pd{\V x}{u} \times \pd{\V x}{v}\right|\D u \D v &= \left|\begin{pmatrix}
+             \pd x u \\
+             \pd y u \\
+             0 \\
+            \end{pmatrix} \times \begin{pmatrix}
+             \pd x v \\
+             \pd y v \\
+             0 \\
+            \end{pmatrix}\right|\D u \D v \\
+            &= \left|\pd x u \pd y v - \pd x v \pd y u\right|\D u \D v \\
+            &= |J| \D u \D v
+        \end{align*}
+        Then we simply need to add up all the infinitesimal areas $f(\V x(u, v)) |J| \D u \D v$.
+    \end{proof}
+    
+    \begin{remark*}
+        A full proof of this result requires first a proof of the cross product expression for the infinitesimal area.
+    \end{remark*}
+    
+    \begin{example*}
+        Consider $\int_A y^2 \D A$ where $A$ is the semi-circular domain $\{(x, y): x^2 + y^2 < R^2, y > 0\}$. We choose plane polar coordinates $(r, \theta)$ with $x = r \cos \theta$, $y = r \sin \theta$. Then, we have a bijection between $A' = \{(r, \theta): r < R, 0 < \theta < \pi\}$, so
+        \begin{align*}
+            \pd{(x, y)}{(r, \theta)} = \det \begin{pmatrix}
+                \pd x r & \pd x \theta \\
+                \pd y r & \pd y \theta \\
+            \end{pmatrix} = \det \begin{pmatrix}
+                \cos \theta & -r \sin \theta \\
+                \sin \theta & r \cos \theta \\
+            \end{pmatrix} = r
+        \end{align*}
+        and so
+        \begin{align*}
+            \int_A y^2 \D A &= \int_{A'} r^2 \sin^2 \theta |r| \D r d\theta \\
+            &= \int_0^R r^3 \D r \int_0^\pi \sin^2 \theta \D \theta \\
+            &= \frac 1 8 \pi R^4
+        \end{align*}
+        DIAGRAM of the area element.        
+    \end{example*}
+    
+    \subsection{Properties of the Jacobian}
+
+    Suppose that $J_1$ is the Jacobian matrix for the transformation $(u, v) \mapsto (x, y)$, and $J_2$ is the Jacobian matrix for $(\xi, \eta) \mapsto (u, v)$. Then, consider the product
+    \begin{align*}
+        J_1J_2 = \begin{pmatrix}
+            \pd x u & \pd x v \\
+            \pd y u & \pd y v \\
+        \end{pmatrix}\begin{pmatrix}
+            \pd u \xi & \pd x \theta \\
+            \pd v \xi & \pd y \theta \\
+        \end{pmatrix}
+    \end{align*}
     
     
     

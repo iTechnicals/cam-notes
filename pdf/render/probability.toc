@@ -8,4 +8,8 @@
 \contentsline {section}{\numberline {4}Probability distributions}{16}{section.56}%
 \contentsline {subsection}{\numberline {4.1}Discrete probability distributions}{16}{subsection.57}%
 \contentsline {subsection}{\numberline {4.2}Random variables}{17}{subsection.65}%
+\contentsline {subsection}{\numberline {4.3}Expectation}{19}{subsection.82}%
+\contentsline {subsection}{\numberline {4.4}Moments, variance and covariance}{22}{subsection.93}%
+\contentsline {subsection}{\numberline {4.5}Inequalities on random variables}{26}{subsection.126}%
+\contentsline {subsection}{\numberline {4.6}Joint distribution and conditional expectation}{30}{subsection.147}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

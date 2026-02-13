@@ -748,7 +748,7 @@
         \begin{align*}
             \Omega = \{0, 1\}^N
         \end{align*}
-        and every $\omega \in Omega$ is of the form $(\omega_1, \dots, \omega_N)$, where $\omega_i$ is the $i^\text{th}$ outcome. Hence
+        and every $\omega \in \Omega$ is of the form $(\omega_1, \dots, \omega_N)$, where $\omega_i$ is the $i^\text{th}$ outcome. Hence
         \begin{align*}
             p_{\omega} = \PP(\{\omega\}) = \prod_{k=1}^N p^{\omega_k} (1-p)^{1-\omega_k}
         \end{align*}
@@ -757,11 +757,629 @@
             P(X_1 = x_1, \dots, X_N = x_N) &= \prod_{k=1}^N p^{x_\omega}(1-p)^{1-x_\omega} \\
             &= \prod_{k=1}^N \PP(X_i = x_i)
         \end{align*}
-        
-        
-        
-        
     \end{example}
+
+    \lecture{Lecture 7 -- 06/02/26}
+    
+    \subsection{Expectation}
+
+    \begin{definition}
+        Suppose $\Omega$ is finite or countable, and let $X: \Omega \to \RR$ be a discrete random variable. We say $X$ is \emph{non-negative} if $X \geq 0$ -- then we define the \emph{expectation} of $X$ by
+        \begin{align*}
+            \EE[X] = \sum_{\omega \in \Omega} \PP(\{\omega\}) \cdot X(\omega)
+        \end{align*}
+    \end{definition}
+    
+    We can equivalently let
+    \begin{align*}
+        \Omega_X = \{X(\omega): \omega \in \Omega\}
+    \end{align*}
+    so that
+    \begin{align*}
+        \EE[X] &= \sum_{\omega \in \Omega}X(\omega) \cdot \PP(\{\omega\}) \\
+        &= \sum_{x \in \Omega_X} \sum_{\omega \in \{X = x\}} X(\omega) \PP(\{\omega\}) \\
+        &= \sum_{x \in \Omega_X} \sum_{\omega \in \{X = x\}} x \PP(\{\omega\}) \\
+        &= \sum_{x \in \Omega_X} x \sum_{\omega \in \{X = x\}} \PP(\{\omega\}) \\
+        &= \sum_{x \in \Omega_X} x \cdot  \PP(X = x)
+    \end{align*}
+    or in other words the average of the values taken by $X$, weighted by their probabilities.
+    
+    \begin{example}
+        Suppose $X \sim \Bin(n, p)$. Then
+        \begin{align*}
+            \EE[X] &= \sum_{k=0}^N k\PP(X = k) \\
+            &= \sum_{k=0}^N k \binom N k p^k (1-p)^{N-k} \\
+            &= \sum_{k=0}^N k \frac{N!}{(N-k)!k!}p^k(1-p)^{N-k} \\
+            &= \sum_{k=0}^{N-1} N \cdot \binom{N-1}{k} p^{k-1} (1-p)^{N-k} \cdot p \\
+            &= Np \cdot (p+1-p)^{N-1} = Np
+        \end{align*}
+    \end{example}
+    
+    \begin{example}
+        Suppose $X \sim \Poi(\lambda)$. Then
+        \begin{align*}
+            \EE[X] &= \sum_{k=0}^\infty k \PP(X = k) \\
+            &= \sum_{k=0}^\infty ke^{-\lambda}\frac{\lambda^k}{k!} \\
+            &= e^{-\lambda} \cdot \lambda \sum_{k=0}^\infty \frac{\lambda^{k-1}}{(k-1)!} = \lambda
+        \end{align*}
+    \end{example}
+    
+    Let $X$ be a random variable -- then we define
+    \begin{align*}
+        X^+ &= \max(X, 0) \\
+        X^- &= \max(-X, 0)
+    \end{align*}
+    so $X = X^+ - X^-$ and $|X| = X^+ + X^-$. Supposing $X$ is discrete, we can define the expectations of $\EE[X^+]$ and $\EE[X^-]$, since they are both non-negative.
+
+    If at least one of $\EE[X^+]$ and $\EE[X^-]$ is finite, we define
+    \begin{align*}
+        \EE[X] = \EE[X^+] - \EE[X^-]
+    \end{align*}
+    If both are infinite, the expectation of $X$ is undefined.
+
+    Also, if $\EE[|X|]$ (which we define in the obvious way) is $< \infty$, we say $X$ is integrable. When $\EE[X]$ is well-defined, we have
+    \begin{align*}
+        \EE[X] = \sum_{x \in \Omega_X} x \cdot \PP(X = x)
+    \end{align*}
+    
+    We have some properties of expectations as follows:
+    \begin{itemize}
+        \item If $X \geq 0$, then $\EE[X] \geq 0$.
+        \item If $X \geq 0$ and $\EE[X] = 0$, then $\PP(X = 0) = 1$.
+        \item If $c \in \RR$, then $\EE[cX] = c\EE[X]$ and $\EE[c + X] = c + \EE[X]$.
+        \item If $X$ and $Y$ are random variables (and $X$, $Y$ integrable), then $\EE[X + Y] = \EE[X] + \EE[Y]$.
+        \item In the countable case, we take $c_1, \dots, c_n \in \RR$ and $X_1, \dots, X_n$ integrable, and then we have
+        \begin{align*}
+            \EE\left[\sum_{i=1}^n c_i X_i\right] = \sum_{i=1}^n c_i \EE[X_i]
+        \end{align*}
+    \end{itemize}
+    
+    Let us give a proof of the final identity in the case where $\Omega$ is countable. We have
+    \begin{align*}
+        \EE\left[\sum_n X_n\right] &= \sum_{\omega \in \Omega} \left(\sum_n X_n(\omega)\right) \PP(\{\omega\}) \\
+        &= \sum_n \sum_{\omega \in \Omega} X_n(\omega) \PP(\{\omega\}) \\
+        &= \sum_n \EE[X_n]
+    \end{align*}
+    where we can interchange sums by the assumption that the random variables are integrable.
+
+    We also have the useful result that, if $X = 1(A)$ for some event $A$,
+    \begin{align*}
+        \EE[X] = \PP(A)
+    \end{align*}
+    
+    \begin{proposition}
+        Let $g: \RR \to \RR$, and define the random variable $g(X)$ by
+        \begin{align*}
+            g(X)(\omega) = g(X(\omega))
+        \end{align*}
+        Then
+        \begin{align*}
+            \EE[g(X)] = \sum_{x \in \Omega_X} g(x) \PP(X = x)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Put $Y = g(X)$, then
+        \begin{align*}
+            \{Y = y\} &= \{\omega: Y(\omega) = y\} \\
+            &= \{\omega: g(X(\omega)) = y\} \\
+            &= \{\omega: X(\omega) \in g^{-1}(\{y\})\} \\
+            &= \{X \in g^{-1}(\{y\})\}
+        \end{align*}
+        Hence
+        \begin{align*}
+            \EE[Y] &= \sum_{y \in \Omega_Y} y \cdot \PP(Y = y) \\
+            &= \sum_{y \in \Omega_Y} y \cdot \PP(X \in g^{-1}(\{y\})) \\
+            &= \sum_{y \in \Omega_Y} y \sum_{x \in g^{-1}(\{y\})} \PP(X = x) \\
+            &= \sum_{y \in \Omega_Y} \sum_{x \in g^{-1}(\{y\})} g(x) \PP(X = x) \\
+            &= \sum_{x \in \Omega_X} g(x) \cdot \PP(X = x)
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}
+        Suppose that $X \geq 0$ and takes integer values. Then
+        \begin{align*}
+            \EE[X] = \sum_{k=1}^\infty \PP(X \geq k) = \sum_{k=0}^\infty \PP(X > k)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Since $X \geq 0$ and $X \in \NN$, we have
+        \begin{align*}
+            X = \sum_{k=1}^\infty 1(X \geq k) = \sum_{k=0}^\infty 1(X > k)
+        \end{align*}
+        Taking expectations, we obtain
+        \begin{align*}
+            \EE[X] &= \EE\left[\sum_{k=1}^\infty 1(X \geq k)\right] &&= \EE\left[\sum_{k=0}^\infty 1(X > k)\right] \\
+            &= \sum_{k=1}^\infty \EE[1(X \geq k)] &&= \sum_{k=0}^\infty \EE[1(X > k)] \\
+            &= \sum_{k=1}^\infty \PP(X \geq k) &&= \sum_{k=0}^\infty \PP(X > k)
+        \end{align*}
+    \end{proof}
+    
+    \lecture{Lecture $n+1$ -- 09/02/26}
+
+    We present another proof of the inclusion-exclusion formula. First, we should establish some properties about indicator functions:
+    \begin{itemize}
+        \item $1(A^\comp) = 1 - 1(A)$;
+        \item $1(A \cap B) = 1(A) \cdot 1(B)$;
+        \item $1(A \cup B) = 1 - (1-1(A))(1-1(B))$.
+    \end{itemize}
+    
+    More generally,
+    \begin{align*}
+        1(A_1 \cup \dots \cup A_n) &= 1 - \prod_{i=1}^n (1-1(A_i)) \\
+        &= \sum_{i=1}^n 1(A_i) - \sum_{1 \leq i_1 < i_2 \leq n} 1(A_{i_1} \cap A_{i_2}) + \dots + (-1)^{n+1} 1(A_1 \cap \dots \cap A_n)
+    \end{align*}
+    Then, we can take expectations of both sides and apply $\EE[1(A)] = \PP(A)$ to get
+    \begin{align*}
+        \PP(A_1 \cup \dots \cup A_n) &= \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \dots \cap A_{i_k})
+    \end{align*}
+    
+    \subsection{Moments, variance and covariance}
+
+    \begin{definition}
+        Let $X$ be a random variable and $r \in \NN$. We call $\EE[X^r]$, as long as it is well-defined, the \emph{$r^\text{th}$ moment} of $X$.
+    \end{definition}
+    
+    \begin{definition}
+        The \emph{variance} of $X$ is given by
+        \begin{align*}
+            \Var(X) = \EE[\left(X-\EE[X]\right)^2]
+        \end{align*}
+        Furthermore, the \emph{standard deviation} of $X$ is given by $\sqrt{\Var(X)}$.        
+    \end{definition}
+    
+    We have some properties of variance as follows:
+    \begin{itemize}
+        \item $\Var(X) \geq 0$, since it is the expectation of a squared quantity;
+        \item If $\Var(X) = 0$, then $\PP(X = \EE[X]) = 1$;
+        \item If $c \in \RR$, then $\Var(cX) = c^2\Var(X)$ and $\Var(X + c) = \Var(X)$.
+    \end{itemize}
+    
+    \begin{lemma}
+        The variance of $X$ is also given by
+        \begin{align*}
+            \Var(X) = \EE[X^2] - \EE[X]^2
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \Var(X) &= \EE[X^2 - 2X\EE[X] + (\EE[X])^2] \\
+            &= \EE[X^2] - 2\EE[X]\EE[X] + (\EE[X])^2 \\
+            &= \EE[X^2] - \EE[X]^2
+        \end{align*}
+    \end{proof}
+    
+    \begin{lemma}
+        The function $\EE[(X-c)^2]$ is minimised when $c=\EE[X]$, and at that point is equal to $\Var(X)$.
+    \end{lemma}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            f(c) &= \EE[(X-c)^2] \\
+            &= \EE[X^2] - 2c\EE[X] + c^2 \\
+            \implies f'(c) &= -2\EE[X] + 2c = 0 \\
+            \implies c &= \EE[X]
+        \end{align*}
+    \end{proof}
+    
+    \begin{example}
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item Suppose $X \sim \Bin(n, p)$. Recall $\EE[X] = np$. We have
+            \begin{align*}
+                \Var(X) = \EE[X(X-1)] + \EE[X] - \EE[X]^2
+            \end{align*}
+            Then
+            \begin{align*}
+                \EE[X(X-1)] &= \sum_{k=2}^n k(k-1) \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k} \\
+                &= (n-1)np^2 \sum_{k=0}^{n-2} \binom{n-2}{k} p^k (1-p)^{n-2-k} \\
+                &= (n-1)np^2
+            \end{align*}
+            so that $\Var(X) = (n-1)np^2 + np - n^2p^2 = np(1-p)$.
+            \item Suppose $X \sim \Poi(\lambda)$. Recall $\EE[X] = \lambda$. We have
+            \begin{align*}
+                \EE[X(X-1)] &= \sum_{k=2}^\infty k(k-1) e^{-\lambda}\frac{\lambda^k}{k!} \\
+                &= e^{-\lambda}l^2 \sum_{k=2}^\infty \frac{\lambda^{k-2}}{(k-2)!} = \lambda^2
+            \end{align*}
+            So $\Var(X) = \lambda^2 + \lambda - \lambda^2 = \lambda$.
+        \end{enumerate}
+    \end{example}
+    
+    \begin{definition}
+        Let $X$ and $Y$ be random variables. Then the \emph{covariance} of $X$ and $Y$ is
+        \begin{align*}
+            \Cov(X, Y) = \EE[(X-\EE[X])(Y-\EE[Y])]
+        \end{align*}
+    \end{definition}
+    We have some properties:
+    \begin{itemize}
+        \item $\Cov(X, Y) = \Cov(Y, X)$;
+        \item $\Cov(X, X) = \Var(X)$;
+        \item for any $c \in \RR$, $\Cov(cX, Y) = c\Cov(X, Y)$ and $\Cov(X + c, Y) = \Cov(X, Y)$;
+        \item for any $c \in \RR$, $\Cov(c, X) = 0$.
+    \end{itemize}
+    
+    \begin{lemma}
+        The covariance of $X$ and $Y$ is given by
+        \begin{align*}
+            \Cov(X, Y) = \EE[XY] - \EE[X]\EE[Y]
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        Expand.
+    \end{proof}
+
+    \begin{lemma}
+        For random variables $X$ and $Y$, we have
+        \begin{align*}
+            \Var(X+Y) = \Var(X) + \Var(Y) + 2\Cov(X, Y)
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \Var(X + Y) &= \EE[((X-\EE[X])+(Y-\EE[Y]))^2] \\
+            &= \Var(X) + 2\Cov(X, Y) + \Var(Y)
+        \end{align*}
+    \end{proof}
+    
+    \begin{lemma}
+        For $c_1, \dots, c_n$ and $d_1, \dots, d_n \in \RR$,
+        \begin{align*}
+            \Cov\left(\sum_{i=1}^n c_iX_i, \sum_{j=1}^n d_iY_i\right) = \sum_{i,j=1}^n c_id_j \Cov(X_i, Y_j)
+        \end{align*}
+    \end{lemma}
+    
+    \begin{corollary}
+        We have
+        \begin{align*}
+            \Var\left(\sum_{i=1}^n X_i\right) &= \Cov\left(\sum_{i=1}^n X_i, \sum_{i=1}^n X_i\right) \\
+            &= \sum_{i=1}^n \Var(X_i) + \sum_{i \neq j}\Cov(X_i, X_j)
+        \end{align*}
+    \end{corollary}
+    
+    Let us consider some results on independence.
+
+    \begin{lemma}
+        Suppose $X_1$, $X_2$ and $X_3$ are independent -- then $X_1$ and $X_2$ are independent.
+    \end{lemma}
+
+    \begin{proof}
+        We have
+        \begin{align*}
+            \PP(X_1 = x_1, X_2 = x_2) &= \sum_{x_3} \PP(X_1 = x_1, X_2 = x_2, X_3 = x_3) \\
+            &= \sum_{x_3} \PP(X_1 = x_1) \PP(X_2 = x_2) \PP(X_3 = x_3) \\
+            &= \PP(X_1 = x_1)\PP(X_2 = x_2)
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        The result obviously generalises to any subset of a set of independent events being independent.
+    \end{remark*}
+    
+    \begin{lemma}
+        Let $X$ and $Y$ be two independent random variables, and let $f$, $g: \RR \to \RR_{+}$. Then
+        \begin{align*}
+            \EE[f(X)g(Y)] &= \EE[f(X)]\EE[g(Y)]
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        Let the random variable $Z = (X, Y)$, so $h(Z) = f(X)g(Y)$. Then
+        \begin{align*}
+            \EE[h(Z)] &= \sum_{(x, y)}h(x, y) \PP(Z = (x, y)) \\
+            &= \sum_{(x, y)}f(x)g(y) \PP(X = x, Y = y) \\
+            &= \sum_{(x, y)}f(x)g(y) \PP(X = x)\PP(Y = y) \\
+            &= \EE[f(X)] \cdot \EE[g(Y)]
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}
+        If $X$ and $Y$ are independent, $\Cov(X, Y) = 0$.
+    \end{proposition}
+    
+    \begin{remark*}
+        The converse is not true.
+    \end{remark*}
+    
+    \begin{example}
+        Let $X_1, X_2, X_3$ be independent Bernoulli random variables with $p=\frac{1}{2}$. Let $Y_1 = 2X_1-1$, $Y_2 = 2X_2-1$. Also let $Z_1 = Y_1X_3$, $Z_2 = Y_2X_3$. Then $\EE[Y_1] = \EE[Y_2] = 0$, and $\EE[Z_1] = \EE[Z_2] = 0$ by independence. Then
+        \begin{align*}
+            \Cov(Z_1, Z_2) = \EE[Z_1Z_2] = \EE[Y_1Y_2X_3^2]
+        \end{align*}
+        But we claim $Z_1$ and $Z_2$ are not independent. Observe $\PP(Z_1 = 0, Z_2 = 0) = \PP(X_3 = 0) = \frac{1}{2}$. But $\PP(Z_1 = 0) = \PP(Z_2 = 0) = \frac 1 2$.
+    \end{example}
+    
+    \subsection{Inequalities on random variables}
+
+    \begin{proposition}[Markov's inequality]
+        Let $X$ be a non-negative random variable and $a > 0$. Then
+        \begin{align*}
+            \PP(X \geq a) \leq \frac{\EE[X]}{a}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            X &\geq a \cdot 1(X \geq a) \\
+            \implies E[X] &\geq a \cdot \PP(X \geq a)
+        \end{align*}
+        by taking expectations.
+    \end{proof}
+    
+    \begin{proposition}[Chebyshev's inequality]
+        Let $X$ be a random variable with $\EE[X] < \infty$. Then, for any $a > 0$,
+        \begin{align*}
+            \PP(|X - \EE[X]| \geq a) \leq \frac{\Var(X)}{a^2}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            \PP(|X-\EE[X]| \geq a) &= \PP((X-\EE[X])^2 \geq a^2) \\
+            &\leq \frac{\EE[(X-\EE[X])^2]}{a^2} && \text{by Markov}\\
+            &= \frac{\Var(X)}{a^2}
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}[Cauchy-Schwarz]
+        Let $X$ and $Y$ be random variables, then
+        \begin{align*}
+            \EE[|XY|] \leq \sqrt{\EE[X^2] \cdot \EE[Y^2]}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Assume that $\EE[X^2]$ and $\EE[Y^2]$ are finite, otherwise there is nothing to prove. Then, $|XY| \leq \frac 1 2 (X^2 + Y^2)$, so, taking expectations, $\EE[|XY|]$ is also finite. We may also assume $\EE[X^2] > 0$, $\EE[Y^2] > 0$. Let us also assume for the time being that $X, Y \geq 0$.
+
+        Let $t \in \RR$ and consider $(X-tY)^2$. We have
+        \begin{align*}
+            0 &\leq \EE[(X-tY)^2] \\
+            &= \EE[X^2] - 2t\EE[XY] + t^2\EE[Y^2] := f(t)
+        \end{align*}
+        Then $f'(t) = -2\EE[XY] + 2t\EE[Y^2]$, so $\min f(t)$ is achieved at $t^* = \frac{\EE[XY]}{\EE[Y^2]}$. We hence have
+        \begin{align*}
+            0 &\leq \EE[X^2] - 2\frac{\EE[XY]^2}{\EE[Y^2]} + \frac{\EE[XY]^2}{\EE[Y^2]} \\
+            \implies \EE[XY]^2 &\leq \EE[X^2] \cdot \EE[Y^2]
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        We could also have just put in our value for $t*$ from the beginning -- the minimisation approach is purely to provide rationale.
+    \end{remark*}
+    
+    \begin{remark*}
+        When is equality achieved? We would need $f(t^*) = 0$, that is
+        \begin{align*}
+            \EE[(X - t^*Y)^2] &= 0 \\
+            \implies P(X = t^*Y) &= \PP(X - t^*Y = 0) = 1
+        \end{align*}
+        so $X$ is just a multiple of $Y$.        
+    \end{remark*}
+    
+    \begin{definition}[Convexity]
+        A function $f: \RR \to \RR$ is called \emph{convex} if, for any $x$, $y \in \RR$ and any $t \in [0, 1]$,
+        \begin{align*}
+            f(tx + (1-t)y) \leq tf(x) + (1-t)f(y)
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}[Jensen's inequality]
+        Let $X$ be a random variable, and $X: \RR \to \RR$ a convex function. Then
+        \begin{align*}
+            \EE[f(X)] \geq f(\EE[X])
+        \end{align*}
+    \end{proposition}
+    
+    \begin{remark*}
+        We can remember the direction of the inequality by putting $f(x) = x^2$ and using non-negativity of the variance.
+    \end{remark*}
+    
+    \begin{lemma}
+        Let $f: \RR \to \RR$ be a convex function. Then $f$ is the supremum of all the lines lying below it. In other words, for all $m$ in $\RR$, there exist $a$, $b$ in $\RR$ such that $f(m) = am + b$ and $f(x) \geq ax + b$ for all $x$.
+    \end{lemma}
+    
+    \begin{proof}[Proof of lemma]
+        Let $m \in \RR$, and suppose $x < m < y$. Then $m = tx + (1-t)y$ for some $t \in [0, 1]$, or, equivalently,
+        \begin{align*}
+            t(m-x) = (1-t)(y-m) && (*)
+        \end{align*}
+        By convexity, we have
+        \begin{align*}
+            f(m) = f(tx + (1-t)y) &\leq tf(x) + (1-t)f(y) \\
+            \implies t(f(m) - f(x)) &\leq (1-t)(f(y)-f(m)) \\
+            (*) \implies \frac{f(m)-f(x)}{m-x} &\leq \frac{f(y)-f(m)}{y-m}
+        \end{align*}
+        Then set
+        \begin{align*}
+            a = \sup_{x < m} \frac{f(m)-f(x)}{m-x}
+        \end{align*}
+        so that, for any $x < m < y$,
+        \begin{align*}
+             \frac{f(m)-f(x)}{m-x} \leq a \leq \frac{f(y)-f(m)}{y-m}
+        \end{align*}
+        Hence, by rearrangement, we conclude $f(z) \geq a(z-m) + f(m)$, for any $z$ (depending on whether $z$ is greater than $m$ or less than $m$, we use either the left or right inequality.)        
+    \end{proof}
+    
+    \begin{proof}[Proof of proposition]
+        Let $m = \EE[X]$. By the claim, we have $a$, $b \in \RR$ such that $f(m) = am + b$ and $f(x) \geq ax + b$ for all $x$. We have
+        \begin{align*}
+            f(X) &\geq aX + b \\
+            \implies \EE[f(X)] &\geq a\EE[X] + b = am + b = f(m) = f(\EE[X])
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        When is equality achieved?
+        
+        Suppose $f$ convex with the extra property that, for $n = \EE[X]$, there exist $a$, $b \in \RR$ with $f(m) = am + b$ but $f(x) > ax + b$, note the strict inequality, for $x \neq m$. When should $X$ satisfy $\EE[f(X)] = f(\EE[X])$?
+
+        Since $f(X) \geq aX + b$, we have $f(X) - (aX + b) \geq 0$. Taking expectations, we have
+        \begin{align*}
+            \EE[f(X)] \geq a\EE[X] + b = am + b = f(m) = f(\EE[X])
+        \end{align*}
+        Since we want $\EE[f(X)] = f(\EE[X])$, we must have
+        \begin{align*}
+            \EE[f(X) - (aX + b)] &= 0 \\
+            \implies \PP(f(X) = aX + b) &= 1
+        \end{align*}
+        but then, since $f(x) > ax + b$ for $x \neq m$, we conclude $\PP(X = m) = 1$ (if we didn't have that extra part, we'd conclude $f$ is just a linear function).
+        
+    \end{remark*}
+
+    \lecture{Lecture $n+1$}
+
+    \begin{proposition}[AM-GM inequality]
+        Let $x_1, \dots, x_n > 0$. Then 
+        \begin{align*}
+            \left(\prod_{k=1}^n x_k\right)^{\frac 1 n} \leq \frac 1 n \sum_{k=1}^n x_k
+        \end{align*}
+    \end{proposition}
+    
+    \begin{lemma}
+        Let $f$ be a convex function. Then, for any $x_1, \dots, x_n \in \RR$ we have
+        \begin{align*}
+            \frac 1 n \sum_{k=1}^n f(x_k) \geq f\left(\frac 1 n \sum_{k=1}^n x_k\right)
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}[Proof of lemma]
+        Let $X$ be a random variable with $\PP(X = x_i) = \frac 1 n$, $i=1, \dots, n$. Then
+        \begin{align*}
+            \frac 1 n \sum_{k=1}^n f(x_k) = \sum_x f(x) \PP(X = x) = \EE[f(X)]
+        \end{align*}
+        so Jensen's gives
+        \begin{align*}
+            \EE[f(X)] \geq f(\EE[X]) = f\left(\frac 1 n \sum_{k=1}^n x_k\right)
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    \begin{proof}[Proof of proposition]
+        Let $f(x) = -\log x$ and suppose $x_1, \dots, x_n > 0$. Then
+        \begin{align*}
+            -\frac 1 n \sum_{k=1}^n \log x_k &\geq -\log \left(\frac 1 n \sum_{k=1}^n x_n\right) \\
+            \implies \left(\prod_{k=1}^n x_k\right)^{\frac 1 n} &\leq \frac 1 n \sum_{k=1}^n x_k
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    \subsection{Joint distribution and conditional expectation}
+
+    Recall if $X$ is a discrete random variable, then the disttribution of $X$ is $(\PP(X = x))_x$.
+
+    \begin{definition}
+        Let $X_1, \dots, X_n$ be discrete random variables. Their \emph{joint distribution} is defined to be the set of values of
+        \begin{align*}
+            \PP(X_1 = x_1, \dots, X_n = x_n)
+        \end{align*}
+        for any $x_1, \dots, x_n$.        
+    \end{definition}
+    
+    \begin{remark*}
+        We can recover the distribution of any one of the variables from such a joint distribution with
+        \begin{align*}
+            \PP(X_1 = x_1) = \sum_{x_2, \dots, x_n} \PP(X_1 = x_1, X_2 = x_2, \dots, X_n = x_n)
+        \end{align*}
+        In this context the distribution of the single variable is sometimes called its \emph{marginal} distribution.        
+    \end{remark*}
+    
+    \begin{definition}
+        Let $X$ and $Y$ be discrete random variables. The \emph{conditional distribution} of $X$ given $Y = y$ is
+        \begin{align*}
+            \PP(X = x \mid Y = y) = \frac{\PP(X = x, Y = y)}{\PP(Y = y)}
+        \end{align*}
+    \end{definition}
+    By the law of probability we of course have
+    \begin{align*}
+        \PP(X = x) = \sum_y \PP(X = x\mid Y = y)\PP(Y = y)
+    \end{align*}
+    
+    % \subsubsection{Distribution of the sum of independent random variables}
+
+    Let $X$ and $Y$ be independent -- what is the distribution of $X+Y$? We have
+    \begin{align*}
+        \PP(X + Y = z) &= \sum_y \PP(X + Y = z, Y = y) \\
+        &= \sum_y \PP(X = z-y, Y = y) \\
+        &= \sum_y \PP(X = z-y)\PP(Y = y)
+    \end{align*}
+    where the last line is by independence. This is of course a convolution.
+
+    \begin{example*}
+        Let $X \sim \Poi(\lambda)$ and $Y \sim \Poi(\mu)$, with $\lambda, \mu > 0$ and $X \perp Y$. Then
+        \begin{align*}
+            \PP(X + Y = n) &= \sum_{k=0}^n \PP(X = n-k)\PP(Y = k) \\
+            &= e^{-\lambda}\frac{\lambda^{n-k}}{(n-k)!} \cdot e^{-\mu}\frac{\mu^k}{k!} \\
+            &= \frac{e^{-(\lambda+\mu)}}{n!} \sum_{k=0}^n \binom n k \lambda^{n-k} \mu^k \\
+            &= e^{-(\lambda+\mu)}\frac{(\lambda+\mu)^n}{n!}
+        \end{align*}
+        so in particular $X + Y \sim \Poi(\lambda + \mu)$.        
+    \end{example*}
+    Let us derive conditional expectation for random variables. First, take $B \in \mathcal F$ to be an event with $\PP(B) > 0$. We have
+    \begin{align*}
+        \EE[X \mid B] = \frac{\EE[X \cdot 1(B)]}{\PP(B)}
+    \end{align*}
+    and, if $X = 1(A)$, then
+    \begin{align*}
+        \EE[1(A) \mid B] = \frac{\EE[1(A) \cdot 1(B)]}{\PP(B)} = \frac{\EE[1(A \cap B)]}{\PP(B)} = \PP(A \mid B)
+    \end{align*}
+    We can now formulate the \emph{law of total expectation}.
+    \begin{proposition}[Law of total expectation]
+        Let $X$ be a random variable and $(\Omega_n)$ a partition of $\Omega$ with $\PP(\Omega_n) > 0$ for any $n$. Then
+        \begin{align*}
+            \EE[X] = \sum_n \EE[X \mid \Omega_n] \PP(\Omega_n)
+        \end{align*}
+    \end{proposition}
+    \begin{proof}
+        Use indicators. We have
+        \begin{align*}
+            \EE[X] = \EE[X \cdot 1(\Omega)] = \EE\left[X \cdot \sum_n 1(\Omega_n)\right] = \sum_n \EE[X \mid \Omega_n]\PP(\Omega_n)
+        \end{align*}
+    \end{proof}
+    Now, we want to condition expectation not on an event but on a particular random variable. We have
+    \begin{align*}
+        \EE[X \mid Y = y] &= \frac{\EE[X \cdot 1(Y=y)]}{\PP(Y=y)} \\
+        &= \sum_x x \cdot \frac{\PP(X = x, Y = y)}{\PP(Y = y)} \\
+        &= \sum_x x \cdot \PP(X = x \mid Y = y)
+    \end{align*}
+    Let us now define $g(y) = \EE[X \mid Y = y]$.
+    \begin{definition}
+        The expectation of $X$ given $Y$, $\EE[X \mid Y]$, is a random variable which is a function of $Y$. In particular,
+        \begin{align*}
+            \EE[X \mid Y] = g(Y)
+        \end{align*}
+    \end{definition}
+    
+    \begin{example*}
+        Toss a $p$-coin independently $n$ times, and let $X_i = 1(i^\text{th} \text{ toss is H})$. Let $Y_n = X_1 + \dots + X_n$. Let us attempt to calculate $\EE[X_1 \mid Y_n]$. First, let
+        \begin{align*}
+            g(y) = \EE[X_1 \mid Y_n = y] &= \frac{\EE[X_1 \cdot 1(Y_n=y)]}{\PP(Y_n=y)} \\
+            &= \frac{\PP(X_1 = 1, Y_n = y)}{\PP(Y_n=y)} \\
+            &= \frac{p \binom{n-1}{y-1} p^{y-1} (1-p)^{n-y}}{\binom{n}{y} p^y (1-p)^{n-y}} \\
+            &= \frac{y}{n}
+        \end{align*}
+        Hence, $\EE[X_1 \mid Y_n] = \frac{Y_n}{n}$.        
+    \end{example*}
+    We have some simple and uninspiring properties:
+    \begin{itemize}
+        \item $\EE[cX \mid Y] = c\EE[X \mid Y]$;
+        \item $\EE[c + X \mid Y] = c + \EE[X \mid Y]$;
+        \item $\EE[c \mid Y] = c$;
+        \item If $X_1, \dots, X_n$ are random variables,
+        \begin{align*}
+            \EE\left[\sum_{i=1}^n X_i \mid Y\right] = \sum_{i=1}^n \EE[X_i \mid Y]
+        \end{align*}
+        
+        
+    \end{itemize}
+    
     
     
     

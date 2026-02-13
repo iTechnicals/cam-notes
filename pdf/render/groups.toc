@@ -14,8 +14,8 @@
 \contentsline {subsection}{\numberline {6.1}Normal subgroups}{30}{subsection.249}%
 \contentsline {section}{\numberline {7}Permutations}{33}{section.274}%
 \contentsline {section}{\numberline {8}Matrix groups}{41}{section.322}%
-\contentsline {subsection}{\numberline {8.1}Change of basis}{41}{subsection.333}%
-\contentsline {subsection}{\numberline {8.2}M\"obius transformations: a new perspective}{42}{subsection.336}%
-\contentsline {subsection}{\numberline {8.3}Orthogonal groups}{43}{subsection.340}%
-\contentsline {section}{\numberline {9}Platonic solids}{47}{section.371}%
+\contentsline {subsection}{\numberline {8.1}Change of basis}{42}{subsection.333}%
+\contentsline {subsection}{\numberline {8.2}M\"obius transformations: a new perspective}{43}{subsection.336}%
+\contentsline {subsection}{\numberline {8.3}Orthogonal groups}{44}{subsection.340}%
+\contentsline {section}{\numberline {9}Platonic solids}{48}{section.371}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

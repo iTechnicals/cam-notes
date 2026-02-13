@@ -706,6 +706,141 @@
         \end{itemize}
     \end{example}
     
+    \lecture{Lecture $n$}
+
+    \begin{lemma}
+        Let $f$, $g: X \subseteq \CC \to \CC$ be continuous at $a \in \CC$. Then, so are $\lambda f + g$ for $\lambda \in \CC$ fixed, $fg$ and, if $f(z) \neq 0$ for any $z \in X$, $1/f(z)$.
+    \end{lemma}
+    
+    \begin{lemma}
+        Let $U$, $V \subseteq \CC$, and $f: U \to V$, $g: V \to \CC$. Suppose $f$ is continuous at $a \in U$ and $g$ is continuous at $f(a) \in V$ -- then, $g \circ f: U \to \CC$ is continuous at $a$.
+    \end{lemma}
+    
+    \begin{proof}
+        Since $g$ is continuous at $f(a)$, we have $\sigma = \sigma(\eps)$ such that $y \in V$, $|y-f(a)| < \sigma$ implies $|g(y) - g(f(a))| < eps$. Furthermore, since $f$ is continuous at $a$, we have for any $\sigma$ a $\delta = \delta(\sigma) = \delta(\eps)$ such that
+        \begin{align*}
+            z \in V, |z-a| < \delta \implies |f(z) - f(a)| < \sigma \implies |g(f(z)) - g(f(a))| < \eps
+        \end{align*}
+    \end{proof}
+    
+    There is another, equivalent notion of continuity which is extremely useful.
+
+    \begin{definition}[Sequential continuity]
+        Let $f: X \subseteq \CC \to \CC$. We say $f$ is \emph{sequentially continuous} at $a \in X$ if $f(z_n) \to f(a)$ for all $(z_n)$ on $X$ with $z_n \to a$.
+    \end{definition}
+    
+    \begin{proposition}
+        Let $f: X \subseteq \CC \to \CC$. Then $f$ is continuous if and only if it is sequentially continuous.
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] By continuity of $f$, for any $\eps > 0$ we have $\delta$ such that $|z-a| < \delta$, $z \in X$ implies $|f(z) - f(a)| < \eps$. Take $(z_n)$ on $X$ with $z_n \to a$, then 
+        \end{itemize}
+        
+        
+    \end{proof}
+    
+    
+    
+
+    \subsection{Extreme value theorem}
+
+    \begin{definition}[Closed sets]
+        A set $X \subseteq \CC$ is \emph{closed} if all sequences $(x_n)$ in $X$ which converge in $\CC$ have limits in $X$.
+    \end{definition}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item The closed interval $[0, 1]$ is closed, while the open interval $(0, 1)$ is not.
+            \item $[0, 1)$ and $(0, 1]$ are not closed.
+            \item $[0, \infty)$ is closed, while $(0, \infty]$ is not.
+        \end{itemize}
+    \end{example*}
+
+    \begin{definition}[Bounded sets]
+        We say $X \subseteq \CC$ is \emph{bounded} if there exists $M > 0$ such that $X \subseteq \{z \in \CC: |z| \leq M\}$, or in other words $\sup_{z \in X} |z| \leq M$.
+    \end{definition}
+    
+    \begin{example*}
+        $[0, 1]$, $(0, 1)$, $[0, 1)$ and $(0, 1]$ are all bounded, while $[0, \infty)$ and $(0, \infty)$ are not.
+    \end{example*}
+    
+    \begin{proposition}
+        \label{cts-preserves-cbdd}
+        Let $X \subseteq \CC$ be a closed bounded set. If $f: X \to \CC$ is continuous, then $f(X) \subseteq \CC$ is a closed bounded subset of $\CC$.
+    \end{proposition}
+
+    \begin{proof}
+        \begin{itemize}
+            \item \emph{$f(X)$ is bounded}. Suppose not. Then, for each $n \in \NN$, we can find $x_n \in X$ such that $|f(x_n)| > n$. Now, $(x_n)$ is a sequence in $X$, so it must be bounded, so Bolzano-Weierstrass applies -- there exists a convergent subsequence $(x_{n_k})$ such that $x_{n_k} \to x$ and, by closedness of $X$, $x \in X$. On the other hand, $|f(x_{n_k})| > n_k \geq k$, so $f(x_{n_k})$ cannot converge as $k \to \infty$. But then $f$ is not continuous, since it is not sequentially continuous.
+            \item \emph{$f(X)$ is closed}. Take $(y_n)$ in $f(X)$, and suppose it converges to some $y \in \CC$ -- we want to show $y \in f(X)$. Since $y_n \in f(X)$, we have $x_n \in X$ such that $f(x_n) = y_n$, and $(x_n)$ has a subsequence $(x_{n_k})$ converging to $x \in X$ by the closure of $X$ and the Bolzano-Weierstrass theorem. By continuity of $f$,
+            \begin{align*}
+                y = \lim_{k \to \infty} y_{n_k} = \lim_{k \to \infty} f(x_{n_k}) = f\left(\lim_{k \to \infty} x_{n_k}\right) = f(x)
+            \end{align*}
+            which was what we wanted.            
+        \end{itemize}
+        
+        
+    \end{proof}
+    
+
+    \begin{theorem}[Extreme value theorem]
+        Let $X \subseteq \RR$ be a closed bounded set, and let $f: X \to \RR$ be continuous. Then there exist $a$, $b \in X$ satisfying
+        \begin{align*}
+            f(a) = \sup f(X); \qquad f(b) = \inf f(X)
+        \end{align*}
+    \end{theorem}
+
+    \lecture{Lecture $n+1$}
+    
+    \begin{proof}
+        We will consider specifically the supremum, since the infimum is analogous.
+
+        Let $M = \sup f(X)$. By definition, $M - \frac 1 n$ is not an upper bound on $f(X)$ for any $n \in \NN$, that is, we can find a sequence $(y_n)$ with elements in $f(X)$ such that $M - \frac 1 n < y_n \leq M$, which produces a sequence $(x_n)$ on $X$ such that $M - \frac 1 n < f(x_n) \leq M$. Now take limits and use the fact that $f$ is continuous -- we have $M \leq \lim_{n \to \infty} f(x_n) \leq M$.
+
+        Finally, by \cref{cts-preserves-cbdd}, we know that, since $(y_n)$ is a sequence in $f(X)$, its limit is also in the image of $X$.        
+    \end{proof}
+
+    \begin{remark*}
+        We know that the sup and inf exist -- the key point is that $f$ actually achieves both of these.
+    \end{remark*}
+    
+    \subsection{Intermediate value theorem}
+    
+    \begin{theorem}[Intermediate value theorem]
+        If $f: [a, b] \to \RR$ is continuous then, for any $y$ satisfying $f(a) \leq y \leq f(b)$, there exists $x$ satisfying $a \leq x \leq b$ such that $f(x) = y$.
+    \end{theorem}
+    
+    \begin{proof}
+        If $f$ is constant, then the result is clear. If not, wlog let $f(a) \leq f(b)$. Set $S = \{x \in [a, b]: f(x) \leq y\}$. Then $a \in S$, so $S$ is non-empty -- furthermore, $S$ is bounded above by $b$, so we have $c = \sup S \in [a, b]$. We claim that $f(c) = y$. Observe:
+        \begin{itemize}
+            \item We claim $f(c) \leq y$. Suppose not. Then $\eps = f(c) - y > 0$. By continuity of $f$, we have $\delta$ such that $|x-c| < \delta$, $x \in [a, b]$ implies $|f(x) - f(c)| < \eps$, so $f(x) > f(c) - \eps = y$, so $x \notin S$. This means $(c - \delta, c) \cap S = \emptyset$, which contradicts the definition of $c$ (in particular that $c$ is the least upper bound).
+            \item We claim $f(c) \geq y$. Suppose not. Then $\eps = y - f(c) > 0$. By continuity of $f$, we have $\delta$ such that $|x-c| < \delta$, $x \in [a, b]$ implies $|f(x) - f(c)| < \eps$, so $f(x) < f(c) + \eps = y$. But then $f(c + \frac{\delta}2) < y$, so $c \leq c + \frac{\delta}2 \in S$, which contradicts the definition of $c$ (in particular that $c$ is an upper bound).
+        \end{itemize}
+        The result follows.        
+    \end{proof}
+    
+    \begin{remark*}
+        A nice interpretation of this theorem is that continuous functions from reals to reals map intervals to intervals.
+    \end{remark*}
+    
+    \begin{example*}
+        We can use this result to show the existence of $n^\text{th}$ roots. Take $t > 0$ and $N \in \NN$, and consider
+        \begin{align*}
+            f: [0, 1 + t] &\to \RR \\
+            x &\mapsto x^N
+        \end{align*}
+        This is continuous, and $f(0) = 0 < t < (1+t)^N = f(1+t)$. Hence, there exists a $c$ satisfying $c^N = t$ by the intermediate value theorem. Note that we do not have uniqueness.        
+    \end{example*}
+    
+    \begin{definition}[Monotone functions]
+        A function $f: [a, b] \to \RR$ is \emph{monotone} if it is either increasing, $x_1 \leq x_2 \implies f(x_1) \leq f(x_2)$; or decreasing, $x_1 \leq x_2 \implies f(x_2) \leq f(x_1)$.
+    \end{definition}
+    
+    \begin{proposition}[Inverse function theorem]
+        Let $f: [a, b] \to \RR$ be continuous and strictly monotone. Let $c = \min(f(a), f(b))$, $d = \max(f(a), f(b))$. Then $f: [a, b] \to [c, d]$ is a bijection, and $f^{-1}: [c, d] \to [a, b]$ is continuous and strictly monotone.
+    \end{proposition}
     
     
     

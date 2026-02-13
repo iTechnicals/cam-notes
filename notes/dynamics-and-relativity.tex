@@ -62,13 +62,15 @@
 
     \subsection{Newton's second law}
 
-    In an inertial frame,
-
-    \begin{align*}
-        \dot{\vec p} = \vec F
-    \end{align*}
+    \begin{theorem}[Newton's second law]
+        In an inertial frame,
+        \begin{align*}
+            \dot{\vec p} = \vec F
+        \end{align*}
+        where the \emph{momentum} $\vec p$ is $m \vec v$, where $m$ is the \emph{inertial mass}, mass for short.
+    \end{theorem}
     
-    where the \emph{momentum} $\vec p$ is $m \vec v$, where $m$ is the \emph{inertial mass}, mass for short. The mass is an additional property for point particles that we take to be constant in time unless otherwise stated.
+    The mass is an additional property for point particles that we take to be constant in time unless otherwise stated.
 
     The force $\vec F$ depends on the ongoing interactions, but it can only depend (axiomatically) on $\vec x$ and $\vec v$. This implies that Newton's second law is a second-order differential equation, and that, given $\vec x$ and $\vec v$ at $t=0$ for all particles, Newton's equations will uniquely determine $\vec x(t)$ for all future times.
 
@@ -77,7 +79,8 @@
     \subsection{Conservative forces}
 
     \begin{definition}
-        A force $\vec F$ is called \emph{conservative} if it can be written\begin{align*}
+        A force $\vec F$ is called \emph{conservative} if it can be written
+        \begin{align*}
             \vec F = -\grad V
         \end{align*}
         for some \emph{potential} scalar field $V$.
@@ -774,10 +777,209 @@
         which is constant by conservation of angular momentum.
     \end{proof}
     
+    \lecture{Lecture $n$}
+
+    \begin{proposition}[Kepler's third law]
+        The orbital period $T$ is proportional to the radius $R^{3/2}$.
+    \end{proposition}
+    
+    \begin{proof}[Dimensional analysis]
+        It's natural to first show this using dimensional analysis. The only parameter in Newton's equation is $k = GM$ (since $m$ cancels). Hence, the period is
+        \begin{align*}
+            T &= cR^Ak^B \\
+            \implies \si{L} &= \si{L^A L^{3B} T^{-2B}}
+        \end{align*}
+        which gives $B = -\frac 1 2$, $A = \frac 3 2$, giving $T = c\frac{R^{3/2}}{k^{1/2}}$ as required.  
+        
+        We should remark that, since there is no canonical `radius' for an ellipse, this $c$ depends on whether we pick the semi-major axis, semi-minor axis or anything in between.
+    \end{proof}
+
+    \begin{proof}[Direct]
+        It is in fact true that K3 only holds for inverse-square law orbits, which is a subtlety we would not notice doing dimensional analysis. So let us derive the law directly. Recall that $\frac{dA}{dt} = \frac l 2$. Then
+        \begin{align*}
+            T = \int_0^T \D t &= \int_0^A \frac 2 l \D A \\
+            &= \frac{2\pi ab}{l} \\
+            &= \frac{2\pi} l \cdot \frac{r_0^2}{(1-e^2)^{3/2}}
+        \end{align*}
+        Let us recall also that $l^2 = kr_0$, so we have
+        \begin{align*}
+            T &= \frac{2\pi}{\sqrt{GM}}\left(\frac{r_0}{1-e^2}\right)^{3/2} \\
+            &= \frac{2\pi}{\sqrt{GM}}R_\text{avg}^{3/2}
+        \end{align*}
+        because
+        \begin{align*}
+            \frac{r_0}{1-e^2} = \frac 1 2 \left(\frac{r_0}{1+e} + \frac{r_0}{1-e}\right)
+        \end{align*}
+        which are the minimum and maximum radii respectively. This concludes the proof.
+    \end{proof}
+    
+    \subsection{Repulsive potentials and scattering}
+
+    Given a central potential $V(r)$ satisfying $V \to 0$ as $r \to \infty$, one can perform \emph{scattering experiments} -- shoot a particle in from large $r$ and see how it flies out again. We have an important new concept.
+
+    \begin{definition}[Impact parameter]
+        The \emph{impact parameter} for a scattering experiment, $b$, is the closest the particle would have come to the target in the absence of forces.
+    \end{definition}
+
+    \begin{proposition}
+        The impact parameter $b$ satisfies
+        \begin{align*}
+            l = bv
+        \end{align*}
+        where $l$ is the (specific) angular momentum, and $v$ is the particle's initial velocity.        
+    \end{proposition}
+    
+    \begin{proof}
+        If we imagine the particle proceeding along the path without forces, it will have velocity $v$ at the point of closest approach, in particular $b$. At this point, the vector $\V v$ is orthogonal to the radial vector from the central object to the particle, so $|\V v \times \V r| = |\V v||\V r| = vb$. Since angular momentum is conserved, this must hold for the particle anywhere along its path, even when forces are applied.
+    \end{proof}
+    
+    Let us consider the Rutherford scattering experiment, which showed the existence of the nucleus. For two positively charged particles, we have a potential of
+    \begin{align*}
+        V = \frac{\kappa}{r}
+    \end{align*}
+    where $\kappa$ is $\frac{qQ}{4\pi\eps_0}$ (this is just Coulomb's law).
+
+    We may reuse results from the Kepler problem, replacing all instances of $-km$ with $\kappa$. In particular, the orbits are still
+    \begin{align*}
+        r = \frac{r_0}{\tilde e \cos \theta - 1}
+    \end{align*}
+    with $r_0 = \frac{l^2m}{\kappa}$ (note we've changed some signs but it is in fact the same equation). We want to find the scattering angle $\phi$ between the particle's incoming and outgoing paths.
+
+    First, note the incoming and outgoing impact parameters are equal, since angular momentum is conserved and, at a given distance, the speed is the same by symmetry or the conservation of energy. Looking at the orbit equation, we can clearly see that $r$ goes to infinity when the denominator is zero, i.e. $\tilde e \cos \theta = 1$. Let us consider energies. We have
+    \begin{align*}
+        \frac 1 2 mv^2 &= \frac{\kappa^2}{2l^2m} \left(\tilde e^2 - 1\right) \\
+        &= \frac{\kappa^2}{2m(bv)^2} \left(\frac{1}{\cos^2 \theta}-1\right) \\
+        &= \frac{\kappa^2}{2mb^2v^2} \tan^2 \theta
+    \end{align*}
+    Also, we can see (DIAGRAM!!!!) that the angle of deviation of the particle's path, $\phi$, satisfies $\phi + 2\theta = \pi$, so
+    \begin{align*}
+        \tan \theta = \tan \left(\frac{\pi-\phi}2\right) = \frac 1 {\tan \frac{\phi}2}
+    \end{align*}
+    Hence
+    \begin{align*}
+        \frac 1 2 mv^2 &= \frac{\kappa^2}{2mb^2v^2} \cdot \frac 1 {\tan^2 \frac{\phi}2} \\
+        \implies \phi &= 2 \arctan \left(\frac \kappa{bmv^2}\right)
+    \end{align*}
+    We see that a small $b$ leads to a large scattering angle, which allows scattering experiments to probe very small distances.
+
+    \section{Systems of particles}
+    
+    Let us consider now systems of $N$ particles, labelled with $i = 1, \dots, n$. Each particle has position $\V x_i$, mass $m_i$ and momentum $\V p_i = m_i \dot{\V x}_i$. And of course each particle obeys Newton's law.
+    
+    The force $\V F_i$ on the $i^\text{th}$ particle can be either \emph{external} or due to the other particles:
+    \begin{align*}
+        \V F_i = \V F_i^\text{ext} + \sum_{i \neq j} \V F_{ij}
+    \end{align*}
+    where $\V F_{ij}$ is the force on the $i^\text{th}$ particle due to the $j^\text{th}$ particle.
+    
+    We have the following important result:
+    \begin{theorem}[Newton's third law]
+        For two particles with labels $i$, $j$,
+        \begin{align*}
+            \V F_{ij} = -\V F_{ji}
+        \end{align*}
+        -- or, in words, `every action has an equal and opposite reaction.'
+    \end{theorem}
+
+    \lecture{Lecture $n+1$}
+    
+    Let us consider some consequence of Newton's third law for systems of particles.
+
+    \subsection{Centre of mass}
+
+    The total mass is $M = \sum_{i=1}^N M_i$. We define the \emph{centre of mass}
+    \begin{align*}
+        \V R = \frac 1 M \sum_{i=1}^N M_i \V x_i
+    \end{align*}
+    so the total momentum is
+    \begin{align*}
+        \V P &= \sum_{i=1}^N \V p _i \\
+        &= \sum_i m_i \dot{\V x}_i \\
+        &= m \dot{\V R}
+    \end{align*}
+    so the centre of mass behaves like a single particle of mass $M$. Furthermore,
+    \begin{align*}
+        \dot{\V P} &= \sum_i \dot{\V p}_i \\
+        &= \sum_i (\V F_i^\text{ext} + \sum_{j \neq i}\V F_{ij}) \\
+        &= \sum_i \V F_i^\text{ext} + \sum_{i < j}\V F_{ij} + \V F_{ji} \\
+        &= \V F,\, \text{the total external force}
+    \end{align*}
+    where the second term in the penultimate line is zero by Newton's third law. We conclude that $M \ddot{\V R} = \V F$, the total external force -- we are allowed to view composite objects like point particles. In particular, $\V F = \V 0 \implies \dot{\V p} = \V 0$ -- total momentum is conserved in the absence of external forces.
+
+    We would like to show the same result for total \emph{angular} momentum. Let us work relative to an arbitrary fixed point $\V a$: we have
+    \begin{align*}
+        \V L &= \sum_i (\V x_i - \V a) \times \V p_i \\
+        \implies \dot{\V L} &= \sum_i (\V x_i - \V a) \times \dot{\V p}_i \\
+        &= \sum_i (\V x_i - \V a) \times \left(\V F_i^\text{ext} + \sum_{j \neq i}\V F_{ij}\right) \\
+        &= \V G + \sum_{i < j}\left((\V x_i - \V a) \times \V F_{ij} - (\V x_j - \V a) \times \V F_{ij} \right) \\
+        &= \V G + \sum_{i < j}\left(\V x_i - \V x_j\right)\V F_{ij} && (\dagger)
+    \end{align*}
+    Here the total torque 
+    \begin{align*}
+        \V G = \sum_i (\V x_i - \V a) \times \V F_i^\text{ext}
+    \end{align*}
+    but the vanishing of the second term in $(\dagger)$ is not a given.  
+    
+    Let us consider the special case where the interaction forces come from a potential that depends on the distance between $\V x_i$ and $\V x_j$, that is
+    \begin{align*}
+        \V F_{ij} = -\grad_i V(|\V x_i - \V x_j|)
+    \end{align*}
+    where we are taking the gradient with respect to $\V x_i$ This is
+    \begin{align*}
+        \V F_{ij} = -V'(|\V x_i - \V x_j|)\frac{\V x_i - \V x_j}{|\V x_i - \V x_j|}
+    \end{align*}
+    from which it clearly follows that $(\V x_i - \V x_j) \times \V F_{ij} = \vec 0$. In this case, $\dot{\V L} = \V G$.
+
+    In fact, there are tools that allow us to show that the second term in $(\dagger)$ will vanish for all known forces, but we cannot do this right now. In general, we conclude $\dot{\V L} = \V G$ -- an object cannot spin itself.
+
+    It's natural to take $\V a$, our `centre', to be the centre of mass. However, in general, the centre of mass will change as a function of time, which will require us to redo the derivation above. But all will be well.
+
+    The total \emph{energy} also splits up nicely: we have
+    \begin{align*}
+        \V x_i = \V R + \V y_i
+    \end{align*}
+    where $\V y_i$ is the position of the $i^\text{th}$ particle relative to the centre of mass. But, since
+    \begin{align}
+        M\V R = \sum_i m_i \V x_i
+    \end{align}
+    we conclude that $\sum_i m_i \V y_i = \V 0$ for all time. Then
+    \begin{align}
+        T &= \sum_i \frac 1 2 m_i \dot{\V x}_i \cdot \dot{\V x}_i \\
+        &= \sum_i \frac 1 2 m_i \left(\dot{\V R}^2 + \dot{\V y}_i^2 + 2 \dot{\V R} \dot \dot{\V y}_i\right) \\
+        &= \frac 1 2 M \dot{\V R}^2 + \sum_i \frac 1 2 m_i \dot{\V y}_i^2
+    \end{align}
+    so we also have notions of the internal kinetic energy and the kinetic energy which can be in some sense attributed to the centre of mass.
+
+    Let us now consider potential energy, and work as usual under the assumption that all forces are conservative. We have
+    \begin{align*}
+        \V F_i^\text{ext} &= -\grad_i V_i(\V x_i) \\
+        \V F_{ij} &= -\grad_i V_{ij}(|\V x_i - \V x_j|)
+    \end{align*}
+    where $V_{ij} = V_{ji}$ to respect N3. We now have a conserved energy.
+
+    \begin{proposition}
+        The total energy
+        \begin{align*}
+            E = T + \sum_i V_i(\V x_i) + \sum_{i < j} V_{ij} (|\V x_i - \V x_j|)
+        \end{align*}
+        is conserved. \emph{Note:} each potential term only appears once!        
+    \end{proposition}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            \frac{dE}{dt} &= \sum_i m_i \dot{\V x}_i \cdot \ddot{\V x}_i + \sum_i \grad_i V_i \cdot \dot{\V x}_i + \sum_{i < j}\left(\grad_i V_{ij} \cdot \dot{\V x}_i + \grad_j V_{ij} \cdot \dot{\V x}_j\right) \\
+            &= \sum_i m_i \dot{\V x}_i \cdot \ddot{\V x}_i - \sum_i \V F_i^\text{ext} \cdot \dot{\V x}_i - \sum_{i < j} \left(\V F_{ij} \cdot \dot{\V x}_i + \V F_{ji} \cdot \dot{\V x}_j\right) \\
+            &= \sum_i \dot{\V x}_i \cdot \left(m \ddot{\V x}_i - \V F_i^\text{ext} - \sum_{i \neq j} \V F_{ij} \right) \\
+            &= 0
+        \end{align*}
+        by Newton's second law.
+    \end{proof}
     
     
     
-     
+    
+    
     
     
     

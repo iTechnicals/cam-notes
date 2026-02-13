@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  26 JAN 2026 11:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  13 FEB 2026 21:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -451,7 +451,7 @@ Package: thm-restate 2023/05/04 v0.76
 Package: thm-amsthm 2023/05/04 v0.76
 \thmt@style@headstyle=\toks33
 ))
-Package hyperref Info: Option `hypertexnames' set `false' on input line 459.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 468.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/zref/zref-abspage.sty
@@ -745,20 +745,24 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package thmtools Info: Key `mdframed' (with value `style=mdbluebox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmbluebox' on input line 494.
+(thmtools)             that uses `style=thmbluebox' on input line 503.
 Package thmtools Info: Key `mdframed' (with value `style=mdredbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmredbox' on input line 514.
+(thmtools)             that uses `style=thmredbox' on input line 523.
 Package thmtools Info: Key `mdframed' (with value `style=mdgreenbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmgreenbox' on input line 534.
+(thmtools)             that uses `style=thmgreenbox' on input line 543.
 Package thmtools Info: Key `mdframed' (with value `style=mdblackbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmblackbox' on input line 552.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 583.
+(thmtools)             that uses `style=thmblackbox' on input line 561.
+Package thmtools Info: Key `mdframed' (with value `style=mdpurplebox')
+(thmtools)             is not a known style key.
+(thmtools)             Will pass this to every \declaretheorem
+(thmtools)             that uses `style=thmpurplebox' on input line 586.
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 597.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2023/05/04 v0.76
 )
@@ -1035,6 +1039,13 @@ Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages 
 \l__siunitx_unit_tmp_int=\count388
 \l__siunitx_unit_position_int=\count389
 \l__siunitx_unit_total_int=\count390
+) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty
+Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/tikzlibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pgflibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/hobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pml3array.sty
 \l_array_base_int=\count391
 \l_array_top_int=\count392
@@ -1170,6 +1181,8 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 10.
+ (c:/Program Files/texlive/2024/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 Package tocbasic Info: character protrusion at toc deactivated on input line 11.
  (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/vectors-and-matrices.toc
 
@@ -1284,34 +1297,26 @@ Package mdframed Info: mdframed detected package amsthm
 Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 251.
 
 
-[7] (../notes/figures/vectors-and-matrices/vector-addition.pdf_tex
-<../notes/figures/vectors-and-matrices/vector-addition.pdf, id=287, page=1, 572.1375pt x 364.36125pt>
+[7]
+
+[8] (../notes/figures/vectors-and-matrices/vector-addition.pdf_tex
+<../notes/figures/vectors-and-matrices/vector-addition.pdf, id=293, page=1, 572.1375pt x 364.36125pt>
 File: ../notes/figures/vectors-and-matrices/vector-addition.pdf Graphic file (type pdf)
 <use ../notes/figures/vectors-and-matrices/vector-addition.pdf, page 1>
 Package pdftex.def Info: ../notes/figures/vectors-and-matrices/vector-addition.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 167.29967pt x 106.54048pt.
-<../notes/figures/vectors-and-matrices/vector-addition.pdf, id=288, page=2, 572.1375pt x 364.36125pt>
+<../notes/figures/vectors-and-matrices/vector-addition.pdf, id=294, page=2, 572.1375pt x 364.36125pt>
 File: ../notes/figures/vectors-and-matrices/vector-addition.pdf Graphic file (type pdf)
 <use ../notes/figures/vectors-and-matrices/vector-addition.pdf, page 2>
 Package pdftex.def Info: ../notes/figures/vectors-and-matrices/vector-addition.pdf , page2 used on input line 60.
 (pdftex.def)             Requested size: 167.29967pt x 106.54048pt.
-)
-
-[8] (../notes/figures/vectors-and-matrices/vector-multiplication.pdf_tex
-<../notes/figures/vectors-and-matrices/vector-multiplication.pdf, id=298, page=1, 647.41875pt x 312.16624pt>
+) (../notes/figures/vectors-and-matrices/vector-multiplication.pdf_tex
+<../notes/figures/vectors-and-matrices/vector-multiplication.pdf, id=295, page=1, 647.41875pt x 312.16624pt>
 File: ../notes/figures/vectors-and-matrices/vector-multiplication.pdf Graphic file (type pdf)
 <use ../notes/figures/vectors-and-matrices/vector-multiplication.pdf, page 1>
 Package pdftex.def Info: ../notes/figures/vectors-and-matrices/vector-multiplication.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 250.95587pt x 121.00127pt.
 )
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 356.
-Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 356.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 362.
-
 
 [9 <../notes/figures/vectors-and-matrices/vector-addition.pdf> <../notes/figures/vectors-and-matrices/vector-addition.pdf
 
@@ -1319,13 +1324,21 @@ pdfTeX warning: pdflatex.exe (file ../notes/figures/vectors-and-matrices/vector-
 > <../notes/figures/vectors-and-matrices/vector-multiplication.pdf
 
 pdfTeX warning: pdflatex.exe (file ../notes/figures/vectors-and-matrices/vector-multiplication.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] (../notes/figures/vectors-and-matrices/dot-product.pdf_tex
-<../notes/figures/vectors-and-matrices/dot-product.pdf, id=317, page=1, 559.08875pt x 349.305pt>
+>]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 356.
+Package hyperref Info: bookmark level for unknown remark defaults to 0 on input line 356.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 362.
+ (../notes/figures/vectors-and-matrices/dot-product.pdf_tex
+<../notes/figures/vectors-and-matrices/dot-product.pdf, id=309, page=1, 559.08875pt x 349.305pt>
 File: ../notes/figures/vectors-and-matrices/dot-product.pdf Graphic file (type pdf)
 <use ../notes/figures/vectors-and-matrices/dot-product.pdf, page 1>
 Package pdftex.def Info: ../notes/figures/vectors-and-matrices/dot-product.pdf , page1 used on input line 56.
 (pdftex.def)             Requested size: 167.29967pt x 104.5258pt.
-<../notes/figures/vectors-and-matrices/dot-product.pdf, id=318, page=2, 559.08875pt x 349.305pt>
+<../notes/figures/vectors-and-matrices/dot-product.pdf, id=310, page=2, 559.08875pt x 349.305pt>
 File: ../notes/figures/vectors-and-matrices/dot-product.pdf Graphic file (type pdf)
 <use ../notes/figures/vectors-and-matrices/dot-product.pdf, page 2>
 Package pdftex.def Info: ../notes/figures/vectors-and-matrices/dot-product.pdf , page2 used on input line 60.
@@ -1342,6 +1355,11 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 446.
+Package mdframed Info: Not enough space on this page on input line 447.
+
+
+[11]
+Package mdframed Info: Not enough space on this page on input line 447.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 450.
@@ -1350,13 +1368,10 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 453.
 
 
-[11]
+[12]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 530.
-
-
-[12]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 541.
@@ -1369,12 +1384,13 @@ Package mdframed Info: mdframed detected package amsthm
  changed the theorem header of amsthm
 (mdframed)              on input line 687.
 Package hyperref Info: bookmark level for unknown proposition defaults to 0 on input line 687.
+
+
+[15]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 716.
 
-
-[15]
 
 [16]
 Package mdframed Info: mdframed detected package amsthm 
@@ -1821,9 +1837,11 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 3047.
+Package mdframed Info: Not enough space on this page on input line 3048.
 
 
 [56]
+Package mdframed Info: Not enough space on this page on input line 3048.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 3085.
@@ -1863,6 +1881,7 @@ Package mdframed Info: mdframed detected package amsthm
 
 
 [59]
+Package mdframed Info: Not enough space on this page on input line 3205.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 3208.
@@ -1923,19 +1942,23 @@ Package mdframed Info: mdframed detected package amsthm
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `vectors-and-matrices.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 46759 strings out of 473579
- 1029513 string characters out of 5725188
+ 47094 strings out of 473579
+ 1034336 string characters out of 5725188
  1960960 words of memory out of 5000000
- 68075 multiletter control sequences out of 15000+600000
- 589455 words of font info for 281 fonts, out of 8000000 for 9000
+ 68393 multiletter control sequences out of 15000+600000
+ 591087 words of font info for 289 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 138i,21n,145p,10969b,1303s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 138i,21n,145p,10969b,1308s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/vectors-and-matrices.pdf (70 pages, 585909 bytes).
+Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/vectors-and-matrices.pdf (70 pages, 586730 bytes).
 PDF statistics:
  1381 PDF objects out of 1440 (max. 8388607)
  1201 compressed objects within 13 object streams

@@ -6,4 +6,6 @@
 \contentsline {section}{\numberline {2}Continuity of functions}{13}{section.93}%
 \contentsline {subsection}{\numberline {2.1}Limits of functions}{13}{subsection.94}%
 \contentsline {subsection}{\numberline {2.2}Continuity of functions}{15}{subsection.114}%
+\contentsline {subsection}{\numberline {2.3}Extreme value theorem}{17}{subsection.129}%
+\contentsline {subsection}{\numberline {2.4}Intermediate value theorem}{18}{subsection.141}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

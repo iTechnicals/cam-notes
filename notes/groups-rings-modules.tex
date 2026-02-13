@@ -12,7 +12,9 @@
 
     \lecture{Lecture 1 -- 22/01/26}
 
-    \section{Groups -- a reminder}
+    \section{Groups}
+
+    \subsection{Groups -- a reminder}
 
     \begin{definition}
         A \emph{group} is a triple $(G, \cdot, e)$ where $G$ is a set, 
@@ -107,7 +109,7 @@
         Let $g \in G$ and consider $H = \{e, g, g^2, \dots, g^{n-1}\}$ where $n = \ord(g)$. This is a subgroup: it is non-empty, and $g^r \cdot g^{-s} = g^{r-s} \in H$ (after potentially multiplying by $g^n = e$). Also, the elements of $H$ are distinct -- if $g^i = g^j$ for $0 \leq i < j \leq n$, then $g^{j-i} = e$, contradicting the minimality of $\ord(g)$. Hence $|H| = ord(g)$ -- now apply Lagrange.
     \end{proof}
     
-    \section{Normal subgroups, quotients and homomorphisms}
+    \subsection{Normal subgroups, quotients and homomorphisms}
 
     Let $H \leq G$. When are two cosets of $H$ in $G$ equal? If $gH = g'H$, then $g \in g'H$, so $g = g'h$ for some $h \in H$. In other words, $gH = g'H \iff (g')^{-1}g \in H$.
 
@@ -166,12 +168,12 @@
         \end{align*}
         and the \emph{image} of $f$ is
         \begin{align*}
-            \Im f = \{h \in H: h = f(g) \text{ for some } g\}
+            \im f = \{h \in H: h = f(g) \text{ for some } g\}
         \end{align*}     
     \end{definition}
     
     \begin{proposition}
-        Let $f: G \to H$ be a homomorphism. Then $\ker f \norm G$ and $\Im f \leq H$.
+        Let $f: G \to H$ be a homomorphism. Then $\ker f \norm G$ and $\im f \leq H$.
     \end{proposition}
     
     \begin{proof}
@@ -185,7 +187,7 @@
         \end{align*}
         so $xgx^{-1} \in \ker f$ and hence $\ker f \norm G$.
         
-        For the image, observe that, if $a$, $b \in \Im f$ with $a = f(x)$, $b = f(y)$, then $ab^{-1} = f(xy^{-1}) \in \Im f$.
+        For the image, observe that, if $a$, $b \in \im f$ with $a = f(x)$, $b = f(y)$, then $ab^{-1} = f(xy^{-1}) \in \im f$.
     \end{proof}
     
     \begin{remark*}
@@ -199,21 +201,21 @@
     \begin{theorem}[First isomorphism theorem]
         Let $f: G \to H$ be a homomorphism, then $\ker f$ is normal in $G$ and the homomorphism
         \begin{align*}
-            G/\ker f &\to \Im f \\
+            G/\ker f &\to \im f \\
             g \ker f &\mapsto f(g)
         \end{align*}
-        is an isomorphism. In particular, $G/\ker f \cong \Im f$.                
+        is an isomorphism. In particular, $G/\ker f \cong \im f$.                
     \end{theorem}
     
     \begin{proof}
         We have already shown the normality result. Consider the map
         \begin{align*}
-            \varphi: G/\ker f &\to \Im f \\
+            \varphi: G/\ker f &\to \im f \\
             g\ker f &\mapsto f(g)
         \end{align*}
         \begin{itemize}
             \item \emph{$\varphi$ is well-defined}. If $g \ker f = g'\ker f$, then $g'g^{-1} \in \ker f$, so $f(g'g^{-1})= e$ which gives $f(g) = f(g')$ as required.
-            \item \emph{$\varphi$ is surjective}. Let $h \in \Im f$. Then $h = f(g)$ for some $g \in G$, and so $h = \varphi(g \ker f)$.
+            \item \emph{$\varphi$ is surjective}. Let $h \in \im f$. Then $h = f(g)$ for some $g \in G$, and so $h = \varphi(g \ker f)$.
             \item \emph{$\varphi$ is injective}. Suppose $\varphi(g \ker f) = \varphi(g' \ker f)$, then $f(g) = f(g')$. But then $g'g^{-1} \in \ker f$, so $g \ker f = g' \ker f$.
         \end{itemize}
     \end{proof}
@@ -254,13 +256,13 @@
             by restricitng the domain from $G \to G/K$ -- the kernel is $H \cap K$.
             \item \emph{Final statement}. By the first isomorphism theorem, we have
             \begin{align*}
-                \Im \varphi \cong H/(H \cap K)
+                \im \varphi \cong H/(H \cap K)
             \end{align*}
-            so we must show $\Im \varphi \cong HK/K$. But $\Im \varphi$ is the set of $K$-cosets in $G$ that are representable by elements of $H$, i.e. $\{hK : h \in H\} \subseteq G/K = HK/K$.
+            so we must show $\im \varphi \cong HK/K$. But $\im \varphi$ is the set of $K$-cosets in $G$ that are representable by elements of $H$, i.e. $\{hK : h \in H\} \subseteq G/K = HK/K$.
         \end{itemize}
     \end{proof}
     
-    \subsection{Correspondence between subgroups of $G$ and $G/K$}
+    \subsubsection{Correspondence between subgroups of $G$ and $G/K$}
 
     Let $p: G \to G/K$ be the quotient homomorphism. We have a bijection
     \begin{align*}
@@ -328,7 +330,7 @@
         This sequence is not necessarily unique.
     \end{remark*}
     
-    \section{Group actions and permutations}
+    \subsection{Group actions and permutations}
 
     \begin{definition}
         Let $X$ be a set. Let $\Sym(X)$ be the set of permutations on $X$. The identity is the identity function, and the group law is given by composition. If $X = \{1, \dots, n\}$, then we write $\Sym(X) = S_n$.
@@ -391,7 +393,7 @@
     
     We have some notation:
     \begin{itemize}
-        \item $G^X = \Im \phi \leq \Sym(X)$;
+        \item $G^X = \im \phi \leq \Sym(X)$;
         \item $G_X = \ker \phi \triangleleft G$
     \end{itemize}
     It is a special case of the first isomorphism theorem that $G^X \cong G/G_X$.
@@ -401,7 +403,7 @@
         \begin{align*}
             \phi: G \to \Sym(X) \cong S_4
         \end{align*}
-        We can see $\Im \phi \cong S_4$, since we can swap any two diagonals -- then these transpositions generate the whole symmetric group. Furthermore, $\ker \phi = \{e, s\}$, where $s$ sends every vertex to its opposite. As an immediate consequence, we conclude $|G| = 48$.
+        We can see $\im \phi \cong S_4$, since we can swap any two diagonals -- then these transpositions generate the whole symmetric group. Furthermore, $\ker \phi = \{e, s\}$, where $s$ sends every vertex to its opposite. As an immediate consequence, we conclude $|G| = 48$.
     \end{example}
     
     \begin{example}
@@ -438,7 +440,7 @@
     \begin{proof}
         Consider $\phi: G \to \Sym(G/H)$ from the example. The kernel, call it $K$, is normal. We have shown it is contained in $H$ already -- applying the first isomorphism theorem, we have
         \begin{align*}
-            G/K \cong \Im \phi \leq \Sym(G/H) \cong S_n
+            G/K \cong \im \phi \leq \Sym(G/H) \cong S_n
         \end{align*}
         Lagrange gives $|G/K|$ divides $n!$, and $K \leq H$, so $|G/K| \geq |G/H| = n$.
     \end{proof}
@@ -467,7 +469,7 @@
     \end{itemize}
     This covers all cases up to relabelling.
     
-    \section{Finite $p$-groups}
+    \subsection{Finite $p$-groups}
 
     Let $p$ be a prime. Groups of order $p^n$ for some $n$ are called \emph{$p$-groups}.
 
@@ -513,7 +515,7 @@
         Now consider $G/\gen x'$. This is a group of size $p^{n-1}$, and so it contains a subgroup, say $L$. of size $p^{k-1}$ by induction. By the correspondence of subgroups, we find $K \leq G$ containing $\gen x'$ such that $K/\gen x' \cong L$. But then $|K| = p^k$, as required.
     \end{proof}
     
-    \section{Finite abelian groups}
+    \subsection{Finite abelian groups}
 
     \begin{theorem}[Classification of finite abelian groups]
         \label{classification-finite-abelian}
@@ -551,7 +553,7 @@
         The result follows from \cref{classification-finite-abelian} and \cref{crt}.
     \end{proof}
     
-    \section{Sylow theorems}
+    \subsection{Sylow theorems}
 
     Let $G$ be a finite group of size $p^am$ where $p \nmid m$ and $p$ is some prime. A \emph{Sylow subgroup} of $G$ is a subgroup of order $p^a$.
 
@@ -588,7 +590,7 @@
             \arrow["\phi", from=1-1, to=1-2]
             \arrow["\sign", from=1-2, to=1-3]
         \end{tikzcd}\]
-        If the composition is surjective, then $\ker(\sign \circ \phi)$ is an index 2 subgroup of $G$. But $G$ is simple, so this is impossible, (since $G \neq C_2$). In other words, $\Im \phi \subseteq A_{n_p}$, and the result follows by Lagrange. Finally, all non-abelian subgroups of $A_2$, $A_3$ and $A_4$ are not simple.
+        If the composition is surjective, then $\ker(\sign \circ \phi)$ is an index 2 subgroup of $G$. But $G$ is simple, so this is impossible, (since $G \neq C_2$). In other words, $\im \phi \subseteq A_{n_p}$, and the result follows by Lagrange. Finally, all non-abelian subgroups of $A_2$, $A_3$ and $A_4$ are not simple.
     \end{proof}
     
     \begin{example*}
@@ -614,6 +616,260 @@
 
         Let $T \in \Theta$. By the orbit-stabiliser theorem, $|G| = |\Theta|\cdot|\Stab(T)|$, so $p^am = |\Theta||\Stab(T)|$. By claim 2, $|\Stab(T)|$ divides $p^a$, but there are no factors of $p$ in $\Theta$, so we are done.
     \end{proof}
+    
+    \lecture{Lecture $n$}
+
+    \section{Rings}
+    
+    \lecture{Lecture $n+1$}
+    
+    \subsection{Basic definitions}
+
+    Let $R$ be a ring. We have
+    \begin{align*}
+        0 + 0 &= 0 \\
+        \implies r \cdot 0 + r \cdot 0 &= r \cdot 0 \\
+        \implies r \cdot 0 &= 0
+    \end{align*}
+    Furthermore, if $1 = 0$, we have $r = 1 \cdot r = 0 \cdot r = 0$, so we have the \emph{zero ring}.
+
+    \begin{definition}[Ring direct product]
+        Let $R$, $S$ be rings. The \emph{direct product} $R \times S$ is a ring with operations and identities defined pointwise.
+    \end{definition}
+    
+    \begin{definition}[Polynomials]
+        Let $R$ be a ring. A \emph{polynomial} in $X$ with coefficients in $R$ is an expression of the form
+        \begin{align*}
+            f(X) = a_0 + a_1X + \dots + a_nX^n
+        \end{align*}
+        where each $a_i \in \RR$, and the $X^i$ are formal symbols.  As convention, we will identify $f(X)$ with $f(X) + 0 \cdot X^{n+1}$ -- then, the largest $n$ with $a_n \neq 0$ is the \emph{degree} of $f(x)$ (by convention, we say the degree of $0$ is $-\infty$). Finally, a polynomial is \emph{monic} if it ha s degree $n$ and $a_n=1$.
+    \end{definition}
+    
+    \begin{definition}[Polynomial rings]
+        Let $R$ be a ring. The \emph{polynomial ring} $R[X]$ is the set of all polynomials with coefficients in $R$, with obvious operations and identities.
+    \end{definition}
+    
+    \begin{remark*}
+        Note that, for every $f \in R[X]$, we get a function $R \to R$ which takes $r$ to $f(r)$. But this is not the same as the polynomial itself.
+    \end{remark*}
+    
+    \begin{definition}[Rings of formal power series]
+        The ring of \emph{formal power series} over $R$ in the variable $X$ is
+        \begin{align*}
+            R[[X]] = \left\{\sum_{i=0}^\infty r_iX^i : r_i \in R\right\}
+        \end{align*}
+        with obvious operations and identities.
+    \end{definition}
+    
+    \begin{example}
+        Consider the element $1-x \in R[X]$. Is it a unit?
+
+        Suppose we have $(1-x)g(x) = 1$, where $g(x) = a_0 + \dots + a_nx^n$, with $a_n \neq 0$. Then
+        \begin{align*}
+            (1-x)g(x) = a_0 + (a_1-a_0)x + \dots + (a_n-a_{n-1})x^n - a_nx^{n+1}
+        \end{align*}
+        and then, by comparing the $x^{n+1}$ coefficient, we can see this is not 1.
+        
+        On the other hand, if we view $1-x \in R[[X]]$, this has an inverse:
+        \begin{align*}
+            (1-x)(1+x+x^2+\cdots)=1
+        \end{align*}
+        In fact, every power series has an inverse as long as $r_0$ is invertible.        
+    \end{example}
+    
+    \begin{definition}[Rings of Laurent series]
+        Write $R[X, X^{-1}]$ for the ring of \emph{Laurent series} with coefficients in $R$, that is
+        \begin{align*}
+            f = \sum_{i \in \ZZ} a_ix^i
+        \end{align*}
+        with $a_i \in \RR$ and all but finitely many $a_i = 0$.        
+    \end{definition}
+    
+    \subsection{Homomorphisms, ideals and quotients}
+
+    \begin{definition}[Ring homomorphisms]
+        Let $R$ and $S$ be rings. A function $f: R \to S$ is a \emph{ring homomorphism} if
+        \begin{itemize}
+            \item $f(r_1 + r_2) = f(r_1) + f(r_2)$;
+            \item $\implies f(0) = 0$;
+            \item $f(r_1r_2) = f(r_1)f(r_2)$;
+            \item $\centernot\implies f(1) = 1$.
+        \end{itemize}
+        The kernel of $f$ is $\ker f = \{r \in R : f(r) = 0\}$, and the image of $f$ is $\im f = \{s \in S: s = f(r) \text{ for some }r \in R\}$.
+    \end{definition}
+    
+    \begin{definition}[Ring isomorphisms]
+        If $f: R \to S$ is a bijective ring homomorphism, then it is called an isomorphism. Furthermore, its inverse is also a ring homomorphism.
+    \end{definition}
+    
+    \begin{definition}
+        A subset $I \subseteq R$ is called an \emph{ideal}, written $I \norm R$, if
+        \begin{itemize}
+            \item $I$ is a subgroup additively;
+            \item if $a \in I$ and $b \in R$, then $ab \in I$.
+        \end{itemize}
+        Usually ideals are not subrings, since they can only contain 1 if $I = R$.        
+    \end{definition}
+    
+    \begin{lemma}
+        If $\phi: R \to S$ is a homomorphism, then $\ker \phi \norm R$.
+    \end{lemma}
+    
+    \begin{proof}
+        Since $\phi$ is a group homomorphism, we know $\ker \phi$ is a subgroup.
+
+        Furthermore, if $a \in \ker \phi$ and $b \in R$, then $\phi(ab) = \phi(a)\phi(b) = 0 \cdot \phi(b) = 0$.
+    \end{proof}
+    
+    \begin{remark*}
+        If $a \in R$ is a unit, and $I \norm R$ is an ideal, then $u \in I \implies I = R$ -- since $1 = uv$, $1 \in I$, and so $I = R$.
+    \end{remark*}
+    
+    \begin{example}
+        Observe that $n\ZZ$ is an ideal of $\ZZ$ for any $n$. In fact, every ideal of $\ZZ$ has this form. Indeed, if $I \neq \{0\}$, let $n \in \ZZ$ be the minimal positive element of $I$. By the Euclidean algorithm, we can write $m \in I$ as $m = qn + r$, with $0 \leq r < n$, and $qn \in I$, so $r \in I$ -- this contradicts minimality of $n$.
+    \end{example}
+    
+    \begin{definition}
+        Let $A \subseteq R$ be a subset. The \emph{ideal generated by $A$}
+        is
+        \begin{align*}
+            \gen A = \left\{\sum_{a \in A}r_aa : r_a \in \RR, r_a = 0 \text{ for all but finitely many }a\right\}
+        \end{align*}
+    \end{definition}
+    
+    \begin{definition}
+        An ideal is called \emph{principal} if there exists $r \in R$ such that $I = \gen r$.
+    \end{definition}
+    
+    \begin{example}
+        Consider the subset of $R[x]$ given by
+        \begin{align*}
+            \{f(x) \in R(x): f(0) = 0\}
+        \end{align*}
+        which is generated by $x \in R[x]$ -- hence, this is a principal ideal.        
+    \end{example}
+    
+    \begin{definition}[Quotients]
+        Let $I \norm R$ be an ideal. The \emph{quotient ring} $R/I$ is the set of cosets of $I$ in $R$ with $0$ and $1$ given by $0_R + I$ and $1_R + I$, with the rules
+        \begin{align*}
+            (r_1 + I) + (r_2 + I) &= (r_1 + r_2) + I \\
+            (r_1 + I) \cdot (r_2 + I) &= r_1r_2 + I
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}
+        The quotient ring is a ring. Furthermore, the function
+        \begin{align*}
+            f: R &\to R/I \\
+            r &\mapsto r + I
+        \end{align*}
+        is a ring homomorphism.
+    \end{proposition}
+    
+    \begin{proof}
+        This is obviously a group homomorphism. Furthermore, multiplication is well-defined: suppose $r_1 + I = r_1' + I$, $r_2 + I = r_2' + I$. We then have $r_i - r_i' \in I$, say $r_i - r_i' = a_i$. We then have
+        \begin{align*}
+            r_1'r_2' = (r_1+a_1)(r_2+a_2) = r_1r_2 + \underbrace{r_1a_2 + r_2a_1 + a_1a_2}_{\in I}
+        \end{align*}
+        We conclude that the coset in $I$ of $r_1'r_2'$ is the same as that of $r_1r_2$.
+
+        To check the other ring properties is straightforward.        
+    \end{proof}
+    
+    \begin{example}
+        \begin{itemize}
+            \item We have $n\ZZ \norm \ZZ$. The quotient ring $\ZZ/n\ZZ$ consists of cosets of $n\ZZ$, i.e. $0 + n\ZZ$, $1 + n\ZZ, \dots, (n-1) + n\ZZ$. The ring structure is modular arithmetic.
+            \item Take $\gen x \norm \CC[x]$. The elements of the quotient $\CC[x]/\gen x$ can be represented by elements of the form $(a_0 + a_1x + \dots + a_nx^n) + \gen x$ -- but all the terms $a_1x, \dots, a_nx^n$ lie in $\gen x$, so every element is uniquely represented by $a_0$. Hence $\CC[X]/\gen x \cong \CC$.
+        \end{itemize}
+    \end{example}
+    
+    \begin{proposition}[Euclidean algorithm for polynomial rings over fields]
+        Let $K$ be a field, and take $f$, $g \in K[x]$. There exist polynomials $r$, $q \in K[x]$ such that
+        \begin{align*}
+            f = gq + r
+        \end{align*}
+        and $\deg r < \deg g$.        
+    \end{proposition}
+    
+    \begin{proof}
+        Let $n = \deg f$ and $m = \deg g$, so
+        \begin{align*}
+            f = \sum_{i=0}^n a_ix^i \qquad g = \sum_{i=0}^m b_ix^i
+        \end{align*}
+        with $a_i, b_i \in K$, $a_n \neq 0$. If $n < m$, set $q = 0$ and $r = f$. On the other hand, if $n \geq m$, we proceed by induction on $n$. In particular, let $f_1 = f - a_n b_m^{-1} x^{n-m}$ (note we are using the fact that $K$ is a field). Now, $\deg f_1 < n$. If $n = m$, we can write
+        \begin{align*}
+            f = (a_nb_m^{-1}x^{n-m})g + f_1
+        \end{align*}
+        Otherwise, if $n > m$< we can write by induction
+        \begin{align*}
+            f_1 = gq_1 + r_1
+        \end{align*}
+        with $\deg r_1 < m$. Then
+        \begin{align*}
+            f = (a_nbm^{-1}x^{n-m}+q)g + r_1
+        \end{align*}
+    \end{proof}
+    
+    \begin{corollary*}
+        All ideals in $K[x]$ for $K$ a field are principal.
+    \end{corollary*}
+    
+    \begin{proof}
+        We have proven that Euclidean algorithm $\implies$ all ideals are principal, since we did it for $\ZZ$. The result follows.
+    \end{proof}
+    
+    \begin{theorem}[First isomorphism theorem for rings]
+        Let $\phi: R \to S$ be a ring homomorphism. Then, the map
+        \begin{align*}
+            f: R/\ker \phi &\to \im \phi \\
+            r + \ker \phi &\mapsto \phi(r)
+        \end{align*}
+        is a well-defined ring isomorphism.        
+    \end{theorem}
+    
+    \begin{proof}
+        Well-definedness, bijectivity and additivity all follow from the group isomorphism theorem. It remains to check multiplicativity. Observe
+        \begin{align*}
+            f((r + \ker \phi)(t + \ker \phi)) &= f(rt + \ker \phi) \\
+            &= \phi(rt) \\
+            &= \phi(r) \phi(t) \\
+            &= f(r + \ker \phi)f(t + \ker \phi)
+        \end{align*}
+    \end{proof}
+    
+    \begin{example}
+        Consider the homomorphism
+        \begin{align*}
+            \phi: \RR[x] &\to \CC \\
+            f(x) &\mapsto f(i)
+        \end{align*}
+        The map is clearly surjective, and the kernel is exactly those polynomials $f$ satisfying $f(i) = 0$. However, since coefficients of $f$ are real, $-i$ is also a root. In conclusion, $x^2 + 1 \mid f$, and we conclude $\ker \phi = \gen{x^2+1}$. Hence, by the first isomorphism theorem, $\CC \cong \RR[x]/\gen{x^2+1}$.        
+    \end{example}
+    
+    \begin{proposition}[Second isomorphism theorem for rings]
+        Let $R \leq S$ and $J \norm S$. Then $J \cap R$ is an ideal in $R$, and
+        \begin{align*}
+            (R+J)/J = \{r + J: r \in R\} \leq S/J
+        \end{align*}
+        is a subring. Furthermore,
+        \begin{align*}
+            R/(R \cap J) \cong (R+J)/J
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Define a function
+        \begin{align*}
+            \phi: R &\to S/J \\
+            r &\mapsto r + J
+        \end{align*}
+        so $\ker \phi = \{r \in R: r + J = 0\} = R \cap J$, so this is an ideal by the first isomorphism theorem. Also, the image is $\im \phi = \{r + J: r \in R\} = (R + J)/J$. The result follows from the first isomorphism theorem.        
+    \end{proof}
+    
+    
+    
+    
+    
     
     
     
