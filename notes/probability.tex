@@ -1937,11 +1937,148 @@
         \begin{align*}
             \PP(a < x \leq b) = F(b) - F(a)
         \end{align*}
+        \begin{proof}
+            \begin{align*}
+                \PP(a < X \leq b) &= \PP(X \leq b, X > a) \\
+                &= \PP(X \leq b) - \PP(X \leq b, X \leq a) \\
+                &= F(b) - F(a)
+            \end{align*}
+        \end{proof}
+    \end{enumerate}
+
+    \lecture{Lecture 15 -- 25/02/26}
+    
+    \begin{proposition}
+        A probability distribution function $F$ is right continuous, and always has left limits satisfying
+        \begin{align*}
+            \lim_{y \to x^-}F(y) \leq F(x)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Let $(x_n)$ be a decreasing sequence satisfying $x_n \to x$ as $n \to \infty$. We want to show $F(x_n) \to F(x)$ as $n \to \infty$.
+
+        Let $A_n = \{x < X \leq x_n\}$, so $\PP(A_n) = F(x_n) - F(x)$ by the previous. Furthermore, $A_{n+1} \subseteq A_n$ -- the sequence is decreasing -- so $\PP(A_n) \to \PP\left(\bigcap_n A_n\right)$ by continuity of probability measures. But $\PP\left(\bigcap_n A_n\right)$, so $\PP(A_n) \to 0$. Hence $\PP(A_n)= F(x_n) - F(x) \to 0$ as $n \to \infty$.
+
+        Since $F$ is increasing (and bounded), left limits always exist. That $\lim_{y \to x^-} F(y) \leq F(x)$ follows again from the fact $F$ is increasing.
+    \end{proof}
+    
+    \begin{enumerate}[resume,label=\protect\circled{\arabic*}]
+        \item $F(x-) = \lim_{y \to x^-} F(y) = \PP(X < x)$.
+        \begin{proof}
+            Clearly $F(x-) = \lim_{n \to \infty} F\left(x - \frac 1 n \right)$. Define $B_n = \left\{X \leq x - \frac 1 n \right\}$, so $B_n \subseteq B_{n+1}$. Then
+            \begin{align*}
+                \PP(B_n) \to \PP\left(\bigcup_n B_n\right) = \PP(X < x)
+            \end{align*}
+            since $\bigcup_n B_n = \{X < x\}$.            
+        \end{proof}
+
+        \item $\lim_{x \to \infty} F(x) = 1$ and $\lim_{x \to -\infty} F(x) = 0$.
     \end{enumerate}
     
+    \begin{definition}[Continuous random variables]
+        A random variable $X$ is called \emph{continuous} if its probability distribution $F$ is a continuous function.
+    \end{definition}
     
+    Some important properties equivalent to continuity include (fixing $x \in \RR$):
+    \begin{itemize}
+        \item $F(x-) = F(x)$;
+        \item $\PP(X < x) = \PP(X \leq x)$;
+        \item $\PP(X = x) = 0$.
+    \end{itemize}
+    
+    From now on we will consider only continuous random variables satisfying additionally that $F$ is differentiable.
 
+    \begin{definition}[Probability density functions]
+        The \emph{probability density function} of a random variable $X$ is $f(x) = F'(x)$, where $F$ is its probability distribution.
+    \end{definition}
+    
+    Let us now consider some important properties of pdf's:
+    \begin{itemize}
+        \item $f \geq 0$;
+        \item $\int_{-\infty}^\infty f(x) \D x = 1$;
+    \end{itemize}
+    
+    \begin{proposition}
+        For every $A \subseteq \RR$,
+        \begin{align*}
+            \PP(X \in A) = \int_A f(x) \D x
+        \end{align*}
+    \end{proposition}
+    
+    \begin{remark*}
+        This is a generalisation of the semi-obvious fact that
+        \begin{align*}
+            F(x) = \int_{-\infty}^x f(y) \D y
+        \end{align*}
+    \end{remark*}
+    What is the intuitive meaning of the probability density function? For a small $\Delta x$,
+    \begin{align*}
+        \PP(x < X \leq x + \Delta x) = \int_x^{x+\Delta x} f(y) \D y \approx f(x) \Delta x
+    \end{align*}
+    so we can think of $f(x)$ as being proportional to the probability that $X$ is close to $x$.
 
+    Let us consider some important examples of continuous probability distributions.
+
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item \emph{Uniform distribution} on $[a, b]$, $a < b$. We have
+        \begin{align*}
+            f(x) = \begin{cases}
+                \frac 1{b-a} & x \in [a, b] \\
+                0 & \text{o/w}
+            \end{cases}
+        \end{align*}
+        $f \geq 0$ and $\int_{-\infty}^\infty f(x) \D x = 1$, so $f$ is indeed a pdf. Let $X$ be a random variable with density $f$, denoted $X \sim [a, b]$. Then, for $x \in [a, b]$,
+        \begin{align*}
+            \PP(X \leq x) = \int_{-\infty}^x f(y) \D y = \frac{x-a}{b-a}
+        \end{align*}
+        Also, if $x>b$, $\PP(X \leq x) = 1$, and if $x < a$, $\PP(X \leq x) = 0$. A special case is the \emph{standard uniform distribution} $X \sim U(0, 1)$
+        \item \emph{Exponential distribution}. Let $\lambda > 0$, $f(x) = \lambda e^{-\lambda x}$, $x > 0$. Then
+        \begin{align*}
+            \int_{-\infty}^\infty f(x) \D x = \int_0^\infty \lambda e^{-\lambda x} \D x = 1
+        \end{align*}
+        so $f$ is a density. letting $X$ have density $f$, we write $X \sim \Exp(\lambda)$. We have
+        \begin{align*}
+            \PP(X \leq x) &= \int_0^x f(y) \D y = 1 - e^{-\lambda x} \\
+            \PP(X \geq x) &= e^{-\lambda x}
+        \end{align*}
+        Let $T \sim \Exp(\lambda)$, $n \in \NN$, $T_n = \left\lfloor nT \right\rfloor$. What is the distribution of $T_n$?
+
+        Let $k \in \NN$, and let us try to evaluate $\PP(T_n \geq k) = \PP(nT \geq k) = \PP(T \geq \frac k n) = e^{-\lambda \frac k n} = \left(e^{-\frac{\lambda}n}\right)^k$
+        So $T_n$ has the geometric distribution with success parameter $p = 1 - e^{-\frac{\lambda}n} \approx \frac{\lambda} n$ for $n$ large. In particular,
+        \begin{align*}
+            \frac{T_n} n \to T
+        \end{align*}
+        as $n \to \infty$ -- we can obtain the exponential random variable as a scaled limit of geometrics.
+        
+        The exponential distribution has a cool property! Let $T \sim \Exp(\lambda)$, and let $t$, $s \in \RR^+$. Then
+        \begin{align*}
+            \PP(T \geq s + t \mid T \geq s) &= \frac{\PP(T \geq s + t \mid T \geq s)}{\PP(T \geq s)} \\
+            &= \frac{e^{-\lambda(s+t)}}{e^{-\lambda s}} = e^{-\lambda t}
+        \end{align*}
+        so $\PP(T \geq s + t \mid T \geq s) = \PP(T \geq t)$. This is called the \emph{memoryless} property (the geometric distribution also has it).
+    \end{enumerate}
+
+    \begin{proposition}
+        Let $T$ be a positive random variable which is not identically zero or infinity. Then $T$ has the exponential distribution if and only if $T$ has the memoryless property.
+    \end{proposition}
+    
+    \begin{proof}
+        Suppose $T$ has the memoryless property. Set $g(t) = \PP(T \geq t)$, so
+        \begin{align*}
+            g(t+s) = g(t)g(s)
+        \end{align*}
+        Therefore, $g(mt) = g(t)^m$ for any $t > 0$, $m \in \NN$. Putting $t=1$, we have $g(m) = g(1)^m$, and we will define $\lambda = -\log \PP(T \geq 1)$ such that $g(1) = \PP(T \geq 1) = e^{-\lambda}$. Hence $g(m) = e^{-\lambda m}$ for all $m \in \NN$, and, for $m$, $n \in \NN$, $\left(g\left(\frac m n \right)\right)^n = g(m)$, so $g(q) = e^{-\lambda q}$ for rationals $q$. How do we extend this to the reals?
+        
+        Let $t > 0$, and let $r$, $s \in \QQ^+$ such that $s < t < r$ and $|s-r| \leq \eps$, which can be done by density of the rationals. Then
+        \begin{align*}
+            \underbrace{g(r)}_{e^{-\lambda r}} \leq g(t) \leq \underbrace{g(s)}_{e^{-\lambda s}}
+        \end{align*}
+        Taking $\eps \to 0$, we get $g(t) = e^{-\lambda t}$ as required.
+    \end{proof}
+
+    \lecture{Lecture 16 -- 27/02/26}
+    
     
     
 

@@ -44,4 +44,5 @@
 \contentsline {subsection}{\numberline {6.2}Stokes' theorem}{38}{subsection.188}%
 \contentsline {subsubsection}{\numberline {6.2.1}Closed surfaces}{39}{subsubsection.193}%
 \contentsline {subsubsection}{\numberline {6.2.2}Multiple boundary curves}{39}{subsubsection.194}%
+\contentsline {subsection}{\numberline {6.3}The divergence theorem}{41}{subsection.196}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

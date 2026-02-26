@@ -1710,6 +1710,8 @@
     \subsubsection{Multiple boundary curves}
     
     We may again have the case of two or more boundary curves. We have to apply the right hand rule for the directions of $\V n$ and the curve separately for \emph{each} boundary.
+    
+    \lecture{Lecture 15 -- 25/02/26}
 
     \begin{example*}[hard]
         We are asked to verify Stokes' theorem for $\V F(\V x) = (y, z, x^2+y^2)$ on the hyperboloid of one sheet $z^2 + 1 = x^2 + 4y^2$ for $0 \leq z \leq \sqrt 3$.
@@ -1718,7 +1720,178 @@
         \begin{align*}
             \V x(z, \alpha) = \left(\sqrt{z^2+1} \cos \alpha, \frac 1 2\sqrt{z^2+1}\sin \alpha, z\right)
         \end{align*}
+        Why not cylindrical coordinates? Well, we don't have circular symmetry anymore, so we should adjust to slightly scaled cylindrical polar coordinates. Applying the magic formula,
+        \begin{align*}
+            d \V S = \pm \begin{pmatrix}
+             \frac z{\sqrt{z^2+1}} \cos \alpha \\
+             \frac z{\sqrt{z^2+1}} \sin \alpha \\
+             1 \\
+            \end{pmatrix} \times \begin{pmatrix}
+             -\sqrt{z^2+1} \sin \alpha \\
+             \frac 1 2 \sqrt{z^2+1} \cos \alpha \\
+             0 \\
+            \end{pmatrix} \D z \D \alpha = \pm \begin{pmatrix}
+             -\frac 1 2 \sqrt{z^2+1} \cos \alpha \\
+             -\sqrt{z^2+1} \sin \alpha \\
+             \frac 1 2 z \\
+            \end{pmatrix} \D z \D \alpha
+        \end{align*}
+        We choose the normal with the minus sign. On the surface, $\curl \V F = (2y-1, -2x, -1) = (\sqrt{z^2+1} \sin \alpha - 1, -2\sqrt{z^2+1}\cos \alpha, -1)$, so 
+        \begin{align*}
+            \int \curl \V F \cdot d \V S &= \int_{z=0}^{\sqrt 3} \int_{\alpha = 0}^{2\pi} \left(-\frac 3 2 (z^2+1) \sin \alpha \cos \alpha - \frac 1 2 \sqrt{z^2+1} \cos \alpha + \frac 1 2 z\right) \D \alpha \D z \\
+            &= \pi \int_0^{\sqrt 3} z \D z = \frac{3\pi}{2}
+        \end{align*}
+        Now we consider the boundary curves, which are
+        \begin{align*}
+            C_1&: x^2 + 4y^2 = 1, \quad z = 0 \\
+            C_2&: x^2 + 4y^2 = 4, \quad z = \sqrt 3
+        \end{align*}
+        On $z = \sqrt 3$, the right-hand rule shows that we need to move in the direction of decreasing $\phi$. Hence, we take the parameterisation $\V x(t) = (2 \cos t, \sin t, \sqrt 3)$ with $\V F = (\sin t, \sqrt 3, 4\cos^2 t + \sin^2 t)$ for $t$ decreasing from $2\pi$ to 0. Hence
+        \begin{align*}
+            \int_{C_2} \V F \cdot d \V x = \int_{2\pi}^0 (-2 \sin^2 t + \sqrt 3 \cos t) \D t = 2 \pi
+        \end{align*}
+        On $z = 0$, we instead need to move in the direction of increasing $\phi$. We thus parameterise $C_1$ as $\V x(t) = (\cos t, \frac 1 2 \sin t, 0)$ with $\V F = (\frac 1 2 \sin t, 0, \cos^2 t + \frac 1 2 \sin^2 t)$ for $t$ increasing from 0 to $\pi$. Hence
+        \begin{align*}
+            \int_{C_1} \V F \cdot d \V X = \int_0^{2\pi} \left(-\frac 1 2 \sin^2 t\right) \D t = -\frac{\pi} 2
+        \end{align*}
+        To verify Stokes' theorem, we observe
+        \begin{align*}
+            \frac{3\pi} 2 = 2 \pi - \frac{\pi} 2
+        \end{align*}
     \end{example*}
+
+    \subsection{The divergence theorem}
+
+    \begin{theorem}[Divergence theorem]
+        Let $\V F(\V x)$ be a continuously differentiable vector field and $V$ a volume enclosed by a piecewise smooth orientable \emph{closed} surface $S = \pr V$. Then
+        \begin{align*}
+            \int_V \div \V F d V = \int_S \V F \cdot d \V S
+        \end{align*}
+        where the normal to $S$ points outwards from $V$.        
+    \end{theorem}
+    The theorem is also known as Gauss's theorem, or sometimes Green's theorem.
+
+    \begin{proof}[Sketch proof, non-examinable]
+        To prove this we once again start by assuming $V$ is a simple shape so that, for each fixed $y$ and $z$, we have a single range of $x$, that is $x^-(y, z) < x < x^+(y, z)$ (DIAGRAM). $S$ can then be divided into a right-hand part $S^+$ on which $x = x^+(y, z)$ and a left-hand part $S^-$ on which $x = x^-(y, z)$. Now
+        \begin{align*}
+            \int_V \pd{F_1} x \D V &= \int_z \int_y \left(\int_{x^-(y, z)}^{x^+(y, z)} \pd{F_1} x \D x\right) \D y \D z \\
+            &= \int_z \int_y \left(F_1(x^+(y, z), y, z) - F_1(x^-(y, z), y, z)\right) \D y \D z \\
+            &= \int_{S^+} F_1(\V x) \D y \D z - \int_{S^-} F_1(\V x) \D y \D z
+        \end{align*}
+        We parameterise $S^+$ using $y$ and $z$, so $\V x = (x^+(y, z), y, z)$ on $S^+$, so
+        \begin{align*}
+            d\V S = \pm \begin{pmatrix}
+             \pd{x^+}{y} \\
+             1 \\
+             0 \\
+            \end{pmatrix} \times \begin{pmatrix}
+             \pd{x^+}{z} \\
+             0 \\
+             1 \\
+            \end{pmatrix} \D y \D z = \pm \begin{pmatrix}
+             1 \\
+             -\pd{x^+}y \\
+             -\pd{x^+}z \\
+            \end{pmatrix} \D y \D z
+        \end{align*}
+        and therefore $\V e_1 \cdot d \V S = \pm \D y \D z$. Since we have chosen the outward normal, we want the plus sign. Similarly, on $S^-$, $\V e_1 \cdot d \V S = -\D y \D z$, so
+        \begin{align*}
+            \int_V \pd{F_1} x \D V = \int_{S^+} F_1 \V e_1 \cdot d\V S + \int_{S^-} F_1 \V e_1 \cdot d\V S = \int_S F_1 \V e_1 \cdot d\V S
+        \end{align*}
+        Analogous calculations can clearly be carried out for $\int_V \pd{F_2} y dV$ and $\int_V \pd{F_3} z dV$, yielding $\int_S F_2 \V e_2 \cdot d \V S$ and $\int_S F_3 \V e_3 \cdot d \V S$ respectively. Addition yields the result.
+
+        For more complicated shapes, we split the shape up as in the proof of Green's theorem in the plane.    
+    \end{proof}
+    
+    \begin{example}
+        Let us calculate the flux of the vector field $\V F = (y, x, z^6)$ through the surface of the sphere $V_R = \{\V x: |\V x| < R\}$? By the divergence theorem, it is $\int_{V_R} 6z^5 \D V$, which vanishes by oddness in $z$.
+
+        But that's no fun. Let us calculate the flux directly. We've already calculated the surface element for a sphere, namely
+        \begin{align*}
+            d\V S = R^2 \sin \theta \begin{pmatrix}
+             \sin \theta \cos \phi \\
+             \sin \theta \sin \phi \\
+             \cos \theta \\
+            \end{pmatrix} \D \theta \D \phi = R^2 \sin \theta \V e_r \D \theta \D \phi
+        \end{align*}
+        so that
+        \begin{align*}
+            \int_{\pr V_R} \V F \cdot d \V S &= \int_{\pr V_R} \begin{pmatrix}
+             R \sin \theta \sin \phi \\
+             R \sin \theta \cos \phi \\
+             R^6 \cos^6 \theta \\
+            \end{pmatrix} \cdot R^2 \sin \theta \begin{pmatrix}
+             \sin \theta \cos \phi \\
+             \sin \theta \sin \phi \\
+             \cos \theta \\
+            \end{pmatrix} \D \theta \D \phi \\
+            &= \int_{\theta=0}^{\pi} \int_{\phi=0}^{2\pi} \left(2R^3 \sin^2 \theta \sin \phi \cos \phi + R^8 \cos^7 \theta\right) \sin \theta \D \theta \D \phi
+        \end{align*}
+        Both terms vanish by oddness. Specifically, we have $\int_0^{2\pi} \sin \phi \cos \phi \D \phi = 0$ (the range can be repalced with $\int_{-\pi}^{\pi}$ and the integrand is odd) and $\int_0^{\pi} \cos^7 \theta \sin \theta \D \theta = 0$ (because the integrand is odd around $\frac{\pi}2$). Hence the divergence theorem is confirmed.        
+    \end{example}
+    
+    \begin{remark*}
+        In such integrals, one should be on the lookout for integral tricks. For example,
+        \begin{align*}
+            \int_0^{2\pi} \sin^{2m+1} \phi \D \phi = \int_0^{2\pi} \cos^{2m+1} \phi \D \phi &= 0 \\
+            \int_0^{2\pi} \sin^{2m+1} \phi \cos^n \phi \D \phi = \int_0^{2\pi} \sin^m \phi \cos^{2n+1} \phi \D \phi &= 0 \\
+            \int_0^{\pi} \sin^m \theta \cos^{2n+1} \theta \D \theta &= 0
+        \end{align*}
+        because they're all odd about something or other.
+    \end{remark*}
+    
+    \begin{example*}[hard]
+        Let us find the flux of $\V F(\V x) = \V x$ through the surface
+        \begin{align*}
+            y^2 + z^2 = \beta^2(x+1)^2
+        \end{align*}
+        where $\beta$ is a positive constant, $1 \leq x \leq 2$, and the normal points away from the $x$-axis (DIAGRAM). Afterwards, we will confirm the result using the divergence theorem.
+        
+        S is in fact an open cone with apex at $(-1, 0, 0)$ and the $x$-axis as its axis of symmetry. We would like to use cylindrical polars, but rotated such that
+        \begin{align*}
+            x = x, \qquad y = \rho \cos \phi, \qquad z = \rho \sin \phi
+        \end{align*}
+        We then parameterise the cone with
+        \begin{align*}
+            \V x = (x, \beta(x+1) \cos \phi, \beta(x+1) \sin \phi)
+        \end{align*}
+        Hence
+        \begin{align*}
+            d \V S = \pm \begin{pmatrix}
+             1 \\
+             \beta \cos \phi \\
+             \beta \sin \phi \\
+            \end{pmatrix} \times \begin{pmatrix}
+             0 \\
+             -\beta(x+1)\sin\phi \\
+             \beta(x+1)\cos\phi \\
+            \end{pmatrix} \D x \D \phi = \pm \begin{pmatrix}
+             \beta^2(x+1) \\
+             -\beta(x+1)\cos\phi \\
+             -\beta(x+1)\sin\phi \\
+            \end{pmatrix} \D x \D \phi
+        \end{align*}
+        We need the minus sign to ensure that $d\V S$ points away from the $x$-axis -- see diagram. So the flux is given by
+        \begin{align*}
+            \mc F_S &= \int_{x=1}^2 \int_{\phi=0}^{2\pi} \begin{pmatrix}
+             x \\
+             \beta(x+1)\cos\phi \\
+             \beta(x+1)\sin\phi \\
+            \end{pmatrix} \cdot \begin{pmatrix}
+             -\beta^2(x+1) \\
+             \beta(x+1)\cos\phi \\
+             \beta(x+1)\sin\phi \\
+            \end{pmatrix} \D x \D \phi \\
+            &= \int_{x=1}^2 \int_{\phi=0}^{2\pi} \beta^2(x+1) \D x \D \phi = 5\pi \beta^2
+        \end{align*}
+        
+        
+        
+        
+    \end{example*}
+    
+    
+    
     
     
     
