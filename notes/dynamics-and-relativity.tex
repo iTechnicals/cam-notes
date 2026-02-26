@@ -976,6 +976,584 @@
         by Newton's second law.
     \end{proof}
     
+    \lecture{Lecture $n+1$}
+
+    \subsection{The two-body problem}
+
+    The two-body problem is an important special system with two particles and no external forces, for example, the Earth and Moon.
+
+    Let $\V r = \V x_1 - \V x_2$ be the relative separation of the particles. The centre of mass, $\V R$, is given by $M \V R = m_1 \V x_1 + m_2 \V x_2$, so that
+    \begin{align*}
+        \V x_1 &= \V R \underbrace{+ \frac{m_2} M \V r}_{\V y_1} \\
+        \V x_2 &= \V R \underbrace{- \frac{m_1} M \V r}_{\V y_2}
+    \end{align*}
+    so our kinetic energy is
+    \begin{align*}
+        T &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 m_1 \frac{m_2^2}{M^2} \dot{\V r}^2 + \frac 1 2 m_2 \frac{m_1^2}{M^2} \dot{\V r}^2 \\ 
+        &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 \mu \dot{\V r}^2
+    \end{align*}
+    where $\mu = \frac{m_1m_2}{m_1 + m_2}$ is the \emph{reduced mass}. With no external forces, we know $\ddot{\V R} = 0$ -- the centre of mass doesn't accelerate. Let us consider
+    \begin{align*}
+        \mu \ddot{\V r} &= \mu(\ddot{\V x}_1 - \ddot{\V x}_2) \\
+        &= \mu \left(\frac{\V F_{12}}{m_1} - \frac{\V F_{21}}{m_2}\right) \\
+        &= \mu \left(\frac 1 {m_1} + \frac 1 {m_2}\right) \V F_{12} = \V F_{12}
+    \end{align*}
+    so the relative separation behaves as in a single particle problem.
+
+    Furthermore, if $m_1 \gg m_2$, then $\mu = \frac{m_1m_2}{m_1 + 0} = m_2$, so the reduced mass is just the smaller mass -- the heavy object is essentially still and the light object orbits around it.
+    
+    In general, for the number of particles $N > 2$, one cannot solve. However, if $N \gg 1$, we can use new models -- statistical physics.
+    
+    \subsection{Rocket equation and variable mass}
+
+    The relation $\dot{\V P} = \V F^\text{ext}$ is very useful when the internal forces are very complicated. Consider, for example, a rocket that ejects fuel with speed $u$ relative to the rocket. The process of ejection may be complicated, but total momentum must obey
+    \begin{align*}
+        \dot P = \frac{P(t + \delta t) - P(t)}{\delta t} = F^\text{ext}
+    \end{align*}
+    where everything is now in the $z$-direction. We have
+    \begin{align*}
+        P(t) &= m(t)v(t) \\[10pt]
+        P(t + \delta t) &= m(t + \delta t)v(t + \delta t) + (m(t) - m(t + \delta t))(v(t) - u) \\
+        &= m(t)v(t) + [m'(t)v(t) + m(t)v'(t)] \delta t - m'(t)(v(t)-u) \delta t \\[10pt]
+        \implies \Aboxed{m \dot v + u \dot m &= F^\text{ext}}
+    \end{align*}
+    This is called the \emph{Tsiolkovsky rocket equation}. We might also write
+    \begin{align*}
+        m \dot v = F^\text{ext} - u \dot m
+    \end{align*}
+    and we can identify $u \dot m$ as the \emph{thrust force}.
+    
+    \section{Rigid bodies}
+    
+    We can think of rigid body problems as $N$-body problems in which the distances between the particles are fixed.
+
+    The only motions a rigid body can undergo are translations of the centre of mass, and rotations.
+
+    \subsection{Angular velocity}
+
+    In three dimensions, rotations are described by a vector called the \emph{angular velocity} $\V \omega$.
+
+    \begin{definition}
+        The \emph{angular velocity} $\V \omega$ of an object is such that
+        \begin{align*}
+            \V \omega = \omega \hvec n
+        \end{align*}
+        such that $\hvec n$ points along the axis of rotation and $\omega = |\V \omega| = \dot \theta$ is the angular speed. The direction that $\V \omega$ points is given by the right-hand grip rule, where the thumb gives the direction of $\V \omega$ and the fingers give the direction of rotation. 
+    \end{definition}
+    
+    \begin{proposition}
+        \label{angular-velocity} We have
+        \begin{align*}
+            \dot{\V x} = \V \omega \times \V x
+        \end{align*}
+    \end{proposition}
+    
+    DIAGRAM!!!
+
+    In addition to the angular velocity, a rotation must specify a point through which the axis of rotation passes -- in \cref{angular-velocity}, the choice of point is implicit in the choice of origin for the vector $\V x$.
+
+    \lecture{Lecture 11 -- 17/02/26}
+
+    \subsection{Moment of inertia}
+
+    The rotation of a particle involves kinetic energy. We have
+    \begin{align*}
+        T &= \frac 1 2 m \dot{\V x} \dot \dot{\V x} \\
+        &= \frac 1 2 m (\V \omega \times \V x) \cdot (\V \omega \times \V x) \\
+        &= \frac 1 2 m \omega^2 d^2
+    \end{align*}
+    where $d = |\hvec n \times \V x$ is the perpendicular distance of the particle from the axis of rotation.
+
+    In a rigid body, all particles rotate with the same angular velocity (in order to keep the distances between the particles fixed) -- we have
+    \begin{align*}
+        \frac d {dt} |\V x_i - \V x_j|^2 &= 2(\dot{\V x}_i - \dot{\V x}_j) \cdot (\V x_i - \V x_j) \\
+        &= 2\left(\V \omega \times (\V x_i - \V x_j)\right) \cdot (\V x_i - \V x_j) \\
+        &= 0
+    \end{align*}
+
+    \begin{definition}[Moment of inertia]
+        The \emph{moment of inertia} of a rigid body with particles labelled by $i$ is
+        \begin{align*}
+            I = \sum_i m_i d_i^2
+        \end{align*}
+        where $d_i = |\hvec n \times \V x_i|$ is the distance of the $i^\text{th}$ particle from the axis of rotation.        
+    \end{definition}
+    
+    The motivation of this definition is that the kinetic energy of a rigid body is then
+    \begin{align*}
+        T &= \frac 1 2 \sum_i m_i \dot{\V x}_i \cdot \dot{\V x}_i \\
+        &= \frac 1 2 I \omega^2
+    \end{align*}
+
+    \begin{remark*}
+        An object's moment of inertia is not an intrinsic property -- it depends on the axis around which it is rotating.
+    \end{remark*}
+
+    The angular momentum of a rotating rigid body is then
+    \begin{align*}
+        \V L &= \sum_i m_i \V x_i \times \dot{\V x}_i \\
+        &= \sum_i m_i \V x_i \times (\V \omega \times \V x_i)
+    \end{align*}
+    
+    We will for now only consider the component of $\V L$ along the direction of $\V omega$, which is
+    \begin{align*}
+        L &= \V L \cdot \hvec n \\
+        &= \omega \sum_i m_i \left(\V x_i \times (\hvec n \times \V x_i)\right) \\
+        &= \omega \sum_i m_i (\hvec n \times \V x_i) \cdot (\hvec n \times \V x_i) \\
+        &= \omega \sum_i m_i d_i^2 \\
+        &= \omega I
+    \end{align*}
+    and once again $I$ plays the role of mass.
+
+    Recall that the application of a torque causes a change in the angular momentum -- $\dot{\V L} = \V G$. If the torque is also around the axis of rotation, then $\V G = G \hvec n$, and
+    \begin{align*}
+        \V G &= \dot{\V L} \\
+        \implies \hvec n \cdot \V G &= \hvec n \cdot \dot{\V L} \\
+        \implies G &= I \dot{\omega}
+    \end{align*}
+    
+    Typically we calculate the moment of inertia by taking $N \to \infty$ and turning our sums into integrals -- we get
+    \begin{align*}
+        \sum_i m_i f(\V x_i) \approx \int d^3x \, \rho(\V x) f(\V x)
+    \end{align*}
+    where $\rho(\V x)$ is the \emph{density}. We will also typically consider a uniform density, so $\rho(\V x) = \rho_0$ a constant. Hence we have
+    \begin{align*}
+        M &= \rho \int d^3x \, \\
+        I &= \rho \int d^3x \, x_\perp^2
+    \end{align*}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item \emph{Hoop}. Consider a circular hoop rotating around a perpendicular axis through its centre. DIAGRAM We have
+            \begin{align*}
+                M &= 2\pi a \rho \\
+                I &= 2\pi a^3 \rho = Ma^2
+            \end{align*}
+            \item \emph{Rod}. Consider a rod rotating around one of its endpoints. We have
+            \begin{align*}
+                M &= l\rho \\
+                I &= \rho \int_0^l dx \, x^2 = \frac 1 3 \rho l^3 = \frac 1 3 M l^2
+            \end{align*}
+            \item \emph{Disc}. Consider a circular disc rotating around a perpendicular axis through its centre. We have
+            \begin{align*}
+                M &= \pi a^2 \rho \\
+                I &= 2\pi \rho \int_0^a r \D r \cdot r^2 = 2\pi \rho \frac{a^4}{4} = \frac 1 2 Ma^2
+            \end{align*}
+            where the $r \D r$ appears from the Jacobian.
+            \item \emph{Sphere} Consider a sphere rotating about any axis through its centre. We have
+            \begin{align*}
+                M &= \frac 4 3 \pi a^3 \rho \\
+                I &= 2 \pi \rho \int_0^a \int_0^\pi r^2 \sin \theta \D r d \theta \, r^2 \sin^2 \theta \\
+                &= 2\pi \rho \frac{a^5}{5} \cdot \frac 4 3 = \frac 2 5 Ma^2
+            \end{align*}
+        \end{itemize}
+    \end{example*}
+    
+    \subsection{Perpendicular axis theorem}
+    
+    \begin{proposition}[Perpendicular axis theorem]
+        Consider any 2D body (a `lamina'), lying in the $x$-$y$ plane, and let $I_x$, $I_y$ and $I_z$ be moments of inertia around those axes. Then
+        \begin{align*}
+            I_z = I_x + I_y
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Clearly
+        \begin{align*}
+            I_x &= \int d^3 x \, \rho y^2 \\
+            I_y &= \int d^3 x \, \rho x^2 \\
+            I_z &= \int d^3 x \, \rho(x^2+y^2)
+        \end{align*}
+        from which the result is immediate.
+    \end{proof}
+    
+    \subsection{Parallel axis theorem}
+    
+    \begin{proposition}[Parallel axis theorem]
+        Consider an axis through a body's centre of mass and an axis parallel to the above, separated by a distance $h$. Let $I_\text{c.o.m.}$ and $I$ be the moments of inertia of rotation about these axes respectively. Then
+        \begin{align*}
+            I = I_\text{c.o.m.} + Mh^2
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Set $\V x_i = \V R + \V y_i$. Then, recalling a unit vector along the rotation axis is given by $\hvec n$,
+        \begin{align*}
+            I &= \sum_i m_i d^2 = \sum_i m_i (\hvec n \times \V x_i) \cdot (\hvec n \times \V x_i) \\
+            &= \sum_i m_i (\hvec n \times (R + \V y_i)) \cdot (\hvec n \times (R + \V y_i)) \\
+            &= \sum_i m_i (\hvec n \times \V R) \cdot (\hvec n \times \V R) + (\hvec n \times \V y_i) \cdot (\hvec n \times \V y_i) + 2(\hvec n \times \V R) \cdot (\hvec n \times \V y_i) \\
+            &= Mh^2 + I_{\text{c.o.m.}} + 0
+        \end{align*}
+        where the last term vanishes by linearity of the cross product and the fact that $\sum_i m_i \V y_i = 0$.        
+    \end{proof}
+    
+    \begin{remark*}
+        The theorem shows that, for any given axis of rotation, the moment of inertia is minimized when rotating around an axis through the object's centre of mass.
+    \end{remark*}
+    
+    \subsection{Motion of rigid bodies}
+
+    We've established that rigid bodies should only be able to move and rotate. We claim we can model particles in a rigid body by
+    \begin{align*}
+        \V x_i = \V R(t) + \V y_i
+    \end{align*}
+    where $\V y_i$ satisfies $\dot{\V y}_i = \V \omega \times \V y_i$ -- in other words, each $\V y_i$ is rotating only with the same angular velocity.
+    
+    Let us now consider the energy. Starting from our previous result,
+    \begin{align*}
+        T &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 \sum_i m_i \dot{\V y}_i^2 \\
+        &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 \sum_i m_i (\V \omega \times \V y_i)^2 \\
+        &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 I_\text{c.o.m.}\omega^2
+    \end{align*}
+    where these terms are the \emph{translational} and \emph{rotational} kinetic energies respectively.
+    
+    What about the potential energy? We have
+    \begin{align*}
+        V = \sum_i V_i(\V x_i) + \sum_{i < j}V_{ij}(|\V x_i - \V x_j|)
+    \end{align*}
+    The second term is constant, since the distances between particles do not change -- hence it drops out upon taking grad.
+
+    What about the first term? Let's consider a nice potential such as a cosntant gravitational field,
+    \begin{align*}
+        V_i(\V x_i) &= m_igz_i \\
+        \implies V = \sum_i V_i &= g \sum_i m_iz_i \\
+        &= gMR_z
+    \end{align*}
+    where $R_z$ is the $z$-component of the centre of mass -- in other words, a rigid body behaves just like a point particle under the influence of gravity.
+
+    \begin{example*}[Pendulum]
+        Consider a rigid rod pendulum with mass $M$ and length $L$, fixed at some point and free to rotate under the influence of gravity. DIAGRAM.
+
+        Our approach will be to find the energy and then set $\frac{dE}{dt} = 0$. We will find $E$ by two methods.
+
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item Observe the pivot is fixed, so there is only rotational kinetic energy. Hence
+            \begin{align*}
+                T = \frac 1 2 I\dot \theta^2
+            \end{align*}
+            where $\dot \theta = \omega$ and $I = \frac 1 3 ML^2$.
+            \item Consider the centre of mass, which moves with velocity $\frac{l\dot \theta} 2$. Then
+            \begin{align*}
+                T = \frac 1 2 M\left(\frac{l\dot \theta}{2}\right)^2 + \frac 1 2 I_\text{c.o.m.}\dot \theta^2
+            \end{align*}
+            where $I = \frac 1 3 ML^2 - M\left(\frac L 2\right)^2$ by the parallel axis theorem. Why is the angular velocity around the centre of mass the same as the centre of mass around the pivot? DIAGRAM!
+            We obtain
+            \begin{align*}
+                T = \frac 1 2 I \dot \theta^2
+            \end{align*}
+            as expected.           
+        \end{enumerate}
+        Now
+        \begin{align*}
+            E = \frac 1 2 I \dot \theta^2 + \frac 1 2 MgL \cos \theta
+        \end{align*}
+        as can be seen by considering a diagram. Hence, after differentiating and cancelling $\dot \theta$, we obtain
+        \begin{align*}
+            I \ddot \theta = -\frac 1 2 MgL \sin \theta
+        \end{align*}
+    \end{example*}
+    
+    \begin{example*}[Rolling ball]
+        No-slip rolling occurs when the friction between the ball and the ground is so strong that the point of contact is not moving. DIAGRAM!!! In particular, we have the result $v = a\dot \theta$, where $a$ is the radius of the ball and $v$ its velocity.
+
+        The kinetic energy is
+        \begin{align*}
+            T &= \frac 1 2 Mv^2 + \frac 1 2 I \omega^2 \\
+            &= \frac 1 2 v^2 \left(M + \frac I {a^2}\right)
+        \end{align*}
+        Importantly, normally including friction in our models will lead to energy not being conserved -- but, because there is no relative velocity at the point of contact, no work is done by the friction, and so energy is conserved.
+
+        Let us, then, put our ball on a slope of incline $\alpha$ and have it roll down. We have
+        \begin{align*}
+            E &= \frac 1 2 \left(M + \frac I {a^2}\right) \dot x^2 - Mgx \sin \alpha
+        \end{align*}
+        so, once again differentiating and dividing by $\dot x$, we have
+        \begin{align*}
+            \left(M + \frac I{a^2}\right) \ddot x = Mg \sin \alpha
+        \end{align*}
+
+        \lecture{Lecture 14 -- 21/02/26}
+        Let us `rigorously' show that energy is conserved. We have
+        \begin{align*}
+            E &= \frac 1 2 M \dot x^2 + \frac 1 2 I \dot \theta^2 \\
+            \implies \frac{dE}{dt} &= M \dot x \ddot x + I \dot \theta \ddot \theta \\
+            &= -F\dot x + a F \dot \theta \\
+            &= F(-\dot x + a \dot \theta) = 0
+        \end{align*}
+        where $\dot x + a \dot \theta$ is exactly the fact that the ball is rolling.        
+    \end{example*}
+
+    \subsection{Normal forces}
+
+    Objects don't fall through tables, etc., because the table exerts a \emph{normal force} on the object that pushes it away. Much like friction, this force is a macroscopic approximation to microscopic interactions such as electrostatic repulsion and the Pauli exclusion principle.
+
+    DIAGRAM -- object on table with gravitational and normal forces.
+
+    The normal force is most important when we are on a slope.
+
+    DIAGRAM: slope $\theta$ above horizontal, block of mass $mg$, forces resolved, dry friction $F_F$ also labelled.
+
+    Normal force doesn't prevent the object from sliding -- that is due to the \emph{dry friction} force, $F_F$. Typically, once the object starts moving, we have
+    \begin{align*}
+        F_F = \mu F_N
+    \end{align*}
+    where $\mu$, the coefficient of friction, is a dimensionless constant. Note that the friction is independent of speed, but always opposes the direction of motion.
+
+    Normal forces also produce elastic bounces:
+
+    DIAGRAM
+
+    The normal force on impact is in the direction normal to the surface at the point of impact. Let us show that the angle of incidence equals the angle of reflection.
+
+    First, assume that total energy is conserved -- the collision is \emph{elastic}. By momentum conservation (in the $y$-direction), we have
+    \begin{align*}
+        p_y &= q_y + Q_y
+    \end{align*}
+    where $Q_y$ is the momentum of the Earth/wall imparted by the collision. Conservation of energy (in the $y$-direction) gives
+    \begin{align*}
+        \frac{p_y^2}{2m} &= \frac{q_y^2}{2m} + \frac{Q_y^2}{2M} \\
+        \implies \frac{(q_y+Q_y)^2}{2m} &= \frac{q_y^2}{2m} + \frac{Q_y^2}{2M}
+    \end{align*}
+    If $M \gg m$, $\frac{Q_y^2}{2M} \ll \frac{Q_y^2}{2m}$, so we can drop the $\frac{Q_y^2}{2M}$. Hence
+    \begin{align*}
+        Q_y &= -2q_y \\
+        \implies p_y = -q_y
+    \end{align*}
+    so $\beta = \alpha$ as we expect.
+
+    \begin{remark*}
+        This problem involves an almost instantaneous change in momentum -- this is called an \emph{impulse}.
+    \end{remark*}
+    
+    \section{Rotating reference frames}
+
+    Rotating reference frames are important examples of non-inertial frames.
+
+    \subsection{Newton's equations in a rotating reference frame}
+
+    \begin{theorem}[Newton's equations in a rotating reference frame]
+        In a rotating reference frame,
+        \begin{align*}
+            \left(\frac{d^2\V x}{dt^2}\right)_{S'} = \frac{\V F}m - \dot{\V \omega} \times \V x - 2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'} - \V \omega \times (\V \omega \times \V x)
+        \end{align*}
+        where the notation indicates the component-wise derivatives, for components with respect to a rotating basis.
+    \end{theorem}
+
+    \begin{proof}
+        Let us consider an inertial frame $S$ with Cartesian axes $\V e_1, \V e_2, \V e_3$, and a rotating frame $S'$ with axes $\V e_1'$, $\V e_2'$, $\V e_3'$. 
+
+        From the perspective of the inertial frame, the $\V e_i'$ axes rotate with angular velocity $\V \omega$ -- that is,
+        \begin{align*}
+            \dot{\V e}_i' = \V \omega \times \V e_i'
+        \end{align*}
+
+        In the two frames, the position of a particle is, respectively,
+        \begin{align*}
+            \V x &= x_i \V e_i = x_i' \V e_i' \\
+            \implies \dot{\V x} &=  \dot x_i' \V e'_i + x_i' \dot{\V e}_i' \\
+            &= \dot x_i' \V e'_i + x_i' \V \omega \times \V e_i' \\
+            &= \dot x_i' \V e'_i + \omega \times \V x \\
+            &= \left(\frac{d\V x}{dt}\right)_S' + \V \omega \times \V x \\
+            \implies \left(\frac{d\V x}{dt}\right)_S &= \left(\frac{d\V x}{dt}\right)_S' + \V \omega \times \V x
+        \end{align*}
+        where this notation indicates coordinate-wise differentiation in a given frame. This makes sense -- the difference, $\V \omega \times \V x$, is the relative velocity of the frames.
+
+        Now for the acceleration!
+        \begin{align*}
+            \ddot{\V x} &= \ddot x_i' \V e_i' + \dot x_i' \dot{\V e}_i' + \dot{\V \omega} \times \V x + \V \omega \times \dot{\V x} \\
+            \implies \left(\frac{d^2\V x}{dt^2}\right)_S &= \left(\frac{d^2\V x}{dt^2}\right)_{S'} + \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'} + \dot{\V \omega} \times \V x + \V \omega \times \left(\left(\frac{d\V x}{dt}\right)_{S'}+\V \omega \times \V x\right) \\
+            &= \left(\frac{d^2\V x}{dt^2}\right)_{S'} + \dot{\V \omega} \times \V x + 2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'} + \V \omega \times (\V \omega \times \V x)
+        \end{align*}
+        The result follows.
+    \end{proof}
+    
+    We can see that the change to a rotating reference frame manifests itself as three so-called \emph{fictitious forces}:
+    \begin{itemize}
+        \item $-\dot{\V \omega} \times \V x$ -- the \emph{Euler force};
+        \item $-2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'}$ -- the \emph{Coriolis force};
+        \item $\V \omega \times (\V \omega \times \V x)$ -- the \emph{centrifugal force}.
+    \end{itemize}
+    
+    \lecture{Lecture 15 -- 24/02/26}
+
+    One important example of a rotating frame is any point on Earth. We have
+    \begin{align*}
+        \omega_\text{rot} = \frac{2\pi}{1 \si{day}} &\approx 7 \times 10^{-5} \si{s^{-1}} \\
+        R_\text{earth} &\approx 6 \times 10^{3} \si{km}
+    \end{align*}
+
+    We will neglect the small `wobble' of Earth -- hence $\dot{\V \omega} = \V 0$, there is no Euler force (Euler force is the least interesting one anyways).
+    
+    \subsection{Centrifugal force}
+    
+    We have
+    \begin{align*}
+        \V F_\text{cen} = -m \V \omega \times (\V \omega \times \V x)
+    \end{align*}
+    so
+    \begin{align*}
+        |\V F_\text{cen}| = m\omega^2 r\cos \theta
+    \end{align*}
+    (DIAGRAM). Furthermore, the centrifugal force is conservative,
+    \begin{align*}
+        \V F_\text{cen} = -\grad \left(-\frac 1 2 m|\V \omega \times \V x|^2\right) = -\grad \left(-\frac 1 2 m\omega^2r^2\cos^2\theta\right)
+    \end{align*}
+    which allows us to see that potential eneergy decreases moving away from the axis of rotation.
+
+    \begin{example*}
+        Take a mass on a string hanging from a fixed point above the Earth at latitude $\theta$. We want to calculate $\phi$, the angle between the string and the vertical (DIAGRAM). Let us find the forces acting on the particle. We have
+        \begin{align*}
+            \V g = -mg \hvec r
+        \end{align*}
+        since the string is short compared to $R_\text{earth}$, we simplify by taking $\hvec r$ fixed. Also,
+        \begin{align*}
+            \V F_\text{cen} &= -m \V \omega \times (\V \omega \times \V x) \\
+            &= m\omega^2 r \cos \theta (\cos \theta \hvec r - \sin \theta \hvec \theta)
+        \end{align*}
+        (DIAGRAM). Then, to hold the string together, there must be a force exerted by the molecules in the string balancing the other forces --  the tension $\V T$. We can write (DIAGRAM)
+        \begin{align*}
+            \V T = T \cos \phi \hvec r + T \sin \phi \hvec \theta
+        \end{align*}
+        Now we have two equations for each of $\hvec r$ and $\hvec \theta$, and two unknowns $T$ and $\phi$. So the system should be soluble. We obtain
+        \begin{align*}
+            \tan \phi = \frac{\omega^2 R \cos \theta \sin \theta}{g - \omega^2 R \cos^2\theta}
+        \end{align*}       
+    \end{example*}
+    
+    \subsection{Coriolis force}
+
+    We have
+    \begin{align*}
+        \V F_\text{cor} = -2m \V \omega \times \V v
+    \end{align*}
+    where $\V v$ is the velocity in the moving frame. Notably, this is the same as the Lorentz force for magnetic fields, but with $\V B$ replaced with $-2 \V \omega$. We conclude that, in essence, the particle will move in a circle or spiral.
+    
+    \begin{example*}[Formation of hurricanes]
+        If a low pressure region forms in the atmosphere, then particles will move towards it -- the Coriolis force bends them to follow.
+
+        DIAGRAM: particles going to a point, $-\V \omega$ into the page at that point, Coriolis force going clockwise at each point by right-hand rule.
+
+        This, however, leads to a counter-clockwise swirling -- hurricanes in the northern hemisphere rotate counter-clockwise, while those in the southern hemisphere rotate clockwise.
+
+        Also, nearer the equator, particles moving north or south are almost parallel to $\V \omega$, so the Coriolis force is not so storng, explaining why hurricanes cannot form too near to the equator (although, for particles travelling east-west, it is very strong).
+    \end{example*}
+    
+    \begin{example*}
+        Let us drop a ball from a tower of height $h$ on the Equator (DIAGRAM). Where does it fall?
+
+        As the ball falls, its angular velocity must increase to preserve angular momentum, so the ball rotates faster than the Earth and hence falls in front of the tower. Let us perform these computations exactly using the Coriolis force (neglecting centrifugal since it acts in the same direction as gravity). Then
+        \begin{align*}
+            \ddot{\V x} &= \V g - 2 \V \omega \times \dot{\V x}  && (*)\\
+            \implies \dot{\V x} &= \V g t - 2 \V \omega \times (\V x - \V x_0)
+        \end{align*}
+        Plugging this back into $(*)$, we have
+        \begin{align*}
+            \ddot{\V x} = \V g - 2 \V \omega \times \V g t + 4 \V \omega \times (\V \omega \times (\V x - \V x_0))
+        \end{align*}
+        Now the final term is analogous to centrifugal force -- it acts in the vertical direction and is small compared to gravity -- so we neglect it. Then
+        \begin{align*}
+            \ddot{\V x} &= \V g - 2 \V \omega \times \V g t \\
+            \implies \V x &= \V x_0 + \frac 1 2 \V g t^2 - \frac 1 3 \V \omega \times \V g t^3
+        \end{align*}
+        Now, to actually solve this, let us introduce a basis, with $\V e_1$ pointing north, $\V e_2$ pointing west, and $\V e_3$ pointing up, so
+        \begin{align*}
+            \V \omega &= \omega \V e_1 \\
+            \V g &= -g \V e_3 \\
+            \V x_0 &= (R+h) \V e_3
+        \end{align*}
+        so
+        \begin{align*}
+            \V x = \begin{pmatrix}
+             0 \\
+             -\frac 1 3 \omega gt^3 \\
+             R + h - \frac 1 2 gt^2 \\
+            \end{pmatrix}
+        \end{align*}
+        The particle hits the ground at $\frac 1 2 gt^2 = h$, and we can sub this in to find $x_2$, which will be negative -- i.e. we moved in front of the tower as expected.
+    \end{example*}
+    
+    \lecture{Lecture 16 -- 26/02/26}
+
+    \begin{example}[Foucault's pendulum]
+        As the Earth rotates under Foucault's pendulum, the pendulum itself appears to rotate from the point of view of someone on Earth.
+
+        DIAGRAM. At a general latitude $\theta$, we fix a basis $\V e_1$ north along a tangent to the surface, $\V e_2$ westward and $\V e_3$ upward. Specify vectors
+        \begin{align*}
+            \V x &= (x, y, z) \\
+            \V g &= (0, 0, -g) \\
+            \V \omega &= (\omega \cos \theta, 0, \omega \sin \theta)
+        \end{align*}
+        where $\V x$ is the endpoint of the pendulum and $\V \omega$ is the angular velocity of the Earth. Let $l$ be the length of the pendulum, so 
+        \begin{align*}
+            \V T = \frac{T}{l} (-x, -y, l-z)
+        \end{align*}
+        is the tension in the string (DIAGRAM). In particular, the inextensibility of the string gives that $x^2 + y^2 + (l-z)^2 = l^2$. It is now time to write down the equation of motion:
+        \begin{align*}
+            m \ddot{\V x} &= \V T + m \V g - 2m \V \omega \times \dot{\V x}
+        \end{align*}
+        We have four equations and four unknowns, so the system should be soluble. The strategy is to solve the constraint to find $z$ as a function of $x$ and $y$, plug this into the ODE, eliminate $T$ and solve the coupled ODEs. We will not do this here. The upshot is that the pendulum follows a slowly rotating ellipse in the $x$-$y$ plane:
+        \begin{align*}
+            x+iy = e^{-i\omega t \sin \theta}\left(a \cos\left(\sqrt{\frac g l}t\right)+b \sin\left(\sqrt{\frac g l}t\right)\right)
+        \end{align*}
+        Note that the period of rotation of the ellipse depends only on the angle $\theta$.
+    \end{example}
+    
+    \section{Special relativity}
+
+    \subsection{Basic postulates of relativity}
+
+    Maxwell's equations predicted the existence of electromangetic waves, which travel in vacuum at the speed of light
+    \begin{align*}
+        c = 299,792,458 \si{ms^{-1}}
+    \end{align*}
+    Any theory with a fixed velocity cannot have Galilean invariant, since in Galilean theory only relative velocities exist. Theoretically this could be OK -- the same is true for sound -- but we claim that, no matter one's own speed, light is still measured to travel at $c$.
+
+    Hence, by analogy with sound, light was assumed to be travelling in the so-called `luminiferous ether'. But this was famously disproven by Michelson and Morley. Hence, Einstein built a new system based on the following postulates:
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item \emph{(Principle of relativity)} The laws of physics are the same in all inertial frames.
+        \item The speed of light in a vacuum is the same in all inertial frames.
+    \end{enumerate}
+
+    It is clear that Galilean invariance is incompatible with these postulates.
+
+    \subsection{Lorentz transformations}
+
+    Let us for now consider only one spatial dimension $x$, and two frames with coordinates $(x, t)$ and $(x', t')$.
+
+    Recall that, according to Galileo,
+    \begin{align*}
+        x' &= x-vt \\
+        t' &= t
+    \end{align*}
+    since $t$ cannot change between frames. But let us allow now for a more general
+    \begin{align*}
+        x' &= f(x, t) \\
+        t' &= g(x, t)
+    \end{align*}
+    The law of inertia still holds, so a free particle moves at a constant velocity. Hence, we know that, for such a particle,  
+    \begin{align*}
+        x &= A + Bt \\
+        x' &= A' + B't'
+    \end{align*}
+    We will also choose that our frames have a constant origin, so $x = t = 0 \iff x' = t' = 0$. We see that the transformation must map all lines through the origin in the $(x, t)$ plane to lines through the origin in the $(x', t')$ plane -- in other words, the transformation is linear. Hence
+    \begin{align*}
+        \begin{pmatrix}
+         x' \\
+         t' \\
+        \end{pmatrix} &= \begin{pmatrix}
+         a & b \\
+         c & d \\
+        \end{pmatrix} \begin{pmatrix}
+         x \\
+         t \\
+        \end{pmatrix}
+    \end{align*}
+    for $a$, $b$, $c$, $d$ which don't depend on $x$, $t$, but can depend on the relative velocity between the frames.
+    
+    
+    
+    
     
     
     

@@ -6,7 +6,8 @@
 \contentsline {subsection}{\numberline {1.4}Finite $p$-groups}{10}{subsection.75}%
 \contentsline {subsection}{\numberline {1.5}Finite abelian groups}{11}{subsection.84}%
 \contentsline {subsection}{\numberline {1.6}Sylow theorems}{12}{subsection.93}%
-\contentsline {section}{\numberline {2}Rings}{13}{section.104}%
+\contentsline {section}{\numberline {2}Rings}{14}{section.104}%
 \contentsline {subsection}{\numberline {2.1}Basic definitions}{14}{subsection.105}%
 \contentsline {subsection}{\numberline {2.2}Homomorphisms, ideals and quotients}{15}{subsection.119}%
+\contentsline {subsection}{\numberline {2.3}Factorisation in integral domains}{20}{subsection.169}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

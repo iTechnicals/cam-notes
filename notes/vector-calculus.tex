@@ -988,7 +988,7 @@
     \end{align*}
     Hence, by the lemma, the area of the region is given by
     \begin{proposition}
-        \[
+        \label{4.4} \[
             dS = \left|\pd{\V x}{u} \times \pd{\V x}{v}\right|\D u \D v
         \]
     \end{proposition}
@@ -1009,7 +1009,7 @@
     
     Similarly, we can divide our volumes into regions lying between \emph{surfaces} of constant $u$, $v$ and $w$. To lowest order, these regions are \emph{parallelepipeds} with sides $\pd{\V x}{u} \delta u$, $\pd{\V x}{v} \delta v$ and $\pd{\V x}{w} \delta w$. Hence the volume element is given by
     \begin{proposition}
-        \[
+        \label{4.5} \[
             dV = \left|\pd{\V x}{u} \cdot \left(\pd{\V x}{v} \times \pd{\V x}{w}\right)\right| \D u \D v \D w
         \]
     \end{proposition}
@@ -1228,6 +1228,10 @@
     \begin{remark*}
         We often call capital $F$ little $f$ instead, although this is an obvious abuse of notation.
     \end{remark*}
+
+    \begin{remark*}
+        The change of variables may fail to be a bijection for one or two points -- c.f. polar coordinates. But this is ok.
+    \end{remark*}    
     
     \begin{proof}
         Let us divide $A$ up using curves of constant $u$ and $v$. The area of each region is given by
@@ -1275,19 +1279,446 @@
 
     Suppose that $J_1$ is the Jacobian matrix for the transformation $(u, v) \mapsto (x, y)$, and $J_2$ is the Jacobian matrix for $(\xi, \eta) \mapsto (u, v)$. Then, consider the product
     \begin{align*}
-        J_1J_2 = \begin{pmatrix}
+        J_1J_2 &= \begin{pmatrix}
             \pd x u & \pd x v \\
             \pd y u & \pd y v \\
         \end{pmatrix}\begin{pmatrix}
-            \pd u \xi & \pd x \theta \\
-            \pd v \xi & \pd y \theta \\
+            \pd u \xi & \pd u \theta \\
+            \pd v \xi & \pd v \theta \\
+        \end{pmatrix} \\
+        &= \begin{pmatrix}
+            \pd x u \pd u \xi + \pd x v \pd v \xi & \pd x u \pd u \theta + \pd x v \pd v \theta \\
+            \pd y u \pd u \xi + \pd y v \pd v \xi & \pd y u \pd u \theta + \pd y v \pd v \theta \\
+        \end{pmatrix} \\
+        &= \begin{pmatrix}
+            \pd x \xi & \pd x \theta \\
+            \pd y \xi & \pd y \theta \\
         \end{pmatrix}
     \end{align*}
+    In other words, the Jacobian of a composition of maps is the product of the Jacobians:
+    \begin{align*}
+        \pd{(x, y)}{(u, v)} \cdot \pd{(u, v)}{(\xi, \eta)} = \pd{(x, y)}{(\xi, \eta)}
+    \end{align*}
+    A particularly nice consequence of this fact is that
+    \begin{align*}
+        \pd{(x, y)}{(u, v)} = \left(\pd{(u, v)}{(x, y)}\right)^{-1}
+    \end{align*}
     
+    \begin{example*}
+        Let us calculate $\int_A x^3y \D A$ where $A$ is the area between the hyperbolas $x^2 - y^2 = 1$ and $x^2 - y^2 = 2$, enclosed within the circle $x^2 + y^2 = 4$, with $x$, $y > 0$.
+
+        desperate need for a DIAGRAM.
+
+        Let us change variables to $u = x^2 + y^2$, $v = x^2 - y^2$. Then
+        \begin{align*}
+            \pd{(u, v)}{(x, y)} = \det \begin{pmatrix}
+             2x & 2y \\
+             2x & -2y \\
+            \end{pmatrix} = -8xy
+        \end{align*}
+        so $\pd{(x, y)}{(u, v)} = -\frac 1 {8xy}$. Now we must find the corresponding area, which we do by considering the boundary curves. The left and right boundaries of $A$ correspond to $v = 1$, $1 < u < 4$ and $v = 2$, $2 < u < 4$ respectively. The lower boundary has $y = 0$, so $u = v$ with $1 < u < 2$, and the upper boundary has $u = 4$ with $1 < v < 2$. So
+        \begin{align*}
+            A' = \{(u, v) : 1 < v < 2, v < u < 4\}
+        \end{align*}
+        Hence
+        \begin{align*}
+            \int_A x^3 y \D A &= \int_{A'} x^3y \left|-\frac 1 {8xy}\right| \D u \, dv \\
+            &= \frac 1 8 \int_{A'} x^2 \D u \, dv \\
+            &= \frac 1 8 \int_{A'} \frac 1 2 (u + v) \D u \, dv \\
+            &= \frac 1 {16} \int_1^2 \int_v^4 u + v \D u \, dv \\
+            &= \frac 1 {16} \int_1^2 8 + 4v - \frac 3 2 v^2 \D v
+        \end{align*}
+    \end{example*}
     
+    \subsection{Volume integrals}
+
+    Volume integrals are really the same as area integrals, just in one more dimension (in fact these notions will generalise to $\RR^n$). We cover $V$ with a large number of small disjoint volumes, and define
+    \begin{align*}
+        \int_V f(\V x) \D V = \lim_{\Delta \to 0} \sum_{i=1}^N f(\V x_i) \delta V_i
+    \end{align*}
+    where $\Delta$ is the maximum linear dimension of all the $\delta V_i$.
+
+    Alternatively, we have the iterated integral definition, in particular
+    \begin{align*}
+        \int_{x_{\min}}^{x_\text{max}}\left(\int_{Y(x)}\left(\int_{Z(x,y)}f(x, y, z) \, dz\right) \, dy\right) \, dx
+    \end{align*}
+    Notations include $\int_V f(\V x) \D V$, $\int_V f(x, y, z) \D x dy \, dz$, $\iiint_V f(x, y, z) \D V$, $\int_V f(\V x) d^3 \V x$ and $\int dx \int dy \int dz f(x, y, z)$.
+
+    \begin{example*}
+        Let $V$ be the cuboid $x \in [-a, a]$, $y \in [-b, b]$, $z \in [-c, c]$. Let us calculate $\int_V \V F \D V$ where $\V F$ is the vector field $(z^2, 0, yz)$.
+
+        Then, applying some separation,
+        \begin{align*}
+            \int_V \V F \D V &= \left(\int_V z^2 \D V, 0, \int_V yz \D V\right) \\
+            &= \left(\int_{-a}^a 1 \D x \int_{-b}^b 1 \D y \int_{-c}^c z^2 \D z, 0, \int_{-a}^a 1 \D x \int_{-b}^b y \D y \int_{-c}^c z \D z\right) \\
+            &= \left(\frac 8 3 abc^3, 0, 0\right)
+        \end{align*}
+    \end{example*}
     
+    \begin{remark*}
+        Sometimes, symmetries are quotable, like with $yz$ as above.
+    \end{remark*}
     
+    \subsection{Change of variables for volume integrals}
     
+    \begin{proposition*}
+        Let $(u, v) \mapsto (x, y)$ be a bijection from a region $A'$ in the $(u, v)$-plane to a region $A$ in the $(x, y)$-plane. Then
+        \begin{align*}
+            \int_A f(x, y, z) \D x dy \, dz = \int_{A'} F(u, v, w) \left|\pd{(x,y,z)}{(u, v,w)}\right| \D u dv \, dw \\
+        \end{align*}
+        where $F(u, v, w) = f(x(u, v, w), y(u, v, w), z(u, v, w))$ and
+        \begin{align*}
+            J = \pd{(x,y,z)}{(u, v,w)} = \det \begin{pmatrix}
+            \pd x u & \pd x v & \pd x w \\
+            \pd y u & \pd y v & \pd y w \\
+            \pd z u & \pd z v & \pd z w
+            \end{pmatrix}
+        \end{align*}
+        is the Jacobian.
+    \end{proposition*}
+    
+    \begin{proof}
+        The proof is almost identical. We have
+        \begin{align*}
+            dV = \left|\pd{\V x}u \cdot \left(\pd{\V x}v \times \pd{\V x}w\right)\right|\D u dv \, dw = \left|\det\left(\pd{\V x}u \middle| \pd{\V x}v \middle| \pd{\V x}w\right)\right| = |J| \D u dv \, dw
+        \end{align*}
+    \end{proof}
+
+    \lecture{Lecture 12 -- 18/02/26}
+    
+    All properties of the Jacobian established in two variables also hold for three variables.
+
+    The most common changes of variables are to either cylindrical or spherical polar coordinates. We have
+    \begin{align*}
+        \Aboxed{J_\text{cyl} &= \det {\begin{pmatrix}
+         \cos \phi & -\rho \sin \phi & 0 \\
+         \sin \phi & \rho \cos \phi & 0 \\
+         0 & 0 & 1 \\
+        \end{pmatrix}} = \rho} \\
+        \Aboxed{J_\text{sph} &= \det {\begin{pmatrix}
+         \sin \theta \cos \phi & r \cos \theta \cos \phi & -r \sin \theta \sin \phi \\
+         \sin \theta \sin \phi & r \cos \theta \sin \phi & r sin \theta \cos \phi \\
+         \cos \theta & -r \sin \theta & 0 \\
+        \end{pmatrix}} = r^2 \sin \theta}
+    \end{align*}
+    Furthermore, $\rho$ and $r^2 \sin \theta$ are always positive (recall $\theta \in [0, \pi]$), so we don't need to worry about the absolute value.
+
+    \begin{example*}
+        Let us calculate the volume of the sphere $r \leq R$. We have
+        \begin{align*}
+            \int_{r \leq R} 1 \D V &= \int_{r=0}^R \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi} 1 \cdot r^2 \sin \theta \D r d\theta \, d\phi \\
+            &= \int_0^R r^2 \D r \int_0^\pi \sin \theta \D \theta \int_0^{2\pi} d\phi \\
+            &= \frac 4 3 \pi R^3
+        \end{align*}
+    \end{example*}
+    
+    \begin{example*}
+        That was easy! Let's instead calculate the volume of a sphere with a cylinder of radius $a$ along the $z$-axis removed from it. We should use cylindrical polars with the cylinder occupying $\rho \leq a$ and the sphere $\rho^2 + z^2 \leq R^2$. We obtain
+        \begin{align*}
+            V &= \int_{\rho=a}^R \int_{\phi=0}^{2\pi} \int_{z=-\sqrt{R^2-\rho^2}}^{\sqrt{R^2-\rho^2}} 1 \cdot \rho \D z d\phi \, d\rho \\
+            &= 2\pi \int_a^R 2\rho \sqrt{R^2-\rho^2} \D \rho \\
+            &= \frac 4 3 \pi (R^2-a^2)^{3/2}
+        \end{align*}
+    \end{example*}
+    
+    \subsection{Classification of surfaces}
+
+    A surface $S$ can be categorised as either \emph{closed} or \emph{open}. An open surface is one which has a boundary curve, denoted $\pr S$. The surface is said to \emph{span} the curve. A \emph{closed} surface is one with no boundary curve -- $\pr S = \emptyset$.
+
+    \begin{example*}
+        The hemispherical shell $H_R = \{\V x: |\V x| = R, z < 0\}$ is an open surface with $\pr H_R = \{\V x : x^2 + y^2 = R^2, z = 0\}$, i.e. a circle.
+
+        The spherical shell $S_R = \{\V x: |\V x| = R\}$ is a closed surface, as it has no boundary.
+    \end{example*}
+    
+    We can further categorise surfaces as \emph{orientable} (having two sides) or \emph{non-orientable} (having only one side). We shall only consider orientable surfaces.
+    
+    The important thing about closed orientable surfaces is that they have an inside and an outside, while an open or non-orientable surface does not.
+
+    These definitions also only apply to finite surfaces -- whenever we are considering surfaces of infinite extent, we will treat them as the limit of finite surfaces.
+    
+    \subsection{Surface integrals}
+
+    Integrating over a two-dimensional surface $S$ embedded in $\RR^3$ is unsurprisingly similar to an area integral. We divide $S$ into small subsets $\delta S_i$, and define
+    \begin{align*}
+        \int_S f(\V x) \D S = \lim_{\Delta \to 0} \sum_{i=1}^n f(\V x_i) \delta S_i
+    \end{align*}
+    Importantly, these $\delta S_i$ are not flat, unlike in the case of an area integral. Alternative notations include $\iint_S f(\V X) \D S$ and, if $S$ is closed, $\oiint_S f(\V x) \D S$.
+
+    At each point on an orientable surface there will be two unit normals, pointing in opposite directions. Either normal can be denoted $\hvec n$ -- the one we choose depends on the particular application.
+
+    If $\V F$ is a vector field, we might want to consider $\int_S \V F(\V x) \cdot \hvec n(\V x) \D S$. This is known as the \emph{flux} through $S$. We also define
+    \begin{align*}
+        d \V S = \hvec n \D S
+    \end{align*}
+    so that the flux of $\V F$ through $\V S$ is
+    \begin{align*}
+        \int_S \V F \cdot d \V S
+    \end{align*}
+
+    \begin{proposition}[The magic formula]
+        If $S$ is parameterised by $u$ and $v$, the vector $d \V S$ is given by
+        \begin{align*}
+            d \V S = \pm \pd{\V x}u \times \pd{\V x}v \D u dv
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Using \cref{4.4}, we have
+        \begin{align*}
+            \hvec n = \pm \frac{\pd{\V x}u \times \pd{\V x}v}{\left|\pd{\V x}u \times \pd{\V x}v\right|}, \qquad dS = \left|\pd{\V x}u \times \pd{\V x}v\right|\D u dv
+        \end{align*}
+        from which the result follows.
+    \end{proof}
+    
+    Using these results reduces a surface integral to an area integral in the flat $(u, v)$-plane.
+    
+    \begin{example*}
+        Let us find the surface area of the hemispherical shell $H_R = \{\V x: |\V x| = R, z < 0\}$. Let us parameterise $H_R$ by
+        \begin{align*}
+            \V x(\theta, \phi) = \begin{pmatrix}
+             R \sin \theta \cos \phi \\
+             R \sin \theta \sin \phi \\
+             R \cos \theta \\
+            \end{pmatrix}
+        \end{align*}
+        with $\theta \in (\frac{\pi}2, \pi]$, $\phi \in [0, 2\pi)$. Then
+        \begin{align*}
+            \pd{\V x}\theta \times \pd{\V x}\phi = R \begin{pmatrix}
+             \cos \theta \cos \phi \\
+             \cos \theta \sin \phi \\
+             -\sin \theta \\
+            \end{pmatrix} \times R \begin{pmatrix}
+             -\sin \theta \sin \phi \\
+             \sin \theta \cos \phi \\
+             0 \\
+            \end{pmatrix} = R^2 \begin{pmatrix}
+             \sin^2 \theta \cos \phi \\
+             \sin^2 \theta \sin \phi \\
+             \sin \theta \cos \theta \\
+            \end{pmatrix}
+        \end{align*}
+        so
+        \begin{align*}
+            dS = R^2 \sin \theta \D \theta d\phi
+        \end{align*}
+        Hence, the surface area is
+        \begin{align*}
+            \int_{H_R} 1 \D S &= \int_{\theta = \frac{\pi}{2}}^\pi \int_{\phi=0}^{2 \pi} R^2 \sin \theta \D \theta d \phi \\
+            &= R^2 \int_{\frac{\pi}{2}}^\pi \sin \theta \D \theta \int_0^{2\pi} 1 \D \phi \\
+            &= 2\pi R^2
+        \end{align*}
+    \end{example*}
+    
+    \lecture{Lecture 13 -- 20/02/26}
+    
+    \begin{example*}
+        Let us find the flux of $\V F(\V x) = \frac{\alpha}{|\V x|^3} \V x$, with constant $\alpha$, through the surface of a sphere $S_R = \{\V x: |\V x| = R\}$, where our normal points away from the origin.
+
+        We will use the same parameterisation, but this time allow $\theta \in [0, \pi]$. Recalling our expression for $\pd{\V x}\theta \times \pd{\V x}\phi$ from above, and picking the positive sign to point away from the origin, we have
+        \begin{align*}
+            \V F \cdot d \V S = \frac{\alpha}{R^3} \begin{pmatrix}
+             R \sin \theta \cos \phi \\
+             R \sin \theta \sin \phi \\
+             R \cos \theta \\
+            \end{pmatrix} \cdot R^2 \sin \theta \begin{pmatrix}
+             \sin^2 \theta \cos \phi \\
+             \sin^2 \theta \sin \phi \\
+             \sin \theta \cos \theta \\
+            \end{pmatrix} = \alpha \sin \theta \D \theta d\phi
+        \end{align*}
+        Now it merely remains to do
+        \begin{align*}
+            \int_{S_R} \V F \cdot d\V S &= \int_{\theta=0}^{\pi} \int_{\phi=0}^{2\pi} \alpha \sin \theta \D \theta d\phi \\
+            &= \alpha \int_{\theta=0}^{\pi} \sin \theta \D \theta \int_{\phi=0}^{2\pi} 1 \D \phi \\
+            &= 4\pi \alpha
+        \end{align*}
+    \end{example*}
+    
+    \begin{remark*}
+        Since $d\V S$ is a normal vector pointing out with magnitude equal to a surface area element, we can rationalise that
+        \begin{align*}
+            d\V S = R^2 \sin \theta \, \V e_r \D \theta d\phi
+        \end{align*}
+        for a sphere of radius $R$. Likewise, in cylindrical coordinates for a cylinder with radius $a$, the vector surface element is
+        \begin{align*}
+            d\V S = a \V e_\rho \D \phi dz
+        \end{align*}
+    \end{remark*}
+    
+    \begin{example*}
+        Let us find the flux of $\V F(\V x) = (y^2 e^{-(y^2+z^2)}, e^{-y^4}, -x^2e^{-(y^2+z^2)})$ through the infinite plane $\Pi = \{\V x: x - z = 0\}$, where we choose the normal pointing in the positive $x$-direction (DIAGRAM).
+
+        We can parameterise the plane using $x$ and $y$, such that $\V x = (x, y, x)$. Then
+        \begin{align*}
+            \pd{\V x}{x} \times \pd{\V x}{y} = \begin{pmatrix}
+             1 \\
+             0 \\
+             1 \\
+            \end{pmatrix} \times \begin{pmatrix}
+             1 \\
+             0 \\
+             1 \\
+            \end{pmatrix} = \begin{pmatrix}
+             -1 \\
+             0 \\
+             1 \\
+            \end{pmatrix}
+        \end{align*}
+        Note, however, that here we do need a negative sign, so $d\V S = (1, 0, -1) \D x dy$. Hence the flux is
+        \begin{align*}
+            \int_\Pi \V F \cdot d\V S &= \int_{-\infty}^\infty \int_{-\infty}^\infty (x^2+y^2) e^{-(x^2+y^2)} \D x dy && (*)\\
+            &= \int_{-\infty}^\infty x^2 e^{-x^2} \D x \int_{-\infty}^\infty e^{-y^2} \D y + \int_{-\infty}^\infty e^{-x^2} \D x \int_{-\infty}^\infty y^2 e^{-y^2} \D y \\
+            &= 2 \cdot \frac{\sqrt \pi}{2} \cdot \sqrt \pi = \pi
+        \end{align*}
+    \end{example*}
+    
+    \begin{remark*}
+        We could have alternatively found $(*)$ by transforming to plane polars.
+    \end{remark*}
+    
+    \begin{remark*}
+        We could have easily worked out the direction of $d\V S$ just by thinking about the geometry a little bit. However, the magic formula is important for finding the area of the surface element.
+    \end{remark*}
+    
+    \section{Integral theorems}
+
+    In general, integral theorems aim to reduce the dimension of an integral, much as the fundamental theorem of calculus does for normal integrals.
+
+    \subsection{Green's theorem in the plane}
+
+    \begin{theorem}[Green's theorem in the plane]
+        Given an area $A \subset \RR^2$ with piecewise smooth boundary $C = \pr A$ and continuously differentiable functions $P(x, y)$ and $Q(x, y)$,
+        \begin{align*}
+            \int_A \left(\pd Q x - \pd P y \right) \D x dy = \oint_C (P \D x + Q \, dy)
+        \end{align*}
+        where $C$ is traversed in the positive sense (normally meaning anti-clockwise).
+    \end{theorem}
+    
+    \begin{proof}
+        Initially, suppose that $A$ is a simple shape such that, for each $y$, there is a single range of values for $x$, $x^-(y) \leq x \leq x^+(y)$; likewise, for each $x$, $y^-(x) \leq y \leq y^+(x)$. Then, we may divide $C$ into $C^+$ and $C^-$, which satisfy respectively $x = x^+(y)$ and $x = x^-(y)$ for every $y$ in the range. Now
+        \begin{align*}
+            \int_A \pd Q x \D x dy &= \int_{y_\text{min}}^{y_\text{max}} \int_{x^-(y)}^{x^+(y)} \pd Q x \D x dy \\
+            &= \int_{y_\text{min}}^{y_\text{max}} Q(x^+(y), y) - Q(x^-(y), y) \D y \\
+            &= \int_{C^+} Q(x, y) \D y + \int_{C^-} Q(x, y) \D y \\
+            &= \oint_C Q \D y
+        \end{align*}
+        Note that the minus sign is lost since $C^-$ goes from $y_\text{max}$ to $y_\text{min}$, unlike $C^+$. The exact same approach will work for the $\pd P y$ integral with some care, which will suffice for the result.
+        
+        This completes the proof of Green's theorem for simple shapes. If, on the other hand, $A$ is a `complicated' shape, we claim we can break it up into simple shapes $A_i$, and apply Green's theorem to each of these.
+    \end{proof}
+    
+    \begin{remark*}
+        In particular, we note that $\int_A \pd Q x \D x dy = \sum_i \int_{A_i} \pd Q x \D x dy$, since the $A_i$ are disjoint. Furthermore, $\oint_{\pr A} Q \D y = \sum_i \oint_{\pr A_i} Q \D y$, because, although each $\pr A_i$ contains segments not part of $\pr A$, those contributions exactly cancel out. Hence the result follows.
+    \end{remark*}
+    
+    \lecture{Lecture 14 -- 23/02/26}
+    
+    \begin{example*}
+        Let us consider the ellipse $x^2/a^2 + y^2/b^2 \leq 1$ with $P = -\frac 1 2 y$, $Q = \frac 1 2 x$. Then
+        \begin{align*}
+            \pi ab = \int_A 1 \D x dy = \int_A \left(\pd Q x - \pd P y\right) \D x dy
+        \end{align*}
+        and
+        \begin{align*}
+            \oint_C P \D x + Q \D y &= \int_0^{2\pi} \left(-\frac 1 2 b \sin t, \frac 1 2 a \cos t\right) \cdot \left(-a \sin t, b \cos t\right) \D t \\
+            &= \pi ab
+        \end{align*}
+    \end{example*}
+    
+    \subsubsection{Multiple boundary curves}
+
+    We may also consider areas with multiple boundary curves -- in particular, internal boundary curves as well as external boundary curves. In this case, it is necessary to traverse internal boundaries \emph{clockwise} as opposed to counter-clockwise.
+
+    To illustrate this, let us consider an area $A$ with outer boundary $C_1$ traversed counter-clockwise and one inner boundary $C_2$ traversed clockwise.
+
+    Let $A_2$ be the interior of $C_2$, and $A_1 = A \cup A_2$, so $A_1$ is the entire interior of $C_1$. Then $\int_{A_1} = \int_A + \int_{A_2}$, so $\int_A = \int_{A_1} - \int_{A_2} = \oint_{C_1} - \oint_{-C_2}$, by Green's theorem -- in particular, we integrate over $-C_2$ since $C_2$ is clockwise. Then clearly $\int_A = \oint_{C_1} + \oint_{C_2}$ as required.
+    
+    \begin{remark*}
+        This argument unfortunately assumes that the integrand is defined in $A_1$ (the area in the hole), which is of course not true in general. In the general case, we can put a cut in $A$ between the interior and exterior boundaries -- in that case, it's clear that, for the outer boundary to be traversed counter-clockwise, the inner boundary is traversed clockwise. Then, taking the cut arbitrarily small, the result follows.
+    \end{remark*}
+    
+    \subsection{Stokes' theorem}
+
+    \begin{theorem}[Stokes' theorem]
+        If $\V F(x)$ is a continuously differentiable vector field and $S$ is a piecewise smooth orientable open surface with piecewise smooth boundary curve $C = \pr S$,
+        \begin{align*}
+            \int_S \curl \V F \cdot d\V S = \oint_C \V F \cdot d\V x
+        \end{align*}
+        where $C$ is traversed in the positive sense with regard to the normal on $S$.  
+    \end{theorem}
+    
+    \begin{remark*}
+        Note that Green's theorem in the plane is a 2D case of Stokes' theorem. Let $S$ be a flat surface with $z=0$ and take $\V F = (P, Q, 0)$ -- the result follows.
+    \end{remark*}
+    
+    What does `the positive sense with regard to the normal on $S$' mean? Firstly, note that, since $S$ is open, we must specify a normal to give any notion of direction. Then, we say that if $\V t$ is the tangent vector to the curve $C$ and $\V n$ is the normal to $S$ at the same surface, then $\V t \times \V n$ should point away from the surface. Equivalently, if one walks along $C$ with one's feet on $C$ and one's head in the direction of $N$, the surface should be on one's \emph{left}. DIAGRAM!
+
+    Alternatively, one has the right-hand rule -- if one's thumb points along $\hvec n$, then one's curled fingers indicate the direction of $C$. 
+
+    \begin{proof}[Sketch proof, non-examinable]
+        We start from Green's theorem, parameterising the surface $S$ using $(u, v) \in D \subset \RR^2$. Then the right hand side becomes
+        \begin{align*}
+            \oint_C \V F \cdot d\V x = \oint_{\pr D} \V F \cdot \left(\pd{\V x} u \D u + \pd{\V x}v \D v\right)
+        \end{align*}
+        Letting $P(u, v) = \V F(\V x(u, v)) \cdot \pd{\V x}u$ and $Q(u, v) = \V F(\V x(u, v)) \cdot \pd{\V x}v$ and apply Green's theorem in the $(u, v)$-plane to obtain
+        \begin{align*}
+            \int_D \left(\pd Q u - \pd P v\right) \D u \D v
+        \end{align*}
+        Then, one can use suffix notation and the chain rule to show
+        \begin{align*}
+            (\curl \V F) \cdot \left(\pd{\V x}u \times \pd{\V x}v\right) = \pd{}{u} \left(\V F \cdot \pd{\V x}v \right) - \pd{}{v} \left(\V F \cdot \pd{\V x}u\right)
+        \end{align*}
+        from which the result follows.
+    \end{proof}
+    
+    \begin{example*}
+        Consider the open surface $S$ given by $z = (x^2+y^2)^2$, $0 \leq z \leq 1$ and the vector field $\V F = (x^2y, 0, 0)$. We use cylindrical polars, so $S$ becomes $z=\rho^4$, so that $S$ is parameterised by $\V x = (\rho \cos \phi, \rho \sin \phi, \rho^4)$. Applying the magic formula,
+        \begin{align*}
+            d\V S = -\begin{pmatrix}
+             \cos \phi \\
+             \sin \phi \\
+             4\rho^3 \\
+            \end{pmatrix} \times \begin{pmatrix}
+             -\rho \sin \phi \\
+             \rho \cos \phi \\
+             0 \\
+            \end{pmatrix}\D\rho\D\phi = \begin{pmatrix}
+             4\rho^4\cos\phi \\
+             4\rho^4\sin\phi \\
+             -\rho \\
+            \end{pmatrix}\D\rho\D\phi
+        \end{align*}
+        where we have chosen the negative sign to get the downward-facing normal. Now $\curl \V F = (0, 0, -x^2) = (0, 0, -\rho^2 \cos^2 \phi)$, so
+        \begin{align*}
+            \int_S \curl \V F \cdot d\V S = \int_{\rho=0}^1 \int_{\phi=0}^{2\pi} \rho^3 \cos^2 \phi \D \phi \D \rho = \frac \pi 4
+        \end{align*}
+        Now for the line integral. $C = \pr S$ is the curve $x^2+y^2=1$, $z=1$, that is $\rho = 1$, $z=1$, $\phi \in [0, 2\pi)$. To determine the direction, apply the right hand rule -- we see that $C$ must be traversed in the direction of decreasing $\phi$, or clockwise when viewed from above. Hence we have
+        \begin{align*}
+            \oint_C \V F \cdot d\V x &= \int_{2\pi}^0 x^2y \frac{d\V x}{d\phi} \D \phi \\
+            &= \int_0^{2\pi} \cos^2\phi \sin^2\phi \D \phi
+        \end{align*}       
+    \end{example*}
+    
+    \subsubsection{Closed surfaces}
+
+    Stokes' theorem also applies to closed surfaces $S$, which have $\pr S = \emptyset$. Hence
+    \begin{align*}
+        \oiint_S \curl \V F \cdot d\V S = 0
+    \end{align*}
+    
+    \subsubsection{Multiple boundary curves}
+    
+    We may again have the case of two or more boundary curves. We have to apply the right hand rule for the directions of $\V n$ and the curve separately for \emph{each} boundary.
+
+    \begin{example*}[hard]
+        We are asked to verify Stokes' theorem for $\V F(\V x) = (y, z, x^2+y^2)$ on the hyperboloid of one sheet $z^2 + 1 = x^2 + 4y^2$ for $0 \leq z \leq \sqrt 3$.
+
+        We choose the normal pointing away from the axis, and parameterise the surface by
+        \begin{align*}
+            \V x(z, \alpha) = \left(\sqrt{z^2+1} \cos \alpha, \frac 1 2\sqrt{z^2+1}\sin \alpha, z\right)
+        \end{align*}
+    \end{example*}
     
     
     

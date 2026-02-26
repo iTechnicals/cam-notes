@@ -239,6 +239,7 @@
 \DeclareMathOperator{\Bin}{Bin}
 \DeclareMathOperator{\M}{M}
 \DeclareMathOperator{\Poi}{Poi}
+\DeclareMathOperator{\Geo}{Geo}
 \DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\Cov}{Cov}
 
@@ -346,16 +347,26 @@
 \newcommand{\jhat}{\hat \jmath}
 \newcommand{\khat}{\hat k}
 
-\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\genericbold}[1]{
+  \ifcat\noexpand#1\relax % check if the argument is a control sequence
+    \bm{#1}% probably Greek
+  \else
+    \mathbf{#1}% single character
+  \fi
+}
+
+\renewcommand{\vec}[1]{\genericbold{#1}}
 \newcommand{\V}{\vec}
-\newcommand{\hvec}[1]{\hat{\mathbf{#1}}}
+\newcommand{\hvec}[1]{\hat{\genericbold{#1}}}
 \newcommand{\comp}{\mathsf{c}}
 \renewcommand{\eps}{\varepsilon}
 \newcommand{\lv}[1]{\varepsilon_{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
 
-\newcommand{\D}[1]{\,d{#1}\,}
+\newcommand{\D}[1]{\,d{#1}}
 \renewcommand{\div}{\grad \cdot}
 \newcommand{\curl}{\grad \times}
+\renewcommand{\pr}{\partial}
 
 \renewcommand{\norm}{\triangleleft}
 

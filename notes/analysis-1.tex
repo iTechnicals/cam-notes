@@ -484,26 +484,18 @@
     \begin{proof}
         Observe
         \begin{align*}
-            \int_1^x f(t) \; dt = \log 2 \int_0^{2^x} 2^t f(2^t) \; dt
+            \sum_{m=1}^{2^n-1} a_n &= a_1 + a_2 + a_3 + \dots + a_{2^n-1} \\
+            &\leq a_1 + 2a_2 + \dots + 2^{n-1}a_{2^{n-1}} = \sum_{k=0}^{n-1} 2^k a_{2^k}
         \end{align*}
-        Then, by the integral test, we conclude
+        and
         \begin{align*}
-            \sum a_n \text{ converges}\iff \lim_{y \to \infty}\int_0^y 2^t f(2^t) \; dt \text{ exists}
+            \frac{1}{2}\sum_{k=0}^{n-1} 2^k a_{2^k} &= \frac 1 2 a_1 + a_2 + 2a_4 + 4a_8 + \dots + 2^{n-1}a_{2^{n-1}} \\
+            &\leq a_1 + a_2 + (a_3 + a_4) + (a_5 + \dots + a_8) + \dots + a_{2^{n-1}} = \sum_{m=1}^{2^{n-1}} a_n
         \end{align*}
-        While we may be tempted to try and conclude here, it is not known that $g(t) = 2^t f(2^t)$ is decreasing. 
-
-        MIUST CHECK BACK.
-        
-        
+        from which the result follows.   
     \end{proof}
     
     
-    
-    
-    
-    
-    
-
     \begin{proposition}[Alternating series test]
         Let $(a_n)$ be a decreasing sequence, and suppose $a_n \geq 0$, $a_n \to 0$. Then $\sum (-1)^{n+1}a_n$ converges.
     \end{proposition}
@@ -596,7 +588,7 @@
     Take $f: \CC \to \CC$. We want to define what we mean by $f(z) \to y$ as $z \to a$, even if $a \notin X$. A classic example is $\frac{\sin x}{x}$ at $a=0$ -- even though 0 is not in the domain, there are points in the domain that are very close to 0, so it feels like we should be able to assign 0 some value.
 
     \begin{definition}[Accumulation point]
-        Let $X \subseteq \CC$. We say $X$ is an \emph{accumulation point} for $X$ if, for any $\delta > 0$, there exists $z \in X \setminus \{a\}$ such that $|z-a| < \delta$. Otherwise, we say $a$ is \emph{isolated}.
+        Let $X \subseteq \CC$. We say $a$ is an \emph{accumulation point} for $X$ if, for any $\delta > 0$, there exists $z \in X \setminus \{a\}$ such that $|z-a| < \delta$. Otherwise, we say $a$ is \emph{isolated}.
     \end{definition}
     
     \begin{example}
@@ -613,19 +605,20 @@
     Let's return to thinking about $f(z) \to y$ as $z \to a$. We should be able to make sense of this if $a$ is either in the domain of $f$, or is an accumulation point for the domain of $f$.
     
     \begin{definition}
-        Let $f: X \subseteq \CC \to \CC$. Let $a \in X$ or $a$ an accumulation point of $X$. Then we say $f(z) \to y$ as $z \to a$ if, for any $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta, z \in X \implies |f(z)-f(a)| < \eps$.
+        Let $f: X \subseteq \CC \to \CC$. Let $a \in \CC$ an accumulation point of $X$. Then we say $f(z) \to y$ as $z \to a$ if, for any $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta, z \in X \setminus \{a\} \implies |f(z)-f(a)| < \eps$. We may also write
+        \begin{align*}
+            \lim_{z \to a}f(z) = y
+        \end{align*}
 
-        Furthermore, if $a$ is an accumulation point but not in the domain, we say $f(z) \to \infty$ as $z \to a$ if
+        Furthermore, if $a$ is an accumulation point (but not in the domain), we say $f(z) \to \infty$ as $z \to a$ if
         \begin{itemize}
             \item $f(z)/|f(z)| \to l$ for some $l \in \CC$;
-            \item and, for any $L > 0$, there exists $\delta = \delta(L)$ such that $|z-a| < \delta, z \in X \implies |f(z)| > L$.
+            \item and, for any $L > 0$, there exists $\delta = \delta(L)$ such that $|z-a| < \delta, z \in X \setminus \{a\} \implies |f(z)| > L$.
         \end{itemize}
     \end{definition}
     
     \begin{remark}
-        If $a$ is an isolated point of $X$, then we can always find $\delta$ sufficiently small such that $|z-a| < \delta, z \in X \iff z = a$. Hence $f(z) \to f(a)$ as $z \to a$ trivially.
-
-        If $f$ diverges at $a$, then $a \notin X$, which is why we require $a \in X$ as part of the definition.
+        If $a$ is an isolated point of $X$, then we can always find $\delta$ sufficiently small such that $|z-a| < \delta, z \in X \iff z = a$. So we could define a limit for isolated points if we really wanted, but it wouldn't be very interesting.
     \end{remark}
     
     \begin{example}
@@ -636,14 +629,13 @@
             \left|\frac{\sin x}x - 1\right| < \left|1-\cos x\right| = 2\sin^2\left(\frac x 2\right) < \frac{x^2}{2}
         \end{align*}
         Hence, for any $\eps > 0$, choosing $\delta = \sqrt{2\eps}$ gives the result.
-        
     \end{example}
     
     \begin{lemma}
-        Let $f: X \subseteq \CC \to \CC$, and take $a \in \CC$ either in $X$ or an accumulation point of $X$. Then
+        Let $f: X \subseteq \CC \to \CC$, and take $a \in \CC$ an accumulation point of $X$. Then
         \begin{itemize}
-            \item $f(z) \to y$ as $z \to a$ if and only if $f(z_n) \to y$ for every sequence $(z_n)$ on $X$ with $z_n \to a$;
-            \item $f(z)$ diverges as $z \to a$ if and only if $f(z_n)$ diverges for every sequence $(z_n)$ on $X$ with $z_n \to a$.
+            \item $f(z) \to y$ as $z \to a$ if and only if $f(z_n) \to y$ for every sequence $(z_n)$ on $X \setminus \{a\}$ with $z_n \to a$;
+            \item $f(z)$ diverges as $z \to a$ if and only if $f(z_n)$ diverges for every sequence $(z_n)$ on $X \setminus \{a\}$ with $z_n \to a$.
         \end{itemize}
     \end{lemma}
     
@@ -668,7 +660,7 @@
     \end{remark*}
     
     \begin{lemma}
-        Let $f$, $g: X \subseteq \CC \to \CC$, and $a \in \CC$ either in $X$ or an accumulation point of $X$. Suppose $\lim_{z \to a}f(z) = y$, $\lim_{z \to a}g(z) = x$. Then
+        Let $f$, $g: X \subseteq \CC \to \CC$, and $a \in \CC$ an accumulation point of $X$. Suppose $\lim_{z \to a}f(z) = y$, $\lim_{z \to a}g(z) = x$. Then
         \begin{align*}
             \lim_{z \to a} f(z) + g(z) &= y + x \\
             \lim_{z \to a} f(z)g(z) &= yx
@@ -689,39 +681,30 @@
         or, equivalently, for every $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta$, $z \in X \implies |f(z)-f(a)| < \eps$.        
     \end{definition}
 
+    If $a$ is an isolated point, $f$ is continuous at $a$, since $|z-a| < \delta \implies z = a$ for sufficiently small $\delta$. If, on the other hand, $a$ is an accumulation point, $f$ is continuous at $a$ if and only if
+    \begin{align*}
+        \lim_{z \to a} f(z) = f(a)
+    \end{align*}
+    
+
     \begin{definition}
         Let $f: X \subseteq \CC \to \CC$. We say $f$ is continuous if it is continuous at every point in $X$.
     \end{definition}
 
     \begin{example}
         \begin{itemize}
-            \item $f(z) = z$ is continuous.
+            \item $f(z) = z$ is continuous -- take $\delta = \eps$.
             \item Consider \begin{align*}
                 f(x) = \begin{cases}
                     \sin\left(\frac 1 x\right) & x \neq 0 \\
                     0 & x = 0
                 \end{cases}
             \end{align*}
-            This function is not continuous.
+            This function is not continuous. Take $x_n = \frac{1}{(2n+\frac 1 2)\pi}$, which satisfies $x_n \to 0$ -- but $f(x_n) = \sin\left(\left(2n+\frac 1 2\right)\pi\right) = 1$ for any $n$, so $f(x_n) \to 1 \neq f(0)$.
         \end{itemize}
     \end{example}
     
-    \lecture{Lecture $n$}
-
-    \begin{lemma}
-        Let $f$, $g: X \subseteq \CC \to \CC$ be continuous at $a \in \CC$. Then, so are $\lambda f + g$ for $\lambda \in \CC$ fixed, $fg$ and, if $f(z) \neq 0$ for any $z \in X$, $1/f(z)$.
-    \end{lemma}
-    
-    \begin{lemma}
-        Let $U$, $V \subseteq \CC$, and $f: U \to V$, $g: V \to \CC$. Suppose $f$ is continuous at $a \in U$ and $g$ is continuous at $f(a) \in V$ -- then, $g \circ f: U \to \CC$ is continuous at $a$.
-    \end{lemma}
-    
-    \begin{proof}
-        Since $g$ is continuous at $f(a)$, we have $\sigma = \sigma(\eps)$ such that $y \in V$, $|y-f(a)| < \sigma$ implies $|g(y) - g(f(a))| < eps$. Furthermore, since $f$ is continuous at $a$, we have for any $\sigma$ a $\delta = \delta(\sigma) = \delta(\eps)$ such that
-        \begin{align*}
-            z \in V, |z-a| < \delta \implies |f(z) - f(a)| < \sigma \implies |g(f(z)) - g(f(a))| < \eps
-        \end{align*}
-    \end{proof}
+    \lecture{Lecture 8 -- 10/02/26}
     
     There is another, equivalent notion of continuity which is extremely useful.
 
@@ -735,13 +718,46 @@
     
     \begin{proof}
         \begin{itemize}
-            \item[$\implies$] By continuity of $f$, for any $\eps > 0$ we have $\delta$ such that $|z-a| < \delta$, $z \in X$ implies $|f(z) - f(a)| < \eps$. Take $(z_n)$ on $X$ with $z_n \to a$, then 
+            \item[$\implies$] By continuity of $f$, for any $\eps > 0$ we have $\delta$ such that $|z-a| < \delta$, $z \in X$ implies $|f(z) - f(a)| < \eps$. Take $(z_n)$ on $X$ with $z_n \to a$, then there exists $N = N(\delta(\eps))$ such that, for any $n \geq N$, $|z_n-a| < \delta$ and hence $|f(z_n)-f(a)| < \eps$.
+            \item[$\impliedby$] Let us take the contrapositive. If $f$ is not continuous at $a$, then there exists $\eps > 0$ suchb that, for any $\delta > 0$, one can find $z = z(\delta) \in X$ such that $|f(z)-f(a)| \geq \eps$ while $|z-a| < \delta$. Now take $\delta = 1, \frac 1 2, \dots, \frac 1 n, \dots$ to find $(z_n)$ with $|z_n-a| < \frac 1 n$, so $z_n \to a$, but $|f(z_n)-f(a)| \geq \eps$ for all $n$ and a non-zero $\eps$. Hence $f$ cannot be sequentially continuous, as required.
         \end{itemize}
-        
-        
     \end{proof}
     
+    \begin{example*}
+        Let us have some more examples.
+        \begin{itemize}
+            \item Consider the Dirichlet function $f(x) = 1_\QQ(x)$. This is discontinuous at every real $a$:
+            \begin{itemize}
+                \item if $a \in \QQ$, we can find $(x_n) \subset \RR \setminus \QQ$ with $x_n \to a$, but of course $f(x_n) = 0$, so $f(x_n) \to 0 \neq 1 = f(a)$;
+                \item if $a \in \RR \setminus \QQ$, we proceed analogously.
+            \end{itemize}
+            \item $f(x) = \sin x$ is continuous as a real function. Fix $a \in \RR$ and, for some $\eps > 0$, pick $\delta = \min(\eps, \pi)$. Now
+            \begin{align*}
+                |f(x)-f(a)| &= |\sin x - \sin a| \\
+                &= 2\left|\cos\left(\frac{x+a}2\right)\sin\left(\frac{x-a}2\right)\right| \\
+                &\leq 2\left|\sin\left(\frac{x-a}2\right)\right| \\
+                &\leq |x-a| < \eps
+            \end{align*}
+            since $\frac{x-a}{2} \in \left[-\frac \pi 2, \frac \pi 2\right]$.
+        \end{itemize}
+    \end{example*}
     
+    Now let us look at some important properties of continuous functions.    
+
+    \begin{lemma}
+        Let $f$, $g: X \subseteq \CC \to \CC$ be continuous at $a \in \CC$. Then, so are $\lambda f + g$ for $\lambda \in \CC$ fixed, $fg$ and, if $f(z) \neq 0$ for any $z \in X$, $1/f(z)$.
+    \end{lemma}
+    
+    \begin{lemma}
+        Let $U$, $V \subseteq \CC$, and $f: U \to V$, $g: V \to \CC$. Suppose $f$ is continuous at $a \in U$ and $g$ is continuous at $f(a) \in V$ -- then, $g \circ f: U \to \CC$ is continuous at $a$.
+    \end{lemma}
+    
+    \begin{proof}
+        Since $g$ is continuous at $f(a)$, we have $\sigma = \sigma(\eps)$ such that $y \in V$, $|y-f(a)| < \sigma$ implies $|g(y) - g(f(a))| < \eps$. Furthermore, since $f$ is continuous at $a$, we have for any $\sigma$ a $\delta = \delta(\sigma) = \delta(\eps)$ such that
+        \begin{align*}
+            z \in V, |z-a| < \delta \implies |f(z) - f(a)| < \sigma \implies |g(f(z)) - g(f(a))| < \eps
+        \end{align*}
+    \end{proof}
     
 
     \subsection{Extreme value theorem}
@@ -786,20 +802,21 @@
     
 
     \begin{theorem}[Extreme value theorem]
+        \label{evt}
         Let $X \subseteq \RR$ be a closed bounded set, and let $f: X \to \RR$ be continuous. Then there exist $a$, $b \in X$ satisfying
         \begin{align*}
             f(a) = \sup f(X); \qquad f(b) = \inf f(X)
         \end{align*}
     \end{theorem}
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture 9 -- 12/02/26}
     
     \begin{proof}
         We will consider specifically the supremum, since the infimum is analogous.
 
-        Let $M = \sup f(X)$. By definition, $M - \frac 1 n$ is not an upper bound on $f(X)$ for any $n \in \NN$, that is, we can find a sequence $(y_n)$ with elements in $f(X)$ such that $M - \frac 1 n < y_n \leq M$, which produces a sequence $(x_n)$ on $X$ such that $M - \frac 1 n < f(x_n) \leq M$. Now take limits and use the fact that $f$ is continuous -- we have $M \leq \lim_{n \to \infty} f(x_n) \leq M$.
+        Let $M = \sup f(X)$, which exists since $f(X)$ is bounded by \cref{cts-preserves-cbdd}. By definition, $M - \frac 1 n$ is not an upper bound on $f(X)$ for any $n \in \NN$, that is, we can find a sequence $(y_n)$ with elements in $f(X)$ such that $M - \frac 1 n < y_n \leq M$, which produces a sequence $(x_n)$ on $X$ such that $M - \frac 1 n < f(x_n) \leq M$. Now take limits and use the fact that $f$ is continuous -- we have $M \leq \lim_{n \to \infty} f(x_n) \leq M$.
 
-        Finally, by \cref{cts-preserves-cbdd}, we know that, since $(y_n)$ is a sequence in $f(X)$, its limit is also in the image of $X$.        
+        Finally, by \cref{cts-preserves-cbdd}, we know that, $f(X)$ is closed, so, since $(y_n)$ is a sequence in $f(X)$, its limit is also in the image of $X$.        
     \end{proof}
 
     \begin{remark*}
@@ -809,11 +826,12 @@
     \subsection{Intermediate value theorem}
     
     \begin{theorem}[Intermediate value theorem]
+        \label{ivt}
         If $f: [a, b] \to \RR$ is continuous then, for any $y$ satisfying $f(a) \leq y \leq f(b)$, there exists $x$ satisfying $a \leq x \leq b$ such that $f(x) = y$.
     \end{theorem}
     
     \begin{proof}
-        If $f$ is constant, then the result is clear. If not, wlog let $f(a) \leq f(b)$. Set $S = \{x \in [a, b]: f(x) \leq y\}$. Then $a \in S$, so $S$ is non-empty -- furthermore, $S$ is bounded above by $b$, so we have $c = \sup S \in [a, b]$. We claim that $f(c) = y$. Observe:
+        If $f$ is constant, $y=f(a)$ or $y=f(b)$, then the result is clear. If not, wlog let $f(a) < y < f(b)$. Set $S = \{x \in [a, b]: f(x) \leq y\}$. Then $a \in S$, so $S$ is non-empty -- furthermore, $S$ is bounded above by $b$, so we have $c = \sup S \in [a, b]$. We claim that $f(c) = y$. Observe:
         \begin{itemize}
             \item We claim $f(c) \leq y$. Suppose not. Then $\eps = f(c) - y > 0$. By continuity of $f$, we have $\delta$ such that $|x-c| < \delta$, $x \in [a, b]$ implies $|f(x) - f(c)| < \eps$, so $f(x) > f(c) - \eps = y$, so $x \notin S$. This means $(c - \delta, c) \cap S = \emptyset$, which contradicts the definition of $c$ (in particular that $c$ is the least upper bound).
             \item We claim $f(c) \geq y$. Suppose not. Then $\eps = y - f(c) > 0$. By continuity of $f$, we have $\delta$ such that $|x-c| < \delta$, $x \in [a, b]$ implies $|f(x) - f(c)| < \eps$, so $f(x) < f(c) + \eps = y$. But then $f(c + \frac{\delta}2) < y$, so $c \leq c + \frac{\delta}2 \in S$, which contradicts the definition of $c$ (in particular that $c$ is an upper bound).
@@ -839,21 +857,837 @@
     \end{definition}
     
     \begin{proposition}[Inverse function theorem]
+        \label{ift-1}
         Let $f: [a, b] \to \RR$ be continuous and strictly monotone. Let $c = \min(f(a), f(b))$, $d = \max(f(a), f(b))$. Then $f: [a, b] \to [c, d]$ is a bijection, and $f^{-1}: [c, d] \to [a, b]$ is continuous and strictly monotone.
     \end{proposition}
+
+    \begin{proof}
+        Since $f$ is continuous, it achieves its extrema by \cref{evt}; since it is monotone, it achieves them at its endpoints, so it maps $[a, b] \to [c, d]$ -- since it is strictly monotone, it does so injectively. By \cref{ivt}, it is surjective, and hence it is bijective.
+
+        For the rest of the proof, we suppose wlog that $f$ is strictly increasing. Suppose for contradiction that $f^{-1}: [c, d] \to [a, b]$ is not strictly increasing -- then we have $y_1, y_2 \in [c, d]$ with $y_1 < y_2$ and $f^{-1}(y_1) \geq f^{-1}(y_2)$. But then, applying $f$ to both sides, we obtain $y_1 = f(f^{-1}(y_1)) \geq f(f^{-1}(y_2)) = y_2$, which is a contradiction.
+
+        Finally, it remains to show $f^{-1}$ is continuous. Let $y_0 \in [c, d]$ and $x_0 = f^{-1}(y_0)$. We split into three cases.
+        \begin{itemize}
+            \item $x_0 \in (a, b)$. Fix $\eps > 0$, and choose $\eta \in (0, \eps]$ sufficiently small for $[x_0 - \eta, x_0 + \eta] \subseteq [a, b]$. Now, since $f$ is strictly increasing,
+            \begin{align*}
+                x_0 - \eta &< x_0 < x_0 + \eta \\
+                \implies f(x_0 - \eta) &< f(x_0) = y_0 < f(x_0 + \eta)
+            \end{align*}
+            Let us now take $\delta = \min(f(x_0 + \eta) - y_0, y_0 - f(x_0 - \eta)) > 0$. Suppose $|y-y_0| < \delta$, then
+            \begin{align*}
+                f(x_0 - \eta) \leq y_0 - \delta < y &< y_0 + \delta \leq f(x_0 + \eta) \\
+                \implies f(x_0 - \eta) < y &< f(x_0 + \eta) \\
+                \implies |f^{-1}(y) - x_0| &< \eta \\
+                \implies |f^{-1}(y) - f^{-1}(y_0)| &< \eps
+            \end{align*}
+            as required.
+            \item $x_0 = a$, $y_0 = f(a)$. Fix $\eps > 0$, and choose $\eta = \min(\eps, b-a)$. Set $\delta = f(a + \eta) - f(a) > 0$. Then $|y-y_0| < \delta$, $y \in [c, d]$ gives
+            \begin{align*}
+                f(a) \leq y &< f(a + \eta) \\
+                \implies a \leq f^{-1}(y) &< a + \eta \\
+                \implies |f^{-1}(y)-f^{-1}(y_0)| &< \eta \leq \eps
+            \end{align*}
+            as required.
+            \item $x_0 = b$ proceeds analogously.               
+        \end{itemize}
+        This completes the result.        
+    \end{proof}
     
     
     
+    \lecture{Lecture 10 -- 14/02/26}
+
+    \section{Differentiation}
+
+    \subsection{Basics}
+
+    \begin{definition}[Derivative]
+        Let $f: X \subseteq \CC \to \CC$, $a \in X$. We say $f$ is differentiable at $a$ if the limit
+        \begin{align*}
+            \lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}
+        \end{align*}
+        exists. We call this limit the derivative of $f$ at $a$, $f'(a)$ or $\frac{df}{dx}(a)$.        
+    \end{definition}
+    
+    \begin{remark*}
+        We can't really make sense of the derivative at an isolated point of the domain. For accumulation points, we can distinguish
+        \begin{itemize}
+            \item interior points: we can approach from every direction and we need the limit to be direction-independent;
+            \item non-interior points: the limit is `domain-restricted'.
+        \end{itemize}
+    \end{remark*}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item $f(z) = z$ is differentiable everywhere:
+            \begin{align*}
+                f'(z) = \lim_{h \to 0} \frac{f(z+h)-f(z)}{h} = \lim_{h \to 0} 1 = 1
+            \end{align*}
+            \item $f(z) = \bar z$ is not differentiable anywhere. Indeed,
+            \begin{align*}
+                h = \lambda \in \RR: \lim_{\lambda \to 0} \frac{f(z+\lambda)-f(z)}{\lambda} &= \lim_{\lambda \to 0} \frac{\overline{z+\lambda}-\bar z}{\lambda} \\
+                &= \lim_{\lambda \to 0} \frac{\lambda}{\lambda} = 1 \\[10pt]
+                h = i\lambda, \, \lambda \in \RR: \lim_{\lambda \to 0} \frac{f(z+i\lambda)-f(z)}{i\lambda} &= \lim_{\lambda \to 0} \frac{\overline{z+i\lambda}-\bar z}{i\lambda} \\
+                &= \lim_{\lambda \to 0} \frac{-i\lambda}{i\lambda} \\
+                &= -1
+            \end{align*}
+            Hence, the limit is different depending on the direction we approach from, and so does not exist.
+            \item $f(z) = \sin z$ is differentiable. Observe
+            \begin{align*}
+                f'(x) &=^? \lim_{h \to 0} \frac{\sin(x+h)-\sin x}{h} \\
+                &= \lim_{h \to 0} \frac{\sin h \cos x}{h} + \lim_{h \to 0} \frac{\sin x(\cos h-1)}{h} \\ 
+                &= cos x \lim_{h \to 0} \frac{\sin h}{h} + \sin x \lim_{h \to 0} \frac{\cos h - 1}{h}
+            \end{align*}
+            The limit of $\frac{\sin h}{h}$ is 1 as already established, and the limit of $\frac{\cos h-1}{h}$ can be shown to be zero by, for example, using a double angle formula.  
+        \end{itemize}
+    \end{example*}
+
+    \begin{lemma}
+        Let $f$, $g: X \subseteq \CC \to \CC$ be differentiable at $a \in X$. Then so are $f+g$, $fg$ and, if $f(z) \neq 0$ for any $z \in X$, so is $1/f$. Furthermore, we have
+        \begin{align*}
+            (f+g)'(a) &= f'(a) + g'(a) \\
+            (fg)'(a) &= f'(a)g(a) + f(a)g'(a) \\
+            \left(\frac 1 f\right)'(a) &= -\frac{f'(a)}{f(a)^2}
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        The addition rule is an exercise. For the multiplication rule, we have
+        \begin{align*}
+            (fg)'(a) &= \lim_{h \to 0} \frac{(fg)(a+h) - (fg)(a)}{h} \\
+            &= \lim_{h \to 0} \frac{f(a+h)g(a+h)-f(a)g(a)}{h} \\
+            &= \lim_{h \to 0} \frac{\left(f(a+h)-f(a)\right)g(a+h) + \left(f(a+h)-g(a)\right)f(a)}{h} \\
+            &= \lim_{h \to 0} \frac{\left(f(a+h)-f(a)\right)g(a+h)}{h} + f(a)\lim_{h \to 0} \frac{g(a+h)-g(a)}{h} \\
+            &= \lim_{h \to 0} g(a+h) f'(a) + g'(a)f(a)
+        \end{align*}
+        We will later show that differentiability implies continuity, which will allow us to conclude.
+    \end{proof}    
+
+    \begin{example*}
+        Let us consider some examples.
+        \begin{itemize}
+            \item $f(z) = z^2 = z \cdot z$ is differentiable with $f'(z) = 2z$. By induction, $z^n$ is differentiable with $f'(z) = nz^{n-1}$, so polynomials are differentiable.
+            \item $f(z) = \frac 1 z$ is differentiable on $\CC \setminus \{0\}$ with $f'(z) = -\frac 1 {z^2}$. By induction, $\frac 1 {z^n}$ has derivative $-\frac n {z^{n+1}}$.
+        \end{itemize}
+        More generally, rational functions $\frac{p(x)}{q(x)}$ with $p$, $q$ polynomials are differentiable wherever $q(x) \neq 0$.        
+    \end{example*}
+
+    \lecture{Lecture 11 -- 17/02/26}
+    
+    \begin{proposition}[Chain rule]
+        Let $U$, $V \subseteq \CC$ and $f: U \to V$, $g: V \to \CC$. Suppose that $f$ is differentiable at $a \in U$ and $g$ is differentiable at $f(a) \in V$. Then $g \circ f: U \to \CC$ is differentiable at $a \in U$, and $(g \circ f)'(a) = g'(f(a))f'(a)$.
+    \end{proposition}
+    
+    We will first need a lemma.
+
+    \begin{lemma}
+        \label{little-o-derivative}
+        Let $f: X \subseteq \CC \to \CC$. Then $f$ is differentiable at $a \in X$ if and only if there exists $A \in \CC$ and $\xi: \{z: z + a \in X\} \to \CC$ satisfying $\xi(h) \to 0$ as $h \to 0$ such that
+        \begin{align*}
+            f(a+h) = f(a) + Ah + \xi(h)|h|
+        \end{align*}
+        Furthermore, $A = f'(a)$.
+    \end{lemma}
+    
+    \begin{remark*}
+        In other words, $f(a+h) \approx f(a) + Ah$, and the function $\xi(h)$ allows us to quantify that error. In little o notation, this statement is $f(a+h) = f(a) + Ah + o(h)$.
+    \end{remark*}
+    
+    \begin{proof}[Proof of lemma]
+        \begin{itemize}
+            \item[$\impliedby$] We have
+            \begin{align*}
+                \lim_{h \to 0} \frac{f(a+h)-f(a)}h &= \lim_{h \to 0}\frac{Ah + \xi(h) |h|}{h} \\
+                &= A + \lim_{h \to 0} \left(\xi(h) \frac{|h|}{h}\right) \\
+                &= A
+            \end{align*}
+            since $\frac{|h|}{h}$ is bounded and $\xi(h) \to 0$ as $h \to 0$. Hence the limit exists and $f$ is differentiable as required.
+            \item[$\implies$] Let $A = f'(a)$, so
+            \begin{align*}
+                \lim_{h \to 0} \frac{f(a+h)-f(a)}{h} &= A \\
+                \implies \lim_{h \to 0} \frac{f(a+h)-f(a)-Ah}{h} &= 0
+            \end{align*}
+            Now take
+            \begin{align*}
+                \xi(h) = \begin{cases}
+                    \frac{f(a+h)-f(a)-Ah}{|h|} & h \neq 0 \\
+                    0 & h = 0
+                \end{cases}
+            \end{align*}
+            which satisfies $\xi(h) \to 0$ as $h \to 0$.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{proof}[Proof of proposition]
+        Since $f$, $g$ are differentiable at $a$, $f(a)$ respectively, there exist error functions $\xi_f$, $\xi_g$ satisfying $\xi_f(h) \to 0$ as $h \to 0$ and $\xi_g(k) \to 0$ as $k \to 0$, and
+        \begin{align*}
+            f(a+h) &= f(a) + f'(a)h + \xi_f(h)|h| \\
+            g(f(a)+k) &= g(f(a)) + g'(f(a))k + \xi_g(k)|k|
+        \end{align*}
+        Now
+        \begin{align*}
+            (g \circ f)(a+h) - (g \circ f)(a) &= g(f(a+h)) - g(f(a)) \\
+            &= g(f(a) + \underbrace{f'(a)h + \xi_f(h)|h|}_k) - g(f(a)) \\
+            &= g(f(a)) + g'(f(a))\left(f'(a)h + \xi_f(h)|h|\right) + \xi_g(k)|k| - g(f(a)) \\
+            &= g'(f(a))f'(a)h + g'(f(a))\xi_f(h)|h| + \xi_g(k)|k|
+        \end{align*}
+        so we want to make
+        \begin{align*}
+            \xi(h) &= g'(f(a))\xi_f(h) + \xi_g(k)\frac{|k|}{|h|} \\
+            &= g'(f(a))\xi_f(h) + \xi_g(hf'(a)+\xi_f(h)|h|)\cdot|f'(a)+\xi_f(h)| \\
+        \end{align*}
+        It remains only to check that $\xi(h) \to 0$ as $h \to 0$. We have
+        \begin{align*}
+            \lim_{h \to 0} \xi(h) &= \lim_{h \to 0} \left(g'(f(a))\xi_f(h) + \xi_g(hf'(a)+\xi_f(h)|h|)\cdot|f'(a)+\xi_f(h)|\right) \\
+            &= \lim_{h \to 0} g'(f(a))\xi_f(h) + \lim_{h \to 0} \xi_g(hf'(a)+\xi_f(h)|h|) \cdot \lim_{h \to 0} |f'(a)+\xi_f(h)|
+        \end{align*}
+        Then the first term is zero because $\xi_f(h) \to 0$ as $h \to 0$, and the first multiplicand in the second term goes to 0 as $h \to 0$ because it is clear that its argument goes to 0 as $h \to 0$.
+    \end{proof}
+    
+    \begin{example*}
+        Take
+        \begin{align*}
+            f(x) = \begin{cases}
+                x \sin \left(\frac 1 x\right) & x \neq 0 \\
+                0 & x = 0
+            \end{cases}
+        \end{align*}
+        At $x \neq 0$, the chain and product rules give
+        \begin{align*}
+            f'(x) &= 1 \cdot \sin\left(\frac 1 x \right) + x \cdot \cos\left(\frac 1 x\right) \cdot \left(-\frac 1 {x^2}\right) \\
+            &= \sin \left(\frac 1 x\right) - \frac 1 x \cos\left(\frac 1 x\right)
+        \end{align*}
+        At $x = 0$, the definition gives
+        \begin{align*}
+            f'(x) = \lim_{h \to 0} \frac{f(h)-f(0)}h = \lim_{h \to 0} \frac{f(h)} h = \lim_{h \to 0} \sin \left(\frac 1 x\right)
+        \end{align*}
+        which does not exist -- hence the function is not differentiable at 0.
+    \end{example*}
+    
+    \begin{lemma}
+        \label{diff-cont}
+        If $f: X \subseteq \CC \to \CC$ is differentiable at $a \in X$, then it is continuous at $a \in X$.
+    \end{lemma}
+    
+    \begin{proof}
+        By \cref{little-o-derivative}, we have
+        \begin{align*}
+            \lim_{x \to a} f(x) = \lim_{h \to 0} f(a+h) &= \lim_{h \to 0} f(a) + Ah + \xi(h)|h| \\
+            &= f(a) + A \lim_{h \to 0} h + \lim_{h \to 0} \left(\xi(h)|h|\right) \\
+            &= f(a)
+        \end{align*}
+    \end{proof}
+
+    \lecture{Lecture 12 -- 19/02/26}
+    
+    \subsection{Mean value theorems}
+
+    We think of the derivative as an instantaneous rate of change, and we want to try and relate this to \emph{average} rates of change.
+    Let us first have a proposition-lemma.
+    
+    \begin{proposition}[Rolle's theorem]
+        \label{rolle}
+        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$, and suppose $f(a) = f(b)$. Then there exists $c \in (a, b)$ such that $f'(c) = 0$.
+    \end{proposition}
+    
+    \begin{proof}
+        By \cref{evt}, $f$ attains its min and max, that is there exist $x_m$ and $x_M \in [a, b]$ with
+        \begin{align*}
+            \sup_{[a, b]} f = f(x_M) \qquad \qquad \inf_{[a, b]} f = f(x_m)
+        \end{align*}
+        If $f$ is constant, then $f'(c) = 0$ for any $c \in (a, b)$, so we are done. Otherwise, it either holds that $f(x_M) > f(a)$ (so $x_M \in (a, b)$) or $f(x_m) < f(a)$ (so $x_m \in (a, b)$). It reamins to show that, at either of these points, $f' = 0$. We take cases.
+        \begin{itemize}
+            \item $x_m \in (a,b)$. Then, for sufficiently small $h$,
+            \begin{align*}
+                \sign\left(\frac{f(x_m + h)-f(x_m)}h\right) = \sign(h)
+            \end{align*}
+            so, taking $h \to 0$ from the right and left, we conclude $f'(x_m)$ is both positive and negative respectively, i.e. $f'(x_m) = 0$.
+            \item $x_M \in (a, b)$. Then we have
+            \begin{align*}
+                \sign\left(\frac{f(x_M + h)-f(x_M)}h\right) = -\sign(h)
+            \end{align*}
+            which again shows $f'(x_M) = 0$ by taking limits on both sides.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{theorem}[Mean value theorem]
+        \label{mvt}
+        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$. Then, there exists $c \in (a, b)$ such that
+        \begin{align*}
+            f'(c) = \frac{f(b)-f(a)}{b-a}
+        \end{align*}
+    \end{theorem}
+
+    \begin{proof}
+        Let
+        \begin{align*}
+            l(x) = f(a) + \frac{f(b)-f(a)}{b-a}(x-a)
+        \end{align*}
+        in other words, the secant line connecting $(a, f(a))$ to $(b, f(b))$. Then let $\phi(x) = f(x) - l(x)$, so $\phi(a) = \phi(b) = 0$. Hence Rolle gives $c$ satisfying $\phi'(c) = 0$, that is
+        \begin{align*}
+            f'(c) - \frac{f(b)-f(a)}{b-a} &= 0 \\
+            \implies f'(c) &= \frac{f(b)-f(a)}{b-a}
+        \end{align*}
+        as required.
+    \end{proof}
+    
+    \begin{corollary}
+        \label{mvt-cor-1}
+        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$. Given $h$ such that $a + h \in [a, b]$, there exists $\theta \in (0, 1)$ such that
+        \begin{align*}
+            f(a+h) = f(a) + hf'(a+\theta h)
+        \end{align*}
+    \end{corollary}
+    
+    \begin{proof}
+        Restrict the domain of $f$ to $[a, a+h]$. Then, by the mean value theorem, we have $c \in [a, a+h]$ with
+        \begin{align*}
+            f'(c) &= \frac{f(a+h)-f(a)}{h} \\
+            \implies f(a+h) &= f(a) + hf'(c)
+        \end{align*}
+        Then, let $\theta$ be such that $c = a+\theta h$.        
+    \end{proof}
+    
+    \begin{corollary}
+        \label{mvt-cor-2}
+        Let $f$ cts $: [a, b] \to \RR$ be differentiable on $(a, b)$. Then
+        \begin{itemize}
+            \item $f' \geq 0$ on $(a,b) \implies f$ is increasing, resp. strictly increasing;
+            \item $f' \leq 0$ on $(a,b) \implies f$ is decreasing, resp. strictly decreasing;
+            \item $f' = 0$ on $(a,b) \implies f$ is constant.
+        \end{itemize}
+    \end{corollary}
+    
+    \begin{proof}
+        Exercise.
+    \end{proof}
+    
+    \begin{remark*}
+        Statements such as \cref{mvt-cor-2} do not necessarily hold if the domain $X$ is an arbitrary subset of $\RR$. For instance, take
+        \begin{align*}
+            f: \QQ &\to \RR \\
+            x &\mapsto \begin{cases}
+                0 & x^2 > 2 \\
+                1 & x^2 < 2
+            \end{cases}
+        \end{align*}
+        which is continuous (yes, really!) and satisfies $f'(x) = 0$ for any $x \in \QQ$, but is not constant.        
+    \end{remark*}
+    
+    \begin{lemma}
+        Let $f: \CC \to \CC$ be differentiable ($\implies$ continuous) in $\CC$. Then, $f'(z) = 0$ for all $z \in \CC \implies f$ constant.
+    \end{lemma}
+    
+    \begin{proof}
+        We want to reduce to the $\RR$ case. For some $z \in \CC$, take $g(t) = f(tz)$ where $g: [0, 1] \to \CC$. Note $g$ is continuous on $[0, 1]$, $g$ is differentiable on $(0, 1)$, so we can apply \cref{mvt} and its corollaries to $\Re(g(t))$ and $\Im(g(t))$:
+        \begin{align*}
+            g'(t) = zf'(tz) = 0 \implies \begin{cases}
+                \Re(g'(t)) = 0 \\
+                \Im(g'(t)) = 0
+            \end{cases}
+        \end{align*}
+        and so $g(t)$ is constant -- hence $f(0) = g(0) = g(1) = f(z)$. But $z$ was arbitrary, so $f(z) = f(0)$ for any $z \in \CC$.
+    \end{proof}
+    
+    \begin{remark*}
+        We can use similar ideas to show a version of the mean value theorem in $\CC$.
+    \end{remark*}
+    
+    \begin{theorem}[Inverse function theorem -- differentiable version]
+        \label{ift-2}
+        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$. Assume that $f'(x) > 0$ for any $x \in (a, b)$. Then $f: [a, b] \to [f(a), f(b)]$ is a bijection with $f^{-1}$ cts$: [f(a), f(b)] \to [a, b]$ differentiable on $(f(a), f(b))$ with
+        \begin{align*}
+            (f^{-1})'(y) = \frac 1 {f'(f^{-1}(y))}
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        By \cref{mvt-cor-2}, $f$ is strictly increasing, so our previous version of IFT, \cref{ift-1}, gives that $f$ is a bijection and has a continuous inverse $f^{-1}$. It remains to show that $f^{-1}$ is differentiable and satisfies the above.
+
+        Let $y \in (f(a), f(b))$ and $x = f^{-1}(y)$. Given $h$ such that $y + h \in (f(a), f(b))$, define $k$ such that $y+h=f(x+k)$, or equivalently $k=f^{-1}(y+h)-x$. Then
+        \begin{align*}
+            \frac{f^{-1}(y+h)-f^{-1}(y)}{h} &= \frac{x+k-x}{f(x+k)-y} \\
+            &= \frac{k}{f(x+k)-f(x)} \\
+            &= \frac 1{\frac{f(x+k)-f(x)}{k}}
+        \end{align*}
+        so the result holds so long as $k \to 0$ as $h \to 0$ -- then we can take limits on both sides. But
+        \begin{align*}
+            \lim_{h \to 0} k &= \lim_{h \to 0} f^{-1}(y+h) - f^{-1}(y) \\
+            &= 0
+        \end{align*}
+        because $f^{-1}$ is continuous.       
+    \end{proof}
+    
+    \begin{example}
+        Let us consider some examples.
+        \begin{itemize}
+            \item Fix $R > 0$, and define
+            \begin{align*}
+                f: [0, R] &\to \RR \\
+                x &\to x^N
+            \end{align*}
+            so $f$ is continuous on $[0, R]$ and differentiable on $(0, R)$ with $f'(x) = Nx^{N-1}$. Hence, by \cref{ift-2}, $f: [0, R] \to [0, R^N]$ is a bijection, and $f^{-1}(y) = y^{1/N}$ is differentiable with
+            \begin{align*}
+                (f^{-1})'(y) = \frac 1 {f'(f^{-1}(y))} = \frac 1 {N (f^{-1}(y))^{N-1}} = \frac 1 N y^{\frac 1 N - 1}
+            \end{align*}
+            \item $f(x) = e^x$ is continuous and differentiable on $\RR$ with $f'(x) = e^x > 0$. Hence, we have an inverse $f^{-1}(y) = \log y$ such that
+            \begin{align*}
+                (f^{-1})'(y) = \frac 1 {e^{f^{-1}(y)}} = \frac 1 {e^{\log y}} = \frac 1 y
+            \end{align*}
+        \end{itemize}
+    \end{example}
+    
+    \begin{proposition}[Cauchy's mean value theorem]
+        Let $f, g$ cts$:[a, b] \to \RR$ be differentiable on $(a, b)$. Then there exists $c \in (a, b)$ such that
+        \begin{align*}
+            g'(c) \left(f(b)-f(a)\right) = f'(c)\left(g(b)-g(a)\right)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        We will reduce to Rolle's theorem, \cref{rolle}. Let
+        \begin{align*}
+            \phi(x) &= \left(g(x)-g(a)\right)\left(f(b)-f(a)\right) - \left(g(b)-g(a)\right)\left(f(x)-f(a)\right) \\
+            \implies \phi'(x) &= g'(x)\left(f(b)-f(a)\right) - f'(x)\left(g(b)-g(a)\right)
+        \end{align*}
+        and $\phi(a) = \phi(b) = 0$. The result follows.        
+    \end{proof}
+    
+    \begin{proposition}[L'H\^opital's rule, informal statement]
+        For certain limits expressed as a ratio of functions $f$ and $g$, one can calculate the limit by taking derivatives first.
+    \end{proposition}
+    
+    \lecture{Lecture 13 -- 21/02/26}
+
+    \subsection{Higher derivatives and Taylor's theorem}
+    
+    \begin{definition}[Higher derivatives]
+        Suppose $f: X \subseteq \CC \to \CC$ is differentiable on $X$. We say $f$ is \emph{$n$-times differentiable on $X$} if $f$ is $(n-1)$-times differentiable on $X$ and
+        \begin{align*}
+            f^{(n-1)}: X &\to \CC \\
+            x &\mapsto f^{(n-1)}(x)
+        \end{align*}
+        is differentiable.
+    \end{definition}
+    
+    \begin{definition}[Continuous differentiability]
+        We say $f: X \subseteq \CC \to \CC$ is $k$-times \emph{continuously differentiable} on $X$, and write $f \in C^k(X)$, if $f$ is $k$-times differentiable on $X$ and $f^{(k)}$ is continuous.
+    \end{definition}
+    
+    \begin{remark*}
+        Recall that $f$ differentiable $\implies f$ continuous, so $f$ $k$-times differentiable $\implies f$ $(k-1)$-times continuously differentiable.
+    \end{remark*}
+    
+    \begin{definition}[Smoothness]
+        We say $f: X \subseteq \CC \to \CC$ is \emph{smooth} if it is $k$-times differentiable for any $k$, or, equivalently, if $f \in C^k(X)$ for any $k$.
+    \end{definition}
+    
+    Since the derivative of a function at a point $x_0$ determines the slope of the tangent, $f(x_0)$ and $f'(x_0)$ together yield a linear approximation to the graph of $f$ at $x_0$:
+    \begin{align*}
+        f(x) \approx f(x_0) + f'(x_0)(x-x_0)
+    \end{align*}
+    for $x \approx x_0$. If we have more derivatives, however, we should in principle be able to get a better approximation:
+    \begin{align*}
+        f'(x) &\approx f'(x_0) + f''(x_0)(x-x_0) \\
+        \implies f(x) &\approx f(x_0) + f'(x_0)(x-x_0) + \frac 1 2 f''(x_0)(x-x_0)^2 
+    \end{align*}
+    and, if $f$ is $n$-times differentiable,
+    \begin{align*}
+        f(x) \approx \sum_{k=0}^n \frac 1 {k!} f^{(k)}(x_0)(x-x_0)^k
+    \end{align*}
+    for $x \approx x_0$.    
+    
+    \begin{definition}[Taylor polynomials and Taylor series]
+        If $f: X \subseteq \CC \to \CC$ is $n$-times differentiable and $x_0 \in X$, then
+        \begin{align*}
+            T_{n,f,x_0}(x) = \sum_{k=0}^n \frac 1 {k!} f^{(k)}(x_0)(x-x_0)^k
+        \end{align*}
+        is called the \emph{$n^\text{th}$-order Taylor polynomial of $f$ at $x_0$}. If $f$ is smooth, then
+        \begin{align*}
+            T_{f,x_0}(x) = \sum_{k=0}^\infty \frac 1 {k!} f^{(k)}(x_0)(x-x_0)^k
+        \end{align*}
+        is called the \emph{Taylor series of $f$ at $x_0$}.        
+    \end{definition}
+    
+    We would like to quantify exactly how good this approximation is.
+
+    \begin{theorem}[Taylor's theorem: Lagrange remainder]
+        \label{taylor-lagrange}
+        Suppose $f: X \subseteq \RR \to \RR$ and its $n-1$ derivatives are continuous on $[a, a+h]$ and $f$ is $n$-times differentiable on $(a, a+h)$. Set
+        \begin{align*}
+            R_{n, f, a}(h) = f(a+h) - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k)}(a) h^k = f(a+h) - T_{n-1, f, a}(h)
+        \end{align*}
+        Then, there exists $\theta(h) \in (0, 1)$ such that
+        \begin{align*}
+            R_{n, f, a}(h) = \frac 1 {n!} h^n f^{(n)}(a+\theta h) 
+        \end{align*}
+    \end{theorem}
+    
+    \begin{remark*}
+        The conditions for the above are a consequence of $f \in C^n((c, d))$ for any $(c, d) \supset [a, a+h]$.
+    \end{remark*}
+
+    Morally speaking, we are saying that $R_{n, f, a}(h) = O(h^n)$ as $h \to 0$, and we know exactly what the constant is. Unfortunately, this does \emph{not} tell us anything about whether $R_{n, f, a}(h) \to 0$ as $n \to \infty$: even if $f \in C^\infty(X)$, we can't say how the scaling factor of $M_n = \sup_{x \in [a, a+h]}\left|f^{(n)}(x)\right|$ behaves with $n$. THIS PART NEEDS TO BE UPDATED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    \begin{remark*}
+        We should also note that there is nothing important about $h > 0$ -- if $h = -t < -0$, and $f$ and its $n-1$ derivatives are continuous and $[a-t, a]$ and $f$ is $n$-times differentiable on $(a-t, a)$, then we can apply the above to $g(x) = f(-x)$ to obtain
+        \begin{align*}
+            g(-a+t) &= \sum_{k=0}^{n-1} \frac{(-1)^k}{k!} f^{(k)}(a) t^k + \frac{(-1)^n}{n!}t^n f^{(n)}(a-\theta t) \\
+            \implies f(a-t) &= \sum_{k=0}^{n-1} \frac{1}{k!} f^{(k)}(a)(-t)^k + \frac{1}{n!}(-t)^n f^{(n)}(a+\theta(-t))
+        \end{align*}
+    \end{remark*}
+    
+    \begin{proof}
+        Without loss of generality, we may take $a=0$ (otherwise apply to $g(x) = f(x+a)$). Let
+        \begin{align*}
+            \phi: [0, h] &\to \RR \\
+            t &\mapsto f(t) - \sum_{k=0}^{n-1} \frac{1}{k!} f^{(k)}(0)t^k - \frac{t^n}{n!}B = f(t) - T_{n-1,f,0}(t) - \frac{t^n}{n!}B
+        \end{align*}
+        where $B$ is chosen such that $\phi(h) = 0$. Note $\phi$ and its first $n-1$ derivatives are continuous on $[0, h]$, and its $n^\text{th}$ derivative exists on $(0, h)$. One can see fairly easily that $\phi^{(k)}(0) = 0$ for $k = 0, \dots, n-1$. We can thus apply \cref{mvt-cor-1} repeatedly:
+        \begin{align*}
+            \phi(0) = \phi(h) = 0 &\implies \exists \theta_1 \in (0, 1) \text{ s.t. } \phi'(\theta_1h) = 0 \\
+            \phi'(0) = \phi'(\theta_1h) = 0 &\implies \exists \theta_2 \in (0, 1) \text{ s.t. } \phi''(\theta_2\theta_1h) = 0 \\
+            \vdots \\
+            \phi^{(n-1)}(0) = \phi^{(n-1)}(\theta_{n-1}\cdots\theta_1h) = 0 &\implies \exists \theta_n \in (0, 1) \text{ s.t. } \phi^{(n)}(\theta_n\cdots\theta_1h) = 0 \\
+        \end{align*}
+        Now, setting $\theta = \theta_n \cdots \theta_1 \in (0, 1)$, we end up with $\theta \in (0, 1)$ such that $\phi^{(n)}(\theta h) = f^{(n)}(\theta h) - B = 0$, so $B = f^{(n)}(\theta h)$ as required.
+    \end{proof}
+    
+    \begin{proof}[Proof (alternative)]
+        Again wlog let us take $a=0$. Now let
+        \begin{align*}
+            g: [0, h] &\to \RR \\
+            t &\mapsto f(h) - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k)}(t) (h-t)^k = f(h) - T_{n-1,f,0}(h-t)
+        \end{align*}
+        Note that $g$ is continuous on $[0, h]$ and differentiable on $(0, h)$ with
+        \begin{align*}
+            g'(t) &= -\sum_{k=1}^{n-1} \frac 1 {(k-1)!} f^{(k)}(t) (-1) (h-t)^{k-1} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
+            &= -\sum_{k=0}^{n-2} \frac 1 {k!} f^{(k+1)}(t)(h-t)^{k} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
+            &= -\frac 1 {(n-1)!} f^{(n)}(t) (h-t)^{n-1}
+        \end{align*}
+        For $p \in \{1, \dots, n\}$, set
+        \begin{align*}
+            \phi_p(t) = g(t) - \left(\frac{h-t}{h}\right)^pg(0)
+        \end{align*}
+        Then $\phi_p(0) = \phi_p(h) = 0$ for each $p$, so, for each $p$, there exists $\theta \in (0, 1)$ with
+        \begin{align*}
+            0 &= \phi_p'(\theta h) = g'(\theta h) + \frac{p(1-\theta)^{p-1}}{h}g(0) \\
+            \implies g(0) &= -\frac{hg'(\theta h)}{p(1-\theta)^{p-1}}
+        \end{align*}
+        But we can see $g(0) = R_{n, f, 0}(h)$, so
+        \begin{align*}
+            R_{n, f, 0}(h) = -\frac{hg'(\theta h)}{p(1-\theta)^{p-1}} = \frac{h^n}{p(n-1)!}(1-\theta)^{n-p}f^{(n)}(\theta h)
+        \end{align*}
+        so putting $p = n$ gives the result.
+    \end{proof}
+    
+    This alternative proof approach will become extremely useful for our next theorem.
+
+    \begin{theorem}[Taylor's theorem: Cauchy remainder]
+        Let $f$ and $R_{n,f,a}$ be as in \cref{taylor-lagrange}. Then there exists $\theta \in (0, 1)$ such that
+        \begin{align*}
+            R_{n, f, a}(h) = h^n \frac{(1-\theta)^{n-1}}{(n-1)!} f^{(n)}(a + \theta h)
+        \end{align*}
+    \end{theorem}
+
+    \begin{proof}
+        This follows immediately from taking $p=1$ in the final line of the above.
+    \end{proof}
+    
+    \lecture{Lecture 14 -- 24/02/26}
+    
+    \begin{remark*}
+        If $f \in C^n([c, d])$ with $[a, a+h] \subset (c, d)$ then, as in previous remark, we can set
+        \begin{align*}
+            M_n = \sup_{x \in [a, a+h]} \left|f^{(n)}(x)\right|
+        \end{align*}
+        so the theorem gives
+        \begin{align*}
+            |R_{n,f,a}(h)| \leq M_n \frac{|h|^n}{(n-1)!}
+        \end{align*}
+        i.e. $R_{n,f,a}(h) = O(h^n)$.       
+    \end{remark*}
+    
+    \begin{example*}
+        Consider $f(x) = x^q$, $q \in \QQ$, which is smooth on $(0, \infty)$ with
+        \begin{align*}
+            f^{(n)}(x) = q (q-1) \dots (q-k+1) x^{q-k}
+        \end{align*}
+        so that
+        \begin{align*}
+            T_{n-1,f,1}(x) &= \sum_{k=0}^{n-1} \frac{q(q-1) \dots (q-k+1)}{k!}x^k \\
+            &= \sum_{k=0}^{n-1} \binom q k x^k
+        \end{align*}
+        and we consider
+        \begin{align*}
+            R_{n,f,1}(x) = (1+x)^q - \sum_{k=0}^{n-1} \binom q k x^k
+        \end{align*}
+        for $x$ in the interval $(-1, 1)$. Let us compare both our remainder options:
+        \begin{itemize}
+            \item \emph{Lagrange remainder}. We have $\theta \in (0, 1)$ such that
+            \begin{align*}
+                R_{n,f,1}(x) = \binom q n (1+\theta x)^{q-n}x^n
+            \end{align*}
+            Then, if $n \geq q$, $(1+\theta x)^{q-n} = \frac 1{(1+\theta x)^{n-q}} \leq 1$ for $x \in [0, 1)$, so
+            \begin{align*}
+                |R_{n,f,1}(x)| \leq \left|\binom q n x^n\right| \to 0
+            \end{align*}
+            as $n \to \infty$. But this argument fails for $(-1, 0)$.
+            \item \emph{Cauchy remainder}. We have $\theta \in (0, 1)$ such that
+            \begin{align*}
+                R_{n,f,1}(x) &= (1-\theta)^{n-1}n\binom q n (1+\theta x)^{q-n}x^n \\
+                &= (1-\theta)^{n-1}q\binom {q-1}{n-1} (1+\theta x)^{q-n}x^n \\
+                &= q \binom{q-1}{n-1} \left(\frac{1-\theta}{1+\theta x}\right)^{n-1} (1+\theta x)^{q-1}x^n
+            \end{align*}
+            Now $1+\theta x = (1-\theta) + \theta(x+1) \geq 1-\theta$, so $\left(\frac{1-\theta}{1+\theta x}\right)^{n-1} \leq 1$ for $n \geq 1$. Hence
+            \begin{align*}
+                |R_{n,f,1}(x) &\leq |qx|\left|\binom{q-1}{n-1}\right||1+\theta x|^{q-1} \\
+                &\leq C\left|\binom{q-1}{n-1}\right|
+            \end{align*}
+            by taking the sup over all $x \in (-1, 1)$. But this goes to 0 as $n \to \infty$. So in fact the Cauchy remainder does give us a stronger result.    
+        \end{itemize}
+    \end{example*}
+    
+    \begin{definition}[Analyticity, non-examinable]
+        We say $f \in C^\infty((c, d))$ is \emph{analytic} if, for every $a \in (c, d)$, there exists an $r > 0$ such that, for any $|h| < r$, 
+        \begin{align*}
+            f(a+h) = \lim_{n \to \infty} T_{n, f, a}(h) \iff \lim_{n \to \infty} R_{n,f,a}(h) = 0
+        \end{align*}
+        in other words, $f$ is equal to its Taylor series.
+    \end{definition}
+    
+    \begin{example*}
+        As we spent the last page showing, $x^q$ is analytic in $(0, 2) \iff (1+x)^q$ is analytic in $(-1, 1)$.
+    \end{example*}
+    
+    \begin{remark*}
+        Note that, even if $R_{n,f,a}(h)$ does not go to zero, the Taylor series might still converge -- just not to the actual function.
+    \end{remark*}
+    
+    \section{Integration of functions}
+
+    \subsection{Basics}
+
+    We want to define $\int_a^b f(x) \D x$ as the signed area under a graph, which is easy if it's, say, a rectangle. Otherwise, we can try approximating it with slices.
+    
+    \begin{definition}[Upper and lower Riemann sums]
+        Let $f: [a, b] \to \RR$ be bounded. Given a partition $\mathcal P = \{x_0, \dots, x_n\}$ with $a = x_0 < \dots < x_n = b$ of $[a, b]$, we set
+        \begin{align*}
+            L(f, \mathcal P) &= \sum_{j=1}^n (x_j-x_{j-1})\inf_{x \in [x_{j-1},x_j]}f(x)\\
+            U(f, \mathcal P) &= \sum_{j=1}^n (x_j-x_{j-1})\sup_{x \in [x_{j-1},x_j]}f(x)
+        \end{align*}
+        to be the \emph{lower} and \emph{upper Riemann sums} respectively.
+    \end{definition}
+    
+    \begin{example*}
+        Let
+        \begin{align*}
+            f: [0, 1] &\to {0, 1} \\
+            x &\mapsto \begin{cases}
+                1 & x \in \QQ \\
+                0 & x \in \RR \setminus \QQ
+            \end{cases}
+        \end{align*}
+        No matter what $\mathcal P$ we take, each of our intervals will contain both a rational and an irrational, so
+        \begin{align*}
+            U(f, \mathcal P) &= 1 \\
+            L(f, \mathcal P) &= 0
+        \end{align*}
+    \end{example*}
+    
+    \begin{remark*}
+        For $f$ bounded, i.e. $\sup_{[a, b]} |f| = k$ for some $k$,
+        \begin{align*}
+            U(f, \mathcal P) &\leq \sum_{j=1}^n (x_j-x_{j-1})\sup_{[a,b]}|f| \\
+            = k(b-a)
+        \end{align*}
+        Analogously,
+        \begin{align*}
+            L(f, \mathcal P) &\geq \sum_{j=1}^n (x_j-x_{j-1})(-\sup_{[a,b]}|f|) \\
+            = -k(b-a)
+        \end{align*}
+        Also, it's clear that $U(f, \mathcal P) \geq L(f, \mathcal P)$. Hence
+        \begin{align*}
+            &\{L(f, \mathcal P): \mathcal P \text{ a partition of }[a,b]\} \\
+            &\{U(f, \mathcal P): \mathcal P \text{ a partition of }[a,b]\}
+        \end{align*}
+        are both bounded sets and (clearly) non-empty.        
+    \end{remark*}
+    
+    \begin{definition}[Upper and lower integrals]
+        Let $f: [a, b] \to \RR$ be bounded. We say
+        \begin{align*}
+            I_*(f) &= \sup_{\mathcal P} L(f, \mathcal P) \\
+            I^*(f) &= \inf_{\mathcal P} U(f, \mathcal P)
+        \end{align*}
+        are the \emph{lower} and \emph{upper integrals} respectively.        
+    \end{definition}
+    
+    \begin{definition}[Riemann integrability]
+        We say $f$ is \emph{Riemann integrable} if $I_* = I^*$. Then we say
+        \begin{align*}
+            I(f) = \int_a^b f(x) \D x = I_*(f) = I^*(f)
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        By convention, $\int_a^b f = -\int_b^a f$.
+    \end{remark*}
+    
+    \begin{example*}
+        Take $f$ as in the previous example. Then $I_*(f) = 0$ and $I^*(f) = 1$, so $f$ is not Riemann integrable.
+    \end{example*}
+    
+    \lecture{Lecture 15 -- 26/02/26}
+    
+    The coarsest possible partition for $[a, b]$ is $\{a, b\}$. Our intuition suggests that finer partitions lead to a better estimate for the integral.
+
+    \begin{lemma}
+        Let $\mc P$ and $\mc P'$ be partitions of $[a, b]$, and suppose $\mc P \supseteq \mc P'$, so $\mc P'$ is a refinement of $\mc P$. Then 
+        \begin{align*}
+            L(f, \mc P) \leq L(f, \mc P') \leq U(f, \mc P') \leq U(f, \mc P)
+        \end{align*}
+        for every bounded $f: [a, b] \to \RR$.
+    \end{lemma}
+    
+    \begin{proof}
+        Let us induct. Take $\mc P = \{x_0, \dots, x_n\}$ and pick $y \in (x_{k-1}, x_k)$ for some $x$ -- then, put $\mc P' = P \cup \{y\}$. Then
+        \begin{align*}
+            \sup_{x \in [x_{k-1},y]} f(x), \, \sup_{x \in [y,x_k]} f(x) &\leq \sup_{x \in [x_{k-1}, x_k]}f(x) \\ 
+            \implies (y-x_{k-1})\sup_{x \in [x_{k-1},y]} f(x) + (x_k-y)\sup_{x \in [y,x_k]} f(x) &\leq (x_k-x_{k-1}) \sup_{x \in [x_{k-1}, x_k]}f(x)
+        \end{align*}
+        so that $U(f, \mc P') \leq U(f, \mc P)$ as required. Similar reasoning with the infimum would suffice for the lower sums. Hence we can induct on the elements of $\mc P' \setminus \mc P$.
+    \end{proof}
+    
+    \begin{lemma}
+        Let $\mc P$ and $\mc P'$ be any partitions of $[a, b]$. Then
+        \begin{align*}
+            L(f, \mc P) \leq U(f, \mc P')
+        \end{align*}
+        for every bounded $f: [a, b] \to \RR$.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $\mc P'' = \mc P \cup \mc P'$, so $\mc P''$ is a refinement of both $\mc P$ and $\mc P'$. Then
+        \begin{align*}
+            L(f, \mc P) \leq U(f, \mc P'') \leq U(f, \mc P')
+        \end{align*}
+    \end{proof}
+    
+    \begin{lemma}
+        For a bounded $f: [a, b] \to \RR$,
+        \begin{align*}
+            I_*(f) \leq I^*(f)
+        \end{align*}
+    \end{lemma}
+
+    \begin{proof}
+        We know that
+        \begin{align*}
+            L(f, \mc P) &\leq \inf_{\mc P'} U(f, \mc P') \\
+            \implies \underbrace{\sup_{\mc P} L(f, \mc P)}_{I_*(f)} &\leq \underbrace{\inf_{\mc P'} U(f, \mc P')}_{I^*(f)}
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        It follows that $f$ is integrable if and only if $I_*(f) \geq I^*(f)$.
+    \end{remark*}
+    
+    \begin{proposition}[Riemann integrability criterion]
+        Let $f: [a, b] \to \RR$ be bounded. Then $f$ is Riemann integrable if and only if, for any $\eps > 0$, there exists a partition $\mc P$ of $[a, b]$ such that
+        \begin{align*}
+            U(f, \mc P) - L(f, \mc P) < \eps
+        \end{align*}
+    \end{proposition}
+
+    \begin{proof}
+        \begin{itemize}
+            \item[$\impliedby$] We have, for any $\eps > 0$,
+            \begin{align*}
+                0 \leq I^*(f) - I_*(f) \leq U(f, \mc P) - L(f, \mc P) < \eps
+            \end{align*}
+            \item[$\implies$] From the definition of $\sup$ and $\inf$, we can find partitions $\mc P$ and $\mc P'$ such that
+            \begin{align*}
+                U(f, \mc P) &\leq I^*(f) + \frac{\eps} 2 \\
+                L(f, \mc P) &\geq I_*(f) - \frac{\eps} 2
+            \end{align*}
+            which implies $U(f, \mc P) - L(f, \mc P') \leq \eps$. To conclude, we need to show this for a single partition. Let $\mc P'' = \mc P \cup \mc P'$, then
+            \begin{align*}
+                U(f, \mc P'') - L(f, \mc P'') \leq U(f, \mc P) - L(f, \mc P') \leq \eps < 2\eps
+            \end{align*}
+        \end{itemize}
+    \end{proof}
+    
+    \begin{remark*}
+        As an exericse, one can show that this is equivalent to a sequential characterisation -- finding a sequence of partitions $(\mc P_n)$ such that
+        \begin{align*}
+            U(f, \mc P_n) - L(f, \mc P_n) \to 0
+        \end{align*}
+        as $n \to \infty$.        
+    \end{remark*}
+    
+    \begin{example*}
+        Let us attempt to integrate $f(x) = x$ on $[0, 1]$. Let $\mc P_n = \{0, \frac 1 n, \dots, \frac {n-1} n, 1\}$. Then
+        \begin{align*}
+            U(f, \mc P_n) &= \sum_{j=1}^n \frac 1 n \sup_{\left[\frac{j-1}n, \frac jn\right]} x \\
+            &= \frac 1 {n^2} \sum_{j=1}^n \sup_{[j-1, j]} x = \frac 1 {n^2} \sum_{j=1}^n j \\
+            &= \frac 1 2 \left(1 + \frac 1 n\right)
+        \end{align*}
+        and 
+        \begin{align*}
+            L(f, \mc P_n) &= \sum_{j=1}^n \frac 1 n \inf_{\left[\frac{j-1}n, \frac jn\right]} x \\
+            &= \frac 1 {n^2} \sum_{j=1}^n \inf_{[j-1, j]} x = \frac 1 {n^2} \sum_{j=1}^n j-1 \\
+            &= \frac 1 2 \left(1 - \frac 1 n\right)
+        \end{align*}
+        Hence
+        \begin{align*}
+            I_*(f) = \sup_{\mc P}L(f, \mc P) \geq \sup_n L(f, \mc P_n) &= \frac 1 2 \\
+            I^*(f) = \inf_{\mc P}U(f, \mc P) \leq \inf_n U(f, \mc P_n) &= \frac 1 2
+        \end{align*}
+        so $I_*(f) \geq I^*(f)$, so $f$ is integrable as required, with $\int_0^1 x = \frac 1 2$.
+        
+        Alternatively, with the Riemann integration criterion,
+        \begin{align*}
+            U(f, \mc P_n) - L(f, \mc P_n) \leq \frac 1 n \to 0
+        \end{align*}
+        as $n \to \infty$ (but this doesn't give us the value of the integral).
+    \end{example*}
+    
+    \begin{example*}
+        Let us consider a discontinuous but integrable function, namely
+        \begin{align*}
+            f(x) = \begin{cases}
+                0 & x \leq \frac 1 2 \\
+                1 & x > \frac 1 2
+            \end{cases}
+        \end{align*}
+        on $[0, 1]$. Then take $\mc P_n$ as before for $n \geq 3$. So
+        \begin{align*}
+            \sup_{[x_{n-1},x_n]}f - \inf_{[x_{n-1},x_n]}f = \begin{cases}
+                1 & \frac 1 2 \in [x_{n-1}, x_n] \\
+                0 & text{o/w}
+            \end{cases}
+        \end{align*}
+        so that
+        \begin{align*}
+            U(f, \mc P_n) - L(f, \mc P_n) = \frac 1 n \to 0
+        \end{align*}
+        as $n \to \infty$.
+    \end{example*}
+    
+    We would like now to generalise the above examples to get whole classes of functions that are integrable.
+
+    \begin{proposition}[Monotone $\implies$ integrable]
+        Let $f: [a, b] \to \RR$ be bounded and monotone. Then $f$ is integrable.
+    \end{proposition}
+    
+    \begin{proof}
+        Since $f$ is monotone, $f$ is bounded by $\max\left(|f(a)|, |f(b)|\right)$. Hence
+    \end{proof}
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
 \end{document}

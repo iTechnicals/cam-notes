@@ -866,6 +866,118 @@
         so $\ker \phi = \{r \in R: r + J = 0\} = R \cap J$, so this is an ideal by the first isomorphism theorem. Also, the image is $\im \phi = \{r + J: r \in R\} = (R + J)/J$. The result follows from the first isomorphism theorem.        
     \end{proof}
     
+    \lecture{Lecture 11 -- 14/02/26}
+
+    \lecture{Lecture 12 -- 17/02/26}
+
+    \begin{proposition}
+        Let $R$ be a ring. Then $R$ is a field if and only if the only ideals of $R$ are $\{0\}$ and $R$.
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] If $R$ is a field and $I \norm R$, say $I \neq \{0\}$, then $I$ contains a unit, say $u \in I$. But then $1 \in I$ since $1 = uv$. We conclude $I = R$.
+            \item[$\impliedby$] If the only ideals are $\{0\}$ and $R$, take $0 \neq r \in R$. Then $\gen r$ is $R$. So $1 \in R \implies 1 = rs$. So $r$ is a unit and hence $R$ is a field. 
+        \end{itemize}
+    \end{proof}
+    
+    \begin{definition}[Maximal ideals]
+        An ideal $R \neq I \norm R$ is called \emph{maximal} if, for any $J \norm R$, $I \subseteq J \subseteq R$ implies $I = J$ or $J = R$.
+    \end{definition}
+    
+    \begin{proposition}
+        \label{maximal-field}
+        An ideal $I \norm R$ is maximal if and only if $R/I$ is a field.
+    \end{proposition}
+    
+    \begin{proof}
+        $R/I$ is a field if and only if its only ideals are $\{0\}$ and $R/I$ itself. Now apply the ideal correspondence result.
+    \end{proof}
+    
+    \begin{definition}[Prime ideals]
+        An ideal $R \neq I \norm R$ is \emph{prime} if, whenever $ab \in I$, either $a$ or $b \in I$.
+    \end{definition}
+    
+    \begin{example}
+        An ideal $n\ZZ \norm \ZZ$ is a prime ideal if and only if $n$ is 0 or a prime.
+    \end{example}
+    
+    \begin{proposition}
+        \label{prime-integral}
+        An ideal $I \norm R$ is prime if and only if $R/I$ is an integral domain.
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] Suppose $I$ is prime and let $a + I$ and $b + I \in R + I$ be cosets. Suppose $(a + I)(b + I) = ab + I = 0 + I$ if and only if $ab \in I$. But, since $I$ is prime, either $a$ or $b \in I$, so either $a + I$ or $b + I = 0 + I$.
+            \item[$\impliedby$] If $R/I$ is an integral domain, then $ab \in I$ satisfies $ab + I = (a + I)(b + I) = 0 + I$ in $R/I$, so either $a \in I$ or $b \in I$, so $I$ is prime.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{corollary}
+        Every maximal ideal in a ring is prime.
+    \end{corollary}
+    
+    \begin{proof}
+        Since every field is an integral domain, the result follows from \cref{maximal-field} and \cref{prime-integral}.
+    \end{proof}
+    
+    \begin{remark*}
+        The converse clearly does not hold.
+    \end{remark*}
+    
+    \begin{proposition}
+        The characteristic of an integral domain is either zero or a prime number.
+    \end{proposition}
+    
+    \begin{proof}
+        Consider the unique homomorphism $\ZZ \to R$. Letting the characteristic be $n$, we have that $\gen n \norm \ZZ$ is the kernel, so $\ZZ/n\ZZ \leq R$ by the first isomorphism theorem. But then $\ZZ/n\ZZ$ is an integral domain, and the result follows.
+    \end{proof}
+    
+    \subsection{Factorisation in integral domains}
+
+    Throughout this section, $R$ is an integral domain.
+
+    \begin{definition}[Division]
+        Let $a$, $b \in R$. We say $a$ \emph{divides} $b$, written $a \mid b$, if there exists $c \in R$ such that $ac = b$. Equivalently, we can say $\gen b \subseteq \gen a$.
+    \end{definition}
+    
+    \begin{definition}[Associates]
+        We say $a$, $b \in R$ are \emph{associates} if $a = bc$ for some unit $c \in R$. Equivalently, we can say $a \mid b$ and $b \mid a$, or $\gen a = \gen b$.
+    \end{definition}
+    
+    \begin{definition}[Irreducible elements]
+        An element $r \in R$ is \emph{irreducible} if $r \neq 0$, $r$ is not a unit, and, if $r = xy$, either $x$ or $y$ is a unit.
+    \end{definition}
+    
+    \begin{definition}[Prime elements]
+        An element $r \in R$ is \emph{prime} if $r \neq 0$, $r$ is not a unit, and, if $r \mid xy$, either $r \mid x$ or $r \mid y$.
+    \end{definition}
+    
+    \begin{proposition}
+        Let $r \in R$. Then, if $r \neq 0$, it is a prime element if and only if $\gen r$ is a prime ideal.
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] Let $r$ be a prime element, and suppose $ab \in \gen r$. Then $r \mid ab$, so $r \mid a$ or $r \mid b$, hence $a \in \gen r$ or $b \in \gen r$ as required.
+            \item[$\impliedby$] Let $\gen r$ be a prime ideal. By definition, $r$ is not a unit. Say $r \mid ab$, so $ab \in \gen r$. Since $\gen r$ is prime, either $a \in \gen r$ or $b \in gen r$, so either $r \mid a$ or $r \mid b$. 
+        \end{itemize}
+    \end{proof}
+    
+    \begin{proposition}
+        Let $r \in R$ be prime. Then $r$ is irreducible.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $r \in R$ be prime, and suppose $r=ab$. Since $r \mid r$, $r \mid ab$, so, since $r$ is prime, $r \mid a$ or $r \mid b$ -- wlog suppose $r \mid a$. Hence $a = rc$ with $c \in R$, so $r = ab = rcb$. Since we're in an integral domain, we can cancel to get $bc = 1$, so $b$ is a unit as required.
+    \end{proof}
+    
+    \begin{remark*}
+        The converse is false -- for example, $R = \ZZ[\sqrt{-5}]$.
+    \end{remark*}
+    
+    
     
     
     

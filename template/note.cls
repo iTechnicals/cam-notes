@@ -8,17 +8,22 @@
 \RequirePackage{quiver}
 \RequirePackage{siunitx}
 \RequirePackage{stmaryrd}
+\RequirePackage{bm}
 \RequirePackage{centernot}
+\RequirePackage{esint}
 
 \newcommand{\multiline}[2][c]{%
     \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}
 }
 \renewcommand{\arraystretch}{1.2}
 
-
 \newcommand{\incfig}[2]{
     \def\svgwidth{#1}
     \import{../notes/figures/\jobname}{#2.pdf_tex}
+}
+
+\newcommand{\fig}[2]{
+    \includegraphics[width=#1]{../notes/figures/\jobname/#2.pdf}
 }
 
 \setcounter{MaxMatrixCols}{15}

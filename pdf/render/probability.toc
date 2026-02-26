@@ -12,4 +12,10 @@
 \contentsline {subsection}{\numberline {4.4}Moments, variance and covariance}{22}{subsection.93}%
 \contentsline {subsection}{\numberline {4.5}Inequalities on random variables}{26}{subsection.126}%
 \contentsline {subsection}{\numberline {4.6}Joint distribution and conditional expectation}{30}{subsection.147}%
+\contentsline {section}{\numberline {5}Random walks}{34}{section.166}%
+\contentsline {section}{\numberline {6}Probability generating functions}{35}{section.171}%
+\contentsline {subsection}{\numberline {6.1}Sum of a random number of random variables}{39}{subsection.193}%
+\contentsline {section}{\numberline {7}Branching processes}{40}{section.198}%
+\contentsline {subsection}{\numberline {7.1}Extinction probability}{41}{subsection.203}%
+\contentsline {section}{\numberline {8}Continuous random variables}{43}{section.208}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
