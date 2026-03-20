@@ -1,48 +1,81 @@
-\contentsline {section}{\numberline {1}Preliminaries}{2}{section.2}%
-\contentsline {subsection}{\numberline {1.1}Vector notation}{2}{subsection.3}%
-\contentsline {subsection}{\numberline {1.2}The chain rule}{2}{subsection.7}%
-\contentsline {subsection}{\numberline {1.3}Taylor's theorem}{3}{subsection.10}%
-\contentsline {subsection}{\numberline {1.4}Infinitesimals}{3}{subsection.13}%
+\contentsline {section}{\numberline {1}Preliminaries}{3}{section.2}%
+\contentsline {subsection}{\numberline {1.1}Vector notation}{3}{subsection.3}%
+\contentsline {subsection}{\numberline {1.2}The chain rule}{3}{subsection.7}%
+\contentsline {subsection}{\numberline {1.3}Taylor's theorem}{4}{subsection.10}%
+\contentsline {subsection}{\numberline {1.4}Infinitesimals}{4}{subsection.13}%
 \contentsline {section}{\numberline {2}Vector differential operators}{4}{section.16}%
-\contentsline {subsection}{\numberline {2.1}Del}{4}{subsection.18}%
-\contentsline {subsection}{\numberline {2.2}Gradient}{4}{subsection.19}%
+\contentsline {subsection}{\numberline {2.1}Del}{5}{subsection.18}%
+\contentsline {subsection}{\numberline {2.2}Gradient}{5}{subsection.19}%
 \contentsline {subsection}{\numberline {2.3}Divergence}{6}{subsection.27}%
-\contentsline {subsection}{\numberline {2.4}Curl}{6}{subsection.30}%
-\contentsline {subsection}{\numberline {2.5}Directional derivatives}{7}{subsection.33}%
-\contentsline {subsection}{\numberline {2.6}Level surfaces and the gradient}{8}{subsection.36}%
-\contentsline {subsection}{\numberline {2.7}Various vector differential identities}{8}{subsection.42}%
-\contentsline {subsection}{\numberline {2.8}The Laplacian}{11}{subsection.63}%
-\contentsline {subsection}{\numberline {2.9}Irrotational and conservative vector fields}{12}{subsection.67}%
-\contentsline {subsection}{\numberline {2.10}Solenoidal/incompressible vector fields}{13}{subsection.74}%
-\contentsline {section}{\numberline {3}Orthogonal curvilinear coordinate systems}{14}{section.78}%
-\contentsline {subsection}{\numberline {3.1}General curvilinear coordinate systems}{14}{subsection.79}%
-\contentsline {subsection}{\numberline {3.2}Cylindrical polar coordinates}{14}{subsection.85}%
-\contentsline {subsection}{\numberline {3.3}Spherical polar coordinates}{15}{subsection.91}%
-\contentsline {subsection}{\numberline {3.4}Vector differential operators in orthogonal curvilinear coordinate systems}{16}{subsection.98}%
-\contentsline {subsubsection}{\numberline {3.4.1}General orthogonal curvilinear coordinate systems}{16}{subsubsection.99}%
-\contentsline {subsubsection}{\numberline {3.4.2}Cylindrical polar coordinates}{17}{subsubsection.102}%
-\contentsline {subsubsection}{\numberline {3.4.3}Spherical polar coordinates}{17}{subsubsection.103}%
-\contentsline {section}{\numberline {4}Differential geometry of curves, surfaces and volumes}{18}{section.105}%
-\contentsline {subsection}{\numberline {4.1}Curves and arc length}{18}{subsection.106}%
-\contentsline {subsection}{\numberline {4.2}The Frenet-Serret equations}{19}{subsection.113}%
-\contentsline {subsection}{\numberline {4.3}Using the Frenet-Serret equations with other parameterisations}{21}{subsection.119}%
-\contentsline {subsection}{\numberline {4.4}Surfaces, surface elements and the normal}{21}{subsection.121}%
-\contentsline {subsection}{\numberline {4.5}Volumes and volume elements}{22}{subsection.128}%
-\contentsline {section}{\numberline {5}Line, area, surface and volume integrals}{22}{section.133}%
-\contentsline {subsection}{\numberline {5.1}Line integrals}{22}{subsection.134}%
-\contentsline {subsection}{\numberline {5.2}Path independence}{25}{subsection.139}%
-\contentsline {subsection}{\numberline {5.3}Area integrals}{26}{subsection.150}%
-\contentsline {subsection}{\numberline {5.4}Change of variables for area integrals}{27}{subsection.154}%
-\contentsline {subsection}{\numberline {5.5}Properties of the Jacobian}{29}{subsection.160}%
-\contentsline {subsection}{\numberline {5.6}Volume integrals}{30}{subsection.162}%
-\contentsline {subsection}{\numberline {5.7}Change of variables for volume integrals}{31}{subsection.165}%
-\contentsline {subsection}{\numberline {5.8}Classification of surfaces}{32}{subsection.169}%
-\contentsline {subsection}{\numberline {5.9}Surface integrals}{33}{subsection.171}%
-\contentsline {section}{\numberline {6}Integral theorems}{36}{section.180}%
-\contentsline {subsection}{\numberline {6.1}Green's theorem in the plane}{36}{subsection.181}%
-\contentsline {subsubsection}{\numberline {6.1.1}Multiple boundary curves}{37}{subsubsection.186}%
-\contentsline {subsection}{\numberline {6.2}Stokes' theorem}{38}{subsection.188}%
-\contentsline {subsubsection}{\numberline {6.2.1}Closed surfaces}{39}{subsubsection.193}%
-\contentsline {subsubsection}{\numberline {6.2.2}Multiple boundary curves}{39}{subsubsection.194}%
-\contentsline {subsection}{\numberline {6.3}The divergence theorem}{41}{subsection.196}%
+\contentsline {subsection}{\numberline {2.4}Curl}{7}{subsection.30}%
+\contentsline {subsection}{\numberline {2.5}Directional derivatives}{8}{subsection.33}%
+\contentsline {subsection}{\numberline {2.6}Level surfaces and the gradient}{9}{subsection.36}%
+\contentsline {subsection}{\numberline {2.7}Various vector differential identities}{10}{subsection.42}%
+\contentsline {subsection}{\numberline {2.8}The Laplacian}{12}{subsection.63}%
+\contentsline {subsection}{\numberline {2.9}Irrotational and conservative vector fields}{14}{subsection.67}%
+\contentsline {subsection}{\numberline {2.10}Solenoidal/incompressible vector fields}{15}{subsection.74}%
+\contentsline {section}{\numberline {3}Orthogonal curvilinear coordinate systems}{15}{section.78}%
+\contentsline {subsection}{\numberline {3.1}General curvilinear coordinate systems}{15}{subsection.79}%
+\contentsline {subsection}{\numberline {3.2}Cylindrical polar coordinates}{16}{subsection.85}%
+\contentsline {subsection}{\numberline {3.3}Spherical polar coordinates}{17}{subsection.91}%
+\contentsline {subsection}{\numberline {3.4}Vector differential operators in orthogonal curvilinear coordinate systems}{18}{subsection.98}%
+\contentsline {subsubsection}{\numberline {3.4.1}General orthogonal curvilinear coordinate systems}{18}{subsubsection.99}%
+\contentsline {subsubsection}{\numberline {3.4.2}Cylindrical polar coordinates}{18}{subsubsection.102}%
+\contentsline {subsubsection}{\numberline {3.4.3}Spherical polar coordinates}{19}{subsubsection.103}%
+\contentsline {section}{\numberline {4}Differential geometry of curves, surfaces and volumes}{20}{section.105}%
+\contentsline {subsection}{\numberline {4.1}Curves and arc length}{20}{subsection.106}%
+\contentsline {subsection}{\numberline {4.2}The Frenet-Serret equations}{21}{subsection.113}%
+\contentsline {subsection}{\numberline {4.3}Using the Frenet-Serret equations with other parameterisations}{23}{subsection.119}%
+\contentsline {subsection}{\numberline {4.4}Surfaces, surface elements and the normal}{23}{subsection.121}%
+\contentsline {subsection}{\numberline {4.5}Volumes and volume elements}{24}{subsection.128}%
+\contentsline {section}{\numberline {5}Line, area, surface and volume integrals}{24}{section.133}%
+\contentsline {subsection}{\numberline {5.1}Line integrals}{24}{subsection.134}%
+\contentsline {subsection}{\numberline {5.2}Path independence}{26}{subsection.139}%
+\contentsline {subsection}{\numberline {5.3}Area integrals}{27}{subsection.150}%
+\contentsline {subsection}{\numberline {5.4}Change of variables for area integrals}{29}{subsection.154}%
+\contentsline {subsection}{\numberline {5.5}Properties of the Jacobian}{30}{subsection.160}%
+\contentsline {subsection}{\numberline {5.6}Volume integrals}{31}{subsection.162}%
+\contentsline {subsection}{\numberline {5.7}Change of variables for volume integrals}{32}{subsection.165}%
+\contentsline {subsection}{\numberline {5.8}Classification of surfaces}{34}{subsection.169}%
+\contentsline {subsection}{\numberline {5.9}Surface integrals}{34}{subsection.171}%
+\contentsline {section}{\numberline {6}Integral theorems}{37}{section.180}%
+\contentsline {subsection}{\numberline {6.1}Green's theorem in the plane}{37}{subsection.181}%
+\contentsline {subsubsection}{\numberline {6.1.1}Multiple boundary curves}{38}{subsubsection.186}%
+\contentsline {subsection}{\numberline {6.2}Stokes' theorem}{39}{subsection.188}%
+\contentsline {subsubsection}{\numberline {6.2.1}Closed surfaces}{40}{subsubsection.193}%
+\contentsline {subsubsection}{\numberline {6.2.2}Multiple boundary curves}{40}{subsubsection.194}%
+\contentsline {subsection}{\numberline {6.3}The divergence theorem}{42}{subsection.196}%
+\contentsline {subsubsection}{\numberline {6.3.1}Multiple boundary surfaces}{44}{subsubsection.202}%
+\contentsline {subsubsection}{\numberline {6.3.2}Connections to other integral theorems (non-examinable)}{45}{subsubsection.205}%
+\contentsline {subsection}{\numberline {6.4}Scalar potentials for irrotational vector fields}{45}{subsection.206}%
+\contentsline {subsection}{\numberline {6.5}Coordinate-independent definitions of vector differential operators (non-examinable)}{46}{subsection.208}%
+\contentsline {subsection}{\numberline {6.6}Green's identities and other corollaries}{46}{subsection.209}%
+\contentsline {subsection}{\numberline {6.7}Maxwell's equations and the continuity equation}{48}{subsection.216}%
+\contentsline {subsubsection}{\numberline {6.7.1}Continuity equations}{49}{subsubsection.223}%
+\contentsline {section}{\numberline {7}Laplace's and Poisson's equations}{50}{section.228}%
+\contentsline {subsection}{\numberline {7.1}Poisson's equation and its boundary conditions}{50}{subsection.229}%
+\contentsline {subsubsection}{\numberline {7.1.1}Superposition of solutions}{52}{subsubsection.237}%
+\contentsline {subsection}{\numberline {7.2}Uniqueness of solutions}{52}{subsection.239}%
+\contentsline {subsection}{\numberline {7.3}Gauss's flux method}{53}{subsection.243}%
+\contentsline {subsection}{\numberline {7.4}Point sources}{56}{subsection.250}%
+\contentsline {subsection}{\numberline {7.5}Gravitation}{57}{subsection.252}%
+\contentsline {subsection}{\numberline {7.6}The integral solution of Poisson's equations}{57}{subsection.255}%
+\contentsline {subsection}{\numberline {7.7}Harmonic functions and the maximum principle}{57}{subsection.256}%
+\contentsline {section}{\numberline {8}Cartesian tensors}{59}{section.262}%
+\contentsline {subsection}{\numberline {8.1}What is a vector?}{59}{subsection.263}%
+\contentsline {subsection}{\numberline {8.2}What is a tensor?}{60}{subsection.271}%
+\contentsline {subsection}{\numberline {8.3}Examples of tensors}{61}{subsection.283}%
+\contentsline {subsection}{\numberline {8.4}Sums and products of tensors}{62}{subsection.284}%
+\contentsline {subsubsection}{\numberline {8.4.1}Linear combinations}{62}{subsubsection.285}%
+\contentsline {subsubsection}{\numberline {8.4.2}Outer products}{62}{subsubsection.288}%
+\contentsline {subsubsection}{\numberline {8.4.3}Contraction}{63}{subsubsection.290}%
+\contentsline {subsubsection}{\numberline {8.4.4}Inner products}{63}{subsubsection.292}%
+\contentsline {subsection}{\numberline {8.5}The quotient theorem}{63}{subsection.295}%
+\contentsline {subsection}{\numberline {8.6}Symmetries of tensors}{64}{subsection.298}%
+\contentsline {subsubsection}{\numberline {8.6.1}Decomposition of second-rank tensors}{65}{subsubsection.304}%
+\contentsline {subsection}{\numberline {8.7}Principal axes}{67}{subsection.314}%
+\contentsline {subsection}{\numberline {8.8}Isotropic tensors}{69}{subsection.317}%
+\contentsline {subsection}{\numberline {8.9}Isotropic integrals}{71}{subsection.325}%
+\contentsline {subsection}{\numberline {8.10}Tensor calculus}{71}{subsection.328}%
+\contentsline {subsubsection}{\numberline {8.10.1}The tensor divergence theorem (non-examinable)}{72}{subsubsection.331}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

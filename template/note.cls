@@ -7,10 +7,14 @@
 \RequirePackage{tabularx}
 \RequirePackage{quiver}
 \RequirePackage{siunitx}
-\RequirePackage{stmaryrd}
+
+
 \RequirePackage{bm}
 \RequirePackage{centernot}
 \RequirePackage{esint}
+\RequirePackage{environ}
+\RequirePackage{etoolbox}
+\RequirePackage{float}
 
 \newcommand{\multiline}[2][c]{%
     \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}

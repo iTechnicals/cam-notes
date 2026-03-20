@@ -779,7 +779,18 @@
     \end{proposition}
     Calculating the divergence, curl and Laplacian of a vector field in general orthogonal curvilinear coordinates is extremely messy. There are a range of ways to do it -- we will see the best method in section 6.5.
 
-    ADD THEM IN
+    It is non-examinable that, in full generality,
+    \begin{align*}
+        \div \V F &= \frac{1}{h_uh_vh_w} \left(\pd{}{u}(h_vh_wF_u)+\pd{}{v}(h_uh_wF_v)+\pd{}{w}(h_uh_vF_w)\right) \\
+        \curl \V F &= \frac{1}{h_uh_vh_w} \begin{vmatrix}
+         h_u \V e_u & h_v \V e_v & h_w \V e_w \\
+         \pd{}{u} & \pd{}{v} & \pd{}{w} \\
+         h_uF_u & h_vF_v & h_wF_w \\
+        \end{vmatrix} \\
+        \grad^2 f &= \frac{1}{h_uh_vh_w} \left(\pd{}{u} \left(\frac{h_vh_w}{h_u} \cdot \pd{f}{u}\right) + \pd{}{v} \left(\frac{h_uh_w}{h_v} \cdot \pd{f}{v}\right) + \pd{}{w} \left(\frac{h_uh_v}{h_w} \cdot \pd{f}{w}\right)\right)
+    \end{align*}
+    
+    
 
     \subsubsection{Cylindrical polar coordinates}
     
@@ -1588,6 +1599,7 @@
     \subsection{Green's theorem in the plane}
 
     \begin{theorem}[Green's theorem in the plane]
+        \label{6.1}
         Given an area $A \subset \RR^2$ with piecewise smooth boundary $C = \pr A$ and continuously differentiable functions $P(x, y)$ and $Q(x, y)$,
         \begin{align*}
             \int_A \left(\pd Q x - \pd P y \right) \D x dy = \oint_C (P \D x + Q \, dy)
@@ -1763,9 +1775,10 @@
     \subsection{The divergence theorem}
 
     \begin{theorem}[Divergence theorem]
+        \label{6.3}
         Let $\V F(\V x)$ be a continuously differentiable vector field and $V$ a volume enclosed by a piecewise smooth orientable \emph{closed} surface $S = \pr V$. Then
         \begin{align*}
-            \int_V \div \V F d V = \int_S \V F \cdot d \V S
+            \int_V \div \V F \, d V = \int_S \V F \cdot d \V S
         \end{align*}
         where the normal to $S$ points outwards from $V$.        
     \end{theorem}
@@ -1803,7 +1816,7 @@
         For more complicated shapes, we split the shape up as in the proof of Green's theorem in the plane.    
     \end{proof}
     
-    \begin{example}
+    \begin{example*}
         Let us calculate the flux of the vector field $\V F = (y, x, z^6)$ through the surface of the sphere $V_R = \{\V x: |\V x| < R\}$? By the divergence theorem, it is $\int_{V_R} 6z^5 \D V$, which vanishes by oddness in $z$.
 
         But that's no fun. Let us calculate the flux directly. We've already calculated the surface element for a sphere, namely
@@ -1828,7 +1841,7 @@
             &= \int_{\theta=0}^{\pi} \int_{\phi=0}^{2\pi} \left(2R^3 \sin^2 \theta \sin \phi \cos \phi + R^8 \cos^7 \theta\right) \sin \theta \D \theta \D \phi
         \end{align*}
         Both terms vanish by oddness. Specifically, we have $\int_0^{2\pi} \sin \phi \cos \phi \D \phi = 0$ (the range can be repalced with $\int_{-\pi}^{\pi}$ and the integrand is odd) and $\int_0^{\pi} \cos^7 \theta \sin \theta \D \theta = 0$ (because the integrand is odd around $\frac{\pi}2$). Hence the divergence theorem is confirmed.        
-    \end{example}
+    \end{example*}
     
     \begin{remark*}
         In such integrals, one should be on the lookout for integral tricks. For example,
@@ -1884,11 +1897,1389 @@
             \end{pmatrix} \D x \D \phi \\
             &= \int_{x=1}^2 \int_{\phi=0}^{2\pi} \beta^2(x+1) \D x \D \phi = 5\pi \beta^2
         \end{align*}
-        
-        
-        
-        
+        To apply the divergence theorem, it is necessary to turn $S$ into a closed surface, which we will do with plane caps at $x=1$ and $x=2$. Calling the enclosed volume $V$, we note that the normals point outwards as hoped. Let the fluxes through the cap at $x=1$ and $x=2$ be $\mc F_1$ and $\mc F_2$ respectively. According to the divergence theorem, then,
+        \begin{align*}
+            \int_V \div \V F \D V = \mc F_S + \mc F_1 + \mc F_2 \implies \mc F_S = \int_V 3 \D V - \mc F_1 - \mc F_2
+        \end{align*}
+        Then
+        \begin{align*}
+            \int_V 3 \D V &= \int_{x=1}^2 \int_{\rho=0}^{\beta(x+1)} \int_{\phi=0}^{2\pi} 3 \rho \D\phi \D\rho \D x = 19\pi \beta^2 \\
+            \mc F_1 &= \int_{\substack{x=1 \\ y^2 + z^2 \leq 4\beta^2}} \begin{pmatrix}
+             x \\
+             y \\
+             z \\
+            \end{pmatrix} \cdot \begin{pmatrix}
+             -1 \\
+             0 \\
+             0 \\
+            \end{pmatrix} \D y\D z = -\int_{y^2+z^2 \leq 4\beta^2} \D y\D z = -\pi(2\beta)^2 \\
+            \mc F_2 &= \int_{\substack{x=2 \\ y^2 + z^2 \leq 9\beta^2}} \begin{pmatrix}
+             x \\
+             y \\
+             z \\
+            \end{pmatrix} \cdot \begin{pmatrix}
+             1 \\
+             0 \\
+             0 \\
+            \end{pmatrix} \D y\D z = \int_{y^2+z^2 \leq 9\beta^2} 2 \D y\D z = 2\pi(3\beta)^2
+        \end{align*}
+        and so $\mc F_S = \pi\beta^2(19+4-18) = 5\pi\beta^2$ as required.
     \end{example*}
+    
+    \subsubsection{Multiple boundary surfaces}
+
+    If $V$ contains one or more holes, then $\pr V$ will consist of two or more boundary surfaces. Since we need the normal to point outwards from $V$, it will point \emph{into} the holes.
+
+    \begin{example*}
+        Let us apply the divergence theorem to the spherical annulus $V = \{x \in \RR^3: a < |\V x| < b\}$. $\pr V$ consists of two parts, $|\V x| = a$ and $|\V x| = b$ and we need $d\V S = \V e_r \D S$ on $|\V x| = b$, $d\V S = -\V e_r \D S$ on $|\V x| = a$. Hence
+        \begin{align*}
+            \int_V \div \V F \D V = \int_{|\V x| = b} \V F(\V x) \cdot \V e_r \D S - \int_{|\V x| = a} \V F(\V x) \cdot \V e_r \D S
+        \end{align*}
+        This is extremely useful if $\V F$ is undefined in the holes.
+    \end{example*}
+    
+    \begin{remark*}
+        If we have an outer surface $S_1$ and an inner surface $S_2$, some people will write
+        \begin{align*}
+            \int_V \div \V F \D V = \int_{S_1} \V F \cdot d\V S + \int_{S_2} \V F \cdot d\V S
+        \end{align*}
+        where the understanding is that the normal for $S_2$ is in the opposite direction. Other people will write
+        \begin{align*}
+            \int_V \div \V F \D V = \int_{S_1} \V F \cdot d\V S - \int_{S_2} \V F \cdot d\V S
+        \end{align*}
+        with the understanding that the normals are in the same direction for both surfaces.       
+    \end{remark*}
+    
+    \subsubsection{Connections to other integral theorems (non-examinable)}
+    
+    Green's theorem in the plane is a special case in 2D of the divergence theorem. Using $\V F = (Q, -P, 0)$, the left hand side of \cref{6.1} is $\int_A \div \V F \D A$. The right hand side is $\int_C \V F \cdot \V n \D s$ where $\D s$ is the infinitesimal arc length (the equivalent of $\D S$ in 1D), because $\V n \D s = (dy, -dx, 0)$ is perpendicular to $d \V x = (dx, dy, 0)$, has the correct magnitude, and is outwards from $A$.
+
+    In fact, these are all the same results in the differential geometry of manifolds, namely
+    \begin{align*}
+        \int_\Omega \D\omega = \int_{\pr \Omega} \omega 
+    \end{align*}
+    where $\omega$ is a differential form, $\D \omega$ its exterior derivative, and $\Omega$ an orientable manifold. This is called the generalised Stokes' theorem, or sometimes just Stokes' theorem!
+    
+    \subsection{Scalar potentials for irrotational vector fields}
+
+    We are now finally able to show that an irrotational vector field in a simply connected domain is conservative.
+
+    \begin{proof}
+        Firstly, observe that, if $\oint_C \V F \cdot d\V x = 0$ for all closed curves $C$, then $\int_{\V a}^{\V b}$ is path-independent because, if we consider two possible paths $C_1$ and $C_2$ from $\V a$ to $\V b$, then $C = C_1 + -C_2$ is a closed curve, and hence $\int_{C_1} \V F \cdot d\V x - \int_{C_2} \V F \cdot d\V x = 0$ as required.
+
+        Now, given an irrotational vector field $\V F$ and an arbitrary closed curve $C$, let $S$ be a surface that spans $C$, i.e. $C = \pr S$. By Stokes' theorem, $\oint_C \V F \cdot d\V x = \int_S \curl \V F \cdot d\V S = 0$.
+
+        Now we define
+        \begin{align*}
+            f(\V x) = \int_{\V x_0}^{\V x} \V F \cdot d\V x
+        \end{align*}
+        From the above, this integral is path-independent and $f$ is therefore well-defined (note $\V x_0$ is an arbitrary point within the domain). Now consider
+        \begin{align*}
+            f(\V x + \delta \V x) - f(\V x) = \int_{\V x}^{\V x + \delta \V x} \V F \cdot d\V x = \V F(\V x) \cdot \delta \V x + O(|\delta \V x|^2)
+        \end{align*}
+        Hence $df = f(\V x + d\V x) - f(\V x) = \V F \cdot d\V x$, which means that $\grad f = \V F$. This completes the proof.
+    \end{proof}
+    
+    \begin{remark*}
+        But where did we use simply-connectedness? It was in the existence of $S$. If the domain $\mathscr D$ is not simply-connected, then there are some closed curves $C$ that cannot be spanned by a surface lying entirely in $\mathscr D$. If it is simply-connected, then we can define $C_s$ for $s \in [0, 1]$ with $C_0 = C$, $C_1$ a point, every $C_s$ in $\mathscr D$ and $C_s$ continuous in $s$. Then $S = \cup_{s \in [0, 1]} C_s$.
+    \end{remark*}
+    
+    \subsection{Coordinate-independent definitions of vector differential operators (non-examinable)}
+
+    Recall that we defined grad with respect to a standard basis, but also in a coordinate-independent way -- $df = \grad f \cdot d\V x$. However, we did not do this for div and curl. But we can now rectify this!
+
+    Consider the divergence theorem applied to a very small volume $V_\eps$ of maximum linear dimension $\eps$, containing the point $\V x$ with surface $\pr V_\eps$. Then
+    \begin{align*}
+        \int_{V_\eps} \div \V F \D V = \left.\left(\div \V F\right)\right|_{\V x} V_\eps + \cdots
+    \end{align*}
+    where $V_\eps$ denotes both the volume and the volume's volume. Hence
+    \begin{align*}
+        \div \V F = \lim_{\eps to 0} \frac{1}{V_\eps} \int_{\pr V_\eps} \V F \cdot d\V S
+    \end{align*}
+    which can be used as the definition of $\div \V F$.
+
+    For curl, let us take a fixed vector $\V k$, and consider a small open surface $S_\eps(\V k)$ of maximum linear dimension $\eps$ that contains $\V x$ and has a normal $\V n = \V k$ at $\V x$. Then
+    \begin{align*}
+        \int_{S_\eps(\V x)} \curl \V F \cdot d\V S = \left.\left(\curl \V F\right)\right|_{\V x} \cdot \V k S_{\eps}(\V k) + \cdots
+    \end{align*}
+
+    Now we can just take $\V k$ to be each basis vector in turn, and hence calculate every component of $\curl \V F$ in any coordinate system we like.
+
+    These definitions provide an efficient way to calculate the results for div and curl in general orthogonal curvilinear coordinate systems.
+    
+    \subsection{Green's identities and other corollaries}
+
+    \begin{proposition*}[Green's first identity]
+        Let $\phi$ and $\psi$ be scalar fields defined in a closed volume $V$ with surface $\pr V$ and outward normal $\V n$. Then
+        \begin{align*}
+            \int_V \left(\phi \grad^2 \psi + \grad \phi \cdot \grad \psi\right) \D V = \int_{\pr V} \phi \grad \psi \cdot d\V S
+        \end{align*}
+    \end{proposition*}
+    
+    \begin{proof}[Sketch proof]
+        We apply the divergence theorem to $\V F = \phi \grad \psi$, using the product rule to evaluate $\div(\phi \grad \psi)$.
+    \end{proof}
+    
+    \begin{proposition}[Green's second identity]
+        \label{6.4}
+        Let $\phi$ and $\psi$ be scalar fields defined in a closed volume $V$ with surface $\pr V$ and outward normal $\V n$. Then
+        \begin{align*}
+            \int_V \left(\phi \grad^2 \psi - \psi \grad^2 \phi\right) \D V = \int_{\pr V} (\phi \grad \psi - \psi \grad \phi) \cdot d\V S
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        An exercise.
+    \end{proof}
+    
+    Note that, in these equations, terms of the form $\pd{f}{\V n}$ (directional derivatives) appear. There is a special notation for this, in particular
+    \begin{align*}
+        \pd{f}{\V n} = \grad f \cdot \V n
+    \end{align*}
+    Then, for example, \cref{6.4} becomes
+    \begin{align*}
+        \int_V \left(\phi \grad^2 \psi - \psi \grad^2 \phi\right) \D V = \int_{\pr V} \left(\phi \pd{\psi}{\V n} - \psi \pd{\phi}{\V n}\right) \D S
+    \end{align*}
+
+    \begin{proposition}
+        \label{6.5}
+        For a scalar field $f$,
+        \begin{align*}
+            \int_V \grad f \D V = \int_{\pr V} f \, d\V S
+        \end{align*}
+    \end{proposition}
+
+    \begin{proof}
+        Consider the divergence theorem applied to the vector field $\V F = f\V a$ where $f$ is a scalar field and $\V a$ is an arbitrary \emph{constant} vector. Then $\div \V F = f \div \V a + a \cdot \grad f$, but $\div \V a = 0$, so
+        \begin{align*}
+            \int_V \V a \cdot \grad f \D V &= \int_{\pr V} f \V a \cdot d\V S \\
+            \implies \V a \cdot \int_V \grad f \D V &= \V a \cdot \int_{\pr V} f d\V S
+        \end{align*}
+        Since $\V a$ is arbitrary, we may `cancel'.
+    \end{proof}
+    
+    \begin{example*}
+        Consider $f = xyz$ in the cube $V$ with $0 \leq x, y, z \leq 2$. Then $\grad f = (yz, xz, xy)$, so
+        \begin{align*}
+            \int_V \grad f \D V = \begin{pmatrix}
+             \int_V yz \D V \\
+             \int_V xz \D V \\
+             \int_V xy \D V \\
+            \end{pmatrix} = \begin{pmatrix}
+             8 \\
+             8 \\
+             8 \\
+            \end{pmatrix}
+        \end{align*}
+        To confirm \cref{6.5}, we will calculate $\int_{\pr} f \D S$ by considering each of the surfaces. On the top side, $z=2$, $f=2xy$, $\V n = (0, 0, 1)$, and $dS = \D x \D y$, so
+        \begin{align*}
+            \int_\text{top} f \, d\V S = \int_0^2 \int_0^2 2xy \begin{pmatrix}
+             0 \\
+             0 \\
+             1 \\
+            \end{pmatrix} \D x \D y = \begin{pmatrix}
+             0 \\
+             0 \\
+             8 \\
+            \end{pmatrix}
+        \end{align*}
+        On the bottom side, we will get $\V 0$, since $z=0$ -- each of the sides along an axis will then give $\V 0$, while the others will give an 8 in each of the other directions.       
+    \end{example*}
+    
+    \subsection{Maxwell's equations and the continuity equation}
+
+    \begin{proposition}[Maxwell's equations]
+        Maxwell's equations in vacuum for the electric field $\V E(\V x, t)$ and magnetic field $\V B(\V x, t)$ in the presence of an electric charge density field $\rho(\V x, t)$ (charge per unit volume) and electric current density $\V J(\V x, t)$ (current per unit area) are:
+        \begin{align*}
+            \div \V E &= \rho/\eps_0 && \text{(Gauss's law)} \\
+            \div \V B &= 0 && \text{(Gauss's law for magnetism)} \\ 
+            \curl \V E &= -\pd{\V B} t && \text{(Faraday's law)} \\
+            \curl \V B &= \mu_0\left(\V J + \eps_0 \pd{\V E} t\right) && \text{(Amp\`ere-Maxwell law)}
+        \end{align*}
+        It is not necessary to know these equations by heart.
+    \end{proposition}
+    
+    \begin{proposition*}[Gauss's law] 
+        Let $V$ be an arbitrary fixed volume containing total charge $Q_V$. Then
+        \begin{align*}
+            \int_{\pr V} \V E \cdot d \V S = \frac 1 {\eps_0} Q_V
+        \end{align*}
+    \end{proposition*}
+    
+    \begin{proof}
+        We have
+        \begin{align*}
+            Q_V = \int_V \rho \D V = \int_V \eps_0 \div \V E \D V
+        \end{align*}
+        by Maxwell 1. Applying the divergence theorem yields the result.
+    \end{proof}
+    
+    \begin{remark*}
+        One may note that we have called two different things Gauss's law. In fact, the two statements are called the \emph{differential} and \emph{integral} forms of the law, respectively, for obvious reasons.
+    \end{remark*}
+    
+    \begin{remark*}
+        On the other hand, we clearly obtain $\int_{\pr V} \V B \cdot d\V S = 0$ from Gauss's law for magnetism -- this is a statement of the non-existence of magnetic monopoles.
+    \end{remark*}
+    
+    \begin{remark*}[Non-examinable]
+        A whole family of identities can be derived in similar ways. For example, starting from Faraday's law,
+        \begin{align*}
+            \frac{d}{dt} \int_S \V B \cdot d\V S = \int_S \pd{\V B}t \cdot d\V S = -\int_S \curl \V E \cdot d\V S = -\oint_{\pr S} \V E \cdot d\V x
+        \end{align*}
+        by Stokes' theorem. In other words, changing magnetic flux causes circulation of the electric field.
+
+        Similarly, starting from Amp\`ere-Maxwell, one obtains
+        \begin{align*}
+            \frac{d}{dt} \int_S \V E \cdot d\V S = \frac 1{\eps_0\mu_0} \oint_{\pr S} \V B \cdot d\V x - \frac 1{\eps_0} \int_S \V J \cdot d \V S
+        \end{align*}
+        -- for constant $\V E$, electric current causes circulation of the magnetic field.
+    \end{remark*}
+    
+    \subsubsection{Continuity equations}
+
+    \begin{proposition}[Continuity equation for electric charge]
+        \[
+            \pd \rho t + \div \V J = 0
+        \]
+    \end{proposition}
+    
+    \begin{proof}
+        Taking the divergence of Amp\`ere-Maxwell and using the fact that $\div (\curl \V F) = 0$,
+        \begin{align*}
+            0 = \div \V J + \eps_0 \div \pd{\V E}{t} = \div \V J + \eps_0 \pd{}{t}(\div \V E)
+        \end{align*}
+        by commutativity of $\pd{}{t}$ and $\pd{}{x_i}$. Then, applying Gauss's law gives the result.
+    \end{proof}
+    
+    Integrating the continuity equation over a fixed volume $V$, we obtain
+    \begin{align*}
+        \int_V \pd \rho t \D V &= -\int_V \div \V J \D V \\
+        \iff \frac{dQ_V}{dt} &= -\int_{\pr V} \V J \cdot d\V S
+    \end{align*}
+    in other words, the rate at which the charge in $V$ decreases is equal to the net flux of current out of $V$. This represents \emph{conservation of charge} -- charge only changes when currents carry it into or out of the volume. In this context, we call $\V J$ the \emph{flux of charge} (strictly speaking, the flux density of charge) -- dotting it with $d \V S$ just extracts the component perpendicular to the surface, i.e. how much is actually moving in or out of $V$.
+
+    Similar continuity equations arise in many other areas of physics. For example, in fluid dynamics,
+    \begin{proposition}[Continuity equation for mass]
+        \label{6.8} Consider a fluid with density $\rho(\V x, t)$ and velocity $\V u(\V x, t)$ at some point. Then
+        \begin{align*}
+            \pd \rho t + \div (\rho \V u) = 0
+        \end{align*}
+    \end{proposition}
+    As before, this is equivalent to the statement that, for a volume $V$
+    \begin{align*}
+        \frac{dm}{dt} = -\int_{\pr V} \rho \V u \cdot d\V S
+    \end{align*}
+    so $\rho \V u$ is clearly the flux (density) of mass, and this equation is a statement of conservation of mass.
+
+    In the case of a fluid with constant density, \cref{6.8} reduces to $\div \V u = 0$, i.e. $\V u$ is an incompressible vector field.
+
+    \section{Laplace's and Poisson's equations}
+
+    \subsection{Poisson's equation and its boundary conditions}
+
+    \begin{definition*}[Poisson's equation]
+        \emph{Poisson's equation} over some domain $\mc D$ is
+        \begin{align*}
+            \Aboxed{\grad^2 \phi = f}
+        \end{align*}
+        where $\phi(\V x)$ is an unknown scalar field and $f(\V x)$ is some \emph{source term}.
+    \end{definition*}
+    
+    \begin{definition*}[Laplace's equation]
+        \emph{Laplace's equation} over some domain $\mc D$ is Poisson's equation with zero source term, that is
+        \begin{align*}
+            \Aboxed{\grad^2 \phi = 0}
+        \end{align*}
+    \end{definition*}
+    
+    Of course, for such a differential equation, we need boundary conditions, which come in two main forms:
+    \begin{itemize}
+        \item \emph{Dirichlet boundary conditions}. These simply give
+        \begin{align*}
+            \Aboxed{\phi = g}
+        \end{align*}
+        for $\V x \in \pr \mc D$;
+        \item \emph{von Neumann boundary conditions}. These are that
+        \begin{align*}
+            \Aboxed{\pd{\phi}{\V n} = g}
+        \end{align*}
+        for $\V x \in \pr \mc D$, where $\pd{\phi}{\V n}$ is the directional derivative $\V n \cdot \grad \phi$ as discussed earlier.        
+    \end{itemize}
+    
+    These equations often arise in problems involving potentials. For example, in electrostatics, we use Maxwell's equations with everything independent of time. Then, $\curl \V E = 0$, so $\V E$ is irrotational and may be expressed (in a simply-connected domain) in terms of an electric potential $\phi(\V x)$ as
+    \begin{align*}
+        \V E = -\grad \phi
+    \end{align*}
+    We then obtain from Gauss's law
+    \begin{proposition}
+        \label{7.1}
+        \[
+            \grad^2 \phi = -\frac \rho {\eps_0}
+        \]
+    \end{proposition}
+    which is an example of Poisson's equation.
+    
+    \begin{example*}
+        Let us solve Laplace's equation in the domain $0 \leq x, y \leq 1$ with Dirichlet boundary conditions
+        \begin{align*}
+            \phi(x, 0) &= 0 && \phi(0, y) = 0 \\
+            \phi(x, 1) &= 0 && \phi(1, y) = \sin{\pi y}
+        \end{align*}
+        We will guess a solution of the form $\phi(x, y) = p(x)q(y)$. From $\phi(1, y)$ we see that $q(y) = A \sin{\pi y}$ where $A = \frac 1 {p(1)}$. Hence
+        \begin{align*}
+            0 = \grad^2 \phi = \pd{^2\phi}{x^2} + \pd{^2\phi}{y^2} = p''(x)q(y) + p(x)q''(y) = A(p''-\pi^2p) \sin{\pi y}
+        \end{align*}
+        so $p(x) = B \sinh \pi x + C \cos \phi x$. We can match the boundary conditions by taking $B = 1, C = 0$, so a solution is
+        \begin{align*}
+            \phi(x, y) = \frac{\sinh \pi x \sin \pi y}{\sinh \pi}
+        \end{align*}
+        We will show in 7.2 that solutions are unique, so this is \emph{the} solution.
+    \end{example*}
+    
+    \begin{example*}
+        Let us solve Poisson's equation $\grad^2 \phi = r$ in th domain $r < 1$ in $\RR^3$ with Dirichlet boundary condition $\phi = 0$ on $r=1$. Because of the spherical symmetry, we will seek a solution $\phi(r)$ dependent on $r$ only. Recall
+        \begin{align*}
+            \grad^2\phi = \phi''(r) + \frac{2\phi'(r)}r = \frac 1 {r^2} \frac{d}{dr} \left(r^2\phi'(r)\right) = \frac 1 r \frac{d^2}{dr^2} \left(r\phi(r)\right)
+        \end{align*}
+        I feel like using the final expression, so we have
+        \begin{align*}
+            \frac 1 r (r\phi)'' &= r \\
+            \implies r\phi &= \frac 1 {12}r^4 + Ar + B \\
+            \implies \phi &= \frac 1 {12}r^3 + A + \frac B r
+        \end{align*}
+        For $\phi$ to be defined at $r=0$, we must have $B = 0$. On the boundary $r=1$, $\phi=0$, so $A = -\frac 1 {12}$. Hence $\phi = \frac 1 {12}(r^3-1)$ is the solution.
+    \end{example*}
+    
+    \begin{example*}
+        Let us solve Laplace's equation in $\RR^3$ with $1 < r < 2$ with mixed boundary conditions: $\phi = 0$ on $r=1$ and $\pd{\phi}{\V n} = 1$ on $r=2$. Again, let us try $\phi = \phi(r)$, so
+        \begin{align*}
+            \frac 1 r(r\phi)'' = 0 \implies \phi = A + \frac B r
+        \end{align*}
+        On $r=1$, $A+B=0$. On $r=2$, $\V n = \V e_r$, so $\pd{\phi}{\V n} = \V e_r \cdot \grad \phi = \left.\pd{\phi}{r}\right|_{r=2}$, so $-\frac 1 4 B = 1$. So the solution is $\phi(r) = 4\left(1-\frac 1 r\right)$.        
+    \end{example*}
+    
+    \subsubsection{Superposition of solutions}
+
+    The Laplacian operator is linear. So we can solve $\grad^2 \phi = f_1 + f_2$ using the superposition $\phi = \phi_1 + \phi_2$, where $\phi_1$ and $\phi_2$ solve $\grad^2\phi_1 = f_1$ and $\grad^2\phi_2 = f_2$ respectively.
+
+    One special case of this is that, to solve Poisson's equation with Dirichlet boundary conditions,
+    \begin{align*}
+        \grad^2\phi = f && \phi = g \text{ on } \pr \mc D
+    \end{align*}
+    it can sometimes be helpful to split the problem into two using
+    \begin{align*}
+        \grad^2\phi_1 &= f \text{ in } \mc D && \grad^2\phi_2 = 0 \text{ in } \mc D \\
+        \phi_1 &= 0 \text{ on } \pr \mc D && \phi_2 = g \text{ on } \pr \mc D
+    \end{align*}
+    
+    \lecture{Lecture $n+1$}
+
+    \begin{remark*}[Consistency for von Neumann boundary conditions]
+        For the problem
+        \begin{align*}
+            \grad^2 \phi = f \text{ in } \mc D, \qquad \pd{\phi}{\V n} = g \text{ on } \pr \mc D
+        \end{align*}
+        we have
+        \begin{align*}
+            \int_{\mc D} f \D V = \int_{\mc D} \div(\grad \phi) \D V = \int_{\pr \mc D} \grad \phi \cdot d\V S = \int_{\pr \mc D} g \D S
+        \end{align*}
+        by the divergence theorem. Hence, if it is not true that $\int_{\mc D} f \D V \neq \int_{\pr \mc D} g \D S$, there is no solution.       
+    \end{remark*}
+    
+    \subsection{Uniqueness of solutions}
+
+    \begin{proposition*}
+        The solution to Poisson's equation with Dirichlet boundary conditions is unique.
+    \end{proposition*}
+    
+    \begin{proof}
+        Suppose that $\phi_1$ and $\phi_2$ are both solutions to
+        \begin{align*}
+            \grad^2\phi = f \text{ in } \mc D, \qquad \phi = g \text{ on } \pr \mc D
+        \end{align*}
+        Let $\psi = \phi_1 - \phi_2$. Then
+        \begin{align*}
+            \grad^2\psi = 0 \text{ in } \mc D, \qquad \psi = 0 \text{ on } \pr \mc D
+        \end{align*}
+        We apply the divergence theorem \ref{6.3} to $\V F = \psi \grad \psi$ to obtain
+        \begin{align*}
+            0 = \int_{\pr\mc D} \psi \grad \psi \cdot d\V S &= \int_{\mc D} \div(\psi \grad \psi) \D V && (*) \\
+            &= \int_{\mc D} (\grad \psi \cdot \grad \psi + \underbrace{\psi \grad^2 \psi}_0) \D V \\
+            &= \int_{\mc D} |\grad \psi|^2 \D V
+        \end{align*}
+        Since $|\grad \psi|^2 \geq 0$, we must have $\grad \psi = \V 0$ everywhere, so $\psi$ must be a constant. Furthermore, it vanishes on $\pr \mc D$, so $\psi = 0$ and $\phi_1 = \phi_2$ as required.
+    \end{proof}
+    
+    \begin{proposition*}
+        The solution to Poisson's equation with von Neumann boundary conditions is unique up to an arbitrary additive constant.
+    \end{proposition*}
+    
+    \begin{proof}
+        We proceed exactly as above, until equation $(*)$. This equation still holds, since
+        \begin{align*}
+            \grad \psi \cdot d \V S = \pd{\psi}{\V n}\D S = 0
+        \end{align*}
+        on $\pr \mc D$. Again, we obtain $\grad \psi = \V 0$ everywhere, so $\psi$ is a constant $C$, and hence $\phi_1 = \phi_2 + C$ as required.        
+    \end{proof}
+    
+    \begin{remark*}[Non-examinable]
+        The proofs above require that $\pr \mc D$ be closed so that we can use the divergence theorem, which means that $\mc D$ must be finite. We sometimes want to use uniqueness in an \emph{infinite} domain by imposing a boundary condition at infinity. Normally we can justify this by taking a limit of finite surfaces.
+    \end{remark*}
+    
+    \subsection{Gauss's flux method}
+
+    Gauss's flux method is a nice way to solve Poisson's equation $\grad^2\phi = f$ in radially symmetric situations.
+    
+    \begin{theorem}[Gauss's flux method]
+        Consider the Poisson's equation
+        \begin{align*}
+            \grad^2 \phi = f
+        \end{align*}
+        where $f = f(r) = f(|\V x|)$. Then
+        \begin{align*}
+            \phi = \int \left(\frac 1{r^2} \int_0^r r'^2 f(r') \D r'\right) \D r
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        Put $\phi = \phi(r)$, so that $\grad \phi = \phi'(r)\V e_r$.
+        
+        Consider a sphere of radius $R$, and let $F_R$ be the total source strength within the sphere,
+        \begin{align*}
+            F_R = \int_{r \leq R} f(r) \D V = \int_{r=0}^R \int_{\theta=0}^{\pi} \int_{\phi=0}^{2\pi} f(r) r^2 \sin \theta \D \phi \D \theta \D r = 4\pi \int_0^R r^2 f(r) \D r
+        \end{align*}
+        Disturbingly, by the way, we are using $\phi$ twice to mean completely different things. Anyways, we also have,
+        \begin{align*}
+            F_R &= \int_{r \leq R} \grad^2 \phi \D V \\
+            &= \int_{r = R} \grad \phi \cdot d\V S && \text{(divergence thm)} \\
+            &= \int_{r = R} \phi'(r) \V e_r \cdot \V e_r \D S \\
+            &= \phi'(R) \int_{r=R}\D S \\
+            &= 4\pi R^2 \phi'(R)
+        \end{align*}
+        Hence, we obtain
+        \begin{align*}
+            \phi'(R) = \frac 1{R^2} \int_0^R r^2f(r) \D r
+        \end{align*}
+        which, after integrating, gives the result.        
+    \end{proof}
+    
+    \begin{remark*}
+        If we impose the boundary condition $\phi(r) \to 0$ as $r \to \infty$, then we can put limits on the indefinite integral and obtain
+        \begin{align*}
+            \phi(r) = -\int_r^\infty \left(\frac 1{R^2} \int_0^R r'^2 f(r') \D r'\right) \D R
+        \end{align*}
+    \end{remark*}
+    
+    \begin{remark*}
+        The final formula is not supposed to be memorised, and one will receive no marks for quoting it. Instead, it is necessary to derive it every time. Furthermore, we may often be asked to merely find $\grad \phi$, in which case the final integration is unnecessary.
+    \end{remark*}
+    
+    An analogous statement to Gauss's flux method holds for cylindrically symmetric $f$'s as well, considering the total source within a cylinder of radius $R$ and height 1 will give a very similar result. We obtain
+
+    \begin{align*}
+        \phi'(R) = \frac 1 R \int_0^R \rho f(\rho) \D \rho
+    \end{align*}
+    
+    \begin{example*}
+        Let us find the electric potential produced by the charge density
+        \begin{align*}
+            \rho(r) = \begin{cases}
+                \rho_0 & r \leq a \\
+                0 & r > a
+            \end{cases}
+        \end{align*}
+        for some constant $\rho_0$. Recalling \cref{7.1}, we have $\grad^2 \phi = -\rho/\eps_0$, so
+        \begin{align*}
+            f(r) = \begin{cases}
+                -\rho_0/\eps_0 & r \leq a \\
+                0 & r > a
+            \end{cases}
+        \end{align*}
+        so
+        \begin{align*}
+            F_R = \int_{r \leq R} f(r) \D V = \begin{cases}
+                -\frac{\rho_0}{\eps_0} \cdot \frac 4 3 \pi R^3 & R \leq a \\
+                -\frac{\rho_0}{\eps_0} \cdot \frac 4 3 \pi a^3 & R > a
+            \end{cases}
+        \end{align*}
+        Thus
+        \begin{align*}
+            \phi'(R) = \frac 1{4\pi R^2}F_R = \begin{cases}
+                -\frac{\rho_0}{3\eps_0}R & R \leq a \\
+                -\frac{\rho_0a^3}{3\eps_0R^2} & R > a
+            \end{cases}
+        \end{align*}
+        which, remember, we would have to re-derive in the exam. Now
+        \begin{align*}
+            \phi(r) = \begin{cases}
+                -\frac{\rho_0}{6\eps_0}r^2 + c_1 & r \leq a \\
+                \frac{\rho_0a^3}{3\eps_0r} + c_2 & r > a
+            \end{cases}
+        \end{align*}
+        Since $\phi$ is continuous at $a$ and $\phi \to 0$ as $r \to \infty$ by convention, we have $c_2 = 0$, $c_1 = \rho_0a^2/2\eps_0$. We obtain
+        \begin{align*}
+            \phi(r) = \begin{cases}
+                \frac{\rho_0}{6\eps_0}(3a^2-r^2) & r \leq a \\
+                \frac{\rho_0a^3}{3\eps_0r} & r > a
+            \end{cases}
+        \end{align*}
+        We can also calculate $\V E = -\grad \phi$ by just multiplying our expression for $\phi'(R)$ by $-\V e_r$.
+    \end{example*}
+    
+    \begin{example*}
+        Consider a sphere of radius $a$ centred at the origin, with uniform charge density except for a hollow void of radius $\frac 1 2 a$ centred at a distance $\frac 1 3 a$ from the origin, with total charge $Q$. What is the potential outside the sphere?
+
+        Sadly, this situation is not spherically symmetric, so one cannot automatically use Gauss's method.
+
+        First, let us find the uniform charge density, which is
+        \begin{align*}
+            \rho_0 = \frac{Q}{\frac 4 3 \pi a^3 - \frac 4 3\pi\left(\frac 1 2a\right)^3} = \frac{6Q}{7\pi a^3}
+        \end{align*}
+        Our method for this will be to solve the problem for the entire sphere with charge density $\rho_0$, then add the smaller sphere in with charge density $-\rho_0$, centred at $\V x_0 = \left(\frac 1 3 a, 0, 0\right)$. Quoting the formula from the previous example, we obtain
+        \begin{align*}
+            \phi = \frac{\rho_0a^3}{3\eps_0|\V x|} - \frac{\rho_0\left(\frac 1 2 a\right)^3}{3\eps_0|\V x - \V x_0|} = \frac{2Q}{7\pi\eps_0}\left(\frac 1{|\V x|} - \frac 1{8|\V x - \V x_0|}\right)
+        \end{align*}
+    \end{example*}
+    
+    \subsection{Point sources}
+    
+    Consider Poisson's equation with a spherically symmetric source term which is zero everywhere except in a region $r \leq \eps$, with the total source strength being $F = \int_{r \leq \eps} f \D V$. Using Gauss's method, we obtain
+    \begin{align*}
+        \phi(r) = -\frac{F}{4\pi r}
+    \end{align*}
+    for any $r \geq \eps$. Now, we are free to shrink the source to a point, keeping $F$ fixed, to obtain $\phi(r)$ as the field produced by a point source everywhere.
+    
+    \lecture{Lecture $n+1$ -- 06/03/26}
+
+    In the case of electric charge, where $f = -\rho/\eps_0$, we have $F = -Q/\eps_0$, which gives Coulomb's law:
+    \begin{align*}
+        \phi = \frac{Q}{4\pi \eps_0 r}, \qquad \V E = -\grad \phi = \frac{Q}{4\pi \eps_0 r^2} \V e_r
+    \end{align*}
+    The force on any test charge $q$ placed in this field is $q\V E$. In other words, Coulomb's law is a consequence of Maxwell's equations.
+
+    The equivalent solution for a \emph{line source} along the $z$-axis of strength $F$ per unit length is
+    \begin{align*}
+        \phi = \frac{F}{2\pi} \log \rho
+    \end{align*}
+    and is also the solution for a point source in 2D.
+    
+    \begin{remark*}[Non-examinable]
+        A point source of strength $F$ at the origin can be considered as a source field $\V f(x) = F \delta(\V x)$, where $\delta(\V x) = \delta(x)\delta(y)\delta(z)$. Hence we have
+        \begin{align*}
+            \grad^2 \left(-\frac{F}{4\pi r}\right) = F \delta(\V x)
+        \end{align*}
+        This is an example of the mythical \emph{Green's functions}.
+    \end{remark*}
+    
+    \subsection{Gravitation}
+
+    Consider a point mass $M$ at the origin. A test mass $m$ in its gravitational field experiences a force
+    \begin{align*}
+        -\frac{GMm}{r^2} \V e_r
+    \end{align*}
+    so the potential field created by $M$ is $\phi = -GM/r$ \emph{per unit mass}. This is exactly the same situation as for electric point charges, up to a constant. Hence, it is equivalent to the Poisson's equation
+    \begin{align*}
+        \grad^2 \phi = 4\pi G \rho
+    \end{align*}
+    where $\rho$ is the mass density.
+
+    \begin{example*}
+        Let us take a hollow sphere with mass density
+        \begin{align*}
+            \rho = \begin{cases}
+                \rho_0 & a \leq r \leq b \\
+                0 & \text{o/w}
+            \end{cases}
+        \end{align*}
+        We would like to show that the gravitational field vanishes inside the cavity.
+    
+        Since the system is spherically symmetric, we can use Gauss's method with
+        \begin{align*}
+            F_R = \int_{r \leq R} 4\pi G \rho \D V = 0
+        \end{align*}
+        if $R < a$. Hence $\phi'(R) = \frac{1}{4\pi R^2}F_R = 0$ for $R < a$ (except perhaps at $R=0$, but, since $\grad \phi$ must be continous, we can avoid worrying about that). It immediately follows that $-\grad \phi = \phi'(r) \V e_r = 0$ inside the cavity.
+    \end{example*}
+    
+    \begin{remark*}[Non-examinable]
+        Another way of dealing with this problem would be to superpose spheres, as we did for charges earlier.
+    \end{remark*}
+    
+    \subsection{The integral solution of Poisson's equations}
+
+    We have seen that the solution of Poisson's equation for a point source $F$ is $-\frac{F}{4\pi r}$.
+
+    Now, consider a source field $f(\V x)$ confined to some finite region $V \subset \RR^3$. Let us divide $V$ up into infinitesimal volumes $dV$, each with position $\V y$. Each such volume acts as a point source of strength $f(\V y) \D V$ with corresponding potential $-\frac{f(\V y)}{4\pi|\V x-\V y|} \D V$. Hence, by superposition, we obtain
+    \begin{align*}
+        \phi(\V x) = \int_V \frac{f(\V y)}{4\pi |\V x - \V y|} \, d^3 \V y
+    \end{align*}
+    
+    \subsection{Harmonic functions and the maximum principle}
+
+    \begin{definition*}[Harmonic functions]
+        A \emph{harmonic function} is one that obeys Laplace's equation in some domain.
+    \end{definition*}
+
+    \begin{proposition*}
+        Given a function $\phi(\V x)$ that is harmonic in $V \subseteq \RR^3$, let $B_r(\V a)$ be a sphere of radius $r$ centred at $\V a \in V$, and assume that $B_r(\V a) \subseteq V$. Let
+        \begin{align*}
+            \bar{\phi}_r(\V a) = \frac 1 {4\pi r^2}\int_{\pr B_r(\V a)} \phi(\V x) \D S
+        \end{align*}
+        be the average value of $\phi$ over the surface of the sphere. Then
+        \begin{align*}
+            \bar{\phi}_r(\V a) = \phi(\V a)
+        \end{align*}
+    \end{proposition*}
+    
+    \begin{proof}
+        We will use spherical polar coordinates centred at $\V a$, i.e.
+        \begin{align*}
+            \V x = \V a + \begin{pmatrix}
+             r\sin\theta\cos\phi \\
+             r\sin\theta\sin\phi \\
+             r\cos\theta \\
+            \end{pmatrix}
+        \end{align*}
+        so that $\V e_r$ is a unit vector pointing radially away from $\V a$. Now
+        \begin{align*}
+            \bar\phi_r(\V a) &= \frac 1 {4\pi r^2} \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi} \phi(\V x) r^2 \sin \theta \D \theta \D \phi \\
+            &= \frac 1 {4\pi} \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi} \phi(\V x) \sin \theta \D \theta \D \phi && (r \text{ const.}) \\
+            \implies \frac{d}{dr} \bar\phi_r(\V a) &= \frac 1 {4\pi} \int_{\theta=0}^\pi \int_{\theta=0}^{2\pi} \pd{\phi}{r} \sin \theta \D\theta\D\phi \\
+            &= \frac 1 {4\pi r^2} \int_{\theta=0}^\pi \int_{\theta=0}^{2\pi} \grad \phi \cdot \V e_r r^2 \sin \theta \D\theta\D\phi \\
+            &= \frac 1 {4\pi r^2} \int_{\pr B_r(\V a)} \grad \phi \cdot d\V S \\
+            &= \frac 1 {4\pi r^2} \int_{B_r(\V a)} \grad^2 \phi \D V && \text{(divergence thm)} \\
+            &= 0
+        \end{align*}
+        Hence $\bar\phi_r(\V a)$ is constant -- but clearly, as $r \to 0$, it tends to $\phi(\V a)$, since $\phi$ is continuous. The result follows.
+    \end{proof}
+    
+    \begin{remark*}
+        By integrating $4 \pi r^2 \bar\phi_r(\V a)$ from 0 to $r$, we can further show that
+        \begin{align*}
+            \phi(\V a) = \frac 1 {\frac 4 3 \pi r^3} \int_{B_r(\V a)} \phi(\V x) \D V
+        \end{align*}
+    \end{remark*}
+
+    \begin{proposition*}[The maximum principle]
+        Let $\phi$ be harmonic in $V \subset \RR^3$. Then its maximum value is achieved on $\pr V$.
+    \end{proposition*}
+    
+    \begin{proof}
+        Suppose that $\phi$ achieves its maximum at some interior point $\V a$. Then $\phi(\V x) \leq \phi(\V a)$ for all $\V x \in V$. Now consider $\pr B_r(\V a)$. If there were a point $\V x \in \pr B_r(\V a)$ such that $\phi(\V x) < \phi(\V a)$, then the average value $\bar\phi_r(\V a)$ would be strictly less than $\phi(\V a)$, contradicting the proposition. Hence $\phi(\V x) = \phi(\V a)$ for all $\V x \in \pr B_r(\V a)$.
+
+        Now we increase $\V r$ until it is large enough for $\pr B_r(\V a)$ to intersect the boundary $\pr V$ at some point $\V b$. Then $\phi(\V b) = \phi(\V a)$, so $\phi$ achieves its maximum over $V$ at $\V b \in \pr V$.
+    \end{proof}
+    
+    Of course, the same is true for the minimum.
+
+    \begin{remark*}
+        This is in fact the \emph{weak} maximum principle. The \emph{strong} maximum principle states that $\phi$ \emph{only} achieves its maximum on $\pr V$, \emph{not} at any interior point, unless $\phi$ is in fact constant throughout $V$.
+    \end{remark*}
+    
+    \section{Cartesian tensors}
+
+    In this chapter, $\{\V e_1, \V e_2, \V e_3\}$ will refer to any general right-handed orthonormal basis of $\RR^3$, not just the standard basis, as will $\{V e_1', \V e_2', \V e_3'\}$.
+
+    \subsection{What is a vector?}
+
+    A vector is \emph{not} three numbers in a column -- it has an existence of its own within a vector space. An equation like $\V v = (1, 2, 4)^\intercal$ merely refers to the components of $\V v$ with respect to one particular basis -- if we change the basis, the components of $\V v$ will change, while $\V v$ itself will remain exactly the same. This is also called changing the \emph{frame of reference}.
+
+    \begin{proposition}[Transformation rule for vectors]
+        \label{transformation-rule}
+        Let $\V v$ have components $v_j$ with respect to a basis $\{\V e_i\}$ and $v_i'$ with respect to a basis $\{\V e_i'\}$. Then
+        \begin{align*}
+            v_i' = R_{ij} v_j
+        \end{align*}
+        where $R$ is a particular matrix.
+    \end{proposition}
+
+    \begin{definition}
+        \label{transformation-matrix}
+        For bases $\{\V e_j\}$ and $\{\V e_i'\}$, the matrix $R$ satisfies
+        \begin{align*}
+            R_{ij} = \V e_i' \cdot \V e_j
+        \end{align*}
+    \end{definition}
+
+    \begin{proof}
+        We have
+        \begin{align*}
+            \V v = v_j \V e _j = v_k' \V e_k'
+        \end{align*}
+        so, dotting both sides with $\V e_i'$,
+        \begin{align*}
+            v'_k \delta_{ik} = v_j \V e_i' \V e_j
+        \end{align*}
+        from which the result follows.
+    \end{proof}
+    
+    Note that
+    \begin{align*}
+        R = \begin{pmatrix}
+         \V e_1' \cdot \V e_1 & \V e_1' \cdot \V e_2 & \V e_1' \cdot \V e_3 \\
+         \V e_2' \cdot \V e_1 & \V e_2' \cdot \V e_2 & \V e_2' \cdot \V e_3 \\
+         \V e_3' \cdot \V e_1 & \V e_3' \cdot \V e_2 & \V e_3' \cdot \V e_3 \\
+        \end{pmatrix} = \begin{pmatrix}
+         \lln & \V e_1'^\intercal & \rln \\ 
+         \lln & \V e_2'^\intercal & \rln \\ 
+         \lln & \V e_3'^\intercal & \rln \\
+        \end{pmatrix}
+    \end{align*}
+    where we are expressing each of the basis vectors with their components in the original basis $\{\V e_i\}$. Since the three rows of $R$ are orthonormal vectors, then, $R$ is an orthogonal matrix. If we really want to get into the weeds,
+    \begin{align*}
+        R^\intercal R = \begin{pmatrix}
+            \lln & \V e_1'^\intercal & \rln \\ 
+            \lln & \V e_2'^\intercal & \rln \\ 
+            \lln & \V e_3'^\intercal & \rln \\ 
+        \end{pmatrix} \begin{pmatrix}
+            \vline & \vline & \vline \\ 
+            \V e_1' & \V e_2' & \V e_3' \\
+            \vline & \vline & \vline \\ 
+        \end{pmatrix} = \begin{pmatrix}
+            \V e_1' \cdot \V e_1' & \V e_1' \cdot \V e_2' & \V e_1' \cdot \V e_3' \\
+            \V e_2' \cdot \V e_1' & \V e_2' \cdot \V e_2' & \V e_2' \cdot \V e_3' \\
+            \V e_3' \cdot \V e_1' & \V e_3' \cdot \V e_2' & \V e_3' \cdot \V e_3' \\
+        \end{pmatrix} = I
+    \end{align*}
+    Anyhow, this allows us to conclude that
+    \begin{align*}
+        R_{ij} R_{jk} = \delta_{ij} \qquad \qquad R_{ki} R_{kj} = \delta_{ij}
+    \end{align*}
+    Furthermore, expanding the determinant along the first row, we have
+    \begin{align*}
+        \det R = \det \begin{pmatrix}
+            \lln & \V e_1'^\intercal & \rln \\ 
+            \lln & \V e_2'^\intercal  & \rln \\ 
+            \lln & \V e_3'^\intercal & \rln \\ 
+        \end{pmatrix} = \V e_1' \cdot (\V e_2' \times \V e_3') = 1
+    \end{align*}
+    since the $\{\V e_i'\}$ are a right-handed basis -- so $R$ is in fact a rotation matrix. In particular, anything that does not obey \cref{transformation-rule} is not a vector!
+
+    We also have
+    \begin{proposition}[Inverse transformation rule for vectors]
+        Let $\V v$ have components $v_i$ with respect to a basis $\{\V e_i\}$ and $v_j'$ with respect to a basis $\{\V e_i'\}$. Then
+        \begin{align*}
+            v_i = R_{ji} v_j'
+        \end{align*}
+        where $R$ is the same matrix.
+    \end{proposition}
+    
+    \begin{proof}
+        This is pretty clear. If we want to get annoying about it,
+        \begin{align*}
+            v_j' &= R_{jk} v_k \\
+            \implies R_{ji} v'_j &= R_{ij} R_{jk} v_k \\
+            &= (R^\intercal R)_{ik} v_k \\
+            &= \delta_{ik} v_k = v_i
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        These transformation rules look like a rotation map between two different vectors $\V v$ and $\V v'$. This is misleading, however, because $v_i'$ and $v_j$ are components of the \emph{same} vector in two different frames.
+    \end{remark*}
+    
+    \subsection{What is a tensor?}
+
+    \begin{definition}
+        \label{tensor-defn}
+        A \emph{tensor} $T$ of rank or order $n$ is an array of numbers $T_{ijk\dots}$ (with respect to a given basis) with $n$ indices which, under a change of basis, transforms according to
+        \begin{align*}
+            T'_{ijk\dots} = R_{ip} R_{jq} R_{kr} \cdots T_{pqr \dots}
+        \end{align*}
+        where $T'_{ijk\dots}$ are the components of $T$ with respect to the new basis, and $R$ is the relevant rotation matrix as defined in \cref{transformation-matrix}. Note that rank must not be confused with dimension (we will work exclusively in 3D, so each of the indices take values 1, 2, 3).        
+    \end{definition}
+    
+    \begin{remark*}
+        $T_{ijk \dots}$ can be thought of as a 3 by 3 by $\dots$ by 3 matrix ($n$ times).
+    \end{remark*}
+    
+    \begin{lemma}
+        The inverse of the defining property of tensors is
+        \begin{align*}
+            T_{ijk \dots} = R_{pi} R_{qj} R_{rk} \cdots T'_{pqr}
+        \end{align*}
+    \end{lemma}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item A tensor of rank 1 satisfies, according to \cref{tensor-defn}, $T_i' = R_{ip} T_p$, so tensors of rank 1 are vectors.
+            \item A tensor of rank 0 satisfies $T' = T$, so it is a real number invariant under change of basis. In other words, it is a scalar.
+        \end{itemize}
+    \end{example*}
+    
+    \begin{proposition}
+        A tensor of rank 2 satisfies
+        \begin{align*}
+            T_{ij}' = R_{ip} R_{jq} T_{pq}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proposition}
+        \label{matrix-tensor-defn}
+        A tensor of rank 2 is just a matrix. It satisfies
+        \begin{align*}
+            T' = RTR^\intercal 
+        \end{align*}
+    \end{proposition}
+    
+    \begin{remark*}
+        One can define tensors with respect to other orthogonal curvilinear coordinate systems, such as the spacetime of general relativity. In this context we may encounter \emph{covariant} vectors $v_i$ and \emph{contravariant} vectors $v^i$, a distinction which is non-existent in Cartesians.
+    \end{remark*}
+    
+    \subsection{Examples of tensors}
+
+    \begin{itemize}
+        \item Temperature, $\Theta$, is a scalar -- it is invariant under a change of basis.
+        \item Position, velocity and acceleration are tensors of rank 1.
+        \item The Kronecker delta is a tensor of rank 2 which, by definition, is the same in every basis, $\delta'_{ij} = \delta_{ij}$. Indeed,
+        \begin{align*}
+            R_{ip} R_{jq} \delta_{pq} = R_{ip} R_{jp} = (RR^\intercal)_{ij} = \delta_{ij} = \delta'_{ij}
+        \end{align*}
+        or, alternatively, using \cref{matrix-tensor-defn},
+        \begin{align*}
+            RTR^\intercal = RIR^\intercal = RR^\intercal = I = T'
+        \end{align*}
+        where $T$ is the matrix of the tensor corresponding to $\delta_{ij}$, namely the identity.
+        \item The Levi-Civita symbol $\lv{ijk}$ is a tensor of rank 3, again defined to be the same for every basis. To verify:
+        \begin{align*}
+            R_{ip}R_{jq}R_{kr}\lv{pqr} = \lv{ijk} \det R = \lv{ijk} = \eps'_{ijk}
+        \end{align*}
+        since $R$ is a rotation matrix. Hence $\lv{ijk}$ is a tensor.
+        \item Conductivity is a tensor of rank 2. The basic conductivity law is $\V J = \sigma \V E$, where $\V E$ is the applied electric field and $\V J$ is the resulting electric current. In an isotropic medium, $\sigma$ is just a scalar. In anisotropic media, it makes sense to represent $\sigma$ as a matrix, and it should clearly obey the tensor transformation law. In particular, $\V J$ obeys the tensor transformation law for vectors if and only if $\sigma$ obeys the tensor transformation law for matrices by the quotient theorem, which we will see later.
+    \end{itemize}
+    
+    What about things that aren't tensors?
+
+    \begin{itemize}
+        \item An object given by $\V w = (0, 0, 0)$ in one frame and $(1, 0, 0)$ is not a vector.
+        \item An object given by $\delta_{ij}$ in one frame and $-\delta_{ij}$ in another frame is not a tensor.
+        \item Let $\alpha$ be the $x$-component of a non-zero vector. Then $\alpha$ is not a scalar, because it will be different in different frames.
+    \end{itemize}
+    
+    \subsection{Sums and products of tensors}
+
+    Results pertaining to general rank tensors are messy. Instead, we will show results for particular cases, which will easily generalise.
+
+    \subsubsection{Linear combinations}
+
+    \begin{proposition*}
+        A linear combination of two tensors of the same rank is another tensor of the same rank.
+    \end{proposition*}
+    
+    \begin{proof}{Proof (rank 2)}
+        Let $T_{ij} = \alpha A_{ij} + \beta B_{ij}$. Then
+        \begin{align*}
+            T_{ij}' &= \alpha' A_{ij}' + \beta' B_{ij}' \\
+            &= \alpha' R_{ip} R_{jq} A_{pq} + \beta R_{ip} R_{jq} B_{pq} \\
+            &= R_{ip} R_{jq} T_{pq}
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    \begin{remark*}
+        We need $\alpha$ and $\beta$ to be scalars, not just numbers.
+    \end{remark*}
+    
+    \subsubsection{Outer products}
+
+    \begin{definition*}[Outer products]
+        The \emph{outer product} of two tensors $A_{ijk\dots}$ and $B_{lmn\dots}$ of ranks $m$ and $n$ respectively is given by
+        \begin{align*}
+            T_{ijk\dots lmn\dots} = A_{ijk\dots}B_{lmn\dots}
+        \end{align*}
+        and is a tensor of rank $m+n$. This can be denoted $T = A \otimes B$.        
+    \end{definition*}
+    
+    This is itself a tensor. For example, suppose $A_{ij}$ and $B_{ij}$ are second-rank tensors, and consider $T_{ijkl} = A_{ij}B_{kl}$. We have
+    \begin{align*}
+        T'_{ijkl} &= A'_{ij}B'_{kl} \\
+        &= R_{ip}R_{jq}A_{pq}R_{kr}R_{ls}B_{rs} \\
+        &= R_{ip}R_{jq}R_{kr}R_{ls}T_{pqrs}
+    \end{align*}
+    as required. Similarly, if $\V v$ and $\V w$ are vectors, then $v_i w_j$ is a second-rank tensor.    
+    
+    \subsubsection{Contraction}
+
+    \begin{definition*}[Contraction]
+        A \emph{contraction} of a rank $n$ tensor occurs when we make two indices equal and sum, producing a tensor of rank $n-2$.
+    \end{definition*}
+    
+    This is also still a tensor. For example, if $T_{ij}$ is a tensor of rank 2, then $\alpha = T_{ii}$ is a scalar, because
+    \begin{align*}
+        \alpha' = T'_{ii} = R_{ip}R_{iq}T_{pq} = (R^\intercal R)_{pq} T_{pq} = \delta_{pq} T_{pq} = T_{pp} = \alpha
+    \end{align*}
+    
+    \subsubsection{Inner products}
+
+    \begin{definition*}[Inner products]
+        The \emph{inner product} of two tensors $A_{ijk\dots}$ and $B_{lmn\dots}$ of ranks $m$ and $n$ respectively is given by multiplying them, setting one index in each equal, and summing, resulting in a tensor of rank $m+n-2$. This is the same as taking the outer product and then contracting, so it is also known as \emph{contracting $A$ and $B$ together}.
+    \end{definition*}
+    
+    For example, if $v_i$ and $w_i$ are vectors, $v_iw_i$ is a scalar; if $A_{ij}$ is a rank 2 tensor and $v_i$ is a vector, then $A_{ij}v_j$ is a vector, as is $A_{ij}v_i$; if $A_{ijk}$ and $B_{ij}$ are rank 3 and 2 tensors, then $A_{ijk}B_{lj}$ is a third-rank tensor.
+
+    That these are actually tensors follows from the outer product followed by contraction.
+
+    \begin{example*}
+        \begin{itemize}
+            \item For two vectors $\V u$ and $\V v$, $\V u \cdot \V v$ is a scalar, so defining the angle between them as $\cos \theta = (\V u \cdot \V v)/\sqrt{(\V u \cdot \V u)(\V v \cdot \V v)}$ makes it a scalar.
+            \item If $\V a$ and $\V b$ are vectors, then $\V a \times \V b$ is a vector, since it is a double contraction of three tensors given by $\eps_{ijk}a_jb_k$.
+        \end{itemize}
+    \end{example*}
+    
+    \subsection{The quotient theorem}
+
+    \begin{theorem*}[Quotient theorem]
+        \label{quot-thm}
+        Let $T_{ijk\dots}$ be an object of some rank. If the product (inner or outer) of $T$ with an \emph{arbitrary} tensor $A$ of a given rank is a tensor, then $T$ itself is a tensor.
+    \end{theorem*}
+    
+    \lecture{Lecture $n+1$ -- 13/03/26}
+
+    \begin{proof}
+        We will show the result for $T$ being an object of rank two, and taking an inner product with a tensor of rank one, namely a vector $\V v$. Let $w_i = T_{ij}v_i$. By assumption, $\V w$ is a vector, so
+        \begin{align*}
+            T'_{ij}v'_j &= w_i' = R_{ip}w_p \\
+            &= R_{ip} T_{pq} v_q \\
+            &= R_{ip} T_{pq} R_{jq} v_j' \\
+            \implies 0 &= v_j'(T'_{ij} - R_{ip}R_{jq}T_{pq})
+        \end{align*}
+        Since this is true for arbitrary $v_j'$, we can cancel, so $T_{ij}' = R_{ip}R_{jq}T_{pq}$ as required.
+    \end{proof}
+    
+    Let's do another one for practice. Suppose $T$ is an object of rank two, and take an inner product with a tensor of rank one. We have
+    \begin{align*}
+        T'_{ki}A'_{jk} &= W_{ij}' = R_{ip}R_{jq}W_{pq} \\
+        &= R_{ip}R_{jq}T_{rp}A_{qr} \\
+        &= R_{ip}R_{jq}T_{rp}R_{sq}R_{kr}A_{sk}' \\
+        &= R_{ip}T_{rp}R_{kr}\delta_{js}A_{sk}' \\
+        \implies 0 &= (T'_{ki}-R_{kr}R_{ip}T_{rp})A_{jk}' = 0
+    \end{align*}
+    so, once again, we can cancel, and obtain the transformation law for $T$.
+    
+    \begin{remark*}[Non-examinable]
+        Let us think a bit more about what tensors really are. Since we understand they shouldn't be thought of merely as an array of numbers, let's instead view them as multilinear maps. Given a tensor $T_{ijk\dots}$ of rank $n$, consider the map
+        \begin{align*}
+            T: (\RR^3)^n &\to \RR \\
+            (\V a, \V b, \V c, \dots) &\mapsto T_{ijk\dots} a_i b_j c_k \dots
+        \end{align*}
+        This is multilinear and an inner product, so outputs a scalar -- in other words, it is well-defined. For each tensor, such a map exists. Conversely, given such a map, multilinearity shows that it must be of the form above for some coefficients $T_{ijk\dots}$, which can be computed in any basis -- for example, $T_{111\dots} = T(\V e_1, \V e_1, \V e_1, \dots)$. The quotient theorem then says that $T_{ijk\dots}$ is in fact a tensor. Hence, there is a complete equivalence between tensors and multilinear maps.
+
+        In particular, this can help us understand why the transformation rule for tensors of rank 2 looks just like the change of basis formula for linear maps -- $A' = P^\intercal AP$, where $P'$ is the orthogonal change of basis matrix. The only difference is that $P = R^\intercal = R^{-1}$.
+
+        But why is $P$ given by $R^{-1}$ instead of $R$? Consider a vector $\V v$ in 2D. Suppose that $\{\V e_1', \V e_2'\}$ are the original basis vectors $\{\V e_1, \V e_2\}$ rotated through $\theta$, so that $P$ is a rotation matrix with angle $\theta$. Then (a) finding the components of $\V v$ w.r.t. $\{\V e_1', \V e_2'\}$ is the same as (b) rotating $\V v$ by $-\theta$ and finding its components w.r.t. $\{\V e_1, \V e_2\}$. Then, the tensor transformation rule for vectors represents (b), with $R$ being a rotation by $-\theta$, while $P$ represents the change of basis needed for (a).
+    \end{remark*}
+    
+    \subsection{Symmetries of tensors}
+
+    If $T_{ij}$ is a tensor, so is $T_{ji}$. Let $U_{ij} = T_{ji}$, so
+    \begin{align*}
+        U'_{ij} = T'_{ji} = R_{jp}R_{iq}T_{pq} = R_{iq}R_{jp}U_{qp} = R_{ip}R_{jq}U_{pq}
+    \end{align*}
+    as required.
+    
+    \begin{remark*}
+        When trying to prove such things, it's best to take this approach of coming up with a new name for the new tensor.
+    \end{remark*}
+    
+    \begin{definition*}[Symmetric tensors]
+        A tensor $T_{ijk\dots}$ is \emph{symmetric} in $i$ and $j$ if $T_{ijk\dots} = T_{jik\dots}$. The two indices need not be the first two, or adjacent.
+    \end{definition*}
+    
+    For example, symmetric tensors correspond to symmetric matrices, since $T_{ij} = T_{ji}$.
+
+    It makes sense to say that a tensor is symmetric because this property is invariant under a change of basis. Suppose, for example, that $T_{ij}$ is symmetric -- we wish to show that $T_{ij}'$ is symmetric as well. Observe
+    \begin{align*}
+        T_{ij}' &= R_{ip}R_{jq}T_{pq} = R_{ip}R_{jq}T_{qp} \\
+        &= R_{jq}R_{ip}T_{qp} \\
+        &= T_{ji}'
+    \end{align*}
+    as required.
+
+    \begin{definition*}[Antisymmetric tensors]
+        A tensor $T_{ijk\dots}$ is \emph{symmetric} in $i$ and $j$ if $T_{ijk\dots} = -T_{jik\dots}$. As before, any two indices can be chosen.
+    \end{definition*}
+    
+    One can check for oneself that antisymmetry is also preserved under the tensor transformation law.
+
+    \begin{example*}
+        The Kronecker delta is symmetric of rank 2 -- the Levi-Civita epsilon is antisymmetric in any two indices, so \emph{totally antisymmetric}
+    \end{example*}
+    
+    \begin{proposition*}
+        The sum over the product of two tensors with a shared pair of indices which is symmetric in one and antisymmetric in the other is zero.
+    \end{proposition*}
+    
+    \begin{proof}
+        We show the result for rank 2. Observe
+        \begin{align*}
+            S_{ij}A_{ij} &= -S_{ji}A_{ji} \\
+            &= -S_{ij}A_{ij}
+        \end{align*}
+        by symmetry/antisymmetry and swapping dummy suffices. The result follows.        
+    \end{proof}
+    
+    \subsubsection{Decomposition of second-rank tensors}
+
+    \begin{proposition}[Decomposition of second-rank tensors]
+        Any tensor $T_{ij}$ of rank 2 can be written uniquely in the form
+        \begin{align*}
+            T_{ij} = S_{ij} + A_{ij}
+        \end{align*}
+        where $S_{ij}$ is symmetric and $A_{ij}$ is antisymmetric.
+    \end{proposition}
+    
+    \begin{proposition}
+        In particular,
+        \begin{align*}
+            S_{ij} = \frac 1 2\left(T_{ij} + T_{ji}\right) \qquad \qquad A_{ij} = \frac 1 2\left(T_{ij} - T_{ji}\right)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Clearly $S_{ij}$ and $A_{ij}$ as above satisfy the requirements. Furthermore, supposing $T_{ij} = S_{ij} + A_{ij}$, 
+        \begin{align*}
+            T_{ij} + T_{ji} = S_{ij} + A_{ij} + S_{ji} + A_{ji} = 2S_{ij}
+        \end{align*}
+        and $T_{ij} - T_{ji} = 2A_{ij}$ similarly, so these are the only choices.        
+    \end{proof}
+    
+    \begin{remark*}
+        $S$ and $A$ are also tensors.
+    \end{remark*}
+    
+    \begin{proposition*}
+        An antisymmetric second-rank tensor $A_{ij}$ can be written in the form
+        \begin{align*}
+            \lv{ijk}\omega_k
+        \end{align*}
+        for some vector $\V \omega$.        
+    \end{proposition*}
+    
+    \begin{proof}
+        Let $\omega_i = \frac 1 2 \lv{ijk}A_{jk}$. Then
+        \begin{align*}
+            \lv{ijk}\omega_k &= \frac 1 2 \lv{ijk}\lv{klm}A_{lm} \\
+            &= \frac 1 2 (\delta_{il}\delta_{jm}-\delta_{im}\delta_{jl})A_{lm} \\
+            &= \frac 1 2 (A_{ij}-A_{ji}) \\
+            &= A_{ij}
+        \end{align*}
+        where the last line is by antisymmetry of $A$.        
+    \end{proof}
+    
+    Hence it follows that any second-rank tensor $T$ can be represented as
+    \begin{align*}
+        T_{ij} = S_{ij}+\lv{ijk}\omega_k
+    \end{align*}
+    for some symmetric tensor $S$ and vector $\V \omega$.
+    
+    \begin{remark*}
+        Let
+        \begin{align*}
+            A = \begin{pmatrix}
+                0 & A_{12} & A_{13} \\
+                -A_{12} & 0 & A_{23} \\
+                -A_{13} & -A_{23} & 0 \\
+            \end{pmatrix}
+        \end{align*}
+        Then
+        \begin{align*}
+            \V \omega = \begin{pmatrix}
+                A_{23} \\
+                -A_{13} \\
+                A_{12} \\
+            \end{pmatrix}
+        \end{align*}
+        Since second-rank antisymmetric tensors only have 3 degrees of freedom, it is perhaps not surprising that it can be expressed in terms of a vector.       
+    \end{remark*}
+
+    \lecture{Lecture 23 -- 16/03/26}
+    
+    \begin{example*}[hard]
+        Suppose thast $C$ is an object of rank 2 such that $C_{ij}S_{ij}$ is a scalar for any symmetric tensor $S$ of rank 2. We claim that $C$ may not be a tensor, but its symmetric part is.
+
+        Let $T$ be an arbitrary second-rank tensor, and decompose it as $T_{ij} = S_{ij} + A_{ij}$; also decompose $C$ as $C_{ij} = C^{(S)}_{ij} + C^{(A)}_{ij}$, where the parts are symmetric and antisymmetric respectively. Then
+        \begin{align*}
+            C^{(S)}_{ij}T_{ij} &= C^{(S)}_{ij}(S_{ij}+A_{ij}) \\
+            &= C^{(S)}_{ij}S_{ij} + \underbrace{C^{(S)}_{ij}A_{ij}}_0 \\
+            &= \left(C_{ij} - C^{(A)}_{ij}\right)S_{ij} \\
+            &= C_{ij}S_{ij} - \underbrace{C^{(A)}_{ij}S_{ij}}_0 \\
+            &= C_{ij}S_{ij}
+        \end{align*}
+        with repeated application of the fact that the product of symmetric and antisymmetric tensors is zero. We have obtained a scalar, i.e. a rank zero tensor. It follows that $C^{(S)}_{ij}$ is a tensor by the quotient theorem.
+
+        However, we would like to exhibit a $C$ which is not a tensor, and in particular we want $C^{A}_{ij}$ not to be a tensor. Let $C_{ij} = C^{A}_{ij} = \lv{1ij}$ in one frame and 0 in every other frame. But then
+        \begin{align*}
+            C_{ij}S_{ij} &= \begin{cases}
+                \lv{1ij}S_{ij} & \text{first frame} \\
+                0 & \text{other frames}
+            \end{cases} \\
+            &= 0
+        \end{align*}        
+    \end{example*}
+    
+    \begin{remark*}
+        In fact, $\lv{1ij}$ is not a second-rank tensor, so we could even have made $C_{ij} = \lv{1ij}$ in all frames.
+    \end{remark*}
+    
+    \subsection{Principal axes}
+
+    For any symmetric second-rank tensor $S$, we can choose a basis in which
+    \begin{align*}
+        (S_{ij}) = \begin{pmatrix}
+            \lambda_1 & 0 & 0 \\
+            0 & \lambda_2 & 0 \\
+            0 & 0 & \lambda_3 \\
+        \end{pmatrix}
+    \end{align*}
+    which is of course just the same fact as that any real symmetric matrix can be diagonalised using an orthogonal change of basis matrix, namely a $P$ such that $P^\intercal SP =D$. We let $R = P^\intercal$ be our corresponding rotation matrix, which gives
+    \begin{align*}
+        S' = RSR^\intercal = P^\intercal SP = D
+    \end{align*}
+    Note that, in general, $P$ might have determinant $\pm 1$, but we can always re-order the columns of $R$ to make it a rotation.
+
+    Of course, the $\lambda_i$ are just the eigenvalues, but, for a tensor, they are known as \emph{principal values} -- and the \emph{principal axes} are a set of orthonormal right-handed axes along each of the eigenvectors. Often, calculations are easier in the frame of the principal axes.
+
+    \begin{example*}
+        Let us consider the \emph{inertia tensor} for a rigid body $V$. Suppose the body has density $\rho(\V x)$ and is rotating with angular velocity $\V \omega$, so the mass in each infinitesimal volume, $\rho(\V x) \D V$ has velocity $\V \omega \times \V x$. Hence, the total angular momentum is
+        \begin{align*}
+            \V L &= \int_V \rho(\V x) (\V x \times (\V \omega \times \V x)) \D V \\
+            &= \int_V \rho(\V x) \left((\V x \cdot \V x) \V \omega - (\V \omega \cdot \V x) \V x\right) \D V \\
+            &= \int_V \rho(\V x) \left(x_kx_k\omega_i - \omega_jx_jx_i\right) \D V \\
+            &= I_{ij}\omega_i
+        \end{align*}
+        where
+        \begin{align*}
+            I_{ij} = \int_V \rho(\V x) (x_kx_k \delta_{ij}-x_ix_j) \D V
+        \end{align*}
+        which is called the \emph{inertia tensor}, a property of the body independent of $\V \omega$. Since $\V \omega$ and $\V L$ are vectors, the relationship $L_i = I_{ij}\omega_j$ shows that $I_{ij}$ is indeed a tensor by the quotient theorem, and it is symmetric by definition (alternatively, we are taking products, multiplying by scalars, adding and integrating tensors, which must give a tensor).
+
+        This is also the inertia tensor about the origin -- about a general point $\V a$ it is unsurprisingly given by
+        \begin{align*}
+            I_{ij}(\V a) = \int_V \rho(\V x) \left(|\V x-\V a|^2\delta_{ij} - (x_i-a_i)(x_j-a_j)\right) \D V
+        \end{align*}
+        Clearly, the components $I_{11}$, $I_{22}$ and $I_{33}$ of the inertia tensor are just the moments of inertia round the $x$, $y$ and $z$ axes respectively.       
+    \end{example*}
+    
+    \begin{example*}[hard]
+        Let us find the inertia tensor of a cube of mass $M$, side length zero, with one corner at the origin and one at $(a, a, a)$. We have
+        \begin{align*}
+            I_{12} &= \int_V \frac{M}{a^3} (\underbrace{x_kx_k\delta_{12}}_0-x_1x_2) \D V \\
+            &= -\frac{M}{a^3} \int_0^a \int_0^a \int_0^a xy \D x \D y \D z = -\frac 1 4 Ma^2 \\[20pt]            
+            I_{11} &= \int_V \frac{M}{a^3} (x^2+y^2+z^2-x^2) \D V \\
+            &= \frac{M}{a^3} \int_0^a \int_0^a \int_0^a (y^2+z^2) \D x \D y \D z = \frac 2 3 Ma^2
+        \end{align*}
+        with the other components following by symmetry. We hence obtain
+        \begin{align*}
+            (I_{ij}) = \begin{pmatrix}
+                \frac 2 3 & -\frac 1 4 & -\frac 1 4 \\
+                -\frac 1 4 & \frac 2 3 & -\frac 1 4 \\
+                -\frac 1 4 & -\frac 1 4 & \frac 2 3 \\
+            \end{pmatrix}Ma^2
+        \end{align*}
+        A tedious calculation shows that the principal values are $\frac 1 6 Ma^2$, $\frac {11}{12} Ma^2$, $\frac {11}{12} Ma^2$. The first principal axis is $\left(\frac 1 {\sqrt 3}, \frac 1 {\sqrt 3}, \frac 1 {\sqrt 3}\right)$, and the others are any two eigenvectors orthogonal to both of these -- for example,
+        \begin{align*}
+            \begin{pmatrix}
+                \frac 1 {\sqrt 3} \\
+                \frac 1 {\sqrt 3} \\
+                \frac 1 {\sqrt 3} \\
+            \end{pmatrix}, \quad \begin{pmatrix}
+                \frac 1 {\sqrt 2} \\
+                -\frac 1 {\sqrt 2} \\
+                0 \\
+            \end{pmatrix}, \quad \begin{pmatrix}
+                \frac 1 {\sqrt 6} \\
+                \frac 1 {\sqrt 6} \\
+                -\frac 2 {\sqrt 6} \\
+            \end{pmatrix}
+        \end{align*}
+        and we should check that this is orthonormal and right-handed.
+
+        In the basis given by these axes, the inertia tensor is just
+        \begin{align*}
+            \begin{pmatrix}
+                \frac 1 6 & 0 & 0 \\
+                0 & \frac {11}{12} & 0 \\
+                0 & 0 & \frac{11}{12} \\
+            \end{pmatrix}Ma^2
+        \end{align*}
+        and we note that the principal axes coincide with some symmetries of the physical object -- here, for example, the first axis is parallel to the line between the origin and $(a, a, a)$.        
+    \end{example*}
+    
+    \subsection{Isotropic tensors}
+
+    \begin{definition*}[Isotropic tensors]
+        An \emph{isotropic tensor} is one whose \emph{components} are the same in any basis.
+    \end{definition*}
+    
+    We have already seen that $\delta_{ij}$ and $\lv{ijk}$ are isotropic. In fact, we can find all of them!
+
+    \begin{enumerate}
+        \setcounter{enumi}{-1}
+        \item Any tensor of rank 0 is isotropic.
+        \item The only isotropic tensor of rank 1 is the zero vector.
+        \item The most general isotropic tensor of rank 2 is $\lambda \delta_{ij}$ where $\lambda$ is a scalar.
+        \item The most general isotropic tensor of rank 3 is $\lambda \lv{ijk}$ where $\lambda$ is a scalar.
+        \item The most general isotropic tensor of rank 4 is
+        \begin{align*}
+            \lambda \delta_{ij}\delta_{kl} + \mu \delta_{ik}\delta_{jl} + \nu \delta_{il}\delta_{jk}
+        \end{align*}
+        where $\lambda$, $\mu$ and $\nu$ are scalars.        
+    \end{enumerate}
+    
+    The fourth-rank case need not be learned by heart -- the second and third rank cases should, and are very important.
+
+    \begin{proof}[Proof (rank 2)]
+        Let $T_{ij}$ be an isotropic second-rank tensor, and use the matrix version of the tensor transformation law, $T' = RTR^\intercal$. Let
+        \begin{align*}
+            R = \begin{pmatrix}
+                0 & 1 & 0 \\
+                -1 & 0 & 0 \\
+                0 & 0 & 1 \\
+            \end{pmatrix}
+        \end{align*}
+        that is, a rotation of $\frac{\pi}2$ about the $z$-axis (note this is a rotation of $-\frac{\pi}2$ in normal terms, but corresponds to rotating the \emph{basis} by $+\frac{\pi}2$).
+    
+        \lecture{Lecture 24 -- 18/03/26}
+
+        Then
+        \begin{align*}
+            \begin{pmatrix}
+                T_{11}' & T_{12}' & T_{13}' \\
+                T_{21}' & T_{22}' & T_{23}' \\
+                T_{31}' & T_{32}' & T_{33}' \\
+            \end{pmatrix} = R \begin{pmatrix}
+                T_{11} & T_{12} & T_{13} \\
+                T_{21} & T_{22} & T_{23} \\
+                T_{31} & T_{32} & T_{33} \\
+            \end{pmatrix} R^\intercal = \begin{pmatrix}
+                T_{22} & -T_{21} & T_{23} \\
+                -T_{12} & T_{11} & -T_{13} \\
+                T_{32} & -T_{31} & T_{33} \\
+            \end{pmatrix}
+        \end{align*}
+        Since $T_{ij}' = T_{ij}$, we obtain
+        \begin{align*}
+            T_{11} &= T_{22} \\
+            T_{13} &= T_{23} = -T_{13} \implies T_{13} = T_{23} = 0 \\
+            T_{31} &= T_{32} = -T_{31} \implies T_{31} = T_{32} = 0
+        \end{align*}
+        Similarly, a rotation of $\frac \pi 2$ about the $y$-axis gives
+        \begin{align*}
+            T_{11} &= T_{33} \\
+            T_{12} &= T_{32} = 0 \\
+            T_{21} &= T_{23} = 0
+        \end{align*}
+        Hence, all off-diagonal entries are zero, and $T_{11} = T_{22} = T_{33}$. The result follows.
+    \end{proof}
+
+    \begin{remark*}
+        It is perhaps interesting that considering only two changes of basis suffices to show the result. Often, only a small number of symmetries are needed to make large simplifications.
+    \end{remark*}
+    
+    The proof for third-rank tensors is just more long and painful.
+
+    What is the physical significance of isotropy? It essentially means that properties should be the same in all directions, and hence corresponds naturally to isotropic media.
+
+    \subsection{Isotropic integrals}
+
+    \begin{example*}
+        Let us attempt to calculate
+        \begin{align*}
+            I_{ij} \int_{r < a} rx_ix_j \D V
+        \end{align*}
+        We can see that $I_{ij}$ is a tensor, since it is a product of tensors followed by an integration. Furthermore, no `preferred direction' is indicated in the integral, so the tensor must be isotropic.
+
+        Therefore, it must be the case that $I_{ij} = \lambda \delta_{ij}$. Hence, consider
+        \begin{align*}
+            3\lambda = I_{ii} &= \int_{r < a} r x_i x_i \D V \\
+            &= \int_{r=0}^a \int_{\theta=0}^{\pi} \int_{\phi=0}^{2\pi} r^3 r^2 \sin \theta \D r \D \theta \D \phi \\
+            &= \frac{2}{3}\pi a^6
+        \end{align*}
+        Hence
+        \begin{align*}
+            I_{ij} = \frac 2 9 \pi a^6 \delta_{ij}
+        \end{align*}
+    \end{example*}
+    
+    \begin{example*}
+        What about
+        \begin{align*}
+            \V B = \int_{r < a} (\V x \cdot \V b)|\V x|\V x \D V
+        \end{align*}
+        which is \emph{not} isotropic, since it depends on the direction of $\V b$. Nonetheless, observe
+        \begin{align*}
+            B_i &= b_j \int_{r < a} x_j r x_i \D V \\
+            &= b_j I_{ij} = b_j \frac 2 9 \pi a^6 \delta_{ij} \\
+            \implies \V B &= \frac 2 9 \pi a^6 \V b
+        \end{align*}
+    \end{example*}
+    
+    \subsection{Tensor calculus}
+
+    When we were defining differential operators, we did so with respect to the standard basis. But, had we used a different basis, we would hope that our results should transform correctly.
+
+    \begin{proposition}
+        Let $\bullet$ be a tensor expression. Then
+        \begin{align*}
+            \pd{\bullet}{x_i'} = \pd{\bullet}{x_j} \pd{x_j}{x_i'} = R_{ij} \pd{\bullet}{x_j}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        The first identity is just the chain rule -- it remains only to establish that $\pd{x_j}{x_i'} = R_{ij}$. Observe
+        \begin{align*}
+            x_i &= R_{ji} x_j' \\
+            \implies \pd{x_i}{x_k'} &= R_{ji} \pd{x_j'}{x_k'} = R_{ji} \delta_{jk} = R_{ki}
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    If we write $\pr_i$ for the operator $\pd{}{x_i}$, then we obtain
+    \begin{align*}
+        \pr_i' = R_{ij} \pr_j
+    \end{align*}
+    in other words, $\del$ obeys the vector transformation law, and so is a vector differential operator.
+
+    Unsurprisingly, this allows us to show that all the vector differential operators transform in the right way. For example,
+    \begin{align*}
+        (\div \V F)' &= \del' \cdot \V F ' = \pd{F_i'}{x_j'} \\
+        &= R_{ij} \pd{}{x_i}(R_{ip}F_p) = R_{ij}R_{ip} \pd{F_p}{x_j} \\
+        &= \delta_{jp} \pd{F_p}{x_j} \\
+        &= \pd{F_j}{x_j} = \div \V F
+    \end{align*}
+    The same results hold for $\grad f$ and $\curl \V F$.
+
+    A tensor field is a tensor which depends on position. If $T_{pqr\dots}$ is a tensor field of rank $m$, then
+    \begin{align*}
+        \pd{^n}{x_i \pr x_j \pr x_k \dots} T_{pqr\dots}
+    \end{align*}
+    is also a tensor field, of rank $m+n$.
+
+    \subsubsection{The tensor divergence theorem (non-examinable)}
+    
+    \begin{proposition*}
+        For a tensor expression $\bullet$ in a volume $V$,
+        \begin{align*}
+            \int_V \pr{\bullet}{x_i} \D V = \int_{\pr V} \bullet n_i \D S
+        \end{align*}
+    \end{proposition*}
+    
+    \begin{proof}[Proof (rank 2)]
+        Let $F_i = a_j T_{ij}$, where $\V a$ is an arbitrary constant vector. Then $\V F$ is a vector field, so we may apply the usual divergence theorem to obtain
+        \begin{align*}
+            \int_V \pr{F_i}{x_i} \D V = \int_{\pr V} \V F \cdot d\V S = \int_{\pr V} F_i n_i \D S \\
+            \implies a_j \int_V 
+        \end{align*}
+        
+        
+    \end{proof}
+    
+    
+    
+    
+    
+
+    
     
     
     

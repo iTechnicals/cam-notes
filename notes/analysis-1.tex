@@ -145,6 +145,7 @@
     \subsection{Bolzano-Weierstrass theorem}
 
     \begin{theorem}[Bolzano-Weierstrass]
+        \label{bw}
         If $(x_n)$ is a real bounded sequence, then it has at least one convergent subsequence.
     \end{theorem}
     
@@ -1311,7 +1312,7 @@
     
     We would like to quantify exactly how good this approximation is.
 
-    \begin{theorem}[Taylor's theorem: Lagrange remainder]
+    \begin{theorem}[Taylor's theorem, Lagrange remainder]
         \label{taylor-lagrange}
         Suppose $f: X \subseteq \RR \to \RR$ and its $n-1$ derivatives are continuous on $[a, a+h]$ and $f$ is $n$-times differentiable on $(a, a+h)$. Set
         \begin{align*}
@@ -1324,10 +1325,13 @@
     \end{theorem}
     
     \begin{remark*}
-        The conditions for the above are a consequence of $f \in C^n((c, d))$ for any $(c, d) \supset [a, a+h]$.
+        The conditions for the above are a consequence of $f \in C^n((c, d))$ for any $(c, d) \supset [a, a+h]$. In this case, $f^{(n)}$ is also bounded on $[a, a+h]$, so there exists $M_n = \sup_{[a, a+h]}|f^{(n)}|$. Then
+        \begin{align*}
+            |R_{n,f,a}(h)| \leq M_n \frac{h^n}{n!}
+        \end{align*}
     \end{remark*}
 
-    Morally speaking, we are saying that $R_{n, f, a}(h) = O(h^n)$ as $h \to 0$, and we know exactly what the constant is. Unfortunately, this does \emph{not} tell us anything about whether $R_{n, f, a}(h) \to 0$ as $n \to \infty$: even if $f \in C^\infty(X)$, we can't say how the scaling factor of $M_n = \sup_{x \in [a, a+h]}\left|f^{(n)}(x)\right|$ behaves with $n$. THIS PART NEEDS TO BE UPDATED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Morally speaking, we are saying that $R_{n, f, a}(h) = O(h^n)$ as $h \to 0$, and we know exactly what the constant is. Unfortunately, this does \emph{not} tell us anything about whether $R_{n, f, a}(h) \to 0$ as $n \to \infty$: even if $f \in C^\infty$, we have no idea how $M_n$ changes with $n$.
 
     \begin{remark*}
         We should also note that there is nothing important about $h > 0$ -- if $h = -t < -0$, and $f$ and its $n-1$ derivatives are continuous and $[a-t, a]$ and $f$ is $n$-times differentiable on $(a-t, a)$, then we can apply the above to $g(x) = f(-x)$ to obtain
@@ -1383,7 +1387,8 @@
     
     This alternative proof approach will become extremely useful for our next theorem.
 
-    \begin{theorem}[Taylor's theorem: Cauchy remainder]
+    \begin{theorem}[Taylor's theorem, Cauchy remainder]
+        \label{taylor-cauchy}
         Let $f$ and $R_{n,f,a}$ be as in \cref{taylor-lagrange}. Then there exists $\theta \in (0, 1)$ such that
         \begin{align*}
             R_{n, f, a}(h) = h^n \frac{(1-\theta)^{n-1}}{(n-1)!} f^{(n)}(a + \theta h)
@@ -1397,15 +1402,7 @@
     \lecture{Lecture 14 -- 24/02/26}
     
     \begin{remark*}
-        If $f \in C^n([c, d])$ with $[a, a+h] \subset (c, d)$ then, as in previous remark, we can set
-        \begin{align*}
-            M_n = \sup_{x \in [a, a+h]} \left|f^{(n)}(x)\right|
-        \end{align*}
-        so the theorem gives
-        \begin{align*}
-            |R_{n,f,a}(h)| \leq M_n \frac{|h|^n}{(n-1)!}
-        \end{align*}
-        i.e. $R_{n,f,a}(h) = O(h^n)$.       
+        Supposing $f \in C^n((c, d))$ for some $(c, d) \supset [a, a+h]$, we again have $R_{n,f,a}(h) = O(h^n)$. However, as we will see, the form of the remainder is often better behaved in $n$.
     \end{remark*}
     
     \begin{example*}
@@ -1680,14 +1677,984 @@
     \begin{proposition}[Monotone $\implies$ integrable]
         Let $f: [a, b] \to \RR$ be bounded and monotone. Then $f$ is integrable.
     \end{proposition}
+
+    \lecture{Lecture 16 -- 28/02/26}
     
     \begin{proof}
-        Since $f$ is monotone, $f$ is bounded by $\max\left(|f(a)|, |f(b)|\right)$. Hence
+        Since $f$ is monotone, $f$ is bounded by $\max\left(|f(a)|, |f(b)|\right)$. Without loss of generality, suppose $f$ is increasing, so
+        \begin{align*}
+            U(f, \mc P) - L(f, \mc P) &= \sum_{j=1}^n \left(\sup_{I_j} f - \inf_{I_j} f\right)|I_j| \\
+            &= \sum_{j=1}^n \left(f(x_j)-f(x_{j-1})\right)|I_j|
+        \end{align*}
+        for any partition $\mc P = \{x_0, \dots, x_n\}$. Now, set
+        \begin{align*}
+            \mc P_n = \left\{a, a + \frac 1 n (b-a), \dots, a + \frac{n-1}{n}(b-a), b\right\}
+        \end{align*}
+        so that $|I_j| = \frac{b-a}{n}$. Then
+        \begin{align*}
+            U(f, \mc P_n) - L(f, \mc P_n) &= \frac{b-a}n \sum_{j=1}^n \frac{b-a}{n} \left[f\left(a + \frac j n (b-a)\right) - f\left(a + \frac{j-1} n (b-a)\right)\right] \\
+            &= \frac{b-a}{n}(f(b)-f(a))
+        \end{align*}
+        since the sum telescopes. But this clearly goes to 0 as $n \to \infty$.
+    \end{proof}
+
+    \begin{proposition}[Continuous $\implies$ integrable]
+        Let $f: [a, b] \to \RR$ be continuous. Then $f$ is integrable.
+    \end{proposition}
+    
+    \begin{proof}
+        Since $[a, b]$ is a closed bounded set, $f$ is bounded by \cref{evt} (EVT).
+        
+        We will show the contrapositive. Suppose $f$ is not integrable, so there exists $\eps > 0$ such that, for any $\mc P$,
+        \begin{align*}
+            U(f, \mc P) - L(f, \mc P) \geq \eps
+        \end{align*}
+        Now observe
+        \begin{align*}
+            \eps \leq U(f, \mc P) - L(f, \mc P) = \sum_{j=1}^n |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right) \leq \sum_{k=1}^n |I_j| \max_{1 \leq j \leq n} \left(\sup_{I_j} f - \inf_{I_j} f\right)
+        \end{align*}
+        Now the max is independent of the sum, so we obtain
+        \begin{align*}
+            \max_{1 \leq j \leq n} \left(\sup_{I_j} f - \inf_{I_j} f\right) \geq \frac{\eps}{b-a}
+        \end{align*}
+        so, in particular, we obtain a particular $j$ such that
+        \begin{align*}
+            \sup_{I_j} f - \inf_{I_j} f \geq \frac{\eps}{b-a}
+        \end{align*}
+        Since $I_j$ is closed and bounded, we apply \cref{evt} (EVT) to obtain $y$, $z \in [x_{j-1}, x_j]$ such that
+        \begin{align*}
+            f(y) - f(z) \geq \frac{\eps}{b-a}
+        \end{align*}
+        Applying this result to $\mc P_n = \left\{a, a + \frac 1 n (b-a), \dots, a + \frac{n-1}{n}(b-a), b\right\}$ as used previously, we obtain for each $n$ values of $y_n$ and $z_n$ satisfying
+        \begin{align*}
+            |y_n - z_n| < \frac{b-a}{n} \qquad\qquad |f(y_n)-f(z_n)| \geq \frac{\eps}{b-a}
+        \end{align*}
+        Now apply \cref{bw} to $(y_n)$ to obtain $(y_{n_k})$ convergent to $y \in [a, b]$ -- then,
+        \begin{align*}
+            |z_{n_k}-y_{n_k}| < \frac{b-a}{n_k} \to 0
+        \end{align*}
+        as $k \to infty$, so $z_{n_k} \to y$ also. However, since $|f(z_{n_k})-f(y_{n_k})| \geq \frac{\eps}{b-a}$, we conclude $f(z_{n_k})$ and $f(y_{n_k})$ do not have the same limit, so at least one must not tend to $f(y)$. Hence $f$ is not sequentially continuous, and so it is not continuous either.       
+    \end{proof}
+
+    \begin{lemma}
+        \label{finite-diff-integrable}
+        Let $f$, $g: [a, b] \to \RR$ be bounded. Suppose $g$ is integrable, and 
+        \begin{align*}
+            \{x \in [a, b]: f(x) \neq g(x)\}
+        \end{align*}
+        is finite. Then $f$ is integrable and $\int_a^b f = \int_a^b g$.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $M = \sup_{[a, b]} |f|$. Fix $\eps > 0$, then there exists a partition $\mc P$ of $[a, b]$ such that $U(g, \mc P) - L(g, \mc P) < \eps$. Let $\{x \in [a, b]: f(x) \neq g(x)\} = {z_1, \dots, z_N}$.
+
+        For each $k$, $1 \leq k \leq N$, let $J_k = [z_k-r_k, z_k+r_k]$, where the $r_k$ satisfy
+        \begin{align*}
+            2\sum_{n=1}^N r_k < \eps
+        \end{align*}
+        so that $\sum_{k=1}^N |J_k| < \eps$. Let $\mc P' = \mc P \cup \{z_1 \pm r_1, \dots, z_N \pm r_N\}$, and let $J = \bigcup J_k$. Clearly, $U(g, \mc P') - L(g, \mc P') \leq U(g, \mc P) - L(g, \mc P) < \eps$. Now,
+        \begin{align*}
+            U(f, \mc P') - L(f, \mc P') &= \sum_{j} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right) \\
+            &= \sum_{I_j \subset J} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right) + \sum_{I_j \not\subset J} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right)
+        \end{align*}
+        For the second sum, we have
+        \begin{align*}
+            \sum_{I_j \not\subset J} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right) &= \sum_{I_j \not\subset J} |I_j| \left(\sup_{I_j} g - \inf_{I_j} g\right) \\
+            &\leq \sum_j |I_j| \left(\sup_{I_j} g - \inf_{I_j} g\right) \\
+            &= U(g, \mc P') - L(g, \mc P') < \eps
+        \end{align*}
+        For the first sum, we instead know $\sup_{I_j} f - \inf_{I_j} f \leq 2M$, so that
+        \begin{align*}
+            \sum_{I_j \subset J} \left(\sup_{I_j} f - \inf_{I_j} f\right) &\leq 2M \sum_{I_j \subset J} |I_j| \\
+            &\leq 2M |J| \\
+            &< 2M\eps
+        \end{align*}
+        Thus $U(f, \mc P') - L(f, \mc P') < (2M+1)\eps$, so $f$ is integrable. It remains to show $\int_a^b f = \int_a^b g$. Observe
+        \begin{align*}
+            L(f, \mc P') \leq \int_a^b f \leq U(f, \mc P') \qquad \qquad L(g, \mc P') \leq \int_a^b g \leq U(g, \mc P')
+        \end{align*}
+        Hence, again taking $\mc P$ such that $U(g, \mc P) - L(g, \mc P) < \eps$,
+        \begin{align*}
+            \int_a^b f - \int_a^b g &\leq U(f, \mc P') - U(g, \mc P') + \underbrace{U(g, \mc P') - L(g, \mc P')}_{< \eps}
+        \end{align*}
+        Looking at the first term, we can do basically the exact same thing as above -- but, for completeness,
+        \begin{align*}
+            U(f, \mc P') - U(g, \mc P') &= \sum_j |I_j| \left(\sup_{I_j}f - \sup_{I_j}g\right) \\
+            &= \sum_{I_j \subset J} |I_j| \left(\sup_{I_j}f - \sup_{I_j}g\right) \\
+            &\leq \sum_{I_j \subset J} |I_j| \sup_{I_j}f 
+            &\leq M|J| < M\eps
+        \end{align*}
+        A similar argument could be employed to bound the difference below, so that
+        \begin{align*}
+            \left|\int_a^b f - \int_a^b g\right| < (M+1)\eps 
+        \end{align*}
+        for any $\eps > 0$, so, taking the inf over $\eps$, the LHS is 0 as required.
     \end{proof}
     
-    
-    
+    \lecture{Lecture 17 -- 03/03/26}
 
+    \begin{proposition}[Additivity of integrals]
+        \label{additivity-integrals}
+        Let $f: [a, b] \to \RR$ and $c \in (a, b)$. Then $f$ is integrable if and only if $\left.f\right|_{[a,c]}$ and $\left.f\right|_{[c,b]}$ are integrable, and furthermore
+        \begin{align*}
+            \int_a^b f = \int_a^c f + \int_c^b f
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Let $I_L = [a, c]$ and $I_R = [c, b]$, and $f_L = \left.f\right|_{I_L}$, $f_R = \left.f\right|_{I_R}$.
+        \begin{itemize}
+            \item[$\implies$] Fix $\eps > 0$. Then, there exists a partition $\mc P$ of $[a, b]$ such that $U(f, \mc P) - L(f, \mc P) < \eps$. Without loss of generality, $c = x_l$ for some $l \in \{0, \dots, n\}$ (else add $c$ to $\mc P$ -- this can only make $U(f, \mc P) - L(f, \mc P)$ smaller). Then $\mc P = \mc P_L \cup \mc P_R$ where $\mc P_L = \{a = x_0, \dots, x_l = c\}$ and $\mc P_R = \{c = x_l, \dots, x_n = b\}$ are partitions of $[a, c]$ and $[c, b]$ respectively. Furthermore,
+            \begin{align*}
+                U(f, \mc P) &= U(f_L, \mc P_L) + U(f_R, \mc P_R) \\
+                L(f, \mc P) &= L(f_L, \mc P_L) + L(f_R, \mc P_R)
+            \end{align*}
+            so that
+            \begin{align*}
+                \left(U(f_L, \mc P_L)-L(f_L, \mc P_L)\right) + \left(U(f_R, \mc P_R)-L(f_R, \mc P_R)\right) < \eps
+            \end{align*}
+            Since both brackets are $\geq 0$, they must each be $< \eps$. Hence $f_L$ and $f_R$ are both integrable.
+
+            \item[$\impliedby$] Fix $\eps > 0$, so there exist $\mc P_L$, $\mc P_R$ partitions of $I_L$, $I_R$ respectively such that
+            \begin{align*}
+                U(f_R, \mc P_R) - L(f_R, \mc P_R) &< \eps
+                U(f_L, \mc P_L) - L(f_L, \mc P_L) &< \eps
+            \end{align*}
+            so $U(f, \mc P) - L(f, \mc P) < 2\eps$, since $\mc P = \mc P_L \cup \mc P_R$ is a partition of $[a, b]$. 
+        \end{itemize}
+        Furthermore,
+        \begin{align*}
+            \int_a^b f &\geq L(f_L, \mc P_L) + L(f_R, \mc P_R) \\
+            &\geq \int_a^c f_L + \int_c^b f_R - 2\eps
+        \end{align*}
+        and, similarly,
+        \begin{align*}
+            \int_a^b f \leq \int_a^c f_L + \int_c^b f_R + 2\eps
+        \end{align*}
+        so
+        \begin{align*}
+            \left|\int_a^b f - \left(\int_a^c f_L + \int_c^b f_R\right)\right| < 2\eps
+        \end{align*}
+        Since $\eps$ is arbitrary, this is what we wanted.        
+    \end{proof}
+
+    \begin{definition}[Piecewise continuity]
+        Let $f: [a, b] \to \RR$. Then $f$ is \emph{piecewise continuous} if there exists a partition $\mc P$ such that $\left.f\right|_{(x_{j-1},x_j)}$ is continuous for each $j$, and has a finite limit as $x \to x_{j-1}$ from above and $x \to x_j$ from below.
+    \end{definition}
+    
+    \begin{proposition}[Piecewise continuous $\implies$ integrable]
+        Let $f: [a, b] \to \RR$ be piecewise continuous with $\mc P$ the relevant partition. Then $f$ is integrable, and
+        \begin{align*}
+            \int_a^b f(x) \D x = \sum_{j=1}^n \int_{x_{j-1}}^{x_j} \bar{f}_j(x) \D x
+        \end{align*}
+        where
+        \begin{align*}
+            \bar f_j(x) = \begin{cases}
+                f(x) & x \in (x_{j-1}, x_j) \\
+                \lim_{x \to x_j^-}f(x) & x = x_j \\
+                \lim_{x \to x_{j-1}^+}f(x) & x = x_{j-1}
+            \end{cases}
+        \end{align*}
+    \end{proposition}
+
+    \begin{proof}
+        \Cref{finite-diff-integrable} gives that $\left.f\right|_{[x_{j-1},x_j]}$ is integrable and $\int_{x_{j-1}}^{x_j} f = \int_{x_{j-1}}^{x_j} \bar f_j$. The result follows from \cref{additivity-integrals}.
+    \end{proof}
+
+    Continuous, piecewise continuous and monotone functions are all integrable, as are functions made from adding these. Are these all the Riemann integrable functions? No.
+
+    \begin{example*}[Thomae/popcorn function]
+        Define
+        \begin{align*}
+            f: [0, 1] &\to \RR \\
+            x &\mapsto \begin{cases}
+                \frac 1 q & x = \frac p q,\, p,\, q \text{ coprime positive integers} \\
+                0 & x \in \RR \setminus \QQ
+            \end{cases}
+        \end{align*}
+        Since $\RR \setminus \QQ$ is dense in $\RR$, $L(f, \mc P) = 0$ for any partition $\mc P$ of $[0, 1]$, so $I_*(f) = 0$. We claim $f$ is integrable, so, for any $\eps > 0$, it is necessary to find a partition $\mc P$ of $[0, 1]$ such that $U(f, \mc P) < \eps$.
+
+        Pick $N \in \NN$ such that $N > \frac 1 \eps$. Set $X_N = \{x \in [0, 1]: f(x) \geq \frac 1 N\} \subseteq \{\frac p q: 1 \leq q \leq N, 0 \leq p \leq q\} = \{y_1, \dots, y_M\}$, which is clearly finite. Define $\mc P$ such that
+        \begin{itemize}
+            \item each $y_k$ is in some subinterval of $\mc P$;
+            \item each subinterval has length $< \frac{\eps} M$.
+        \end{itemize}
+        Now
+        \begin{align*}
+            U(f, \mc P) &= \sum_{\substack{I \in \mc P \\ I \cap X_N \neq \emptyset}} |I| \underbrace{\sup_I f}_{\leq 1} + \sum_{\substack{I \in \mc P \\ I \cap X_N = \emptyset}} |I| \underbrace{\sup_I f}_{\leq \frac 1 N} \\ 
+            &\leq \sum_{\substack{I \in \mc P \\ I \cap X_N \neq \emptyset}} |I| + \frac 1 N \sum_{I \in \mc P} |I| \\
+            &\leq M \cdot \frac{\eps} M + \eps < 2\eps
+        \end{align*}
+    \end{example*}
+    
+    \begin{proposition}[Countable discontinuities $\implies$ integrable]
+        Let $f$ bounded $: [a, b] \to \RR$, and let $D$ be the set of discontinuities of $f$. If $D$ is finite or countable, $f$ is Riemann-integrable.
+    \end{proposition}
+    
+    \begin{remark*}
+        The proofs of these results are on sheet 3 and are too hard for the course, respectively.
+    \end{remark*}
+    
+    \begin{remark*}
+        Even now there are still more integrable functions we have not categorised. For example, the indicator function of the Cantor set is integrable but has uncountably many discontinuities.
+    \end{remark*}
+    
+    Let us have some boring lemmas.
+
+    \begin{lemma}
+        Let $I$ be a closed bounded interval, and let $f, g$ bounded $: I \to \RR$. Then
+        \begin{enumerate}
+            \item $f(x) \leq g(x)$ for all $x \in I \implies$ sup and inf preserve the inequality;
+            \item $\sup_I (-f) = -\inf_I f$;
+            \item for $\lambda > 0$, $\sup_I(\lambda f) = \lambda \sup_I f$;
+            \item $\sup_I(f+g) \leq \sup_I f + \sup_I g$, and $\inf_I(f+g) \geq \inf_I f + \inf_I g$, without equality necessarily holding;
+            \item $\sup_I |f| - \inf_I |f| \leq \sup_I f - \inf_I f$;
+            \item $\sup_I f^2 - \inf_I f^2 \leq 2 \sup_I |f|\left(\sup_I f - \inf_I f\right)$.
+        \end{enumerate}
+    \end{lemma}
+    
+    \lecture{Lecture 18 -- 05/03/26}
+
+    \begin{proof}
+        We leave 1 to 4 and part of 5 as an exercise. Then
+        \begin{enumerate}
+            \item[5.] If $f \geq 0$ or $f \leq 0$ on all of $I$, the reuslt is immediate, or follows from 2. Otherwise, if $\inf_I f < 0 < \sup_I f$, then
+            \begin{align*}
+                \text{LHS} &\leq \sup_I |f| \leq \max(\sup_I f, \sup_I (-f)) \\
+                &\leq \sup_I f + \sup_I(-f) = \sup_I f - \inf_I f
+            \end{align*}
+            \item [6.] We have
+            \begin{align*}
+                f(x)^2 - f(y)^2 &= (f(x)-f(y))(f(x)+f(y)) \\
+                \sup_I f^2 - \inf_I f^2 &\leq \sup_{x \in I} \inf_{y \in I} \left((f(x)-f(y))(f(x)+f(y))\right) \\
+                &\leq 2 \sup_I |f| \left(\sup_I f - \inf_I f\right)
+            \end{align*}
+        \end{enumerate}
+    \end{proof}
+
+    \begin{lemma}
+        Let $f$, $g: [a, b] \to \RR$ be integrable. Then
+        \begin{enumerate}
+            \item $f(x) \leq g(x)$ for all $x \implies \int_a^b f \leq \int_a^b g$;
+            \item[2, 3.] for $\lambda \in \RR$, $\int_a^b \lambda f = \lambda \int_a^b f$;
+            \item[4] $f+g$ is integrable, and $\int_a^b (f+g) = \int_a^b f + \int_a^b g$;
+            \item[5] $|f|$ is integrable, and $\int_a^b |f| \geq \left|\int_a^b f\right|$;
+            \item[6] $fg$ is integrable.
+        \end{enumerate}
+    \end{lemma}
+    
+    \begin{proof}
+        Again, we leave 1 to 4 as exercises.
+        \begin{enumerate}
+            \item[5.] For any partition $\mc P$ of $[a, b]$,
+            \begin{align*}
+                U(|f|, \mc P) - L(|f|, \mc P) \leq U(f, \mc P) - L(f, \mc P)
+            \end{align*}
+            so, if $f$ is integrable, then $|f|$ is integrable. Now
+            \begin{align*}
+                -|f(x)| \leq f(x) \leq |f(x)|
+            \end{align*}
+            so, by 1,
+            \begin{align*}
+                -\int_a^b |f(x)| \D x \leq \int_a^b f(x) \D x \leq \int_a^b |f(x)| \D x \\
+                \implies \int_a^b |f(x)| \D x \geq \left|\int_a^b f(x) \D x\right|
+            \end{align*}
+            as required.
+            \item[6.] Observe
+            \begin{align*}
+                f(x)g(x) = \frac 1 4 \left((f(x)+g(x))^2-(f(x)-g(x))^2\right)
+            \end{align*}
+            Hence, it is only necessary to show that, if $f$ is integrable, $f^2$ is integrable. For any partition $\mc P$ of $[a, b]$, we have
+            \begin{align*}
+                U(f^2, \mc P) - L(f^2, \mc P) \leq 2 \sup_I |f| \left(U(f, \mc P) - L(f, \mc P)\right)
+            \end{align*}
+            The result follows.
+        \end{enumerate}
+    \end{proof}
+    
+    \subsection{Integration and differentiation}
+
+    We all know that integration and differentiation are famously opposites -- but why?
+
+    \begin{definition}[Indefinite integral]
+        The \emph{indefinite integral} of a function $f: [a, b] \to \RR$ is
+        \begin{align*}
+            F: [a, b] &\to \RR \\
+            x &\mapsto \int_a^x f(t) \D t
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}[Integrals are continuous]
+        Let $f: [a, b] \to \RR$ be Riemann integrable, and let $F$ be its indefinite integral. Then $F$ is continuous.
+    \end{proposition}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            |F(x+h)-F(x)| &= \left|\int_a^{x+h} f(t) \D t - \int_a^x f(t) \D t \right| \\
+            &= \left|\int_a^{x+h} f(t) \D t\right| \\
+            &\leq \int_x^{x+h} |f(t)| \D t \\
+            &\leq \sup_{[a,b]} f \int_x^{x+h} 1 \D t
+        \end{align*}
+        which goes to 0 as $h \to 0$.
+    \end{proof}
+    
+    \begin{theorem}[Fundamental theorem of calculus, part 1]
+        \label{ftc-1}
+        If $f: [a, b] \to \RR$ is Riemann integrable and continuous at $x_0$, then its indefinite integral $F$ is differentiable at $x_0$. Furthermore,
+        \begin{align*}
+            F'(x_0) = \left.\frac{d}{dx} \int_a^x f(t) \D t\right|_{x_0} = f(x_0)
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        Let
+        \begin{align*}
+            \xi(h) = \frac{F(x_0+h)-F(x_0)-hf(x_0)}{|h|}
+        \end{align*}
+        and we will show $\xi(h) \to 0$ as $h \to 0$. Observe
+        \begin{align*}
+            |F(x_0+h)-F(x_0)-hf(x_0)| &= \left|\int_x^{x_0+h} f(t) \D t - hf(x_0)\right| \\
+            &= \left|\int_x^{x_0+h} (f(t)-f(x_0)) \D t\right| \\
+            &\leq \int_x^{x_0+h} |f(t)-f(x_0)| \D t \\
+            &= \sup_{t \in [0, h]}|f(x_0+t)-f(x_0)| \cdot \underbrace{\int_x^{x_0+h} \D t}_h
+        \end{align*}
+        Hence
+        \begin{align*}
+            \xi(h) \leq \sup_{t \in [0, h]}|f(x_0+t)-f(x_0)|
+        \end{align*}
+        which goes to 0 by continuity as required. 
+    \end{proof}
+    
+    \begin{example*}
+        Take $[a, b] = [-1, 1]$, and
+        \begin{align*}
+            f(x) = \begin{cases}
+                -1 & x \leq 0 \\
+                1 & x > 0
+            \end{cases}
+        \end{align*}
+        which is piecewise continuous hence integrable, with
+        \begin{align*}
+            F(x) = \begin{cases}
+                -1-x & x \leq 0 \\
+                x-1 & x > 0
+            \end{cases} = |x| - 1
+        \end{align*}
+        which is not differentiable at $x=0$. Hence, continuity is necessary in the theorem.       
+    \end{example*}
+    
+    \begin{corollary}
+        If $f = g'$ continuous on $[a, b]$, then
+        \begin{align*}
+            F(x) = \int_a^x f(t) \D t = g(x) - g(a)
+        \end{align*}
+    \end{corollary}
+    
+    \begin{proof}
+        Observe $(F-g)' = 0$ on $[a, b]$, so $F-g$ is constant on $[a, b]$ by the mean value theorem. Then $F(x) - g(x) = F(a) - g(a)$, but $F(a) = 0$, yielding the result.
+    \end{proof}
+    
+    \begin{theorem}[Fundamental theorem of calculus, part 2]
+        \label{ftc-2}
+        If $f: [a, b] \to \RR$ is Riemann integrable and there exists a differentiable $F: [a, b] \to \RR$ such that $F'(x) = f(x)$, then
+        \begin{align*}
+            \int_a^b f(t) \D t = \int_a^b F'(t) \D t = F(b) - F(a)
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        By assumption, there exists for any $\eps > 0$ a partition $\mc P$ of $[a, b]$ such that $U(f, \mc P) - L(f, \mc P) < \eps$. Applying the mean value theorem to $F$ on intervals of this partition, we have
+        \begin{align*}
+            F(x_j) - F(x_{j-1}) = f(t_j)(x_j-x_{j-1})
+        \end{align*}
+        for some $t_j \in (x_{j-1}, x_j)$. Now
+        \begin{align*}
+            F(b) - F(a) = \sum_{j=1}^n f(t_j)(x_j-x_{j-1}) \in [L(f, \mc P), U(f, \mc P)]
+        \end{align*}
+        so, taking inf and sup,
+        \begin{align*}
+            I_*(f) \leq F(b)-F(a) \leq I^*(f)
+        \end{align*}
+        so $F(b)-F(a) = \int_a^b f$ as required.
+    \end{proof}
+
+    \lecture{Lecture 19 -- 07/03/26}
+    
+    Let us now derive some important consequences of this result.
+
+    \begin{proposition}[Integration by parts]
+        Suppose $f$, $g \in C^1([a, b])$. Then
+        \begin{align*}
+            \int_a^b f'g = f(b)g(b) - f(a)g(a) - \int_a^b fg'
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        The product rule gives $f'g = (fg)' - fg'$. Integrating this over $[a, b]$ and applying \cref{ftc-2} to evaluate the $(fg')$ integral gives the result.
+    \end{proof}
+    
+    \begin{proposition}[Integration by substitution]
+        Let $f: [a, b] \to \RR$ be continuous, and let $g: [\alpha, \beta] \to [a, b]$ satisfy $g \in C^1([\alpha, \beta])$ with $g(\alpha) = a$, $g(\beta) = b$. Then
+        \begin{align*}
+            \int_a^b f(x) \D x = \int_\alpha^\beta f(g(t)) g'(t) \D t
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Let $F(x) = \int_a^x f(t) \D t$, then $F: [a, b] \to \RR$ is well-defined and differentiable by \cref{ftc-1}. Set $h = F \circ g: [\alpha, \beta] \to \RR$. Then $h$ is differentiable, with
+        \begin{align*}
+            h'(t) = F'(g(t))g(t) = f(g(t))g'(t)
+        \end{align*}
+        by the chain rule and \cref{ftc-1}. Hence, applying $\cref{ftc-2}$,
+        \begin{align*}
+            \int_a^b f(x) \D x &= F(b) - F(a) = h(\beta) - h(\alpha) \\
+            &= \int_\alpha^\beta h'(t) \D t \\
+            &= \int_\alpha^\beta f(g(t)) g'(t) \D t
+        \end{align*}
+        by \cref{ftc-2}
+    \end{proof}
+    
+    \begin{theorem}[Taylor's theorem, integral remainder]
+        Let $f \in C^n([a, a+h])$, and let $R_{n,f,a}$ be as before. Then
+        \begin{align*}
+            R_{n,f,a}(h) &= \frac{h^n}{(n-1)!} \int_0^1 (1-t)^{n-1}f^{(n)}(a+th) \D t \\
+            &= \frac 1 {(n-1)!} \int_0^h (h-u)^{n-1} f^{(n)}(a+u) \D u
+        \end{align*}
+    \end{theorem}
+    
+    \begin{remark*}
+        Letting $M_n = \sup_{[a,a+h]}|f^(n)|$ as before, we know
+        \begin{align*}
+            \left|R_{n,f,a}(h)\right| &\leq \frac{h^n}{n!} \int_0^1 \left|(1-t)^{h-1} f^{(n)}(a+th)\right| \D t \\
+            &\leq \frac{h^n}{n!} M_n \int_0^1 1 \D t
+        \end{align*}
+        so $R_{n,f,a}(h) \to 0$ as $h \to 0$ for $n$ fixed. Furthermore, if we know $\sup_{n \geq 0} M_n = M < \infty$, we would obtain
+        \begin{align*}
+            |R_{n,f,a}(h)| \leq \frac{Mh^n}{h!} \to 0
+        \end{align*}
+        as $n \to \infty$ for all $|h| < 1$, so $f$ analytic around $a$.       
+    \end{remark*}
+    
+    \begin{proof}
+        We will use integration by parts. Observe
+        \begin{align*}
+            &\; \frac{1}{(n-1)!} \int_0^h (h-u)^{n-1} f^{(n)}(a+u) \D u \\
+            =&\; h^{n-1} \frac{f^{(n-1)}(a)}{(n-1)!} + \frac{1}{(n-2)!} \int_0^h (h-u)^{n-2} f^{(n-1)}(a+u) \D u \\
+            =&; \dots = -\sum_{k=1}^{n-1} \frac 1 {n!} f^{(k)}(a) h^k + \underbrace{\int_0^h f'(a+u) \D u}_{f(a+h)-f(a)} \\
+            =&; R_{n,f,a}(h)
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    \begin{proposition}[Cauchy mean value theorem for integrals]
+        Let $f$, $g: [a, b] \to \RR$ continuous, $g(x) \neq 0$ for any $x \in [a, b]$. Then there exists $c \in (a, b)$ such that
+        \begin{align*}
+            \int_a^b f(x)g(x) \D x = f(c) \int_a^b g(x) \D x
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Let us apply Cauchy MVT to $F(x) = \int_a^x f(t)g(t) \D t$, $G(x) = \int_a^x g(t) \D t$, which are differentiable by \cref{ftc-1}. We obtain $c \in (a, b)$ such that
+        \begin{align*}
+            g(c) \int_a^b f(t)g(t) \D t = (F(b)-F(a))G'(c) = F'(c)(G(b)-G(a)) = f(c)g(c) \int_a^b g(t) \D t
+        \end{align*}
+        so the result follows after division by $g(c)$.        
+    \end{proof}
+    
+    We can now give alternative proofs of the Lagrange (\cref{taylor-lagrange}) and Cauchy (\cref{taylor-cauchy}) remainders for Taylor's theorem.
+
+    \begin{proof}[Lagrange remainder (\emph{assuming $f^{(n)}$ continuous})]
+        Let $g(t) = (1-t)^{n-1}$, then there exists $\theta \in (0, 1)$ such that
+        \begin{align*}
+            R_{n,f,a} &= \frac{h^n}{(h-1)!} f^{(n)}(a + \theta h) \int_0^1 (1-t)^{n-1} \D t \\
+            &= \frac{h^n}{n!} f^{(n)}(a+\theta h)
+        \end{align*}
+    \end{proof}
+    
+    \begin{proof}[Cauchy remainder (\emph{asumming $f^{(n)}$ continuous})]
+        Take $g=1$. Then
+        \begin{align*}
+            R_{n,f,a}(h) &= \frac{h^n}{(n-1)!} (1-\theta)^{n-1} f^{(n)}(a+\theta h) \int_0^1 \D t \\
+            &= \frac{h^n}{(n-1)!} (1-\theta)^{n-1} f^{(n)}(a+\theta h)
+        \end{align*}
+        as required.
+    \end{proof}
+    
+    \subsection{Improper integrals}
+
+    We know how to integrate bounded functions on bounded domains, but what about functions with unbounded image or domain? Let's start with unbounded domains.
+
+    \begin{definition}[Improper integrals on unbounded domain]
+        Suppose $f: [a, \infty) \to \RR$ is integrable on $[a, R]$ for every $a \leq R < \infty$, and set
+        \begin{align*}
+            F: [a, \infty) &\to \RR \\
+            R &\mapsto \int_a^R f(x) \D x
+        \end{align*}
+        Then we say $\int_a^\infty f(x) \D x$ exists/converges if $\lim_{R \to \infty} = L \in \RR$ exists and is finite, in which case we define
+        \begin{align*}
+            \int_a^\infty f(x) \D x = L
+        \end{align*}
+        Otherwise, we say $\int_a^\infty f(x) \D x$ does not exist/does not converge.
+        
+        If $f: \RR \to \RR$ is such that $\int_a^\infty f(x) \D x = L_1$ and $\int_{-\infty}^a f(x) \D x = L_2$, then we say $\int_{-\infty}^\infty f(x) \D x$ exists, and we set
+        \begin{align*}
+            \int_{-\infty}^\infty f(x) \D x = L_1 + L_2 = \lim_{R \to \infty} \int_a^R f(x) \D x + \lim_{r \to \infty} \int_{-r}^a f(x) \D x
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        This is not the same thing as
+        \begin{align*}
+            \lim_{R \to \infty} \int_{-R}^R f(x) \D x
+        \end{align*}
+        which is called the \emph{principal value} of the integral. Indeed, for the integral to exist, the limit must exist irrespectively of how quickly we approach $\infty$ and $-\infty$ on each side.        
+    \end{remark*}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item Take
+            \begin{align*}
+                \int_1^\infty \frac{1}{x^p} \D x = \lim_{R \to \infty} \int_1^R \frac{1}{x^p} \D x
+            \end{align*}
+            which exists if and only if $p > 1$.
+            \item Take
+            \begin{align*}
+                \int_2^\infty \frac{1}{x \log^2 x }\D x = \lim_{R \to \infty} \int_2^R \frac{1}{x \log^2 x}\D x = \frac 1{\log 2}
+            \end{align*}
+        \end{itemize}
+    \end{example*}
+    
+    \begin{proposition}[Comparison test for integrals]
+        Suppose $f$, $g: [a, \infty)$ are integrable on $[a, R]$ for every $R < \infty$, and satisfy $0 \leq f(x) \leq g(x)$ for any $x \in [a, \infty)$. Then
+        \begin{itemize}
+            \item $\int_a^\infty g(x) \D x$ converges $\implies \int_a^\infty f(x) \D x$ converges, and $\int_a^\infty f(x) \D x \leq \int_a^\infty g(x) \D x$;
+            \item $\int_a^\infty f(x) \D x$ diverges to $\infty$ $\implies \int_a^\infty g(x) \D x$ diverges to $\infty$.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item Let $F(R) = \int_a^R f(x) \D x$, which is increasing since $f \geq 0$. It is also bounded, since
+            \begin{align*}
+                0 \leq F(R) \leq \int_a^R g(x) \D x \leq \int_a^\infty g(x) \D x
+            \end{align*}
+            Since $F$ is monotone and bounded, $L = \sup_{R \geq a} F(R) < \infty$ exists. We claim $L = \int_a^\infty f(x) \D x$. By definition of sup, for any $\eps > 0$, there exists $R_0 \in [a, \infty)$ such that
+            \begin{align*}
+                L-\eps \leq F(R_0) \leq F(R) \leq L
+            \end{align*}
+            Now, taking $R \to \infty$, we obtain
+            \begin{align*}
+                L-\eps \leq \lim_{R \to \infty} F(R) \leq L
+            \end{align*}
+            for any $\eps > 0$, so $\lim_{R \to \infty} F(R) = L$ as required.
+            \item Since $f \geq 0$, $\lim_{R \to \infty} \int_a^R f(x) \D x = \infty$. Hence, for any $L > 0$, there exists $R$ such that $F(r) > L$ for all $r \geq R$. But then
+            \begin{align*}
+                \int_a^R g(x) \D x \geq F(R) > L
+            \end{align*}
+            so, taking the limit on both sides,
+            \begin{align*}
+                \lim_{R \to \infty} \int_a^R g(x) \D x = \infty
+            \end{align*}
+            as required.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{example*}
+        Let us show that $\int_{-\infty}^\infty e^{-x^2} \D x$ converges. Suppose $x \geq 1$, then $x^2 \geq x \implies e^{-x^2} \leq e^{-x}$. Hence
+        \begin{align*}
+            \int_1^\infty e^{-x^2} \D x \leq \int_1^\infty e^{-x} \D x = \left[-e^{-x}\right]_1^{\infty} = \frac 1 e
+        \end{align*}
+        so
+        \begin{align*}
+            \int_{-\infty}^\infty e^{-x^2} \D x = 2 \int_0^\infty e^{-x^2} \D x = \underbrace{2 \int_1^\infty e^{-x^2} \D x}_{\leq \frac 2 e} + \underbrace{2 \int_0^1 e^{-x^2} \D x}_{\text{finite}}
+        \end{align*}
+    \end{example*}
+    
+    \begin{proposition}[Ratio test for integrals]
+        Suppose $f$, $g: [a, \infty)$ are integrable on $[a, R]$ for every $R < \infty$, satisfy $f$, $g \geq 0$, and suppose further
+        \begin{align*}
+            \lim_{x \to \infty} \frac{f(x)}{g(x)} = L \in (0, \infty)
+        \end{align*}
+        Then $\int_a^\infty f(x) \D x$ converges if and only if $\int_a^\infty g(x) \D x$ converges.
+    \end{proposition}
+    
+    \begin{proof}
+        Left as an exercise by applying the comparison test.
+    \end{proof}
+    
+    \begin{remark*}
+        If $\lim_{x \to \infty} \frac{f(x)}{g(x)} = 0$, then $f(x) \leq g(x)$ from some point, so by comparison test from that point onwards
+        \begin{align*}
+            \int_a^\infty g(x) \D x \text{ convergent } \implies \int_a^\infty f(x) \D x \text{ convergent} 
+        \end{align*}
+        Likewise, if $\lim_{x \to \infty} \frac{f(x)}{g(x)} = \infty$, then $f(x) \geq g(x)$ from some point, so by comparison test from that point onwards
+        \begin{align*}
+            \int_a^\infty g(x) \D x \text{ divergent } \implies \int_a^\infty f(x) \D x \text{ divergent }
+        \end{align*}
+    \end{remark*}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item Consider again $e^{-x^2}$. We have $\lim_{x \to \infty} \frac{e^{-x^2}}{e^{-x}} = 0$, and $\int_0^\infty e^{-x} \D x = 1 < \infty$, so applying the remark gives $\int_0^\infty e^{-x^2} \D x < \infty$.
+            \item Consider $\int_1^\infty \frac x{x^4+1} \D x$. We have
+            \begin{align*}
+                \lim_{x \to \infty} \frac{\frac{x}{x^4+1}}{\frac 1 {x^3}} = 1
+            \end{align*}
+            so, by the ratio test, since $\int_1^\infty \frac 1 {x^3} \D x < \infty$, we know $\int_1^\infty \frac{x}{x^4+1} \D x < \infty$.
+        \end{itemize}
+    \end{example*}
+    
+    Indeed, on sheet 4 we will see that the root test and Dirichlet test also have natural generalisations to integrals. The integral test can also be nicely thought of in the context of this chapter.
+
+    \lecture{Lecture $n+1$}
+
+    \begin{definition}[Improper integrals with an isolated singularity]
+        Let $f: (a, b] \to \RR$ be integrable on $[a + \delta, b]$ for any $0 < \delta \leq b-a$. Set 
+        \begin{align*}
+            F: (0, b-a] &\to \RR
+            \delta &\mapsto \int_{a+\delta}^b f(x) \D x
+        \end{align*}
+        Then, we say $\int_a^b f(x) \D x$ exists/converges if $\lim_{\delta \to 0} F(\delta)$ exists and is finite, and we say
+        \begin{align*}
+            \int_a^b f(x) \D x = \lim_{\delta \to 0} F(\delta)
+        \end{align*}
+        Otherwise, we say $\int_a^b f(x) \D x$ does not exist/does not converge.
+
+        If $f: [B, b] \setminus \{a\}$ is such that $\int_B^a f(x) \D x = l_1$ and $\int_a^b f(x) \D x = l_2$, then we say $\int_B^b f(x) \D x$ exists, and we set
+        \begin{align*}
+            \int_B^b f(x) \D x = l_1 + l_2 = \lim_{\delta_1 \to 0} \int_B^{a-\delta_1} f(x) \D x + \lim_{\delta_2 \to 0} \int_{a+\delta_2}^b f(x) \D x
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        Analogously to above, this is not the same thing as
+        \begin{align*}
+            \lim_{\delta \to 0} \left(\int_B^{a-\delta} f(x) \D x + \int_{a+\delta}^b f(x) \D x\right)
+        \end{align*}
+        as exemplified by, for example, $f(x) = \frac 1 x$.
+    \end{remark*}
+    
+    \begin{example*}
+        $\int_0^1 \frac 1 {x^p} \D x$ converges if and only if $p < 1$. Observe
+        \begin{align*}
+            \int_\delta^1 \frac 1 {x^p} \D x = \begin{cases}
+                [\log x]_{\delta}^1 = -\log \delta & p = 1 \\
+                \left[\frac{x^{1-p}}{1-p}\right]_\delta^1 = \frac{\delta^{1-p}-1}{p-1} & p \neq 1
+            \end{cases}
+        \end{align*}
+        Taking $\delta \to 0$, we see that the limit does not exist if $p \geq 1$, but exists otherwise.
+    \end{example*}
+    
+    Indeed, it turns out that these two types of improper integral are in some strong sense equivalent -- with a suitable substitution, we can always interconvert between them.
+
+    \begin{lemma}
+        Let $f: (a, b] \to \RR$ be Riemann integrable on $[a+\delta, b]$ for any $\delta \in (0, b-a)$. Choose $\phi: [c, \infty) \to (a, b]$ a $C^1$ strictly decreasing bijection with $\phi(c) = b$, $\lim_{t \to \infty}\phi(t) = a$. Then
+        \begin{align*}
+            \int_a^b f(x) \D x \text{ exists } \iff \int_c^\infty f(\phi(t))(-\phi'(t)) \D t \text{ exists}
+        \end{align*}
+    \end{lemma}
+    
+    \lecture{Lecture $n$}
+
+    \section{?}
+
+    \lecture{Lecture $n+1$}
+
+    \lecture{Lecture $n+2$}
+
+    \subsection{Exponential and logarithm}
+    
+    Taylor's theorem with Lagrange remainder says that
+    \begin{align*}
+        R_{N,0}(x) = e^x - \sum_{n=1}^{N-1} \sum_{x^n}{n!} = e^\xi \frac{x^N}{N!}
+    \end{align*}
+    For fixed $x \in \RR$, $|R_{N,0}(x)| \leq |e^\xi| \frac{|x|^N}{N!}$, which goes to 0 as $N \to \infty$. We conclude that, for $x \in \RR$,
+    \begin{align*}
+        e^x = \sum_{n=0}^\infty \frac{x^n}{n!}
+    \end{align*}
+    Now, extending to $\CC$, we will make this definitional.
+
+    \begin{definition}[Exponential function]
+        The \emph{exponential function} is given by
+        \begin{align*}
+            \exp: \CC &\to \CC \\
+            z &\mapsto \sum_{n=0}^\infty \frac{z^n}{n!}
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        $\exp$ is smooth with $\exp' = \exp$, $\exp(0) = 1$, and $\exp(a+b) = \exp a \exp b$.
+    \end{lemma}
+    
+    \begin{proof}
+        The first two properties are clear. For the third part, let $f(z) = \exp(a+b-z)\exp(z)$, which is smooth and hence differentiable, with $f'(z) = 0$ after applying $\exp = \exp'$. Hence $f$ is constant, so $f(a) = f(0)$ -- we have
+        \begin{align*}
+            \exp(a+b-a)\exp(a) = \exp(a+b)
+        \end{align*}
+        as required.       
+    \end{proof}
+    
+    \begin{lemma}
+        Restrict $\exp$ to $\RR \to \RR$. Then
+        \begin{itemize}
+            \item $\exp(x) > 0$ for all $x \in \RR$;
+            \item $\exp$ is strictly increasing;
+            \item $\exp(x) \to \infty$ as $x \to \infty$, $\exp(x) \to 0$ as $x \to -\infty$;
+            \item $\exp: \RR \to (0, \infty)$ is a bijection.
+        \end{itemize}
+    \end{lemma}
+    
+    \begin{proof}
+        For $x < 0$, every term in the series is positive, so $\exp(x) \geq 1 + x$, so that $\exp(x) > 0$ and $\lim_{x \to \infty}\exp(x) = \infty$. On the other hand, for $x < 0$, $\exp(-x)\exp(x) = 1$, so $\exp(-x) > 0 \implies \exp(x) > 0$, and furthermore $\exp(-x) \to \infty \implies \exp(x) \to 0^+$.
+
+        That $\exp$ is strictly increasing follows from $\exp' = \exp > 0$. From this it follows that $\exp$ is injective. Now, given
+        \begin{align*}
+            y \in (0, \infty) = \left(\lim_{x \to -\infty}\exp(x), \lim_{x \to \infty}\exp(x)\right)
+        \end{align*}
+        Hence, there are reals $a$, $b$ with $\exp(a) < y < \exp(b)$. Applying the intermediate value theorem gives surjectivity and hence bijectivity as required.               
+    \end{proof}
+    
+    Since $\exp: \RR \to (0, \infty)$ is bijective, it must have an inverse.
+    
+    \begin{definition}[Natural logarithm]
+        The \emph{natural logarithm} is defined as follows:
+        \begin{align*}
+            \log: (0, \infty) &\to \RR \\
+            x &\mapsto \exp^{-1}(x)
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        We have that
+        \begin{itemize}
+            \item $\log$ is smooth and monotone, with $\log'(y) = \frac 1 y$ and $\log y = \int_1^y \frac 1 t \D t$;
+            \item $\log(yz) = \log y + \log z$;
+            \item $\log(y) \to \infty$ as $y \to \infty$, $\log(y) \to -\infty$ as $y \to 0^+$.
+        \end{itemize}
+    \end{lemma}
+    
+    \begin{proof}
+        The inverse function theorem says that $\log$ is smooth, monotone and has derivative $\frac 1 y$. Then, FTC gives
+        \begin{align*}
+            \int_1^y \frac 1 t \D t = \log y - \log 1 = \log y
+        \end{align*}
+        since $\log y = \log(\exp(0)) = 0$.        
+
+        For the second part, we have $\log(yz) = \log(\exp(u)\exp(v)) = \log(\exp(u+v)) = u + v = \log(y) + \log(z)$.
+
+        The last part is left as an exercise.
+    \end{proof}
+    
+    \begin{remark*}
+        Observe
+        \begin{align*}
+            \log(1+y) &= \int_1^y \frac 1{1+t} \D t \\
+            &= \int_1^y \sum_{n=0}^\infty (-1)^n t^n \D t
+        \end{align*}
+        if $|t| \leq |y| < 1$. Since the inner power series has radius of convergence 1, and we are already restricted to $|t| < 1$, we can integrate term-by-term to obtain
+        \begin{align*}
+            \log(1+y) = \sum_{n=0}^\infty \frac{(-1)^n}{n+1}y^{n+1}
+        \end{align*}
+        By taking limits as $y \to 1$, we can show
+        \begin{align*}
+            \sum_{n=0}^\infty \frac{(-1)^{n-1}}{n} = \log 2
+        \end{align*}
+    \end{remark*}
+    
+    \begin{definition}[Exponentiation]
+        Let $x > 0$, then we define
+        \begin{align*}
+            x^\alpha := \exp(\alpha \log x)
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        Let $x$, $y > 0$, $\alpha$, $\beta \in \RR$. Then
+        \begin{itemize}
+            \item $(xy)^\alpha = x^\alpha y^\alpha$;
+            \item $x^{\alpha+\beta} = x^\alpha x^\beta$;
+            \item $(x^\beta)^\alpha = x^{\alpha\beta}$;
+            \item $x^1 = x$, $x^0 = 1$;
+        \end{itemize}
+    \end{lemma}
+    
+    \begin{proof}
+        These results mostly follow easily from the definitions. We will check the third -- we have
+        \begin{align*}
+            (x^\beta)^\alpha &= \exp(\alpha \log(\exp(\beta \log(x)))) \\
+            &= \exp(\alpha \beta \log(x))
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    \begin{corollary}
+        Let $p$, $q \in \ZZ$, then
+        \begin{align*}
+            x^p = \underbrace{x \cdots x}_{p \text{ times}}
+        \end{align*}
+        and
+        \begin{align*}
+            x^{\frac p q} = \sqrt[q]{x^p}
+        \end{align*}
+        so our new definition matches our normal definition of exponentiation on exponents in $\QQ$.
+    \end{corollary}
+    
+    \begin{corollary}
+        We have, for $x \in \QQ$, $\exp(x) = e^x$ in the normal sense.
+    \end{corollary}
+    
+    \begin{proposition}[Growth of exponentials, powers and logarithms]
+        Let $r \in \RR^+$. Then
+        \begin{itemize}
+            \item $x^r e^{-x} \to 0$ as $x \to \infty$;
+            \item $x^{-r} \log x \to 0$ as $x \to \infty$;
+            \item $x^r \log x \to 0^+$ as $x \to 0^+$.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item Let $x > 1$, then
+            \begin{align*}
+                e^x = \sum_{k\geq 0} \frac{x^k}{k!} > \frac{x^n}{n!}
+            \end{align*}
+            for any $n$. Choose $n-r \geq 1$, then $0 \leq x^r e^{-x} \leq \frac{n!}{x^{n-r}} \leq \frac{n!}{x}$, so $x^r e^{-x} \to 0$ by sandwich.         
+            \item We have $t^{-1} \leq t^{\eps-1}$ for $t \geq 1$ and any $\eps > 0$. Pick $\eps \in (0, r)$, so
+            \begin{align*}
+                0 \leq x^{-r} \log x &= x^-r \int_1^x \frac 1 t \D t  
+                \\
+                &\leq x^{-r} \int_1^x t^{\eps-1} \D t \\
+                &\leq \frac 1 \eps x^{\eps-r}
+            \end{align*}
+            which goes to 0 as $x \to \infty$, giving the result.
+            \item By putting $x = e^{-t}$ and $y=rt$, we have
+            \begin{align*}
+                \lim_{x \to 0^+} x^r \log x = -\lim_{t \to \infty} -t e^{-tr} = -\lim_{y \to \infty} \frac 1 r ye^{-y} = 0
+            \end{align*}
+        \end{itemize}
+    \end{proof}
+
+    \subsection{Trigonometric functions}
+
+    \begin{definition}[Sine and cosine]
+        We define the functions sine and cosine as follows:
+        \begin{align*}
+            \cos: \CC &\to \CC \\
+            z &\mapsto \frac 1 2 \left(e^{iz}+e^{-iz}\right) = \sum_{k=0}^\infty \frac{(-1)^k}{(2k!)}z^{2k} \\[10pt]
+            \sin: \CC &\to \CC \\
+            z &\mapsto \frac 1 {2i} \left(e^{iz}-e^{-iz}\right) = \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!}z^{2k+1}
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        We have, for $w$, $z \in \CC$,
+        \begin{itemize}
+            \item $\cos(0) = 1$, $\sin(0) = 0$;
+            \item $\cos'(z) = \sin z$, $\sin'(z) = \cos(z)$;
+            \item $\sin(z+w) = \sin z \cos w + \cos z \sin w$;
+            \item $\cos(z+w) = \cos z \cos w - \sin z \sin w$;
+            \item $\sin^2 z + \cos^2 z = 1$
+        \end{itemize}
+    \end{lemma}
+    
+    \begin{proof}
+        This can all be derived with relative ease. For example,
+        \begin{align*}
+            \cos z \cos w - \sin z \sin w &= \frac 1 4 \left(e^{iz}+e^{-iz}\right)\left(e^{iw}+e^{-iw}\right) + \frac 1 4 \left(e^{iz}-e^{-iz}\right)\left(e^{iw}-e^{-iw}\right) \\
+            &= \frac{1}{2} \left(e^{iz}e^{iw}+e^{-iz}e^{-iw}\right) = \cos(z+w)
+        \end{align*}
+        Taking now $z=-w$, we can obtain the last result.
+    \end{proof}
+    
+    On the reals, the identity $\sin^2 x + \cos^2 x = 1$ gives that $|\sin x|$, $|\cos x| \leq 1$.
+
+    \begin{proposition}[Periodicity of sine and cosine]
+        There exists a smallest positive value $\omega$ such that $\cos(\omega/2) = 0$, $\sin(\omega/2)=1$, and
+        \begin{itemize}
+            \item $\sin$ and $\cos$ are periodic with period $2\omega$;
+            \item $\sin(x+\omega) = -\sin x$, $\cos(x+\omega)=-\cos x$;
+            \item $\sin(x+\omega/2) = \cos x$, $\cos(x+\omega/2)=-\sin x$.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{proof}
+        Once we have shown the very first part of the statement, the rest of the results follow by the addition theorems. Let us look at $x \in (0, 2)$, and note that
+        \begin{align*}
+            \cos(x) = -\sin(x) = -\left[\left(x-\frac{x^3}{3!}\right)+\left(\frac{x^5}{5!}-\frac{x^7}{7!}\right)+\dots\right]
+        \end{align*}
+        since we can rearrange and combine terms by the absolute convergence of the series. Examining each of these parirs of terms, they are all positive, so we conclude $\cos$ is decreasing on this interval (and $\sin$ is positive).
+
+        It follows $\cos$ has at most one root in this interval by Rolle's theorem. To see the existence of the root, observe
+        \begin{align*}
+            \cos(\sqrt 2) &= \underbrace{\left(1 - \frac{(\sqrt 2)^2}{2!}\right)}_{>0} + \underbrace{\left(\frac{(\sqrt 2)^4}{4!} - \frac{(\sqrt 2)^6}{6!}\right)}_{>0} + \dots \\
+            \cos(\sqrt 3) &= \underbrace{1 - \frac{(\sqrt 3)^2}{2!} + \frac{(\sqrt 3)^4}{4!}}_{-\frac 1 8} - \underbrace{\left(\frac{(\sqrt 3)^6}{6!}-\frac{(\sqrt 3)^8}{8!}\right)}_{>0} - \dots
+        \end{align*}
+        so that $\cos(\sqrt 2) > 0$ and $\cos(\sqrt 3) < 0$. Hence, by the intermediate value theorem, we have $\omega \in (\sqrt 2, \sqrt 3) \subset (0, 2)$ with $\cos(\omega/2) = 0$. Hence, $\sin(\omega/2) = \pm 1$, but we know $\sin$ is positive, so $\sin(\omega/2)=1$.
+    \end{proof}
+    
+    \begin{corollary}
+        We have that
+        \begin{itemize}
+            \item For $x \in \RR$, the function $e^{ix}$ is periodic with period $2\omega$;
+            \item $e^{i\omega} = -1$;
+            \item $e^{i\omega/2} = i$.
+        \end{itemize}
+    \end{corollary}
+    
+    \begin{lemma}
+        $2\omega$ is the perimeter of the unit circle, $S^1 = \{|z| = 1: z \in \CC\}$.
+    \end{lemma}
+    
+    \begin{proof}
+        We claim that
+        \begin{align*}
+            \gamma: [0, 2\omega) &\to S^1 \\
+            t &\mapsto e^{it}
+        \end{align*}
+        is a bijection. We show
+        \begin{itemize}
+            \item \emph{$\gamma$ is surjective.} Take $z \in \S^1$ with $z=a+ib$, $a$, $b \in \RR$, and $a^2+b^2=1$. Hence $|a|$, $|b| \leq 1$, so, since $c: [0, \omega] \to [-1, 1]$ is continuous and strictly monotone, we have $t \in [0, \omega]$ with $c(t) = a$.
+            
+            Furthermore, since $s: [0, \omega] \to [-1, 1]$ is non-negative, we have $\sin(t) = \sqrt{1-a^2}$. Hence, if $b=\sqrt{1-a^2}$, we get the result as desired. On the other hand, if $b=-\sqrt{1-a^2}$, we can make $b=-\sin(t)=\sin(2\omega-t)$, and use that $\cos(t)=\cos(2\omega-t)$. This gives the result.
+
+            \item \emph{$\gamma$ is injective.} Since $e^{it}$ has least positive period $2\omega$ by definition, it is injective on $[0, 2\omega)$.
+        \end{itemize}
+
+        Now, the perimeter of $S^1$ is the length of $\gamma$, i.e.
+        \begin{align*}
+            \int_0^{2\omega} |\gamma'(t)| \D t &= \int_0^{2\omega} |ie^{it}| \D t \\
+            &= \int_0^{2\omega} \D t = 2\omega
+        \end{align*}
+    \end{proof}
+    
+    \begin{definition}[Hyperbolic sine and cosine]
+        We define the hyperbolic sine and cosine functions as follows:
+        \begin{align*}
+            \cosh: \CC &\to \CC \\
+            z &\mapsto \frac 1 2 \left(e^z+e^{-z}\right) = \cos(iz) \\[10pt]
+            \sinh: \CC &\to \CC \\
+            z &\mapsto \frac 1 2 \left(e^z-e^{-z}\right) = -i\sin(iz)
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        We have, for $z \in \CC$,
+        \begin{itemize}
+            \item $\cosh'z=\sinh z$;
+            \item $\sinh'z=\cosh z$;
+            \item $\cosh^2z-\sinh^2z=1$.
+        \end{itemize}
+    \end{lemma}
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 \end{document}

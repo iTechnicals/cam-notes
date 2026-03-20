@@ -119,19 +119,19 @@
     where $\hvec r = \vec r / r$ is a unit vector. Thus we have the inverse square law of gravity.
 
     \begin{remark*}
-        Sometimes we write $V = m\Phi$ where $\Phi = -\frac{GM}{|\vec x - \vec x_0|}$ is called the \emph{gravitational potential}. 
+        Sometimes we write $V = m\varphi$ where $\varphi = -\frac{GM}{|\vec x - \vec x_0|}$ is called the \emph{gravitational potential}. 
     \end{remark*}
     
     Near the surface of the Earth, take $\vec x_0 = \vec 0$, and $|\vec x| = R + z$, where $R$ is the radius of the Earth and $z \ll R$. Then
 
     \begin{align*}
-        \Phi(R + z) &= -\frac{GM}{R+z} \\
+        \varphi(R + z) &= -\frac{GM}{R+z} \\
         &= -\frac{GM}{R}\left[1-\frac{z}{R}+\frac{z^2}{R^2} + \cdots\right] \\
         &\approx \text{constant} + \underbrace{\frac{GM}{R^2}}_{g}z
     \end{align*}
     where $g \approx 9.8 \si{ms^{-2}}$. Since the constant will drop out when taking the gradient, we ignore it, so we have
     \begin{align*}
-        \Phi &\approx gz \\
+        \varphi &\approx gz \\
         \implies \vec F &= -mg \hvec z
     \end{align*}
     
@@ -243,23 +243,23 @@
     
     We will restrict to static electromagnetic fields, in which case we have
     \begin{align*}
-        \V E = -\grad \Phi
+        \V E = -\grad \varphi
     \end{align*}
     
-    for some electric potential $\Phi$. We claim the conserved energy is $E = \frac{1}{2}m \dot{\V x}^2 + q\Phi(\V x)$. We have
+    for some electric potential $\varphi$. We claim the conserved energy is $E = \frac{1}{2}m \dot{\V x}^2 + q\varphi(\V x)$. We have
 
     \begin{align*}
-        \frac{dE}{dt} &= m \ddot{\V x} \cdot \dot{\V x} + q \grad \Phi \cdot \dot{\V x} \\
-        &= (\V F + q \grad \Phi) \cdot \dot{\V x} \\
+        \frac{dE}{dt} &= m \ddot{\V x} \cdot \dot{\V x} + q \grad \varphi \cdot \dot{\V x} \\
+        &= (\V F + q \grad \varphi) \cdot \dot{\V x} \\
         &= q(\dot{\V x} \times \V B) \cdot \dot{\V x} \\
         &= 0
     \end{align*}
     
     The velocity-dependent force is orthogonal to the trajectory of the particle, so it does no work on the particle and energy is still conserved.
 
-    Electric forces are similar to gravitational ones: the potential $\Phi$ at $\V x$ due to another particle of charge $Q$ at $\V x_0$ is
+    Electric forces are similar to gravitational ones: the potential $\varphi$ at $\V x$ due to another particle of charge $Q$ at $\V x_0$ is
     \begin{align*}
-        \Phi = \frac{Q}{4 \pi \eps_0} \cdot \frac{1}{|\V x - \V x_0|}
+        \varphi = \frac{Q}{4 \pi \eps_0} \cdot \frac{1}{|\V x - \V x_0|}
     \end{align*}
     where $\eps_0$ is the \emph{permittivity of free space}. Just like with gravity, this leads to an inverse square law called the \emph{Coulomb force}.
 
@@ -282,16 +282,16 @@
     \end{align*}
     and this is a second-order equation for $\dot x$ -- we have
     \begin{align*}
-        \dot x = \tilde{A} \sin(\omega t + \phi)
+        \dot x = \tilde{A} \sin(\omega t + \varphi)
     \end{align*}
     where $\omega = \frac{qB}{m}$ is the \emph{cyclotron frequency}. Hence
     \begin{align*}
-        \Aboxed{x = x_0 + A \cos(\omega t + \phi)}
+        \Aboxed{x = x_0 + A \cos(\omega t + \varphi)}
     \end{align*}
     Plugging into (1), we have
     \begin{align*}
-        qB \dot y &= -mA \omega^2 \cos(\omega t + \phi) \\
-        \implies \Aboxed{y &= y_0 - A \sin(\omega t + \phi)}
+        qB \dot y &= -mA \omega^2 \cos(\omega t + \varphi) \\
+        \implies \Aboxed{y &= y_0 - A \sin(\omega t + \varphi)}
     \end{align*}
     
     Hence, the particle is moving in a circle in the $x$-$y$ plane while moving with a constant velocity in the $z$-direction.
@@ -304,7 +304,7 @@
     \end{align*}
     which we can solve nice and easily: $\xi = c_1 e^{-i\omega t} + c_2$. Let's put
     \begin{align*}
-        c_1 &= Ae^{-i\phi} \\
+        c_1 &= Ae^{-i\varphi} \\
         c_2 &= x_0 + iy_0
     \end{align*}
     Plugging in and taking real and imaginary parts, we recover the exact same solution as before.
@@ -356,7 +356,7 @@
     If $V''(x_0) > 0$, this is the potential for a harmonic oscillator. We end up with
     \begin{align*}
         m \ddot x &= -V'(x) = -(x-x_0)V''(x_0) \\
-        \implies x &= x_0 + A \cos(\omega t + \phi)
+        \implies x &= x_0 + A \cos(\omega t + \varphi)
     \end{align*}
     so we have oscillations with frequency $\omega = (V''(x_0)/m)^{1/2}$.
 
@@ -843,7 +843,7 @@
     \begin{align*}
         r = \frac{r_0}{\tilde e \cos \theta - 1}
     \end{align*}
-    with $r_0 = \frac{l^2m}{\kappa}$ (note we've changed some signs but it is in fact the same equation). We want to find the scattering angle $\phi$ between the particle's incoming and outgoing paths.
+    with $r_0 = \frac{l^2m}{\kappa}$ (note we've changed some signs but it is in fact the same equation). We want to find the scattering angle $\varphi$ between the particle's incoming and outgoing paths.
 
     First, note the incoming and outgoing impact parameters are equal, since angular momentum is conserved and, at a given distance, the speed is the same by symmetry or the conservation of energy. Looking at the orbit equation, we can clearly see that $r$ goes to infinity when the denominator is zero, i.e. $\tilde e \cos \theta = 1$. Let us consider energies. We have
     \begin{align*}
@@ -851,14 +851,14 @@
         &= \frac{\kappa^2}{2m(bv)^2} \left(\frac{1}{\cos^2 \theta}-1\right) \\
         &= \frac{\kappa^2}{2mb^2v^2} \tan^2 \theta
     \end{align*}
-    Also, we can see (DIAGRAM!!!!) that the angle of deviation of the particle's path, $\phi$, satisfies $\phi + 2\theta = \pi$, so
+    Also, we can see (DIAGRAM!!!!) that the angle of deviation of the particle's path, $\varphi$, satisfies $\varphi + 2\theta = \pi$, so
     \begin{align*}
-        \tan \theta = \tan \left(\frac{\pi-\phi}2\right) = \frac 1 {\tan \frac{\phi}2}
+        \tan \theta = \tan \left(\frac{\pi-\varphi}2\right) = \frac 1 {\tan \frac{\varphi}2}
     \end{align*}
     Hence
     \begin{align*}
-        \frac 1 2 mv^2 &= \frac{\kappa^2}{2mb^2v^2} \cdot \frac 1 {\tan^2 \frac{\phi}2} \\
-        \implies \phi &= 2 \arctan \left(\frac \kappa{bmv^2}\right)
+        \frac 1 2 mv^2 &= \frac{\kappa^2}{2mb^2v^2} \cdot \frac 1 {\tan^2 \frac{\varphi}2} \\
+        \implies \varphi &= 2 \arctan \left(\frac \kappa{bmv^2}\right)
     \end{align*}
     We see that a small $b$ leads to a large scattering angle, which allows scattering experiments to probe very small distances.
 
@@ -1333,7 +1333,7 @@
     \subsection{Newton's equations in a rotating reference frame}
 
     \begin{theorem}[Newton's equations in a rotating reference frame]
-        In a rotating reference frame,
+        In a reference frame with angular velocity $\V \omega$,
         \begin{align*}
             \left(\frac{d^2\V x}{dt^2}\right)_{S'} = \frac{\V F}m - \dot{\V \omega} \times \V x - 2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'} - \V \omega \times (\V \omega \times \V x)
         \end{align*}
@@ -1402,7 +1402,7 @@
     which allows us to see that potential eneergy decreases moving away from the axis of rotation.
 
     \begin{example*}
-        Take a mass on a string hanging from a fixed point above the Earth at latitude $\theta$. We want to calculate $\phi$, the angle between the string and the vertical (DIAGRAM). Let us find the forces acting on the particle. We have
+        Take a mass on a string hanging from a fixed point above the Earth at latitude $\theta$. We want to calculate $\varphi$, the angle between the string and the vertical (DIAGRAM). Let us find the forces acting on the particle. We have
         \begin{align*}
             \V g = -mg \hvec r
         \end{align*}
@@ -1413,11 +1413,11 @@
         \end{align*}
         (DIAGRAM). Then, to hold the string together, there must be a force exerted by the molecules in the string balancing the other forces --  the tension $\V T$. We can write (DIAGRAM)
         \begin{align*}
-            \V T = T \cos \phi \hvec r + T \sin \phi \hvec \theta
+            \V T = T \cos \varphi \hvec r + T \sin \varphi \hvec \theta
         \end{align*}
-        Now we have two equations for each of $\hvec r$ and $\hvec \theta$, and two unknowns $T$ and $\phi$. So the system should be soluble. We obtain
+        Now we have two equations for each of $\hvec r$ and $\hvec \theta$, and two unknowns $T$ and $\varphi$. So the system should be soluble. We obtain
         \begin{align*}
-            \tan \phi = \frac{\omega^2 R \cos \theta \sin \theta}{g - \omega^2 R \cos^2\theta}
+            \tan \varphi = \frac{\omega^2 R \cos \theta \sin \theta}{g - \omega^2 R \cos^2\theta}
         \end{align*}       
     \end{example*}
     
@@ -1551,6 +1551,709 @@
     \end{align*}
     for $a$, $b$, $c$, $d$ which don't depend on $x$, $t$, but can depend on the relative velocity between the frames.
     
+    \lecture{Lecture 17 -- 28/02/26}
+    
+    The frame $S'$ is moving at speeed $v$ in the frame $S$, but is at rest with respect to itself -- hence, the line $x=vt$ should map to $x'=0$ under the transformation. Hence, $x' = \gamma_v(x-vt)$ for some $\gamma_v$ depending on $v$. Now we have some more steps to do.
+
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item First, we would like to show $\gamma_v = \gamma_{-v}$. Consider $\tilde S$ and $\tilde S'$ where the $x$-axis is inverted in direction, i.e. $\tilde x = -x$, $\tilde x' = -x'$.
+        
+        Now, if $S'$ moves at speed $v$ with respect to $S$, then $\tilde S'$ moves at speed $-v$ with respect to $\tilde S$. Hence
+        \begin{align*}
+            \tilde x' &= \gamma_{-v} (\tilde x + vt) \\
+            \implies x' &= \gamma_{-v} (x - vt)
+        \end{align*}
+        so, compaing with the definition of $\gamma_v$, we obtain the desired result.
+        
+        Another argument for this fact is that there is no preferred direction (by relativity), so $\gamma$ should only depend on the magnitude of $v$ (this will help us generalise to 3D).
+
+        \item If we boost by $v$ and then by $-v$, we want to get back to the original frame. In equations,
+        \begin{align*}
+            x &= x'' = \gamma_{-v}(x' + vt') = \gamma_{-v}\left(\gamma_v(x-vt)+vt'\right) \\
+            &= \gamma^2(x-vt) + \gamma vt' \\
+            \implies \Aboxed{t' &= \gamma t + \frac{1-\gamma^2}{\gamma v}x}
+        \end{align*}
+        Now we have $x'$ and $t'$ in terms of $x$ and $t$, with $\gamma$ the only undetermined quantity.
+
+        \item Use postulate 2, that the speed of light is the same in all inertial frames. That is, the light ray $x = ct$ must map to $x'=ct'$. Hence
+        \begin{align*}
+            x' = ct' &= c\left(\gamma t + \frac{1-\gamma^2}{\gamma v}x\right) \\
+            \implies \gamma(c-v)t &= c\left(\gamma + \frac{1-\gamma^2}{\gamma} \cdot \frac c v\right)t \\
+            \implies \Aboxed{\gamma &= \frac 1 {\sqrt{1-v^2/c^2}}}
+        \end{align*}
+    \end{enumerate}
+    
+    Notably, this transformation only makes sense for $v < c$. We have now derived the full form of a Lorentz transformation:
+    \begin{align*}
+        x' &= \gamma(x-vt) \\
+        t' &= \gamma\left(t-\frac v{c^2} x\right)
+    \end{align*}
+    
+    For velocities $v \ll c$ (the \emph{non-relativistic limit}), we would expect this to reduce to a Galilean transformation. We have that $\gamma \approx 1$, and $\frac v c \to 0$, and simply substituting gives $x' = x-vt$, $t' = t$ as expected.
+
+    Let us now explore the surprising consequences of this formulation.
+    
+    \subsection{Addition of velocities}
+    
+    Suppose a particle is moving with speed $u'$ in a frame $S'$, itself moving at a speed $v$ in frame $S$. What speed $u$ does the particle move at in $S$? We will need to apply the inverse Lorentz transformation, which is unsurprisingly
+    \begin{align*}
+        x' &= \gamma(x+vt) \\
+        t' &= \gamma\left(t+\frac v{c^2} x\right)
+    \end{align*}
+    (we just changed the signs of $v$). Hence
+    \begin{align*}
+        u = \frac x t &= \frac{x'+vt'}{t'+ \frac v{c^2}x'} = \frac{\frac{x'}{t'}+v}{1 + \frac{v}{c^2} \cdot \frac{x'}{t'}} \\
+        &= \frac{u' + v}{1 + \frac{vu'}{c^2}}
+    \end{align*}
+    
+    We can easily see that, if $v$, $u \ll c$, this reduces to a simple addition, and $u$ is also much less than the speed of light. Furthermore, this addition formula can never produce a velocity faster than the speed of light -- for example, if $u' = v = c$, then
+    \begin{align*}
+        u = \frac{c + c}{1 + \frac{c^2}{c^2}} = c
+    \end{align*}
+    
+    \subsection{Spacetime diagrams and simultaneity}
+
+    \begin{figure}[ht]
+        \centering
+        \fig{0.65\textwidth}{spacetime-diagram}
+        \caption{An example of a spacetime diagram.}
+        \label{fig:spacetime-diagram}
+    \end{figure}
+    
+    Note that light rays always travel at $45^{\circ}$ on such a diagram by the choice of axes. Importantly, we can put the axes for a frame $S'$ on the spacetime diagram for $S$. Since the $t'$ and $x'$ axes are at $x'=0$ and $t'=0$ respectively, we have
+    \begin{align*}
+        ct &= \frac c v x \\
+        ct &= \frac v c x
+    \end{align*}
+
+    \lecture{Lecture 18 -- 03/03/26}
+
+    giving:
+    DIAGRAM.
+    Drawing lines of constant $t$ and $t'$, we can see that events which are simultaneous in one frame may not be simultaneous in another -- this is called the \emph{relativity of simultaneity}. This is in fact an unavoidable consequence of the speed of light being constant, as exemplified in a thought experiment of Einstein.
+
+    DIAGRAM.
+
+    In the reference frame of the train, the light clearly reaches the back and front at the same time. On the other hand, in the reference frame of the platform, the back and front of the train have moved forwards, so the light has less far to travel to reach the back of the train, and further to reach the front -- the light rays do not hit simultaneously.
+    
+    In Galilean physics, on the other hand, light would be observed going at speed $c+v$ in one direction and speed $c-v$ in the other, reaching both ends at the same time.
+
+    One might worry that, if different frames see things at different times, one might be able to reverse cause and effect. However, this does not happen.
+
+    DIAGRAM (light cones)
+
+    The lines of simultaneity of $S'$ can be at most at $45^\circ$, as $v \to c$. Hence, we can make events to the `side' of $P$, such as $R$, simultaneous, but not events in either of $P$'s light cones, such as $Q$ or $S$. In other words, causality is the same in all frames.
+
+    \subsection{Time dilation}
+
+    Suppose a clock at rest in frame $S'$ ticks an intervals $T'$ -- so the ticks occur at $(0, 0)$, $(0, cT')$, $(0, 2cT')$, etc. In frame $S$, using inverse Lorentz transformations,
+    \begin{align*}
+        t = \gamma \left(t + \frac v{c^2}x'\right)
+    \end{align*}
+    With $x'=0$, ticks occur at $t = 0$, $t = \gamma T'$, etc -- in other words, at intervals $T = \gamma T'$. Since $\gamma > 1$, $T > T'$, so $S$ measures more time between the ticks of the clock in $S$' -- a moving clock runs more slowly.
+    
+    \subsection{The twin paradox}
+
+    Twin A stays on Earth and twin B goes to Neptune and back at almost light speed. Both see the other twin moving while they remain at rest, so which one ends up younger?
+    
+    The key asymmetry is that twin B has to turn around.
+    
+    DIAGRAM.
+
+    From the perspective of A, time $2T$ passes, while, from the perspective of B, time $2T' = 2T/\gamma$ has passed.
+
+    DIAGRAM.
+
+    As we can see, while they are moving, they both see the other clock moving more slowly -- so $2\hat T = 2T'/\gamma$ passes -- but when $B$ turns around, the simultaneity line changes, so $A$'s clock skips some time.
+
+    \subsection{Length contraction}
+
+    A rod has length $L'$ at rest in $S'$:
+
+    DIAGRAM.
+
+    Now, consider the moving frame $S$, in which the length of the rod is $P_1P_3 > P_1P_2$. How can we find the exact value of $L$ in terms of $L'$?
+
+    In both frames, we have $P_1 = (0, 0)$, and $P_2$ is $(ct', x') = (0, L')$, so, taking the inverse Lorentz transformation, $P_2 = (\gamma \frac v c L', \gamma L')$ in $S$. Then, for $P_3$ (why??),
+    \begin{align*}
+        \left.x\right|_{P_3} &= \left.x\right|_{P_2} - \left.vt\right|_{P_2} \\
+        &= \gamma L' - v \frac{\gamma v}{c^2}L' \\
+        &= \gamma L' \left(1-\frac{v^2}{c^2}\right) \\
+        &= \frac{L'}{\gamma}
+    \end{align*}
+    so moving objects appear shorter. This is called \emph{Lorentz contraction}.
+
+    \begin{example*}
+        Consider a man carrying a ladder of length $2L$ running towards a barn of length $L$.
+
+        DIAGRAM (non-detailed)
+
+        From the point of view of a stationary observer, the ladder will appear to fit in the barn if $A$ moves fast enough, since its length is $\frac{2L}{\gamma}$. On the other hand, in the frame of the perosn carrying the ladder, it is the barn that gets contracted, and so the ladder will definitely not fit in.
+
+        DIAGRAM (spacetime diagram)
+    \end{example*}
+    
+    \subsection{The invariant interval}
+
+    
+    \begin{definition}[The invariant interval]
+        Consider two events $P_1$ and $P_2$ with coordinates $(ct_1, x_1)$ and $(ct_2, x_2)$ in frame $S$. Let
+        \begin{align*}
+            \Delta t &= t_2 - t_1 \\
+            \Delta x &= x_2 - x_1 
+        \end{align*}
+        Then, the \emph{invariant interval} $\Delta s$ is given by
+        \begin{align*}
+            (\Delta s)^2 = c^2 (\Delta t)^2 - (\Delta x)^2
+        \end{align*}
+    \end{definition}
+    Let us check it is invariant between frames. Observe
+    \begin{align*}
+        c^2(\Delta t')^2 - (\Delta x')^2 &= \gamma^2c^2\left(\Delta t - \frac{v}{c^2}\Delta x\right)^2 - \gamma^2(\Delta x - v\Delta t)^2 \\
+        &= (\Delta t)^2(\gamma^2c^2-\gamma^2v^2) + (\Delta x)^2\left(\gamma^2 \frac{c^2v^2}{c^4}-\gamma^2\right) \\
+        &= c^2(\Delta t)^2 - (\Delta x)^2
+    \end{align*}
+    This is nice -- observers in all frames can agree on the value of $\Delta s$. Furthermore, we can write
+    \begin{align*}
+        (\Delta s)^2 = \begin{pmatrix}
+         c\Delta t & \Delta x \\
+        \end{pmatrix} \begin{pmatrix}
+         1 & 0 \\
+         0 & -1 \\
+        \end{pmatrix}\begin{pmatrix}
+         c\Delta t \\
+         \Delta x \\
+        \end{pmatrix}
+    \end{align*}
+    where the matrix $\begin{pmatrix}
+     1 & 0 \\
+     0 & -1 \\
+    \end{pmatrix}$ is called the \emph{Minkowski metric}. Using this approach, we can write Lorentz transformations in the form
+    \begin{align*}
+        \begin{pmatrix}
+         ct' \\
+         x' \\
+        \end{pmatrix} = \begin{pmatrix}
+         \gamma & -\frac{\gamma v}{c} \\
+         -\frac{\gamma v}{c} & \gamma \\
+        \end{pmatrix}\begin{pmatrix}
+         ct \\
+         x \\
+        \end{pmatrix}
+    \end{align*}
+    Then, invariance of $\Delta s$ is equivalent to the fact that
+    \begin{align*}
+        \begin{pmatrix}
+         \gamma & -\frac{\gamma v}{c} \\
+         -\frac{\gamma v}{c} & \gamma \\
+        \end{pmatrix}\begin{pmatrix}
+         1 & 0 \\
+         0 & -1 \\
+        \end{pmatrix} \begin{pmatrix}
+         \gamma & -\frac{\gamma v}{c} \\
+         -\frac{\gamma v}{c} & \gamma \\
+        \end{pmatrix}^{-1} = \begin{pmatrix}
+         1 & 0 \\
+         0 & -1 \\
+        \end{pmatrix}
+    \end{align*}
+    i.e., Lorentz transformations preserve the Minkowski metric.
+
+    \begin{remark*}
+        This is analogous to the fact that rotations preserve the Euclidean metric, namely $I$ -- that is,
+        \begin{align*}
+            R\begin{pmatrix}
+             1 & 0 \\
+             0 & 1 \\
+            \end{pmatrix} R^{-1} = \begin{pmatrix}
+             1 & 0 \\
+             0 & 1 \\
+            \end{pmatrix}
+        \end{align*}
+    \end{remark*}
+    
+    We should think of the Minkowski metric as measuring distances in spacetime. It is notably not positive-definite, so we have a distinction --  points with
+    \begin{itemize}
+        \item $(\Delta s)^2 > 0$ are called \emph{timelike separated};
+        \item $(\Delta s)^2 < 0$ are called \emph{spacelike separated};
+        \item $(\Delta s)^2 = 0$ are called \emph{lightlike separated}.
+    \end{itemize}
+    
+    \subsection{Rapidity}
+
+    \begin{definition}[Rapidity]
+        We define the \emph{rapidity} $\varphi$ to be such that 
+        \begin{align*}
+            \gamma = \cosh \varphi
+        \end{align*}
+    \end{definition}
+    
+    Now nice things happpen -- for example, $\sinh \varphi = \sqrt{\cosh^2 \varphi - 1} = \frac{v\gamma}{c}$. Most nicely, the Lorentz transformation becomes
+    \begin{align*}
+        \begin{pmatrix}
+         \gamma & -\frac{\gamma v}{c} \\
+         -\frac{\gamma v}{c} & \gamma \\
+        \end{pmatrix} = \begin{pmatrix}
+         \cosh \varphi & -\sinh \varphi \\
+         -\sinh \varphi & \cosh \varphi \\
+        \end{pmatrix} = \Lambda(\varphi)
+    \end{align*}
+    Particularly nicely, it holds that
+    \begin{align*}
+        \Lambda(\varphi_1)\Lambda(\varphi_2) = \Lambda(\varphi_1 + \varphi_2)
+    \end{align*}
+    so rapidity is to a Lorentz transformation what angle is to a rotation. In contrast, in terms of velocities, addition is weird, namely
+    \begin{align*}
+        \Lambda(v_1)\Lambda(v_2) = \Lambda\left(\frac{v_1+v_2}{1+\frac{v_1v_2}{c^2}}\right)
+    \end{align*}
+    as in the earlier addition of velocity formula.
+    
+    \subsection{Lorentz transformations in four dimensions}
+
+    \begin{definition}[4D Minkowski metric]
+        The \emph{4D Minkowski metric} is
+        \begin{align*}
+            \eta = \begin{pmatrix}
+             1 & 0 & 0 & 0 \\
+             0 & -1 & 0 & 0 \\
+             0 & 0 & -1 & 0 \\
+             0 & 0 & 0 & -1 \\
+            \end{pmatrix}
+        \end{align*}
+        We write this with indices as $\eta_{\mu\nu}$, where $\mu$, $\nu$ are 0, 1, 2, 3 -- conventionally, we use Greek letter indices for spacetime.
+    \end{definition}
+    An event in spacetime is now given by a 4-vector,
+    \begin{align*}
+        X = (ct, x, y, z)
+    \end{align*}
+    which will be denoted by capital letters with no underlines. We index with exponents, $X^\mu$.
+
+    Now, the invariant distance between the origin and the event $X$ is given by the inner product
+    \begin{align*}
+        X \cdot X &= X^T \eta X (=X^\mu \eta_{\mu\nu} X^\nu) \\
+        &= c^2t^2 - x^2 - y^2 - z^2
+    \end{align*}
+    As before, we have the distinction between \emph{timelike}, \emph{spacelike} and \emph{lightlike} or \emph{null} vectors.
+
+    Then, the 4D Lorentz transformations are 4 by 4 matrices $\Lambda$ such that
+    \begin{align*}
+        X' = \Lambda X
+    \end{align*}
+    The defining feature of Lorentz transformations is that they preserve the Minkowski metric, i.e.
+    \begin{align*}
+        \Lambda^\intercal \eta \Lambda = \eta && (\dagger)
+    \end{align*}
+    Since $\Lambda$ has 16 components, and both sides of $(\dagger)$ are symmetric, giving ten constraints, we expect to find six families of transformations. In particular, we have
+    \begin{itemize}
+        \item \emph{Rotation and reflections}. These have
+        \begin{align*}
+            \Lambda = \begin{pmatrix}
+             1 & 0 & 0 & 0 \\
+             0 &  &  &  \\
+             0 &  & R &  \\
+             0 &  &  &  \\
+            \end{pmatrix}
+        \end{align*}
+        where $R^\intercal R = I_3$.
+        \item \emph{lorentz boosts} along the three possible axes. For example,
+        \begin{align*}
+            \Lambda_x = \begin{pmatrix}
+             \gamma & -\frac{\gamma v}c & 0 & 0 \\
+             -\frac{\gamma v}c & \gamma & 0 & 0 \\
+             0 & 0 & 1 & 0 \\
+             0 & 0 & 0 & 1 \\
+            \end{pmatrix}
+        \end{align*}
+        and similarly for other axes.
+    \end{itemize}
+    These matrices $\Lambda$ form the Lorentz group, $O(1, 3)$. Because the inner product is preserved by these transformations, it automatically takes lightlike vectors to other lightlike vectors, so that the speed of light is the same in all frames.
+
+    The subgroup with $\det \Lambda = 1$ is called the \emph{proper Lorentz group}, $SO(1, 3)$. A further subgroup are those transformations that do not reverse time, i.e. with top left entry positive, called the \emph{proper orthochronous Lorentz group}, $SO^+(1, 3)$. For example,
+    \begin{align*}
+        \Lambda = \begin{pmatrix}
+         -1 & 0 & 0 & 0 \\
+         0 & -1 & 0 & 0 \\
+         0 & 0 & -1 & 0 \\
+         0 & 0 & 0 & -1 \\
+        \end{pmatrix}
+    \end{align*}
+    is in $SO(1, 3)$ but not $SO^+(1, 3)$.
+    
+    \subsection{Proper time}
+
+    We want to define a velocity to do physics with, but whose time should we differentiate with respect to? We should find a time $\tau$ that is invariant under Lorentz transformations, and define the 4-velocity as
+    \begin{align*}
+        U = \frac{dX}{d\tau}
+    \end{align*}
+    Recall that the invariant interval $(\Delta s)^2$ is the same in all inertial frames. Hence, we define
+    \begin{align*}
+        \Delta \tau = \frac{\Delta s}{c}
+    \end{align*}
+    Note that, since a worldline is timelike, $(\Delta s)^2 > 0$, so $\Delta s$ is real. Now, we can parameterise the worldline as $x(\tau)$ and $t(\tau)$.
+
+    \begin{remark*}
+        This is analogous to the notion of arc length, but for worldlines.
+    \end{remark*}
+    Along a small section of the worldline, we have
+    \begin{align*}
+        d\tau &= \sqrt{dt^2 - \frac{d\V x^2}{c^2}} \\
+        &= dt \sqrt{1-\frac{1}{c^2} \left(\frac{d\V x}{dt}\right)^2}
+    \end{align*}
+    Then, our 3-velocity $\V u = \frac{d\V x}{dt}$, so
+    \begin{align*}
+        d\tau = dt\sqrt{1-\frac{\V u^2}{c^2}} = \frac 1 \gamma dt
+    \end{align*}
+    where $\gamma$ is a function of the instantaneous 3-velocity $\V u$. We have obtained
+    \begin{align*}
+        \frac{dt}{d\tau} = \gamma
+    \end{align*}
+    For a clock following the worldline, $d \V x' = \V 0$, so $d\tau = dt'$ -- i.e., the proper time is the time measured by a (not necessarily inertial) observer following the worldline.
+    
+    \subsection{4-velocity}
+
+    Because $\tau$ is invariant and $X(\tau) = (ct(\tau), \V x(\tau))$ transforms by Lorentz transformations, then
+    \begin{align*}
+        U = \frac{dX}{d\tau} = \frac{dt}{d\tau} \begin{pmatrix}
+         c \\
+         \frac{d\V x}{dt} \\
+        \end{pmatrix} = \gamma \begin{pmatrix}
+         c \\
+         \V u \\
+        \end{pmatrix}
+    \end{align*}
+    which also transforms by Lorentz transformations (in fact, the defining property of a 4-vector is that it transforms by Lorentz transformations). In particular, we have
+    \begin{align*}
+        U \cdot U = \gamma^2c^2 - \gamma^2 \V u^2 = \gamma^2(c^2-\V u^2) = c^2
+    \end{align*}
+    which is indeed invariant. Hence, we have a nice way of incorporating the familiar 3-velocity into a Lorentzian object.
+    
+    
+    \lecture{Lecture $n+1$}
+
+    \subsection{4-momentum}
+    
+    \begin{definition}[Relativistic energy and momentum]
+        The \emph{relativistic energy} $E$ and the \emph{relativistic 3-momentum} $\V p$ are defined by
+        \begin{align*}
+            E &= m\gamma c^2 \\
+            \V p &= m\gamma \V u
+        \end{align*}
+    \end{definition}
+
+    \begin{definition}[4-momentum]
+        The \emph{4-momentum} of an object is given by
+        \begin{align*}
+            P = mU = \begin{pmatrix}
+                m\gamma c \\
+                m\gamma \V u \\
+            \end{pmatrix}
+        \end{align*}
+        where $U$ is the 4-velocity, and $m$ is a property of the particle called its \emph{rest mass}.      
+    \end{definition}
+    
+    Observe that the 4-vector $P$ is
+    \begin{align*}
+        \begin{pmatrix}
+            E/c \\
+            \V p \\
+        \end{pmatrix}
+    \end{align*}
+    so the 4-momentum combines energy and momentum in the exact same way that the 4-position $X$ combines time and space.
+
+    \begin{proposition}
+        In the absence of external forces, $P$ is conserved, that is
+        \begin{align*}
+            \frac{dP}{d\tau} = 0
+        \end{align*}
+    \end{proposition}
+    
+    \begin{remark*}
+        This is clearly a Lorentz-invariant generalisation of Newton's second law, as well as combining conservation of energy and momentum.
+    \end{remark*}
+    
+    \begin{proposition}
+        The relativistic energy and momentum are related by
+        \begin{align*}
+            E^2 = \V p^2 c^2 + m^2c^4
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Since $U \cdot U = c^2 \implies P \cdot P = m^2c^2$,
+        \begin{align*}
+            \frac{E^2}{c^2} - \V p^2 &= m^2c^2 \\
+            \implies E^2 &= \V p^2 c^2 + m^2c^4
+        \end{align*}
+    \end{proof}
+    
+    In the non-relativistic limit, $\frac{|\V u|}{c} \ll 1$, so $\V p \approx m \V u$, and we obtain the usual non-relativistic momentum. Furthermore,
+    \begin{align*}
+        E = m \gamma c^2 &= \frac{mc^2}{\sqrt{1-\frac{u^2}{c^2}}} \\
+        &= mc^2 \left(1 + \frac 1 2 \frac{u^2}{c^2} + \dots\right) \\
+        &= mc^2 + \frac 1 2 mu^2 + \dots
+    \end{align*}
+    and we can identify our familiar non-relativistic kinetic energy, as well as the \emph{rest mass energy}, $mc^2$, a new consequence of relativity.
+
+    Let us now consider the high-velocity relativistic limit. Observe
+    \begin{align*}
+        \V p = \gamma m \V u
+    \end{align*}
+    As $u \to c$, $\gamma \to \infty$, so the relativistic mass $\gamma m \to \infty$ as well. We end up needing more and more force to accelerate the particle by the same amount -- and any finite force cannot accelerate the particle to the speed of light. This suggests that any particle with $m \neq 0$ should have $u < c$.
+    
+    \subsection{Massless particles}
+
+    In Galilean physics, massless particles don't really make sense -- for example, the kinetic energy $\frac{p^2}{2m}$ would blow up. On the other hand, our relativistic expression suggests that
+    \begin{align*}
+        P \cdot P = m^2c^2 = 0
+    \end{align*}
+    but, since the inner product is not positive-definite, there are non-trivial solutions to this equation, namely those 4-momenta lying along a light ray. Indeed, for such a particle, 4-velocity does not exist, so 4-momentum really is the more useful notion.
+
+    A general light-like 4-momentum can be expressed as
+    \begin{align*}
+        P = \frac E c\begin{pmatrix}
+            1 \\
+            \hvec n \\
+        \end{pmatrix}
+    \end{align*}
+    where $\hvec n$ is a unit 3-vector. Interpreting $\hvec n$ as $\frac{\V u}c$, where $\V u$ is the 3-velocity, we obtain $\V u^2 = c^2$, so massless particles move at the speed of light. We conclude that a particle is massless if and only if it moves at the speed of light.
+
+    There are some remarkable consequences of these results. For example, along a light ray $d\tau = 0$, because points on the trajectory are lightlike separated. This means that, for a massless particle, no time passes.
+
+    There are only two known massless particles, namely photons and gravitons. We will focus on photons, and we will have to borrow from quantum mechanics the formula that
+    \begin{align*}
+        E = \hbar \omega
+    \end{align*}
+    where $\omega$ is the angular frequency of the light. Since frequency and wavelength are related, and length contraction causes a change in observed wavelength for different observers, the energy of photons may be perceived as different by different observers.
+
+    \subsection{Particle physics}
+
+    Particle accelerators like CERN work by colliding particles at relativistic speeds. The proper framework for dealing with these collisions is quantum field theory, but we can still learn some things just from the fact that 4-momentum $P$ is conserved. The two basic processes we will consider are particle decay and particle collisions.
+
+    \subsubsection{Particle decay}
+
+    Heavy particles are often unstable, and decay into lighter particles -- for example, the Higgs boson decays in about $10^{-22} \si{s}$. Such particles must be detected by their decay products, for example
+    \begin{align*}
+        H \longrightarrow \gamma + \gamma
+    \end{align*}
+    From the LHC, we know that $m_H c^2 \approx 125 \si{GeV}$, about $10^5$ times heavier than an electron. Conservation of 4-momentum tells us that
+    \begin{align*}
+        P_H = P_\gamma + P_{\gamma'}
+    \end{align*}
+    Before we can proceed to split into components, we need to choose a frame to work in. There are two canonical options:
+    \begin{enumerate}
+        \item the \emph{lab frame}, in which the particles are moving;
+        \item the \emph{centre of mass} or \emph{centre of momentum} frame, in which the total 3-momentum is zero.
+    \end{enumerate}
+    For decays, 2 is just the rest frame of the starting particle, which makes life very easy.   
+    
+    \lecture{Lecture $n+2$ -- 12/02/26}
+    
+    In the centre of mass frame, we have
+    \begin{align*}
+        P_H = \begin{pmatrix}
+            m_hc \\
+            \V 0 \\
+        \end{pmatrix} \qquad P_\gamma = \frac{E_\gamma}{c} \begin{pmatrix}
+            1 \\
+            \hvec n \\
+        \end{pmatrix} \qquad P_{\gamma'} = \frac{E_{\gamma'}}{c} \begin{pmatrix}
+            1 \\
+            \hvec n' \\
+        \end{pmatrix}
+    \end{align*}
+    Then, applying conservation, we obtain
+    \begin{align*}
+        m_H c &= \frac{E_\gamma}{c} + \frac{E_{\gamma'}}{c}\\ 
+        \V 0 &= \frac{E_{\gamma}}{c} \hvec n + \frac{E_{\gamma'}}{c} \hvec n'
+    \end{align*}
+    from which it is clear that
+    \begin{align*}
+        E_\gamma &= E_{\gamma'} \\
+        \hvec n &= -\hvec n'
+    \end{align*}
+    Hence, two photons emerge with opposite 3-momentum and equal energy, namely half the rest mass of the Higgs boson -- rest mass energy has been converted to kinetic energy.
+
+    Let us now try and do the same calculations in the lab frame. What angle $\theta$ does one of the emitted photons make with the path of the Higgs? (DIAGRAM)
+
+    We would like to use an \emph{invariant} -- for example, the inner product of two 4-vectors. Observe
+    \begin{align*}
+        P_H - P_{\gamma} &= P_{\gamma'} \\
+        \implies (P_H-P_\gamma) \cdot (P_H-P_\gamma) &= P_{\gamma'} \cdot P_{\gamma'} = 0 \\
+        \implies m_H^2c^2 &= 2P_H \cdot P_\gamma
+    \end{align*}
+    Now, putting
+    \begin{align*}
+        P_H = \begin{pmatrix}
+            E_h/c \\
+            \V p_h \\
+        \end{pmatrix} \qquad \qquad P_\gamma = \frac{E_\gamma}{c} \begin{pmatrix}
+            1 \\
+            \hvec n \\
+        \end{pmatrix}
+    \end{align*}
+    we obtain
+    \begin{align*}
+        m_H^2 c^2 = 2\left(\frac{E_HE_\gamma}{c^2} - \frac{E\gamma}{c} |\V p_H| \cos \theta\right)
+    \end{align*}
+    Given $E_H$ and $E_\gamma$, we can solve for $\theta$ (since we also know $E_H^2 = p_H^2 c^2 + m_H^2 c^4$).
+
+    \subsubsection{Particle collisions}
+
+    Suppose two particles of mass $m$ collide and, in the centre of mass frame, scatter at an angle $\theta$ (DIAGRAM). Conservation of 4-momentum tells us that
+    \begin{align*}
+        P_1 + P_2 = P_3 + P_4 && (\dagger)
+    \end{align*}
+    so that, in the centre of mass frame, $\V p_1 + \V p_2 = 0 = \V p_3 + \V p_4$, and hence $|\V p_1| = |\V p_2|$, $|\V p_3| = |\V p_4|$. Furthermore, because the incoming particles have the same mass and momentum, they have the same energy, $E_1 = E_2$, and likewise for $E_3 = E_4$. Considering the time component of $(\dagger)$, we hence obtain
+    \begin{align*}
+        E_1 = E_2 &= E_3 = E_4 \\
+        |\V p_1| = |\V p_2| &= |\V p_3| = |\V p_4|
+    \end{align*}
+    so that any angle $\theta$ is allowed, but the energy and momenta afterwards must equal the energy and momenta before. Since all momenta are in the same plane, we can furthermore specify, for example,
+    \begin{align*}
+        \V p_1 &= |\V p_1|(1, 0, 0) = -\V p_2 \\
+        \V p_3 &= |\V p_1|(\cos \theta, \sin \theta, 0) = -\V p_4
+    \end{align*}
+    Lecturer then proceeded to introduce the standard model.
+
+    Let us now work in the lab frame, assuming one particle is at rest, and with scattering angles $\phi$ and $\alpha$. (DIAGRAM) 
+    
+    Let's try and find $\phi$. Once again, we must use invariants. We have
+    \begin{align*}
+        P_1 + P_2 = P_3 + P_4
+    \end{align*}
+    We want to get rid of $P_4$, and we can do this by dotting it with itself, giving
+    \begin{align*}
+        m^2c^2 &= P_4^2 = (P_1 + P_2 - P_3)^2 \\
+        &= P_1^2 + P_2^2 + P_3^2 - 2 P_1 \cdot P_3 - 2 P_2 \cdot P_3 + 2 P_1 \cdot P_2 \\
+        &= 3m^2c^2 - 2 P_1 \cdot P_3 - 2 P_2 \cdot P_3 + 2 P_1 \cdot P_2
+    \end{align*}
+    Since $P_2$ is at rest in the lab frame, it has the form
+    \begin{align*}
+        P_2 = \begin{pmatrix}
+            mc \\
+            \V 0 \\
+        \end{pmatrix}
+    \end{align*}
+    and we are now ready to substitute
+    \begin{align*}
+        P_1 = \begin{pmatrix}
+            E_1/c \\
+            \V p_1 \\
+        \end{pmatrix} \qquad \qquad P_3 = \begin{pmatrix}
+            E_3/c \\
+            \V p_3 \\
+        \end{pmatrix}
+    \end{align*}
+    Hence
+    \begin{align*}
+        m^2c^2 &= 3m^2c^2 - 2 \left(\frac{E_1E_3}{c^2} - \V p_1 \cdot \V p_3\right) - 2 E_3m + 2E_1m
+    \end{align*}
+    and so, after rearrangement,
+    \begin{align*}
+        m^2c^2 + m(E_1-E_3) - \frac{E_1E_3}{c^2} = -|\V p_1||\V p_3| \cos \phi
+    \end{align*}
+    We have hence obtained $\cos \phi$ in terms of $E_1$, $E_3$ and $|\V p_1|$, $|\V p_3|$. Now we can simply apply
+    \begin{align*}
+        E_i^2 = \V p_i^2 c^2 + m^2c^4
+    \end{align*}
+    to eliminate $|\V p_i|$.
+    
+    \lecture{Lecture $n$}
+
+    \lecture{Lecture $n+1$}
+
+    We have
+    \begin{align*}
+        \int \frac{du}{a' \left(1-\frac{u^2}{c^2}\right)^{3/2}} = \int dt
+    \end{align*}
+    Setting $u = c \sin \theta$ to do the integral and recalling $a'$ is constant, we obtain
+    \begin{align*}
+        u = \frac{a'ct}{\sqrt{c^2+a'^2t^2}}
+    \end{align*}
+    Hence, at early timees, $a't \ll c$, we have $u = a't$, while at late times, $a't \gg c$, so $u \to c$ -- we cannot exceed $c$.
+
+    Since $u = \frac{dx}{dt}$, we can integrate again, to obtain
+    \begin{align*}
+        x = \frac c {a'} \sqrt{c^2+a'^2t^2} + C
+    \end{align*}
+    which is the equation of a hyperbola in spacetime -- an accelerated particle follows such a hyperbola (DIAGRAM).
+
+    Observe that the accelerated particle never sees signals sent from $x$ on the left of a certain light cone -- this is called the \emph{Rindler horizon}, separating the `accessible' and `inaccessible' regions of spacetime.
+
+    \begin{remark*}
+        A black hole's event horizon works similarly, since it is necessary to accelerate not to fall in.
+    \end{remark*}
+    
+    Let us now check that the notion of instanteous acceleration as used earlier is rigorous.
+
+    \begin{definition}
+        The \emph{force 4-vector} is given by
+        \begin{align*}
+            F = \frac{dP}{d \tau}
+        \end{align*}
+        where $P$ is the 4-momentum. Then Newton's second law is that
+        \begin{align*}
+            F = mA
+        \end{align*}
+        We parameterise $F$ as
+        \begin{align*}
+            F = \begin{pmatrix}
+                F^0 \\
+                \gamma \V f \\
+            \end{pmatrix}
+        \end{align*}
+    \end{definition}
+    Let us now find the spatial component of this equation:
+    \begin{align*}
+        \frac{d\V p}{dt} = \frac 1 \gamma \frac{d\V p}{d\tau} = \frac{1}{\gamma} \gamma \V f = \V f
+    \end{align*}
+    so $\V f$ is actually just the normal force from the typical Newton's second law, even though $\V p = \gamma m \V u$ is not the typical momentum. Furthermore, $\V f$ constant implies $a'$ is constant in the instantaneous frame $A$, as we assumed earlier.
+
+    Now let us consider the time component: we have
+    \begin{align*}
+        F^0 = \frac 1 c \frac{dE}{d\tau} = \frac{\gamma}c \frac{dE}{dt}
+    \end{align*}
+    so $F^0$ is proportional to the rate of change of energy. Indeed,
+    \begin{align*}
+        0 &= \frac{d}{d\tau} P \cdot P = 2P \cdot \frac{dP}{d\tau} \\
+        &= 2\left(\frac E c \frac{dE}{d\tau} - \V p \cdot \frac{d\V p}{d\tau}\right)
+    \end{align*}
+    Recalling that $E=\gamma mc^2$ and $\V p = \gamma m u^2$, we have
+    \begin{align*}
+        0 &= 2\gamma^2 m \left(\frac{dE}{dt}-\V u \cdot \frac{d\V p}{dt}\right) \\
+        \implies \frac{dE}{dt} &= \V u \cdot \frac{d\V p}{dt} = \V u \cdot \V f
+    \end{align*}
+    which says that the change in energy is the rate of doing work -- power is force times velocity.
+    
+    \begin{example*}[non-examinable]
+        We would like to show that the Lorentz force is Lorentz invariant. We claim it has the form
+        \begin{align*}
+            \frac{dP}{d\tau} = \frac{q}{c} G \cdot U && (*)
+        \end{align*}
+        where $G$ is the electromagnetic 4-tensor, given by
+        \begin{align*}
+            G = \begin{pmatrix}
+                0 & -E_x & -E_y & -E_z \\
+                E_x & 0 & -cB_z & cB_y \\
+                E_y & cB_z & 0 & -cB_x \\
+                E_z & -cB_y & cB_x & 0 \\
+            \end{pmatrix}
+        \end{align*}
+        The time component of $(*)$ states that
+        \begin{align*}
+            \gamma \frac{dE}{dt} &= \frac{q}{c} \V E \cdot \gamma \V u \\
+            \implies \frac{dE}{dt} &= \frac{q}{c} \V E \cdot \V u
+        \end{align*}
+        i.e. the electric field does work (and the magnetic field does not). The spatial components of $(*)$ say that
+        \begin{align*}
+            \left(\gamma \frac{d\V p}{dt}\right)^i &= \frac{q}{c}\left(G^{i0}U_0-G^{ij}u_j\right) \\
+            &= \frac q c \left(E^i \gamma c + \eps^{ijk}B^kc\gamma u_j\right) \\
+            \implies \frac{d\V p}{dt} &= \frac q c \left(\V E + \V u \times \V B\right)
+        \end{align*}
+        so the Lorentz force is indeed relativistically invariant, although only after accounting for the mixing of $\V E$ and $\V B$ under Lorentz transformations.    
+    \end{example*}
+    
+    This concludes the course.
     
     
     
@@ -1562,6 +2265,7 @@
     
     
     
+
     
     
 \end{document}

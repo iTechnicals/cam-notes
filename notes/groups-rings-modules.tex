@@ -393,17 +393,17 @@
     
     We have some notation:
     \begin{itemize}
-        \item $G^X = \im \phi \leq \Sym(X)$;
-        \item $G_X = \ker \phi \triangleleft G$
+        \item $G^X = \im \varphi \leq \Sym(X)$;
+        \item $G_X = \ker \varphi \triangleleft G$
     \end{itemize}
     It is a special case of the first isomorphism theorem that $G^X \cong G/G_X$.
     
     \begin{example}
         Let $G$ be the symmetry group of the unit cube, and let $X$ be the set of the cube's diagonals. Clearly $G$ acts on $X$. We have hence
         \begin{align*}
-            \phi: G \to \Sym(X) \cong S_4
+            \varphi: G \to \Sym(X) \cong S_4
         \end{align*}
-        We can see $\im \phi \cong S_4$, since we can swap any two diagonals -- then these transpositions generate the whole symmetric group. Furthermore, $\ker \phi = \{e, s\}$, where $s$ sends every vertex to its opposite. As an immediate consequence, we conclude $|G| = 48$.
+        We can see $\im \varphi \cong S_4$, since we can swap any two diagonals -- then these transpositions generate the whole symmetric group. Furthermore, $\ker \varphi = \{e, s\}$, where $s$ sends every vertex to its opposite. As an immediate consequence, we conclude $|G| = 48$.
     \end{example}
     
     \begin{example}
@@ -412,7 +412,7 @@
             G \times G &\to G \\
             (g, g_1) &\mapsto gg_1
         \end{align*}
-        which gives $\phi: G \to \Sym(G)$. The kernel $\ker \phi = \{e\}$, and so $\phi$ is injective -- we conclude that $G$ is isomorphic to a subgroup of $\Sym(G)$ by the first isomorphism theorem.
+        which gives $\varphi: G \to \Sym(G)$. The kernel $\ker \varphi = \{e\}$, and so $\varphi$ is injective -- we conclude that $G$ is isomorphic to a subgroup of $\Sym(G)$ by the first isomorphism theorem.
     \end{example}
     
     \begin{example}
@@ -420,17 +420,17 @@
         \begin{align*}
             (g, g_1H) \to gg_1H
         \end{align*}
-        We get a homomorphism $\phi: G \to \Sym(X)$. Consider the kernel -- it is clear that $\ker \phi \subseteq H$. But more is true. If $g in \ker \phi$, then
+        We get a homomorphism $\varphi: G \to \Sym(X)$. Consider the kernel -- it is clear that $\ker \varphi \subseteq H$. But more is true. If $g in \ker \varphi$, then
         \begin{align*}
             gg_1H &= g_1H \\
             \implies g_1^{-1}gg_1 &\in H \\
-            \implies \ker \phi &\subseteq \bigcap_{g_1 \in G}g_1Hg_1^{-1}
+            \implies \ker \varphi &\subseteq \bigcap_{g_1 \in G}g_1Hg_1^{-1}
         \end{align*}
-        that is, $g$ is contained in every conjugate of $H$. Furthermore, this containment is reversible: suppose $g \in \bigcap_{g_1 \in G} g_1Hg_1^{-1}$. Then $gg_1H = g_1H$, so $g \in \ker \phi$. We conclude
+        that is, $g$ is contained in every conjugate of $H$. Furthermore, this containment is reversible: suppose $g \in \bigcap_{g_1 \in G} g_1Hg_1^{-1}$. Then $gg_1H = g_1H$, so $g \in \ker \varphi$. We conclude
         \begin{align*}
-            \ker \phi = \bigcap_{g_1 \in G} g_1Hg_1^{-1}
+            \ker \varphi = \bigcap_{g_1 \in G} g_1Hg_1^{-1}
         \end{align*}
-        If $H$ were normal, we would just have H on the right-hand side -- but when $H$ is not normal, we have an interesting way to make a smaller normal subgroup, $\ker \phi$, out of $H$.
+        If $H$ were normal, we would just have H on the right-hand side -- but when $H$ is not normal, we have an interesting way to make a smaller normal subgroup, $\ker \varphi$, out of $H$.
     \end{example}
     
     \begin{theorem}
@@ -438,9 +438,9 @@
     \end{theorem}
     
     \begin{proof}
-        Consider $\phi: G \to \Sym(G/H)$ from the example. The kernel, call it $K$, is normal. We have shown it is contained in $H$ already -- applying the first isomorphism theorem, we have
+        Consider $\varphi: G \to \Sym(G/H)$ from the example. The kernel, call it $K$, is normal. We have shown it is contained in $H$ already -- applying the first isomorphism theorem, we have
         \begin{align*}
-            G/K \cong \im \phi \leq \Sym(G/H) \cong S_n
+            G/K \cong \im \varphi \leq \Sym(G/H) \cong S_n
         \end{align*}
         Lagrange gives $|G/K|$ divides $n!$, and $K \leq H$, so $|G/K| \geq |G/H| = n$.
     \end{proof}
@@ -582,15 +582,15 @@
     \begin{proof}
         The conjugation action of $G$ on $\Syl_p(G)$ gives a homomorphism
         \begin{align*}
-            \phi: G \to \Sym(\Syl_p(G)) \cong S_{n_p}
+            \varphi: G \to \Sym(\Syl_p(G)) \cong S_{n_p}
         \end{align*}
-        By simplicity of $G$, $\ker \phi = \{e\}$ or $G$. If $\ker \phi = G$, then $gPg^{-1} = P$ for all $g \in G$, so $P$ is normal. Since $P \neq \{e\}$, $P = G$. But $Z(P) \norm P$ non-trivially, which is a contradiction. Hence $\phi$ is injective, so $G$ isomorphic to a subgroup of $S_{n_p}$. Consider now
+        By simplicity of $G$, $\ker \varphi = \{e\}$ or $G$. If $\ker \varphi = G$, then $gPg^{-1} = P$ for all $g \in G$, so $P$ is normal. Since $P \neq \{e\}$, $P = G$. But $Z(P) \norm P$ non-trivially, which is a contradiction. Hence $\varphi$ is injective, so $G$ isomorphic to a subgroup of $S_{n_p}$. Consider now
         \[\begin{tikzcd}
             G & {S_{n_p}} & {\{\pm1\}}
-            \arrow["\phi", from=1-1, to=1-2]
+            \arrow["\varphi", from=1-1, to=1-2]
             \arrow["\sign", from=1-2, to=1-3]
         \end{tikzcd}\]
-        If the composition is surjective, then $\ker(\sign \circ \phi)$ is an index 2 subgroup of $G$. But $G$ is simple, so this is impossible, (since $G \neq C_2$). In other words, $\im \phi \subseteq A_{n_p}$, and the result follows by Lagrange. Finally, all non-abelian subgroups of $A_2$, $A_3$ and $A_4$ are not simple.
+        If the composition is surjective, then $\ker(\sign \circ \varphi)$ is an index 2 subgroup of $G$. But $G$ is simple, so this is impossible, (since $G \neq C_2$). In other words, $\im \varphi \subseteq A_{n_p}$, and the result follows by Lagrange. Finally, all non-abelian subgroups of $A_2$, $A_3$ and $A_4$ are not simple.
     \end{proof}
     
     \begin{example*}
@@ -712,13 +712,13 @@
     \end{definition}
     
     \begin{lemma}
-        If $\phi: R \to S$ is a homomorphism, then $\ker \phi \norm R$.
+        If $\varphi: R \to S$ is a homomorphism, then $\ker \varphi \norm R$.
     \end{lemma}
     
     \begin{proof}
-        Since $\phi$ is a group homomorphism, we know $\ker \phi$ is a subgroup.
+        Since $\varphi$ is a group homomorphism, we know $\ker \varphi$ is a subgroup.
 
-        Furthermore, if $a \in \ker \phi$ and $b \in R$, then $\phi(ab) = \phi(a)\phi(b) = 0 \cdot \phi(b) = 0$.
+        Furthermore, if $a \in \ker \varphi$ and $b \in R$, then $\varphi(ab) = \varphi(a)\varphi(b) = 0 \cdot \varphi(b) = 0$.
     \end{proof}
     
     \begin{remark*}
@@ -819,10 +819,10 @@
     \end{proof}
     
     \begin{theorem}[First isomorphism theorem for rings]
-        Let $\phi: R \to S$ be a ring homomorphism. Then, the map
+        Let $\varphi: R \to S$ be a ring homomorphism. Then, the map
         \begin{align*}
-            f: R/\ker \phi &\to \im \phi \\
-            r + \ker \phi &\mapsto \phi(r)
+            f: R/\ker \varphi &\to \im \varphi \\
+            r + \ker \varphi &\mapsto \varphi(r)
         \end{align*}
         is a well-defined ring isomorphism.        
     \end{theorem}
@@ -830,20 +830,20 @@
     \begin{proof}
         Well-definedness, bijectivity and additivity all follow from the group isomorphism theorem. It remains to check multiplicativity. Observe
         \begin{align*}
-            f((r + \ker \phi)(t + \ker \phi)) &= f(rt + \ker \phi) \\
-            &= \phi(rt) \\
-            &= \phi(r) \phi(t) \\
-            &= f(r + \ker \phi)f(t + \ker \phi)
+            f((r + \ker \varphi)(t + \ker \varphi)) &= f(rt + \ker \varphi) \\
+            &= \varphi(rt) \\
+            &= \varphi(r) \varphi(t) \\
+            &= f(r + \ker \varphi)f(t + \ker \varphi)
         \end{align*}
     \end{proof}
     
     \begin{example}
         Consider the homomorphism
         \begin{align*}
-            \phi: \RR[x] &\to \CC \\
+            \varphi: \RR[x] &\to \CC \\
             f(x) &\mapsto f(i)
         \end{align*}
-        The map is clearly surjective, and the kernel is exactly those polynomials $f$ satisfying $f(i) = 0$. However, since coefficients of $f$ are real, $-i$ is also a root. In conclusion, $x^2 + 1 \mid f$, and we conclude $\ker \phi = \gen{x^2+1}$. Hence, by the first isomorphism theorem, $\CC \cong \RR[x]/\gen{x^2+1}$.        
+        The map is clearly surjective, and the kernel is exactly those polynomials $f$ satisfying $f(i) = 0$. However, since coefficients of $f$ are real, $-i$ is also a root. In conclusion, $x^2 + 1 \mid f$, and we conclude $\ker \varphi = \gen{x^2+1}$. Hence, by the first isomorphism theorem, $\CC \cong \RR[x]/\gen{x^2+1}$.        
     \end{example}
     
     \begin{proposition}[Second isomorphism theorem for rings]
@@ -860,10 +860,10 @@
     \begin{proof}
         Define a function
         \begin{align*}
-            \phi: R &\to S/J \\
+            \varphi: R &\to S/J \\
             r &\mapsto r + J
         \end{align*}
-        so $\ker \phi = \{r \in R: r + J = 0\} = R \cap J$, so this is an ideal by the first isomorphism theorem. Also, the image is $\im \phi = \{r + J: r \in R\} = (R + J)/J$. The result follows from the first isomorphism theorem.        
+        so $\ker \varphi = \{r \in R: r + J = 0\} = R \cap J$, so this is an ideal by the first isomorphism theorem. Also, the image is $\im \varphi = \{r + J: r \in R\} = (R + J)/J$. The result follows from the first isomorphism theorem.        
     \end{proof}
     
     \lecture{Lecture 11 -- 14/02/26}
@@ -976,6 +976,248 @@
     \begin{remark*}
         The converse is false -- for example, $R = \ZZ[\sqrt{-5}]$.
     \end{remark*}
+
+    \lecture{Lecture $n+1$}
+    
+    \subsection{Hilbert's basis theorem}
+
+    \begin{definition}[Noetherian ring]
+        A ring $R$ is \emph{Noetherian} if every chain $I_1 \subseteq I_2 \subseteq \cdots$ of ideals in $R$ stabilises, i.e. there exists $N \geq 0$ such that $I_n = I_N$ for all $n \geq N$.
+    \end{definition}
+    
+    \begin{remark*}
+        We also have a corresponding \emph{ascending} chain condition, but it is much less important.
+    \end{remark*}
+    
+    \begin{proposition}
+        A ring $R$ is Noetherian if and only if all ideals are finitely generated.
+    \end{proposition}
+    
+    \begin{proof}
+        Suppose all a ring's ideals are finitely generated, and we are given $I_1 \subseteq I_2 \subseteq \cdots$ a chain of ideals. Consider
+        \begin{align*}
+            I = \bigcup I_n
+        \end{align*}
+        This is an ideal, finitely generated by, say, $r_1, \dots, r_k$. But there is an $N$ such that $r_i \in I_N$ for all $i$, so, for $j \geq N$, $I_j = I_N$.
+
+        Conversely, if $I$ is not finitely generated, pick $r_1 \in I$ such that $\gen {r_1} \neq I$, then $r_2 \in I \setminus \{r_1\}$, etc. Then $\gen{r_1} \subset \gen{r_1, r_2} \subset \gen{r_1, r_2, r_3}, \dots$.
+    \end{proof}
+    
+    \begin{theorem}[Hilbert's basis theorem]
+        If $R$ is Noetherian, then $R[X]$ is Noetherian.
+    \end{theorem}
+    
+    \begin{proof}
+        Let $J \norm R[X]$, and let $f_1 \in J$ have minimal degree. If $J = \gen {f_1}$, we're done, so suppose not, and choose $f_2 \in J \setminus \gen{f_1}$ of minimal degree. Continue in this fashion to produce some sequence of $f_i$'s. Let $a_i$ be the leading coefficient of $f_i$. The chain of ideals $\gen {a_1} \subseteq \gen{a_1, a_2} \subseteq \gen{a_1, a_2, a_3}$ stabilises, since $R$ is Noetherian, so that $\gen{a_1, a_2, \dots} = \gen{a_1, \dots, a_m}$ for some $m$. Let $b_i$ be such that
+        \begin{align*}
+            a_{m+1} = \sum_{i=1}^m a_ib_i
+        \end{align*}
+        Now, consider the polynomial
+        \begin{align*}
+            g = \sum_{i=1}^m b_if_i x^{\deg{f_{m+1}}-\deg{f_i}}
+        \end{align*}
+        which we can do since $\deg{f_{m+1}} \geq \deg{f_i}$ as we took the minimal degree at each step. Then $g$ has the same degree as $f_{m+1}$ and the same leading coefficient. So let us consider $f_{m+1}-g$ -- it has smaller degree than $f_{m+1}$, but is not in $\gen{f_1, \dots, f_m}$. This contradicts the minimality of the degree of $f_{m+1}$. Therefore, the process of choosing these $f_i$'s terminates, so $R[X]$ is finitely generated as required.
+    \end{proof}
+    
+    \begin{proposition}
+        Let $R$ be Noetherian and $I \norm R$. Then $R/I$ is Noetherian.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $J \norm R/I$, and $J' \norm R$ be corresponding. If $r_1, \dots, r_m$ generate $J'$, then, since $J$ is the image of $J'$ under $R \to R/I$, $r_1+I, \dots, r_m+I$ generate $J$.
+    \end{proof}
+    
+    \begin{remark*}
+        It's important to note that subrings of Noetherian rings need not be Noetherian. For example, take $R = \CC[x_1, x_2, \dots]$, and $F$ be the field of fractions of $R$. Then $R \leq F$, but $F$ is clearly Noetherian as it is a field.
+    \end{remark*}
+    
+    \section{Modules}
+
+    Let $R$ be a ring, and $(M, +, 0)$ be an abelian group.
+
+    \begin{definition}[Module]
+        A quadruple $(M, \dot)$ is an $R$-module if the operation
+        \begin{align*}
+            \cdot: R \times M &\to M \\
+            (r, m) &\mapsto r \cdot m
+        \end{align*}
+        satisfies
+        \begin{itemize}
+            \item $(r_1+r_2) \cdot m = r_1 \cdot m + r_2 \cdot m$;
+            \item $r \cdot (m_1+m_2) = r \cdot m_1 + r \cdot m_2$;
+            \item $r_1 \cdot (r_2 \cdot m) = (r_1r_2) \cdot m$;
+            \item $1 \cdot m = m$.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{example*}
+        \begin{itemize}
+            \item If $R = k$ a field, then an $R$-module $M$ is the same thing as a $k$-vector space.
+            \item Any abelian group $G$ is a $\ZZ$-module by the rule $n \cdot g = \underbrace{g+\dots+g}_{n \text{ times}}$ if $n \in \ZZ_0$ and $n \cdot g = \underbrace{(-g)+\dots+(-g)}_{-n \text{ times}}$ otherwise.
+            \item For any ring, $R^m = R \times \cdots \times R$ is an $R$-module, since there is a natural notion of scaling by elements of $R$. \emph{Note that $R^m$ is also a ring in its own right (with pointwise multiplication), but we don't care about that.}
+            \item Let $I \norm R$ be an ideal, then $I$ is an $R$-module with
+            \begin{align*}
+                R \times I &\to I \\
+                (r, x) &\mapsto rx
+            \end{align*}
+            Similarly, $R/I$ is also an $R$-module by the obvious operation.            
+        \end{itemize}
+    \end{example*}
+    
+    \begin{example*}
+        Let $V$ be a $k$-vector space, and pick $\alpha \in \End(V)$. We can make $V$ into a $k[x]$-module as follows:
+        \begin{align*}
+            k[x] \times V &\to V \\
+            (f(x), v) &\mapsto (f(\alpha)(v))
+        \end{align*}
+        In other words, $(x, v) \mapsto \alpha(v)$, and the rest comes out of linearity. Note that the structure of the resulting module depends very much on the choice of $\alpha$.        
+    \end{example*}
+    
+    \begin{example*}
+        Another example of a module: take a ring homomorphism $\varphi: R \to S$. This makes $S$ an $R$-module with
+        \begin{align*}
+            R \times S &\to S \\
+            (r, s) &\mapsto \varphi(r)S
+        \end{align*}
+        For example, we have a homomorphism from $\CC[x] \to \CC[x]/x^2$ in the obvious way -- this makes $\CC[x]/x^2$ a $\CC[x]$-module. Similar ideas would work for, say $\CC[xy]$ and $\CC[x]$.        
+    \end{example*}
+    
+    \begin{definition}[Submodules]
+        Let $M$ be an $R$-mdoule. A subgroup $N$ of $M$ is called a \emph{submodule} if, for every $n \in N$ and $r \in R$, $r \cdot n$ also lies in $N$. We write $N \leq M$.
+    \end{definition}
+
+    \begin{remark*}
+        If $R$ is a field, then an $R$-submodule is the same as a vector subspace.
+    \end{remark*}    
+    
+    \begin{example*}
+        Take $R = M = \QQ$ and $N = \ZZ \subseteq \QQ$, but this is not a $\QQ$-submodule.
+    \end{example*}
+    
+    \begin{definition}[Quotient modules]
+        Let $N \leq M$ be an $R$-submodule. The \emph{quotient $R$-module} is the abelian group $M/N$ with $R$-module structure:
+        \begin{align*}
+            R \times M/N &\to M/N \\
+            (r, m + N) &\mapsto (rm) + N
+        \end{align*}
+    \end{definition}
+    
+    \begin{definition}[Module homomorphisms]
+        Let $M$ and $N$ be $R$-modules. An \emph{$R$-module homomorphism} is a group homomorphism $\varphi: M \to N$ such that $\varphi(rm) = r\varphi(m)$ for all $r \in R$, $m \in M$. A bijective $R$-module homomorphism is called an $R$-module isomorphism.
+    \end{definition}
+    
+    \begin{theorem}[First isomorphism theorem for modules]
+        Let $\varphi: M \to N$ be a homomorphism of $R$-modules. Then $\ker\varphi = \{m \in M: \varphi(m) = 0\}$ is an $R$-submodule of $M$. Similarly, $\im\varphi = \{\varphi(m): m \in M\}$ is an $R$-submodule of $N$. There is an isomorphism $M/\ker\varphi \cong \im\varphi$ sending $(m+\ker\varphi)$ to $\varphi(m)$.
+    \end{theorem}
+    
+    \begin{theorem}[Second isomorphism theorem for modules]
+        Let $K$, $L \leq M$, then $K+L=\{k+l: k \in K, l \in K\}$ is a submodule of $M$. There is an isomorphism
+        \begin{align*}
+            (K+L)/K \cong L/(K \cap L)
+        \end{align*}
+    \end{theorem}
+    
+    \begin{remark*}
+        We are using additive notation now, since these are all abelian.
+    \end{remark*}
+    
+    \begin{theorem}[Third isomorphism theorem for modules]
+        Let $N \leq L \leq M$ be $R$-submodules of $M$. Then
+        \begin{align*}
+            M/L \cong (M/N)/(L/N)
+        \end{align*}
+    \end{theorem}
+    
+    There is also a correspondence, for a submodule $N \leq M$, between submodules of $M/N$ and submodules of $M$ containing $N$.
+
+    \begin{definition}[Annihilators]
+        Let $M$ be an $R$-module. For $m \in M$, its \emph{annihilator} is
+        \begin{align*}
+            \Ann(m) = \{r \in R: r \cdot m = 0\}
+        \end{align*}
+        More generally, for $S \subseteq M$, $\Ann(S) = \{r \in R: r \cdot s = 0 \;\forall s \in S\}$. Furthermore,
+        \begin{align*}
+            \Ann(M) = \bigcap_{m\in M} \Ann(m)
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        This is saying that we take a non-zero vector, scale it by a non-zero constant, and it ends up being zero! So in a vector space, all annihilators are empty.
+    \end{remark*}
+
+    \begin{remark*}
+        The annihilator $\Ann(S)$ is an ideal in $R$.
+    \end{remark*}
+    
+    \begin{example*}
+        For example, take $R = \ZZ$, $M = \ZZ/n\ZZ$ with the usual scaling. This has an interesting annihilator -- the multiples of $n$.
+    \end{example*}
+    
+    \begin{definition}[Submodules generated by an element]
+        Given an element $m \in M$, the \emph{submodule generated by $M$} is
+        \begin{align*}
+            Rm = \{r \cdot m: r \in R\} \leq M
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}
+        For $m \in M$, there is an isomorphism
+        \begin{align*}
+            R/\Ann(m) \cong Rm
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Consider the function $R \to M: r \mapsto rm$. This is an $R$-module homomorphism. Now apply the first isomorphism theorem.
+    \end{proof}
+    
+    \begin{definition}[Finitely generated modules]
+        An $R$-module $M$ is finitely generated if there exist $m_1, \dots, m_k \in M$ such that
+        \begin{align*}
+            M = Rm_1 + \dots + Rm_k = \{r_1m_1 + \dots + r_km_k: r_i \in R\}
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        For a vector space, this is equivalent to the notion of having finite dimension.
+    \end{remark*}
+    
+    \begin{lemma}
+        An $R$-module $M$ is finitely generated if and only if there exists a surjective $R$-module homomorphism $R^k \to M$ for some $k$ (or, equivalently, if $M$ is a quotient of $R^k$).
+    \end{lemma}
+
+    \begin{remark*}
+        Modules $R^k$ are sometimes called \emph{free} modules.
+    \end{remark*}
+    
+    \begin{proof}
+        If $M$ is finitely generated, then $M = Rm_1 + \dots + Rm_k$. Set
+        \begin{align*}
+            \varphi: R^k &\to M \\
+            (r_1, \dots, r_k) &\mapsto r_1m_1 + \dots + r_km_k
+        \end{align*}
+        which is surjective by hypothesis. Conversely, given a surjective $R^k \to M$, let $e_i = (0, \dots, 1, \dots, 0) \in R^k$, where 1 is in the $i^\text{th}$ position. Define $m_i = \varphi(e_i)$ -- it is straightforward to check that $M = Rm_1 + \dots + Rm_k$.        
+    \end{proof}
+    
+    \begin{corollary}
+        Let $M$ be finitely generated. If $N \leq M$ is a submodule, then $M/N$ is also finitely generated.
+    \end{corollary}
+    
+    \begin{proof}
+        Take the surjection $R^k \to M$, and compose this with the surjective quotient map $M \to M/N$.
+    \end{proof}
+    
+    \begin{remark*}
+        Submodules need not have this property. Take $R=\CC[x_1, \dots]$ and $M=R$, which is clearly finitely generated. Take $I \leq M$ to be $\gen{x_1, \dots}$. This is not finitely generated.
+    \end{remark*}
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

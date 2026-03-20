@@ -418,6 +418,8 @@
         The \emph{norm} of a vector $\vec a$, written $|\vec a|$ or $||\vec a||$, is given by $\sqrt{\vec a \cdot \vec a}$.
     \end{definition}
 
+    \lecture{Lecture 4 -- 16/10/25}
+
     \begin{theorem}[Cauchy-Schwarz inequality]
         Let $V$ be a real vector space with an inner product $\cdot$ which induces a norm $|\cdot|$. For all $\vec x$, $\vec y \in V$,
         \[
@@ -1367,6 +1369,9 @@
          \downarrow &  & \downarrow \\
         \end{pmatrix}
     \]
+    
+    \lecture{Lecture 10 -- 30/10/25}
+
     We then have the following `identities' (by definition):
     \[
         (\vec R_i)_j = M_ij = (\vec C_j)_i
@@ -1593,7 +1598,7 @@
         \end{align*}        
     \end{enumerate}
     
-    \lecture{Lecture 11 -- 01/11/25}\
+    \lecture{Lecture 11 -- 01/11/25}
 
     \begin{enumerate}[resume]
         \item \emph{Dilations}. A dilation of factors $\alpha$, $\beta$, $\gamma$ takes
@@ -3144,12 +3149,14 @@
         
         
     \end{proof}
+
+    \lecture{Lecture 20 -- 22/11/25}
     
     \subsubsection{Gram-Schmidt orthogonalisation}
 
     Given a linearly independent set of vectors in $\CC^n$, $\{\vec w_1, \dots, \vec w_r\}$, we can construct a sequence of sets of the form
     \begin{itemize}
-        \item $\{\vec u_1, \vec w_2', \dots, \vec w_r'\}$ \\
+        \item $\{\vec u_1, \vec w_2', \dots, \vec w_r'\}$
         \item $\{\vec u_1, \vec u_2, \dots, \vec w_r'\}$ \\[5pt]
         \vdots
         \item $\{\vec u_1, \vec u_2, \dots, \vec u_r\}$
@@ -3597,8 +3604,8 @@
 
     \subsubsection{Conics}
 
-    \begin{definition}
-        A conic is a quadric in $\RR^2$.
+    \begin{definition}[Conics/conic sections]
+        A \emph{conic} or \emph{conic section} is a quadric in $\RR^2$.
     \end{definition}
     
     \begin{itemize}
@@ -3644,14 +3651,191 @@
             y^2 = 4ax
         \]
         A parabola has eccentricity 1, and focus at $x=a$.
+        DIAGRAM
         \item \emph{Hyperbolas}. Consider
         \[
             \frac{x^2}{a^2} - \frac{y^2}{b^2} = \pm 1
         \]
         Now the eccentricity $1 < e$ satisfies $b^2 = a^2(e^2-1)$, and the foci are again at $\pm ae$.
+        DIAGRAM
     \end{itemize}
     
     \lecture{Lecture 23 -- 29/11/25}
+
+    \subsubsection{Focus-directrix property}
+
+    Why are conics called conics? It is because they are slices of a cone!
+
+    DIAGRAM!!
+
+    
+    \begin{definition}[Eccentricity, foci and directrices]
+        Consider the expression for the conic
+        \begin{align*}
+            \frac{x^2}{y^2} \pm \frac{y^2}{b^2} = k
+        \end{align*}
+        The \emph{eccentricity} $e$ is a non-negative property of a conic, such that
+        \begin{itemize}
+            \item the \emph{foci} of the conic are at $\pm (ae, 0)$;
+            \item and the \emph{directrices} of the conic are at $x = \pm \frac a e$.
+        \end{itemize}
+        Furthermore, a conic can be defined as the set of points whose distance from the focus is $e$ times the distance from the directrix which is closer to that focus, unless $e=1$, in which case one must take the distance to the other directrix.        
+    \end{definition}
+    
+    We now once again split into cases of $e$.
+
+    \begin{itemize}
+        \item $e < 1$ (so we have an ellipse).
+        \begin{figure}[ht]
+            \centering
+            \fig{0.5\textwidth}{focus-directrix-ellipse}
+            \caption{An ellipse with its foci and a directrix labelled.}
+            \label{fig:focus-directrix-ellipse}
+        \end{figure}
+        Indeed, this formulation clearly corresponds to the equation
+        \begin{align*}
+            \sqrt{(x-ae)^2+y^2}&=e\left(\frac a e - x\right) \\
+            \implies\frac{x^2}{a^2} + \frac{y^2}{a^2(1-e^2)} &= 1
+        \end{align*}
+        after rearrangement, showing that $b^2 = a^2(1-e^2)$.
+        \item $e > 1$ (so we have a hyperbola).
+        \begin{figure}[H]
+            \centering
+            \fig{0.5\textwidth}{focus-directrix-hyperbola}
+            \caption{A hyperbola with its foci and a directrix labelled.}
+            \label{fig:focus-directrix-hyperbola}
+        \end{figure}
+        We obtain
+        \begin{align*}
+            \sqrt{(x-ae)^2+y^2} &= e\left(x-\frac a e\right) \\
+            \implies\frac{x^2}{a^2} - \frac{y^2}{a^2(e^2-1)} &= 1
+        \end{align*}
+        so $b^2 = a^2(e^2-1)$.
+        \item $e = 1$ (so we have a parabola).
+        \begin{figure}[ht]
+            \centering
+            \fig{0.5\textwidth}{focus-directrix-parabola}
+            \caption{A parabola with its focus and directrix labelled (note the opposite directrix is used).}
+            \label{fig:focus-directrix-parabola}
+        \end{figure}
+        We here have
+        \begin{align*}
+            \sqrt{(x-a)^2+y^2} &= x+a \\
+            \implies y^2 &= 4ax
+        \end{align*}
+    \end{itemize}
+
+    \subsubsection{Polar coordinates}
+    
+    We introduce a new parameter $l$ such that $\frac l e$ is the distance from the focus to the corresponding directrix, so that, if $e \neq 1$,
+    \begin{align*}
+        l = a|1-e^2|
+    \end{align*}
+    Now, we use polar coordinates centred on a focus, so that we obtain
+    \begin{align*}
+        r = e\left(\frac l e -r\cos \theta\right) \iff r = \frac l{1+e \cos \theta}
+    \end{align*}
+    
+    \subsection{Jordan canonical/normal forms}
+
+    We would like to obtain a classification of all $n$ by $n$ complex matrices up to similarity.   
+
+    \begin{proposition}
+        Any 2 by 2 complex matrix is similar to one of the following:
+        \begin{align*}
+            \begin{rcases}
+                B = \begin{pmatrix}
+                    \lambda_1 & 0 \\
+                    0 & \lambda_2 \\
+                \end{pmatrix}
+            \end{rcases} && \chi_A(t) &= (t-\lambda_1)(t-\lambda_2) \\[10pt]
+            \begin{rcases}
+                B = \begin{pmatrix}
+                    \lambda & 0 \\
+                    0 & \lambda \\
+                \end{pmatrix} \\
+                B = \begin{pmatrix}
+                    \lambda & 1 \\
+                    0 & \lambda \\
+                \end{pmatrix}
+            \end{rcases} && \chi_A(t) &= (t-\lambda)^2
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        $\chi_A(t)$ has two roots, counting multiplicity, over $\CC$.
+        \begin{itemize}
+            \item For distinct roots, $M_{\lambda_1} = m_{\lambda_1} = 1 = m_{\lambda_2} = M_{\lambda_2}$, so that $A$ is diagonalisable and similar to the first.
+            \item For $\lambda_1 = \lambda_2 = \lambda$ but $m_\lambda = 2$, we can diagonalise to obtain the second matrix.
+            \item If $\lambda_1 = \lambda_2 = \lambda$ but $m_\lambda = 1$, let $\V v$ be an eigenvector of $\lambda$ and extend it to a basis with a linearly independent vector $\V w$. Hence,
+            \begin{align*}
+                A\V v &= \lambda \V v \\
+                A \V w &= \alpha \V v + \beta \V w
+            \end{align*}
+            so the matrix of the linear map w.r.t the basis $\{\V v, \V w\}$ is
+            \begin{align*}
+                \begin{pmatrix}
+                    \lambda & \alpha \\
+                    0 & \beta \\
+                \end{pmatrix}
+            \end{align*}
+            However, since the determinant $\lambda\beta$ is the product of the eigenvalues, it must be that $\beta = \lambda$. Also, $\alpha \neq 0$ so, letting $\V u = \alpha \V v$, we obtain in the basis $\{\V u, \V w\}$ that
+            \begin{align*}
+                B = \begin{pmatrix}
+                    \lambda & 1 \\
+                    0 & \lambda \\
+                \end{pmatrix}
+            \end{align*}
+            as required.           
+        \end{itemize}        
+    \end{proof}
+    
+    \begin{theorem}[Classification of $n$ by $n$ complex matrices up to similarity]
+        Any $n$ by $n$ complex matrix $A$ is similar to a matrix $B$ with block form
+        \begin{align*}
+            B = \begin{pmatrix}
+                J_{n_1}(\lambda_1) & & 0 \\
+                 & \ddots & \\
+                0 & & J_{n_r}(\lambda_r) \\
+            \end{pmatrix}
+        \end{align*}
+        where each \emph{Jordan block} $J_p(\lambda)$ is a $p$ by $p$ matrix with the form
+        \begin{align*}
+            J_p(\lambda) = \begin{pmatrix}
+                \lambda & 1 &  &  \\
+                 & \lambda & \ddots &  \\
+                 &  & \ddots & 1 \\
+                 &  &  & \lambda \\
+            \end{pmatrix}
+        \end{align*}
+        where $n_1 + \dots + n_r = n$ and $\lambda_1, \dots, \lambda_r$ are \emph{not necessarily distinct} eigenvalues of $A$ and $B$.
+    \end{theorem}
+    
+    Clearly $A$ is diagonalisable if and only if it consists only of 1 by 1 blocks.
+
+    \subsection{Symmetries and transformation groups}
+
+    \subsubsection{Orthogonal transformations and rotations in $\RR^n$}
+
+    Recall an orthogonal matrix satisfies $RR^\intercal = R^\intercal R = I$, $(R\V x) \cdot (R\V y) = \V x \cdot \V y$, and has columns which form an orthonormal basis.
+    
+    \begin{definition}[Orthogonal group]
+        The set of orthogonal matrices $\RR$ of size $n$ by $n$ forms a group, denoted by $O(n)$, called the \emph{orthogonal group}.
+    \end{definition}
+    
+    \begin{definition}[Special orthogonal group]
+        The subgroup of the orthogonal group consisting of matrices with determinant 1 is the \emph{special orthogonal group}, $SO(n)$.
+    \end{definition}
+    
+    Importantly, while $O(n)$ preserves lengths and $n$-dimensional volumes, $SO(n)$ preserves orientation as well -- $SO(n)$ consists of rotations, while $O(n)$ also contains reflections.
+
+    \begin{proposition}
+        Every element of $O(n)$ is of the form
+        \begin{itemize}
+            \item $R$, where $R \in SO(n)$;
+            \item or $RH$, where $R \in SO(n)$, $H \in O(n) \setminus SO(n)$.
+        \end{itemize}
+    \end{proposition}
 
     \lecture{Lecture 24 -- 02/12/25}
 

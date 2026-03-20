@@ -1,39 +1,54 @@
 \contentsline {section}{\numberline {1}The structure of the Newtonian universe}{2}{section.2}%
 \contentsline {subsection}{\numberline {1.1}Law of inertia}{2}{subsection.3}%
-\contentsline {subsection}{\numberline {1.2}Galilean relativity principle}{2}{subsection.6}%
+\contentsline {subsection}{\numberline {1.2}Galilean relativity principle}{3}{subsection.6}%
 \contentsline {section}{\numberline {2}Forces}{3}{section.11}%
 \contentsline {subsection}{\numberline {2.1}Newton's second law}{3}{subsection.12}%
-\contentsline {subsection}{\numberline {2.2}Conservative forces}{3}{subsection.15}%
+\contentsline {subsection}{\numberline {2.2}Conservative forces}{4}{subsection.15}%
 \contentsline {subsection}{\numberline {2.3}Energy}{5}{subsection.19}%
-\contentsline {subsection}{\numberline {2.4}Electromagnetic forces}{6}{subsection.31}%
-\contentsline {subsection}{\numberline {2.5}Motion in one dimension}{8}{subsection.33}%
-\contentsline {subsection}{\numberline {2.6}Dimensional analysis}{9}{subsection.34}%
-\contentsline {subsection}{\numberline {2.7}Friction}{11}{subsection.40}%
-\contentsline {subsubsection}{\numberline {2.7.1}Terminal velocity}{12}{subsubsection.44}%
-\contentsline {subsubsection}{\numberline {2.7.2}Damping}{13}{subsubsection.45}%
-\contentsline {section}{\numberline {3}Central forces}{13}{section.47}%
-\contentsline {subsection}{\numberline {3.1}Conservation of angular momentum}{14}{subsection.50}%
+\contentsline {subsection}{\numberline {2.4}Electromagnetic forces}{7}{subsection.31}%
+\contentsline {subsection}{\numberline {2.5}Motion in one dimension}{9}{subsection.33}%
+\contentsline {subsection}{\numberline {2.6}Dimensional analysis}{10}{subsection.34}%
+\contentsline {subsection}{\numberline {2.7}Friction}{12}{subsection.40}%
+\contentsline {subsubsection}{\numberline {2.7.1}Terminal velocity}{13}{subsubsection.44}%
+\contentsline {subsubsection}{\numberline {2.7.2}Damping}{14}{subsubsection.45}%
+\contentsline {section}{\numberline {3}Central forces}{14}{section.47}%
+\contentsline {subsection}{\numberline {3.1}Conservation of angular momentum}{15}{subsection.50}%
 \contentsline {subsection}{\numberline {3.2}Polar coordinates in the plane}{15}{subsection.55}%
-\contentsline {subsection}{\numberline {3.3}The effective potential}{16}{subsection.58}%
+\contentsline {subsection}{\numberline {3.3}The effective potential}{17}{subsection.58}%
 \contentsline {subsection}{\numberline {3.4}The orbit equation}{17}{subsection.59}%
-\contentsline {subsection}{\numberline {3.5}Kepler's laws}{18}{subsection.60}%
-\contentsline {subsection}{\numberline {3.6}Repulsive potentials and scattering}{19}{subsection.67}%
-\contentsline {section}{\numberline {4}Systems of particles}{20}{section.72}%
-\contentsline {subsection}{\numberline {4.1}Centre of mass}{21}{subsection.75}%
-\contentsline {subsection}{\numberline {4.2}The two-body problem}{23}{subsection.82}%
-\contentsline {subsection}{\numberline {4.3}Rocket equation and variable mass}{24}{subsection.83}%
-\contentsline {section}{\numberline {5}Rigid bodies}{24}{section.84}%
-\contentsline {subsection}{\numberline {5.1}Angular velocity}{24}{subsection.85}%
-\contentsline {subsection}{\numberline {5.2}Moment of inertia}{25}{subsection.90}%
-\contentsline {subsection}{\numberline {5.3}Perpendicular axis theorem}{27}{subsection.95}%
+\contentsline {subsection}{\numberline {3.5}Kepler's laws}{19}{subsection.60}%
+\contentsline {subsection}{\numberline {3.6}Repulsive potentials and scattering}{20}{subsection.67}%
+\contentsline {section}{\numberline {4}Systems of particles}{21}{section.72}%
+\contentsline {subsection}{\numberline {4.1}Centre of mass}{22}{subsection.75}%
+\contentsline {subsection}{\numberline {4.2}The two-body problem}{24}{subsection.82}%
+\contentsline {subsection}{\numberline {4.3}Rocket equation and variable mass}{25}{subsection.83}%
+\contentsline {section}{\numberline {5}Rigid bodies}{25}{section.84}%
+\contentsline {subsection}{\numberline {5.1}Angular velocity}{25}{subsection.85}%
+\contentsline {subsection}{\numberline {5.2}Moment of inertia}{26}{subsection.90}%
+\contentsline {subsection}{\numberline {5.3}Perpendicular axis theorem}{28}{subsection.95}%
 \contentsline {subsection}{\numberline {5.4}Parallel axis theorem}{28}{subsection.98}%
-\contentsline {subsection}{\numberline {5.5}Motion of rigid bodies}{28}{subsection.102}%
-\contentsline {subsection}{\numberline {5.6}Normal forces}{30}{subsection.107}%
-\contentsline {section}{\numberline {6}Rotating reference frames}{31}{section.109}%
-\contentsline {subsection}{\numberline {6.1}Newton's equations in a rotating reference frame}{31}{subsection.110}%
-\contentsline {subsection}{\numberline {6.2}Centrifugal force}{32}{subsection.113}%
-\contentsline {subsection}{\numberline {6.3}Coriolis force}{33}{subsection.115}%
+\contentsline {subsection}{\numberline {5.5}Motion of rigid bodies}{29}{subsection.102}%
+\contentsline {subsection}{\numberline {5.6}Normal forces}{31}{subsection.107}%
+\contentsline {section}{\numberline {6}Rotating reference frames}{32}{section.109}%
+\contentsline {subsection}{\numberline {6.1}Newton's equations in a rotating reference frame}{32}{subsection.110}%
+\contentsline {subsection}{\numberline {6.2}Centrifugal force}{33}{subsection.113}%
+\contentsline {subsection}{\numberline {6.3}Coriolis force}{34}{subsection.115}%
 \contentsline {section}{\numberline {7}Special relativity}{36}{section.120}%
 \contentsline {subsection}{\numberline {7.1}Basic postulates of relativity}{36}{subsection.121}%
 \contentsline {subsection}{\numberline {7.2}Lorentz transformations}{37}{subsection.124}%
+\contentsline {subsection}{\numberline {7.3}Addition of velocities}{38}{subsection.128}%
+\contentsline {subsection}{\numberline {7.4}Spacetime diagrams and simultaneity}{39}{subsection.129}%
+\contentsline {subsection}{\numberline {7.5}Time dilation}{40}{subsection.131}%
+\contentsline {subsection}{\numberline {7.6}The twin paradox}{40}{subsection.132}%
+\contentsline {subsection}{\numberline {7.7}Length contraction}{40}{subsection.133}%
+\contentsline {subsection}{\numberline {7.8}The invariant interval}{41}{subsection.135}%
+\contentsline {subsection}{\numberline {7.9}Rapidity}{42}{subsection.139}%
+\contentsline {subsection}{\numberline {7.10}Lorentz transformations in four dimensions}{42}{subsection.142}%
+\contentsline {subsection}{\numberline {7.11}Proper time}{44}{subsection.145}%
+\contentsline {subsection}{\numberline {7.12}4-velocity}{44}{subsection.147}%
+\contentsline {subsection}{\numberline {7.13}4-momentum}{45}{subsection.148}%
+\contentsline {subsection}{\numberline {7.14}Massless particles}{46}{subsection.158}%
+\contentsline {subsection}{\numberline {7.15}Particle physics}{46}{subsection.159}%
+\contentsline {subsubsection}{\numberline {7.15.1}Particle decay}{47}{subsubsection.160}%
+\contentsline {subsubsection}{\numberline {7.15.2}Particle collisions}{48}{subsubsection.163}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

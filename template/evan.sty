@@ -229,6 +229,7 @@
 \DeclareMathOperator{\Fix}{Fix}
 \DeclareMathOperator{\ccl}{ccl}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Ann}{Ann}
 
 \DeclareMathOperator{\sech}{sech}
 \DeclareMathOperator{\arsinh}{arsinh}
@@ -243,6 +244,7 @@
 \DeclareMathOperator{\Var}{Var}
 \DeclareMathOperator{\Cov}{Cov}
 \DeclareMathOperator{\Exp}{Exp}
+\DeclareMathOperator{\Corr}{Corr}
 
 %From Kiran Kedlaya's "Geometry Unbound"
 \newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
@@ -340,6 +342,22 @@
   \fi
 }
 
+\newcommand{\lln}{
+  \text{---} \hspace{-0.2cm}
+}
+
+\newcommand{\rln}{
+  \hspace{-0.2cm} \text{---}
+}
+
+\newcommand{\pto}{
+  \xlongrightarrow{\PP}
+}
+
+\newcommand{\dto}{
+  \xlongrightarrow{\text{(d)}}
+}
+
 
 
 \newcommand{\gen}[1]{\left \langle #1 \right \rangle}
@@ -365,6 +383,7 @@
 \newcommand{\mc}[1]{\mathcal{#1}}
 
 \newcommand{\D}[1]{\,d{#1}}
+\newcommand{\del}{\nabla}
 \renewcommand{\div}{\grad \cdot}
 \newcommand{\curl}{\grad \times}
 \renewcommand{\pr}{\partial}
@@ -488,6 +507,7 @@
       \hypersetup{hypertexnames=false}
     \fi
     \usepackage[framemethod=TikZ]{mdframed}
+    \usepackage{needspace}
     \usetikzlibrary{shadows}
     % https://tex.stackexchange.com/a/292090/76888
     % https://github.com/marcodaniel/mdframed/issues/12
@@ -523,7 +543,6 @@
       frametitlefont=\bfseries,
       innertopmargin=4pt,
       innerbottommargin=8pt,
-      nobreak=true,
       backgroundcolor=Salmon!5,
       linecolor=RawSienna,
     }
@@ -599,6 +618,64 @@
     \newcommand{\listhack}{$\empty$\vspace{-2em}}
   \fi
 
+  \newdimen\envheight
+  \newdimen\pageavail
+
+  \newcommand{\NewSmartEnvironment}[2]{%
+    \NewDocumentEnvironment{#1}{o +b}{%
+      \par % Ensure vertical mode
+      
+      % --- STEP 1: MEASURE THE CONTENT ---
+      \begingroup
+      \let\stepcounter\@gobble
+      \let\refstepcounter\@gobble
+      \def\addtocounter####1####2{}%
+      \setbox0=\vbox{%
+        \IfValueTF{##1}{\begin{#2}[##1]}{\begin{#2}}##2\end{#2}%
+      }%
+      \global\envheight=\dimexpr\ht0+\dp0\relax
+      \endgroup
+      
+      % A quick macro to print the environment so we don't repeat code
+      \def\PrintSmartEnv{%
+        \IfValueTF{##1}{\begin{#2}[##1]}{\begin{#2}}##2\end{#2}%
+      }%
+      
+      % --- STEP 2: CALCULATE AVAILABLE SPACE ---
+      \pageavail=\dimexpr\pagegoal-\pagetotal\relax
+      
+      % --- STEP 3: ADVANCED PAGE BREAK LOGIC ---
+      \ifdim\envheight>\textheight
+        % 1. Too big for ANY page -> let it break naturally
+        \PrintSmartEnv
+      \else
+        \ifdim\pagegoal=\maxdimen
+          % 2. We are at the very top of a fresh page -> let it print
+          \PrintSmartEnv
+        \else
+          \ifdim\pagetotal>\pagegoal
+            % 3. A page break is already pending! (The QED bug) -> let LaTeX do its thing
+            \PrintSmartEnv
+          \else
+            \ifdim\envheight>\pageavail
+              % 4. Normal mid-page, doesn't fit -> Force new page
+              \newpage
+              \PrintSmartEnv
+            \else
+              % 5. Normal mid-page, fits fine -> let it print
+              \PrintSmartEnv
+            \fi
+          \fi
+        \fi
+      \fi
+    }{}%
+  }
+
+  \NewDocumentCommand{\DeclareSmartTheorem}{ O{} m }{
+    \declaretheorem[#1]{base#2}
+    \NewSmartEnvironment{#2}{base#2}%
+  }
+
   %%fakesection Theorem setup
   \ifevanthm
     \theoremstyle{definition}
@@ -648,11 +725,11 @@
     \fi
 
     \ifevanmdthm
-      \declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
-      \declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+      \DeclareSmartTheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+      \DeclareSmartTheorem[style=thmredbox,name=Example,numbered=no]{example*}
     \else
-      \declaretheorem[name=Example,sibling=theorem]{example}
-      \declaretheorem[name=Example,numbered=no]{example*}
+      \DeclareSmartTheorem[name=Example,sibling=theorem]{example}
+      \DeclareSmartTheorem[name=Example,numbered=no]{example*}
     \fi
 
     % Remark-style theorems

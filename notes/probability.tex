@@ -2078,6 +2078,1148 @@
     \end{proof}
 
     \lecture{Lecture 16 -- 27/02/26}
+
+    \begin{definition}
+        The \emph{expectation} of a non-negative continuous random variable $X$, $X \geq 0$, with density $f$, is given by
+        \begin{align*}
+            \EE[X] = \int_{-\infty}^\infty xf(x) \D x
+        \end{align*}
+        and
+        \begin{align*}
+            \EE[g(X)] = \int_{-\infty}^\infty g(x)f(x) \D x
+        \end{align*}
+    \end{definition}
+    
+    \begin{definition}
+        The expectation of a general continuous random variable $X$ with density $f$ is defined as follows. We put
+        \begin{align*}
+            X_+ &= \max(X, 0) \\
+            X_- &= \max(-X, 0)
+        \end{align*}
+        so $X = X_+ - X_-$. If $\EE[X_+]$ or $\EE[X_-] < \infty$, we define
+        \begin{align*}
+            \EE[X] = \EE[X_+] - \EE[X_-] = \int_{-\infty}^\infty xf(x) \D x
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        If $X$ is a continuous random variable with $X \geq 0$, then
+        \begin{align*}
+            \EE[X] = \int_0^\infty \PP(X \geq x) \D x
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            \EE[X] &= \int_0^\infty xf(x) \D x \\
+            &= \int_0^\infty \left(\int_0^x 1 \D y\right) f(x) \D x \\
+            &= \int_0^\infty \left(\int_y^\infty f(x) \D x\right) \D y \\
+            &= \int_0^\infty\PP(X \geq y) \D y
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        Recall in the discrete case we instead took expectations of the equality
+        \begin{align*}
+            X = \sum_{n=1}^\infty 1(X \geq n)
+        \end{align*}
+        Can we do something similar for continuous random variables? Indeed we have
+        \begin{align*}
+            X(\omega) &= \int_0^\infty 1(X(\omega) \geq x) \D x \\
+            \implies \EE[X] &= \EE\left[\int_0^\infty 1(X \geq x) \D x\right] \\
+            &= \int_0^\infty \PP(X \geq x) \D x
+        \end{align*}
+        However, the interchange of expected value and integral is not justified.     
+    \end{remark*}
+    
+    \begin{example*}
+        Let us consider some examples.
+        \begin{itemize}
+            \item Take $X \sim U(a, b)$. Then
+            \begin{align*}
+                \EE[X] = \int_a^b xf(x) \D x = \frac{a+b} 2
+            \end{align*}
+            \item Take $X \sim \Exp(\lambda)$. Then
+            \begin{align*}
+                \EE[X] = \int_0^\infty \lambda x e^{-\lambda x} \D x = \frac 1 \lambda
+            \end{align*}
+            or, perhaps more easily,
+            \begin{align*}
+                \EE[X] = \int_0^\infty \PP(X \geq x) \D x = \int_0^\infty e^{-\lambda x} \D x
+            \end{align*}
+        \end{itemize}
+    \end{example*}
+    
+    \subsection{The normal distribution}
+
+    \begin{definition}[Normal distribution]
+        Let $\mu \in \RR$, $\sigma > 0$ be two parameters. Then
+        \begin{align*}
+            f(x) = \frac 1 {\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+        \end{align*}
+        is the density of the \emph{normal distribution}.       
+    \end{definition}
+    
+    \begin{proof}
+        We must check $f$ is a density. Observe
+        \begin{align*}
+            \int_{-\infty}^\infty f(x) \D x &= \int_{-\infty}^\infty \frac 1 {\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x \\
+            &= \int_{-\infty}^\infty \frac 1 {\sqrt{2\pi}} \exp\left(-\frac {u^2}2\right) \D u \\
+            &= 2 \int_0^\infty \frac 1 {\sqrt{2\pi}} \exp\left(-\frac {u^2}2\right) \D u
+        \end{align*}
+        Let this integral be $I$. We find
+        \begin{align*}
+            I^2 &= \frac 2 \pi \int_0^\infty \int_0^\infty \exp\left(-\frac{u^2}2\right)\exp\left(\frac{v^2}2\right) \D u \D v \\
+            &= \frac 2 \pi \int_0^\infty \int_0^{\pi/2} re^{-\frac{r^2}2} d\theta dr \\
+            &= \int_0^\infty r e^{-\frac{r^2}2} \D r = 1
+        \end{align*}
+        Since $f(x) > 0$, we are done.
+    \end{proof}
+    
+    Let $X$ be a random variable with density $f$. We have
+    \begin{align*}
+        \EE[X] &= \int_{-\infty}^\infty xf(x) \D x \\
+        &= \underbrace{\int_{-\infty}^\infty (x-\mu)\frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x}_{\text{odd around } -\mu} + \underbrace{\int_{-\infty}^\infty \frac{\mu}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}_{\mu} \\
+        &= \mu
+    \end{align*}
+    Furthermore, 
+    \begin{align*}
+        \Var(X) = \EE[(X-\mu)^2] &= \int_{-\infty}^\infty (x-\mu)^2 \frac 1{\sigma\sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x \\
+        &= \sigma^2 \underbrace{\int_{-\infty}^\infty \frac{u^2}{\sqrt{2\pi}} \exp\left(-\frac{u^2}2\right) \D u}_{\text{1 after integration by parts}} \\
+        &= \sigma^2
+    \end{align*}
+    after $u = \frac{x-\mu}{\sigma}$. So $\Var(X) = \sigma^2$.
+
+    When $X$ has the normal distribution, we write $X \sim \mc N(\mu, \sigma^2)$ and we call it a normal random variable. If $X \sim \mc N(1, 0)$, $X$ is a \emph{standard normal variable}.
+
+    \begin{proposition}
+        Let $X$ have density $f$. Let $g$ be a strictly monotone function with $g^{-1}$ differentiable. Then $g(X)$ has density given by
+        \begin{align*}
+            f(g^{-1}(x)) \left|\frac{d}{dx}g^{-1}(x)\right|
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Suppose $g$ is increasing. Then
+        \begin{align*}
+            \PP(g(X) \leq x) &= \PP(X \leq g^{-1}(x)) = F(g^{-1}(x))
+        \end{align*}
+        Differentiating,
+        \begin{align*}
+            \frac{d}{dx} \PP(g(X) \leq x) = \frac{d}{dx}\left(F(g^{-1}(x))\right) = f(g^{-1}(x)) \underbrace{\frac{d}{dx} g^{-1}(x)}_{>0}
+        \end{align*}
+        If $g$ is decreasing, we put $\PP(g(X) \leq x)$ and proceed analogously.       
+    \end{proof}
+    
+    \subsubsection{Linear transformations of a normal random variable}
+
+    Let $X \sim \mc N(\mu, \sigma^2)$. Let $a \neq 0$, and $g(x) = ax + b$. What is the density of $Y = g(X)$? Clearly
+    \begin{align*}
+        g^{-1}(x) = \frac{x-b}a \implies \frac d{dx}g^{-1}(x) = \frac 1 a
+    \end{align*}
+    Hence
+    \begin{align*}
+        f_Y(y) &= f_X(g^{-1}(y)) \left|\frac{d}{dy}g^{-1}(y)\right| \\
+        &= \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(\frac{y-b}{a}-\mu)^2}{2\sigma^2}\right) \cdot \frac 1 {|a|} \\
+        &= \frac{1}{|a|\sigma \sqrt{2\pi}} \exp\left(-\frac{(y-(a\mu+b))^2}{2a^2\sigma^2}\right)
+    \end{align*}
+    so $Y \sim \mc N(a\mu+b, (a\sigma)^2)$. Hence, letting $X \sim \mc N(\mu, \sigma)^2$, we have
+    \begin{align*}
+        \frac{X-\mu}{\sigma} \sim \mc N(0, 1)
+    \end{align*}
+    This is a very helpful result! Say, for example, I have $X \sim \mc N(\mu, \sigma^2)$, and I want to find $\PP(-2\sigma < X-\mu < 2\sigma)$. This is just $\PP(-2 < \mc N(0, 1) < 2)$ for the standard normal variable $\mc N(0, 1)$. 
+
+    \begin{definition}[Standard normal probability distribution function]
+        Let 
+        \begin{align*}
+            \Phi(x) = \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} \exp\left(-\frac{u^2}2\right) = \PP(\mc N(0, 1) \leq x)
+        \end{align*}
+    \end{definition}
+    Now
+    \begin{align*}
+        \phi(x) = \Phi'(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}2}
+    \end{align*}
+    so $\phi(x) - \phi(-x) = 0$, and hence $(\Phi(x)+\Phi(-x))' = 0$, so $\Phi(x) + \Phi(-x)$ takes a constant value of 1.
+    
+    \begin{definition}[Median]
+        Let $X$ be a continuous random variable. The \emph{median} of $X$, denoted by $m$, is the number satisfying
+        \begin{align*}
+            \PP(X \geq m) = \PP(X \leq m) = \frac 1 2
+        \end{align*}
+        or
+        \begin{align*}
+            \int_{-\infty}^m f(x) \D x = \int_m^\infty f(x) \D x = \frac 1 2
+        \end{align*}
+    \end{definition}
+    
+    \begin{example*}
+        Suppose $X \sim \mc N(\mu, \sigma^2)$. We claim the median is $\mu$. Observe
+        \begin{align*}
+            \PP(X \leq \mu) = \PP\left(\frac{X-\mu}{\sigma} \leq 0\right) = \PP(\mc N(0, 1) \leq 0) = \frac 1 2
+        \end{align*}
+    \end{example*}
+    
+    \subsection{Multivariate density functions}
+
+    In the discrete case, we defined the joint distribution of $X_1, \dots, X_n$ in terms of
+    \begin{align*}
+        \PP(X_1 = x_1, \dots, X_n = x_n)
+    \end{align*}
+    However, in the continuous case, such a probability is of course zero, so we cannot talk about this. Instead, we say
+
+    \begin{definition}[Joint probability distribution function]
+        The \emph{probability distribution function} $F$ for a vector $X = (X_1, \dots, X_n)$, where $X_i$ are random variables, is such that
+        \begin{align*}
+            F(x_1, \dots, x_n) = \PP(X_1 \leq x_1, \dots, X_n \leq x_n)
+        \end{align*}
+    \end{definition}
+    
+    \begin{definition}[Joint probability density function]
+        The \emph{probability density function} $f$ for a vector $X = (X_1, \dots, X_n)$, where $X_i$ are random variables, is such that
+        \begin{align*}
+            f(x_1, \dots, x_n) = \pd{^nF}{x_1\dots \pr x_n}(x_1, \dots, x_n)
+        \end{align*}
+        or, equivalently,
+        \begin{align*}
+            \PP(X_1 \leq x_1, \dots, X_n \leq x_n) = \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f(y_1, \dots, y_n) \D y_n \dots \D y_1
+        \end{align*}        
+    \end{definition}
+    
+    \begin{proposition}
+        Let $B \subset \RR^n$. Then
+        \begin{align*}
+            \PP((X_1, \dots, X_n) \in B) = \int_B f(y_1, \dots, y_n) \D y_1 \dots \D y_n
+        \end{align*}
+    \end{proposition}
+    
+    \begin{definition}[Independence]
+        Let $X_1, \dots, X_n$ be random variables. We say they are independent if, for any $x_1, \dots, x_n$,
+        \begin{align*}
+            \PP(X_1 \leq x_1, \dots, X_n \leq x_n) = \PP(X_1 \leq x_1) \dots \PP(X_n \leq x_n)
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}
+        Suppose $X = (X_1, \dots, X_n)$ has density $f$. Then
+        \begin{itemize}
+            \item Suppose $X_1, \dots X_n$ are independent and have densities given by $f_1, \dots, f_n$. Then $f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)$.
+            \item Suppose $f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)$ for some non-negative functions $f_1, \dots, f_n$. Then $X_1, \dots X_n$ are independent with densities proportional to each of $f_1, \dots, f_n$.
+        \end{itemize}
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item We have
+            \begin{align*}
+                \PP(X_1 \leq x_1, \dots, X_n \leq x_n) &= \PP(X_1 \leq x_1) \dots \PP(X_n \leq x)n \\
+                &= \left(\int_{-\infty}^{x_1} f_1(y_1) \D y_1\right) \dots \left(\int_{-\infty}^{x_n}f_n(y_n)\right) \\
+                &= \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f_1(y_1) \dots f_n(y_n) \D y_n \dots \D y_1
+            \end{align*}
+            so $f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)$ as required.         
+            
+            \item We have
+            \begin{align*}
+                \PP(X_1 \leq x_1, \dots, X_n \leq x_n) &= \int_{-\infty}^{x_1} \dots \int_{-\infty}^{x_n} f(y_1, \dots, y_n) \D y_n \dots \D y_1 \\
+                &= \left(\int_{-\infty}^{x_1} f_1(y_1) \D y_1\right) \dots \left(\int_{-\infty}^{x_n} f_n(y_n) \D y_n\right)
+            \end{align*}
+            Observe $\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f_1(y_1) \dots f_n(y_n) \D x_1 \dots \D x_n = 1$. Hence
+            \begin{align*}
+                \PP(X_1 \leq x_1, \dots, X_n \leq x_n) = \frac{\int_{-\infty}^{x_1} f_1(y_1) \D y_1}{\int_{-\infty}^\infty f_1(y_1) \D y_1} \cdots \frac{\int_{-\infty}^{x_n} f_n(y_n) \D y_n}{\int_{-\infty}^\infty f_n(y_n) \D y_n}
+            \end{align*}
+            So $X_1, \dots, X_n$ are independent, with $X_i$ having density
+            \begin{align*}
+                \frac{f(x_i)}{\int_{-\infty}^\infty f(y_i) \D y_i}
+            \end{align*}
+        \end{itemize}
+    \end{proof}
+    
+    \subsubsection{Marginal density}
+
+    \begin{definition}[Marginal density]
+        Let $X = (X_1, \dots, X_n)$ be a vector of random variables. The \emph{marginal density} of $X_i$, $f_{X_i}(x_i)$, is the density of $X_i$, where all other variables' values are ignored.
+    \end{definition}
+    
+    \begin{proposition}
+        Let $X = (X_1, \dots, X_n)$ be a vector of random variables. The marginal density is given by
+        \begin{align*}
+            f_{X_i}(x_i) = \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f(x_1, \dots, x_i, \dots, x_n) \D x_n \dots \D x_{i+1} \D x_{i-1} \dots \D x_1
+        \end{align*}
+    \end{proposition}
+
+    \begin{proof}
+        Without loss of generality take $i=1$. Then
+        \begin{align*}
+            \PP(X_1 \leq x) &= \PP(X_1 \leq x, X_2 \in \RR, \dots, X_n \in \RR) \\
+            &= \int_{-\infty}^x \left(\int_{-\infty}^\infty \dots \int_{-\infty}^\infty f(x_1, \dots, x_n) \D x_n \dots \D x_2 \right)\D x_1
+        \end{align*}
+        so the expression inside the integral must be the density of $X_1$.
+    \end{proof}
+    
+    \subsubsection{Sum of independent random variables}
+
+
+    \begin{proposition}
+        Suppose $X$ and $Y$ are independent random variables with density $f_X$ and $f_Y$ respectively. The density of $X+Y$ is given by
+        \begin{align*}
+            f_{X+Y}(z) = \int_{-\infty}^\infty f_X(x)f_Y(z-x) \D x
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            \PP(X+Y \leq z) &= \PP((X, Y) \in \{(x, y) \in \RR^2: x+y \leq z\}) \\
+            &= \int_{x+y \leq z} f_{X,Y}(x, y) \D x \D y \\
+            &= \int_{x+y \leq z} f_X(x) f_Y(y) \D x \D y \\
+            &= \int_{-\infty}^\infty f_X(x) \int_{-\infty}^{z-x} f_Y(y) \D y \\
+            &= \int_{-\infty}^\infty f_X(x) \int_{-\infty}^z f_Y(y-x) \D y \D x \\
+            &= \int_{-\infty}^z \left(\int_{-\infty}^\infty f_X(x)f_Y(y-x) \D x\right) \D y
+        \end{align*}
+        so the density of $X+Y$ is as required.
+    \end{proof}
+    
+    \subsubsection{Conditional density}
+
+    \begin{definition}[Conditional density]
+        Let $X$ and $Y$ be random variables with joint density $f_{X, Y}$ and marginal densities $f_X$ and $f_Y$. The \emph{conditional density} of $X$ given $Y=y$ is
+        \begin{align*}
+            f_{X \mid Y}(x \mid y) = \frac{f_{X, Y}(x, y)}{f_Y(y)}
+        \end{align*}
+        for $f_Y(y) > 0$.
+    \end{definition}
+    
+    \begin{proposition}[Law of total probability for continuous random variables]
+        \[
+            f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x, y) \D y = \int_{-\infty}^\infty f_{X \mid Y}(x \mid y)f_Y(y) \D y
+        \]
+    \end{proposition}
+    
+    \begin{definition}[Conditional expectation for continuous random variables]
+        We define $\EE[X \mid Y]$, the \emph{conditional expectation of $X$ given y}, to be $g(Y)$, where
+        \begin{align*}
+            g(y) = \int_{-\infty}^\infty x f_{X \mid Y}(x \mid y) \D x
+        \end{align*}
+    \end{definition}
+    
+    \begin{theorem}
+        \label{functions-multivariate}
+        Let $X$ be a random variable with values in $D \subseteq \RR^n$ and density $f$. Let $g$ be a bijection from $D$ to $g(D)$ with a continuous derivative on $D$ and $|J| \neq 0$ for any $x \in D$, where $|J|$ is the Jacobian. Then, the random variable $Y = g(X)$ has density
+        \begin{align*}
+            f_Y(y) = f_X\left(g^{-1}(y)\right) |J|
+        \end{align*}  
+    \end{theorem}
+    
+    \begin{example*}
+        Suppose $X$, $Y$ are independent and $X, Y \sim \mc N(0, 1)$. What are the distributions of the magnitude and argument of $X+iY$? By the above,
+        \begin{align*}
+            f_{R, \theta}(r, \theta) &= f_{X, Y}(r \cos \theta, r \sin \theta) |J| = f_X(r \cos \theta)f_Y(r \sin \theta)r \\
+            &= \frac 1 {\sqrt{2\pi}} e^{-\frac{r^2\cos^2\theta}2} \cdot \frac 1 {\sqrt{2\pi}} e^{-\frac{r^2\sin^2\theta}2} r \\
+            &= \frac 1 {2\pi} re^{-\frac{r^2}2}
+        \end{align*}
+        Hence, $\theta \sim U(0, 2\pi)$, $R$ has density $re^{-\frac{r^2}2}$, and they are independent.        
+    \end{example*}
+
+    \subsection{Order statistics of a random sample}
+    
+    Let $X_1, \dots, X_n$ be i.i.d. random variables with probability distribution function $F$ and density $f$. For a given sample, let $Y_1 \leq \dots \leq Y_n$ be the $X_i$ ordered from smallest to largest -- called the order statistics -- and let us try to find the density of $(Y_1, \dots, Y_n)$.
+
+    Firstly, observe
+    \begin{align*}
+        \PP(Y_1 \leq x) = 1 - \PP(Y_1 > x) = 1 - \PP(X_1 > x)^n = 1 - (1-F(x))^n
+    \end{align*}
+    by independence. Differentiating, we obtain
+    \begin{align*}
+        f_{Y_1}(x) = \frac d {dx} \PP(Y_1 \leq x) = nf(x)(1-F(x))^{n-1}
+    \end{align*}
+    Similarly,
+    \begin{align*}
+        \PP(Y_n \leq x) &= F(x)^n \\
+        \implies f_{Y_n}(x) &= nf(x)F(x)^{n-1}
+    \end{align*}
+    Can we generalise these results? Yes!
+    \begin{proposition}
+        Let $X_1, \dots, X_n$ be i.i.d. random variables with probability distribution function $F$ and density $f$, and let $Y_1, \dots, Y_n$ be their order statistics. Then
+        \begin{align*}
+            f_{(Y_1, \dots, Y_n)}(x_1, \dots, x_n) = \begin{cases}
+                n!f(x_1) \dots f(x_n) & x_1 < \dots < x_n \\
+                0 & \text{o/w}
+            \end{cases}
+        \end{align*}
+    \end{proposition}
+
+    \begin{proof}
+        Considering all permutations of the $X_i$ which give the same ordered $Y_i$'s, we have
+        \begin{align*}
+            &\:\PP(Y_1 \leq x_1, \dots, Y_n \leq x_n) \\ =&\: n! \cdot \PP(X_1 \leq x_1, \dots, X_n \leq x_n, X_1 \leq \dots \leq X_n) \\
+            =&\: n! \int_{-\infty}^{x_1} \int_{u_1}^{x_2} \dots \int_{u_{n=1}}^{x_n} f(u_n)f(u_{n-1})\dots f(u_1) \D u_n \dots \D u_1 \\
+            \implies &\; f_{(Y_1, \dots, Y_n)}(x_1, \dots, x_n) = \begin{cases}
+                n!f(x_1) \dots f(x_n) & x_1 < \dots < x_n \\
+                0 & \text{o/w}
+            \end{cases}
+        \end{align*}
+        after differentiation and the application of FTC. Notably, the $Y_i$ are not independent, since the joint distribution only factorises in the case $x_1 < \dots < x_n$.      
+    \end{proof}
+
+    \begin{example*}
+        Let $X_i$ be independent with $X_i \sim \Exp(\lambda_i)$, and let $X = \min(X_1, \dots, X_n)$. Then
+        \begin{align*}
+            \PP(X \leq x) &= 1 - \left(1-\left(1-e^{-\lambda_1x}\right)\right)\cdots\left(1-\left(1-e^{-\lambda_nx}\right)\right) \\
+            &= 1 - e^{-(\lambda_1 + \dots + \lambda_n)x}
+        \end{align*}
+        so $X \sim \Exp\left(\sum_{i=1}^n \lambda_i\right)$. Now let $Y_1, \dots, Y_n$ be the order statistics, and set $Z_1 = Y_1$, $Z_2 = Y_2 - Y_1$, $Z_i = Y_i - Y_{i-1}$ for $i \leq n$ -- so the $Z_i$'s represent the spacing between the samples. What is the joint density of $(Z_1, \dots, Z_n)$?
+
+        Observe
+        \begin{align*}
+            \underbrace{\begin{pmatrix}
+             Z_1 \\
+             \vdots \\
+             Z_n \\
+            \end{pmatrix}}_{\vec Z} = \underbrace{\begin{pmatrix}
+             1 & 0 & 0 & \cdots & 0 & 0 \\
+             -1 & 1 & 0 & \cdots & 0 & 0 \\
+             0 & -1 & 1 & \cdots & 0 & 0 \\
+             \vdots & \vdots & \vdots & \ddots & 0 & 0 \\
+             0 & 0 & 0 & -1 & 1 & 0 \\
+             0 & 0 & 0 & 0 & -1 & 1 \\
+            \end{pmatrix}}_A \underbrace{\begin{pmatrix}
+             Y_1 \\
+             \vdots \\
+             Y_n \\
+            \end{pmatrix}}_{\vec Y}
+        \end{align*}
+        and also that
+        \begin{align*}
+            y_j = \sum_{i=1}^j z_i
+        \end{align*}
+        Now, by the theorem,
+        \begin{align*}
+            f_{(Z_1, \dots, Z_n)}(z_1, \dots, z_n) &= f_{(Y_1, \dots, Y_n)}(y_1, \dots, y_n)|J| \\
+            &= n!f(y_1) \cdots f(y_n) \\
+            &= n!\lambda e^{-\lambda z_1}\lambda e^{-\lambda(z_1+z_2)} \cdots \lambda e^{-\lambda(z_1+\dots+z_n)} \\
+            &= \prod_{i=1}^n \left((n-i+1)\lambda e^{-\lambda(n-i+1)z_i}\right)
+        \end{align*}
+        so the $Z_i$'s are independent, and $Z_i \sim \Exp(\lambda(n-i+1))$.
+    \end{example*}
+        
+    \section{Moment generating functions}
+
+    \begin{definition}[Moment generating functions]
+        Let $X$ be a random variable with density $f$. The \emph{moment generating function} or \emph{mgf} of $X$ is defined to be
+        \begin{align*}
+            m(\theta) = \EE[e^{\theta X}] = \int_{-\infty}^\infty e^{\theta x}f(x) \D x
+        \end{align*}
+        whenever this integral is finite.            
+    \end{definition}
+
+    \begin{theorem}
+        The mgf uniquely determines the distribution of a random variable, provided it is defined for an open interval of values of $\theta$. Furthermore,
+        \begin{align*}
+            m^{(r)}(\theta) = \EE[X^r]
+        \end{align*}
+    \end{theorem}
+    
+    \begin{example*}
+        The \emph{gamma distribution}, for $n \in \NN$ and $\lambda > 0$, has density
+        \begin{align*}
+            f(x) = \frac{e^{-\lambda x}\lambda^nx^{n-1}}{(n-1)!}
+        \end{align*}
+        which has the distribution of a sum of $n$ i.i.d. exponential random variables. Let us check that it is a density.
+        \begin{align*}
+            I_n &= \int_0^\infty f(x) \D x = \int_0^{\infty} \lambda e^{-\lambda x} \cdot \frac{\lambda^{n-1}x^{n-1}}{(n-1)!} \\
+            &= \int_0^\infty \lambda e^{-\lambda x} \cdot \frac{\lambda^{n-2}x^{n-2}}{(n-2)!} && \text{(parts)} \\
+            &= I_{n-1} = \cdots = I_1 = 1
+        \end{align*}
+        Suppose $X \sim \Gamma(n, \lambda)$. What is the mgf of $X$? We have
+        \begin{align*}
+            m(\theta) &= \int_0^\infty e^{\theta x}e^{-\lambda x} \frac{\lambda^n x^{n-1}}{(n-1)!} \D x \\
+            &= \frac{\lambda^n}{(\lambda-\theta)^n}\int_0^\infty e^{-(\lambda-\theta)x} \frac{(\lambda-\theta)^nx^{n-1}}{(n-1)!} \D x 
+        \end{align*}
+        If $\theta < \lambda$, then
+        \begin{align*}
+            m(\theta) = \left(\frac{\lambda}{\lambda-\theta}\right)^n
+        \end{align*}
+    \end{example*}
+
+    \lecture{Lecture $n+1$ -- 06/03/26}
+    
+    \begin{proposition}
+        If $X_1, \dots, X_n$ are independent, then $X_1 + \dots + X_n$ has mgf
+        \begin{align*}
+            m(\theta) = \EE[e^{\theta(X_1 + \dots + X_n)}] = \prod_{i=1}^n \EE[e^{\theta X_i}]
+        \end{align*}
+    \end{proposition}
+    
+    \begin{example*}[Sum of gamma random variables]
+        Suppose $X \sim \Gamma(n, \lambda)$ and $Y \sim \Gamma(m, \lambda)$, and $X \perp Y$. Then
+        \begin{align*}
+            \EE[e^{\theta(X+Y)}] = \EE[e^{\theta X}]\EE[e^{\theta Y}] = \left(\frac{\lambda}{\lambda-\theta}\right)^n \left(\frac{\lambda}{\lambda-\theta}\right)^m = \left(\frac{\lambda}{\lambda-\theta}\right)^{n+m}
+        \end{align*}
+        so $X+Y \sim \Gamma(n+m,\lambda)$. It is a consequence of this that, if $X_1, \dots, X_n$ are i.i.d. $\Exp(\lambda)$ random variables, then $X_1 + \dots + X_n \sim \Gamma(n, \lambda)$.
+    \end{example*}
+    
+    \begin{remark*}
+        One can generalise the gamma distribution to non-integer $m$ by replacing $(n-1)!$ with
+        \begin{align*}
+            \Gamma(\alpha) = \int_0^{\infty} e^{-x} x^{\alpha-1} \D x
+        \end{align*}
+        so that $X \sim \Gamma(\alpha, \lambda)$ if
+        \begin{align*}
+            f(x) = \frac{e^{-\lambda x}\lambda^{\alpha}x^{\alpha-1}}{\Gamma(\alpha)}
+        \end{align*}
+    \end{remark*}
+
+    \begin{definition}[Cauchy distribution]
+        The \emph{Cauchy distribution} has density
+        \begin{align*}
+            f(x) = \frac{1}{\pi(1+x^2)}
+        \end{align*}
+    \end{definition}
+    Hence, the mgf is
+    \begin{align*}
+        m(\theta) = \int_{-\infty}^{\infty} \frac{e^{\theta x}}{\pi(1+x^2)} \D x = \infty
+    \end{align*}
+    Suppose $X \sim f$, then observe $X$, $2X, \dots$ all have the same mgf, but not the same distribution. Hence mgfs do not uniquely determine distributions unless they are finite.
+    
+    What is the mgf of a normally distributed random variable? We have
+    \begin{align*}
+        m(\theta) &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x \\
+        &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac{x^2}{2\sigma^2}+2\frac{x}{2\sigma^2}\left(\mu+\theta\sigma^2\right)-\frac{\mu^2}{2\sigma^2}\right) \D x \\
+        &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac{x^2}{2\sigma^2}+2\frac{x}{2\sigma^2}\left(\mu+\theta\sigma^2\right)-\frac{\mu^2}{2\sigma^2}\right) \D x \\
+        &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2+\mu\theta+\frac{\theta^2\sigma^2}2\right) \\
+        &= \exp\left(\mu\theta + \frac{\theta^2\sigma^2}2\right) \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2\right)
+    \end{align*}
+    Then, the integrand is the density of $\mc N(\mu+\theta\sigma^2, \sigma^2)$, so we obtain
+    \begin{align*}
+        m(\theta) = \exp\left(\mu\theta + \frac{\theta^2\sigma^2}{2}\right)
+    \end{align*}
+    This gives an easy way to see that
+    \begin{proposition}
+        If $X \sim \mc N(\mu, \sigma^2)$, $Y \sim \mc N(\nu, \tau^2)$ and $X \perp Y$, then $X + Y \sim \mc N(\mu+\nu, \sigma^2+\tau^2)$.
+    \end{proposition}
+    
+    \subsection{Multivariate moment generating functions}
+
+    \begin{definition}[Multivariate moment generating functions]
+        Let $ X = (X_1, \dots, X_n)$ be a random variable. The mgf of $ X$ is defined to be
+        \begin{align*}
+            m( \theta) = \EE[e^{ \theta^\intercal  X}]
+        \end{align*}
+    \end{definition}
+    
+    \begin{theorem}
+        If the mgf is finite for an open set of values of $ \theta$, then it uniquely determines the distribution -- furthermore,
+        \begin{align*}
+            \pd[\theta=0]{^r m}{\theta_i^r} = \EE[X_i^r], \qquad \pd[\theta=0]{^{r+s}m}{\theta_i^r \pr \theta_j^s} = \EE[X_i^r X_j^s]
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proposition}
+        Let $(X_1, \dots, X_n) =  X$ be a random variable in $\RR^n$. Then
+        \begin{align*}
+            m( \theta) = \prod_{i=1}^n \EE[e^{\theta_i X_i}]
+        \end{align*}
+        if and only if $X_1, \dots, X_n$ are independent.        
+    \end{proposition}
+    
+    \begin{proof}
+        If $X_1, \dots, X_n$ are independent, then $m(\theta)$ factorises. Conversely, if $m(\theta)$ factorises, then the $X_i$ must be independent by the uniqueness of mgfs.       
+    \end{proof}
+    
+    \subsection{Multivariate Gaussian random variables}
+
+    \begin{definition}[Multivariate Gaussian random variables]
+        Let $X = (X_1, \dots, X_n)$ be a random variable. We say $X$ is \emph{Gaussian} if, for any $u \in \RR^n$, $u^\intercal X$ is a Gaussian random variable in $\RR$.
+    \end{definition}
+    
+    \begin{proposition}
+        \label{linear-preserves-gaussian}
+        Let $X \in \RR^n$ be a Gaussian vector. Let $A$ be an $m$ by $n$ matrix and let $b \in \RR^m$. Then $AX + b$ is also Gaussian.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $u \in \RR^m$ -- we want to show $u^\intercal (AX + b)$ is Gaussian in $\RR$. Observe
+        \begin{align*}
+            u^\intercal(AX + b) &= u^\intercal AX + u^\intercal b \\
+            &= v^\intercal X + u^\intercal b
+        \end{align*}
+        where $v^\intercal X$ is Gaussian (since $X$ is) and $u^\intercal b$ is constant. The result follows.        
+    \end{proof}
+    
+    \begin{proposition}[Multivariate mean]
+        A random vector variable $X$ has mean
+        \begin{align*}
+            \mu = \EE[X] = \begin{pmatrix}
+             \EE[X_1] \\
+             \vdots \\
+             \EE[X_n] \\
+            \end{pmatrix}   
+        \end{align*}
+        and variance
+        \begin{align*}
+            V = \Var(X) = \EE[(X-\mu) \cdot (X-\mu)^\intercal]
+        \end{align*}
+        which is an $n$-by-$n$ symmetric matrix, where expectation is taken pointwise.
+    \end{proposition}
+    
+    \begin{remark*}
+        Observe that $\Var(X)_{i,j} = \Cov(X_i, X_j)$.
+    \end{remark*}
+    
+    \lecture{Lecture $n+1$ -- 09/03/26}
+
+    What is the expectation of $u^\intercal X$? It should be
+    \begin{align*}
+        \EE\left[\sum_{i=1}^n u_iX_i\right] &= \sum_{i=1}^n u_i\EE[X_i] = u^\intercal \mu
+    \end{align*}
+    Furthermore,
+    \begin{align*}
+        \Var(u^\intercal X) = \Var\left(\sum_{i=1}^n u_iX_i\right) = \sum_{i,j=1}^n u_i \Cov(X_i, X_j) u_j = u^\intercal V u
+    \end{align*}
+    
+    \begin{proposition}
+        $V$ is a non-negative definite matrix -- for any $u \in \RR^n$,
+        \begin{align*}
+            u^\intercal V u \geq 0
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        $u^\intercal V u = \Var(u^\intercal X) \geq 0$.
+    \end{proof}
+    
+    Let us also find the mgf. We have, for any vector $\lambda$, $\lambda^\intercal X \sim \mc N(\lambda^\intercal mu, \lambda^\intercal V \lambda)$. It follows immediately from the expression for the mgf of a Gaussian random variable in $\RR$ that 
+    \begin{align*}
+        m(\lambda) = \exp\left(\lambda^\intercal \mu + \frac{\lambda^\intercal V \lambda} 2\right)
+    \end{align*}
+    
+    Recall that the mgf uniquely defines the distribution in any case -- hence, for a Gaussian random variable in particular, we conclude $\mu$ and $V$ are sufficient.
+    
+    \begin{lemma}[Construction of a Gaussian random variable]
+        Let $Z_1, \dots, Z_n$ be i.i.d $\mc N(0, 1)$ random variables. Then $Z = (Z_1, \dots, Z_n)$ is a Gaussian vector.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $u \in \RR^n$, and we need to show $u^\intercal Z$ is normal in $\RR$. We have that the mgf of $u^\intercal Z$ is
+        \begin{align*}
+            m(\lambda) &= \EE\left[e^{\lambda \sum_{i=1}^n u_iZ_i}\right] \\
+            &= \prod_{i=1}^n \EE\left[e^{\lambda u_i z_i}\right] \\
+            &= \prod_{i=1}^n \exp\left(\frac{\lambda^2u_i^2}2\right) \\
+            &= \exp\left(\frac{\lambda^2|u|^2}2\right)
+        \end{align*}
+        Hence, $u^\intercal Z \sim \mc N(0, |u|^2)$.
+    \end{proof}
+    
+    \begin{remark*}
+        For this vector, we have in particular $\mu = \V 0$, $V = I_n$ -- we write $Z \sim \mc N(0, I_n)$.
+    \end{remark*}
+    
+    Let $\mu \in \RR^n$ and let $V$ be a non-negative definite matrix. We want to construct a Gaussian vector with mean $\mu$ and variance $V$, using the standard Gaussian $Z$. Recall that, for $n=1$, we can do this by taking $X = \mu + \sigma Z$. However, for this, we need to somehow take the square root of the variance -- how will this generalise?
+
+    \begin{definition}[Matrix square root]
+        Let $V$ be a non-negative definite matrix such that
+        \begin{align*}
+            V = U^\intercal D U
+        \end{align*}
+        where $U^\intercal = U^{-1}$ and $D$ is a diagonal matrix, which has diagonal entries all $\geq 0$. Then
+        \begin{align*}
+            \sqrt V = U^\intercal \sqrt D U
+        \end{align*}
+        where the square root of $D$ is produced by taking the square root of each of its diagonal entries.       
+    \end{definition}
+    
+    \begin{remark*}
+        Reassuringly, this definition satisfies $(\sqrt V)^2 = V$.
+    \end{remark*}
+    
+    \begin{lemma}[Construction of a general Gaussian random variable]
+        Let $\mu \in \RR^n$ and $V$ be a non-negative definite matrix. Let $Z_1, \dots, Z_n$ be i.i.d $\mc N(0, 1)$ random variables and $Z = (Z_1, \dots, Z_n)$. Let $X = \mu + \sigma Z$, where $\sigma$ is the square root of $V$. Then $X$ is Gaussian with mean $\mu$ and variance $V = \sigma^2$, denoted $X \sim \mc N(\mu, V)$.
+    \end{lemma}
+    
+    \begin{proof}
+        $X$ is Gaussian by \cref{linear-preserves-gaussian}. Clearly $\EE[X] = \mu$, and
+        \begin{align*}
+            \Var(X) &= \EE[(X-\mu)(X-\mu)^\intercal] \\
+            &= \EE[(\sigma Z)(Z^\intercal \sigma^\intercal)] \\
+            &= \sigma \EE[ZZ^\intercal] \sigma^\intercal \\
+            &= \sigma I_n \sigma^\intercal \\
+            &= V
+        \end{align*}
+    \end{proof}
+    
+    \begin{proposition}
+        Let $X \sim \mc N(\mu, V)$, where $V$ is positive definite. Then, the density of $X$ is given by
+        \begin{align*}
+            f_X(x) = \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\frac{(x-\mu)^\intercal V^{-1} (x-\mu)} 2\right)
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        We can write $X = \mu + \sigma Z$, where $Z \sim \mc N(0, I_N)$, and $Z = \sigma^{-1}(x-\mu)$. Hence, by \cref{functions-multivariate}, we have
+        \begin{align*}
+            f_X(x) &= f_Z(z) |J| \\
+            &= \frac 1{(2\pi)^{n/2}}\exp\left(-\frac{z^\intercal z}2\right) \frac 1{\det \sigma} \\
+            &= \frac 1{(2\pi)^{n/2} \det \sigma}\exp\left(-\frac{(x-\mu)^\intercal (\sigma^{-1})^\intercal \sigma^{-1} (x-\mu)}2\right) \\
+            &= \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\frac{(x-\mu)^\intercal V^{-1} (x-\mu)} 2\right)
+        \end{align*}
+    \end{proof}
+    
+    We now seek to generalise this result to non-negative definite variance. If $V$ has some eigenvalue equal to zero, there exists an orthogonal change of basis such that
+    \begin{align*}
+        V = \begin{pmatrix}
+            U & 0 \\
+            0 & 0 \\
+        \end{pmatrix}
+    \end{align*}
+    where $U$ is an $m$ by $m$ positive definite matrix with all other entries filled in by zero. Then, we can write $\mu = (\lambda, \nu)$ where $\lambda \in \RR^m$, $\nu \in \RR^{n-m}$, so that $X = (y, \nu)$ for a constant vector $\nu$ and $Y \sim \mc N(\lambda, U)$ with density
+    \begin{align*}
+        f_Y(y) = \frac 1{\sqrt{(2\pi)^m \det U}} \exp\left(-\frac{(y-\lambda)^\intercal U^{-1} (y-\lambda)} 2\right)
+    \end{align*}
+    
+    \begin{proposition}
+        Let $X = (X_1, \dots, X_n)$ be a Gaussian vector, $\mu = \EE[X]$, $V = \Var(X)$ positive definite. Then $X_1, \dots, X_n$ are independent if and only if $V$ is diagonal.
+    \end{proposition}
+    
+    The forward implication is true for any random variable. We give two proofs of the converse.
+
+    \begin{proof}[Proof 1]
+        Let
+        \begin{align*}
+            V = \begin{pmatrix}
+                \lambda_1 & \cdots & 0 \\
+                \vdots & \ddots & \vdots \\
+                0 & \cdots & \lambda_n \\
+            \end{pmatrix}
+        \end{align*}
+        Let $\mu = (\mu_1, \dots, \mu_n)$, so that
+        \begin{align*}
+            f_X(x) &= \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\frac{(x-\mu)^\intercal V^{-1} (x-\mu)}{2}\right) \\
+            &= \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\sum_{i=1}^n \frac{(x_i-\mu_i)^2}{2\lambda_i}\right) \\
+            &= \prod_{i=1}^n \frac 1 {\lambda_i \sqrt{2\pi}} \exp\left(-\frac{(x_i-\mu_i)^2}{2\lambda_i}\right)
+        \end{align*}
+        so $X_i$ are independent as required, and furthermore each is normal with mean $\mu_i$ and variance $\lambda_i$.
+    \end{proof}
+    
+    \begin{proof}[Proof 2]
+        Observe
+        \begin{align*}
+            m(\theta) &= \EE[e^{\theta^\intercal X}] = \exp\left(\theta^\intercal \mu + \frac{\theta^\intercal V \theta} 2\right) \\
+            &= \exp\left(\sum_{i=1}^n \theta_i \mu_i + \sum_{i=1}^n \frac{\theta_i^2 \lambda_i}2\right) \\
+            &= \prod_{i=1}^n \exp\left(\theta_i \mu_i + \frac{\theta_i^2 \lambda_i} 2\right)
+        \end{align*}
+        so the mgf factorises and hence the $X_i$ are independent.
+    \end{proof}
+    
+    \subsection{Bivariate Gaussians}
+
+    \begin{definition}[Correlation]
+        Let $X = (X_1, X_2)$ be a random variable in $\RR^2$, with $\mu_i = \EE[X_i]$, $\sigma^2_i = \Var(X_i)$. Then the \emph{correlation} is given by
+        \begin{align*}
+            \rho = \Corr(X_1, X_2) = \frac{\Cov(X_1, X_2)}{\sqrt{\Var(X_1)\Var(X_2)}}
+        \end{align*}
+    \end{definition}
+    
+    \begin{lemma}
+        For any $X$, $-1 \leq \rho \leq 1$.
+    \end{lemma}
+
+    \begin{proof}
+        Cauchy-Schwarz.
+    \end{proof}
+
+    \begin{lemma}
+        The variance matrix of $X$, which is given by
+        \begin{align*}
+            V = \begin{pmatrix}
+                \sigma_1^2 & \rho\sigma_1\sigma_2 \\
+                \rho\sigma_1\sigma_2 & \sigma_2^2 \\
+            \end{pmatrix}
+        \end{align*}
+        is positive-definite.        
+    \end{lemma}
+    
+    \begin{proof}
+        Let $u = (u_1, u_2)^\intercal$, so
+        \begin{align*}
+            u^\intercal V u = (1 \pm \rho)(\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2) \mp \rho(\sigma_1 u_1 - \sigma_2 u_2)^2
+        \end{align*}
+        Depending on whether $\rho \in [-1, 0]$ or $\rho \in [0, 1]$, we use take the first plus sign or the first minus sign, respectively.       
+    \end{proof}
+    
+    What is $\EE[X_2 \mid X_1]$
+
+    \begin{proof}
+        Let $Y = X_2 - aX_1$. Observe
+        \begin{align*}
+            \begin{pmatrix}
+                X_1 \\
+                Y \\
+            \end{pmatrix} = \begin{pmatrix}
+                1 & 0 \\
+                -a & 1 \\
+            \end{pmatrix}\begin{pmatrix}
+                X_1 \\
+                X_2 \\
+            \end{pmatrix} 
+        \end{align*}
+        so $(X_1, Y)$ is Gaussian. Observe
+        \begin{align*}
+            \Cov(X_1, Y) &= \Cov(X_1, X_2 - aX_1) \\
+            &= \Cov(X_1, X_2) - a\Var(X_1)
+        \end{align*}
+        Taking $a = \frac{\Cov(X_1, X_2)}{\Var(X_1)}$ gives $\Cov(X_1, Y) = 0$, so $X_1$ and $Y$ are independent. Then
+        \begin{align*}
+            \EE[X_2 \mid X_1] &= \EE[X_2 - aX_1 \mid X_1] + \EE[aX_1 \mid X_1]\\
+            &= \EE[X_2 - aX_1] + aX_1 \\
+            &= \mu_2 - a\mu_1 + aX_1
+        \end{align*}
+    \end{proof}
+    
+    \section{Convergence results and limit theorems}
+    
+    \begin{definition}[Convergence in probability]
+        A sequence of random variables $(X_n)$ converges to $X$ \emph{in probability}, $X_n \pto X$ if, for any $\eps > 0$,
+        \begin{align*}
+            \PP(|X_n-X| > \eps) \to 0
+        \end{align*}
+        as $n \to \infty$.
+    \end{definition}
+    
+    \begin{theorem}[Weak law of large numbers]
+        Let $(X_n)$ be a sequence of i.i.d. random variables with finite mean. Let $S_n = X_1 + \dots + X_n$, then 
+        \begin{align*}
+            \frac{S_n}{n} \pto \mu
+        \end{align*}
+        as $n \to \infty$.
+    \end{theorem}
+    
+    \begin{proof}
+        Assume $\sigma^2 = \Var(X_1) < \infty$. Observe
+        \begin{align*}
+            \PP\left(\left|\frac{S_n}{n}-\mu\right| > \eps\right) &= \PP(|S_n - n\mu| > n\eps) \\
+            &\leq \frac{\Var(S_n)}{n^2\eps^2} \\
+            &= \frac{\sigma^2}{n\eps^2} \to 0
+        \end{align*}
+        as $n \to \infty$.
+    \end{proof}
+    
+    \begin{definition}[Almost sure/probability 1 convergence]
+        Let $(X_n)$ be a sequence of random variables and $X$ a random variable. We say that $X_n \to X$ \emph{almost surely} or \emph{with probability 1} if
+        \begin{align*}
+            \PP(\lim_{n \to \infty} X_n = X) = 1
+        \end{align*}
+        Perhaps it is most helpful to return to the definition of random variables. We have that there exists $A \in \mc F$ such that $\PP(A) = 1$ and, for $\omega$ in that set, the functions $X_n$ converge pointwise to the function $X$.
+    \end{definition}
+    
+    \begin{proposition}
+        If $X_n \to 0$ as $n \to \infty$ a.s., then $X_n \pto 0$ as $n \to \infty$.
+    \end{proposition}
+    
+    \begin{proof}
+        We want to show that $\PP(|X_n| \leq \eps) \to 1$ as $n \to \infty$. Observe
+        \begin{align*}
+            \PP(|X_n| \leq \eps) &\geq \PP\left(\underbrace{\bigcap_{m=n}^\infty |X_m| \leq \eps}_{A_n}\right)
+        \end{align*}
+        Then the events $A_n$ are increasing, that is $A_n \subseteq A_{n+1}$. It follows by continuity of probability measures that $\PP(A_n)$ is increasing and converges to $\PP\left(\bigcup_n A_n\right)$ as $n \to \infty$. Hence
+        \begin{align*}
+            \PP(A_n) \to \PP\left(\bigcup_n \bigcap_{m=n}^\infty |X_m| \leq \eps\right)
+        \end{align*}
+        so that
+        \begin{align*}
+            \lim_{n \to \infty} \PP(|X_n| \leq \eps) &\geq \PP(\exists n \text{ s.t. } m \geq n \implies |X_m| < \eps) \\
+            &\geq \PP(\forall \eps > 0, \exists n \text{ s.t. } m \geq n \implies |X_m| < \eps)
+        \end{align*}
+        But this is exactly the set of $\omega$ such that $X_n$ converges pointwise to $X$, so it has probability 1 by assumption. Hence
+        \begin{align*}
+            \lim_{n \to \infty} \PP(|X_n| \leq \eps) &\geq 1 \\
+            \implies \lim_{n \to \infty} \PP(|X_n| \leq \eps) &= 1
+        \end{align*}
+        as required.
+    \end{proof}
+    
+    \begin{remark*}
+        In fact convergence in probability does not imply almost sure convergence, as one can show by considering a well-chosen counterexample.
+    \end{remark*}
+    
+    \begin{theorem}[Strong law of large numbers]
+        Let $(X_n)$ be a sequence of i.i.d. random variables with finite mean. Let $S_n = X_1 + \dots + X_n$, then
+        \begin{align*}
+            \frac{S_n}n \to \mu
+        \end{align*}
+        a.s. as $n \to \infty$.        
+    \end{theorem}
+
+    \begin{proof}[Proof (non-examinable)]
+        Assume $\sigma^2 = \Var(X_1) < \infty$ and $\EE[X_1^4] < \infty$. Let $Y_i = X_i - \mu$, so $\EE[Y_i] = 0$, and 
+        \begin{align*}
+            \EE[Y_1^4] = \EE[(X_1-\mu)^4] \leq \EE[\left(2\max(\EE[X_1], \mu)\right)^4] \leq 2^4 \left(\EE[X_1^4]+\mu^4\right)
+        \end{align*}
+        Set now $S_n = \sum_{i=1}^n Y_i$, and we must show $S_n/n \to 0$ a.s. as $n \to \infty$.
+
+        We claim that
+        \begin{align*}
+            \PP\left(\sum_{n=1}^\infty \left(\frac{S_n}n\right)^4 < \infty\right) = 1
+        \end{align*}
+        It suffices to show that
+        \begin{align*}
+            \EE\left[\sum \left(\frac{S_n}n\right)^4\right] < \infty
+        \end{align*}
+        Observe
+        \begin{align*}
+            \EE\left[\sum \left(\frac{S_n}n\right)^4\right] &= \sum \frac{1}{n^4} \EE[S_n^4] \\
+            &= \sum \frac{1}{n^4} \EE\left[\sum_{i=1}^n Y_i^4 + \binom 4 2 \sum_{1\leq i < j \leq n} Y_i^2 Y_j^2 + R\right]
+        \end{align*}
+        where $R$ is a sum of terms of the form
+        \begin{align*}
+            Y_i^3Y_j, \; Y_i^2Y_jY_k, \; Y_iY_jY_kY_l
+        \end{align*}
+        for distinct indices $i$, $j$, $k$, $l$. For such a term, the expectation factorises by independence, and then, since $\EE[X_i] = 0$ and a first power appears in each of them, we obtain 0.
+
+        Let us consider the $X_i^2X_j^2$ terms. We have
+        \begin{align*}
+            \EE[X_i^2X_j^2] = \EE[Y_i^2]^2
+        \end{align*}
+        Now, by Jensen with $f(x) = x^2$ or just non-negativity of variance, we have $\EE[Y_i^2]^2 \leq \EE[Y_i^4]$, which is finite. Now
+        Furthermore,
+        \begin{align*}
+            \sum \frac 1{n^4} \EE\left[\sum_{i=1}^n Y_i^4 + \binom 4 2 \sum_{1 \leq i < j \leq n}Y_i^2Y_j^2\right] &\leq \sum \frac 1{n^4} \left(n \EE[Y_1^4] + 6\frac{n(n-1)}{2} \EE[Y_1^4]\right) \\
+            &\leq \EE[Y_1^4] \sum \frac{1}{n^4} \cdot 3n^2 \\
+            &= \EE[Y_1^4] \cdot \frac{\pi^2}{2} 
+        \end{align*}
+        which is finite, as required. Hence 
+        \begin{align*}
+            \PP\left(\sum_{n=1}^\infty \left(\frac{S_n}n\right)^4 < \infty\right) = 1
+        \end{align*}
+        so, applying the $n^\text{th}$ term test, $\left(\frac{S_n}{n}\right)^4 \to 0$ with probability 1, so taking fourth roots immediately gives the result.
+    \end{proof}
+    
+    \subsection{Central limit theorem}
+
+    \begin{definition}[Convergence in probability]
+        A sequence of random variables $(X_n)$ \emph{converges to $X$ in distribution}, $X_n \dto X$, if
+        \begin{align*}
+            F_{X_n}(x) \to F_X(x)
+        \end{align*}
+        as $n \to \infty$ for all $x \in \RR$ that are continuity points of $F_X$.
+    \end{definition}
+
+    \lecture{Lecture 23 -- 16/03/26}
+    
+    \begin{proposition}
+        If $X_n \pto X$ as $n \to \infty$, then $X_n \dto X$ as $n \to \infty$.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $x$ be a continuity point of $F_X$, and let $\eps > 0$. We claim that
+        \begin{align*}
+            \{X \leq x - \eps\} \subseteq \{X_n \leq x\} \cup \{|X_n-X| > \eps\}
+        \end{align*}
+        and that
+        \begin{align*}
+            \{X_n \leq x\} \subseteq \{X \leq x+\eps\} \cup \{|X_n-X| > \eps\}
+        \end{align*}
+        Taking probabilities,
+        \begin{align*}
+            \PP(X \leq x-\eps) &\leq \PP(X_n \leq x) + \PP(|X_n-X| > \eps) \\
+            \implies F_X(x-\eps) &\leq \liminf_{n \to \infty} \PP(X_n \leq x)
+        \end{align*}
+        since the second term goes to zero by assumption. Furthermore,
+        \begin{align*}
+            \PP(X_n \leq x) &\leq \PP(X \leq x + \eps) + \PP(|X_n-X| > \eps) \\
+            \implies \limsup_{n \to \infty} F_{X_n}(x) &\leq F_X(x+\eps)
+        \end{align*}
+        so that
+        \begin{align*}
+            F_X(x-\eps) \leq \liminf F_{X_n}(x) \leq \limsup F_{X_n}(x) \leq F_X(x+\eps)
+        \end{align*}
+        Now, taking $\eps \to 0$, since $x$ is a continuity point, we obtain
+        \begin{align*}
+            \liminf F_{X_n}(x) = \limsup F_{X_n}(x) = \lim_{n \to \infty} F_{X_n}(x) = F_X(x)
+        \end{align*}
+    \end{proof}
+
+    \begin{proposition}[Continuity property for mgf's]
+        Let $X_n$ be random variables with mgfs $m_n(\theta) = \EE[e^{\theta X_n}]$ for $\theta \in \RR$, and $X$ a random variable with mgf $m(\theta) = \EE[e^{\theta X}]$. Suppose $m(\theta) < \infty$ for some $\theta \neq 0$. If $m_n(\theta) \to m(\theta)$ as $n \to \infty$ for all $\theta \in \RR$, then $X_n \dto X$ as $n \to \infty$.
+    \end{proposition}
+
+    We will need this result for the next theorem, although we will not prove it.
+    
+    \begin{theorem}[Central limit theorem]
+        Let $X_n$ be i.i.d. random variables with finite mean $\mu$ and finite variance $\sigma^2$. Let $S_n = X_1 + \dots + X_n$, then
+        \begin{align*}
+            \frac{S_n-n\mu}{\sigma \sqrt n} \dto Z
+        \end{align*}
+        as $n \to \infty$, where $Z \sim \mc N(0, 1)$. In other words,
+        \begin{align*}
+            \PP\left(\frac{S_n-n\mu}{\sigma \sqrt n} \leq x\right) \longrightarrow \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}2} \D y = \Phi(x)
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        Let $Y_i = \frac{X_i-\mu}{\sigma}$, so $\EE[Y_i] = 0$ and $\Var(Y_i) = 1$. It suffices, then, to show the theorem for a sequence $X_1, \dots, X_n$ i.i.d. with mean 0 and variance 1.
+
+        We will unjustifiably assume for our proof that there exists some $\delta > 0$ with $\EE[e^{\delta X_1}] + \EE[e^{-\delta X_1}]$ is finite.
+
+        Let $m(\theta) = \EE[e^{\theta X_1}]$. By the continuity property of mgf's, it suffices to show that
+        \begin{align*}
+            \EE\left[e^{\theta \frac{S_n}{\sqrt n}}\right] \longrightarrow \EE[e^{\theta Z}] = e^{\frac{\theta^2}{2}}
+        \end{align*}
+        We have
+        \begin{align*}
+            \EE[e^{\theta \frac{S_n}{\sqrt n}}] &= \left(m\left(\frac{\theta}{\sqrt n}\right)\right)^n \\
+            &= \left(\EE\left[\left(\frac{X_1}{\sqrt n}\right)^0\right] + \EE\left[\left(\frac{X_1}{\sqrt n}\right)^1\right]\theta + \EE\left[\left(\frac{X_1}{\sqrt n}\right)^2\right]\theta^2 + \dots\right)^n \\
+            &= \left(1 + \frac{\theta^2}{2n} + \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right|\right)^n
+        \end{align*}
+        We now claim that
+        \begin{align*}
+            \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right| = o(|\theta|^2)
+        \end{align*}
+        as $\theta \to 0$. Let $|\theta| < \delta/2$. Then
+        \begin{align*}
+            \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right| &\leq \EE\left[\sum_{k \geq 3} \frac{|\theta X_1|^k}{k!}\right] \\
+            &= \EE\left[|\theta X_1|^3 \sum_{k \geq 0} \frac{|\theta X_1|^k}{(k+3)!}\right] \\
+            &\leq \EE\left[|\theta X_1|^3 \sum_{k \geq 0} \frac{|\theta X_1|^k}{k!}\right] \\
+            &= \EE\left[|\theta X_1|^3 e^{|\theta X_1|}\right] \\
+            &\leq \EE\left[|\theta X_1|^3 e^{\frac{\delta|X_1|}{2}}\right]
+        \end{align*}
+        Observe
+        \begin{align*}
+            |\theta X_1|^3 = |\theta|^3 \frac{\left|\frac{\delta}2 X_1\right|^3}{3!} \cdot \frac{3!}{\left(\frac{\delta}2\right)^2} \leq C|\theta|^3 e^{\frac{\delta|X_1|}{2}}
+        \end{align*}
+        where $C = 3! \cdot \frac{2^3}{\delta^3}$ (where does this come from)? Hence
+        \begin{align*}
+            \EE\left[|\theta X_1|^3 e^{\frac{\delta|X_1|}{2}}\right] &\leq C|\theta|^3 \EE\left[e^{\frac{\delta|X_1|}{2}} \cdot e^{\frac{\delta|X_1|}{2}}\right] \\
+            &= C|\theta|^3 \EE\left[e^{\delta|X_1|}\right] \\
+            &\leq C|\theta|^3 \EE\left[e^{\delta X_1}+e^{-\delta X_1}\right]
+        \end{align*}
+        so that
+        \begin{align*}
+            \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right| \leq C' \cdot |\theta|^3
+        \end{align*}
+        Hence the LHS is $O(|\theta|^3)$, so $o(|\theta|^2)$ as required. Now
+        \begin{align*}
+            m\left(\frac{\theta}{\sqrt n}\right) &= 1 + \frac{\theta^2}{2n} + o\left(\frac{\theta^2}{n}\right) \\
+            \implies \left(m\left(\frac{\theta}{\sqrt n}\right)\right)^n &\to e^{\frac{\theta^2}{2}}
+        \end{align*}
+        as $n \to \infty$ (aren't we implicitly taking $\theta \to 0$ here? how can this be valid for any $\theta \neq 0$ then? since we take $\theta \to 0$ for little o of $|\theta|^2$ as well as $n \to \infty$).
+    \end{proof}
+    
+    \begin{example}
+        Suppose $S_n \sim \Bin(n, p)$. We can write
+        \begin{align*}
+            S_n = X_1 + \dots + X_n
+        \end{align*}
+        where the $X_i$ are i.i.d. Bernoulli random variables with parameter $p$. Hence, inserting the mean and variance of the Bernoulli distribution, we obtain
+        \begin{align*}
+            \frac{S_n-np}{\sqrt{np(1-p)}} \dto \mc N(0, 1)
+        \end{align*}
+        so that
+        \begin{align*}
+            S_n \approx \mc N(np, np(1-p))
+        \end{align*}
+        for large $n$.        
+    \end{example}
+    
+    \begin{example*}
+        Suppose $S_n \sim \Poi(n)$, so that
+        \begin{align*}
+            S_n = X_1 + \dots + X_n
+        \end{align*}
+        where the $X_i$ are i.i.d. distributed $\Poi(1)$. Subbing in the mean and variance of the Poisson distribution, we obtain
+        \begin{align*}
+            \frac{S_n-n}{\sqrt n} &\dto \mc N(0, 1) \\
+            \implies S_n &\approx \mc N(n, n)
+        \end{align*}
+    \end{example*}
+    
+    \lecture{Lecture 24 -- 18/03/26}
+
+    Suppose that, in a referendum, every individual votes yes with probability $p$ and no with probability $1-p$, independently of one another, and that we want to estimate $p$ by sampling.
+
+    Let $X_i$ be 1 if the $i^\text{th}$ individual sampled voted `yes', 0 otherwise. Let $S_N = X_1 + \dots + X_n$, and let $\hat p_N = \frac{S_N}{N}$, which goes to $p$ a.s. as $n \to \infty$ by the strong law of large numbers -- in particular, $S_N \sim \Bin(n, p)$. For a given desired error, how large should $N$ be?
+
+    By the CLT,
+    \begin{align*}
+        S_N &\approx Np + \sqrt{Np(1-p)}Z \\
+        \implies \hat p_N &\approx p + \frac{\sqrt{p(1-p)}}{\sqrt N} Z \\
+        \implies |\hat p_N - p| &\approx \frac{\sqrt{p(1-p)}}{\sqrt N} |Z|
+    \end{align*}
+    Hence, we want to solve
+    \begin{align*}
+        \PP\left(\frac{\sqrt{p(1-p)}}{\sqrt N} |Z| \geq \eps\right) \leq p'
+    \end{align*}
+    We can solve this using $\Phi$, and we can avoid worrying about not knowing what $p$ is by simply using the fact that $\sqrt{p(1-p)} \leq \frac 1 {\sqrt 2}$.
+
+    \section{Simulation of random variables}
+
+    Suppose one can generate uniform random numbers in $[0, 1]$. How can we sample some other random variable?
+
+    Suppose first $F$ is one-to-one -- then set $X = F^{-1}(U)$, so
+    \begin{align*}
+        \PP(X \leq x) = \PP(F^{-1}(U) \leq x) = \PP(U \leq F(x)) = F(x)
+    \end{align*}
+    
+    If $F$ is not one-to-one, we define its \emph{generalised inverse}
+    \begin{align*}
+        G(u) = \inf\{x \in \RR: u \leq F(x)\}
+    \end{align*}
+    
+    \begin{lemma}
+        $G(u) \leq x$ if and only if $u \leq F(x)$.
+    \end{lemma}
+    
+    \begin{proof}
+        The reverse implication is immediate. For the forward implication, observe there exists $x_n \geq G(u)$ such that $x_n \to G(u)$ from above and $u \leq F(x_n)$. By right continuity of $F$, $F(x_n) \to F(G(u))$ as $n \to \infty$, so $u \leq F(G(u))$. Hence, if $G(u) \leq x$, then $u \leq F(G(u)) \leq F(x)$ as $F$ is increasing.
+    \end{proof}
+    
+    Now, we can set $X = G(U)$, so that
+    \begin{align*}
+        \PP(X \leq x) = \PP(G(U) \leq x) = \PP(U \leq F(x)) = F(x)
+    \end{align*}
+
+    \subsection{Box-Muller transform}
+
+    We would like to simulate $X$ and $Y$ independent $\mc N(0, 1)$ using two independent $U[0, 1]$ random variables, $U$ and $V$. Theoretically, we can just apply $\Phi^{-1}$ to each of the uniform random variables, but indeed this does not have a closed form.
+
+    Consider making a complex number $X+iY$ from $X$ and $Y$ -- we have already shown that, for this complex number, $R$ has density $re^{-\frac{r^2}{2}}$, $\theta \sim U[0, 2\pi]$, and these are independent. Now put
+    \begin{align*}
+        \theta &= 2\pi U \\
+        R &= \sqrt{-2 \log V}
+    \end{align*}
+    where the $R$ expression comes from the inverse of the CDF for $R$. Indeed, we have
+    \begin{align*}
+        \PP(R \geq r) = \PP\left(\sqrt{-2\log V} \geq r\right) = \PP\left(V \leq e^{-\frac{r^2}2}\right) = re^{-\frac{r^2}{2}}
+    \end{align*}
+    so $R$ has the correct cdf.
+
+    \subsection{Rejection sampling}
+
+    Suppose we have an r.v. $X$ with density
+    \begin{align*}
+        f(x) = \frac{1(x \in A)}{|A|}
+    \end{align*}
+    where $A \in [0,1]^d$ has volume $|A|$. We can sample uniformly in $A$ by sampling coordinates uniformly, and discarding samples until we end up in $A$.
+
+    Let $N = \min\{n: U_n \in A\}$, and $X = U_N$ -- we need to show $X$ has density $f$. It suffices to show that
+    \begin{align*}
+        \PP(X \in B) = \frac{|B \cap A|}{|A|}
+    \end{align*}
+    We have
+    \begin{align*}
+        \PP(X \in B) &= \sum_{n=1}^\infty \PP(U_n \in B,\, N = n) \\
+        &= \sum_{n=1}^\infty \PP(U_n \in B, U_1 \notin A, \dots, U_{n-1} \notin A, U_n \in A) \\
+        &= \sum_{n=1}^\infty \PP(U_n \in B \cap A) \PP(U_1 \notin A)^{n-1} \\
+        &= \sum_{n=1}^\infty |B \cap A| \left(1-|A|\right)^{n-1} \\
+        &= \frac{|B \cap A|}{|A|}
+    \end{align*}
+    
+    
+    
+    
+     
+    
+    
+    
     
     
     

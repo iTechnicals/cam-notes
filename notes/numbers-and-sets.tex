@@ -1179,9 +1179,9 @@
         Modulo 10, $3$ is an inverse of $7$, so both 3 and 7 are units. But 4 is not a unit modulo 10 -- $4x \not\equiv 1 \pmod {10}$ for any $x \in \ZZ$.
     \end{example}
 
-    \begin{remark}
+    \begin{remark*}
         If we can solve $ab \equiv 1 \pmod n$, we have a unique solution for $ax \equiv b \pmod n$ for any $b$.
-    \end{remark}
+    \end{remark*}
     
     \begin{proposition}[Properties of units and inverses]
         If $a$ is a unit mod $n$, then
@@ -1276,9 +1276,9 @@
         \label{chinese-remainder-theorem}
     \end{theorem}
     
-    \begin{remark}
+    \begin{remark*}
         If $m$ and $n$ are not coprime, there may be no solution.
-    \end{remark}
+    \end{remark*}
     
     \lecture{Lecture 13 -- 06/11/25}
 
@@ -1826,9 +1826,9 @@
         Suppose for contradiction that $c > d$. Let $\varepsilon = |c-d| > 0$. Then there exists $N \in \NN$ with $|a_n - c| < \varepsilon$ for any $n \geq N$. But $|a_n - c| < \varepsilon \implies a_n > d$, a contradiction.
     \end{proof}
     
-    \begin{remark}
+    \begin{remark*}
         If $a_n < d$ for any $n$ and $a_n \to c$, we need not have $c < d$ -- for example, $a_n = 1 - \frac 1 n$. Here each term is less than 1, but the limit is 1.
-    \end{remark}
+    \end{remark*}
     
     \begin{proposition}
         If $a_n \to c$ as $n \to \infty$ and $b_n \to d$ as $n \to \infty$, then $a_n + b_n \to c + d$ as $n \to \infty$.
@@ -1846,6 +1846,8 @@
         \end{align*}
         Then just pick $N^* \geq \max(N, M)$, and we're done
     \end{proof}
+
+    \lecture{Lecture 19 -- 22/11/25}
     
     \subsection{Series}
 
@@ -1946,7 +1948,7 @@
     \end{align*}
     It follows that we must have $b_k = a_k + 1$ -- if $b_k > a_k+1$, then $b-a \geq 2\cdot 10^{-k} - 10^{-k} > 0$. Furthermore, we must have equality in this upper bound, so, for any $j > k$, we have $a_j = 9$, $b_j = 0$.
     
-    \lecture{}
+    \lecture{Lecture 20 -- 25/11/25}
 
     \begin{definition}
         A decimal expansion is \emph{periodic} if, after a finite number of terms, it repeats in blocks of length $k$. That is, there exist $l$ and $k$ such that $d_{n+k} = d_n$ for any $n > l$.
@@ -2055,12 +2057,15 @@
             &= (x-y)[a_d(\cdots) + \dots + a_1] \\
             \implies |p(x)-p(y)| &\leq |x-y|\left[d|a_d| + d|a_{d-1}| + \dots + d|a_1|\right]
         \end{align*}
+        as required.
     \end{proof}
     
     \begin{lemma}
         A non-zero polynomial of degree $d$ has at most $d$ real roots.
         \label{liouville-lemma-2}
     \end{lemma}
+
+    \lecture{Lecture 21 -- 27/11/25}
     
     \begin{proof}[Proof of theorem]
         Let
@@ -2143,6 +2148,7 @@
     \end{example}
     
     \begin{lemma}
+        \label{subset-natural-countable}
         Any subset of $\NN$ is countable.
     \end{lemma}
     
@@ -2156,8 +2162,7 @@
         
     \end{proof}
     
-    
-    \lecture{Lecture}
+    \lecture{Lecture 22 -- 29/11/25}
 
     \begin{theorem}
         The following are equivalent:
@@ -2170,11 +2175,102 @@
     
     \begin{proof}
         Clearly $1 \implies 2$, since, if $X$ is finite, it clearly injects into $\NN$, and if $X$ bijects with $\NN$, it certainly injects into $\NN$. 
+
+        Conversely, if there is an injection $f: X \to \NN$, then $f$ is a bijection between $X$ and $S = f(X)$. By \cref{subset-natural-countable}, there is a bijection $g: S \to \NN$. Hence, composing $f$ and $g$ gives that $2 \implies 1$.
+
+        Clearly $1 \implies 3$. It remains to show that $3 \implies 2$, and we will suppose $X \neq \emptyset$. Suppose there is a surjection $f: \NN \to X$. Define $g: X \to \NN$ by $g(a) = \min f^{-1}(a)$, which exists by WOP. By construction, $g$ is injective, so we are done.
     \end{proof}
     
+    \begin{corollary}
+        Any subset of a countable set is countable.
+    \end{corollary}
     
+    \begin{proof}
+        Let $Y \subseteq X$ countable. Then take the injection $f: X \to \NN$ and restrict it to $Y$.
+    \end{proof}
+
+    One thus obtains the intuition that countability represents being `at most as big as $\NN$.' But...
+
+    \begin{theorem}
+        $\NN \times \NN$ is countable.
+    \end{theorem}
     
-    \lecture{Lecture}
+    \begin{proof}[Proof 1]
+        Let $a_1 = (1, 1)$ and define $a_n$ inductively -- given $a_{n-1} = (p, q)$, let
+        \begin{align*}
+            a_n = \begin{cases}
+                (p-1, q+1) & p \neq 1 \\
+                (p+q, 1) & \text{o/w}
+            \end{cases}
+        \end{align*}
+        which corresponds to a `diagonal' traversal of $\NN \times \NN$. One can show by induction that this includes every point in $\NN \times \NN$.
+    \end{proof}
+    
+    \begin{proof}[Proof 2]
+        Define
+        \begin{align*}
+            f: \NN \times \NN &\to \NN \\
+            (x, y) &\mapsto 2^x3^y
+        \end{align*}
+        which is injective by the fundamental theorem of arithmetic.        
+    \end{proof}
+    
+    \begin{corollary}
+        $\ZZ \times \ZZ$ is countable.
+    \end{corollary}
+    
+    \begin{proof}
+        Since $\ZZ$ is countable, there exists an injection $f: \ZZ \to \NN$ and, since $\NN \times \NN$ is countable, there exists an injection $f: \NN \times \NN \to \NN$. Hence the composition
+        \[\begin{tikzcd}[ampersand replacement=\&]
+            {\ZZ \times \ZZ} \& {\NN \times \NN} \& \NN
+            \arrow["{(f, f)}", from=1-1, to=1-2]
+            \arrow["g", from=1-2, to=1-3]
+        \end{tikzcd}\]
+        is injective, showing the result.
+    \end{proof}
+
+    Furthermore, by induction, $\ZZ^k = \ZZ \times \cdots \times \ZZ$ is countable for any $k \in \NN$, as is $\NN^k$.
+    
+    \begin{theorem}
+        \label{countable-union}
+        A countable union of countable sets is countable.
+    \end{theorem}
+    
+    \begin{proof}
+        Assume that our countable sets are indexed by $\NN$, namely $A_1, A_2, \dots$. For each $i$, since $A_i$ is countable, we may list its elements $a_1^{(i)}, a_2^{(i)}, \dots$ (which may terminate). Define
+        \begin{align*}
+            f: \bigcup_{n \in \NN} A_n &\to \NN \times \NN \\
+            x &\mapsto (i, j)
+        \end{align*}
+        where $x = a_j^{(i)}$ for the least $i$ such that $x \in A_i$, which exists by WOP. This is an injection into $\NN \times \NN$, which itself is countable, giving the result.
+    \end{proof}
+    
+    Now, we can think of the rationals as
+    \begin{align*}
+        \QQ = \bigcup_{n \in \NN} \{\frac m n : m \in \ZZ\}
+    \end{align*}
+    showing they are countable.
+    
+    \begin{theorem}
+        The set $\AA$ of algebraic numbers is countable.
+    \end{theorem}
+    
+    \begin{proof}
+        It suffices to show that the set of polynomials with integer coefficients is countable, as then $\AA$ is a countable union of finite (hence countable) sets, since each polynomial has finitely many roots.
+
+        Furthermore, it suffices to show that, for each degree $\alpha \in \NN \cup \{0\}$, the set $P_\alpha$ of integer polynomials of degree $\alpha$ is countable, again by the previous theorem. But the map
+        \begin{align*}
+            f: \PP_\alpha &\to \ZZ^{\alpha+1} \\
+            \sum_{n=0}^\alpha a_dx^d &\mapsto (a_0, \dots, a_\alpha)
+        \end{align*}
+        is an injection, giving the result.
+    \end{proof}
+    
+    \begin{definition}[Uncountability]
+        A set is \emph{uncountable} if it is not countable.
+    \end{definition}
+    
+    \lecture{Lecture 23 -- 01/12/25}
 
     \begin{theorem}
         $\RR$ is uncountable.
@@ -2265,8 +2361,81 @@
         is countable. Then $\{A_i: i \in I\}$ is a countable union of countable sets and hence is countable.
     \end{proof}
     
-    
+    \lecture{Lecture 24 -- 03/12/25}
 
+    Let us summarise our methods for showing a set's countability:
+    \begin{itemize}
+        \item list its elements;
+        \item inject it into $\NN$;
+        \item use \cref{countable-union} (countable union of countable sets);
+        \item consider $\QQ$ if we're `near' $\RR$.
+    \end{itemize}
+    and its uncountability:
+    \begin{itemize}
+        \item use a diagonal argument;
+        \item inject your favourite uncountable set into it.
+    \end{itemize}
+    
+    \begin{lemma}
+        Given non-empty sets $A$ and $B$, there exists an injection $A \to B$ if and only if there exists a surjection $B \to A$.
+    \end{lemma}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] Suppose $f: A \to B$ is injective, and fix $a_0 \in A$. Define $g: B \to A$ by $b \mapsto$ the unique $a \in A$ such that $f(a) = b$, if it exists, or $a_0$ otherwise. Clearly $g$ is surjective.
+            \item[$\impliedby$] Suppose $g: B \to A$ is surjective, and let $f: A \to B$ such that $f(a) =$ some $b \in B$ such that $g(b) = a$.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{theorem}[Schr\"oder-Bernstein theorem]
+        \label{schroder-bernstein}
+        If $A$ injects into $B$ and $B$ injects into $A$, then there exists a bijection between $A$ and $B$.
+    \end{theorem}
+    
+    \begin{proof}
+        Let $f: A \to B$ and $g: B \to A$ be injections. For $a \in A$, write $g^{-1}(a)$ for the $b \in B$ (if it exists) such that $g(b) = a$, and vice-versa. Consider the \emph{ancestor sequence} given by
+        \begin{align*}
+            a, g^{-1}(a), f^{-1}(g^{-1}(a)), \dots
+        \end{align*}
+        which may or may not terminate. Let 
+        \begin{align*}
+            A_0 = \{a \in A: \text{the ancestor sequence of $a$ terminates after an even number of steps}\}
+        \end{align*}
+        with $A_1$ analogous for odd, and $A_\infty$ for non-terminating sequences. We may define $B_0$, $B_1$, $B_\infty$ analogously.
+
+        Observe now that $f$ bijects $A_0$ with $B_1$, and $g$ bijects $B_0$ with $A_1$. Furthermore, $f$ or $g$ will both work to biject $A_\infty$ with $B_\infty$. Hence, we may define
+        \begin{align*}
+            h: A &\to B \\
+            a &\mapsto \begin{cases}
+                f(a) & a \in A_0 \cup A_\infty \\
+                g^{-1}(a) & a \in A_1
+            \end{cases}
+        \end{align*}
+    \end{proof}
+    
+    This allows us to think of injections and surjections between sets as forming a well-defined order on cardinalities -- $|A| \leq |B|$ if $B$ surjects into $A$, or equivalently $A$ injects into $B$, with the property that $|A| \leq |B|$ and $|B| \leq |A| \implies |A| = |B|$.
+    
+    \begin{example*}
+        Is there a bijection between $[0, 1]$ and $[0, 1] \cup [2, 3]$? It is easiest to apply \cref{schroder-bernstein}. We have
+        \begin{align*}
+            f: [0, 1] &\to [0, 1] \cup [2, 3] \\
+            x &\mapsto x \\[10pt]
+            g: [0, 1] \cup [2, 3] &\to [0, 1] \\
+            x &\mapsto \frac x 3 
+        \end{align*}
+        which are both injections.        
+    \end{example*}
+    
+    \begin{remark*}
+        Is it true that, for any two sets $A$ and $B$, either $A$ injects into $B$ or vice versa (so our order is total)? Yes, but it's hard to prove
+    \end{remark*}
+    
+    \begin{remark*}
+        The \emph{continuum hypothesis} is the statement that there is no set with size between $\NN$ and $\RR$, i.e. any subset of the reals is either countable or in bijection with $\RR$.
+    \end{remark*}
+    
+    
+    
     
 
 \end{document}

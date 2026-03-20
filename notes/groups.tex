@@ -86,7 +86,7 @@
         \end{itemize}
         such that the following \emph{group axioms} hold:
         \begin{itemize}
-            \item \emph{Closure}. For all $a$, $b \in G$, $a \cdot b \in G$. (We actually already know this because it's part of the definition of a binary operation).
+            \item \emph{Closure}. For all $a$, $b \in G$, $a \cdot b \in G$ (we actually already know this because it's part of the definition of a binary operation).
             \item \emph{Associativity}. For all $a$, $b$, $c \in G$, $(a \cdot b) \cdot c = a \cdot (b \cdot c)$.
             \item \emph{Identity}. For all $a \in G$, $a \cdot e = a$.
             \item \emph{Right inverses}. For all $a \in G$, there exists $b \in G$ such that $a \cdot b = e$. 
@@ -496,8 +496,6 @@
             \item If $nk = m$, the map $\phi: C_m \to C_n$, $g \mapsto g^k$ is a homomorphism.
             \item Since $\det(AB) = \det(A) \det(B)$, $\det: \GL_2 \RR \to (\RR \setminus \{0\}, \times)$, $A \mapsto \det A$ is a homomorphism.
         \end{enumerate}
-        
-        
     \end{example*}
     
     \begin{lemma}
@@ -564,16 +562,166 @@
         \end{enumerate}
     \end{proof}
     
-    \begin{remark*}
+    \begin{proposition}
+        \label{surj-inv-crits}
         Let $\phi: G \to H$ be a homomorphism.
         \begin{enumerate}
             \item $\phi$ is \emph{surjective} if and only if $\im \phi = H$;
-            \item $\phi$ is \emph{injective} if and only if $\ker \phi = \{e_H\}$.
+            \item $\phi$ is \emph{injective} if and only if $\ker \phi = \{e_G\}$.
         \end{enumerate}
-    \end{remark*}
+    \end{proposition}
     
     \lecture{Lecture 7 -- 24/10/25}
+
+    \begin{proof}
+        The surjectivity statement is very clear. For the injectivity, we will show each direction as follows:
+        \begin{itemize}
+            \item[$\implies$] If $\phi$ is injective, then there is only one element that maps to $e_H$, i.e. the kernel must have one element. That element clearly must be $e_G$.
+            \item[$\impliedby$] Suppose $\ker \phi = \{e_G\}$, and $\phi(g_1) = \phi(g_2)$. Then $\phi(g_1g_2^{-1}) = \phi(g_1)\phi(g_2)^{-1} = e_H$. Hence, $g_1g_2^{-1} \in \ker \phi \implies g_1g_2^{-1} = e_G \implies g_1 = g_2$, which was what we wanted.
+        \end{itemize}
+    \end{proof}
     
+    Combining the two parts of the proposition, we see that a homomorphism $\phi$ is an isomorphism iff and only if $\im \phi = H$ and $\ker \phi = \{e_G\}$.
+
+    \subsection{Cyclic groups}
+
+    \begin{definition}[Cyclic groups]
+        A group $G$ is \emph{cyclic} if there exists $g \in G$ such that $G = \{g^k: k \in \ZZ\} = \gen g$. $g$ is called a \emph{generator} of $G$.
+    \end{definition}
+    
+    \begin{example*}
+        Let us have some examples.
+        \begin{itemize}
+            \item $C_n = \{z \in \CC: z^n = 1\}$ is cyclic, with generator $e^{\frac{2\pi i}n}$;
+            \item $\ZZ$ is cyclic, with generator 1;
+            \item $\ZZ_n$ is cyclic, since $\ZZ_n \cong C_n$.
+        \end{itemize}
+    \end{example*}
+    
+    \begin{theorem}
+        If $G$ is cyclic, then either
+        \begin{itemize}
+            \item $G \cong C_n$ for some $n$;
+            \item or $G \cong \ZZ$.
+        \end{itemize}
+    \end{theorem}
+    
+    \begin{proof}
+        Let $G$ be a cyclic group with generator $g$. Let
+        \begin{align*}
+            S = \{k \in \NN: g^k = e\}
+        \end{align*}
+        and let
+        \begin{align*}
+            n = \begin{cases}
+                \min S & S \neq \emptyset \\
+                \infty & \text{o/w}
+            \end{cases}
+        \end{align*}
+        We now split into cases.
+
+        \emph{Case 1.} $n = \infty$. Define
+        \begin{align*}
+            \phi: \ZZ &\to G \\
+            k &\mapsto g^k
+        \end{align*}
+        which we would like to be an isomorphism. Since $\phi(k+l) = g^{k+l} = g^kg^l = \phi(k)\phi(l)$, $\phi$ is a homomorphism. Since $G$ is cyclic, every element of $G$ has the form $g^k$ for some $k$, so $\phi$ is surjective. To prove injectivity, suppose for contradiction $0 \neq k \in \ker \phi$ -- since $\ker \phi \leq \ZZ$, we may replace $k$ by $-k$ if necessary, and assume $k > 0$. But then $k \in S$, which is a contradiction. The result follows.
+        
+        \emph{Case 2.} $n < \infty$. Define
+        \begin{align*}
+            \phi: \ZZ_n &\to G \\
+            k &\mapsto g^k
+        \end{align*}
+        as before. Since $k+l = qn + (k +_n l)$ for some $q \in \ZZ$,
+        \begin{align*}
+            \phi(k)\phi(l) &= g^kg^l = g^{k+l} = g^{qn+(k+_nl)} \\
+            &= g^{k+_nl} = \phi(k +_n l)
+        \end{align*}
+        since $g^n = e$. Hence $\phi$ is a homomorphism. Since $G$ is cyclic, every element is $g^k$ for some $k \in \ZZ$. Dividing $k$ by $n$, we obtain
+        \begin{align*}
+            k = qn + r
+        \end{align*}
+        for $q \in \RR$ and $r \in \ZZ_n$. Hence,
+        \begin{align*}
+            g^k = g^{qn+r} = g^r = \phi(r)
+        \end{align*}
+        as desired. To prove injectivity, suppose that $\phi(k) = e$ for some $k \in \ZZ_n$, that is $0 \leq k < n$. On the other hand, $k \in S$, so, if $k \neq 0$, $k \geq n$ by minimality of $n$, a contradiction. Hence $k=0$, so $\ker \phi = \{0\}$ and $\phi$ is injective as required. Hence $G \cong \ZZ_n \cong C_n$ as required.
+    \end{proof}
+    
+    Because of the theorem, we will write $C_n$ for any cyclic group of order $n$, and write $C_\infty \cong \ZZ$.
+
+    \begin{definition}[Order of an element]
+        For any group $G$ and $g \in G$, let
+        \begin{align*}
+            \gen g = \{g^k : k \in \ZZ\} \leq G
+        \end{align*}
+        Since $\gen g$ is cyclic, $\gen g \cong C_n$ for some $n \in \NN \cup \{\infty\}$. This is the \emph{order} of $g$, $o(g)$ or $|g|$.        
+    \end{definition}
+    
+    \subsection{Dihedral groups revisited}
+
+    We would like to be able to tell if a group is dihedral just by checking some algebraic facts.
+
+    \begin{lemma}
+        \label{gen-dih-relation}
+        Suppose $x$, $y \in G$ satisfy the dihedral relation $xy = yx^{-1}$. Then
+        \begin{align*}
+            yx^l = x^{-l}y
+        \end{align*}
+        for any $l \in \ZZ$.        
+    \end{lemma}
+    
+    \begin{proof}
+        First, take $l>0$, then
+        \begin{align*}
+            yx^{-l} = x^ly
+        \end{align*}
+        by induction. Furthermore, if $y^2 = e$, then
+        \begin{align*}
+            yx^l = y (x^l y) y = y(yx^{-l})y = x^{-l}y
+        \end{align*}
+        so that $yx^l = x^{-l}y$ for any $l \in \ZZ$.
+    \end{proof}
+    
+    \begin{lemma}
+        Let $G$ be a group, and $a$, $b \in G$ such that
+        \begin{itemize}
+            \item $a^n = e$ for some $n \geq 3$;
+            \item $b^2 = e$;
+            \item $ab = ba^{-1}$.
+        \end{itemize}
+        Then $\phi(r) = a$ and $\phi(s) = b$ defines a homomorphism $\phi: D_{2n} \to G$ sending $r$ to $a$ and $s$ to $b$.
+    \end{lemma}
+    
+    \begin{proof}
+        There are four cases to check.
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item $\phi(r^k)\phi(r^l) = a^ka^l = a^{k+l} = a^{k+_nl} = \phi(r^{k+_nl}) = \phi(r^{k+l})$;
+            \item $\phi(r^k)\phi(r^ls) = a^ka^lb = a^{k+l}b = a^{k+_nl}b = \phi(r^{k+_nl}s) = \phi(r^{k+l}s)$;
+            \item $\phi(r^ks)\phi(r^l) = a^kba^l = a^{k-l}b = \phi(r^{k-l}s) = \phi(r^ksr^l)$ by \cref{gen-dih-relation}.
+            \item $\phi(r^ks)\phi(r^ls) = a^k b a^l b = a^{k-l} b^2 = a^{k-l} = \phi(r^{k-l}) = \phi(r^{k-l}s^2) = \phi(r^k s r^l s)$, also by \cref{gen-dih-relation}.
+        \end{enumerate}
+    \end{proof}
+    
+    \begin{proposition}
+        Suppose $G$ has a generating set $\{a, b\}$ such that
+        \begin{itemize}
+            \item $a^n = e$ for some $n \geq 3$;
+            \item $b^2 = e$;
+            \item $ab = ba^{-1}$;
+            \item $|G| = 2n$.
+        \end{itemize}
+        Then $G \cong D_{2n}$.
+    \end{proposition}
+    
+    \begin{proof}
+        By the lemma, there is a homomorphism $\phi: D_{2n} \to G$. $\phi$ is surjective since $\{a, b\}$ generate $G$. Since $|D_{2n}| = 2n = |G|$, it must be a bijective. The result follows.
+    \end{proof}
+    
+    
+    
+    
+
 
     \lecture{Lecture 8 -- 27/10/25}
 
@@ -693,6 +841,9 @@
             \varphi(n) = |\{x \in \ZZ_n : \gcd(x,n)=1\}|
         \]
     \end{definition}
+    
+    \lecture{Lecture 9 -- 29/10/25}
+
     Let $\times_n$ denote multiplication modulo $n$ (on $\ZZ_n$). Recall that $x \in \ZZ_n$ has a multiplicative inverse modulo $n$ if and only if $\gcd(x, n) = 1$. Thus,
     \[
         \ZZ_n^\times = \{x \in \ZZ_n : \gcd(x, n) = 1\}
@@ -802,6 +953,8 @@
     \begin{remark*}
         $G \acts X$ is faithful if the associated homomorphism is injective $\iff$ the kernel is trivial.
     \end{remark*}
+
+    \lecture{Lecture 10 -- 31/10/25}
     
     \begin{proposition}
         Suppose $G \acts X$, then
@@ -1242,7 +1395,7 @@
             &= \left|z-\frac{1}{c}\right|^2 \\
             \iff |z| &= \left|z - \frac{1}{c}\right|
         \end{align*}
-        which is a straight line. Otherwise, $|c|^2 \neq r^2$, so we have
+        which is a straight line -- furthermore, it is clear 0 is on the circle, and this point will go to infinity. Otherwise, $|c|^2 \neq r^2$, so we have
         \begin{align*}
             |z|^2 - \left(\frac{c}{|c|^2 - r^2}\right)z - \left(\frac{\bar c}{|c|^2 - r^2}\right) \bar z + \frac{1}{|c|^2 - r^2} &= 0 \\
             \iff \left|z - \frac{\bar c}{|c|^2 - r^2}\right|^2 &= \frac{|c|^2}{(|c|^2 - r^2)^2} - \frac{1}{|c|^2 - r^2} \\
@@ -1385,6 +1538,8 @@
     \begin{remark*}
         $S_3$ is a non-abelian group of order 6, so this gives us a way to conclude $S_3 \cong D_6$.
     \end{remark*}
+
+    \lecture{Lecture 15 -- 12/11/25}
     
     \begin{itemize}
         \item \emph{Order 7}. $C_7$ only.
@@ -1515,6 +1670,8 @@
         \end{align*}
         so $ghg^{-1} \in \ker \phi$. Hence $\ker \phi \triangleleft G$ as required.
     \end{proof}
+
+    \lecture{Lecture 16 -- 14/11/25}
     
     \begin{lemma}
         Suppose $H \leq G$. Then $H \triangleleft G$ if and only if $gH = Hg$ for all $g \in G$.
@@ -1959,6 +2116,8 @@
             \end{tabular}
         \end{center}
     \end{example}
+
+    \lecture{Lecture 20 -- 24/11/25}
     
     Finally, let's look at conjugacy in $S_5$ and $A_5$.
 
@@ -2213,6 +2372,9 @@
         1 = \det I = \det (A^\intercal A) = (\det A)^2
     \]
     and so the determinant of any orthogonal matrix is $\pm 1$.
+
+    \lecture{Lecture 22 -- 26/11/25}
+
     \begin{definition}
         The \emph{special orthogonal group} $SO(n) = O(n) \cap SL_n(\RR)$ -- the set of orthogonal matrices with determinant 1. Observe also that
         \[

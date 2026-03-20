@@ -36,40 +36,40 @@
 \contentsline {section}{\numberline {4}Higher order linear ODEs}{35}{section.184}%
 \contentsline {subsection}{\numberline {4.1}Second order ODEs with constant coefficients}{35}{subsection.185}%
 \contentsline {subsubsection}{\numberline {4.1.1}Complementary functions}{36}{subsubsection.194}%
-\contentsline {subsection}{\numberline {4.2}Homogeneous second-order ODEs with non-constant coefficients}{39}{subsection.203}%
-\contentsline {subsubsection}{\numberline {4.2.1}Second complementary function -- reduction of order}{39}{subsubsection.204}%
-\contentsline {subsubsection}{\numberline {4.2.2}Phase space}{40}{subsubsection.207}%
-\contentsline {subsubsection}{\numberline {4.2.3}Wronskian and linear dependence}{40}{subsubsection.210}%
-\contentsline {subsubsection}{\numberline {4.2.4}Abel's theorem}{41}{subsubsection.216}%
-\contentsline {subsubsection}{\numberline {4.2.5}Linear equidimensional ODEs}{43}{subsubsection.224}%
-\contentsline {subsection}{\numberline {4.3}Inhomogeneous (forced) 2nd order ODEs}{44}{subsection.229}%
-\contentsline {subsubsection}{\numberline {4.3.1}Constant coefficient ODEs}{44}{subsubsection.230}%
-\contentsline {subsubsection}{\numberline {4.3.2}Variation of parameters}{46}{subsubsection.235}%
-\contentsline {subsection}{\numberline {4.4}Forced ODEs -- transients and damping}{47}{subsection.239}%
-\contentsline {subsubsection}{\numberline {4.4.1}Free (unforced/natural) response}{47}{subsubsection.240}%
-\contentsline {subsubsection}{\numberline {4.4.2}Forced response}{48}{subsubsection.244}%
-\contentsline {subsection}{\numberline {4.5}Impulses and point forces}{49}{subsection.245}%
-\contentsline {subsubsection}{\numberline {4.5.1}The Dirac delta function}{49}{subsubsection.246}%
-\contentsline {subsubsection}{\numberline {4.5.2}Delta function forcing}{50}{subsubsection.253}%
-\contentsline {subsubsection}{\numberline {4.5.3}Heaviside step function}{51}{subsubsection.256}%
-\contentsline {subsection}{\numberline {4.6}Higher order discrete equations}{52}{subsection.262}%
-\contentsline {subsection}{\numberline {4.7}Series solutions}{53}{subsection.265}%
-\contentsline {subsubsection}{\numberline {4.7.1}Classification of singular points}{53}{subsubsection.266}%
-\contentsline {subsubsection}{\numberline {4.7.2}Method of Frobenius}{55}{subsubsection.277}%
-\contentsline {subsubsection}{\numberline {4.7.3}Second solutions}{58}{subsubsection.290}%
-\contentsline {section}{\numberline {5}Multivariate functions: applications}{59}{section.298}%
-\contentsline {subsection}{\numberline {5.1}Directional derivative}{59}{subsection.299}%
-\contentsline {subsection}{\numberline {5.2}Stationary points}{60}{subsection.307}%
-\contentsline {subsubsection}{\numberline {5.2.1}Types of stationary point}{61}{subsubsection.310}%
-\contentsline {subsection}{\numberline {5.3}Classification of stationary points}{61}{subsection.314}%
-\contentsline {subsubsection}{\numberline {5.3.1}Taylor series for multivariate functions}{61}{subsubsection.315}%
-\contentsline {subsubsection}{\numberline {5.3.2}Classification of stationary points}{62}{subsubsection.320}%
-\contentsline {subsubsection}{\numberline {5.3.3}Contours near stationary points}{64}{subsubsection.331}%
-\contentsline {subsection}{\numberline {5.4}Systems of linear ODEs}{65}{subsection.334}%
-\contentsline {subsubsection}{\numberline {5.4.1}Matrix methods}{65}{subsubsection.337}%
-\contentsline {subsubsection}{\numberline {5.4.2}Non-degenerate phase portraits}{66}{subsubsection.345}%
-\contentsline {subsection}{\numberline {5.5}Non-linear autonomous systems}{67}{subsection.349}%
-\contentsline {subsection}{\numberline {5.6}Partial differential equations}{69}{subsection.352}%
-\contentsline {subsubsection}{\numberline {5.6.1}First order wave equations}{69}{subsubsection.353}%
-\contentsline {subsubsection}{\numberline {5.6.2}Second order wave equations}{71}{subsubsection.358}%
+\contentsline {subsection}{\numberline {4.2}Homogeneous second-order ODEs with non-constant coefficients}{40}{subsection.203}%
+\contentsline {subsubsection}{\numberline {4.2.1}Second complementary function -- reduction of order}{40}{subsubsection.204}%
+\contentsline {subsubsection}{\numberline {4.2.2}Phase space}{41}{subsubsection.207}%
+\contentsline {subsubsection}{\numberline {4.2.3}Wronskian and linear dependence}{42}{subsubsection.210}%
+\contentsline {subsubsection}{\numberline {4.2.4}Abel's theorem}{43}{subsubsection.216}%
+\contentsline {subsubsection}{\numberline {4.2.5}Linear equidimensional ODEs}{44}{subsubsection.224}%
+\contentsline {subsection}{\numberline {4.3}Inhomogeneous (forced) 2nd order ODEs}{45}{subsection.229}%
+\contentsline {subsubsection}{\numberline {4.3.1}Constant coefficient ODEs}{46}{subsubsection.230}%
+\contentsline {subsubsection}{\numberline {4.3.2}Variation of parameters}{48}{subsubsection.235}%
+\contentsline {subsection}{\numberline {4.4}Forced ODEs -- transients and damping}{49}{subsection.239}%
+\contentsline {subsubsection}{\numberline {4.4.1}Free (unforced/natural) response}{49}{subsubsection.240}%
+\contentsline {subsubsection}{\numberline {4.4.2}Forced response}{50}{subsubsection.244}%
+\contentsline {subsection}{\numberline {4.5}Impulses and point forces}{51}{subsection.245}%
+\contentsline {subsubsection}{\numberline {4.5.1}The Dirac delta function}{51}{subsubsection.246}%
+\contentsline {subsubsection}{\numberline {4.5.2}Delta function forcing}{52}{subsubsection.253}%
+\contentsline {subsubsection}{\numberline {4.5.3}Heaviside step function}{53}{subsubsection.256}%
+\contentsline {subsection}{\numberline {4.6}Higher order discrete equations}{54}{subsection.262}%
+\contentsline {subsection}{\numberline {4.7}Series solutions}{55}{subsection.265}%
+\contentsline {subsubsection}{\numberline {4.7.1}Classification of singular points}{56}{subsubsection.266}%
+\contentsline {subsubsection}{\numberline {4.7.2}Method of Frobenius}{57}{subsubsection.277}%
+\contentsline {subsubsection}{\numberline {4.7.3}Second solutions}{60}{subsubsection.290}%
+\contentsline {section}{\numberline {5}Multivariate functions: applications}{61}{section.298}%
+\contentsline {subsection}{\numberline {5.1}Directional derivative}{61}{subsection.299}%
+\contentsline {subsection}{\numberline {5.2}Stationary points}{62}{subsection.307}%
+\contentsline {subsubsection}{\numberline {5.2.1}Types of stationary point}{63}{subsubsection.310}%
+\contentsline {subsection}{\numberline {5.3}Classification of stationary points}{63}{subsection.314}%
+\contentsline {subsubsection}{\numberline {5.3.1}Taylor series for multivariate functions}{63}{subsubsection.315}%
+\contentsline {subsubsection}{\numberline {5.3.2}Classification of stationary points}{64}{subsubsection.320}%
+\contentsline {subsubsection}{\numberline {5.3.3}Contours near stationary points}{66}{subsubsection.331}%
+\contentsline {subsection}{\numberline {5.4}Systems of linear ODEs}{67}{subsection.334}%
+\contentsline {subsubsection}{\numberline {5.4.1}Matrix methods}{68}{subsubsection.337}%
+\contentsline {subsubsection}{\numberline {5.4.2}Non-degenerate phase portraits}{69}{subsubsection.345}%
+\contentsline {subsection}{\numberline {5.5}Non-linear autonomous systems}{70}{subsection.349}%
+\contentsline {subsection}{\numberline {5.6}Partial differential equations}{72}{subsection.352}%
+\contentsline {subsubsection}{\numberline {5.6.1}First order wave equations}{72}{subsubsection.353}%
+\contentsline {subsubsection}{\numberline {5.6.2}Second order wave equations}{74}{subsubsection.358}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
