@@ -5,33 +5,33 @@
 \contentsline {subsection}{\numberline {2.1}Counting surjections}{9}{subsection.33}%
 \contentsline {subsection}{\numberline {2.2}Counting derangements}{10}{subsection.34}%
 \contentsline {section}{\numberline {3}Independence and conditional probability}{11}{section.37}%
-\contentsline {section}{\numberline {4}Probability distributions}{16}{section.56}%
-\contentsline {subsection}{\numberline {4.1}Discrete probability distributions}{16}{subsection.57}%
+\contentsline {section}{\numberline {4}Probability distributions}{15}{section.56}%
+\contentsline {subsection}{\numberline {4.1}Discrete probability distributions}{15}{subsection.57}%
 \contentsline {subsection}{\numberline {4.2}Random variables}{17}{subsection.65}%
-\contentsline {subsection}{\numberline {4.3}Expectation}{19}{subsection.82}%
+\contentsline {subsection}{\numberline {4.3}Expectation}{18}{subsection.82}%
 \contentsline {subsection}{\numberline {4.4}Moments, variance and covariance}{22}{subsection.93}%
 \contentsline {subsection}{\numberline {4.5}Inequalities on random variables}{26}{subsection.126}%
-\contentsline {subsection}{\numberline {4.6}Joint distribution and conditional expectation}{30}{subsection.147}%
-\contentsline {section}{\numberline {5}Random walks}{34}{section.166}%
-\contentsline {section}{\numberline {6}Probability generating functions}{36}{section.171}%
-\contentsline {subsection}{\numberline {6.1}Sum of a random number of random variables}{39}{subsection.193}%
-\contentsline {section}{\numberline {7}Branching processes}{40}{section.198}%
-\contentsline {subsection}{\numberline {7.1}Extinction probability}{41}{subsection.203}%
+\contentsline {subsection}{\numberline {4.6}Joint distribution and conditional expectation}{29}{subsection.147}%
+\contentsline {section}{\numberline {5}Random walks}{33}{section.166}%
+\contentsline {section}{\numberline {6}Probability generating functions}{35}{section.171}%
+\contentsline {subsection}{\numberline {6.1}Sum of a random number of random variables}{38}{subsection.193}%
+\contentsline {section}{\numberline {7}Branching processes}{39}{section.198}%
+\contentsline {subsection}{\numberline {7.1}Extinction probability}{40}{subsection.203}%
 \contentsline {section}{\numberline {8}Continuous random variables}{43}{section.208}%
-\contentsline {subsection}{\numberline {8.1}The normal distribution}{48}{subsection.236}%
+\contentsline {subsection}{\numberline {8.1}The normal distribution}{47}{subsection.236}%
 \contentsline {subsubsection}{\numberline {8.1.1}Linear transformations of a normal random variable}{49}{subsubsection.241}%
-\contentsline {subsection}{\numberline {8.2}Multivariate density functions}{51}{subsection.247}%
-\contentsline {subsubsection}{\numberline {8.2.1}Marginal density}{52}{subsubsection.258}%
-\contentsline {subsubsection}{\numberline {8.2.2}Sum of independent random variables}{53}{subsubsection.263}%
-\contentsline {subsubsection}{\numberline {8.2.3}Conditional density}{53}{subsubsection.266}%
-\contentsline {subsection}{\numberline {8.3}Order statistics of a random sample}{54}{subsection.276}%
-\contentsline {section}{\numberline {9}Moment generating functions}{56}{section.280}%
-\contentsline {subsection}{\numberline {9.1}Multivariate moment generating functions}{58}{subsection.294}%
-\contentsline {subsection}{\numberline {9.2}Multivariate Gaussian random variables}{58}{subsection.301}%
-\contentsline {subsection}{\numberline {9.3}Bivariate Gaussians}{62}{subsection.323}%
-\contentsline {section}{\numberline {10}Convergence results and limit theorems}{63}{section.330}%
-\contentsline {subsection}{\numberline {10.1}Central limit theorem}{66}{subsection.342}%
-\contentsline {section}{\numberline {11}Simulation of random variables}{70}{section.354}%
-\contentsline {subsection}{\numberline {11.1}Box-Muller transform}{70}{subsection.357}%
-\contentsline {subsection}{\numberline {11.2}Rejection sampling}{71}{subsection.358}%
+\contentsline {subsection}{\numberline {8.2}Multivariate density functions}{50}{subsection.247}%
+\contentsline {subsubsection}{\numberline {8.2.1}Marginal density}{51}{subsubsection.258}%
+\contentsline {subsubsection}{\numberline {8.2.2}Sum of independent random variables}{52}{subsubsection.263}%
+\contentsline {subsubsection}{\numberline {8.2.3}Conditional density}{52}{subsubsection.266}%
+\contentsline {subsection}{\numberline {8.3}Order statistics of a random sample}{53}{subsection.276}%
+\contentsline {section}{\numberline {9}Moment generating functions}{55}{section.280}%
+\contentsline {subsection}{\numberline {9.1}Multivariate moment generating functions}{57}{subsection.294}%
+\contentsline {subsection}{\numberline {9.2}Multivariate Gaussian random variables}{57}{subsection.301}%
+\contentsline {subsection}{\numberline {9.3}Bivariate Gaussians}{61}{subsection.323}%
+\contentsline {section}{\numberline {10}Convergence results and limit theorems}{62}{section.330}%
+\contentsline {subsection}{\numberline {10.1}Central limit theorem}{65}{subsection.342}%
+\contentsline {section}{\numberline {11}Simulation of random variables}{69}{section.354}%
+\contentsline {subsection}{\numberline {11.1}Box-Muller transform}{69}{subsection.357}%
+\contentsline {subsection}{\numberline {11.2}Rejection sampling}{70}{subsection.358}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -35,7 +35,7 @@
     \end{definition}
     
     \begin{definition}
-        $\NN$ is the set of natural numbers; $\ZZ$ is the set of integers; $\QQ$ is the set of rational numbers.
+        \(\NN\) is the set of natural numbers; \(\ZZ\) is the set of integers; \(\QQ\) is the set of rational numbers.
     \end{definition}
 
     \begin{figure}[ht]
@@ -45,7 +45,7 @@
         \label{fig:greek-geometry}
     \end{figure}
 
-    Hippasus then proved that $\sqrt 2 \notin \QQ$, creating a need for a larger number system: $\RR$.
+    Hippasus then proved that \(\sqrt 2 \notin \QQ\), creating a need for a larger number system: \(\RR\).
 
     \begin{definition}
         A real number is \emph{algebraic} if it is a root of some polynomial with integer coefficients.
@@ -62,44 +62,44 @@
     \subsection{Proofs and non-proofs}
 
     \begin{claim}
-        For all positive integers $n$, $n^3-n$ is a multiple of 3.
+        For all positive integers \(n\), \(n^3-n\) is a multiple of 3.
     \end{claim}
     
     \begin{proof}
-        Observe $n^3-n=(n-1)n(n+1)$. One of $n-1$, $n$, $n+1$ is a multiple of 3 as they are consecutive.
+        Observe \(n^3-n=(n-1)n(n+1)\). One of \(n-1\), \(n\), \(n+1\) is a multiple of 3 as they are consecutive.
     \end{proof}
     
     \begin{claim}
-        For any positive integer $n$, if $n^2$ is even, $n$ is even.
+        For any positive integer \(n\), if \(n^2\) is even, \(n\) is even.
     \end{claim}
     
     \begin{proof}
-        $n$ even $\implies$ $n^2$ even but this is the converse. \\
-        show contrapositive! $n$ odd $\implies$ $n^2$ odd as $(2k+1)^2 = 4(k^2+k)+1$
+        \(n\) even \(\implies\) \(n^2\) even but this is the converse. \\
+        show contrapositive! \(n\) odd \(\implies\) \(n^2\) odd as \((2k+1)^2 = 4(k^2+k)+1\)
     \end{proof}
 
     \lecture{Lecture 2 -- 11/10/25}
 
     \subsection{Logic}
 
-    We write $A \implies B$ for `if $A$ then $B$'.
+    We write \(A \implies B\) for `if \(A\) then \(B\)'.
 
     \begin{claim}
-        The solution to $x^2 - 5x + 6 = 0$ is $x = 2$ or $x = 3$.
+        The solution to \(x^2 - 5x + 6 = 0\) is \(x = 2\) or \(x = 3\).
     \end{claim}
 
     \noindent This is in fact 2 separate assertions:
 
     \begin{enumerate}
-        \item $x = 2$ and $x = 3$ are solutions;
+        \item \(x = 2\) and \(x = 3\) are solutions;
         \item there are no other solutions.
     \end{enumerate}
     
     \begin{proof}
         First let's try proving each part separately.
         \begin{enumerate}
-            \item If $x=2$ or $x=3$, then $x-2=0$ or $x-3=0$, so $(x-2)(x-3)=0$, and hence $x^2-5x+6=0$.
-            \item Suppose $x^2-5x+6=0$, then $(x-2)(x-3)=0$. Hence $x-2 = 0$ or $x-3 = 0$, so $x=2$ or $x=3$ (it's basically the same thing in reverse).
+            \item If \(x=2\) or \(x=3\), then \(x-2=0\) or \(x-3=0\), so \((x-2)(x-3)=0\), and hence \(x^2-5x+6=0\).
+            \item Suppose \(x^2-5x+6=0\), then \((x-2)(x-3)=0\). Hence \(x-2 = 0\) or \(x-3 = 0\), so \(x=2\) or \(x=3\) (it's basically the same thing in reverse).
         \end{enumerate}
         Instead, we could write
         \begin{align*}
@@ -108,19 +108,19 @@
             \iff& (x-2)(x-3) = 0 \\
             \iff& x^2-5x+6 = 0
         \end{align*}
-        where the symbol $\iff$ means `if and only if', `is equivalent to', etc. Now we can do both directions at once! But we must verify that every step is if and only if.        
+        where the symbol \(\iff\) means `if and only if', `is equivalent to', etc. Now we can do both directions at once! But we must verify that every step is if and only if.        
     \end{proof}
 
     \begin{claim}
-        Every positive real number is $\geq 1$.
+        Every positive real number is \(\geq 1\).
     \end{claim}
     \begin{proof}
-        Let $r$ be the least positive real. Either $r=1$, $r<1$, or $r>1$.
+        Let \(r\) be the least positive real. Either \(r=1\), \(r<1\), or \(r>1\).
         \begin{itemize}
-            \item If $r<1$, then $0 < r^2 < r < 1$, which contradicts the minimality of $r$.
-            \item If $r>1$, then $0 < \sqrt r < r$, contradiction again.
+            \item If \(r<1\), then \(0 < r^2 < r < 1\), which contradicts the minimality of \(r\).
+            \item If \(r>1\), then \(0 < \sqrt r < r\), contradiction again.
         \end{itemize}
-        Hence $r=1$.
+        Hence \(r=1\).
     \end{proof}
     
     \begin{remark*}
@@ -129,39 +129,39 @@
     
     \subsection{Combining claims}
     
-    If $A$, $B$ are statements, we can (but usually don't) write $A \wedge B$ for `$A$ and $B$', $A \vee B$ for `$A$ or $B$', and $\neg A$ for `not $A$'. The truth/falsity of these statements then depends on the truth/falsity of $A$ and $B$. We can use a \emph{truth table}.
+    If \(A\), \(B\) are statements, we can (but usually don't) write \(A \wedge B\) for `\(A\) and \(B\)', \(A \vee B\) for `\(A\) or \(B\)', and \(\neg A\) for `not \(A\)'. The truth/falsity of these statements then depends on the truth/falsity of \(A\) and \(B\). We can use a \emph{truth table}.
 
     \begin{center}
     
         \begin{tabular}{c | c | c | c | c | c}
-            $A$ & $B$ & $A \wedge B$ & $A \vee B$ & $\neg A$ & $A \implies B$ \\
+            \(A\) & \(B\) & \(A \wedge B\) & \(A \vee B\) & \(\neg A\) & \(A \implies B\) \\
             \hline
-            $F$ & $F$ & $F$ & $F$ & $T$ & $T$ \\
-            $F$ & $T$ & $F$ & $T$ & $T$ & $T$ \\
-            $T$ & $F$ & $F$ & $T$ & $F$ & $F$ \\
-            $T$ & $T$ & $T$ & $T$ & $F$ & $T$ \\
+            \(F\) & \(F\) & \(F\) & \(F\) & \(T\) & \(T\) \\
+            \(F\) & \(T\) & \(F\) & \(T\) & \(T\) & \(T\) \\
+            \(T\) & \(F\) & \(F\) & \(T\) & \(F\) & \(F\) \\
+            \(T\) & \(T\) & \(T\) & \(T\) & \(F\) & \(T\) \\
         \end{tabular}
         
     \end{center}
 
-    There are certain simplification rules we can use -- for example, $\neg (A \wedge B) = \neg A \vee \neg B$.
+    There are certain simplification rules we can use -- for example, \(\neg (A \wedge B) = \neg A \vee \neg B\).
 
-    Importantly, $A \implies B$ is just another truth statement. In particular, $A \implies B$ is equivalent to $\neg A \vee B$, $B \vee \neg A$ and thus $\neg(\neg B) \vee \neg A$. From this it is immediately clear that $A \implies B$ is equivalent to $\neg B \implies \neg A$ -- the contrapositive.
+    Importantly, \(A \implies B\) is just another truth statement. In particular, \(A \implies B\) is equivalent to \(\neg A \vee B\), \(B \vee \neg A\) and thus \(\neg(\neg B) \vee \neg A\). From this it is immediately clear that \(A \implies B\) is equivalent to \(\neg B \implies \neg A\) -- the contrapositive.
     
     A claim may involve \emph{quantifiers}:
 
     \begin{itemize}
-        \item $\forall$ -- for all;
-        \item $\exists$ -- there exists.
+        \item \(\forall\) -- for all;
+        \item \(\exists\) -- there exists.
     \end{itemize}
     
     Negating quantifiers can be done as follows:
     \begin{itemize}
-        \item $\neg (\forall x A(x))$ is equivalent to $\exists x \neg A(x)$;
-        \item $\neg (\exists x B(x))$ is equivalent to $\forall x \neg B(x)$.
+        \item \(\neg (\forall x A(x))\) is equivalent to \(\exists x \neg A(x)\);
+        \item \(\neg (\exists x B(x))\) is equivalent to \(\forall x \neg B(x)\).
     \end{itemize}
     
-    Also, the order of quantifiers matters -- $\forall x \exists y$ is \emph{not} the same as $\exists y \forall x$.
+    Also, the order of quantifiers matters -- \(\forall x \exists y\) is \emph{not} the same as \(\exists y \forall x\).
 
     \section{Sets, functions and relations}
 
@@ -170,47 +170,47 @@
     \begin{definition}
         A \emph{set} is a collection of mathematical objects.
         \begin{itemize}
-            \item The order of elements in the set does not matter, so $\{1, 3, 7\} = \{1, 7, 3\}$.
-            \item Elements are counted only once, so $\{3, 4, 4, 8\} = \{3, 4, 8\}$.
-            \item We write $x \in A$ if $x$ is an element of $A$, and $x \notin A$ otherwise.
-            \item Two sets are equal if all their elements are equal -- $A = B \iff \forall x, x \in A \iff x \in B$.
+            \item The order of elements in the set does not matter, so \(\{1, 3, 7\} = \{1, 7, 3\}\).
+            \item Elements are counted only once, so \(\{3, 4, 4, 8\} = \{3, 4, 8\}\).
+            \item We write \(x \in A\) if \(x\) is an element of \(A\), and \(x \notin A\) otherwise.
+            \item Two sets are equal if all their elements are equal -- \(A = B \iff \forall x, x \in A \iff x \in B\).
         \end{itemize}
     \end{definition}
 
     \begin{example*}
-        $\RR$, $\NN$, $\{1, 5, 9\}$, $(-2, 3]$.
+        \(\RR\), \(\NN\), \(\{1, 5, 9\}\), \((-2, 3]\).
     \end{example*}
     
-    There is a unique empty set $\emptyset$ with no elements -- $\forall x, x \notin \emptyset$.
+    There is a unique empty set \(\emptyset\) with no elements -- \(\forall x, x \notin \emptyset\).
 
     \begin{definition}
-        A set $B$ is a \emph{subset} of a set $A$, written $B \subseteq A$, if every element of $B$ is also an element of $A$. $B$ is a \emph{proper subset} of $A$, $B \subsetneq A$, if $B \subseteq A$ and $B \neq A$.
+        A set \(B\) is a \emph{subset} of a set \(A\), written \(B \subseteq A\), if every element of \(B\) is also an element of \(A\). \(B\) is a \emph{proper subset} of \(A\), \(B \subsetneq A\), if \(B \subseteq A\) and \(B \neq A\).
     \end{definition}
     
-    Note that $A \subseteq B$ and $B \subseteq A \implies A = B$.
+    Note that \(A \subseteq B\) and \(B \subseteq A \implies A = B\).
 
     Things we can do with sets:
 
     \begin{itemize}
-        \item If $A$ is a set and $P$ is a property of some elements of $A$, we can write $\{x \in A: P(x)\}$ for the subset of $A$ containing all the elements of $A$ satisfying $P$. For example, we can have $\{n \in \NN: n \text{ prime}\} = \{2, 3, 5, \dots\}$.
-        \item If $A$ and $B$ are sets, then their \emph{union} $A \cup B = \{x : x \in A \text{ or } x \in B\}$;
-        \item and their \emph{intersection} $A \cap B = \{x : x \in A \text{ and } x \in B\}$. Note that intersection can also be viewed in terms of subset selection -- $A \cap B = \{x \in A : x \in B\}$.
-        \item We say $A$ and $B$ are \emph{disjoint} if $A \cap B = \emptyset$.
-        \item The \emph{set difference} of $A$ and $B$, $A \setminus B = \{x \in A: x \notin B\}$.
+        \item If \(A\) is a set and \(P\) is a property of some elements of \(A\), we can write \(\{x \in A: P(x)\}\) for the subset of \(A\) containing all the elements of \(A\) satisfying \(P\). For example, we can have \(\{n \in \NN: n \text{ prime}\} = \{2, 3, 5, \dots\}\).
+        \item If \(A\) and \(B\) are sets, then their \emph{union} \(A \cup B = \{x : x \in A \text{ or } x \in B\}\);
+        \item and their \emph{intersection} \(A \cap B = \{x : x \in A \text{ and } x \in B\}\). Note that intersection can also be viewed in terms of subset selection -- \(A \cap B = \{x \in A : x \in B\}\).
+        \item We say \(A\) and \(B\) are \emph{disjoint} if \(A \cap B = \emptyset\).
+        \item The \emph{set difference} of \(A\) and \(B\), \(A \setminus B = \{x \in A: x \notin B\}\).
     \end{itemize}
 
     Some properties of these operations:
 
     \begin{itemize}
         \item Union and intersection are commutative and associative (because and and or are).
-        \item The union is distributive over the intersection -- $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
-        \item The intersection is distributive over the union -- $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+        \item The union is distributive over the intersection -- \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+        \item The intersection is distributive over the union -- \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
     \end{itemize}
 
     \lecture{Lecture 3 -- 14/10/25}
 
     \begin{proposition}[De Morgan's laws]
-        For sets $A$, $B$, $C$,
+        For sets \(A\), \(B\), \(C\),
         \begin{align*}
             A \setminus (B \cap C) &= (A \setminus B) \cup (A \setminus C) \\
             A \setminus (B \cup C) &= (A \setminus B) \cap (A \setminus C)
@@ -218,25 +218,27 @@
     \end{proposition}
     
     \begin{proposition}
-        For sets $A$, $B$, $C$,
+        For sets \(A\), \(B\), \(C\),
         \begin{itemize}
-            \item The union is distributive over the intersection -- $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$.
-            \item The intersection is distributive over the union -- $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+            \item The union is distributive over the intersection -- \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\).
+            \item The intersection is distributive over the union -- \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
         \end{itemize}        
     \end{proposition}
     
     
 
     \begin{proof}
-        We'll just do the second -- the first follows similar reasoning. Want to show RHS $\subseteq$ LHS and LHS $\subseteq$ RHS.
+        We'll just do the second -- the first follows similar reasoning. Want to show RHS \(\subseteq\) LHS and LHS \(\subseteq\) RHS.
 
-        Suppose $x \in A \cap (B \cup C)$, then $x \in A$ and $x \in B \cup C$. Hence $x \in A$ and $x$ in either $B$ or $C$. If $x \in B$, then $x \in A \cap B$. Otherwise if $x \in C$, then $x \in A \cap C$. Hence $x \in (A \cap B) \cup (A \cap C)$, and so 
+        Suppose \(x \in A \cap (B \cup C)\), then \(x \in A\) and \(x \in B \cup C\). Hence \(x \in A\) and \(x\) in either \(B\) or \(C\). If \(x \in B\), then \(x \in A \cap B\). Otherwise if \(x \in C\), then \(x \in A \cap C\). Hence \(x \in (A \cap B) \cup (A \cap C)\), and so \((A \cap B) \cup (A \cap C) \subseteq A \cap (B \cup C)\).
 
-        Suppose $x \in (A \cap B) \cup (A \cap C)$. Hence $x \in A \cap B$ or $x \in A \cap C$. If $x \in A \cap B$, then $x \in A$ and $x \in B$. Otherwise if $x \in A \cap C$, then $x \in A$ and $x \in C$. Hence $x \in A$ and $x \in B \cup C$, so $x \in A \cap (B \cup C)$.
+        Suppose \(x \in (A \cap B) \cup (A \cap C)\). Hence \(x \in A \cap B\) or \(x \in A \cap C\). If \(x \in A \cap B\), then \(x \in A\) and \(x \in B\). Otherwise if \(x \in A \cap C\), then \(x \in A\) and \(x \in C\). Hence \(x \in A\) and \(x \in B \cup C\), so \(x \in A \cap (B \cup C)\), so \(A \cap (B \cup C) \subseteq (A \cap B) \cup (A \cap C)\).
+
+        Hence \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\).
     \end{proof}
     
     \begin{definition}
-        Suppose $A_1$, $A_2$, $A_3$, $\dots$ is an infinite collection of sets. Then
+        Suppose \(A_1\), \(A_2\), \(A_3\), \(\dots\) is an infinite collection of sets. Then
         \begin{align*}
             \bigcap_{n=1}^\infty A_n &= A_1 \cap A_2 \cap A_3 \cap \dots \\
             &= \{x: x \in A_n \; \forall n \in \NN\}
@@ -246,61 +248,61 @@
             \bigcup_{n=1}^\infty A_n &= A_1 \cup A_2 \cup A_3 \cup \dots \\
             &= \{x: x \in A_n \text{ for some } n \in \NN\}
         \end{align*}
-        More generally, given an index set $I$ and a collection of sets $\{A_i: i \in I\}$, we write $\bigcap_{i \in I}A_i = \{x:x \in A_i \; \forall i \in I\}$ and $\bigcup_{i \in I}A_i = \{x: x \in A_i \text{ for some } i \in I\}$.
+        More generally, given an index set \(I\) and a collection of sets \(\{A_i: i \in I\}\), we write \(\bigcap_{i \in I}A_i = \{x:x \in A_i \; \forall i \in I\}\) and \(\bigcup_{i \in I}A_i = \{x: x \in A_i \text{ for some } i \in I\}\).
     \end{definition}
     
     \begin{definition}
-        Given sets $A$ and $B$, the \emph{Cartesian product}
+        Given sets \(A\) and \(B\), the \emph{Cartesian product}
         \begin{align*}
             A \times B = \{(a, b): a \in A,\, b \in B\}
         \end{align*}
-        that is, the set of ordered pairs with first element in $A$ and second element in $B$. Worth noting that we can define ordered pairs using only sets: say $(a, b) := \{\{a, b\}, \{a\}\}$. We can also generalise to triples, quadruples, etc.
+        that is, the set of ordered pairs with first element in \(A\) and second element in \(B\). Worth noting that we can define ordered pairs using only sets: say \((a, b) := \{\{a, b\}, \{a\}\}\). We can also generalise to triples, quadruples, etc.
         
     \end{definition}
     
     \begin{definition}
-        Given a set $X$, the \emph{power set} $\mathcal P(X)$ is the set of all subsets of $X$, that is $\{Y: Y \subseteq X\}$.
+        Given a set \(X\), the \emph{power set} \(\mathcal P(X)\) is the set of all subsets of \(X\), that is \(\{Y: Y \subseteq X\}\).
     \end{definition}
     
     \begin{example}
-        Say $X = \{1, 2\}$, then $\mathcal P(X) = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}$.
+        Say \(X = \{1, 2\}\), then \(\mathcal P(X) = \{\emptyset, \{1\}, \{2\}, \{1, 2\}\}\).
     \end{example}
     
     \begin{remark*}
-        Given a set $A$, we can form $\{x \in A: P(x)\}$ for some property $P$. But these elements have to come from a particular set -- we can't form $\{x: P(x)\}$. To see this, suppose $X = \{x: x \notin x\}$. Then $X \in X \iff X \notin X$ -- Russell's paradox. This becomes a proof that there is no set of all sets.
+        Given a set \(A\), we can form \(\{x \in A: P(x)\}\) for some property \(P\). But these elements have to come from a particular set -- we can't form \(\{x: P(x)\}\). To see this, suppose \(X = \{x: x \notin x\}\). Then \(X \in X \iff X \notin X\) -- Russell's paradox. This becomes a proof that there is no set of all sets.
     \end{remark*}
     
     \subsubsection{Finite sets}
 
-    Let $\NN_0 = \NN \cup \{0\} = \{0, 1, 2, \dots\}$. 
+    Let \(\NN_0 = \NN \cup \{0\} = \{0, 1, 2, \dots\}\). 
 
     \begin{definition}
-        Given $n \in \NN_0$, we say a set $A$ has \emph{size} $n$ -- $|A| = n$ -- if we can write $A = \{a_1, a_2, \dots, a_n\}$ with the $a_i$ distinct. A set is \emph{finite} if there exists an $n \in \NN_0$ such that $A$ has size $n$ -- otherwise \emph{infinite}.
+        Given \(n \in \NN_0\), we say a set \(A\) has \emph{size} \(n\) -- \(|A| = n\) -- if we can write \(A = \{a_1, a_2, \dots, a_n\}\) with the \(a_i\) distinct. A set is \emph{finite} if there exists an \(n \in \NN_0\) such that \(A\) has size \(n\) -- otherwise \emph{infinite}.
     \end{definition}
     
     \subsection{Functions}
 
 
     \begin{definition}
-        Given sets $A$ and $B$, a \emph{function} $f$ from $A$ to $B$ is a `rule' that assigns to any $x \in A$ a unique element $f(x) \in B$.
+        Given sets \(A\) and \(B\), a \emph{function} \(f\) from \(A\) to \(B\) is a `rule' that assigns to any \(x \in A\) a unique element \(f(x) \in B\).
         
-        Formally, $f \subseteq A \times B$ such that, for all $x \in A$, there exists a unique $y \in B$ such that $(x, y) \in f$.
+        Formally, \(f \subseteq A \times B\) such that, for all \(x \in A\), there exists a unique \(y \in B\) such that \((x, y) \in f\).
 
-        If $f$ is a function from $A$ to $B$, we typically write
+        If \(f\) is a function from \(A\) to \(B\), we typically write
         \begin{align*}
             f: A &\to B \\
             x &\mapsto y
         \end{align*}
-        whenever $(x, y) \in f$.
+        whenever \((x, y) \in f\).
         
     \end{definition}
     
     \begin{example}
         Some examples of functions or non-functions.
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item $f: \RR \to \RR$, $x \mapsto x^2$ is a function.
-            \item $f: \RR \to \RR$, $x \mapsto 1/x$ is \emph{not} a function -- what is $f(0)$? Certainly not in $\RR$.
-            \item $f: \RR \to \RR$, $x \mapsto \pm \sqrt{|x|}$ is \emph{not} a function -- one input can correspond to two outputs.
+            \item \(f: \RR \to \RR\), \(x \mapsto x^2\) is a function.
+            \item \(f: \RR \to \RR\), \(x \mapsto 1/x\) is \emph{not} a function -- what is \(f(0)\)? Certainly not in \(\RR\).
+            \item \(f: \RR \to \RR\), \(x \mapsto \pm \sqrt{|x|}\) is \emph{not} a function -- one input can correspond to two outputs.
             \item \begin{align*}
                 f: \RR &\to \RR \\
                 x &\mapsto \begin{cases}
@@ -315,30 +317,30 @@
     \lecture{Lecture 4 -- 16/10/25}
     
     \begin{definition}[Function terminology]
-        Given $f: A \to B$, we say
+        Given \(f: A \to B\), we say
         \begin{itemize}
-            \item $A$ is the \emph{domain} of $f$;
-            \item $B$ is the \emph{range} or \emph{codomain}.
-            \item For $x \in A$ and $y \in B$ with $f(x) = y$, $y$ is the \emph{image} of $x$;
-            \item and $x$ is a \emph{preimage} of $y$.
-            \item For $X \subseteq A$, the \emph{image} of $X$, $f(X) = \{f(x): x \in X\}$. For $X = A$, $f(A)$, also denoted $\Im(f)$, is called the image of $f$.
-            \item For $Y \subseteq B$, the \emph{preimage} of $Y$, $f^{-1}(Y) = \{a: a \in A, f(a) \in Y\}$.
+            \item \(A\) is the \emph{domain} of \(f\);
+            \item \(B\) is the \emph{range} or \emph{codomain}.
+            \item For \(x \in A\) and \(y \in B\) with \(f(x) = y\), \(y\) is the \emph{image} of \(x\);
+            \item and \(x\) is a \emph{preimage} of \(y\).
+            \item For \(X \subseteq A\), the \emph{image} of \(X\), \(f(X) = \{f(x): x \in X\}\). For \(X = A\), \(f(A)\), also denoted \(\Im(f)\), is called the image of \(f\).
+            \item For \(Y \subseteq B\), the \emph{preimage} of \(Y\), \(f^{-1}(Y) = \{a: a \in A, f(a) \in Y\}\).
         \end{itemize}
     \end{definition}
 
     \begin{figure}[ht]
             \centering
             \incfig{0.4\textwidth}{x2-function-example}
-            \caption{Graph of the function $f(x)$}
+            \caption{Graph of the function \(f(x)\)}
             \label{fig:x2-function-example}
         \end{figure}
 
     \begin{example}
-        Consider $f(x): \RR \to \RR$, $x \mapsto x^2$. 
+        Consider \(f(x): \RR \to \RR\), \(x \mapsto x^2\). 
         \begin{itemize}
-            \item $\Im(f) = \RR_{\geq 0}$;
-            \item Image of $\{x: -1 \leq x < 4\}$ is $\{y: 0 \leq y < 16\}$.
-            \item Preimage of $\{y: -1 \leq y < 4\}$ is $\{x: -2 < x < 2\}$.
+            \item \(\Im(f) = \RR_{\geq 0}\);
+            \item Image of \(\{x: -1 \leq x < 4\}\) is \(\{y: 0 \leq y < 16\}\).
+            \item Preimage of \(\{y: -1 \leq y < 4\}\) is \(\{x: -2 < x < 2\}\).
         \end{itemize}
         
         
@@ -346,17 +348,17 @@
     \end{example}
     
     \begin{definition}
-        $f: A \to B$ is \emph{injective} if, for any $a$, $a' \in A$, $f(a) = f(a') \implies a = a'$.
+        \(f: A \to B\) is \emph{injective} if, for any \(a\), \(a' \in A\), \(f(a) = f(a') \implies a = a'\).
     \end{definition}
     
     \begin{definition}
-        $f: A \to B$ is \emph{surjective} if its image is equal to its codomain -- for any $b \in B$, there exists $a \in A$ with $f(a)=b$.
+        \(f: A \to B\) is \emph{surjective} if its image is equal to its codomain -- for any \(b \in B\), there exists \(a \in A\) with \(f(a)=b\).
     \end{definition}
     
     \begin{definition}
-        $f: A \to B$ is \emph{bijective} if it is both injective and surjective.
+        \(f: A \to B\) is \emph{bijective} if it is both injective and surjective.
     \end{definition}
-    \noindent Equivalently, if $f: A \to B$ is a bijection, then everything in $B$ is hit exactly once.
+    \noindent Equivalently, if \(f: A \to B\) is a bijection, then everything in \(B\) is hit exactly once.
     
     \begin{example}
         Even more examples of functions!
@@ -369,26 +371,26 @@
     \end{example}
 
     \begin{definition}
-        A \emph{permutation} of a set $A$ is a bijection from $A$ to itself.
+        A \emph{permutation} of a set \(A\) is a bijection from \(A\) to itself.
     \end{definition}
     
     All of these definitions are dependent on domain and codomain, so it's important to specify these when defining functions.
 
     \begin{example}
-        Is $f(x) = x^2$ injective? Depends on the domain of $f$. If $f: \NN \to \NN$, yes; if $f: \RR \to \RR$, no, etc.
+        Is \(f(x) = x^2\) injective? Depends on the domain of \(f\). If \(f: \NN \to \NN\), yes; if \(f: \RR \to \RR\), no, etc.
     \end{example}
     
     \begin{remark*}
         For \emph{finite} sets, the following hold:
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item If $|B| > |A|$, there cannot be a surjective function from $A$ to $B$.
-            \item If $|A| > |B|$, there cannot be an injective function from $A$ to $B$.
-            \item If $f: A \to A$, then $f$ is injective if and only if it is surjective.
-            \item There is no bijection from $A$ to any proper subset of $A$.
+            \item If \(|B| > |A|\), there cannot be a surjective function from \(A\) to \(B\).
+            \item If \(|A| > |B|\), there cannot be an injective function from \(A\) to \(B\).
+            \item If \(f: A \to A\), then \(f\) is injective if and only if it is surjective.
+            \item There is no bijection from \(A\) to any proper subset of \(A\).
         \end{enumerate}
         Consider
         \begin{itemize}
-            \item $f: \NN \to \NN$, $x \mapsto x+1$ -- injective but not surjective, violating 3.
+            \item \(f: \NN \to \NN\), \(x \mapsto x+1\) -- injective but not surjective, violating 3.
             \item Similarly, observe that the following function is surjective but not injective:
             \begin{align*}
                 g: \NN &\to \NN \\
@@ -397,7 +399,7 @@
                     x & x = 1
                 \end{cases}
             \end{align*}
-            \item If we restrict the range of $f$ above to $\NN \setminus \{1\}$, then it becomes a counterexample to 4.
+            \item If we restrict the range of \(f\) above to \(\NN \setminus \{1\}\), then it becomes a counterexample to 4.
         \end{itemize}
         
     \end{remark*}
@@ -405,17 +407,17 @@
     \begin{example}
         Even more examples of functions!
         \begin{itemize}
-            \item For any set $X$, $\id_X := X \to X$, $x \mapsto x$, is the identity function on $X$.
-            \item A sequence $x_1, x_2, \dots$ can be viewed as a function $\NN \to \RR$ (or $\CC$), $n \mapsto x_n$.
-            \item The operation $+$ on $\NN$ is a function $\NN \times \NN \to \NN$.
-            \item A set $X$ has size $n$ if and only if there is a bijection between $X$ and $\{1, \dots, n\}$.
+            \item For any set \(X\), \(\id_X := X \to X\), \(x \mapsto x\), is the identity function on \(X\).
+            \item A sequence \(x_1, x_2, \dots\) can be viewed as a function \(\NN \to \RR\) (or \(\CC\)), \(n \mapsto x_n\).
+            \item The operation \(+\) on \(\NN\) is a function \(\NN \times \NN \to \NN\).
+            \item A set \(X\) has size \(n\) if and only if there is a bijection between \(X\) and \(\{1, \dots, n\}\).
         \end{itemize}
         
         
     \end{example}
     
     \begin{definition}
-        Given a set $X$ and $A \subseteq X$, the \emph{indicator function} of $A$ is defined as follows:
+        Given a set \(X\) and \(A \subseteq X\), the \emph{indicator function} of \(A\) is defined as follows:
         \begin{align*}
             i_A: X &\to \{0, 1\} \\
             x &\mapsto \begin{cases}
@@ -427,10 +429,10 @@
     
     \begin{proposition}[Properties of indicator functions]
         \begin{itemize}
-            \item $i_A = i_B \iff A = B$;
-            \item $i_{A \cap B} = i_A \cdot i_B$;
-            \item $i_{X \setminus A} = 1 - i_A$;
-            \item $i_{A \cup B} = i_A + i_B - i_{A \cap B}$
+            \item \(i_A = i_B \iff A = B\);
+            \item \(i_{A \cap B} = i_A \cdot i_B\);
+            \item \(i_{X \setminus A} = 1 - i_A\);
+            \item \(i_{A \cup B} = i_A + i_B - i_{A \cap B}\)
         \end{itemize}
     \end{proposition}
     
@@ -451,17 +453,17 @@
     \lecture{Lecture 5 -- 18/10/25}
 
     \begin{definition}
-        Given $f: A \to B$, $g: B \to C$, the \emph{composition} of $f$ with $g$, $g \circ f: A \to C$, takes $a \in A$ to $g(f(a)) \in C$.
+        Given \(f: A \to B\), \(g: B \to C\), the \emph{composition} of \(f\) with \(g\), \(g \circ f: A \to C\), takes \(a \in A\) to \(g(f(a)) \in C\).
 
         DIAGRAM: A, B, C sets, a labelled in A, f(a) in B, g(f(a)) in C, arrows f, g from A to B, B to C.
     \end{definition}
     
     \begin{example}
-        If $f: \RR \to \RR$, $x \mapsto 2x$, $g: \RR \to \RR$, $x \mapsto x+1$. Then $g \circ f: \RR \to \RR$, $x \mapsto 2x + 1$, $f \circ g: \RR \to \RR$, $x \mapsto 2x + 2$.
+        If \(f: \RR \to \RR\), \(x \mapsto 2x\), \(g: \RR \to \RR\), \(x \mapsto x+1\). Then \(g \circ f: \RR \to \RR\), \(x \mapsto 2x + 1\), \(f \circ g: \RR \to \RR\), \(x \mapsto 2x + 2\).
     \end{example}
     
     \begin{remark*}
-        $\circ$ is not commutative.
+        \(\circ\) is not commutative.
     \end{remark*}
     
     \begin{lemma}[Associativity of function composition]
@@ -473,69 +475,69 @@
             \arrow["g", from=1-2, to=1-3]
             \arrow["h", from=1-3, to=1-4]
         \end{tikzcd}\]
-        Then $(h \circ g) \circ f = h \circ (g \circ f)$.
+        Then \((h \circ g) \circ f = h \circ (g \circ f)\).
         \label{associativity-of-function-composition}
     \end{lemma}
     
     \begin{proof}
-        For any $w \in W$, $((h \circ g) \circ f)(w) = h(g(f(w))) = (h \circ (g \circ f))(w)$.
+        For any \(w \in W\), \(((h \circ g) \circ f)(w) = h(g(f(w))) = (h \circ (g \circ f))(w)\).
     \end{proof}
 
     \begin{definition}
-        Let $X$, $Y$ be sets. A function $f: X \to Y$ is \emph{invertible} if there exists an \emph{inverse} $g: Y \to X$ such that $f \circ g = \id_Y$ and $g \circ f = \id_X$.
+        Let \(X\), \(Y\) be sets. A function \(f: X \to Y\) is \emph{invertible} if there exists an \emph{inverse} \(g: Y \to X\) such that \(f \circ g = \id_Y\) and \(g \circ f = \id_X\).
     \end{definition}
     
     \begin{example}
-        Let $f: \RR \to \RR$, $x \mapsto 2x+1$. Then we claim $f$ is invertible with inverse $g: \RR \to \RR$, $x \mapsto \frac{x-1}{2}$.
+        Let \(f: \RR \to \RR\), \(x \mapsto 2x+1\). Then we claim \(f\) is invertible with inverse \(g: \RR \to \RR\), \(x \mapsto \frac{x-1}{2}\).
 
-        Observe $g \circ f(x) = g(2x+1) = \frac{2x+1-1}{2} = x$, so $g \circ f = \id_\RR$. Furthermore, $f \circ g(x) = f(\frac{x-1}{2}) = 2\frac{x-1}{2} + 1 = x$, so $f \circ g = \id_\RR$.
+        Observe \(g \circ f(x) = g(2x+1) = \frac{2x+1-1}{2} = x\), so \(g \circ f = \id_\RR\). Furthermore, \(f \circ g(x) = f(\frac{x-1}{2}) = 2\frac{x-1}{2} + 1 = x\), so \(f \circ g = \id_\RR\).
     \end{example}
     
     \begin{theorem}
-        A function $f: A \to B$ is invertible if and only if it is bijective.
+        A function \(f: A \to B\) is invertible if and only if it is bijective.
     \end{theorem}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\impliedby$] Suppose $f$ bijective. Hence, for each $b \in B$, there exists exactly one $a \in A$ such that $f(a) = b$. Let $g(b) = a$. Then $g \circ f(a) = g(b) = a$, and $f \circ g(b) = f(a) = b$, so $g$ is an inverse of $f$ as required.
-            \item[$\implies$] Suppose $f$ invertible with inverse $g$. Suppose $f(a) = f(a')$, then $g \circ f(a) = g \circ f(a') \implies a = a'$. Hence $f$ injective. Also, $f \circ g = \id_B \implies \Im(f \circ g) = \Im(\id_B) = B$, so $\Im(f \circ g) = B$. Then $B = \Im(f \circ g) \subseteq \Im(f) \subseteq B$, so $\Im(f) = B$ -- that is, $f$ surjective.
+            \item[\(\impliedby\)] Suppose \(f\) bijective. Hence, for each \(b \in B\), there exists exactly one \(a \in A\) such that \(f(a) = b\). Let \(g(b) = a\). Then \(g \circ f(a) = g(b) = a\), and \(f \circ g(b) = f(a) = b\), so \(g\) is an inverse of \(f\) as required.
+            \item[\(\implies\)] Suppose \(f\) invertible with inverse \(g\). Suppose \(f(a) = f(a')\), then \(g \circ f(a) = g \circ f(a') \implies a = a'\). Hence \(f\) injective.    
         \end{itemize}
     \end{proof}
     
-    Notation: we denote the inverse of $f$ by $f^{-1}$. This is a horrible overlap of notation with the preimage, but such is life.
+    Notation: we denote the inverse of \(f\) by \(f^{-1}\). This is a horrible overlap of notation with the preimage, but such is life.
 
     \subsection{Relations}
     
     \begin{definition}
-        A \emph{relation} on a set $X$ is a subset $R \subseteq X^2$. We write $aRb$ whenever $(a, b) \in R$.
+        A \emph{relation} on a set \(X\) is a subset \(R \subseteq X^2\). We write \(aRb\) whenever \((a, b) \in R\).
     \end{definition}
     
     \begin{example}
-        Some examples of relations on $\NN$:
+        Some examples of relations on \(\NN\):
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item $aRb$ if $a$, $b$ share the same final digit;
-            \item $aRb$ if $a < b$;
-            \item $aRb$ if $a \neq b$;
-            \item $aRb$ if $a = b = 1$;
-            \item $aRb$ if $|a-b| \leq 3$.
+            \item \(aRb\) if \(a\), \(b\) share the same final digit;
+            \item \(aRb\) if \(a < b\);
+            \item \(aRb\) if \(a \neq b\);
+            \item \(aRb\) if \(a = b = 1\);
+            \item \(aRb\) if \(|a-b| \leq 3\).
         \end{enumerate}
     \end{example}
     
     \begin{definition}[Properties of relations]
         There are 3 particularly important properties a relation can have:
         \begin{itemize}
-            \item \emph{Reflexive}. $\forall x \in X, xRx$.
-            \item \emph{Symmetric}. $\forall x, y \in X$, $xRy \iff yRx$.
-            \item \emph{Transitive}. $\forall x, y, z \in X$, $xRy$ and $yRz \implies xRz$.
+            \item \emph{Reflexive}. \(\forall x \in X, xRx\).
+            \item \emph{Symmetric}. \(\forall x, y \in X\), \(xRy \iff yRx\).
+            \item \emph{Transitive}. \(\forall x, y, z \in X\), \(xRy\) and \(yRz \implies xRz\).
         \end{itemize}
     \end{definition}
 
     \begin{center}
         \begin{tabular}{r | c c c c c}
             Example & \circled 1 & \circled 2 & \circled 3 & \circled 4 & \circled 5 \\
-            reflexive & $\checkmark$ & $\times$ & $\times$ & $\times$ & $\checkmark$ \\
-            symmetric & $\checkmark$ & $\times$ & $\checkmark$ & $\checkmark$ & $\checkmark$ \\
-            transitive & $\checkmark$ & $\checkmark$ & $\times$ & $\checkmark$ & $\times$
+            reflexive & \(\checkmark\) & \(\times\) & \(\times\) & \(\times\) & \(\checkmark\) \\
+            symmetric & \(\checkmark\) & \(\times\) & \(\checkmark\) & \(\checkmark\) & \(\checkmark\) \\
+            transitive & \(\checkmark\) & \(\checkmark\) & \(\times\) & \(\checkmark\) & \(\times\)
         \end{tabular}
     \end{center}
     
@@ -544,13 +546,13 @@
     
     
     \begin{definition}[Equivalence relations]
-        A relation $R$ is an \emph{equivalence relation} if it is reflexive, symmetric and transitive. Equivalence relations are often denoted by $\sim$.
+        A relation \(R\) is an \emph{equivalence relation} if it is reflexive, symmetric and transitive. Equivalence relations are often denoted by \(\sim\).
     \end{definition}
 
     Only \circled 1 above is an equivalence relation.
 
     \begin{example}
-        Let $X = \{\text{1A students}\}$, and $a \sim b$ if $a$, $b$ born in same month. Then $\sim$ is an equivalence relation.
+        Let \(X = \{\text{1A students}\}\), and \(a \sim b\) if \(a\), \(b\) born in same month. Then \(\sim\) is an equivalence relation.
     \end{example}
     
     
@@ -558,59 +560,59 @@
     \lecture{Lecture 6 -- 21/10/25}
 
     \begin{definition} 
-        If $\sim$ is an equivalence relation on $X$, then the \emph{equivalence class} of a particular $x \in X$ is $[x] = \{y \in X: y \sim x\}$.
+        If \(\sim\) is an equivalence relation on \(X\), then the \emph{equivalence class} of a particular \(x \in X\) is \([x] = \{y \in X: y \sim x\}\).
     \end{definition}
     
     \begin{example}
-        With equivalence relation \circled 1, $[35] = {y \in \NN: y \text{ ends in 5}} = [15]$.
+        With equivalence relation \circled 1, \([35] = {y \in \NN: y \text{ ends in 5}} = [15]\).
     \end{example}
     
     \begin{definition}
-        Given a set $X$, a \emph{partition} of $X$ is a collection of pairwise disjoint subsets of $X$ with union $X$.
+        Given a set \(X\), a \emph{partition} of \(X\) is a collection of pairwise disjoint subsets of \(X\) with union \(X\).
     \end{definition}
     
     \begin{theorem}
-        Let $\sim$ be an equivalence relation on $X$. Then the equivalence classes under $\sim$ form a partition of $X$.
+        Let \(\sim\) be an equivalence relation on \(X\). Then the equivalence classes under \(\sim\) form a partition of \(X\).
     \end{theorem}
     
     \begin{proof}
-        By reflexivity, we have $x \in [x]$, so $\bigcup_{x \in X} [x] = X$. It remains to show that, for any $x$, $y \in X$, either $[x] \cap [y] = \empty$ or $[x] = [y]$. Suppose $[x] \cap [y] \neq \empty$, and let $z \in [x] \cap [y]$. DIAGRAM: universal set X, [x], [y] shown, x in [x], y in [y], z in intersection. Then $z \sim x \implies x \sim z$, and $z \sim y$, so $x \sim y$.
+        By reflexivity, we have \(x \in [x]\), so \(\bigcup_{x \in X} [x] = X\). It remains to show that, for any \(x\), \(y \in X\), either \([x] \cap [y] = \emptyset\) or \([x] = [y]\). Suppose \([x] \cap [y] \neq \emptyset\), and let \(z \in [x] \cap [y]\). DIAGRAM: universal set X, [x], [y] shown, x in [x], y in [y], z in intersection. Then \(z \sim x \implies x \sim z\), and \(z \sim y\), so \(x \sim y\).
 
-        Now let $w \in [y]$, so $y \sim w$. Since $x \sim y$, $x \sim w$, so $w \in [x]$. Similarly, if $w \in [x]$, then $w \in [y]$ -- so $[x] = [y]$ as required.
+        Now let \(w \in [y]\), so \(y \sim w\). Since \(x \sim y\), \(x \sim w\), so \(w \in [x]\). Similarly, if \(w \in [x]\), then \(w \in [y]\) -- so \([x] = [y]\) as required.
 
     \end{proof}
     
     \begin{remark*}
-        Conversely, any partition of $X$ induces an equivalence relation whose classes are the parts of the partition.
+        Conversely, any partition of \(X\) induces an equivalence relation whose classes are the parts of the partition.
     \end{remark*}
     
     \begin{definition}
-        Given an equivalence relation $R$ on a set $X$, the \emph{quotient of $X$ by $R$} is
+        Given an equivalence relation \(R\) on a set \(X\), the \emph{quotient of \(X\) by \(R\)} is
         \[
             X/R = \{[x]: x \in X\}
         \]
-        The \emph{quotient} or \emph{projection map}, $q: X \to X/R$, takes $x \in X$ to its equivalence class in $X/R$.
-        Suitable diagram: $x$ maps to a region labelled $[x]$ in $X/R$.
+        The \emph{quotient} or \emph{projection map}, \(q: X \to X/R\), takes \(x \in X\) to its equivalence class in \(X/R\).
+        Suitable diagram: \(x\) maps to a region labelled \([x]\) in \(X/R\).
     \end{definition}
     
     \begin{example}
-        For \circled 1, $X/R = \{[0], [1], \dots, [9]\}$.
+        For \circled 1, \(X/R = \{[0], [1], \dots, [9]\}\).
     \end{example}
     
     \begin{example}
-        On $\ZZ \times \NN$, say $(a, b) \sim (c, d)$ if $ad = bc$ -- this is an equivalence relation. Then $\ZZ \times \NN / R$ can be identified with $\QQ$ -- $[(a, b)]$ is identified with $\frac{a}{b}$.
+        On \(\ZZ \times \NN\), say \((a, b) \sim (c, d)\) if \(ad = bc\) -- this is an equivalence relation. Then \(\ZZ \times \NN / R\) can be identified with \(\QQ\) -- \([(a, b)]\) is identified with \(\frac{a}{b}\).
     \end{example}
     
     \begin{definition}
-        A \emph{binary operation} $*$ on a set $A$ is a function $A \times A \to A$.
+        A \emph{binary operation} \(*\) on a set \(A\) is a function \(A \times A \to A\).
 
-        We say $*$ is
+        We say \(*\) is
         \begin{itemize}
-            \item \emph{commutative} if $x * y = y * x$;
-            \item \emph{associative} if $x * (y * z) = (x * y) * z$;
-            \item \emph{left or right distributive} over $\cdot$ if $x * (y \cdot z) = (x * y) \cdot (x * z)$ or $(y \cdot z) * x = (y * x) \cdot (z * x)$ respectively.
+            \item \emph{commutative} if \(x * y = y * x\);
+            \item \emph{associative} if \(x * (y * z) = (x * y) * z\);
+            \item \emph{left or right distributive} over \(\cdot\) if \(x * (y \cdot z) = (x * y) \cdot (x * z)\) or \((y \cdot z) * x = (y * x) \cdot (z * x)\) respectively.
         \end{itemize}
-        for any $x$, $y$, $z$ in $A$.
+        for any \(x\), \(y\), \(z\) in \(A\).
         
     \end{definition}
     
@@ -619,22 +621,22 @@
     The Peano axiomatization of the naturals proceeds as follows:
 
     \begin{itemize}
-        \item The natural numbers $\NN$ are a set containing a special element $1$, together with a map $S: \NN \to \NN$ that maps $n$ to its \emph{successor}, with the following properties:
+        \item The natural numbers \(\NN\) are a set containing a special element \(1\), together with a map \(S: \NN \to \NN\) that maps \(n\) to its \emph{successor}, with the following properties:
         \begin{itemize}
-            \item $\forall n \in \NN, S(n) \neq 1$ -- 1 is not the successor of anything;
-            \item $S$ is injective;
-            \item If $A \subseteq \NN$ with $1 \in A$ and $n \in A \implies S(n) \in A$, then $A = \NN$ (axiom of induction).
+            \item \(\forall n \in \NN, S(n) \neq 1\) -- 1 is not the successor of anything;
+            \item \(S\) is injective;
+            \item If \(A \subseteq \NN\) with \(1 \in A\) and \(n \in A \implies S(n) \in A\), then \(A = \NN\) (axiom of induction).
         \end{itemize}
-        \item We define $2 = S(1)$, $3 = S(2)$, etc.
+        \item We define \(2 = S(1)\), \(3 = S(2)\), etc.
         \item We define addition as follows:
         \begin{itemize}
-            \item $n+1 := S(n)$;
-            \item $n+S(m) := S(n+m)$.
+            \item \(n+1 := S(n)\);
+            \item \(n+S(m) := S(n+m)\).
         \end{itemize}
         \item We define multiplication as follows:
         \begin{itemize}
-            \item $n \cdot 1 := n$;
-            \item $n \cdot S(m) = n \cdot m + n$.
+            \item \(n \cdot 1 := n\);
+            \item \(n \cdot S(m) = n \cdot m + n\).
         \end{itemize}
         \item Can now show all the basic rules of arithmetic by induction (commutativity, associativity, distributivity, etc.). For example,
         \[
@@ -658,13 +660,13 @@
         \]
     \end{definition}
     
-    Properties of $<$ are as follows:
+    Properties of \(<\) are as follows:
 
     \begin{itemize}
-        \item \emph{Transitivity}. $a < b$, $b < c \implies a < c$ -- can show by induction.
-        \item \emph{Totality}. For every $m \neq n$, exactly one of $m < n$ and $n < m$ hold.
+        \item \emph{Transitivity}. \(a < b\), \(b < c \implies a < c\) -- can show by induction.
+        \item \emph{Totality}. For every \(m \neq n\), exactly one of \(m < n\) and \(n < m\) hold.
         
-        For example, AFSOC $1 < 2$ and $2 < 1$, so there exist $k$, $l \in \NN$ with
+        For example, AFSOC \(1 < 2\) and \(2 < 1\), so there exist \(k\), \(l \in \NN\) with
         \begin{align*}
             1 &= 2 + k \text{ and } 2 = 1 + l
             \implies 1 &= 2 + k = 1 + l + k \\
@@ -675,54 +677,54 @@
     \end{itemize}
     
     \begin{definition}[Weak principle of induction (WPI)]
-        The \emph{weak principle of induction (WPI)} is an axiom of Peano arithmetic stating that, for any proposition $P$, if $P(1)$ holds, and $P(n) \implies P(n+1)$ for all $n \in \NN$, then $P(n)$ holds for all $n \in \NN$.
+        The \emph{weak principle of induction (WPI)} is an axiom of Peano arithmetic stating that, for any proposition \(P\), if \(P(1)\) holds, and \(P(n) \implies P(n+1)\) for all \(n \in \NN\), then \(P(n)\) holds for all \(n \in \NN\).
     \end{definition}
     
     \begin{definition}[Strong principle of induction (SPI)]
-        The \emph{strong principle of induction (SPI)} instead states that if $P(1)$ holds and $P(1) \wedge \dots \wedge P(n) \implies P(n+1)$ for all $n \in \NN$, then $P(n)$ holds for all $n \in \NN$.
+        The \emph{strong principle of induction (SPI)} instead states that if \(P(1)\) holds and \(P(1) \wedge \dots \wedge P(n) \implies P(n+1)\) for all \(n \in \NN\), then \(P(n)\) holds for all \(n \in \NN\).
     \end{definition}
     
     \begin{remark*}
-        It is clear that SPI $\implies$ WPI. To see WPI $\implies$ SPI, consider the statement $Q(n) = P(1) \wedge \dots \wedge P(n)$.
+        It is clear that SPI \(\implies\) WPI. To see WPI \(\implies\) SPI, consider the statement \(Q(n) = P(1) \wedge \dots \wedge P(n)\).
     \end{remark*}
     
     \begin{definition}[Well-ordering principle (WOP)]
-        Every non-empty subset of $\NN$ has a least element. Equivalently, if $P(n)$ holds for all $n \in A \subseteq \NN$ with $A \neq \emptyset$, there exists a least $m \in A$ such that $P(m)$ holds.
+        Every non-empty subset of \(\NN\) has a least element. Equivalently, if \(P(n)\) holds for all \(n \in A \subseteq \NN\) with \(A \neq \emptyset\), there exists a least \(m \in A\) such that \(P(m)\) holds.
     \end{definition}
     
     \begin{proposition}
-        SPI $\implies$ WOP
+        SPI \(\implies\) WOP
     \end{proposition}
     
     \begin{proof}
-        Suppose for contradiction that we have a proposition $P$ defining a non-empty subset $A \subseteq N$ such that $P(n)$ holds for all $n \in A$. Assume for contradiction there is no least $n \in \NN$ such that $P(n)$ holds. Consider $Q(n) = \neg P(n)$. We may assume $P(1)$ is false (otherwise 1 would be minimal), so $Q(1)$ holds. Given $n \in \NN$, suppose $Q(k)$ holds for all $k < n$, so that $P(k)$ is false for all $k < n$. But then $P(n)$ is false as otherwise $n$ would be the minimal element for which $P$ holds. Thus $Q(n)$ is true and so, by strong induction, $Q$ holds for all $n \in \NN$. Hence $P(n)$ is false for all $n \in N$, so $A = \emptyset$, a contradiction
+        Suppose that we have a proposition \(P\) defining a non-empty subset \(A \subseteq N\) such that \(P(n)\) holds for all \(n \in A\), and assume for contradiction there is no least \(n \in \NN\) such that \(P(n)\) holds. Consider \(Q(n) = \neg P(n)\). We may assume \(P(1)\) is false (otherwise 1 would be minimal), so \(Q(1)\) holds. Given \(n \in \NN\), suppose \(Q(k)\) holds for all \(k < n\), so that \(P(k)\) is false for all \(k < n\). But then \(P(n)\) is false as otherwise \(n\) would be the minimal element for which \(P\) holds. Thus \(Q(n)\) is true and so, by strong induction, \(Q\) holds for all \(n \in \NN\). Hence \(P(n)\) is false for all \(n \in N\), so \(A = \emptyset\), a contradiction.
     \end{proof}
     
     \begin{remark*}
-        It can also be shown that WOP $\implies$ SPI, although this fails for infinite ordinals. Sometimes it is easier to use SPI, sometimes WOP.
+        It can also be shown that WOP \(\implies\) SPI, although this fails for infinite ordinals. Sometimes it is easier to use SPI, sometimes WOP.
     \end{remark*}
     
     \begin{proposition}[Fundamental theorem of arithmetic part 1]
-        Every natural number $>1$ is the product of primes.
+        Every natural number \(>1\) is the product of primes.
         \label{fta-1}
     \end{proposition}
     
     \begin{proof}
         We will use WOP. Let
         \[
-            C = \{n \in \NN: n > 1, n \text{ is not the product of primes}\}
+            C = \{n \in \NN: n > 1,\, n \text{ is not the product of primes}\}
         \]
-        Suppose for contradiction $C \neq \emptyset$. By WOP, $C$ has a least element $m$. Clearly $m$ cannot be prime, so $m = ab$ with $1 < a$, $b < m$. Then at least one of $a$, $b$ must also not be the product of primes, since otherwise $m$ would be. But this contradicts the minimality of $m$.
+        Suppose for contradiction \(C \neq \emptyset\). By WOP, \(C\) has a least element \(m\). Clearly \(m\) cannot be prime, so \(m = ab\) with \(1 < a\), \(b < m\). Then at least one of \(a\), \(b\) must also not be the product of primes, since otherwise \(m\) would be. But this contradicts the minimality of \(m\).
     \end{proof}
     
     \subsection{Finite sets continued}
 
     \begin{proposition}
-        For a set $A$ with size $n$, $\mathcal P(A)$ has size $2^n$.
+        For a set \(A\) with size \(n\), \(\mathcal P(A)\) has size \(2^n\).
     \end{proposition}
     
     \begin{proof}
-        We induct on $n$. Clearly true for $n = 0$. By the definition of size of a set, $A = \{a_1, a_2, \dots, a_{n-1}, a_n\}$. Let $T \subseteq A \setminus \{a_n\}$ (so $|T| = n-1$), then how many subsets $S \subseteq A$ are there with $S \cap (A \setminus \{a_n\}) = T$? There are two -- $T$ and $T \cup \{n\}$. Hence, for every subset of $A \setminus \{a_n\}$, there are exactly 2 corresponding subsets of $A$, and so
+        We induct on \(n\). Clearly true for \(n = 0\). By the definition of size of a set, \(A = \{a_1, a_2, \dots, a_{n-1}, a_n\}\). Let \(T \subseteq A \setminus \{a_n\}\) (so \(|T| = n-1\)), then how many subsets \(S \subseteq A\) are there with \(S \cap (A \setminus \{a_n\}) = T\)? There are two -- \(T\) and \(T \cup \{n\}\). Hence, for every subset of \(A \setminus \{a_n\}\), there are exactly 2 corresponding subsets of \(A\), and so
         \begin{align*}
             |\mathcal P(A)| &= 2 \cdot |\mathcal P(A \setminus \{a_n\})| \\
             &= 2 \cdot 2^{n-1} && \text{ by the IH} \\
@@ -732,30 +734,30 @@
     \end{proof}
     
     \begin{definition}[Binomial coefficient]
-        Given $n \in \NN_0$ and $0 \leq k \leq n$,
+        Given \(n \in \NN_0\) and \(0 \leq k \leq n\),
         \[
             \binom{n}{k} = |\{S \subseteq \{1, 2, \dots, n\}: |S| = k\}|
         \]
-        -- that is, the number of subsets of an $n$-element set that are of size $k$.
+        -- that is, the number of subsets of an \(n\)-element set that are of size \(k\).
     \end{definition}
     
     \begin{example}
-        The subsets of $\{1, 2, 3, 4\}$ of size 2 are $\{1, 2\}$, $\{1, 3\}$, $\{1, 4\}$, $\{2, 3\}$, $\{2, 4\}$, $\{3, 4\}$, so $\binom 4 2 = 6$.
+        The subsets of \(\{1, 2, 3, 4\}\) of size 2 are \(\{1, 2\}\), \(\{1, 3\}\), \(\{1, 4\}\), \(\{2, 3\}\), \(\{2, 4\}\), \(\{3, 4\}\), so \(\binom 4 2 = 6\).
     \end{example}
     
     Some properties of binomial coefficients:
 
     \begin{itemize}
-        \item $\binom n 0 = \binom n n = 1$;
-        \item $\binom n 1 = n$ for $n > 0$;
-        \item $\binom n 0 + \binom n 1 + \dots + \binom n {n-1} + \binom n n = 2^n$
-        \item $\binom n k = \binom n {n-k}$ for any $n \in \NN_0$, $0 \leq k \leq n$, since specifying which $k$ elements to pick is the same as specifying which $n-k$ elements not to pick.
+        \item \(\binom n 0 = \binom n n = 1\);
+        \item \(\binom n 1 = n\) for \(n > 0\);
+        \item \(\binom n 0 + \binom n 1 + \dots + \binom n {n-1} + \binom n n = 2^n\)
+        \item \(\binom n k = \binom n {n-k}\) for any \(n \in \NN_0\), \(0 \leq k \leq n\), since specifying which \(k\) elements to pick is the same as specifying which \(n-k\) elements not to pick.
     \end{itemize}
     
     Particularly importantly we have the following proposition:
 
     \begin{proposition}
-        For any $n \in \NN$, $1 \leq k \leq n-1$,
+        For any \(n \in \NN\), \(1 \leq k \leq n-1\),
         \[
             \binom n k = \binom{n-1}{k-1} + \binom{n-1} k
         \]
@@ -764,7 +766,7 @@
     \lecture{Lecture 8 -- 25/10/25}
 
     \begin{proof}
-        The number of subsets of size $k$ including $n$ is $\binom{n-1}{k-1}$, and the number excluding $n$ is $\binom{n-1}{k}$. The result follows.
+        The number of subsets of size \(k\) including \(n\) is \(\binom{n-1}{k-1}\), and the number excluding \(n\) is \(\binom{n-1}{k}\). The result follows.
     \end{proof}
 
     We obtain \emph{Pascal's triangle}.
@@ -774,8 +776,8 @@
             & & & & & 1 & & & & \\
             & & & & 1 & & 1 & & & \\
             & & & 1 & & 2 & & 1 & & \\
-            $\binom 3 k \rightarrow$ & & 1 & & 3 & & 3 & & 1 & \\
-            $\binom 4 k \rightarrow$ & 1 & & 4 & & 6 & & 4 & & 1 \\
+            \(\binom 3 k \rightarrow\) & & 1 & & 3 & & 3 & & 1 & \\
+            \(\binom 4 k \rightarrow\) & 1 & & 4 & & 6 & & 4 & & 1 \\
         \end{tabular}
     \end{center}
 
@@ -789,7 +791,7 @@
     \end{proposition}
     
     \begin{proof}
-        Given a set of size $n$, there are $n(n-1)(n-2)\dots(n-k+1)$ ways to pick $k$ elements in order, one by one. But each subset is counted $k(k-1)(k-2)\dots 2 \cdot 1 = k!$ times, so we divide out by this quantity.
+        Given a set of size \(n\), there are \(n(n-1)(n-2)\dots(n-k+1)\) ways to pick \(k\) elements in order, one by one. But each subset is counted \(k(k-1)(k-2)\dots 2 \cdot 1 = k!\) times, so we divide out by this quantity.
     \end{proof}
     
     Notice that we have
@@ -800,39 +802,39 @@
     \end{align*}
 
     \begin{theorem}[Binomial theorem]
-        For all $a$, $b \in \RR$, $n \in \NN$,
+        For all \(a\), \(b \in \RR\), \(n \in \NN\),
         \[
             (a+b)^n = \binom n 0 a^n + \binom n 1 a^{n-1} b + \binom n 2 a^{n-2} b^2 + \dots + \binom n {n-1} ab^{n-1} + \binom n n b^n
         \]
     \end{theorem}
     
     \begin{proof}
-        When we expand $(a+b)^n = (a+b)(a+b)\cdots(a+b)$, we obtain some terms of the form $a^{n-k}b^k$ for any $0 \leq k \leq n$, and the number of terms is $\binom n k$, as we choose $k$ brackets from which to pick $b$, and the remaining $n-k$ we pick $a$ from.
+        When we expand \((a+b)^n = (a+b)(a+b)\cdots(a+b)\), we obtain some terms of the form \(a^{n-k}b^k\) for any \(0 \leq k \leq n\), and the number of terms is \(\binom n k\), as we choose \(k\) brackets from which to pick \(b\), and the remaining \(n-k\) we pick \(a\) from.
     \end{proof}
 
     \begin{example}
-        Taking $a = 1$, $b = n$, we have
+        Taking \(a = 1\), \(b = n\), we have
         \[
             (1+x)^n = 1 + nx + \binom n 2 x^2 + \binom n 3 x^3 + \dots + \binom n {n-1} x^{n-1} + x^n
         \]
-        and so for small $x$, a good approximation to $(1+x)^n$ is $1 + nx$. An even better approximation is $1 + nx + \frac{n(n-1)}{2}x^2$.
+        and so for small \(x\), a good approximation to \((1+x)^n\) is \(1 + nx\). An even better approximation is \(1 + nx + \frac{n(n-1)}{2}x^2\).
     \end{example}
     
     What can we say about the relationship between sizes of unions and intersections of finite sets?
 
     Let's start with some small cases:
     \begin{itemize}
-        \item $|A \cup B| = |A| + |B| - |A \cap B|$;
-        \item $|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|$;
+        \item \(|A \cup B| = |A| + |B| - |A \cap B|\);
+        \item \(|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\);
         \item What's the general case?
     \end{itemize}
     
     \begin{theorem}[Inclusion-exclusion principle]
-        Let $S_1$, $S_2, \dots, S_n$ be finite sets. Then
+        Let \(S_1\), \(S_2, \dots, S_n\) be finite sets. Then
         \[
             |S_1 \cup S_2 \cup \dots \cup S_n| = \sum_{|A| = 1}|S_A| - \sum_{|A| = 2} |S_A| + \sum_{|A| = 3} |S_A| - \dots + (-1)^{n+1} \sum_{|A| = n} |S_A|
         \]
-        where $S_A = \cap_{i \in A} S_i$ and we take the sums over all subsets $A \subseteq \{1, \dots, n\}$.
+        where \(S_A = \cap_{i \in A} S_i\) and we take the sums over all subsets \(A \subseteq \{1, \dots, n\}\).
     \end{theorem}
     
     \begin{remark*}
@@ -843,12 +845,11 @@
     \end{remark*}
     
     \begin{proof}
-        Let $x \in S_1 \cup S_2 \cup \dots \cup S_n$. Say $x \in S_i$ for $k$ of the $S_i$. Observe
+        Let \(x \in S_1 \cup S_2 \cup \dots \cup S_n\). Say \(x \in S_i\) for \(k\) of the \(S_i\). Observe
         \begin{align*}
-            |\{A : |A| = 1, x \in S_A\}| &= \binom k 1 \\
-            |\{A : |A| = 2, x \in S_A\}| &= \binom k 2 \\
+            \left|\left\{A : |A| = 1, x \in \bigcap_{i \in A} S_i\right\}\right| &= \binom k 1 \\
             \vdots \\
-            |\{A : |A| = r, x \in S_A\}| &= \binom k r && \text{for } r \leq k, 0 \text{ o/w}
+            \left|\left\{A : |A| = r, x \in \bigcap_{i \in A} S_i\right\}\right| &= \binom k r && \text{for } r \leq k, 0 \text{ o/w}
         \end{align*}
         Thus the RHS of the formula is
         \begin{align*}
@@ -869,31 +870,31 @@
     \section{Elementary number theory}
 
     \begin{definition}
-        Given integers $a$, $b$, we say $a$ divides $b$ if there exists $c \in \ZZ$ such that $b = ac$. We might alternatively say
+        Given integers \(a\), \(b\), we say \(a\) divides \(b\) if there exists \(c \in \ZZ\) such that \(b = ac\). We might alternatively say
         \begin{itemize}
-            \item $a | b$;
-            \item $a$ is a divisor of $b$;
-            \item $a$ is a factor of $b$;
-            \item $b$ is a multiple of $a$
+            \item \(a | b\);
+            \item \(a\) is a divisor of \(b\);
+            \item \(a\) is a factor of \(b\);
+            \item \(b\) is a multiple of \(a\)
         \end{itemize}
-        For any $b$, $\pm 1$ and $\pm b$ are always fators -- all other factors are \emph{proper} or \emph{non-trivial}.
+        For any \(b\), \(\pm 1\) and \(\pm b\) are always fators -- all other factors are \emph{proper} or \emph{non-trivial}.
     \end{definition}
     
     \begin{definition}
-        A natural number $n > 1$ is \emph{prime} if it has no non-trivial factors.
+        A natural number \(n > 1\) is \emph{prime} if it has no non-trivial factors.
     \end{definition}
 
     \lecture{Lecture 9 -- 28/10/25}
     
     \begin{proposition}
-        Every natural number $n > 1$ is the product of primes.
+        Every natural number \(n > 1\) is the product of primes.
     \end{proposition}
     
     \begin{proof}[Proof (SPI edition)]
 
-        \emph{Base case.} True for $n=2$.
+        \emph{Base case.} True for \(n=2\).
 
-        \emph{Inductive step.} Suppose $n > 2$ and that the claim holds up to and including $n-1$. If $n$ is prime, we are done. Otherwise, there exist $1 < a, b < n$ such that $ab = n$. By the IH, $a$ and $b$ are both products of primes, so $n$ is as well.
+        \emph{Inductive step.} Suppose \(n > 2\) and that the claim holds up to and including \(n-1\). If \(n\) is prime, we are done. Otherwise, there exist \(1 < a, b < n\) such that \(ab = n\). By the IH, \(a\) and \(b\) are both products of primes, so \(n\) is as well.
     \end{proof}
     
     
@@ -902,88 +903,88 @@
     \end{theorem}
     
     \begin{proof}
-        Suppose for contradiction there are finitely many primes $p_1, \dots, p_k$, and consider $N + p_1\dots p_k + 1$ -- clearly $p_i \nmid N$ for any $1 \leq i \leq k$. But this contradicts \cref{fta-1}.
+        Suppose for contradiction there are finitely many primes \(p_1, \dots, p_k\), and consider \(N + p_1\dots p_k + 1\) -- clearly \(p_i \nmid N\) for any \(1 \leq i \leq k\). But this contradicts \cref{fta-1}.
     \end{proof}
     
     We've shown every number has at least one prime factorisation -- but can it potentially have several?
 
     \begin{proposition}[Euclid's lemma]
-        If $p$ is a prime and $p \mid ab$, then either $p \mid a$ or $p \mid b$.
+        If \(p\) is a prime and \(p \mid ab\), then either \(p \mid a\) or \(p \mid b\).
         \label{euclid-lemma}
     \end{proposition}
     
     \begin{definition}
-        Given $a$, $b \in \NN$, the \emph{highest common factor} (hcf) or \emph{greatest common divisor} (gcd) of $a$ and $b$ is a natural number $c$ such that
+        Given \(a\), \(b \in \NN\), the \emph{highest common factor} (hcf) or \emph{greatest common divisor} (gcd) of \(a\) and \(b\) is a natural number \(c\) such that
         \begin{itemize}
-            \item $c \mid a$ and $c \mid b$;
-            \item if $d \mid a$ and $d \mid b$, then $d \mid c$.
+            \item \(c \mid a\) and \(c \mid b\);
+            \item if \(d \mid a\) and \(d \mid b\), then \(d \mid c\).
         \end{itemize}
-        We write $c = \hcf(a, b)$ or $c = \gcd(a, b)$ or $c = (a, b)$.        
+        We write \(c = \hcf(a, b)\) or \(c = \gcd(a, b)\) or \(c = (a, b)\).        
     \end{definition}
     
     We will need to show at some point that the hcf always exists.
 
     \begin{proposition}[Division algorithm]
-        Let $n$, $k \in \NN$. Then $n = qk + r$, where $q$ (the \emph{quotient}) and $r$ (the \emph{remainder}) are integers wth $0 \leq r \leq k-1$, and $q$ and $r$ are unique.
+        Let \(n\), \(k \in \NN\). Then \(n = qk + r\), where \(q\) (the \emph{quotient}) and \(r\) (the \emph{remainder}) are integers wth \(0 \leq r \leq k-1\), and \(q\) and \(r\) are unique.
     \end{proposition}
     
     \begin{proof}
-        We first show existence by induction on $n$.
+        We first show existence by induction on \(n\).
 
-        \emph{Base case}. Clearly true for $n=1$.
+        \emph{Base case}. Clearly true for \(n=1\).
 
-        \emph{Inductive step}. Suppose $n \geq 2$ and that the IH holds for $n-1$ -- that is, $n-1=qk+r$ for some $q$, $r \in \ZZ$ with $0 \leq r \leq k-1$.
+        \emph{Inductive step}. Suppose \(n \geq 2\) and that the IH holds for \(n-1\) -- that is, \(n-1=qk+r\) for some \(q\), \(r \in \ZZ\) with \(0 \leq r \leq k-1\).
 
-        If $r < k-1$, then
+        If \(r < k-1\), then
         \begin{align*}
             n &= (n-1) + 1 \\
             &= qk + (r + 1)
         \end{align*}
-        On the other hand, if $r = k-1$, then
+        On the other hand, if \(r = k-1\), then
         \begin{align*}
             n &= (n-1) + 1 \\
             &= qk + (k-1) + 1 \\
             &= (q+1)k
         \end{align*}
 
-        For uniqueness, suppose $n = qk + r = q'k + r'$, so $(q-q')k = r'-r$. Then $-k < r'-r < k$ and, since the LHS is a multiple of $k$, we must have $r = r'$ and $q = q'$.
+        For uniqueness, suppose \(n = qk + r = q'k + r'\), so \((q-q')k = r'-r\). Then \(-k < r'-r < k\) and, since the LHS is a multiple of \(k\), we must have \(r = r'\) and \(q = q'\).
     \end{proof}
     
     \subsection{Euclid's algorithm}
 
     \begin{center}
         \begin{tabular}{c | c c | c}
-            input & $a$ & $b$ & $a=372$, $b=162$ \\
+            input & \(a\) & \(b\) & \(a=372\), \(b=162\) \\
             \hline
-            step 1 & $a=q_1b + r_1$ & $0 \leq r_1 < b$ & $372 = 2 * 162 + 48$ \\
-            step 2 & $b=q_2r_1 + r_2$ & $0 \leq r_2 < r_1$ & $162 = 3 * 48 + 18$ \\
-            $\vdots$ & & & $\vdots$ \\
-            step $n$ & $r_{n-2}=q_nr_{n-1} + r_n$ & $0 \leq r_n < r_{n-1}$ & $18 = 1 * 12 + 6$ \\
-            step $n+1$ & $r_{n-1}=q_nr_n + r_{n+1}$ & $r_{n+1}=0$ & $12 = 2 * 6 + 0$ \\
+            step 1 & \(a=q_1b + r_1\) & \(0 \leq r_1 < b\) & \(372 = 2 * 162 + 48\) \\
+            step 2 & \(b=q_2r_1 + r_2\) & \(0 \leq r_2 < r_1\) & \(162 = 3 * 48 + 18\) \\
+            \(\vdots\) & & & \(\vdots\) \\
+            step \(n\) & \(r_{n-2}=q_nr_{n-1} + r_n\) & \(0 \leq r_n < r_{n-1}\) & \(18 = 1 * 12 + 6\) \\
+            step \(n+1\) & \(r_{n-1}=q_nr_n + r_{n+1}\) & \(r_{n+1}=0\) & \(12 = 2 * 6 + 0\) \\
             \hline
-            output & $r_n$ & & 6
+            output & \(r_n\) & & 6
         \end{tabular}
         
         
     \end{center}
 
-    We can see that the algorithm must eventually terminate, since $b > r_1 > r_2 > \dots > r_n > 0$.
+    We can see that the algorithm must eventually terminate, since \(b > r_1 > r_2 > \dots > r_n > 0\).
     
     \begin{theorem}
-        The output of Euclid's algorithm with input $a$, $b$ is $\gcd(a, b)$.
+        The output of Euclid's algorithm with input \(a\), \(b\) is \(\gcd(a, b)\).
     \end{theorem}
     
     \begin{proof}
         \begin{enumerate}
-            \item We know $r_n \mid r_{n-1}$, since $r_{n+1} = 0$, so $r_n \mid r_{n-2}$, and so by induction $r_n \mid r_i$, $i = 1, \dots, n-1$. Hence $r_n \mid b$ (step 2) and $r_n \mid a$ (step 1).
-            \item Given $d$ with $d \mid a$, $d \mid b$, we know $d \mid r_1$ from step 1, and $d \mid r_2$ by step 2, so $d \mid r_i$, $i = 1, \dots, n$ by induction.
+            \item We know \(r_n \mid r_{n-1}\), since \(r_{n+1} = 0\), so \(r_n \mid r_{n-2}\), and so by induction \(r_n \mid r_i\), \(i = 1, \dots, n-1\). Hence \(r_n \mid b\) (step 2) and \(r_n \mid a\) (step 1).
+            \item Given \(d\) with \(d \mid a\), \(d \mid b\), we know \(d \mid r_1\) from step 1, and \(d \mid r_2\) by step 2, so \(d \mid r_i\), \(i = 1, \dots, n\) by induction.
         \end{enumerate}
     \end{proof}
 
     \lecture{Lecture 10 -- 30/10/25}
     
     \begin{definition}
-        When $\gcd(a, b)=1$, we say $a$ and $b$ are \emph{coprime}, $a \perp b$.
+        When \(\gcd(a, b)=1\), we say \(a\) and \(b\) are \emph{coprime}, \(a \perp b\).
     \end{definition}
     
     \begin{example}
@@ -993,7 +994,7 @@
             52 &= 1 \cdot 35 + 17
             35 &= 2 \cdot 17 + 1
         \end{align*}
-        so $\gcd(87, 52) = 1$. However, we can also reverse:
+        so \(\gcd(87, 52) = 1\). However, we can also reverse:
         \begin{align*}
             1 &= 35 - 2 \cdot 17 \\
             &= 35 - 2 \cdot (52 - 1 \cdot 35) = 3 \cdot 35 - 2 \cdot 52 \\
@@ -1004,27 +1005,26 @@
     \end{example}
     
     \begin{theorem}[B\'ezout's lemma]
-        Let $a$, $b \in \NN$, then there exist $x$, $y \in \ZZ$ with
+        \label{bezout} Let \(a\), \(b \in \NN\), then there exist \(x\), \(y \in \ZZ\) with
         \[
             ax + by = \gcd(a, b)
         \]
-        \label{bezout}
     \end{theorem}
     
     \begin{proof}[Proof 1]
-        Apply Euclid's algorithm to $a$ and $b$ to obtain output $r_n = \gcd(a, b)$, and induct up to show that $r_n = xr_{n-i} + yr_{n-(i+1)}$ for any $i \geq 1$. Then $r_n = ax + by$ for some $x$, $y \in \ZZ$ as required.
+        Apply Euclid's algorithm to \(a\) and \(b\) to obtain output \(r_n = \gcd(a, b)\), and induct up to show that \(r_n = xr_{n-i} + yr_{n-(i+1)}\) for any \(i \geq 1\). Then \(r_n = ax + by\) for some \(x\), \(y \in \ZZ\) as required.
     \end{proof}
     
     \begin{remark*}
-        This is a \emph{constructive} proof -- we have a quick way to find the $x$ and $y$ in question.
+        This is a \emph{constructive} proof -- we have a quick way to find the \(x\) and \(y\) in question.
     \end{remark*}
     
     \begin{proof}[Proof 2]
-        Let $h$ be the minimal positive linear combination of $a$ and $b$, and let $x$ and $y$ be such that $h=ax+by$. We claim $h = \gcd(a, b)$.
+        Let \(h\) be the minimal positive linear combination of \(a\) and \(b\), and let \(x\) and \(y\) be such that \(h=ax+by\). We claim \(h = \gcd(a, b)\).
 
-        Observe that, given $d$ with $d \mid a$ and $d \mid b$, clearly $d \mid ax + by = h$ -- this is the second part of the $\gcd$ definition.
+        Observe that, given \(d\) with \(d \mid a\) and \(d \mid b\), clearly \(d \mid ax + by = h\) -- this is the second part of the \(\gcd\) definition.
 
-        For part one, suppose for contradiction $h \nmid a$, so $a = qh + r$, $0 < r < h$. Then $r = a - qh = a - q(ax + by) = a(1-qx) +b(-qy)$, but $r < h$ and is positive, which is a contradiction. Analogous reasoning for $b$ shows that $h \mid b$ -- this completes the proof.
+        For part one, suppose for contradiction \(h \nmid a\), so \(a = qh + r\), \(0 < r < h\). Then \(r = a - qh = a - q(ax + by) = a(1-qx) +b(-qy)\), but \(r < h\) and is positive, which is a contradiction. Analogous reasoning for \(b\) shows that \(h \mid b\) -- this completes the proof.
     \end{proof}
     
     \begin{remark*}
@@ -1032,41 +1032,41 @@
     \end{remark*}
     
     \begin{corollary}
-        Let $a$, $b \in \NN$. Then $ax + by = c$ has solutions in integers $x$, $y$ if and only if $\gcd(a, b) \mid c$.
+        Let \(a\), \(b \in \NN\). Then \(ax + by = c\) has solutions in integers \(x\), \(y\) if and only if \(\gcd(a, b) \mid c\).
     \end{corollary}
     
     \begin{proof}
-        Let $h = \gcd(a, b)$.
+        Let \(h = \gcd(a, b)\).
         \begin{itemize}
-            \item[$\implies$] Suppose we have $x$, $y$ with $ax + by = c$. Then, since $h \mid a$ and $h \mid b$, $h \mid c$.
-            \item[$\impliedby$] Conversely, suppose $h \mid c$, then we have $h = ax' + by'$. Multiplying through by $c/h \in \ZZ$, we have the result.
+            \item[\(\implies\)] Suppose we have \(x\), \(y\) with \(ax + by = c\). Then, since \(h \mid a\) and \(h \mid b\), \(h \mid c\).
+            \item[\(\impliedby\)] Conversely, suppose \(h \mid c\), then we have \(h = ax' + by'\). Multiplying through by \(c/h \in \ZZ\), we have the result.
         \end{itemize}        
     \end{proof}
     
     \begin{lemma}
-        If $c \mid ab$ and $\gcd(c, a) = 1$, then $c \mid b$.
+        If \(c \mid ab\) and \(\gcd(c, a) = 1\), then \(c \mid b\).
         \label{fta-promys}
     \end{lemma}
     
     \begin{proof}
-        Since $\gcd(c, a) = 1$, there exist $x$, $y \in \ZZ$ with $cx + ay = 1$ by \cref{bezout}. Then, multiplying through by $b$, $bcx + aby = b$. Clearly $c \mid bcx$ and, since $c \mid aby$, $c \mid b$ as required.
+        Since \(\gcd(c, a) = 1\), there exist \(x\), \(y \in \ZZ\) with \(cx + ay = 1\) by \cref{bezout}. Then, multiplying through by \(b\), \(bcx + aby = b\). Clearly \(c \mid bcx\) and, since \(c \mid aby\), \(c \mid b\) as required.
     \end{proof}
     
     We are now ready to provide a proof of \cref{euclid-lemma}.
 
     \begin{proof}
-        Suppose $p \mid ab$ but $p \nmid a$. Then since $p$ is prime and $p \nmid a$, $\gcd(a, p) = 1$. Hence, by \cref{fta-promys}, $p \mid b$ as required.
+        Suppose \(p \mid ab\) but \(p \nmid a\). Then since \(p\) is prime and \(p \nmid a\), \(\gcd(a, p) = 1\). Hence, by \cref{fta-promys}, \(p \mid b\) as required.
     \end{proof}
     
     \begin{theorem}[Fundamental theorem of arithmetic]
-        Every natural number $n > 1$ is expressible as a product of primes uniquely up to reordering.
+        Every natural number \(n > 1\) is expressible as a product of primes uniquely up to reordering.
         \label{fta}
     \end{theorem}
     
     \begin{proof}
         We have already shown existence in \cref{fta-1}. Let us proceed to show uniqueness by (strong) induction.
 
-        The statement is clear for $n=2$. Now, given $n > 2$, suppose $n = p_1\dots p_k = q_1\dots q_l$ where $p_i$, $q_j$ are primes. Clearly $p_1 \mid q_1 \dots q_l$, and so by \cref{euclid-lemma}, $p_1 \mid q_i$ for some $i$ -- relabelling, we have without loss of generality that $p_1 \mid q_1$. Then, since $q_1$ is prime and $p_1 \neq 1$, $p_1 = q_1$. Thus, dividing through by $p_1 = q_1$, we have $n/p_1 = p_2\dots p_k = q_2 \dots q_l$ -- but since $n/p_1 < n$, these two factorisations must be the same up to reordering, meaning that the factorisations of $n$ must have been the same as well (note if $n=p_1$, we can resolve easily).
+        The statement is clear for \(n=2\). Now, given \(n > 2\), suppose \(n = p_1\dots p_k = q_1\dots q_l\) where \(p_i\), \(q_j\) are primes. Clearly \(p_1 \mid q_1 \dots q_l\), and so by \cref{euclid-lemma}, \(p_1 \mid q_i\) for some \(i\) -- relabelling, we have without loss of generality that \(p_1 \mid q_1\). Then, since \(q_1\) is prime and \(p_1 \neq 1\), \(p_1 = q_1\). Thus, dividing through by \(p_1 = q_1\), we have \(n/p_1 = p_2\dots p_k = q_2 \dots q_l\) -- but since \(n/p_1 < n\), these two factorisations must be the same up to reordering, meaning that the factorisations of \(n\) must have been the same as well (note if \(n=p_1\), we can resolve easily).
     \end{proof}
     
     \lecture{Lecture 11 -- 01/11/25}
@@ -1080,59 +1080,59 @@
         \[
             (1 + \sqrt{-3})(1 - \sqrt{-3}) = 2 \cdot 2 = 4
         \]
-        despite the fact that $1 + \sqrt{-3}$, $1 - \sqrt{-3}$ and $2$ are all prime in this system.
+        despite the fact that \(1 + \sqrt{-3}\), \(1 - \sqrt{-3}\) and \(2\) are all prime in this system.
     \end{remark*}
     
     \subsection{Applications of FTA}
 
     \begin{enumerate}[label=\protect\circled{\arabic*}]
-        \item What are the factors of a given number, say $n = 2^3 \cdot 3^7 \cdot 11$? All numbers of the form $2^a 3^b 11^c$ with $0 \leq a \leq 3$, $0 \leq b \leq 7$, $0 \leq c \leq 1$. The existence of any other factors would contradict FTA.
+        \item What are the factors of a given number, say \(n = 2^3 \cdot 3^7 \cdot 11\)? All numbers of the form \(2^a 3^b 11^c\) with \(0 \leq a \leq 3\), \(0 \leq b \leq 7\), \(0 \leq c \leq 1\). The existence of any other factors would contradict FTA.
         
-        More generally, the factors of $n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}$ are numbers of the form $p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k}$, with each $b_i$ satisfying $0 \leq b_i \leq a_i$.
+        More generally, the factors of \(n = p_1^{a_1}p_2^{a_2}\cdots p_k^{a_k}\) are numbers of the form \(p_1^{b_1}p_2^{b_2}\cdots p_k^{b_k}\), with each \(b_i\) satisfying \(0 \leq b_i \leq a_i\).
 
         \item What are the common factors of
         \[
             2^3 \cdot 3^7 \cdot 5 \cdot 11^3 \text{ and } 2^4 \cdot 3^2 \cdot 11 \cdot 13
         \]
-        All numbers of the form $2^a 3^b 11^c$ with $0 \leq a \leq 3$, $0 \leq b \leq 2$, $0 \leq c \leq 1$. It follows that their gcd is $2^3 \cdot 3^2 \cdot 11$.
+        All numbers of the form \(2^a 3^b 11^c\) with \(0 \leq a \leq 3\), \(0 \leq b \leq 2\), \(0 \leq c \leq 1\). It follows that their gcd is \(2^3 \cdot 3^2 \cdot 11\).
 
-        In general, the gcd of $p_1^{a_1}\cdots p_k^{a_k}$ and $p_1^{b_1} \cdots p_k^{b_k}$, where $a_i$, $b_i \geq 0$, is
+        In general, the gcd of \(p_1^{a_1}\cdots p_k^{a_k}\) and \(p_1^{b_1} \cdots p_k^{b_k}\), where \(a_i\), \(b_i \geq 0\), is
         \[
             p_1^{\min(a_1,b_1)} \cdots p_k^{\min(a_k, b_k)}
         \]
 
-        \item What are the common multiples of the two numbers in 2? All numbers of the form $2^a 3^b 5^c 11^d 13^e$ with $4 \leq a$, $7 \leq b$, $1 \leq c$, $3 \leq d$, $1 \leq e$, times any integer. It follows that the \emph{least common multiple} (lcm) of the two numbers is $2^4 \cdot 3^7 \cdot 5^1 \cdot 11^3 \cdot 13$.
+        \item What are the common multiples of the two numbers in 2? All numbers of the form \(2^a 3^b 5^c 11^d 13^e\) with \(4 \leq a\), \(7 \leq b\), \(1 \leq c\), \(3 \leq d\), \(1 \leq e\), times any integer. It follows that the \emph{least common multiple} (lcm) of the two numbers is \(2^4 \cdot 3^7 \cdot 5^1 \cdot 11^3 \cdot 13\).
         
-        Once again we have a general result: the lcm of $p_1^{a_1}\cdots p_k^{a_k}$ and $p_1^{b_1} \cdots p_k^{b_k}$, where $a_i$, $b_i \geq 0$, is
+        Once again we have a general result: the lcm of \(p_1^{a_1}\cdots p_k^{a_k}\) and \(p_1^{b_1} \cdots p_k^{b_k}\), where \(a_i\), \(b_i \geq 0\), is
         \[
             p_1^{\max(a_1,b_1)} \cdots p_k^{\max(a_k, b_k)}
         \]
-        From this result and the fact that $\min(a, b) + \max(a, b) = a + b$, we have that $\gcd(a,b)\lcm(a,b) = ab$.
+        From this result and the fact that \(\min(a, b) + \max(a, b) = a + b\), we have that \(\gcd(a,b)\lcm(a,b) = ab\).
 
-        \item Another proof of the infinitude of primes due to Erdos. For contradiction, let $p_1, \dots, p_k$ be all the primes. Let us consider the quantity
+        \item Another proof of the infinitude of primes due to Erdos. For contradiction, let \(p_1, \dots, p_k\) be all the primes. Let us consider the quantity
         \[ 
             p_1^{j_1} \cdots p_k^{j_k}
         \]
-        with $j_i \geq 0$, which should take on all positive integer values. Rewrite in the form
+        with \(j_i \geq 0\), which should take on all positive integer values. Rewrite in the form
         \begin{align*}
             m^2 p_1^{i_1} \cdots p_k^{i_k} && (*)       
         \end{align*}
         
-        where each $i_i$ is either 0 or 1. Let $N \in \NN$. Given a number $\leq N$ of the form $(*)$, we have $m \leq \sqrt N$, and so there are at most $\sqrt N \cdot 2^k$ numbers $\leq N$ of the form $(*)$. Thus, if $N > \sqrt N \cdot 2^k$, or equivalently if $N > 4^k$, then there must be a number $\leq N$ not of the form $(*)$, and so it must have a prime factor not amongst $\{p_1, \dots, p_k\}$.
+        where each \(i_i\) is either 0 or 1. Let \(N \in \NN\). Given a number \(\leq N\) of the form \((*)\), we have \(m \leq \sqrt N\), and so there are at most \(\sqrt N \cdot 2^k\) numbers \(\leq N\) of the form \((*)\). Thus, if \(N > \sqrt N \cdot 2^k\), or equivalently if \(N > 4^k\), then there must be a number \(\leq N\) not of the form \((*)\), and so it must have a prime factor not amongst \(\{p_1, \dots, p_k\}\).
 
-        How can we compare these proofs? One can use Euclid's proof to show that the $k^\text{th}$ prime is $< 2^{2^k}$, and the proof we have just done gives the far superior bound of $4^k$. In fact, the Prime Number Theorem tells us the $k^\text{th}$ prime is approximately $k \log k$.
+        How can we compare these proofs? One can use Euclid's proof to show that the \(k^\text{th}\) prime is \(< 2^{2^k}\), and the proof we have just done gives the far superior bound of \(4^k\). In fact, the Prime Number Theorem tells us the \(k^\text{th}\) prime is approximately \(k \log k\).
     \end{enumerate}
     
     \subsection{Modular arithmetic}
 
     \begin{definition}
-        Let $n \geq 2$ be a natural number. Then, the \emph{integers modulo $n$}, written $\ZZ_n$ or $\ZZ/n\ZZ$, consist of the integers modulo the equivalence relation $\sim$ given by
+        Let \(n \geq 2\) be a natural number. Then, the \emph{integers modulo \(n\)}, written \(\ZZ_n\) or \(\ZZ/n\ZZ\), consist of the integers modulo the equivalence relation \(\sim\) given by
         \[
             a \sim b \iff n \mid a-b
         \]
-        In other words, integers are regarded as the same if they differ by a multiple of $n$.
+        In other words, integers are regarded as the same if they differ by a multiple of \(n\).
     \end{definition}
-    If $x$ and $y$ are the same in $\ZZ_n$, we write $x \equiv y \pmod n$ ($x$ congruent to $y$ mod $n$), or $x \equiv y \; (n)$, or even $x = y$ in $\ZZ_n$. We have
+    If \(x\) and \(y\) are the same in \(\ZZ_n\), we write \(x \equiv y \pmod n\) (\(x\) congruent to \(y\) mod \(n\)), or \(x \equiv y \; (n)\), or even \(x = y\) in \(\ZZ_n\). We have
 
     \begin{align*}
         x \equiv y \pmod n &\iff n \mid x - y \\
@@ -1140,7 +1140,7 @@
     \end{align*}
     
     \begin{proposition}
-        Arithmetic works in $\ZZ_n$ -- if $a \equiv a' \pmod n$, $b \equiv b' \pmod n$, then $a + b \equiv a' + b' \pmod n$ and $ab \equiv a'b' \pmod n$.
+        Arithmetic works in \(\ZZ_n\) -- if \(a \equiv a' \pmod n\), \(b \equiv b' \pmod n\), then \(a + b \equiv a' + b' \pmod n\) and \(ab \equiv a'b' \pmod n\).
     \end{proposition}
     
     \begin{proof}
@@ -1162,66 +1162,66 @@
     Modular arithmetic can be useful for solving questions in the integers!
 
     \begin{example}
-        Does $2a^2 + 3b^3 = 1$ have a solution in integers? Reducing modulo 3, we would have $2a^2 \equiv 1 \pmod 3$, but $2 \cdot 0^2 \equiv 0$, $2 \cdot 1^2 \equiv 2$, $2 \cdot 2^2 \equiv 2 \pmod 3$, so no solutions can exist.
+        Does \(2a^2 + 3b^3 = 1\) have a solution in integers? Reducing modulo 3, we would have \(2a^2 \equiv 1 \pmod 3\), but \(2 \cdot 0^2 \equiv 0\), \(2 \cdot 1^2 \equiv 2\), \(2 \cdot 2^2 \equiv 2 \pmod 3\), so no solutions can exist.
     \end{example}
     
     \lecture{Lecture 12 -- 04/11/25}
 
     \subsection{Solving congruences}
 
-    We might wish to solve a congruence, such as $7x \equiv 2 \pmod {10}$. Noting that $3 \cdot 7 \equiv 1 \pmod {10}$, we multiply by 3 on both sides: $x \equiv 6 \pmod {10}$.
+    We might wish to solve a congruence, such as \(7x \equiv 2 \pmod {10}\). Noting that \(3 \cdot 7 \equiv 1 \pmod {10}\), we multiply by 3 on both sides: \(x \equiv 6 \pmod {10}\).
 
     \begin{definition}
-        Given $a$, $b \in \ZZ$, $b$ is an \emph{inverse of $a$ modulo $n$} if $ab \equiv 1 \pmod n$. We say that \emph{$a$ is invertible mod $n$} or \emph{$a$ is a unit mod $n$}.
+        Given \(a\), \(b \in \ZZ\), \(b\) is an \emph{inverse of \(a\) modulo \(n\)} if \(ab \equiv 1 \pmod n\). We say that \emph{\(a\) is invertible mod \(n\)} or \emph{\(a\) is a unit mod \(n\)}.
     \end{definition}
     
     \begin{example}
-        Modulo 10, $3$ is an inverse of $7$, so both 3 and 7 are units. But 4 is not a unit modulo 10 -- $4x \not\equiv 1 \pmod {10}$ for any $x \in \ZZ$.
+        Modulo 10, \(3\) is an inverse of \(7\), so both 3 and 7 are units. But 4 is not a unit modulo 10 -- \(4x \not\equiv 1 \pmod {10}\) for any \(x \in \ZZ\).
     \end{example}
 
     \begin{remark*}
-        If we can solve $ab \equiv 1 \pmod n$, we have a unique solution for $ax \equiv b \pmod n$ for any $b$.
+        If we can solve \(ab \equiv 1 \pmod n\), we have a unique solution for \(ax \equiv b \pmod n\) for any \(b\).
     \end{remark*}
     
     \begin{proposition}[Properties of units and inverses]
-        If $a$ is a unit mod $n$, then
+        If \(a\) is a unit mod \(n\), then
         \begin{itemize}
             \item its inverse is unique;
-            \item if $ab \equiv ac \pmod n$, then $b \equiv c \pmod n$.
+            \item if \(ab \equiv ac \pmod n\), then \(b \equiv c \pmod n\).
         \end{itemize}
     \end{proposition}
     
     \begin{proof}
         \begin{itemize}
-            \item Suppose $b$ and $b'$ are both inverses of $a$ mod n, then
+            \item Suppose \(b\) and \(b'\) are both inverses of \(a\) mod n, then
             \begin{align*}
                 ab \equiv ab' \equiv 1 \pmod n \\
                 \implies b \equiv b(ab') \equiv (ba)b' \equiv b' \pmod n
             \end{align*}
-            This justifies the notation $a^{-1}$ for \emph{the} inverse of $a$.
-            \item Clearly, if $a$ is a unit, we can multiply $ab \equiv ac \pmod n$ on both sides by $a^{-1}$, giving $b \equiv c \pmod n$ as required.
+            This justifies the notation \(a^{-1}\) for \emph{the} inverse of \(a\).
+            \item Clearly, if \(a\) is a unit, we can multiply \(ab \equiv ac \pmod n\) on both sides by \(a^{-1}\), giving \(b \equiv c \pmod n\) as required.
         \end{itemize}
     \end{proof}
-    Note the second point does \emph{not} hold in general -- $4 \cdot 3 \equiv 4 \cdot 8 \pmod{10}$, but $3 \not\equiv 8 \pmod{10}$.
+    Note the second point does \emph{not} hold in general -- \(4 \cdot 3 \equiv 4 \cdot 8 \pmod{10}\), but \(3 \not\equiv 8 \pmod{10}\).
 
     \begin{proposition}
-        Let $n$ be an integer. The units modulo $n$ are exactly the integers which are coprime to $n$.
+        Let \(n\) be an integer. The units modulo \(n\) are exactly the integers which are coprime to \(n\).
     \end{proposition}
     
     \begin{proof}
-        By B\'ezout, $\gcd(a, n) = 1$ if and only if we have $x$, $y \in \ZZ$ with $ax + ny = 1$. Clearly $x$ is then an inverse for $a$ mod $n$. This reasoning is if and only if.
+        By B\'ezout, \(\gcd(a, n) = 1\) if and only if we have \(x\), \(y \in \ZZ\) with \(ax + ny = 1\). Clearly \(x\) is then an inverse for \(a\) mod \(n\). This reasoning is if and only if.
     \end{proof}
     
     \begin{corollary}
-        If $n$ is prime, every $a \not\equiv 0 \pmod n$ is a unit mod $n$.
+        If \(n\) is prime, every \(a \not\equiv 0 \pmod n\) is a unit mod \(n\).
     \end{corollary}
 
     \begin{example}[Diophantine equations]
-        Can a given date be any day? We want to solve $365x = k \pmod 7$ for some $k$ -- since $\gcd(365, 7) = 1$, this has a solution for any $k$.
+        Can a given date be any day? We want to solve \(365x = k \pmod 7\) for some \(k\) -- since \(\gcd(365, 7) = 1\), this has a solution for any \(k\).
     \end{example}
-    What if $ax \equiv b \pmod n$ with $\gcd(a, n) = d \neq 1$? Then $n \mid ax - b \implies d \mid ax - b$, and $d \mid a$, so $d \mid b$.
+    What if \(ax \equiv b \pmod n\) with \(\gcd(a, n) = d \neq 1\)? Then \(n \mid ax - b \implies d \mid ax - b\), and \(d \mid a\), so \(d \mid b\).
 
-    Conversely, if $d \mid b$, let $n = dn'$, $a = da'$, $b = db'$. Then
+    Conversely, if \(d \mid b\), let \(n = dn'\), \(a = da'\), \(b = db'\). Then
     \begin{align*}
         ax &\equiv b \pmod n \\
         \implies ax - b &= kn \text{ for some } k \in \ZZ \\
@@ -1229,10 +1229,10 @@
         \implies a'x - b' &= kn' \\
         \implies a'x &\equiv b' \pmod{n'}
     \end{align*}
-    where $\gcd(a', n') = 1$. We know this has a unique solution.
+    where \(\gcd(a', n') = 1\). We know this has a unique solution.
 
     \begin{proposition}
-        If $\gcd(a, n) = d > 1$, the congruence $ax \equiv b$ has no solutions if $d \nmid b$ -- otherwise, the solutions are the solutions of
+        If \(\gcd(a, n) = d > 1\), the congruence \(ax \equiv b\) has no solutions if \(d \nmid b\) -- otherwise, the solutions are the solutions of
         \[
             \frac{a}{d}x \equiv \frac{b}{d} \pmod{\frac{n}{d}}
         \]
@@ -1241,14 +1241,14 @@
     
     \begin{example}
         \begin{itemize}
-            \item Consider $7x \equiv 4 \pmod {30}$. We know $\gcd(7, 30) = 1$, so $7$ has an inverse mod $30$ -- applying Euclid's algorithm, we find that it is 13. Thus
+            \item Consider \(7x \equiv 4 \pmod {30}\). We know \(\gcd(7, 30) = 1\), so \(7\) has an inverse mod \(30\) -- applying Euclid's algorithm, we find that it is 13. Thus
             \begin{align*}
                 7x &\equiv 4 \pmod {30} \\
                 \implies 13 \cdot 7x &\equiv 13 \cdot 4 \pmod {30} \\
                 \implies x &\equiv 22 \pmod {30}
             \end{align*}
-            To justify the uniqueness of the solution, we can turn our $\implies$ into $\iff$ by using the fact that $13$ is a unit.
-            \item Consider $10x \equiv 12 \pmod {34}$. According to \cref{lde-not-coprime-case}, this is equivalent to $5x \equiv 6 \pmod {17}$. Then we can solve this ($5^{-1} = 7$) to get $x \equiv 8 \pmod {17}$. If we want this mod 34, we can say $x \equiv 8$ or $25 \pmod {34}$.
+            To justify the uniqueness of the solution, we can turn our \(\implies\) into \(\iff\) by using the fact that \(13\) is a unit.
+            \item Consider \(10x \equiv 12 \pmod {34}\). According to \cref{lde-not-coprime-case}, this is equivalent to \(5x \equiv 6 \pmod {17}\). Then we can solve this (\(5^{-1} = 7\)) to get \(x \equiv 8 \pmod {17}\). If we want this mod 34, we can say \(x \equiv 8\) or \(25 \pmod {34}\).
         \end{itemize}
     \end{example}
     
@@ -1267,30 +1267,30 @@
     so we can clearly see that 5 is a solution.
 
     \begin{theorem}[Chinese remainder theorem]
-        Let $m$, $n$ be coprime, and $a$, $b \in \ZZ$. Then there is a unique solution to the simultaneous congruences
+        Let \(m\), \(n\) be coprime, and \(a\), \(b \in \ZZ\). Then there is a unique solution to the simultaneous congruences
         \begin{align*}
             x &\equiv a \pmod m \\
             x &\equiv b \pmod n
         \end{align*}
-        modulo $mn$ -- that is, if $x$ and $y$ are both solutions of this system, then $x \equiv y \pmod{mn}$.
+        modulo \(mn\) -- that is, if \(x\) and \(y\) are both solutions of this system, then \(x \equiv y \pmod{mn}\).
         \label{chinese-remainder-theorem}
     \end{theorem}
     
     \begin{remark*}
-        If $m$ and $n$ are not coprime, there may be no solution.
+        If \(m\) and \(n\) are not coprime, there may be no solution.
     \end{remark*}
     
     \lecture{Lecture 13 -- 06/11/25}
 
     \begin{proof}
         \begin{itemize}
-            \item \emph{Existence}. Since $\gcd(m, n) = 1$, we have $s$, $t \in \ZZ$ with $sm + tn = 1$. Then
+            \item \emph{Existence}. Since \(\gcd(m, n) = 1\), we have \(s\), \(t \in \ZZ\) with \(sm + tn = 1\). Then
             \begin{align*}
                 sm &\equiv 1 \pmod n && tn \equiv 1 \pmod n \\
                 am &\equiv 0 \pmod m && tn \equiv 0 \pmod n
             \end{align*}
-            Thus $x = a(tn) + b(sm) \equiv a \pmod m$ and $b \pmod n$ as required.
-            \item \emph{Uniqueness}. Suppose $y$ and $x$ are both solutions. Then
+            Thus \(x = a(tn) + b(sm) \equiv a \pmod m\) and \(b \pmod n\) as required.
+            \item \emph{Uniqueness}. Suppose \(y\) and \(x\) are both solutions. Then
             \begin{align*}
                 &y \equiv a \pmod m, && y \equiv b \pmod n \\
                 \iff &y \equiv x \pmod m, && y \equiv x \pmod n \\
@@ -1302,7 +1302,7 @@
     \end{proof}
     
     \begin{proposition}[Generalised Chinese remainder theorem]
-        If $m_1, \dots, m_k$ are pairwise coprime, then for any $a_1, \dots a_k$ we have a solution $x$ modulo $m_1 \cdots m_k$ to the simultaneous congruences
+        If \(m_1, \dots, m_k\) are pairwise coprime, then for any \(a_1, \dots a_k\) we have a solution \(x\) modulo \(m_1 \cdots m_k\) to the simultaneous congruences
         \[
             \begin{cases}
                 x \equiv a_1 \pmod {m_1} \\
@@ -1313,44 +1313,44 @@
     \end{proposition}
     
     \begin{proof}
-        We induct on $k$, using \cref{chinese-remainder-theorem} at every step.
+        We induct on \(k\), using \cref{chinese-remainder-theorem} at every step.
     \end{proof}
     
     \begin{definition}
-        The \emph{Euler totient function} $\varphi(n)$ is the number of integers $a$, $1 \leq a \leq n$, such that $\gcd(a, n) = 1$. Equivalently, $\varphi(n)$ is the number of units modulo $n$.
+        The \emph{Euler totient function} \(\varphi(n)\) is the number of integers \(a\), \(1 \leq a \leq n\), such that \(\gcd(a, n) = 1\). Equivalently, \(\varphi(n)\) is the number of units modulo \(n\).
     \end{definition}
     
     \begin{example}
         \begin{itemize}
-            \item When $n = 9$, we have $\varphi(9) = |\{1, 2, 4, 5, 7, 8\}| = 6$.
-            \item When $p$ is prime, $\varphi(p) = p-1$ and $\varphi(p^2) = p^2 - p$.
-            \item When $p$ and $q$ are distinct primes, $\varphi(pq) = pq - p - q + 1 = (p-1)(q-1)$ by the inclusion-exclusion principle.
+            \item When \(n = 9\), we have \(\varphi(9) = |\{1, 2, 4, 5, 7, 8\}| = 6\).
+            \item When \(p\) is prime, \(\varphi(p) = p-1\) and \(\varphi(p^2) = p^2 - p\).
+            \item When \(p\) and \(q\) are distinct primes, \(\varphi(pq) = pq - p - q + 1 = (p-1)(q-1)\) by the inclusion-exclusion principle.
         \end{itemize}
     \end{example}
 
-    Let's now think about powers of an integer modulo a prime $p$.
+    Let's now think about powers of an integer modulo a prime \(p\).
     
     \begin{theorem}[Fermat's little theorem]
-        Let $p$ be a prime. Then $a^p \equiv a \pmod p$ for any $a \in \ZZ$ -- furthermore, if $p \nmid a$, $a^{p-1} \equiv 1 \pmod p$.
+        Let \(p\) be a prime. Then \(a^p \equiv a \pmod p\) for any \(a \in \ZZ\) -- furthermore, if \(p \nmid a\), \(a^{p-1} \equiv 1 \pmod p\).
     \end{theorem}
     
     \begin{proof}
-        If $a \not\equiv 0 \pmod p$, then $a$ is a unit mod $p$, so $ax \equiv ay \pmod p$ if and only if $x \equiv y \pmod p$. Hence $a$, $2a, \dots, (p-1)a$ are not congruent to one another and not congruent to 0, from which it follows that these are a permutation of $1, 2, \dots, p-1$. Hence
+        If \(a \not\equiv 0 \pmod p\), then \(a\) is a unit mod \(p\), so \(ax \equiv ay \pmod p\) if and only if \(x \equiv y \pmod p\). Hence \(a\), \(2a, \dots, (p-1)a\) are not congruent to one another and not congruent to 0, from which it follows that these are a permutation of \(1, 2, \dots, p-1\). Hence
         \begin{align*}
             a \cdot 2a \cdots (p-1)a &\equiv 1 \cdot 2 \cdots (p-1) \pmod p \\
             \implies a^{p-1}(p-1)! &\equiv (p-1)! \pmod p \\
             \implies a^{p-1} &\equiv 1 \pmod p
         \end{align*}
-        as $(p-1)!$ is a product of units and hence itself a unit.
+        as \((p-1)!\) is a product of units and hence itself a unit.
     \end{proof}
     
     \begin{theorem}[Fermat-Euler]
-        Let $\hcf(a, n) = 1$, then $a^{\varphi(n)} \equiv 1 \pmod n$.
+        Let \(\hcf(a, n) = 1\), then \(a^{\varphi(n)} \equiv 1 \pmod n\).
         \label{fermat-euler}
     \end{theorem}
     
     \begin{proof}
-        Let $\mathcal U = \{x \in \ZZ: 1 \leq x \leq n, \gcd(x, n) = 1\}$ be the units modulo $n$, and label them $u_1, u_2, \dots, u_{\varphi(n)}$. As before, for any $a \in \mathcal U$, $au_1$, $au_2, \dots au_{\varphi(n)}$ are not congruent to one another and not congruent to 0, from which it follows, since $a$ is a unit, that they are a permutation of $u_1, u_2, \dots u_{\varphi(n)}$. Hence
+        Let \(\mathcal U = \{x \in \ZZ: 1 \leq x \leq n, \gcd(x, n) = 1\}\) be the units modulo \(n\), and label them \(u_1, u_2, \dots, u_{\varphi(n)}\). As before, for any \(a \in \mathcal U\), \(au_1\), \(au_2, \dots au_{\varphi(n)}\) are not congruent to one another and not congruent to 0, from which it follows, since \(a\) is a unit, that they are a permutation of \(u_1, u_2, \dots u_{\varphi(n)}\). Hence
         \begin{align*}
             au_1 \cdot au_2 \cdots au_{\varphi(n)} &\equiv u_1 \cdot u_2 \cdots u_{\varphi(n)} \pmod n \\
             \implies a^{\varphi(n)} &\equiv 1 \pmod n
@@ -1359,7 +1359,7 @@
     \end{proof}
     
     \begin{lemma}
-        Let $p$ be a prime, then $x^2 \equiv 1 \pmod p \iff x \equiv \pm 1 \pmod p$.
+        Let \(p\) be a prime, then \(x^2 \equiv 1 \pmod p \iff x \equiv \pm 1 \pmod p\).
     \end{lemma}
     
     \begin{proof}
@@ -1369,39 +1369,39 @@
             \iff (x-1)(x+1) &\equiv 0 \pmod p \\
             \iff p \mid (x-1)(x+1)
         \end{align*}
-        Hence, by \cref{euclid-lemma} (Euclid's lemma), $p \mid x-1$ or $p \mid x+1$, which give the two cases as desired.
+        Hence, by \cref{euclid-lemma} (Euclid's lemma), \(p \mid x-1\) or \(p \mid x+1\), which give the two cases as desired.
     \end{proof}
     
     \lecture{Lecture 14 -- 08/11/25}
 
     \begin{theorem}[Wilson]
-        Let $p$ be a prime. Then $(p-1)! \equiv 1 \pmod p$.
+        Let \(p\) be a prime. Then \((p-1)! \equiv 1 \pmod p\).
     \end{theorem}
     
     \begin{proof}
-        True for $p = 2$ by checking -- let us therefore assume $p > 2$. We pair up units mod $p$ with their inverses to make their product 1. However, we have two elements which are their own inverses -- as seen above, these are $x = \pm 1$. Thus, taking the product of all the units (i.e. $(p-1)!$), the pairs of inverses all give 1, and we are left with $1 \cdot 1 \cdot -1 = -1$ as required.
+        True for \(p = 2\) by checking -- let us therefore assume \(p > 2\). We pair up units mod \(p\) with their inverses to make their product 1. However, we have two elements which are their own inverses -- as seen above, these are \(x = \pm 1\). Thus, taking the product of all the units (i.e. \((p-1)!\)), the pairs of inverses all give 1, and we are left with \(1 \cdot 1 \cdot -1 = -1\) as required.
     \end{proof}
     
-    New question: when is -1 a square mod a prime $p$?
+    New question: when is -1 a square mod a prime \(p\)?
 
     \begin{proposition}
-        Let $p$ be an odd prime. Then -1 is a square mod $p$ if and only if $p \equiv 1 \pmod 4$.
+        Let \(p\) be an odd prime. Then -1 is a square mod \(p\) if and only if \(p \equiv 1 \pmod 4\).
     \end{proposition}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\impliedby$] Suppose $p \equiv 1 \pmod 4$. By Wilson's theorem, we have
+            \item[\(\impliedby\)] Suppose \(p \equiv 1 \pmod 4\). By Wilson's theorem, we have
             \begin{align*}
                 -1 \equiv (p-1)! &= 1 \cdot 2 \cdot 3 \cdots \left(\frac{p-1}{2}\right) \left(\frac{p+1}{2}\right)\cdots (p-3)(p-2)(p-1) \\
                 &\equiv 1 \cdot 2 \cdot 3 \cdots \left(\frac{p-1}{2}\right) \left(-\frac{p-1}{2}\right)\cdots (-3)(-2)(-1) \\
                 &\equiv (-1)^\frac{p-1}{2} \left[\left(\frac{p-1}{2}\right)!\right]^2
             \end{align*}
-            Since $p \equiv 1 \pmod 4$, $(-1)^\frac{p-1}{2} = 1$, and so we have
+            Since \(p \equiv 1 \pmod 4\), \((-1)^\frac{p-1}{2} = 1\), and so we have
             \[
                 \left[\left(\frac{p-1}{2}\right)!\right]^2 \equiv -1 \pmod p
             \]
             -- that is, -1 is a square as required.
-            \item[$\implies$] Suppose $p \equiv -1 \pmod 4$, so $p = 4k + 3$, and suppose for contradiction we have $z \in \ZZ$ with $z^2 \equiv -1 \pmod p$. Then by Fermat's little theorem,
+            \item[\(\implies\)] Suppose \(p \equiv -1 \pmod 4\), so \(p = 4k + 3\), and suppose for contradiction we have \(z \in \ZZ\) with \(z^2 \equiv -1 \pmod p\). Then by Fermat's little theorem,
             \[
                 1 \equiv z^{p-1} \equiv z^{4k + 2} \equiv (z^2)^{2k+1} \equiv (-1)^{2k+1} \equiv -1 \pmod p
             \]
@@ -1415,56 +1415,56 @@
     
     \subsection{Public key cryptography and RSA}
 
-    We know by Fermat's little theorem that, for primes $p$, $2^p \equiv 2 \pmod p$. Is it true that, if $2^p \equiv 2 \pmod p$, $p$ is a prime? Sadly not, however only fails for a small number of \emph{pseudoprimes}.
+    We know by Fermat's little theorem that, for primes \(p\), \(2^p \equiv 2 \pmod p\). Is it true that, if \(2^p \equiv 2 \pmod p\), \(p\) is a prime? Sadly not, however only fails for a small number of \emph{pseudoprimes}.
 
     \begin{algorithm}[RSA]
         I want to be able to receive messages that anyone can encrypt but only I can decode.
         \begin{itemize}
-            \item I think of two very large primes $p$, $q$.
-            \item I let $n = pq$ and pick an \emph{encoding exponent} $e$ coprime to $\varphi(n) = (p-1)(q-1)$.
-            \item I publish the pair $(n, e)$ -- this is my \emph{encryption scheme}.
+            \item I think of two very large primes \(p\), \(q\).
+            \item I let \(n = pq\) and pick an \emph{encoding exponent} \(e\) coprime to \(\varphi(n) = (p-1)(q-1)\).
+            \item I publish the pair \((n, e)\) -- this is my \emph{encryption scheme}.
         \end{itemize}
         Now, to send me an encrypted message,
         \begin{itemize}
-            \item You split the message into a series of numbers, each number $M$ being less than $n$;
-            \item you send me $M^e \pmod n$, which you compute quickly by repeated squaring mod $n$.
+            \item You split the message into a series of numbers, each number \(M\) being less than \(n\);
+            \item you send me \(M^e \pmod n\), which you compute quickly by repeated squaring mod \(n\).
         \end{itemize}
         To decrypt it,
         \begin{itemize}
-            \item I calculate the \emph{decoding exponent} $d$ such that $ed \equiv 1 \pmod{\varphi(n)}$ (I can do this quickly);
+            \item I calculate the \emph{decoding exponent} \(d\) such that \(ed \equiv 1 \pmod{\varphi(n)}\) (I can do this quickly);
             \item I compute
             \begin{align*}
                 (M^e)^d &= M^{k \varphi(n) + 1} && \text{for some }k \in \ZZ\\
                 &\equiv M \pmod n
             \end{align*}
-            by Fermat-Euler (if $\gcd(M, n) = 1$).
+            by Fermat-Euler (if \(\gcd(M, n) = 1\)).
         \end{itemize}
-        Why is this cryptographically strong? We needed to use $\varphi(n)$, and we don't know any way to do this without first factorising $n$, which we're pretty sure is hard.    
+        Why is this cryptographically strong? We needed to use \(\varphi(n)\), and we don't know any way to do this without first factorising \(n\), which we're pretty sure is hard.    
     \end{algorithm}
     
     \section{The reals}
     
-    Recall the construction of $\NN$ using Peano's axioms. Let's build some bigger systems!
+    Recall the construction of \(\NN\) using Peano's axioms. Let's build some bigger systems!
 
     \begin{definition}[The integers]
-        $\ZZ$ is $\NN \times \NN$ modulo the equivalence relation $\sim$, where $(a, b) \sim (c, d) \iff a + d = b + c$. Intuitively, we should think of $(a, b)$ as representing $a - b$. We then write 0 for $[(1, 1)]$ and $-a$ for $[(1, 1 + a)]$, and we define $+$, $\times$ as follows:
+        \(\ZZ\) is \(\NN \times \NN\) modulo the equivalence relation \(\sim\), where \((a, b) \sim (c, d) \iff a + d = b + c\). Intuitively, we should think of \((a, b)\) as representing \(a - b\). We then write 0 for \([(1, 1)]\) and \(-a\) for \([(1, 1 + a)]\), and we define \(+\), \(\times\) as follows:
         \begin{itemize}
-            \item $(a, b) + (c, d) = (a + c), (b + d)$
-            \item $(a, b) \times (c, d) = (ac + bd, bc + ad)$
+            \item \((a, b) + (c, d) = (a + c), (b + d)\)
+            \item \((a, b) \times (c, d) = (ac + bd, bc + ad)\)
         \end{itemize}
         We can check this satisfies all the rules of arithmetic we'd expect.
     \end{definition}
 
     \begin{definition}
-        $\QQ$ is $\ZZ \times \NN$ modulo the equivalence relation $\sim$, where $(a, b) \sim (c, d) \iff ad = bc$, and we write $\frac{a}{b}$ for $[(a, b)]$. We define $+$, $\times$ by
+        \(\QQ\) is \(\ZZ \times \NN\) modulo the equivalence relation \(\sim\), where \((a, b) \sim (c, d) \iff ad = bc\), and we write \(\frac{a}{b}\) for \([(a, b)]\). We define \(+\), \(\times\) by
         \begin{itemize}
-            \item $(a, b) + (c, d) = (ad + bc, bd)$
-            \item $(a, b) \times (c, d) = (ac, bd)$
+            \item \((a, b) + (c, d) = (ad + bc, bd)\)
+            \item \((a, b) \times (c, d) = (ac, bd)\)
         \end{itemize}
-        Once again, we may verify that this works. We can also define $<$ on $\QQ$:
+        Once again, we may verify that this works. We can also define \(<\) on \(\QQ\):
         \begin{itemize}
-            \item if $a$, $b \in \QQ$, exactly one of $a < b$, $a = b$, $a > b$ holds;
-            \item if $a < b$ and $b < c$, then $a < c$.
+            \item if \(a\), \(b \in \QQ\), exactly one of \(a < b\), \(a = b\), \(a > b\) holds;
+            \item if \(a < b\) and \(b < c\), then \(a < c\).
         \end{itemize}
         
                 
@@ -1476,99 +1476,99 @@
 
     \lecture{Lecture 15 -- 11/11/25}
 
-    This ordering on $\QQ$ has the useful property that between any two rationals there is another: if $p$, $q \in \QQ$ with $p < q$, then $p < \frac{p+q}{2} < q$.
+    This ordering on \(\QQ\) has the useful property that between any two rationals there is another: if \(p\), \(q \in \QQ\) with \(p < q\), then \(p < \frac{p+q}{2} < q\).
 
     However, we're still `missing' some numbers!
 
     \begin{proposition}
-        There is no rational $x$ with $x^2 = 2$.
+        There is no rational \(x\) with \(x^2 = 2\).
     \end{proposition}
     
     \begin{proof}[Proof 1]
-        Suppose $x^2 = 2$, also assume $x > 0$ (since $(-x)^2 = x^2$). If $x$ is rational, we have $x = \frac{a}{b}$ for some $a$, $b \in \NN$. Then
+        Suppose \(x^2 = 2\), also assume \(x > 0\) (since \((-x)^2 = x^2\)). If \(x\) is rational, we have \(x = \frac{a}{b}\) for some \(a\), \(b \in \NN\). Then
         \begin{align*}
             \frac{a^2}{b^2} &= 2 \\
             \implies a^2 = 2b^2
         \end{align*}
-        But the exponent of 2 in the prime factorisation of $a^2$ is even, while the exponent of 2 in the prime factorisation of $2b^2$ is odd, contradicting \cref{fta} (FTA).        
+        But the exponent of 2 in the prime factorisation of \(a^2\) is even, while the exponent of 2 in the prime factorisation of \(2b^2\) is odd, contradicting \cref{fta} (FTA).        
     \end{proof}
     
     \begin{remark*}
-        A corollary of this proof is that, if we have $x^2 = n$ for some $n \in \NN$, $x \in \QQ$, then $n$ must be a square number.
+        A corollary of this proof is that, if we have \(x^2 = n\) for some \(n \in \NN\), \(x \in \QQ\), then \(n\) must be a square number.
     \end{remark*}
     
     \begin{proof}[Proof 2]
-        Again, suppose $x^2 = 2$ with $x = \frac{a}{b}$, $a$, $b \in \NN$. Then, for any $c$, $d \in \ZZ$, $cx + d$ is of the form $\frac{e}{b}$ for some $e \in \NN$. This implies that, if $cx + d > 0$, $cx + d \geq \frac{1}{b}$. But $0 < x-1 < 1$ (since $1 < x < 2$), so if $n$ is sufficiently large, we can make
+        Again, suppose \(x^2 = 2\) with \(x = \frac{a}{b}\), \(a\), \(b \in \NN\). Then, for any \(c\), \(d \in \ZZ\), \(cx + d\) is of the form \(\frac{e}{b}\) for some \(e \in \NN\). This implies that, if \(cx + d > 0\), \(cx + d \geq \frac{1}{b}\). But \(0 < x-1 < 1\) (since \(1 < x < 2\)), so if \(n\) is sufficiently large, we can make
         \[  
             0 < (x-1)^n < \frac{1}{b}
         \]
-        However, it's clear that expanding $(x-1)^n$ and applying that $x^2 = 2$ will give that $(x-1)^n$ is of the form $cx + d$ for some $c$, $d \in \ZZ$. This is of course a contradiction.
+        However, it's clear that expanding \((x-1)^n\) and applying that \(x^2 = 2\) will give that \((x-1)^n\) is of the form \(cx + d\) for some \(c\), \(d \in \ZZ\). This is of course a contradiction.
     \end{proof}
     
-    Q: How can we discuss the `gaps' in $\QQ$, without even knowing what the `gaps' are (since they're by definition outside of $\QQ$)?
+    Q: How can we discuss the `gaps' in \(\QQ\), without even knowing what the `gaps' are (since they're by definition outside of \(\QQ\))?
     
     \begin{proposition}
-        Let $A = \{x: x \in \QQ, x^2 < 2\}$. Then $A$ contains no largest number.
+        Let \(A = \{x: x \in \QQ, x^2 < 2\}\). Then \(A\) contains no largest number.
     \end{proposition}
 
     \begin{proof}
-        For $p \in A$, consider
+        For \(p \in A\), consider
         \[
             q = p - \frac{p^2-2}{p^2+2}
         \]
-        Since $p \in A$, $p^2 - 2 < 0$, so $q > p$. Also,
+        Since \(p \in A\), \(p^2 - 2 < 0\), so \(q > p\). Also,
         \[
             q^2-2 = \frac{2(p^2-2)}{(p+2)^2} < 0
         \]
-        so $q \in A$.
+        so \(q \in A\).
     \end{proof}
     
     \begin{remark*}
-        Similarly, we can show $B = \{x: x \in \QQ, x^2 > 2\}$ has no least element.
+        Similarly, we can show \(B = \{x: x \in \QQ, x^2 > 2\}\) has no least element.
     \end{remark*}
     
-    Now we can explicitly define what it means to have a gap: \emph{in $\QQ$, there is not necessarily a least upper bound} for a given set. We can also start to think about what it would mean to fill in this gap.
+    Now we can explicitly define what it means to have a gap: \emph{in \(\QQ\), there is not necessarily a least upper bound} for a given set. We can also start to think about what it would mean to fill in this gap.
     
     \begin{definition}[The reals]
-        The \emph{real numbers} $\RR$ are a set with elements $0 \neq 1$, equipped with operations $+$, $\times$ and an ordering $<$ satisfying the following:
+        The \emph{real numbers} \(\RR\) are a set with elements \(0 \neq 1\), equipped with operations \(+\), \(\times\) and an ordering \(<\) satisfying the following:
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item $+$ is commutative and associative with identity 0, and every $x$ has an inverse under $+$ ($\RR$ is an abelian group under $+$);
-            \item $\times$ is commutative and associative with identity 1, and every $x \neq 0$ has an inverse under $\times$ ($\RR \setminus \{0\}$ is an abelian group under $\times$);
-            \item $\times$ is distributive over $+$ -- for any $a$, $b$, $c \in \RR$, $a \times (b + c) = a \times b + a \times c$;
-            \item for any $a$, $b \in \RR$, exactly one of
+            \item \(+\) is commutative and associative with identity 0, and every \(x\) has an inverse under \(+\) (\(\RR\) is an abelian group under \(+\));
+            \item \(\times\) is commutative and associative with identity 1, and every \(x \neq 0\) has an inverse under \(\times\) (\(\RR \setminus \{0\}\) is an abelian group under \(\times\));
+            \item \(\times\) is distributive over \(+\) -- for any \(a\), \(b\), \(c \in \RR\), \(a \times (b + c) = a \times b + a \times c\);
+            \item for any \(a\), \(b \in \RR\), exactly one of
             \begin{itemize}
-                \item $a > b$;
-                \item $a = b$;
-                \item $a < b$
+                \item \(a > b\);
+                \item \(a = b\);
+                \item \(a < b\)
             \end{itemize}
-            holds, and if $a < b$ and $b < c$, then $a < c$;
-            \item for any $a$, $b$, $c \in \RR$, $a < b \iff a + c < b + c$ and, if $c > 0$, $a < b \iff ac < bc$;
-            \item \emph{least upper bound property}: for any $S \subset \RR$ which is non-empty and bounded above, $S$ has a least upper bound.
+            holds, and if \(a < b\) and \(b < c\), then \(a < c\);
+            \item for any \(a\), \(b\), \(c \in \RR\), \(a < b \iff a + c < b + c\) and, if \(c > 0\), \(a < b \iff ac < bc\);
+            \item \emph{least upper bound property}: for any \(S \subset \RR\) which is non-empty and bounded above, \(S\) has a least upper bound.
         \end{enumerate}
     \end{definition}
     
     \begin{definition}
-        A set $S \subset \RR$ is \emph{bounded above} if there exists $x \in \RR$ such that $x \geq y$ for any $y \in S$. Such an $x$ is called an \emph{upper bound} for $S$.
+        A set \(S \subset \RR\) is \emph{bounded above} if there exists \(x \in \RR\) such that \(x \geq y\) for any \(y \in S\). Such an \(x\) is called an \emph{upper bound} for \(S\).
     \end{definition}
     
     \begin{definition}
-        For a set $S \subset \RR$, a \emph{least upper bound} is an $x \in \RR$ such that $x$ is an upper bound for $S$ and, for any other upper bound for $S$, $x'$, we have $x' \geq x$. This is also called the \emph{supremum} -- we say $x = \sup S$.
+        For a set \(S \subset \RR\), a \emph{least upper bound} is an \(x \in \RR\) such that \(x\) is an upper bound for \(S\) and, for any other upper bound for \(S\), \(x'\), we have \(x' \geq x\). This is also called the \emph{supremum} -- we say \(x = \sup S\).
     \end{definition}
     
     \begin{remark*}
         \begin{itemize}
-            \item Using only the axioms 1 to 5, we can check $0 < 1$. In particular, supposing for contradiction $1 < 0$ (since $0 \neq 1$),
+            \item Using only the axioms 1 to 5, we can check \(0 < 1\). In particular, supposing for contradiction \(1 < 0\) (since \(0 \neq 1\)),
             \begin{align*}
                 0 &= 1 - 1 < 0 - 1 = -1 \\
                 0 &= 0 \cdot (-1) < (-1) \cdot (-1) = 1
             \end{align*}
             which is a contradiction.
-            \item We can see $\QQ \subset \RR$ by identifying $\frac{a}{b} \in \QQ$ with $ab^{-1} \in \RR$. So we can think of $\RR$ as an extension of $\QQ$ satisfying the least upper bound property.
+            \item We can see \(\QQ \subset \RR\) by identifying \(\frac{a}{b} \in \QQ\) with \(ab^{-1} \in \RR\). So we can think of \(\RR\) as an extension of \(\QQ\) satisfying the least upper bound property.
         \end{itemize}
     \end{remark*}
     
     \begin{remark*}
-        It's clear that, if $S$ is empty or not bounded above, we can't possibly expect $S$ to have a least upper bound.
+        It's clear that, if \(S\) is empty or not bounded above, we can't possibly expect \(S\) to have a least upper bound.
     \end{remark*}
     
     \lecture{Lecture 16 -- 13/11/25}
@@ -1576,84 +1576,84 @@
 
     \begin{example}
         \begin{itemize}
-            \item If $S = \{x \in \RR: 0 \leq x \leq 1\} = [0, 1]$, then 2 is an upper bound for $S$; $3/4$ is not an upper bound for $S$; and 1 is the least upper bound for $S$.
-            \item If $S = \{x \in \RR: 0 < x < 1\} = (0, 1)$. Once again, $\sup S = 1$, but this is mildly non-trivial to prove.
+            \item If \(S = \{x \in \RR: 0 \leq x \leq 1\} = [0, 1]\), then 2 is an upper bound for \(S\); \(3/4\) is not an upper bound for \(S\); and 1 is the least upper bound for \(S\).
+            \item If \(S = \{x \in \RR: 0 < x < 1\} = (0, 1)\). Once again, \(\sup S = 1\), but this is mildly non-trivial to prove.
         \end{itemize}
     \end{example}
     
     \begin{proposition}
-        $\sup[(0, 1)] = 1$.
+        \(\sup[(0, 1)] = 1\).
     \end{proposition}
     
     \begin{proof}
-        Suppose for contradiction we have a least upper bound $c < 1$. Then $\frac{c+1}{2} \in S$ with $\frac{c+1}{2} > c$, which is a contradiction.
+        Suppose for contradiction we have a least upper bound \(c < 1\). Then \(\frac{c+1}{2} \in S\) with \(\frac{c+1}{2} > c\), which is a contradiction.
     \end{proof}
     
     \begin{remark*}
-        Evidently it does not necessarily hold that $\sup S \in S$. In the case where $\sup S \in S$, we simply have $\sup S = \max S$. But the supremum of a set can exist when the maximum does not.
+        Evidently it does not necessarily hold that \(\sup S \in S\). In the case where \(\sup S \in S\), we simply have \(\sup S = \max S\). But the supremum of a set can exist when the maximum does not.
     \end{remark*}
     
     \begin{proposition}[Axiom of Archimedes]
-        $\NN$ is not bounded above in $\RR$ - for any $x \in \RR$, there exists $n \in \NN$, $n > x$.
+        \(\NN\) is not bounded above in \(\RR\) - for any \(x \in \RR\), there exists \(n \in \NN\), \(n > x\).
         \label{archimedes}
     \end{proposition}
     
     \begin{proof}
-        Suppose instead that $\NN$ is bounded above, so that $c = \sup \NN$ exists. By definition, $c-1$ is not an upper bound for $\NN$, so we have $n \in \NN$ with $n > c-1$. But then $n+1 \in N$ with $n+1 > c$, which is a contradiction.
+        Suppose instead that \(\NN\) is bounded above, so that \(c = \sup \NN\) exists. By definition, \(c-1\) is not an upper bound for \(\NN\), so we have \(n \in \NN\) with \(n > c-1\). But then \(n+1 \in \NN\) with \(n+1 > c\), which is a contradiction.
     \end{proof}
     
     \begin{corollary}
-        For any real $t > 0$, there exists $n \in \NN$ such that $\frac{1}{n} < t$.
-        \cref{archimedes-modified}
+        For any real \(t > 0\), there exists \(n \in \NN\) such that \(\frac{1}{n} < t\).
+        \label{archimedes-modified}
     \end{corollary}
     
     \begin{proof}
-        By the axiom of Archimedes, we have $n \in \NN$ with $n > \frac{1}{t}$. Hence $\frac{1}{n} < t$.
+        By the axiom of Archimedes, we have \(n \in \NN\) with \(n > \frac{1}{t}\). Hence \(\frac{1}{n} < t\).
     \end{proof}
     
     \begin{definition}
-        A set $S$ is \emph{bounded below} if there exists $x$ with $x \leq y$ for all $y \in S$. Such an $x$ is called a \emph{lower bound} for $S$.
+        A set \(S\) is \emph{bounded below} if there exists \(x\) with \(x \leq y\) for all \(y \in S\). Such an \(x\) is called a \emph{lower bound} for \(S\).
     \end{definition}
     
     \begin{definition}
-        $x$ is the \emph{greatest lower bound} for $S$ if $x$ is a lower bound and, for any other lower bound $x'$, we have $x' \leq x$. This is also called the \emph{infimum} -- we say $x = \inf S$.
+        \(x\) is the \emph{greatest lower bound} for \(S\) if \(x\) is a lower bound and, for any other lower bound \(x'\), we have \(x' \leq x\). This is also called the \emph{infimum} -- we say \(x = \inf S\).
     \end{definition}
     
     \begin{remark*}
         One should note the direct correspondence between supremums and infimums -- by negating all elements of a set, we can easily go back and forth between them. In particular, this allows us to conclude that every non-empty set which is bounded below has a greatest lower bound.
     \end{remark*}
     
-    \begin{corollary}[Corollary$^2$]
-        The previous corollary immediately shows that $\inf(\{\frac{1}{n}: n \in \NN\}) = 0$. We can now also show things such as $\sup(\{1 - \frac{1}{n}: n \in \NN\}) = 1$.
+    \begin{corollary}[Corollary\(^2\)]
+        The previous corollary immediately shows that \(\inf(\{\frac{1}{n}: n \in \NN\}) = 0\). We can now also show things such as \(\sup(\{1 - \frac{1}{n}: n \in \NN\}) = 1\).
     \end{corollary}
     
     \begin{theorem}
-        There exists $x \in \RR$ with $x^2 = 2$.
+        There exists \(x \in \RR\) with \(x^2 = 2\).
     \end{theorem}
     
     \begin{proof}
-        Let $S = \{x \in \RR: x^2 < 2\}$. We can see $S$ is non-empty since $1 \in S$, and it's bounded above by, for example, 2, so $S$ has a supremum $c = \sup S$. It's clear that $1 < c < 2$, and we claim $c^2 = 2$. Suppose instead that $c^2 < 2$. For $0 < t < 1$, we have
+        Let \(S = \{x \in \RR: x^2 < 2\}\). We can see \(S\) is non-empty since \(1 \in S\), and it's bounded above by, for example, 2, so \(S\) has a supremum \(c = \sup S\). It's clear that \(1 < c < 2\), and we claim \(c^2 = 2\). Suppose instead that \(c^2 < 2\). For \(0 < t < 1\), we have
         \begin{align*}
             (c+t)^2 &= c^2 + 2ct + t^2 \\
             &< c^2 + 4t + t \\
             &= c^2 + 5t \\
             &< 2
         \end{align*}
-        for sufficiently small $t$, for example $t < \frac{2-c^2}{5}$. But this contradicts that $c$ was an upper bound for $S$, since $c + t \in S$, $c + t > c$. Now suppose instead that $c^2 > 2$, and again we select $0 < t < 1$ which we will pick later. Then
+        for sufficiently small \(t\), for example \(t < \frac{2-c^2}{5}\). But this contradicts that \(c\) was an upper bound for \(S\), since \(c + t \in S\), \(c + t > c\). Now suppose instead that \(c^2 > 2\), and again we select \(0 < t < 1\) which we will pick later. Then
         \begin{align*}
             (c-t)^2 &= c^2 - 2ct + t^2 \\
             &> c^2 - 4t + 0 \\
             &> 2
         \end{align*}
-        for sufficiently small $t$, for example $t < \frac{c^2-2}{4}$. Now this contradicts that $c$ was the \emph{least} upper bound, since $c-t$ is an upper bound less than $c$
+        for sufficiently small \(t\), for example \(t < \frac{c^2-2}{4}\). Now this contradicts that \(c\) was the \emph{least} upper bound, since \(c-t\) is an upper bound less than \(c\).
     \end{proof}
     
     \begin{remark*}
-        The same proof can be adapted to show that $\sqrt[n]{x}$ exists in $\RR$ for any $n \in \NN$, $x \in \RR$, $x > 0$.
+        The same proof can be adapted to show that \(\sqrt[n]{x}\) exists in \(\RR\) for any \(n \in \NN\), \(x \in \RR\), \(x > 0\).
     \end{remark*}
     
     \begin{definition}
-        A real number $r \in \RR \setminus \QQ$ is called \emph{irrational}.
+        A real number \(r \in \RR \setminus \QQ\) is called \emph{irrational}.
     \end{definition}
 
     \lecture{No lecture 15/11/25}
@@ -1662,55 +1662,55 @@
     \lecture{Lecture 17 -- 18/11/25}
 
     \begin{proposition}
-        The rationals are \emph{dense} in $\RR$, in the sense that, for any $a$, $b \in \RR$, there exists $c \in \QQ$ with $a < c < b$. 
+        The rationals are \emph{dense} in \(\RR\), in the sense that, for any \(a\), \(b \in \RR\), there exists \(c \in \QQ\) with \(a < c < b\). 
     \end{proposition}
     
     \begin{proof}
-        Assume $a \geq 0$. By \label{archimedes-modified}, we have $n \in \NN$ with $\frac{1}{n} < b-a$. Let $T = \{k \in \NN: \frac{k}{n} \geq b\}$. By \label{archimedes} (axiom of Archimedes), we have $N \in \NN$ with $N > b$. Thus $Nn \in T$, so $T \neq \emptyset$, and so there is a least $m \in T$ by the well-ordering principle.
+        Assume \(a \geq 0\). By \cref{archimedes-modified}, we have \(n \in \NN\) with \(\frac{1}{n} < b-a\). Let \(T = \{k \in \NN: \frac{k}{n} \geq b\}\). By \cref{archimedes} (axiom of Archimedes), we have \(N \in \NN\) with \(N > b\). Thus \(Nn \in T\), so \(T \neq \emptyset\), and so there is a least \(m \in T\) by the well-ordering principle.
 
-        Now let $c = \frac{m-1}{n}$. Since $m-1 \notin T$, $c < b$. Supposing for contradiction $c \leq a$, then $\frac{m}{n} = c + \frac 1 n < a + b - a = b$, contradiction. Hence $a < c < b$ as required.
+        Now let \(c = \frac{m-1}{n}\). Since \(m-1 \notin T\), \(c < b\). Supposing for contradiction \(c \leq a\), then \(\frac{m}{n} = c + \frac 1 n < a + b - a = b\), contradiction. Hence \(a < c < b\) as required.
     \end{proof}
     
     \begin{proposition}
-        The irrationals are also dense in $\RR$ -- for any $a < b \in \RR$, we have $c \in \RR \setminus \QQ$ with $a < c < b$.
+        The irrationals are also dense in \(\RR\) -- for any \(a < b \in \RR\), we have \(c \in \RR \setminus \QQ\) with \(a < c < b\).
     \end{proposition}
     
     \begin{proof}
-        Take a rational $c$ with $a\sqrt{2} < c < b\sqrt{2}$, then $a < \frac{c}{\sqrt 2} < b$. $c$ rational implies $\frac{c}{\sqrt 2}$ irrational.
+        Take a rational \(c\) with \(a\sqrt{2} < c < b\sqrt{2}\), then \(a < \frac{c}{\sqrt 2} < b\). \(c\) rational implies \(\frac{c}{\sqrt 2}\) irrational.
     \end{proof}
     
     \subsection{Sequences}
 
     \begin{definition}
-        A \emph{sequence} is an enumerated collection of objects where repetition is allowed an order matters (formally, it is a function $\NN$ to some set). We write $a_1, a_2, \dots$ or $(a_n)_{n=1}^\infty$.
+        A \emph{sequence} is an enumerated collection of objects where repetition is allowed an order matters (formally, it is a function \(\NN\) to some set). We write \(a_1, a_2, \dots\) or \((a_n)_{n=1}^\infty\).
     \end{definition}
     
-    What does it mean for a sequence to tend to a limit $l$?
+    What does it mean for a sequence to tend to a limit \(l\)?
 
     \begin{definition}
-        A sequence $a_1, a_2, \dots$ \emph{tends to} $l \in \RR$ as $n \to \infty$ if, for any $\varepsilon > 0$, there exists $N \in \NN$ such that, for any $n \geq N$, $|a_n - l| < \varepsilon$. We write $a_n \to l$ as $n \to \infty$, or $\lim_{n \to \infty} a_n = l$, or $(a_n)_{n=1}^\infty$ converges to $l$. If there is a limit, but it is not specified, we simply say the sequence \emph{converges}.
+        A sequence \(a_1, a_2, \dots\) \emph{tends to} \(l \in \RR\) as \(n \to \infty\) if, for any \(\varepsilon > 0\), there exists \(N \in \NN\) such that, for any \(n \geq N\), \(|a_n - l| < \varepsilon\). We write \(a_n \to l\) as \(n \to \infty\), or \(\lim_{n \to \infty} a_n = l\), or \((a_n)_{n=1}^\infty\) converges to \(l\). If there is a limit, but it is not specified, we simply say the sequence \emph{converges}.
     \end{definition}
     
     \begin{definition}
-        The \emph{absolute} value $|x|$ for $x \in \RR$ is given by
+        The \emph{absolute} value \(|x|\) for \(x \in \RR\) is given by
         \[  
             |x| = \begin{cases}
                 x & x \geq 0 \\
                 -x & x < 0
             \end{cases}
         \]
-        We think of $|a-b|$ as the distance between $a$ and $b$ on the number line.
+        We think of \(|a-b|\) as the distance between \(a\) and \(b\) on the number line.
     \end{definition}
     
     \begin{theorem}[Triangle inequality]
-        For any $a$, $b$, $c \in \RR$,
+        For any \(a\), \(b\), \(c \in \RR\),
         \[
             |a-c| \leq |a-b| + |b-c|
         \]
     \end{theorem}
     
     \begin{remark*}
-        We get to make up whichever $b$ we want! This is the number one trick in analysis.
+        We get to make up whichever \(b\) we want! This is the number one trick in analysis.
     \end{remark*}
     
     \begin{definition}
@@ -1719,61 +1719,61 @@
     
     \begin{example}
         \begin{itemize}
-            \item Take the sequence $0, \frac{1}{2}, \frac 2 3, \frac 3 4, \dots$, i.e. $a_n = 1 - \frac 1 n$. Given $\varepsilon > 0$, pick $N > \frac 1 {\varepsilon}$ using the axiom of Archimedes. If $n \geq N$, then
+            \item Take the sequence \(0, \frac{1}{2}, \frac 2 3, \frac 3 4, \dots\), i.e. \(a_n = 1 - \frac 1 n\). Given \(\varepsilon > 0\), pick \(N > \frac 1 {\varepsilon}\) using the axiom of Archimedes. If \(n \geq N\), then
             \[
                 |a_n - 1| = \left|1 - \frac{1}{n} - 1\right| = \frac{1}{n} \leq \frac{1}{N} < \varepsilon
             \]
-            and so $a_n \to 1$ as $n \to \infty$.
-            \item Take the sequence $0, \frac 1 2, 0, \frac 1 4, 0, \dots$, i.e.
+            and so \(a_n \to 1\) as \(n \to \infty\).
+            \item Take the sequence \(0, \frac 1 2, 0, \frac 1 4, 0, \dots\), i.e.
             \[
                 a_n = \begin{cases}
                     \frac{1}{n} & n \text{ even} \\
                     0 & n \text{ odd}
                 \end{cases}
             \]
-            Again, we proceed by taking $N > \frac{1}{\varepsilon}$, and we show that $a_n \to 0$.
-            \item Take $a_n = 1 - \frac{1}{2^n}$. Once again, we take $N > \frac{1}{\varepsilon}$, so, for $n \geq N$,
+            Again, we proceed by taking \(N > \frac{1}{\varepsilon}\), and we show that \(a_n \to 0\).
+            \item Take \(a_n = 1 - \frac{1}{2^n}\). Once again, we take \(N > \frac{1}{\varepsilon}\), so, for \(n \geq N\),
             \[
                 |a_n - 1| = \frac{1}{2^n} \leq \frac 1 n \leq \frac 1 N < \varepsilon
             \]
-            and so $a_n \to 1$.
+            and so \(a_n \to 1\).
         \end{itemize}
         
         
     \end{example}
     
     \begin{remark*}
-        One should not spend time trying to be clever about finding the `best' $N$. Many applications of the triangle inequality along with a philosophy of laziness should be applied.
+        One should not spend time trying to be clever about finding the `best' \(N\). Many applications of the triangle inequality along with a philosophy of laziness should be applied.
     \end{remark*}
     
     \lecture{Lecture 18 -- 20/11/25}
     
-    What is the opposite of convergence to $l$? We write $a_n \not \to l$, which means there exists $\varepsilon > 0$ such that, for any $N \in \NN$, there exists $n \geq N$ with $|a_n - l| < \varepsilon$.
+    What is the opposite of convergence to \(l\)? We write \(a_n \not \to l\), which means there exists \(\varepsilon > 0\) such that, for any \(N \in \NN\), there exists \(n \geq N\) with \(|a_n - l| < \varepsilon\).
     
     \begin{example}
-        Consider $a_n = (-1)^n$, and let us show that $a_n \not\to 0$. Indeed, let $\varepsilon = 1$, and observe that $|a_n - 0| = 1$ for any $n \in \NN$. But how do we know $a_n$ doesn't converge to some other limit?
+        Consider \(a_n = (-1)^n\), and let us show that \(a_n \not\to 0\). Indeed, let \(\varepsilon = 1\), and observe that \(|a_n - 0| = 1\) for any \(n \in \NN\). But how do we know \(a_n\) doesn't converge to some other limit?
 
-        Suppose $a_n \to l$ for some $l \in \RR$. Let $\varepsilon = 1$, so then there exists $N \in \NN$ with $n \geq N \implies |a_n - l| < 1$. In particular, we have $|1 - l| < 1$ and $|-1 - l| < 1$, so
+        Suppose \(a_n \to l\) for some \(l \in \RR\). Let \(\varepsilon = 1\), so then there exists \(N \in \NN\) with \(n \geq N \implies |a_n - l| < 1\). In particular, we have \(|1 - l| < 1\) and \(|-1 - l| < 1\), so
         \begin{align*}
             2 &= |1 - (-1)| \\
             &= |1 - l + l - (-1)| \\
             &\leq |1-l| + |-1-l| \\
             < 2
         \end{align*}
-        which is a contradiction, and hence $a_n$ is divergent.
+        which is a contradiction, and hence \(a_n\) is divergent.
     \end{example}
     
     \begin{proposition}
-        Limits of sequences are unique -- if $a_n \to l$ and $a_n \to k$ as $n \to \infty$, then $l=k$.
+        Limits of sequences are unique -- if \(a_n \to l\) and \(a_n \to k\) as \(n \to \infty\), then \(l=k\).
     \end{proposition}
     
     \begin{proof}
-        Suppose for contradiction $a_n \to l$ and $a_n \to k$ with $l \neq k$. Let $\varepsilon = \frac{1}{2}|l-k| > 0$. Then
+        Suppose for contradiction \(a_n \to l\) and \(a_n \to k\) with \(l \neq k\). Let \(\varepsilon = \frac{1}{2}|l-k| > 0\). Then
         \begin{align*}
             \exists N \in \NN \text{ with } &|a_n - l| < \varepsilon \; \forall n \geq N \\
             \exists M \in \NN \text{ with } &|a_n - k| < \varepsilon \; \forall n \geq M
         \end{align*}
-        Now consider $n \geq \max(N, M)$, so
+        Now consider \(n \geq \max(N, M)\), so
         \begin{align*}
             2\varepsilon &= |l-k| \\
             &= |l-a_n+a_n-k| \\
@@ -1784,7 +1784,7 @@
     \end{proof}
     
     \begin{definition}
-        A sequence $(a_n)$ is \emph{bounded} if there exists a real number $B$ such that $|a_n| \leq B$ for any $n \in \NN$.
+        A sequence \((a_n)\) is \emph{bounded} if there exists a real number \(B\) such that \(|a_n| \leq B\) for any \(n \in \NN\).
     \end{definition}
     
     \begin{proposition}
@@ -1792,11 +1792,11 @@
     \end{proposition}
     
     \begin{proof}
-        If $a_n \to l$ as $n \to \infty$, then we have $N \in \NN$ with $|a_n-l| < 1$ for any $n \geq N$. Hence $|a_n| \leq \max(|a_1|, \dots, |a_{N-1}|, |l| + 1)$.
+        If \(a_n \to l\) as \(n \to \infty\), then we have \(N \in \NN\) with \(|a_n-l| < 1\) for any \(n \geq N\). Hence \(|a_n| \leq \max(|a_1|, \dots, |a_{N-1}|, |l| + 1)\).
     \end{proof}
     
     \begin{definition}
-        A sequence $(a_n)$ is \emph{monotonic} if it is either increasing or decreasing. It is increasing if $a_{n+1} \geq a_n$ for any $n \in \NN$, and decreasing if $a_{n+1} \leq a_n$ for any $n \in \NN$.
+        A sequence \((a_n)\) is \emph{monotonic} if it is either increasing or decreasing. It is increasing if \(a_{n+1} \geq a_n\) for any \(n \in \NN\), and decreasing if \(a_{n+1} \leq a_n\) for any \(n \in \NN\).
     \end{definition}
     
     \begin{theorem}[Monotonic convergence theorem]
@@ -1805,37 +1805,37 @@
     \end{theorem}
     
     \begin{proof}
-        Suppose $(a_n)$ is increasing. Then, the set $S = \{a_n: n \geq 1\}$ is non-empty and bounded above, so it has a supremum $l = \sup S$. We claim $a_n \to l$. Take $\varepsilon > 0$. Then $l - \varepsilon$ cannot be an upper bound as this would contradict the minimality of $l$, so there exists $N \in \NN$ such that $a_N > l - \varepsilon$. But then $l-\varepsilon < a_n \leq l$ for all $n \geq N$, since $(a_n)$ is monotonic, so $|a_n-l| < \varepsilon$ for any $n \geq N$ as required, so $a_n \to l$, which was what we wanted. The decreasing case is similar.
+        Suppose \((a_n)\) is increasing. Then, the set \(S = \{a_n: n \geq 1\}\) is non-empty and bounded above, so it has a supremum \(l = \sup S\). We claim \(a_n \to l\). Take \(\varepsilon > 0\). Then \(l - \varepsilon\) cannot be an upper bound as this would contradict the minimality of \(l\), so there exists \(N \in \NN\) such that \(a_N > l - \varepsilon\). But then \(l-\varepsilon < a_n \leq l\) for all \(n \geq N\), since \((a_n)\) is monotonic, so \(|a_n-l| < \varepsilon\) for any \(n \geq N\) as required, so \(a_n \to l\), which was what we wanted. The decreasing case is similar.
     \end{proof}
     
     \begin{remark*}
         Some remarks:
         \begin{itemize}
             \item For an increasing sequence to converge, we only need to know it is bounded above, and vice versa.
-            \item The sequence $(a_n)$ with $a_n = n$ is increasing but not bounded, showing that both conditions are necessary for convergence.
+            \item The sequence \((a_n)\) with \(a_n = n\) is increasing but not bounded, showing that both conditions are necessary for convergence.
             \item The monotonic convergence theorem is equivalent to the least upper bound axiom, which is why it fails in the rationals.
             \item We can also show that every sequence has a monotonic subsequence, which will be of use in proving the Bolzano-Weierstrass theorem next term.
         \end{itemize}
     \end{remark*}
     
     \begin{proposition}
-        If $a_n \leq d$ for all $n$ and $a_n \to c$ as $n \to \infty$, then $c \leq d$.
+        If \(a_n \leq d\) for all \(n\) and \(a_n \to c\) as \(n \to \infty\), then \(c \leq d\).
     \end{proposition}
     
     \begin{proof}
-        Suppose for contradiction that $c > d$. Let $\varepsilon = |c-d| > 0$. Then there exists $N \in \NN$ with $|a_n - c| < \varepsilon$ for any $n \geq N$. But $|a_n - c| < \varepsilon \implies a_n > d$, a contradiction.
+        Suppose for contradiction that \(c > d\). Let \(\varepsilon = |c-d| > 0\). Then there exists \(N \in \NN\) with \(|a_n - c| < \varepsilon\) for any \(n \geq N\). But \(|a_n - c| < \varepsilon \implies a_n > d\), a contradiction.
     \end{proof}
     
     \begin{remark*}
-        If $a_n < d$ for any $n$ and $a_n \to c$, we need not have $c < d$ -- for example, $a_n = 1 - \frac 1 n$. Here each term is less than 1, but the limit is 1.
+        If \(a_n < d\) for any \(n\) and \(a_n \to c\), we need not have \(c < d\) -- for example, \(a_n = 1 - \frac 1 n\). Here each term is less than 1, but the limit is 1.
     \end{remark*}
     
     \begin{proposition}
-        If $a_n \to c$ as $n \to \infty$ and $b_n \to d$ as $n \to \infty$, then $a_n + b_n \to c + d$ as $n \to \infty$.
+        If \(a_n \to c\) as \(n \to \infty\) and \(b_n \to d\) as \(n \to \infty\), then \(a_n + b_n \to c + d\) as \(n \to \infty\).
     \end{proposition}
     
     \begin{proof}
-        Given $\varepsilon > 0$,
+        Given \(\varepsilon > 0\),
         \begin{align*}
             \exists N \in \NN \text{ with } &|a_n - c| < \varepsilon/2 \; \forall n \geq N \\
             \exists M \in \NN \text{ with } &|a_n - d| < \varepsilon/2 \; \forall n \geq M
@@ -1844,7 +1844,7 @@
         \begin{align*}
             |a_n + b_n - (c + d)| \leq |a_n - c| + |b_n - d| < \varepsilon
         \end{align*}
-        Then just pick $N^* \geq \max(N, M)$, and we're done
+        Then just pick \(N^* \geq \max(N, M)\), and we're done
     \end{proof}
 
     \lecture{Lecture 19 -- 22/11/25}
@@ -1859,11 +1859,11 @@
     \]
     Let us now introduce the machinery which allows us to say such things.
     \begin{definition}
-        Let $(a_n)$ be a sequence. Then
+        Let \((a_n)\) be a sequence. Then
         \[
             s_k = \sum_{n=1}^k a_n
         \]
-        is the \emph{$k^\text{th}$ partial sum} of the \emph{series} whose $n^\text{th}$ term is $a_n$. If the limit $s = \lim_{k \to \infty}s_k$ exists, then we write
+        is the \emph{\(k^\text{th}\) partial sum} of the \emph{series} whose \(n^\text{th}\) term is \(a_n\). If the limit \(s = \lim_{k \to \infty}s_k\) exists, then we write
         \[  
             s = \sum_{n=1}^\infty a_n
         \]
@@ -1871,60 +1871,60 @@
     
     \begin{example}
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item The series whose $n^\text{th}$ term is $a_n = r^n$ for some $|r| < 1$ is known as the \emph{geometric series}. We have
+            \item The series whose \(n^\text{th}\) term is \(a_n = r^n\) for some \(|r| < 1\) is known as the \emph{geometric series}. We have
             \begin{align*}
                 s_k &= r + r^2 + \dots + r^k \\
                 &= r \cdot \frac{1-r^k}{1-r} \\
                 &\to \frac{r}{1-r}
             \end{align*}
-            as $k \to \infty$, since $r^k \to 0$. Thus
+            as \(k \to \infty\), since \(r^k \to 0\). Thus
             \[
                 \sum_{n=1}^\infty r^n = \frac{r}{1-r}
             \]
-            \item The series whose $n^\text{th}$ term is $a_n = \frac{1}{n}$ is the \emph{harmonic series}. Observe
+            \item The series whose \(n^\text{th}\) term is \(a_n = \frac{1}{n}\) is the \emph{harmonic series}. Observe
             \begin{align*}
                 S_{2^k} &= 1 + \frac{1}{2} + \underbrace{\frac 1 3 + \frac 1 4}_{\text{each }\geq \frac 1 4} + \underbrace{\frac 1 5 + \frac 1 6 + \frac 1 7 + \frac 1 8}_{\text{each } \geq \frac 1 8} + \dots + \frac{1}{2^k} \\
                 &\geq 1 + \frac{1}{2} + 2 \cdot \frac{1}{4} + 4 \cdot \frac 1 8 + \dots + 2^{k-1} \cdot \frac{1}{2^k} \\
                 &= 1 + \frac{k}{2}
             \end{align*}
             so the partial sums are unbounded, meaning that they do not converge.
-            \item The series whose $n^\text{th}$ term is $\frac{1}{n^2}$. Observe
+            \item The series whose \(n^\text{th}\) term is \(\frac{1}{n^2}\). Observe
             \begin{align*}
                 S_{2^k-1} &= 1 + \underbrace{\frac{1}{2^2} + \frac{1}{3^2}}_{\leq 2 \cdot \frac{1}{2^2}} + \underbrace{\frac{1}{4^2} + \frac{1}{5^2} + \frac{1}{6^2} + \frac{1}{7^2}}_{\leq 4 \cdot \frac{1}{4^2}} + \dots + \frac{1}{(2^k-1)^2} \\
                 &\leq 1 + 2 \cdot \frac{1}{2^2} + 4 \cdot \frac{1}{4^2} + \dots + 2^{k-1} \cdot \frac{1}{(2^{k-1})^2} \\
                 &= 1 + \frac 1 2 + \frac 1 4 + \dots + \frac{1}{2^{k-1}} < 2
             \end{align*}
-            Then, by \cref{monotonic-convergence} (monotonic convergence theorem), $\sum_{n=1}^\infty \frac 1 {n^2}$ converges, since its partial sums are increasing and bounded above.
+            Then, by \cref{monotonic-convergence} (monotonic convergence theorem), \(\sum_{n=1}^\infty \frac 1 {n^2}\) converges, since its partial sums are increasing and bounded above.
 
-            Note: we could show the series converges without ever needing to claim it converges to any particular value. This would have been hard to do, since it converges to $\pi^2/6$.
+            Note: we could show the series converges without ever needing to claim it converges to any particular value. This would have been hard to do, since it converges to \(\pi^2/6\).
         \end{enumerate}        
     \end{example}
     
     \subsection{Decimal expansions}
 
-    Let $(d_n)$ be a sequence with $d_n \in \{0, \dots, 9\}$. Then
+    Let \((d_n)\) be a sequence with \(d_n \in \{0, \dots, 9\}\). Then
     \[
         \sum_{n=1}^\infty \frac{d_n}{10^n} \to x
     \]
-    for some limit $x$ as $n \to \infty$, and in particular $0 \leq x \leq 1$, because the partial sums are increasing and bounded above by
+    for some limit \(x\) as \(n \to \infty\), and in particular \(0 \leq x \leq 1\), because the partial sums are increasing and bounded above by
     \[
         \sum_{n=1}^\infty \frac{9}{10^n} = \frac{9}{10} \cdot \frac{1}{1-1/10} = 1
     \]
 
     \begin{definition}[Decimal expansions]
-        If $x$ and $(d_n)$ are as above, we say $0.d_1d_2d_3\dots$ is the \emph{decimal expansion} of $x$.
+        If \(x\) and \((d_n)\) are as above, we say \(0.d_1d_2d_3\dots\) is the \emph{decimal expansion} of \(x\).
     \end{definition}
 
     \begin{proposition}
-        Every real number $x$, $0 \leq x < 1$ has a decimal expansion.
+        Every real number \(x\), \(0 \leq x < 1\) has a decimal expansion.
     \end{proposition}
     
     \begin{proof}
-        Pick $d_1 \in \ZZ$ maximal such that $\frac{d_1}{10} \leq x < 1$. In particular, $0 \leq d_1 \leq 9$ since $0 \leq x < 1$ and $0 \leq x - \frac{d_1}{10} < \frac{1}{10}$ due to the maximality of $d_1$.
+        Pick \(d_1 \in \ZZ\) maximal such that \(\frac{d_1}{10} \leq x < 1\). In particular, \(0 \leq d_1 \leq 9\) since \(0 \leq x < 1\) and \(0 \leq x - \frac{d_1}{10} < \frac{1}{10}\) due to the maximality of \(d_1\).
 
-        Next, pick $d_2 \in \ZZ$ maximal such that $\frac{d_2}{100} \leq x - \frac{d_1}{10}$. Again, we have $0 \leq d_2 \leq 9$ since $0 \leq x - \frac{d_1}{10} - \frac{d_2}{100} < \frac 1 {100}$.
+        Next, pick \(d_2 \in \ZZ\) maximal such that \(\frac{d_2}{100} \leq x - \frac{d_1}{10}\). Again, we have \(0 \leq d_2 \leq 9\) since \(0 \leq x - \frac{d_1}{10} - \frac{d_2}{100} < \frac 1 {100}\).
 
-        Inductively, we pick $d_n \in \ZZ$ maximal such that
+        Inductively, we pick \(d_n \in \ZZ\) maximal such that
         \[
             \frac{d_n}{10^n} \leq x - \sum_{j=1}^{n-1} \frac{d_j}{10^j}
         \]
@@ -1932,7 +1932,7 @@
         \[
             0 \leq x - \sum_{j=1}^{n} \frac{d_j}{10^j} < \frac 1 {10^n}
         \]
-        Since $\frac{1}{10^n} \to 0$ as $n \to \infty$,
+        Since \(\frac{1}{10^n} \to 0\) as \(n \to \infty\),
         \begin{align*}
             x - \sum_{j=1}^n \frac{d_j}{10^j} &\to 0 \\
             \implies x = \sum_{j=1}^\infty \frac{d_j}{10^j} &= 0.d_1d_2d_3 \dots
@@ -1942,26 +1942,26 @@
     \[
         0.47999\dots = 0.48000\dots
     \]
-    When can this happen? Suppose $0.a_1a_2a_3 \dots = 0.b_1b_2b_3 \dots$. Suppose that $a_j = b_j$ for $j < k$, for some $k$, and further assume wlog $a_k < b_k$. Then
+    When can this happen? Suppose \(0.a_1a_2a_3 \dots = 0.b_1b_2b_3 \dots\). Suppose that \(a_j = b_j\) for \(j < k\), for some \(k\), and further assume wlog \(a_k < b_k\). Then
     \begin{align*}
         \sum_{j=k+1}^\infty \frac{a_j}{10^j} \leq \sum_{j=k+1}^\infty \frac{9}{10^j} = \frac{1}{10^k}
     \end{align*}
-    It follows that we must have $b_k = a_k + 1$ -- if $b_k > a_k+1$, then $b-a \geq 2\cdot 10^{-k} - 10^{-k} > 0$. Furthermore, we must have equality in this upper bound, so, for any $j > k$, we have $a_j = 9$, $b_j = 0$.
+    It follows that we must have \(b_k = a_k + 1\) -- if \(b_k > a_k+1\), then \(b-a \geq 2\cdot 10^{-k} - 10^{-k} > 0\). Furthermore, we must have equality in this upper bound, so, for any \(j > k\), we have \(a_j = 9\), \(b_j = 0\).
     
     \lecture{Lecture 20 -- 25/11/25}
 
     \begin{definition}
-        A decimal expansion is \emph{periodic} if, after a finite number of terms, it repeats in blocks of length $k$. That is, there exist $l$ and $k$ such that $d_{n+k} = d_n$ for any $n > l$.
+        A decimal expansion is \emph{periodic} if, after a finite number of terms, it repeats in blocks of length \(k\). That is, there exist \(l\) and \(k\) such that \(d_{n+k} = d_n\) for any \(n > l\).
     \end{definition}
     
     \begin{proposition}
-        A real number $x$ has a periodic decimal expansion if and only if it is rational.
+        A real number \(x\) has a periodic decimal expansion if and only if it is rational.
     \end{proposition}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\implies$]
-            Assume without loss of generality $0 < x < 1$. Let us denote our periodic decimal as
+            \item[\(\implies\)]
+            Assume without loss of generality \(0 < x < 1\). Let us denote our periodic decimal as
             \[
                 x = 0.a_1\dots a_{n-1} a_n \dots a_{n+k-1} a_n \dots a_{n+k-1} \dots 
             \]
@@ -1971,47 +1971,47 @@
                 &= a_n \dots a_{n+k-1} \sum_{j=1}^\infty \frac{1}{10^{kj}} \\
                 &= a_n \dots a_{n+k-1} \cdot \frac{1}{10^k} \cdot \frac{1}{1-\frac{1}{10^k}} \in \QQ
             \end{align*}
-            \item[$\impliedby$] Suppose $x \in Q$ and write
+            \item[\(\impliedby\)] Suppose \(x \in \QQ\) and write
             \[
                 x = \frac{p}{2^a5^bq}
             \]
-            for integers $a$, $b$, $p$, $q$, where $a$, $b$, $q$ are positive and $\gcd(q, 10) = 1$. Then
+            for integers \(a\), \(b\), \(p\), \(q\), where \(a\), \(b\), \(q\) are positive and \(\gcd(q, 10) = 1\). Then
             \[
                 10^{\max(a,b)}x = \frac{t}{q} = n + \frac{c}{q}
             \]
-            where $n$, $c \in \ZZ$, $0 \leq c < q$. By \cref{fermat-euler}, since $\gcd(q, 10) = 1$, we have $10^{\phi(q)} \equiv 1 \pmod q$, so $10^{\phi(q)} - 1 \equiv kq$ for some $k \in \NN$. Hence
+            where \(n\), \(c \in \ZZ\), \(0 \leq c < q\). By \cref{fermat-euler}, since \(\gcd(q, 10) = 1\), we have \(10^{\phi(q)} \equiv 1 \pmod q\), so \(10^{\phi(q)} - 1 \equiv kq\) for some \(k \in \NN\). Hence
             \begin{align*}
                 \frac{c}{q} = \frac{kc}{kq} &= \frac{kc}{10^{\phi(q)}-1} \\
                 &= kc \sum_{j=1}^\infty \frac{1}{10^{\phi(q)j}}
             \end{align*}
-            Since $0 \leq kc < kq = 10^{\phi(q)} - 1$, $kc$ has at most $\phi(q)$ digits. This concludes the proof.
+            Since \(0 \leq kc < kq = 10^{\phi(q)} - 1\), \(kc\) has at most \(\phi(q)\) digits. This concludes the proof.
         \end{itemize}
     \end{proof}
     
     \subsection{Euler's number}
     
     \begin{definition}[Euler's number]
-        \emph{Euler's number} $e$ is defined as follows:
+        \emph{Euler's number} \(e\) is defined as follows:
         \[
             e = 1 + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \cdots = \sum_{j=0}^\infty \frac{1}{j!}
         \]
     \end{definition}
     
     \begin{remark*}
-        We can bound $e$ above by $1 + 1 + \frac{1}{2} + \frac{1}{4} + \cdots$, which converges by \cref{monotonic-convergence} (monotone convergence theorem), so the sum converges and $e$ exists.
+        We can bound \(e\) above by \(1 + 1 + \frac{1}{2} + \frac{1}{4} + \cdots\), which converges by \cref{monotonic-convergence} (monotone convergence theorem), so the sum converges and \(e\) exists.
     \end{remark*}
     
     \begin{proposition}
-        $e$ is irrational.
+        \(e\) is irrational.
     \end{proposition}
     
     \begin{proof}
-        Suppose for contradiction $e$ rational = $\frac{p}{q}$, with $p$, $q \in \NN$ and $q > 1$, since $2 < e < 3$. Then $q!e \in \NN$. But
+        Suppose for contradiction \(e\) rational = \(\frac{p}{q}\), with \(p\), \(q \in \NN\) and \(q > 1\), since \(2 < e < 3\). Then \(q!e \in \NN\). But
         \begin{align*}
             q!e &= q! + \frac{q!}{1!} + \dots + \frac{q!}{q!} + \frac{q!}{(q+1)!} + \frac{q!}{(q+2)!} + \dots \\ 
             &= N + x
         \end{align*}
-        where $N \in \NN$ and
+        where \(N \in \NN\) and
         \begin{align*}
             x &= \sum_{j=q+1}^\infty \frac{q!}{j!} \\
             &= \sum_{j=1}^\infty \frac{q!}{(q+j)!} \\
@@ -2028,8 +2028,8 @@
     
     \begin{example}
         \begin{itemize}
-            \item Every rational number is algebraic, since $x = \frac{p}{q}$ solves $qx - p = 0$.
-            \item $\sqrt 2$, for example, is algebraic, since it solves $x^2-2=0$.
+            \item Every rational number is algebraic, since \(x = \frac{p}{q}\) solves \(qx - p = 0\).
+            \item \(\sqrt 2\), for example, is algebraic, since it solves \(x^2-2=0\).
         \end{itemize}
     \end{example}
     
@@ -2046,12 +2046,12 @@
     \end{theorem}
     
     \begin{lemma}
-        For any polynomial $p$, there exists a constant $K$ such that $|p(x)-p(y)| \leq K|x-y|$ for any $0 \leq x, y \leq 1$.
+        For any polynomial \(p\), there exists a constant \(K\) such that \(|p(x)-p(y)| \leq K|x-y|\) for any \(0 \leq x, y \leq 1\).
         \label{liouville-lemma-1}
     \end{lemma}
     
     \begin{proof}
-        Suppose $p(x) = a_dx^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0$, so
+        Suppose \(p(x) = a_dx^d + a_{d-1}x^{d-1} + \dots + a_1 x + a_0\), so
         \begin{align*}
             p(x)-p(y) &= a_d(x^d-y^d) + a_{d-1}(x^{d-1}-y^{d-1}) + \dots + a_1(x -y) \\
             &= (x-y)[a_d(\cdots) + \dots + a_1] \\
@@ -2061,7 +2061,7 @@
     \end{proof}
     
     \begin{lemma}
-        A non-zero polynomial of degree $d$ has at most $d$ real roots.
+        A non-zero polynomial of degree \(d\) has at most \(d\) real roots.
         \label{liouville-lemma-2}
     \end{lemma}
 
@@ -2072,72 +2072,72 @@
         \[
             L_n = \sum_{k=1}^n \frac{1}{10^{k!}}
         \]
-        so that $L_n \to L$ as $n \to \infty$. Observe
+        so that \(L_n \to L\) as \(n \to \infty\). Observe
         \[
             |L-L_n| = \sum_{k=n+1}^\infty \frac{1}{10^{k!}} \leq 2 \cdot \frac{1}{10^{(n+1)!}}
         \]
-        Now suppose $p$ has degree $d$, so $p(x) = a_dx^d + \dots + a_0$ with $a_i \in \ZZ$, $a_d \neq 0$. Then, since $L_n = \frac{s}{10^{n!}}$ for some $s \in \ZZ$, $p(L_n) = \frac{t}{10^{d \cdot n!}}$ for some $t \in \ZZ$. Also, for sufficiently large $n$, $L_n$ is not a root of $p$ by \cref{liouville-lemma-2}. Hence
+        Now suppose \(p\) has degree \(d\), so \(p(x) = a_dx^d + \dots + a_0\) with \(a_i \in \ZZ\), \(a_d \neq 0\). Then, since \(L_n = \frac{s}{10^{n!}}\) for some \(s \in \ZZ\), \(p(L_n) = \frac{t}{10^{d \cdot n!}}\) for some \(t \in \ZZ\). Also, for sufficiently large \(n\), \(L_n\) is not a root of \(p\) by \cref{liouville-lemma-2}. Hence
         \begin{align*}
             \frac{1}{10^{d \cdot n!}} \leq |p(L_n)| &= |p(L_n)-p(L)| \\
             &\leq K|L_n-L| && \text{by \cref{liouville-lemma-1}} \\
             &\leq 2K \cdot \frac{1}{10^{(n+1)!}}
         \end{align*}
-        For sufficiently large $n$, this is a contradiction.
+        For sufficiently large \(n\), this is a contradiction.
     \end{proof}
     
     \begin{remark*}
         \begin{itemize}
-            \item Such $L$ are called Liouville numbers.
-            \item This proof does not show that $e$ is transcendental (but it is).
-            \item The same proof will work for any real number $x$ such that, for any $n \in \NN$, we have rational $\frac p q$, $q > 1$, such that
+            \item Such \(L\) are called Liouville numbers.
+            \item This proof does not show that \(e\) is transcendental (but it is).
+            \item The same proof will work for any real number \(x\) such that, for any \(n \in \NN\), we have rational \(\frac p q\), \(q > 1\), such that
             \[
                 0 < \left|x-\frac p q\right| < \frac 1 {q^n}
             \]
-            In other words, if $x$ has a very good rational approximation but is not rational, it is transcendental.
+            In other words, if \(x\) has a very good rational approximation but is not rational, it is transcendental.
         \end{itemize}
     \end{remark*}
     
     \subsection{The complex numbers}
 
-    Some polynomials have no real roots -- for example, $x^2+1=0$. But we'll just define such an $x$ into existence ourselves!
+    Some polynomials have no real roots -- for example, \(x^2+1=0\). But we'll just define such an \(x\) into existence ourselves!
 
     \begin{definition}
-        The \emph{complex numbers} $\CC$ consist of $\RR^2$ together with operations
+        The \emph{complex numbers} \(\CC\) consist of \(\RR^2\) together with operations
         \begin{align*}
             (a, b) + (c, d) &= (a + c, b + d) \\
             (a, b) \times (c, d) &= (ac - bd, ad + bc)
         \end{align*}
     \end{definition}
     
-    We can view $\RR$ as contained within $\CC$ by identifying $a \in \RR$ with $(a, 0) \in \CC$, and we can see that all the rules of real number arithmetic are followed.
+    We can view \(\RR\) as contained within \(\CC\) by identifying \(a \in \RR\) with \((a, 0) \in \CC\), and we can see that all the rules of real number arithmetic are followed.
     
-    Now, let $i = (0, 1)$, and we can see $i^2 = (-1, 0)$, or in other words $-1$.
+    Now, let \(i = (0, 1)\), and we can see \(i^2 = (-1, 0)\), or in other words \(-1\).
 
-    Note also that every $z \in \CC$ is of the form $a+bi$ with $a$, $b \in \RR$ -- we have $(a, b) = a(1, 0) + b(0, 1) = a + bi$.
+    Note also that every \(z \in \CC\) is of the form \(a+bi\) with \(a\), \(b \in \RR\) -- we have \((a, b) = a(1, 0) + b(0, 1) = a + bi\).
 
     \begin{remark*}
         \begin{itemize}
-            \item $\CC$ obeys all the normal rules of arithmetic (it's a field). For example, we have multiplicative inverses:
+            \item \(\CC\) obeys all the normal rules of arithmetic (it's a field). For example, we have multiplicative inverses:
             \[
                 (a+bi)^{-1} = \frac{a-bi}{a^2+b^2}
             \]
-            \item Every non-constant polynomial has a root in $\CC$ -- the \emph{fundamental theorem of algebra}
+            \item Every non-constant polynomial has a root in \(\CC\) -- the \emph{fundamental theorem of algebra}
         \end{itemize}
     \end{remark*}
     
     \section{Countability}
 
-    We want to talk about the sizes of infinite sets. For example, $\NN$ seems smaller than $\ZZ$, a lot smaller than $\QQ$, and a \emph{lot} smaller than $\RR$.
+    We want to talk about the sizes of infinite sets. For example, \(\NN\) seems smaller than \(\ZZ\), a lot smaller than \(\QQ\), and a \emph{lot} smaller than \(\RR\).
 
     \begin{definition}
-        A set $X$ is \emph{countable} if $X$ is finite or there is a bijection between $X$ and $\NN$. In the second case, we may also say $X$ is \emph{countably infinite}. In particular, $X$ is countable if and only if we can list the elements of $X$: $x_1, x_2, \dots$ (which may terminate).
+        A set \(X\) is \emph{countable} if \(X\) is finite or there is a bijection between \(X\) and \(\NN\). In the second case, we may also say \(X\) is \emph{countably infinite}. In particular, \(X\) is countable if and only if we can list the elements of \(X\): \(x_1, x_2, \dots\) (which may terminate).
     \end{definition}
     
     \begin{example}
         \begin{enumerate}[label=\protect\circled{\arabic*}]
             \item Any finite set is countable.
-            \item $\NN$ is countable.
-            \item $\ZZ$ is countable -- we may list its elements as 0, 1, -1, 2, -2, $\dots$, which corresponds to the listing
+            \item \(\NN\) is countable.
+            \item \(\ZZ\) is countable -- we may list its elements as 0, 1, -1, 2, -2, \(\dots\), which corresponds to the listing
             \[
                 x_n = \begin{cases}
                     \frac{n}{2} & n \text{ even} \\
@@ -2149,16 +2149,16 @@
     
     \begin{lemma}
         \label{subset-natural-countable}
-        Any subset of $\NN$ is countable.
+        Any subset of \(\NN\) is countable.
     \end{lemma}
     
     \begin{proof}
-        If $S \subseteq \NN$ is non-empty, by WOP we have a least element $s_1 \in S$. If $S \setminus \{s_1\} \neq \emptyset$, by WOP there is a least element $s_2 \in S \setminus \{s_1\}$, and etc. If at some point the process ends, then $S = \{s_1, \dots, s_m\}$ and is finite. Otherwise, the map
+        If \(S \subseteq \NN\) is non-empty, by WOP we have a least element \(s_1 \in S\). If \(S \setminus \{s_1\} \neq \emptyset\), by WOP there is a least element \(s_2 \in S \setminus \{s_1\}\), and etc. If at some point the process ends, then \(S = \{s_1, \dots, s_m\}\) and is finite. Otherwise, the map
         \begin{align*}
             g: \NN &\to S \\
             n &\mapsto s_n
         \end{align*}
-        is well-defined and injective. It is also surjective because, if $k \in S$, then $k \in \NN$ and there are at most $k$ elements of $S$ less than $k$, so $k = s_n$ for some $n \leq k$.
+        is well-defined and injective. It is also surjective because, if \(k \in S\), then \(k \in \NN\) and there are at most \(k\) elements of \(S\) less than \(k\), so \(k = s_n\) for some \(n \leq k\).
         
     \end{proof}
     
@@ -2167,18 +2167,18 @@
     \begin{theorem}
         The following are equivalent:
         \begin{enumerate}
-            \item $X$ is countable;
-            \item there is an injection $X \to \NN$;
-            \item $X = \emptyset$ or there is a surjection $\NN \to X$.
+            \item \(X\) is countable;
+            \item there is an injection \(X \to \NN\);
+            \item \(X = \emptyset\) or there is a surjection \(\NN \to X\).
         \end{enumerate}
     \end{theorem}
     
     \begin{proof}
-        Clearly $1 \implies 2$, since, if $X$ is finite, it clearly injects into $\NN$, and if $X$ bijects with $\NN$, it certainly injects into $\NN$. 
+        Clearly \(1 \implies 2\), since, if \(X\) is finite, it clearly injects into \(\NN\), and if \(X\) bijects with \(\NN\), it certainly injects into \(\NN\). 
 
-        Conversely, if there is an injection $f: X \to \NN$, then $f$ is a bijection between $X$ and $S = f(X)$. By \cref{subset-natural-countable}, there is a bijection $g: S \to \NN$. Hence, composing $f$ and $g$ gives that $2 \implies 1$.
+        Conversely, if there is an injection \(f: X \to \NN\), then \(f\) is a bijection between \(X\) and \(S = f(X)\). By \cref{subset-natural-countable}, there is a bijection \(g: S \to \NN\). Hence, composing \(f\) and \(g\) gives that \(2 \implies 1\).
 
-        Clearly $1 \implies 3$. It remains to show that $3 \implies 2$, and we will suppose $X \neq \emptyset$. Suppose there is a surjection $f: \NN \to X$. Define $g: X \to \NN$ by $g(a) = \min f^{-1}(a)$, which exists by WOP. By construction, $g$ is injective, so we are done.
+        Clearly \(1 \implies 3\). It remains to show that \(3 \implies 2\), and we will suppose \(X \neq \emptyset\). Suppose there is a surjection \(f: \NN \to X\). Define \(g: X \to \NN\) by \(g(a) = \min f^{-1}(a)\), which exists by WOP. By construction, \(g\) is injective, so we are done.
     \end{proof}
     
     \begin{corollary}
@@ -2186,24 +2186,24 @@
     \end{corollary}
     
     \begin{proof}
-        Let $Y \subseteq X$ countable. Then take the injection $f: X \to \NN$ and restrict it to $Y$.
+        Let \(Y \subseteq X\) countable. Then take the injection \(f: X \to \NN\) and restrict it to \(Y\).
     \end{proof}
 
-    One thus obtains the intuition that countability represents being `at most as big as $\NN$.' But...
+    One thus obtains the intuition that countability represents being `at most as big as \(\NN\).' But...
 
     \begin{theorem}
-        $\NN \times \NN$ is countable.
+        \(\NN \times \NN\) is countable.
     \end{theorem}
     
     \begin{proof}[Proof 1]
-        Let $a_1 = (1, 1)$ and define $a_n$ inductively -- given $a_{n-1} = (p, q)$, let
+        Let \(a_1 = (1, 1)\) and define \(a_n\) inductively -- given \(a_{n-1} = (p, q)\), let
         \begin{align*}
             a_n = \begin{cases}
                 (p-1, q+1) & p \neq 1 \\
                 (p+q, 1) & \text{o/w}
             \end{cases}
         \end{align*}
-        which corresponds to a `diagonal' traversal of $\NN \times \NN$. One can show by induction that this includes every point in $\NN \times \NN$.
+        which corresponds to a `diagonal' traversal of \(\NN \times \NN\). One can show by induction that this includes every point in \(\NN \times \NN\).
     \end{proof}
     
     \begin{proof}[Proof 2]
@@ -2216,11 +2216,11 @@
     \end{proof}
     
     \begin{corollary}
-        $\ZZ \times \ZZ$ is countable.
+        \(\ZZ \times \ZZ\) is countable.
     \end{corollary}
     
     \begin{proof}
-        Since $\ZZ$ is countable, there exists an injection $f: \ZZ \to \NN$ and, since $\NN \times \NN$ is countable, there exists an injection $f: \NN \times \NN \to \NN$. Hence the composition
+        Since \(\ZZ\) is countable, there exists an injection \(f: \ZZ \to \NN\) and, since \(\NN \times \NN\) is countable, there exists an injection \(f: \NN \times \NN \to \NN\). Hence the composition
         \[\begin{tikzcd}[ampersand replacement=\&]
             {\ZZ \times \ZZ} \& {\NN \times \NN} \& \NN
             \arrow["{(f, f)}", from=1-1, to=1-2]
@@ -2229,7 +2229,7 @@
         is injective, showing the result.
     \end{proof}
 
-    Furthermore, by induction, $\ZZ^k = \ZZ \times \cdots \times \ZZ$ is countable for any $k \in \NN$, as is $\NN^k$.
+    Furthermore, by induction, \(\ZZ^k = \ZZ \times \cdots \times \ZZ\) is countable for any \(k \in \NN\), as is \(\NN^k\).
     
     \begin{theorem}
         \label{countable-union}
@@ -2237,30 +2237,30 @@
     \end{theorem}
     
     \begin{proof}
-        Assume that our countable sets are indexed by $\NN$, namely $A_1, A_2, \dots$. For each $i$, since $A_i$ is countable, we may list its elements $a_1^{(i)}, a_2^{(i)}, \dots$ (which may terminate). Define
+        Assume that our countable sets are indexed by \(\NN\), namely \(A_1, A_2, \dots\). For each \(i\), since \(A_i\) is countable, we may list its elements \(a_1^{(i)}, a_2^{(i)}, \dots\) (which may terminate). Define
         \begin{align*}
             f: \bigcup_{n \in \NN} A_n &\to \NN \times \NN \\
             x &\mapsto (i, j)
         \end{align*}
-        where $x = a_j^{(i)}$ for the least $i$ such that $x \in A_i$, which exists by WOP. This is an injection into $\NN \times \NN$, which itself is countable, giving the result.
+        where \(x = a_j^{(i)}\) for the least \(i\) such that \(x \in A_i\), which exists by WOP. This is an injection into \(\NN \times \NN\), which itself is countable, giving the result.
     \end{proof}
     
     Now, we can think of the rationals as
     \begin{align*}
-        \QQ = \bigcup_{n \in \NN} \{\frac m n : m \in \ZZ\}
+        \QQ = \bigcup_{n \in \NN} \left\{\frac m n : m \in \ZZ\right\}
     \end{align*}
     showing they are countable.
     
     \begin{theorem}
-        The set $\AA$ of algebraic numbers is countable.
+        The set \(\AA\) of algebraic numbers is countable.
     \end{theorem}
     
     \begin{proof}
-        It suffices to show that the set of polynomials with integer coefficients is countable, as then $\AA$ is a countable union of finite (hence countable) sets, since each polynomial has finitely many roots.
+        It suffices to show that the set of polynomials with integer coefficients is countable, as then \(\AA\) is a countable union of finite (hence countable) sets, since each polynomial has finitely many roots.
 
-        Furthermore, it suffices to show that, for each degree $\alpha \in \NN \cup \{0\}$, the set $P_\alpha$ of integer polynomials of degree $\alpha$ is countable, again by the previous theorem. But the map
+        Furthermore, it suffices to show that, for each degree \(\alpha \in \NN \cup \{0\}\), the set \(P_\alpha\) of integer polynomials of degree \(\alpha\) is countable, again by the previous theorem. But the map
         \begin{align*}
-            f: \PP_\alpha &\to \ZZ^{\alpha+1} \\
+            f: P_\alpha &\to \ZZ^{\alpha+1} \\
             \sum_{n=0}^\alpha a_dx^d &\mapsto (a_0, \dots, a_\alpha)
         \end{align*}
         is an injection, giving the result.
@@ -2273,11 +2273,11 @@
     \lecture{Lecture 23 -- 01/12/25}
 
     \begin{theorem}
-        $\RR$ is uncountable.
+        \(\RR\) is uncountable.
     \end{theorem}
     
     \begin{proof}[Proof (Diagonal argument)]
-        Suppose for contradiction that the reals were countable, so we may list them: $r_1$, $r_2, \dots, r_n$. Let us write each $r_n$ in decimal form:
+        Suppose for contradiction that the reals were countable, so we may list them: \(r_1\), \(r_2, \dots, r_n\). Let us write each \(r_n\) in decimal form:
         \begin{align*}
             r_1 &= n_1.d_{11}d_{12}d_{13}\dots \\
             r_2 &= n_2.d_{21}d_{22}d_{23}\dots \\
@@ -2294,71 +2294,71 @@
                 2 & d_{nn} = 1
             \end{cases}
         \]
-        This $r$ has only one decimal expansion since it contains no 0s or 9s, and by construction it is not one of the $r_i$. This is a contradiction.
+        This \(r\) has only one decimal expansion since it contains no 0s or 9s, and by construction it is not one of the \(r_i\). This is a contradiction.
     \end{proof}
     
-    This proof is due to Cantor (1870s). We note that we could equally well show $(0, 1)$ is uncountable.
+    This proof is due to Cantor (1870s). We note that we could equally well show \((0, 1)\) is uncountable.
 
     \begin{corollary}
         There are uncountably many transcendental numbers.
     \end{corollary}
     
     \begin{proof}
-        Observe $\RR = (\RR \setminus \AA) \cup \AA$. Since $\AA$ is countable, if $\RR \setminus \AA$ were countable, $\RR$ would be as well, so $\RR \setminus \AA$ must be uncountable.
+        Observe \(\RR = (\RR \setminus \AA) \cup \AA\). Since \(\AA\) is countable, if \(\RR \setminus \AA\) were countable, \(\RR\) would be as well, so \(\RR \setminus \AA\) must be uncountable.
     \end{proof}
     
     \begin{theorem}
-        $\mathcal P(\NN)$ is uncountable.
+        \(\mathcal P(\NN)\) is uncountable.
     \end{theorem}
     
     \begin{proof}
-        Again, suppose that we have the list $S_1$, $S_2$, $S_3, \dots$. Let
+        Again, suppose that we have the list \(S_1\), \(S_2\), \(S_3, \dots\). Let
         \[
             S = \{n \in \NN: n \notin S_n\}
         \]
-        THen $S$ is not on our list since, for any $n \in \NN$, $S \neq S_n$ (since they differ in the element $n$). Thus $\mathcal P(\NN)$ is uncountable.
+        THen \(S\) is not on our list since, for any \(n \in \NN\), \(S \neq S_n\) (since they differ in the element \(n\)). Thus \(\mathcal P(\NN)\) is uncountable.
     \end{proof}
     
     This is also a diagonal argument.
 
     \begin{proof}[Proof 2]
-        Note that there is an injection from $(0, 1) \to \mathcal P(\NN)$. Write $x \in (0, 1)$ in binary
+        Note that there is an injection from \((0, 1) \to \mathcal P(\NN)\). Write \(x \in (0, 1)\) in binary
         \[
             x = 0.x_1x_2x_3\dots
         \]
-        with $x_i \in \{0, 1\}$, and such that the representation does not end in infinitely many ones. Then, let $f(x) = \{n \in \NN: x_n = 1\}$. But then, if there were a bijection between $P(\NN)$ and $\NN$, we could compose to find an injection from $(0, 1)$ to $\NN$, which is a contradiction.
+        with \(x_i \in \{0, 1\}\), and such that the representation does not end in infinitely many ones. Then, let \(f(x) = \{n \in \NN: x_n = 1\}\). But then, if there were a bijection between \(P(\NN)\) and \(\NN\), we could compose to find an injection from \((0, 1)\) to \(\NN\), which is a contradiction.
     \end{proof}
 
     We can generalise!
     
     \begin{theorem}[Cantor]
-        For any set $X$, there is no bijection between $X$ and $\mathcal P(X)$.
+        For any set \(X\), there is no bijection between \(X\) and \(\mathcal P(X)\).
     \end{theorem}
     
     \begin{proof}
-        Suppose we have $f: X \to \mathcal P(X)$. We claim $f$ is not surjective. Indeed, let
+        Suppose we have \(f: X \to \mathcal P(X)\). We claim \(f\) is not surjective. Indeed, let
         \[
             S = \{x \in X: x \notin f(x)\}
         \]
-        Then $S \notin \Im f$, since, for every $x \in X$, $S$ and $f(x)$ differ in $x$.
+        Then \(S \notin \Im f\), since, for every \(x \in X\), \(S\) and \(f(x)\) differ in \(x\).
     \end{proof}
     
     This is another diagonal argument, reminiscent of Russell's paradox. In fact, it gives another proof that there is no universal set, since such a set would be a superset of its power set.
     
     \begin{example}
-        Let $\{A_i: i \in I\}$ be a family of open pairwise disjoint intervals of the reals. Must this family $I$ be countable? Yes!
+        Let \(\{A_i: i \in I\}\) be a family of open pairwise disjoint intervals of the reals. Must this family \(I\) be countable? Yes!
     \end{example}
     
     \begin{proof}
-        Each interval $A$ contains a rational, and $\QQ$ is countable, so there is an injection from the intervals to the rationals.
+        Each interval \(A\) contains a rational, and \(\QQ\) is countable, so there is an injection from the intervals to the rationals.
     \end{proof}
     
     \begin{proof}[Proof 2]
-        The set $\{i \in I: A_i \text{ has length} \geq 1\}$ is countable (injects into $\ZZ$). Similarly, the set $\{i \in I: A_i \text{ has length} \geq \frac 1 2\}$ is countable (injects into $\frac{1}{2}\ZZ$). More generally, for any $n \in \NN$,
+        The set \(\{i \in I: A_i \text{ has length} \geq 1\}\) is countable (injects into \(\ZZ\)). Similarly, the set \(\{i \in I: A_i \text{ has length} \geq \frac 1 2\}\) is countable (injects into \(\frac{1}{2}\ZZ\)). More generally, for any \(n \in \NN\),
         \[
             \left\{i \in I: A_i \text{ has length} \geq \frac 1 n\right\}
         \]
-        is countable. Then $\{A_i: i \in I\}$ is a countable union of countable sets and hence is countable.
+        is countable. Then \(\{A_i: i \in I\}\) is a countable union of countable sets and hence is countable.
     \end{proof}
     
     \lecture{Lecture 24 -- 03/12/25}
@@ -2366,9 +2366,9 @@
     Let us summarise our methods for showing a set's countability:
     \begin{itemize}
         \item list its elements;
-        \item inject it into $\NN$;
+        \item inject it into \(\NN\);
         \item use \cref{countable-union} (countable union of countable sets);
-        \item consider $\QQ$ if we're `near' $\RR$.
+        \item consider \(\QQ\) if we're `near' \(\RR\).
     \end{itemize}
     and its uncountability:
     \begin{itemize}
@@ -2377,33 +2377,33 @@
     \end{itemize}
     
     \begin{lemma}
-        Given non-empty sets $A$ and $B$, there exists an injection $A \to B$ if and only if there exists a surjection $B \to A$.
+        Given non-empty sets \(A\) and \(B\), there exists an injection \(A \to B\) if and only if there exists a surjection \(B \to A\).
     \end{lemma}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\implies$] Suppose $f: A \to B$ is injective, and fix $a_0 \in A$. Define $g: B \to A$ by $b \mapsto$ the unique $a \in A$ such that $f(a) = b$, if it exists, or $a_0$ otherwise. Clearly $g$ is surjective.
-            \item[$\impliedby$] Suppose $g: B \to A$ is surjective, and let $f: A \to B$ such that $f(a) =$ some $b \in B$ such that $g(b) = a$.
+            \item[\(\implies\)] Suppose \(f: A \to B\) is injective, and fix \(a_0 \in A\). Define \(g: B \to A\) by \(b \mapsto\) the unique \(a \in A\) such that \(f(a) = b\), if it exists, or \(a_0\) otherwise. Clearly \(g\) is surjective.
+            \item[\(\impliedby\)] Suppose \(g: B \to A\) is surjective, and let \(f: A \to B\) such that \(f(a) =\) some \(b \in B\) such that \(g(b) = a\).
         \end{itemize}
     \end{proof}
     
     \begin{theorem}[Schr\"oder-Bernstein theorem]
         \label{schroder-bernstein}
-        If $A$ injects into $B$ and $B$ injects into $A$, then there exists a bijection between $A$ and $B$.
+        If \(A\) injects into \(B\) and \(B\) injects into \(A\), then there exists a bijection between \(A\) and \(B\).
     \end{theorem}
     
     \begin{proof}
-        Let $f: A \to B$ and $g: B \to A$ be injections. For $a \in A$, write $g^{-1}(a)$ for the $b \in B$ (if it exists) such that $g(b) = a$, and vice-versa. Consider the \emph{ancestor sequence} given by
+        Let \(f: A \to B\) and \(g: B \to A\) be injections. For \(a \in A\), write \(g^{-1}(a)\) for the \(b \in B\) (if it exists) such that \(g(b) = a\), and vice-versa. Consider the \emph{ancestor sequence} given by
         \begin{align*}
             a, g^{-1}(a), f^{-1}(g^{-1}(a)), \dots
         \end{align*}
         which may or may not terminate. Let 
         \begin{align*}
-            A_0 = \{a \in A: \text{the ancestor sequence of $a$ terminates after an even number of steps}\}
+            A_0 = \{a \in A: \text{the ancestor sequence of \(a\) terminates after an even number of steps}\}
         \end{align*}
-        with $A_1$ analogous for odd, and $A_\infty$ for non-terminating sequences. We may define $B_0$, $B_1$, $B_\infty$ analogously.
+        with \(A_1\) analogous for odd, and \(A_\infty\) for non-terminating sequences. We may define \(B_0\), \(B_1\), \(B_\infty\) analogously.
 
-        Observe now that $f$ bijects $A_0$ with $B_1$, and $g$ bijects $B_0$ with $A_1$. Furthermore, $f$ or $g$ will both work to biject $A_\infty$ with $B_\infty$. Hence, we may define
+        Observe now that \(f\) bijects \(A_0\) with \(B_1\), and \(g\) bijects \(B_0\) with \(A_1\). Furthermore, \(f\) or \(g\) will both work to biject \(A_\infty\) with \(B_\infty\). Hence, we may define
         \begin{align*}
             h: A &\to B \\
             a &\mapsto \begin{cases}
@@ -2413,10 +2413,10 @@
         \end{align*}
     \end{proof}
     
-    This allows us to think of injections and surjections between sets as forming a well-defined order on cardinalities -- $|A| \leq |B|$ if $B$ surjects into $A$, or equivalently $A$ injects into $B$, with the property that $|A| \leq |B|$ and $|B| \leq |A| \implies |A| = |B|$.
+    This allows us to think of injections and surjections between sets as forming a well-defined order on cardinalities -- \(|A| \leq |B|\) if \(B\) surjects into \(A\), or equivalently \(A\) injects into \(B\), with the property that \(|A| \leq |B|\) and \(|B| \leq |A| \implies |A| = |B|\).
     
     \begin{example*}
-        Is there a bijection between $[0, 1]$ and $[0, 1] \cup [2, 3]$? It is easiest to apply \cref{schroder-bernstein}. We have
+        Is there a bijection between \([0, 1]\) and \([0, 1] \cup [2, 3]\)? It is easiest to apply \cref{schroder-bernstein}. We have
         \begin{align*}
             f: [0, 1] &\to [0, 1] \cup [2, 3] \\
             x &\mapsto x \\[10pt]
@@ -2427,11 +2427,11 @@
     \end{example*}
     
     \begin{remark*}
-        Is it true that, for any two sets $A$ and $B$, either $A$ injects into $B$ or vice versa (so our order is total)? Yes, but it's hard to prove
+        Is it true that, for any two sets \(A\) and \(B\), either \(A\) injects into \(B\) or vice versa (so our order is total)? Yes, but it's hard to prove
     \end{remark*}
     
     \begin{remark*}
-        The \emph{continuum hypothesis} is the statement that there is no set with size between $\NN$ and $\RR$, i.e. any subset of the reals is either countable or in bijection with $\RR$.
+        The \emph{continuum hypothesis} is the statement that there is no set with size between \(\NN\) and \(\RR\), i.e. any subset of the reals is either countable or in bijection with \(\RR\).
     \end{remark*}
     
     

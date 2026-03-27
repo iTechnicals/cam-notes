@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  19 MAR 2026 17:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  27 MAR 2026 22:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1061,15 +1061,22 @@ Package: esint
 Package: environ 2014/05/04 v0.3 A new way to define environments
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
-)) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/tikzlibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pgflibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/hobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pml3array.sty
-\l_array_base_int=\count391
-\l_array_top_int=\count392
-\l_array_tmp_int=\count393
-\g_array_map_int=\count394
-\g_array_base_int=\count395
+)) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count391
+\float@exts=\toks54
+\float@box=\box91
+\@float@everytoks=\toks55
+\@floatcapt=\box92
+) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/tikzlibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pgflibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/hobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pml3array.sty
+\l_array_base_int=\count392
+\l_array_top_int=\count393
+\l_array_tmp_int=\count394
+\g_array_map_int=\count395
+\g_array_base_int=\count396
 )
-\g__hobby_npoints_int=\count396
-\g__hobby_draw_int=\count397
+\g__hobby_npoints_int=\count397
+\g__hobby_draw_int=\count398
 ))))
 Package translations Info: No language package found. I am going to use `english' as default language. on input line 7.
  (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/vector-calculus.aux)
@@ -1104,17 +1111,17 @@ Package scrbase Info: activating english \refname on input line 7.
 Package scrbase Info: activating english \indexname on input line 7.
  (c:/Program Files/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count398
+\scratchcounter=\count399
 \scratchdimen=\dimen318
-\scratchbox=\box91
-\nofMPsegments=\count399
-\nofMParguments=\count400
-\everyMPshowfont=\toks54
-\MPscratchCnt=\count401
+\scratchbox=\box93
+\nofMPsegments=\count400
+\nofMParguments=\count401
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count402
 \MPscratchDim=\dimen319
-\MPnumerator=\count402
-\makeMPintoPDFobject=\count403
-\everyMPtoPDFconversion=\toks55
+\MPnumerator=\count403
+\makeMPintoPDFobject=\count404
+\everyMPtoPDFconversion=\toks57
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1138,9 +1145,9 @@ Class scrartcl Info: loading recommended package `bookmark'.
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
-\BKM@id=\count404
+\BKM@id=\count405
 ))
-\c@lstlisting=\count405
+\c@lstlisting=\count406
 Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 7.
 \scr@dte@lstlisting@maxnumwidth=\skip154
@@ -1166,6 +1173,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 )
 isodate: babel.sty, (n)german.sty have not been loaded
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 (c:/Program Files/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
@@ -2201,15 +2209,15 @@ Package rerunfilecheck Info: File `vector-calculus.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 46985 strings out of 473579
- 1029031 string characters out of 5725188
+ 47034 strings out of 473579
+ 1029902 string characters out of 5725188
  1969960 words of memory out of 5000000
- 68381 multiletter control sequences out of 15000+600000
+ 68426 multiletter control sequences out of 15000+600000
  592743 words of font info for 300 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  138i,21n,145p,10964b,1209s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/vector-calculus.pdf (73 pages, 665125 bytes).
+Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/vector-calculus.pdf (73 pages, 665121 bytes).
 PDF statistics:
  1297 PDF objects out of 1440 (max. 8388607)
  1117 compressed objects within 12 object streams

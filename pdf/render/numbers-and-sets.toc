@@ -6,16 +6,16 @@
 \contentsline {section}{\numberline {2}Sets, functions and relations}{4}{section.38}%
 \contentsline {subsection}{\numberline {2.1}Sets}{4}{subsection.39}%
 \contentsline {subsubsection}{\numberline {2.1.1}Finite sets}{6}{subsubsection.58}%
-\contentsline {subsection}{\numberline {2.2}Functions}{6}{subsection.61}%
+\contentsline {subsection}{\numberline {2.2}Functions}{7}{subsection.61}%
 \contentsline {subsection}{\numberline {2.3}Relations}{11}{subsection.112}%
 \contentsline {section}{\numberline {3}Counting}{13}{section.145}%
 \contentsline {subsection}{\numberline {3.1}Ordering and induction}{13}{subsection.146}%
-\contentsline {subsection}{\numberline {3.2}Finite sets continued}{14}{subsection.161}%
+\contentsline {subsection}{\numberline {3.2}Finite sets continued}{15}{subsection.161}%
 \contentsline {section}{\numberline {4}Elementary number theory}{18}{section.180}%
 \contentsline {subsection}{\numberline {4.1}Euclid's algorithm}{19}{subsection.195}%
 \contentsline {subsection}{\numberline {4.2}Applications of FTA}{22}{subsection.215}%
 \contentsline {subsection}{\numberline {4.3}Modular arithmetic}{23}{subsection.220}%
-\contentsline {subsection}{\numberline {4.4}Solving congruences}{24}{subsection.227}%
+\contentsline {subsection}{\numberline {4.4}Solving congruences}{23}{subsection.227}%
 \contentsline {subsection}{\numberline {4.5}Simultaneous congruences}{25}{subsection.245}%
 \contentsline {subsection}{\numberline {4.6}Public key cryptography and RSA}{29}{subsection.266}%
 \contentsline {section}{\numberline {5}The reals}{29}{section.269}%

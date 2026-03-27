@@ -15,11 +15,11 @@
     \section{Fundamentals}
 
     \begin{definition}
-        Let $\Omega$ be a set and $\mathcal F$ is a collection of subsets of $\Omega$. We call $\mathcal F$ a \emph{$\sigma$-algebra} if
+        Let \(\Omega\) be a set and \(\mathcal F\) is a collection of subsets of \(\Omega\). We call \(\mathcal F\) a \emph{\(\sigma\)-algebra} if
         \begin{itemize}
-            \item $\Omega \in \mathcal F$;
-            \item if $A \in \mathcal F$, then $A^\comp \in \mathcal F$;
-            \item if $(A_n)_{n \in \NN}$ is a countable collection of sets in $\mathcal F$, then
+            \item \(\Omega \in \mathcal F\);
+            \item if \(A \in \mathcal F\), then \(A^\comp \in \mathcal F\);
+            \item if \((A_n)_{n \in \NN}\) is a countable collection of sets in \(\mathcal F\), then
             \begin{align*}
                 \bigcup A_n \in \mathcal F
             \end{align*}
@@ -27,78 +27,78 @@
     \end{definition}
     
     \begin{definition}
-        Let $\mathcal F$ be a $\sigma$-algebra on $\Omega$. A function
+        Let \(\mathcal F\) be a \(\sigma\)-algebra on \(\Omega\). A function
         \begin{align*}
             \PP: \mathcal F \to [0, 1]
         \end{align*}
         is called a \emph{probability measure} if
         \begin{itemize}
-            \item $\PP(\Omega) = 1$;
-            \item for any countable disjoint collection $(A_n)_{n \in \NN}$ in $\mathcal F$,
+            \item \(\PP(\Omega) = 1\);
+            \item for any countable disjoint collection \((A_n)_{n \in \NN}\) in \(\mathcal F\),
             \begin{align*}
                 \PP \left(\bigcup A_n\right) = \sum \PP(A_n)
             \end{align*}
         \end{itemize}
-        We call $\PP(A)$ the \emph{probability} of $A$.
+        We call \(\PP(A)\) the \emph{probability} of \(A\).
     \end{definition}
     
-    Then $(\Omega, \mathcal F, \PP)$ is a \emph{probability space}.
+    Then \((\Omega, \mathcal F, \PP)\) is a \emph{probability space}.
     
     \begin{definition}
-        The elements of $\Omega$ are called \emph{outcomes}, and the elements of the $\sigma$-algebra $\mathcal F$ are called \emph{events}.
+        The elements of \(\Omega\) are called \emph{outcomes}, and the elements of the \(\sigma\)-algebra \(\mathcal F\) are called \emph{events}.
     \end{definition}
     
-    Importantly, we talk about probabilities of \emph{events}, never probabilities of outcomes -- the domain of $\PP$ is $\mathcal F$, not $\Omega$.
+    Importantly, we talk about probabilities of \emph{events}, never probabilities of outcomes -- the domain of \(\PP\) is \(\mathcal F\), not \(\Omega\).
 
     \begin{remark*}
-        When $\Omega$ is countable, we take $\mathcal F$ to be all subsets of $\Omega$. However, this framework will become useful when considering uncountable $\Omega$.
+        When \(\Omega\) is countable, we take \(\mathcal F\) to be all subsets of \(\Omega\). However, this framework will become useful when considering uncountable \(\Omega\).
     \end{remark*}
     
     Let us note some important properties of probability measures that follow from the definition.
 
     \begin{itemize}
-        \item $\PP(A^\comp) = 1 - \PP(A)$;
-        \item $\PP(\emptyset) = 0$;
-        \item $\PP(A) \leq \PP(B)$ if $A \subseteq B$;
-        \item $\PP(A \cup B) = \PP(A) + \PP(B) - \PP(A \cap B)$.
+        \item \(\PP(A^\comp) = 1 - \PP(A)\);
+        \item \(\PP(\emptyset) = 0\);
+        \item \(\PP(A) \leq \PP(B)\) if \(A \subseteq B\);
+        \item \(\PP(A \cup B) = \PP(A) + \PP(B) - \PP(A \cap B)\).
     \end{itemize}
     
     \begin{example}
         \begin{itemize}
-            \item \emph{Rolling a fair die}. Then $\Omega = \{1, 2, 3, 4, 5, 6\}$, $\mathcal F = \mathcal P(\Omega)$, and
+            \item \emph{Rolling a fair die}. Then \(\Omega = \{1, 2, 3, 4, 5, 6\}\), \(\mathcal F = \mathcal P(\Omega)\), and
             \begin{align*}
                 \PP(A) = \frac{\mid A\mid }{6}
             \end{align*}
             since all outcomes are equally likely.
     
-            \item $\Omega = \{\omega_1, \dots, \omega_n\}$, $\mathcal F = \mathcal P(\Omega)$, $\PP(A) = \frac{\mid A\mid }{\mid \Omega\mid }$ models the experiment of picking an element of $\Omega$ uniformly at random.
+            \item \(\Omega = \{\omega_1, \dots, \omega_n\}\), \(\mathcal F = \mathcal P(\Omega)\), \(\PP(A) = \frac{\mid A\mid }{\mid \Omega\mid }\) models the experiment of picking an element of \(\Omega\) uniformly at random.
             
-            \item \emph{Picking balls from a bag}. Suppose we have $n$ balls labelled $\{1, \dots, n\}$, and we pick $k \leq n$ balls uniformly at random without replacement. Then $\Omega = \{A:  A \subseteq \{1, \dots, n\}, \mid A\mid  = k\}$, so $\mid \Omega\mid  = \binom n k$ and $\PP(\{\omega\}) = \binom n k ^{-1}$ for any $\omega \in \Omega$.
+            \item \emph{Picking balls from a bag}. Suppose we have \(n\) balls labelled \(\{1, \dots, n\}\), and we pick \(k \leq n\) balls uniformly at random without replacement. Then \(\Omega = \{A:  A \subseteq \{1, \dots, n\}, \mid A\mid  = k\}\), so \(\mid \Omega\mid  = \binom n k\) and \(\PP(\{\omega\}) = \binom n k ^{-1}\) for any \(\omega \in \Omega\).
             
-            \item \emph{A deck of 52 cards}. Take a well-shuffled deck of 52 cards. Then $\Omega = \{\text{all permutations of 52 cards}\}$, so $\mid \Omega\mid  = 52!$.
+            \item \emph{A deck of 52 cards}. Take a well-shuffled deck of 52 cards. Then \(\Omega = \{\text{all permutations of 52 cards}\}\), so \(\mid \Omega\mid  = 52!\).
             
-            What is, for example, $\PP(\text{top 2 cards are aces})$? It is $\frac{4 \cdot 3 \cdot 50!}{52!}$.
+            What is, for example, \(\PP(\text{top 2 cards are aces})\)? It is \(\frac{4 \cdot 3 \cdot 50!}{52!}\).
 
-            \item \emph{Largest digit}. Consider a string of $n$ random digits from 0 up to 9. Then $\Omega = \{0, \dots, 9\}^n$, $\mid \Omega\mid  = 10^n$.
+            \item \emph{Largest digit}. Consider a string of \(n\) random digits from 0 up to 9. Then \(\Omega = \{0, \dots, 9\}^n\), \(\mid \Omega\mid  = 10^n\).
             
-            Consider the events $A_k = \{\text{no digit exceeds $k$}\}$, $B_k = \{\text{largest digit is $k$}\}$. Then
+            Consider the events \(A_k = \{\text{no digit exceeds } k\}\), \(B_k = \{\text{largest digit is } k\}\). Then
             \begin{align*}
                 \PP(A_k) &= \frac{(k+1)^n}{10^n} \\
                 \implies \PP(B_k) = \PP(A_k \setminus A_{k-1}) &= \frac{(k+1)^n-k^n}{10^n}
             \end{align*}
 
-            \item \emph{Birthday problem}. There are $n$ people. What is the probability that at least 2 of them share the same birthday?
+            \item \emph{Birthday problem}. There are \(n\) people. What is the probability that at least 2 of them share the same birthday?
             
-            Assume each birthday is equally likely to be one of $\{1, \dots, 365\}$. Then $\Omega = \{1, \dots, 365\}^n$, $\mid \Omega\mid  = 365^n$, and $\PP(\{\omega\}) = \frac{1}{365^n}$.
+            Assume each birthday is equally likely to be one of \(\{1, \dots, 365\}\). Then \(\Omega = \{1, \dots, 365\}^n\), \(\mid \Omega\mid  = 365^n\), and \(\PP(\{\omega\}) = \frac{1}{365^n}\).
 
-            Let $A = \{\text{at least 2 people have the same birthday}\}$. Instead we count $A^\comp = \{\text{all birthdays different}\}$.
+            Let \(A = \{\text{at least 2 people have the same birthday}\}\). Instead we count \(A^\comp = \{\text{all birthdays different}\}\).
 
             \begin{align*}
                 \PP(A^\comp) &= \frac{365 \cdot 364 \cdots (365-n+1)}{365^n} \\
                 \implies \PP(A) &= 1 - \frac{365 \cdot 364 \cdots (365-n+1)}{365^n}
             \end{align*}
             
-            Perhaps surprisingly, if $n=22$, $\PP(A) = 0.476$, while if $n=23$, $\PP(A) = 0.507$.
+            Perhaps surprisingly, if \(n=22\), \(\PP(A) = 0.476\), while if \(n=23\), \(\PP(A) = 0.507\).
         \end{itemize}
     \end{example}
     
@@ -107,7 +107,7 @@
     Let us introduce some notions.
 
     \begin{enumerate}
-        \item Let $\Omega$ be a finite set with $\mid \Omega\mid  = n$. We want to partition $\Omega$ into $k$ disjoint subsets $\Omega_1, \dots, \Omega_k$ with $\mid \Omega_i\mid  = n_i$ and $\sum n_i = n$. How many ways are there to do this? It is
+        \item Let \(\Omega\) be a finite set with \(\mid \Omega\mid  = n\). We want to partition \(\Omega\) into \(k\) disjoint subsets \(\Omega_1, \dots, \Omega_k\) with \(\mid \Omega_i\mid  = n_i\) and \(\sum n_i = n\). How many ways are there to do this? It is
 
         \begin{align*}
             M &= \binom n {n_1} \cdot \binom {n-n_1} {n_2} \dots \binom{n-(n_1 + \dots + n_{k-1})}{n_k} \\
@@ -117,19 +117,19 @@
         
         This is the \emph{multinomial coefficient}.
 
-        \item Suppose $f: \{1, \dots, k\} \to \{1, \dots, n\}$ (with $k \leq n$). $f$ is \emph{strictly increasing} if $x < y \implies f(x) < f(y)$, and $f$ is \emph{increasing} if $x < y \implies f(x) \leq f(y)$.
+        \item Suppose \(f: \{1, \dots, k\} \to \{1, \dots, n\}\) (with \(k \leq n\)). \(f\) is \emph{strictly increasing} if \(x < y \implies f(x) < f(y)\), and \(f\) is \emph{increasing} if \(x < y \implies f(x) \leq f(y)\).
         
-        How many strictly increasing $f: \{1, \dots, k\} \to \{1, \dots, n\}$ are there? Such a function is determined uniquely by its range, so there are $\binom n k$ of them.
+        How many strictly increasing \(f: \{1, \dots, k\} \to \{1, \dots, n\}\) are there? Such a function is determined uniquely by its range, so there are \(\binom n k\) of them.
 
         What about increasing functions? Let's define a bijection
         \begin{align*}
             \{f: \{1, \dots, k\} \to \{1, \dots, n\}\text{ inc.}\} &\to \{f: \{1, \dots, k\} \to \{1, n+k-1\} \text{ strictly inc.}\}
         \end{align*}
-        which takes $f$ to $g$ with $g(i) = f(i) + i - 1$. Hence we have $\binom{n+k-1}{k}$ such functions.
+        which takes \(f\) to \(g\) with \(g(i) = f(i) + i - 1\). Hence we have \(\binom{n+k-1}{k}\) such functions.
     \end{enumerate}
 
     \begin{definition}[Asymptotic notation]
-        If $(a_n)$ and $(b_n)$ are sequences, we write $a_n \sim b_n$ if
+        If \((a_n)\) and \((b_n)\) are sequences, we write \(a_n \sim b_n\) if
         \begin{align*}
             \lim_{n \to \infty} \frac{a_n}{b_n} = 1
         \end{align*}
@@ -142,39 +142,39 @@
         \[
             n! \sim n^n \sqrt{2\pi n} e^{-n}
         \]
-        as $n \to \infty$.        
+        as \(n \to \infty\).        
     \end{theorem}
     
     \begin{proof}[Weaker statement]
-        We shall first show a weaker statement, that $\log n! \sim n \log n$.
+        We shall first show a weaker statement, that \(\log n! \sim n \log n\).
 
-        Define $l_n = \log n! = \log 2 + \dots + \log n$. We have
+        Define \(l_n = \log n! = \log 2 + \dots + \log n\). We have
         \begin{align*}
             \log \lfloor x \rfloor \leq \log x \leq \log \lfloor x+1 \rfloor
         \end{align*}
-        Integrating from 1 to $n$ gives
+        Integrating from 1 to \(n\) gives
         \begin{align*}
             \sum_{k=1}^{n-1} \log k &\leq \int_1^n \log x \; dx \leq \sum_{k=1}^{n} \log k \\
             \implies l_{n-1} &\leq n \log n - n + 1 \leq l_n \\
             \implies n \log n - n + 1 &\leq l_n \leq (n+1) \log (n+1) - (n+1) + 1
         \end{align*}
-        Now the result follows by dividing through by $n \log n$ and taking the limit.
+        Now the result follows by dividing through by \(n \log n\) and taking the limit.
     \end{proof}
     
     \begin{proof}[Non-examinable proof of Stirling]
-        For every twice-differentiable $f: \RR \to \RR$, for all $a < b$, we have
+        For every twice-differentiable \(f: \RR \to \RR\), for all \(a < b\), we have
         \begin{align*}
             \int_a^b f(x) \; dx = \frac{f(a) + f(b)}{2}(b-a) - \frac{1}{2} \int_a^b (x-a)(b-x)f''(x) \; dx
         \end{align*}
-        obtained by integrating twice by parts. Put $f = \log$, $a = k$, $b = k+1$ for $k \in \NN$, to get
+        obtained by integrating twice by parts. Put \(f = \log\), \(a = k\), \(b = k+1\) for \(k \in \NN\), to get
         \begin{align*}
             \int_k^{k+1} \log x \; dx = \frac{\log k + \log(k+1)}{2} + \frac{1}{2} \int_{k}^{k+1} \frac{(x-k)(k+1-x)}{x^2} \; dx
         \end{align*}
-        Summing from $k=1$ to $n-1$, we have
+        Summing from \(k=1\) to \(n-1\), we have
         \begin{align*}
             \int_1^n \log x \; dx = \frac{\log(n-1)! + \log n!}{2} + \sum_{k=1}^{n-1} a_k
         \end{align*}
-        where $a_k = \frac 1 2 \int_0^1 \frac{x(1-x)}{(x+k)^2} \; dx$. Hence
+        where \(a_k = \frac 1 2 \int_0^1 \frac{x(1-x)}{(x+k)^2} \; dx\). Hence
         \begin{align*}
             n \log n - n + 1 = \log n! - \frac{\log n}{2} + \sum_{k=1}^{n-1} a_k
         \end{align*}
@@ -189,13 +189,13 @@
             &\leq \frac{1}{2} \int_0^1 \frac{1}{2k^2} \int_0^1 x(1-x) \; dx \\
             &= \frac{1}{12k^2}
         \end{align*}
-        and so $\sum_{k=1}^\infty a_k < \infty$. Now put
+        and so \(\sum_{k=1}^\infty a_k < \infty\). Now put
         \begin{align*}
             A &= \exp\left(1 - \sum_{k=1}^\infty a_k\right) \\
             \implies n! &= n^n \cdot e^{-n} \cdot \sqrt{n} \cdot A \cdot \underbrace{\exp\left(\sum_{k=n}^\infty a_k\right)}_{\to 1 \text{ as } n \to \infty} \\
             \implies \frac{n!}{n^ne^{-n}\sqrt{n}} &\to A \text{ as } n \to \infty
         \end{align*}
-        It remains to show that $A = \sqrt{2\pi}$. Consider
+        It remains to show that \(A = \sqrt{2\pi}\). Consider
         \begin{align*}
             2^{-2n}\binom{2n}{n} &= 2^{-2n} \frac{(2n)!}{(n!)^2} \\
             &\sim \frac{2^{-2n} (2n)^{2n} e^{-2n} \sqrt{2n} A}{n^{2n}e^{-2n}nA^2} \\
@@ -209,7 +209,7 @@
         \begin{align*}
             I_n &= \int_0^{\pi/2} \cos^n \theta \; d\theta
         \end{align*}
-        We have $I_0 = \frac{\pi}{2}$, $I_1 = 1$, and, by integrating by parts, we have
+        We have \(I_0 = \frac{\pi}{2}\), \(I_1 = 1\), and, by integrating by parts, we have
         \begin{align*}
             I_n = \frac{n-1}{n} I_{n-2} && (*)
         \end{align*}
@@ -226,53 +226,53 @@
             I_{2n+1} &= \frac{2n \cdots 4 \cdot 2}{(2n+1) \cdots 3 \cdot 1} \cdot 1 \\
             &= \frac{1}{2n+1} \left(2^{-2n} \binom{2n}{n}\right)^{-1}
         \end{align*}
-        Now, we want to show that $\frac{I_{2n}}{I_{2n+1}} \to 1$ as $n \to \infty$. By $(*)$, we have
+        Now, we want to show that \(\frac{I_{2n}}{I_{2n+1}} \to 1\) as \(n \to \infty\). By \((*)\), we have
         \begin{align*}
             \frac{I_n}{I_{n-2}} \to 1 \text{ as } n \to \infty
         \end{align*}
-        But $I_n = \int_0^{\pi/2} \cos^n \theta \; d\theta$, so $I_n$ is decreasing in $n$. This gives
+        But \(I_n = \int_0^{\pi/2} \cos^n \theta \; d\theta\), so \(I_n\) is decreasing in \(n\). This gives
         \begin{align*}
             \frac{I_{2n}}{I_{2n-2}} \leq \frac{I_{2n}}{I_{2n+1}} \leq \frac{I_{2n-1}}{I_{2n+1}}
         \end{align*}
-        which shows the result by sandwich. Hence, we get, as $n \to \infty$,
+        which shows the result by sandwich. Hence, we get, as \(n \to \infty\),
         \begin{align*}
             \frac{\frac{\pi}2 \cdot 2^{-2n} \cdot \binom{2n}{n}}{\frac{1}{2n+1} \cdot \left(2^{-2n} \binom{2n}{n}\right)^{-1}} &\to 1 \\ \implies \left(2^{-2n} \binom{2n}{n}\right)^2 &\sim \frac{1}{\pi n}
         \end{align*}        
     \end{proof}
     
     \begin{proposition}[Countable subadditivity]
-        Let $(A_n)$ be a collection of events in $\mathcal F$. Then
+        Let \((A_n)\) be a collection of events in \(\mathcal F\). Then
         \begin{align*}
             \PP\left(\bigcup A_n\right) \leq \sum \PP(A_n)
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let $B_1 = A_1$, and for $n \geq 2$, let $B_n = A_n \setminus (A_1 \cup \cdots \cup A_{n-1})$. By definition, it's immediate that $(B_n)$ is a disjoint collection of sets in $\mathcal F$, and $\bigcup B_n = \bigcup A_n$, so
+        Let \(B_1 = A_1\), and for \(n \geq 2\), let \(B_n = A_n \setminus (A_1 \cup \cdots \cup A_{n-1})\). By definition, it's immediate that \((B_n)\) is a disjoint collection of sets in \(\mathcal F\), and \(\bigcup B_n = \bigcup A_n\), so
         \begin{align*}
             \PP\left(\bigcup A_n\right) = \PP\left(\bigcup B_n\right) &= \sum \PP(B_n) \\
             &\leq \sum \PP(A_n)
         \end{align*}
-        since $B_n \subseteq A_n$ for all $n$.
+        since \(B_n \subseteq A_n\) for all \(n\).
     \end{proof}
     
     \begin{proposition}[Continuity of probability measures]
         \label{continuity}
-        Take a sequence of events $(A_n)_{n \in \NN}$ such that $A_n \subseteq A_{n+1}$ for all $n$ -- we say $(A_n)$ is an \emph{increasing} sequence.
+        Take a sequence of events \((A_n)_{n \in \NN}\) such that \(A_n \subseteq A_{n+1}\) for all \(n\) -- we say \((A_n)\) is an \emph{increasing} sequence.
 
-        Then $\PP(A_n)$ is increasing and converges. In particular,
+        Then \(\PP(A_n)\) is increasing and converges. In particular,
         \begin{align*}
             \PP(A_n) \to \PP\left(\bigcup A_n\right)
         \end{align*}
-        as $n \to \infty$.
+        as \(n \to \infty\).
     \end{proposition}
     
     \begin{proof}
-        Define $B_1 = A_1$, and for $n \geq 2$, let $B_n = A_n \setminus (A_1 \cup \cdots \cup A_n)$. Then
+        Define \(B_1 = A_1\), and for \(n \geq 2\), let \(B_n = A_n \setminus (A_1 \cup \cdots \cup A_n)\). Then
         \begin{align*}
             \bigcup_{k=1}^n B_k = A_n
         \end{align*}
-        and the $B_n$'s are disjoint.Then
+        and the \(B_n\)'s are disjoint.Then
         \begin{align*}
             \PP(A_n) &= \PP\left(\bigcup_{k=1}^n B_k\right) \\
             &= \sum_{k=1}^n \PP(B_k) \to \sum_{k=1}^\infty \PP(B_k)
@@ -285,7 +285,7 @@
     \end{proof}
     
     \begin{corollary}
-        Analogously, take a sequence of events $(A_n)$ such that $A_{n+1} \subseteq A_n$ for all $n$ -- we say $(A_n)$ is a decreasing sequence. Then
+        Analogously, take a sequence of events \((A_n)\) such that \(A_{n+1} \subseteq A_n\) for all \(n\) -- we say \((A_n)\) is a decreasing sequence. Then
         \begin{align*}
             \PP(A_n) \to \PP\left(\bigcap A_n\right)
         \end{align*}
@@ -296,7 +296,7 @@
     \end{proof}
     
     \begin{proposition}[Inclusion-exclusion formula for probability measures]
-        Let $A_1, \dots, A_n \in \mathcal F$. Then
+        Let \(A_1, \dots, A_n \in \mathcal F\). Then
         \begin{align*}
             \PP\left(\bigcup A_i\right) = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \cdots \cap A_{i_k})
         \end{align*}
@@ -323,7 +323,7 @@
     \end{proof}
     
     \begin{proposition}[Bonferroni inequalities]
-        Let $A_1, \dots, A_n$ be events. Then
+        Let \(A_1, \dots, A_n\) be events. Then
         \begin{align*}
             \PP\left(\bigcup A_i\right) \begin{cases}
                 \displaystyle \leq \sum_{k=1}^r (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \cdots \cap A_{i_k}) & \text{if } r \text{ odd} \\
@@ -336,9 +336,9 @@
     \begin{proof}
         We induct again.
 
-        \emph{Base case}. $\PP(A \cup B) = \PP(A) + \PP(B) - \PP(A \cap B) \leq \PP(A) + \PP(B)$
+        \emph{Base case}. \(\PP(A \cup B) = \PP(A) + \PP(B) - \PP(A \cap B) \leq \PP(A) + \PP(B)\)
 
-        \emph{Inductive step}. Suppose $r$ is odd. Then
+        \emph{Inductive step}. Suppose \(r\) is odd. Then
         \begin{align*}
             \PP\left(\bigcup_{i=1}^n A_i\right) &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\bigcup_{i=1}^{n-1} \underbrace{\left(A_i \cap A_n\right)}_{B_i}\right)
         \end{align*}
@@ -347,20 +347,20 @@
             \PP\left(\bigcup_{i=1}^{n-1} A_i\right) &\leq \sum_{k=1}^{r} (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n-1} \PP(A_{i_1} \cap \dots \cap A_{i_k}) \\
             \PP\left(\bigcup_{i=1}^{n-1} (A_i \cap A_n)\right) &\geq \sum_{k=1}^{r-1} (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n-1} \PP(A_{i_1} \cap \dots \cap A_{i_k} \cap A_n)
         \end{align*}
-        where in the former, we choose to apply the identity for odd $r$, and in the latter, we apply it for even $r-1$. Substituting much as for the proof of the inclusion-exclusion formula, we obtain the result. The even case is analogous.
+        where in the former, we choose to apply the identity for odd \(r\), and in the latter, we apply it for even \(r-1\). Substituting much as for the proof of the inclusion-exclusion formula, we obtain the result. The even case is analogous.
     \end{proof}
     
-    Let us now consider the special case where $\Omega$ is a finite set and $\PP(A) = \mid A\mid /\mid \Omega\mid $. Then we have
+    Let us now consider the special case where \(\Omega\) is a finite set and \(\PP(A) = \mid A\mid /\mid \Omega\mid \). Then we have
 
     \begin{corollary}[Inclusion-exclusion principle for sets]
-        Suppose $\Omega$ is finite. Then
+        Suppose \(\Omega\) is finite. Then
         \begin{align*}
             \mid A_1 \cup \dots \cup A_n\mid  = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \mid A_{i_1} \cap \dots \cap A_{i_n}\mid 
         \end{align*}
     \end{corollary}
     
     \begin{proof}
-        Consider the probability space $(\Omega, \mathcal F, \PP)$ where $\PP(A) = \mid A\mid /\mid \Omega\mid $. Then, apply inclusion-exclusion and cancel $1/\mid \Omega\mid $ from both sides.
+        Consider the probability space \((\Omega, \mathcal F, \PP)\) where \(\PP(A) = \mid A\mid /\mid \Omega\mid \). Then, apply inclusion-exclusion and cancel \(1/\mid \Omega\mid \) from both sides.
     \end{proof}
     
     \section{Basic applications}
@@ -372,7 +372,7 @@
         \Omega &= \{f: \{1, \dots, n\} \to \{1, \dots, m\}\} \\
         A &= \{f \in \Omega: f \text{ is a surjection}\}
     \end{align*}
-    What is $\mid A\mid $? Let us define a set of events
+    What is \(\mid A\mid \)? Let us define a set of events
     \begin{align*}
         A_i = \{f \in \Omega: i \notin \{f(1), \dots, f(n)\}\}, \, i \in \{1, \dots, m\}
     \end{align*}
@@ -413,11 +413,11 @@
     \section{Independence and conditional probability}
     
     \begin{definition}[Independence]
-        Let $A$, $B \in \mathcal F$. We say $A$ and $B$ are \emph{independent} and write $A \perp B$ if
+        Let \(A\), \(B \in \mathcal F\). We say \(A\) and \(B\) are \emph{independent} and write \(A \perp B\) if
         \begin{align*}
             \PP(A \cap B) = \PP(A) \PP(B)
         \end{align*}
-        Likewise, a countable collection of events $(A_n)_{n \in \NN}$ is said to be independent if, for distinct $i_1, \dots, i_k$,
+        Likewise, a countable collection of events \((A_n)_{n \in \NN}\) is said to be independent if, for distinct \(i_1, \dots, i_k\),
         \begin{align*}
             \PP(A_{i_1} \cap \dots \cap A_{i_k}) = \prod_{j=1}^k \PP(A_{i_j})
         \end{align*}
@@ -439,11 +439,11 @@
             B &= \{(0, 0), (1, 0)\} \\
             C &= \{(1, 0), (0, 1)\}
         \end{align*}
-        We have $\PP(A) = \PP(B) = \PP(C)$, and furthermore we can check that $A \perp B$, $A \perp C$ and $B \perp C$. But $\\P(A \cap B \cap C) = \PP(\emptyset) = 0$, so they are not independent.
+        We have \(\PP(A) = \PP(B) = \PP(C)\), and furthermore we can check that \(A \perp B\), \(A \perp C\) and \(B \perp C\). But \(\\P(A \cap B \cap C) = \PP(\emptyset) = 0\), so they are not independent.
     \end{example*}
     
     \begin{proposition}
-        If $A$ is independent of $B$, then $A$ is independent of $B^\comp$.
+        If \(A\) is independent of \(B\), then \(A\) is independent of \(B^\comp\).
     \end{proposition}
     
     \begin{proof}
@@ -456,18 +456,18 @@
     \end{proof}
     
     \begin{definition}[Conditional probability]
-        Take a probability space $(\Omega, \mathcal F, \PP)$ and $B \in \mathcal F$ with $\PP(B) > 0$. For $A \in \mathcal F$ we write the \emph{conditional probability of $A$ given $B$} 
+        Take a probability space \((\Omega, \mathcal F, \PP)\) and \(B \in \mathcal F\) with \(\PP(B) > 0\). For \(A \in \mathcal F\) we write the \emph{conditional probability of \(A\) given \(B\)} 
         \begin{align*}
             \PP(A \mid  B) = \frac{\PP(A \cap B)}{\PP(B)}
         \end{align*}
     \end{definition}
     
     \begin{remark*}
-        Notably, if $A \perp B$, then $\PP(A \mid  B) = \PP(A)$, as we would expect.
+        Notably, if \(A \perp B\), then \(\PP(A \mid  B) = \PP(A)\), as we would expect.
     \end{remark*}
     
     \begin{proposition}[Countable additivity for conditional probability]
-        Suppose $(A_n)_{n \in \NN}$ is a disjoint sequence in $\mathcal F$. Then
+        Suppose \((A_n)_{n \in \NN}\) is a disjoint sequence in \(\mathcal F\). Then
         \begin{align*}
             \PP\left(\bigcup A_n \mid  B \right) = \sum \PP(A_n \mid  B)
         \end{align*}
@@ -484,7 +484,7 @@
     \end{proof}
     
     \begin{proposition}[Law of total probability]
-        Suppose $(B_n)_{n \in \NN}$ is a disjoint collection in $\mathcal F$, $\bigcup B_n = \Omega$, and $\PP(B_n) > 0$ for every $n$. Let $A \in \mathcal F$, then
+        Suppose \((B_n)_{n \in \NN}\) is a disjoint collection in \(\mathcal F\), \(\bigcup B_n = \Omega\), and \(\PP(B_n) > 0\) for every \(n\). Let \(A \in \mathcal F\), then
         \begin{align*}
             \PP(A) = \sum_n \PP(A \mid  B_n) \PP(B_n)
         \end{align*}
@@ -501,22 +501,22 @@
     \end{proof}
     
     \begin{proposition}[Bayes' theorem]
-        Suppose $(B_n)$ are disjoint, $\bigcup B_n = \Omega$ and $P(B_n) > 0$ for every $n$. Let $A \in \mathcal F$, then
+        Suppose \((B_n)\) are disjoint, \(\bigcup B_n = \Omega\) and \(P(B_n) > 0\) for every \(n\). Let \(A \in \mathcal F\), then
         \begin{align*}
             \PP(B_n \mid  A) = \frac{\PP(A \mid  B_n) \cdot \PP(B_n)}{\sum_k \PP(A \mid  B_k)\PP(B_k)}
         \end{align*}
     \end{proposition}
     
     \begin{proof}[Proof sketch]
-        Use the definitions of $\PP(B_n \mid  A) $ and $\PP(A \mid  B_n)$, and expand the bottom using the law of total probability.
+        Use the definitions of \(\PP(B_n \mid  A) \) and \(\PP(A \mid  B_n)\), and expand the bottom using the law of total probability.
     \end{proof}
     
-    This formula is the basis of so-called Bayesian statistics. We know the probability of $\PP(B_n)$ and we have a model which gives us $\PP(A \mid  B_n)$. With the formula, we find the \emph{posterior} probability of $B_n$ given that $A$ occurred.
+    This formula is the basis of so-called Bayesian statistics. We know the probability of \(\PP(B_n)\) and we have a model which gives us \(\PP(A \mid  B_n)\). With the formula, we find the \emph{posterior} probability of \(B_n\) given that \(A\) occurred.
     
     \begin{example*}[False positives for a rare condition]
-        Suppose that condition $A$ affects $0.1\%$ of the population. We have a medical test which is positive for $98\%$ of the affected population and $1\%$ of the unaffected population. What is the probability that a random individual who tests positive has the disease?
+        Suppose that condition \(A\) affects \(0.1\%\) of the population. We have a medical test which is positive for \(98\%\) of the affected population and \(1\%\) of the unaffected population. What is the probability that a random individual who tests positive has the disease?
 
-        Put $A = \{\text{individual suffers from }A\}$, $P = \{\text{individual tests positive}\}$. We have $\PP(A) = 0.001$, $\PP(P \mid  A) = 0.98$, $\PP(P \mid  A^\comp) = 0.01$, so
+        Put \(A = \{\text{individual suffers from }A\}\), \(P = \{\text{individual tests positive}\}\). We have \(\PP(A) = 0.001\), \(\PP(P \mid  A) = 0.98\), \(\PP(P \mid  A^\comp) = 0.01\), so
         \begin{align*}
             \PP(A \mid  P) &= \frac{\PP(P \mid  A) \PP(A)}{\PP(P \mid  A)\PP(A) + \PP(P\mid A^\comp)\PP(A^\comp)} \\
             &= 0.089
@@ -525,14 +525,14 @@
         \begin{align*}
             \PP(A \mid  P) = \frac{1}{1 + \frac{\PP(P\mid A^\comp)\PP(A^\comp)}{\PP(P \mid  A)\PP(A)}}
         \end{align*}
-        Since $\PP(A^\comp)$ and $\PP(P\mid A)$ are both very close to one, the relevant ratio is
+        Since \(\PP(A^\comp)\) and \(\PP(P\mid A)\) are both very close to one, the relevant ratio is
         \begin{align*}
             \frac{\PP(P \mid  A^\comp)}{\PP(A)}
         \end{align*}
-        But since $\PP(P \mid  A^\comp) \gg \PP(A)$, this causes a very small value for $\PP(A \mid  P)$.
+        But since \(\PP(P \mid  A^\comp) \gg \PP(A)\), this causes a very small value for \(\PP(A \mid  P)\).
     \end{example*}
 
-    \lecture{Lecture $n$}
+    \lecture{Lecture \(n\)}
     
     \begin{example*}
         \begin{itemize}
@@ -547,11 +547,11 @@
                 \PP(\text{BB} \mid  \text{BB} \cup \text{BG} \cup \text{GB}) &= \frac{\PP(\text{BB})}{\PP(\text{BB} \cup \text{BG} \cup \text{GB})} \\
                 &= \frac{\frac 1 4}{\frac 3 4} = \frac 1 3 
             \end{align*}
-            \item What about $\PP(\text{both boys} \mid \text{eldest a boy})$? This is
+            \item What about \(\PP(\text{both boys} \mid \text{eldest a boy})\)? This is
             \begin{align*}
                 \PP(\text{BB} \mid  \text{BB} \cup \text{BG}) = \frac 1 2
             \end{align*}
-            \item What about $\PP(\text{both boys} \mid \text{one a boy born on a Thursday})$?
+            \item What about \(\PP(\text{both boys} \mid \text{one a boy born on a Thursday})\)?
             Denote a boy born on Thursday by T, a boy not born on Thursday by N, and a girl by G. Then we want
             \begin{align*}
                 &\; \PP(\text{TT} \cup \text{TN} \cup \text{NT} \mid \text{TT} \cup \text{TG} \cup \text{GT} \cup \text{TN} \cup \text{NT}) \\
@@ -611,71 +611,71 @@
             &= \PP(A \mid B \cap C)\PP(B \mid C) + \PP(A \mid B^\comp \cap C^\comp)\PP(B^\comp \mid C^\comp) \\
             &> P(A \mid B \cap C^\comp)\PP(B \mid C) + \PP(A \mid B^\comp \cap C^\comp)\PP(B^\comp \mid C)
         \end{align*}
-        by the first two inequalities from above. Now, if $\PP(B \mid C) = \PP(B \mid C^\comp)$, then we would get $\PP(A \mid C) > \PP(A \mid C^\comp)$, which is the intuitive expectation -- but here this does not hold, and so we can make the `paradox' hold.
+        by the first two inequalities from above. Now, if \(\PP(B \mid C) = \PP(B \mid C^\comp)\), then we would get \(\PP(A \mid C) > \PP(A \mid C^\comp)\), which is the intuitive expectation -- but here this does not hold, and so we can make the `paradox' hold.
 
-        Even more simply, this is just the fact that, if $\frac{a_1}{a_2} > \frac{b_1}{b_2}$ and $\frac{c_1}{c_2} > \frac{d_1}{d_2}$, it does not necessarily hold that $\frac{a_1+c_1}{a_2+c_2} > \frac{b_1+d_1}{b_2+d_2}$.       
+        Even more simply, this is just the fact that, if \(\frac{a_1}{a_2} > \frac{b_1}{b_2}\) and \(\frac{c_1}{c_2} > \frac{d_1}{d_2}\), it does not necessarily hold that \(\frac{a_1+c_1}{a_2+c_2} > \frac{b_1+d_1}{b_2+d_2}\).       
     \end{example*}
     
     \section{Probability distributions}
 
     \subsection{Discrete probability distributions}
 
-    Take a probability space $(\Omega, \mathcal F, \PP)$ with $\Omega$ either finite or countable -- that is, $\Omega = \{\omega_1, \omega_2, \dots\}$. As normal, we take $\mathcal F = \mathcal P(\Omega)$, and so we need only care about $\PP(\{\omega_i\})$ for every $i$.
+    Take a probability space \((\Omega, \mathcal F, \PP)\) with \(\Omega\) either finite or countable -- that is, \(\Omega = \{\omega_1, \omega_2, \dots\}\). As normal, we take \(\mathcal F = \mathcal P(\Omega)\), and so we need only care about \(\PP(\{\omega_i\})\) for every \(i\).
 
     \begin{definition}[Discrete probability distributions]
-        For such a setup, we call the sequence of probabilities $\left(\PP(\{\omega_i\})\right)_i$ a \emph{discrete probability distribution}. We may also write $p_i = \PP(\{\omega_i\})$.
+        For such a setup, we call the sequence of probabilities \(\left(\PP(\{\omega_i\})\right)_i\) a \emph{discrete probability distribution}. We may also write \(p_i = \PP(\{\omega_i\})\).
     \end{definition}
 
     Let us consider some examples of discrete probability distributions.
     
     \begin{enumerate}[label=\protect\circled{\arabic*}]
-        \item \emph{Bernoulli distribution}. The Bernoulli distribution models the outcome of a toss of a biased coin. We have $\Omega = \{0, 1\}$, $p_0 = \PP(\{0\}) = 1 - p$, $p_1 = \PP(\{1\}) = p$ for some $p$ with $p \in [0, 1]$.
-        \item \emph{Binomial distribution}. We denote this $\Bin(n, p)$, with $n \in \NN$, $p \in [0, 1]$. It models the number of heads seen for $n$ independent tosses of a $p$-biased coin. We have
+        \item \emph{Bernoulli distribution}. The Bernoulli distribution models the outcome of a toss of a biased coin. We have \(\Omega = \{0, 1\}\), \(p_0 = \PP(\{0\}) = 1 - p\), \(p_1 = \PP(\{1\}) = p\) for some \(p\) with \(p \in [0, 1]\).
+        \item \emph{Binomial distribution}. We denote this \(\Bin(n, p)\), with \(n \in \NN\), \(p \in [0, 1]\). It models the number of heads seen for \(n\) independent tosses of a \(p\)-biased coin. We have
         \begin{align*}
             \Omega &= \{0, 1, \dots, n\} \\
             p_k &= \binom n k p^k (1-p)^{n-k} 
         \end{align*}
-        \item \emph{Multinomial distribution}. We denote this $\M(n, p_1, \dots, p_k)$, where $p_i \geq 0$, $\sum p_i = 1$. Given $k$ boxes and $n$ balls placed in box $i$ with $p_i$, the multinomial distribution gives the probability of $n_l$ balls in box $l$ for every $n$. We have
+        \item \emph{Multinomial distribution}. We denote this \(\M(n, p_1, \dots, p_k)\), where \(p_i \geq 0\), \(\sum p_i = 1\). Given \(k\) boxes and \(n\) balls placed in box \(i\) with \(p_i\), the multinomial distribution gives the probability of \(n_l\) balls in box \(l\) for every \(n\). We have
         \begin{align*}
             \Omega &= \left\{(n_1, \dots, n_k) \in \NN^k: \sum_{i=1}^k n_i = n\right\} \\
             \PP(n_1, \dots, n_k) &= \binom n {n_1} n_1^{p_1} \cdot \binom {n-n_1}{n_2} p_2^{n_2} \cdots \binom{n-n_1-\dots-n_{k-1}}{n_k} p_k^{n_k} \\
             &= \binom n {n_1, n_2, \dots, n_k} p_1^{n_1} p_2^{n_2} \dots p_k^{n_k}
         \end{align*}
-        \item \emph{Geometric distribution}. The geometric distribution gives the probabiity that the first heads achieved on a $p$-coin is after $k$ tosses:
+        \item \emph{Geometric distribution}. The geometric distribution gives the probabiity that the first heads achieved on a \(p\)-coin is after \(k\) tosses:
         \begin{align*}
             \Omega &= \{1, 2, \dots\} \\
             p_k &= (1-p)^{k-1}p
         \end{align*}
-        Alternatively, we might want to model the probability that we see $k$ tails before the first heads:
+        Alternatively, we might want to model the probability that we see \(k\) tails before the first heads:
         \begin{align*}
             \Omega &= \{0, 1, \dots\} \\
             p_k' &= (1-p)^kp
         \end{align*}
-        \item \emph{Poisson distribution}. Suppose customers arrive into a shop in $[0, 1]$. Discretise $[0, 1]$ into $\left\{\left[\frac{i-1}{N}, \frac{i}{N}\right]\right\}, i = 1, \dots, N$, $N \in \NN$. Independently, in each interval, a customer arrives with probability $p$, and doesn't arrive with probability $1-p$.
+        \item \emph{Poisson distribution}. Suppose customers arrive into a shop in \([0, 1]\). Discretise \([0, 1]\) into \(\left\{\left[\frac{i-1}{N}, \frac{i}{N}\right]\right\}, i = 1, \dots, N\), \(N \in \NN\). Independently, in each interval, a customer arrives with probability \(p\), and doesn't arrive with probability \(1-p\).
         
         Then
         \begin{align*}
             \PP(k \text{ customers have arrived}) = \binom N k p^k (1-p)^{N-k}
         \end{align*}
-        -- in other words, this follows a binomial distribution. Now, take $p = \frac{\lambda} N$, so
+        -- in other words, this follows a binomial distribution. Now, take \(p = \frac{\lambda} N\), so
         \begin{align*}
             \PP(k \text{ customers have arrived}) &= \frac{N!}{k!(N-k)!}\left(\frac{\lambda}{N}\right)^k\left(1-\frac{\lambda}{N}\right)^{N-k} \\
             &= \frac{\lambda^k}{k!} \cdot \underbrace{\frac{N(N-1)\dots(N-k+1)}{N^k}}_{\to 1} \underbrace{\left(1-\frac{\lambda}{N}\right)^{N-k}}_{\to e^{-\lambda}} \\
             &\to e^{-\lambda}\frac{\lambda^k}{k!}
         \end{align*}
-        as $N \to \infty$. Hence we have
+        as \(N \to \infty\). Hence we have
         \begin{align*}
             \Omega &= \{0, 1, 2, \dots\} \\
             p_k &= e^{-\lambda}\frac{\lambda^k}{k!}
         \end{align*}
-        and we denote this $\Poi(\lambda)$.
+        and we denote this \(\Poi(\lambda)\).
     \end{enumerate}
     
     \subsection{Random variables}
 
     \begin{definition}
         \label{random-variables}
-        Given a probability space $(\Omega, \mathcal F, \PP)$, a \emph{random variable} is a function
+        Given a probability space \((\Omega, \mathcal F, \PP)\), a \emph{random variable} is a function
         \begin{align*}
             X: \Omega \to \RR
         \end{align*}
@@ -683,23 +683,23 @@
         \begin{align*}
             \{\omega \in \Omega : X(\omega) \leq x\} \in \mathcal F
         \end{align*}
-        for any $x$. We have the shorthand notation $\{X \leq x\}$ to refer to $\{\omega \in \Omega: X(\omega) \leq x\}$, and $\{X \in A\} = \{\omega \in \Omega: X(\omega) \in A\}$.
+        for any \(x\). We have the shorthand notation \(\{X \leq x\}\) to refer to \(\{\omega \in \Omega: X(\omega) \leq x\}\), and \(\{X \in A\} = \{\omega \in \Omega: X(\omega) \in A\}\).
     \end{definition}
     
     \begin{definition}
-        Let $A \in \mathcal F$. Define the \emph{indicator} of $A$
+        Let \(A \in \mathcal F\). Define the \emph{indicator} of \(A\)
         \begin{align*}
             1_A(\omega) = 1(\omega \in A) = \begin{cases}
                 1 & \omega \in A \\
                 0 & \omega \notin A
             \end{cases}
         \end{align*}
-        Since $A \in \mathcal F$, $1_A$ is a random variable.        
+        Since \(A \in \mathcal F\), \(1_A\) is a random variable.        
     \end{definition}
 
     \begin{definition}
         \label{probability-distribution-function}
-        Suppose $X$ is a random variable. The \emph{probability distribution function} of $X$ is given by
+        Suppose \(X\) is a random variable. The \emph{probability distribution function} of \(X\) is given by
         \begin{align*}
             F_X(x): \RR &\to [0, 1] \\
             x &\mapsto \PP(\{\omega \in \Omega: X(\omega) \leq x\}) = \PP(X \leq x)
@@ -707,21 +707,21 @@
     \end{definition}
     
     \begin{definition}
-        $X = (X_1, \dots, X_n)$ is called a \emph{random variable in $\RR^n$} if
+        \(X = (X_1, \dots, X_n)\) is called a \emph{random variable in \(\RR^n\)} if
         \begin{align*}
             (X_1, \dots, X_n): \Omega \to \RR^n
         \end{align*}
-        is a function such that, for any $x_1, \dots, x_n$,
+        is a function such that, for any \(x_1, \dots, x_n\),
         \begin{align*}
             \{\omega: X_1(\omega) \leq x_1, \dots, X_n(\omega) \leq x_n\} \in \mathcal F
         \end{align*}
-        which we denote with the shorthand $\{X_1 \leq x_1, \dots, X_n \leq x_n\}$.
+        which we denote with the shorthand \(\{X_1 \leq x_1, \dots, X_n \leq x_n\}\).
     \end{definition}
     
-    Note that $(X_1, \dots, X_n)$ is a random variable if and only if all of $X_1, \dots, X_n$ are.
+    Note that \((X_1, \dots, X_n)\) is a random variable if and only if all of \(X_1, \dots, X_n\) are.
 
     \begin{definition}
-        A random variable $X$ is called \emph{discrete} if it takes values in some countable set $S$.
+        A random variable \(X\) is called \emph{discrete} if it takes values in some countable set \(S\).
     \end{definition}
     
     \begin{definition}
@@ -729,33 +729,33 @@
         \begin{align*}
             p_x = \PP(X = x) = \PP({\omega: X(\omega) = x})
         \end{align*}
-        Then, $(p_x)_{x \in S}$ is called the \emph{probability mass function} of $X$.        
+        Then, \((p_x)_{x \in S}\) is called the \emph{probability mass function} of \(X\).        
     \end{definition}
     
     Now we are able to say things like
     \begin{align*}
         \text{for any }A \subseteq S, \PP(X \in A) = \sum_{x \in A}p_x
     \end{align*}
-    If $p_x$ follows a given distribution, then we say $X$ is a random variable with that distribution or a random variable following that distribution.
+    If \(p_x\) follows a given distribution, then we say \(X\) is a random variable with that distribution or a random variable following that distribution.
     
     \begin{definition}
-        Let $X_1, \dots, X_n$ be discrete random variables with values in $S_1, \dots, S_n$. They are called \emph{independent} if
+        Let \(X_1, \dots, X_n\) be discrete random variables with values in \(S_1, \dots, S_n\). They are called \emph{independent} if
         \begin{align*}
             \PP(X_1 = x_1, \dots, X_n = x_n) = \PP(X_1 = x_1) \dots \PP(X_n = x_n)
         \end{align*}
-        for all $x_1 \in S_1, \dots, x_n \in S_n$.
+        for all \(x_1 \in S_1, \dots, x_n \in S_n\).
     \end{definition}
     
     \begin{example}
-        Toss a $p$-coin $N$ times independently. Then
+        Toss a \(p\)-coin \(N\) times independently. Then
         \begin{align*}
             \Omega = \{0, 1\}^N
         \end{align*}
-        and every $\omega \in \Omega$ is of the form $(\omega_1, \dots, \omega_N)$, where $\omega_i$ is the $i^\text{th}$ outcome. Hence
+        and every \(\omega \in \Omega\) is of the form \((\omega_1, \dots, \omega_N)\), where \(\omega_i\) is the \(i^\text{th}\) outcome. Hence
         \begin{align*}
             p_{\omega} = \PP(\{\omega\}) = \prod_{k=1}^N p^{\omega_k} (1-p)^{1-\omega_k}
         \end{align*}
-        Let us also define random variables $X_k$ for each $k$, satisfying $X_k(\omega) = \omega_k$. Clearly $X_k$ is a Bernoulli r.v. of parameter $p$. We claim $X_1, \dots, X_N$ are independent: we have
+        Let us also define random variables \(X_k\) for each \(k\), satisfying \(X_k(\omega) = \omega_k\). Clearly \(X_k\) is a Bernoulli r.v. of parameter \(p\). We claim \(X_1, \dots, X_N\) are independent: we have
         \begin{align*}
             P(X_1 = x_1, \dots, X_N = x_N) &= \prod_{k=1}^N p^{x_\omega}(1-p)^{1-x_\omega} \\
             &= \prod_{k=1}^N \PP(X_i = x_i)
@@ -767,7 +767,7 @@
     \subsection{Expectation}
 
     \begin{definition}
-        Suppose $\Omega$ is finite or countable, and let $X: \Omega \to \RR$ be a discrete random variable. We say $X$ is \emph{non-negative} if $X \geq 0$ -- then we define the \emph{expectation} of $X$ by
+        Suppose \(\Omega\) is finite or countable, and let \(X: \Omega \to \RR\) be a discrete random variable. We say \(X\) is \emph{non-negative} if \(X \geq 0\) -- then we define the \emph{expectation} of \(X\) by
         \begin{align*}
             \EE[X] = \sum_{\omega \in \Omega} \PP(\{\omega\}) \cdot X(\omega)
         \end{align*}
@@ -785,10 +785,10 @@
         &= \sum_{x \in \Omega_X} x \sum_{\omega \in \{X = x\}} \PP(\{\omega\}) \\
         &= \sum_{x \in \Omega_X} x \cdot  \PP(X = x)
     \end{align*}
-    or in other words the average of the values taken by $X$, weighted by their probabilities.
+    or in other words the average of the values taken by \(X\), weighted by their probabilities.
     
     \begin{example}
-        Suppose $X \sim \Bin(n, p)$. Then
+        Suppose \(X \sim \Bin(n, p)\). Then
         \begin{align*}
             \EE[X] &= \sum_{k=0}^N k\PP(X = k) \\
             &= \sum_{k=0}^N k \binom N k p^k (1-p)^{N-k} \\
@@ -799,7 +799,7 @@
     \end{example}
     
     \begin{example}
-        Suppose $X \sim \Poi(\lambda)$. Then
+        Suppose \(X \sim \Poi(\lambda)\). Then
         \begin{align*}
             \EE[X] &= \sum_{k=0}^\infty k \PP(X = k) \\
             &= \sum_{k=0}^\infty ke^{-\lambda}\frac{\lambda^k}{k!} \\
@@ -807,37 +807,37 @@
         \end{align*}
     \end{example}
     
-    Let $X$ be a random variable -- then we define
+    Let \(X\) be a random variable -- then we define
     \begin{align*}
         X^+ &= \max(X, 0) \\
         X^- &= \max(-X, 0)
     \end{align*}
-    so $X = X^+ - X^-$ and $|X| = X^+ + X^-$. Supposing $X$ is discrete, we can define the expectations of $\EE[X^+]$ and $\EE[X^-]$, since they are both non-negative.
+    so \(X = X^+ - X^-\) and \(|X| = X^+ + X^-\). Supposing \(X\) is discrete, we can define the expectations of \(\EE[X^+]\) and \(\EE[X^-]\), since they are both non-negative.
 
-    If at least one of $\EE[X^+]$ and $\EE[X^-]$ is finite, we define
+    If at least one of \(\EE[X^+]\) and \(\EE[X^-]\) is finite, we define
     \begin{align*}
         \EE[X] = \EE[X^+] - \EE[X^-]
     \end{align*}
-    If both are infinite, the expectation of $X$ is undefined.
+    If both are infinite, the expectation of \(X\) is undefined.
 
-    Also, if $\EE[|X|]$ (which we define in the obvious way) is $< \infty$, we say $X$ is integrable. When $\EE[X]$ is well-defined, we have
+    Also, if \(\EE[|X|]\) (which we define in the obvious way) is \(< \infty\), we say \(X\) is integrable. When \(\EE[X]\) is well-defined, we have
     \begin{align*}
         \EE[X] = \sum_{x \in \Omega_X} x \cdot \PP(X = x)
     \end{align*}
     
     We have some properties of expectations as follows:
     \begin{itemize}
-        \item If $X \geq 0$, then $\EE[X] \geq 0$.
-        \item If $X \geq 0$ and $\EE[X] = 0$, then $\PP(X = 0) = 1$.
-        \item If $c \in \RR$, then $\EE[cX] = c\EE[X]$ and $\EE[c + X] = c + \EE[X]$.
-        \item If $X$ and $Y$ are random variables (and $X$, $Y$ integrable), then $\EE[X + Y] = \EE[X] + \EE[Y]$.
-        \item In the countable case, we take $c_1, \dots, c_n \in \RR$ and $X_1, \dots, X_n$ integrable, and then we have
+        \item If \(X \geq 0\), then \(\EE[X] \geq 0\).
+        \item If \(X \geq 0\) and \(\EE[X] = 0\), then \(\PP(X = 0) = 1\).
+        \item If \(c \in \RR\), then \(\EE[cX] = c\EE[X]\) and \(\EE[c + X] = c + \EE[X]\).
+        \item If \(X\) and \(Y\) are random variables (and \(X\), \(Y\) integrable), then \(\EE[X + Y] = \EE[X] + \EE[Y]\).
+        \item In the countable case, we take \(c_1, \dots, c_n \in \RR\) and \(X_1, \dots, X_n\) integrable, and then we have
         \begin{align*}
             \EE\left[\sum_{i=1}^n c_i X_i\right] = \sum_{i=1}^n c_i \EE[X_i]
         \end{align*}
     \end{itemize}
     
-    Let us give a proof of the final identity in the case where $\Omega$ is countable. We have
+    Let us give a proof of the final identity in the case where \(\Omega\) is countable. We have
     \begin{align*}
         \EE\left[\sum_n X_n\right] &= \sum_{\omega \in \Omega} \left(\sum_n X_n(\omega)\right) \PP(\{\omega\}) \\
         &= \sum_n \sum_{\omega \in \Omega} X_n(\omega) \PP(\{\omega\}) \\
@@ -845,13 +845,13 @@
     \end{align*}
     where we can interchange sums by the assumption that the random variables are integrable.
 
-    We also have the useful result that, if $X = 1(A)$ for some event $A$,
+    We also have the useful result that, if \(X = 1(A)\) for some event \(A\),
     \begin{align*}
         \EE[X] = \PP(A)
     \end{align*}
     
     \begin{proposition}
-        Let $g: \RR \to \RR$, and define the random variable $g(X)$ by
+        Let \(g: \RR \to \RR\), and define the random variable \(g(X)\) by
         \begin{align*}
             g(X)(\omega) = g(X(\omega))
         \end{align*}
@@ -862,7 +862,7 @@
     \end{proposition}
     
     \begin{proof}
-        Put $Y = g(X)$, then
+        Put \(Y = g(X)\), then
         \begin{align*}
             \{Y = y\} &= \{\omega: Y(\omega) = y\} \\
             &= \{\omega: g(X(\omega)) = y\} \\
@@ -880,14 +880,14 @@
     \end{proof}
     
     \begin{proposition}
-        Suppose that $X \geq 0$ and takes integer values. Then
+        Suppose that \(X \geq 0\) and takes integer values. Then
         \begin{align*}
             \EE[X] = \sum_{k=1}^\infty \PP(X \geq k) = \sum_{k=0}^\infty \PP(X > k)
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Since $X \geq 0$ and $X \in \NN$, we have
+        Since \(X \geq 0\) and \(X \in \NN\), we have
         \begin{align*}
             X = \sum_{k=1}^\infty 1(X \geq k) = \sum_{k=0}^\infty 1(X > k)
         \end{align*}
@@ -899,13 +899,13 @@
         \end{align*}
     \end{proof}
     
-    \lecture{Lecture $n+1$ -- 09/02/26}
+    \lecture{Lecture \(n+1\) -- 09/02/26}
 
     We present another proof of the inclusion-exclusion formula. First, we should establish some properties about indicator functions:
     \begin{itemize}
-        \item $1(A^\comp) = 1 - 1(A)$;
-        \item $1(A \cap B) = 1(A) \cdot 1(B)$;
-        \item $1(A \cup B) = 1 - (1-1(A))(1-1(B))$.
+        \item \(1(A^\comp) = 1 - 1(A)\);
+        \item \(1(A \cap B) = 1(A) \cdot 1(B)\);
+        \item \(1(A \cup B) = 1 - (1-1(A))(1-1(B))\).
     \end{itemize}
     
     More generally,
@@ -913,7 +913,7 @@
         1(A_1 \cup \dots \cup A_n) &= 1 - \prod_{i=1}^n (1-1(A_i)) \\
         &= \sum_{i=1}^n 1(A_i) - \sum_{1 \leq i_1 < i_2 \leq n} 1(A_{i_1} \cap A_{i_2}) + \dots + (-1)^{n+1} 1(A_1 \cap \dots \cap A_n)
     \end{align*}
-    Then, we can take expectations of both sides and apply $\EE[1(A)] = \PP(A)$ to get
+    Then, we can take expectations of both sides and apply \(\EE[1(A)] = \PP(A)\) to get
     \begin{align*}
         \PP(A_1 \cup \dots \cup A_n) &= \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \PP(A_{i_1} \cap \dots \cap A_{i_k})
     \end{align*}
@@ -921,26 +921,26 @@
     \subsection{Moments, variance and covariance}
 
     \begin{definition}
-        Let $X$ be a random variable and $r \in \NN$. We call $\EE[X^r]$, as long as it is well-defined, the \emph{$r^\text{th}$ moment} of $X$.
+        Let \(X\) be a random variable and \(r \in \NN\). We call \(\EE[X^r]\), as long as it is well-defined, the \emph{\(r^\text{th}\) moment} of \(X\).
     \end{definition}
     
     \begin{definition}
-        The \emph{variance} of $X$ is given by
+        The \emph{variance} of \(X\) is given by
         \begin{align*}
             \Var(X) = \EE[\left(X-\EE[X]\right)^2]
         \end{align*}
-        Furthermore, the \emph{standard deviation} of $X$ is given by $\sqrt{\Var(X)}$.        
+        Furthermore, the \emph{standard deviation} of \(X\) is given by \(\sqrt{\Var(X)}\).        
     \end{definition}
     
     We have some properties of variance as follows:
     \begin{itemize}
-        \item $\Var(X) \geq 0$, since it is the expectation of a squared quantity;
-        \item If $\Var(X) = 0$, then $\PP(X = \EE[X]) = 1$;
-        \item If $c \in \RR$, then $\Var(cX) = c^2\Var(X)$ and $\Var(X + c) = \Var(X)$.
+        \item \(\Var(X) \geq 0\), since it is the expectation of a squared quantity;
+        \item If \(\Var(X) = 0\), then \(\PP(X = \EE[X]) = 1\);
+        \item If \(c \in \RR\), then \(\Var(cX) = c^2\Var(X)\) and \(\Var(X + c) = \Var(X)\).
     \end{itemize}
     
     \begin{lemma}
-        The variance of $X$ is also given by
+        The variance of \(X\) is also given by
         \begin{align*}
             \Var(X) = \EE[X^2] - \EE[X]^2
         \end{align*}
@@ -956,7 +956,7 @@
     \end{proof}
     
     \begin{lemma}
-        The function $\EE[(X-c)^2]$ is minimised when $c=\EE[X]$, and at that point is equal to $\Var(X)$.
+        The function \(\EE[(X-c)^2]\) is minimised when \(c=\EE[X]\), and at that point is equal to \(\Var(X)\).
     \end{lemma}
     
     \begin{proof}
@@ -971,7 +971,7 @@
     
     \begin{example}
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item Suppose $X \sim \Bin(n, p)$. Recall $\EE[X] = np$. We have
+            \item Suppose \(X \sim \Bin(n, p)\). Recall \(\EE[X] = np\). We have
             \begin{align*}
                 \Var(X) = \EE[X(X-1)] + \EE[X] - \EE[X]^2
             \end{align*}
@@ -981,32 +981,32 @@
                 &= (n-1)np^2 \sum_{k=0}^{n-2} \binom{n-2}{k} p^k (1-p)^{n-2-k} \\
                 &= (n-1)np^2
             \end{align*}
-            so that $\Var(X) = (n-1)np^2 + np - n^2p^2 = np(1-p)$.
-            \item Suppose $X \sim \Poi(\lambda)$. Recall $\EE[X] = \lambda$. We have
+            so that \(\Var(X) = (n-1)np^2 + np - n^2p^2 = np(1-p)\).
+            \item Suppose \(X \sim \Poi(\lambda)\). Recall \(\EE[X] = \lambda\). We have
             \begin{align*}
                 \EE[X(X-1)] &= \sum_{k=2}^\infty k(k-1) e^{-\lambda}\frac{\lambda^k}{k!} \\
                 &= e^{-\lambda}l^2 \sum_{k=2}^\infty \frac{\lambda^{k-2}}{(k-2)!} = \lambda^2
             \end{align*}
-            So $\Var(X) = \lambda^2 + \lambda - \lambda^2 = \lambda$.
+            So \(\Var(X) = \lambda^2 + \lambda - \lambda^2 = \lambda\).
         \end{enumerate}
     \end{example}
     
     \begin{definition}
-        Let $X$ and $Y$ be random variables. Then the \emph{covariance} of $X$ and $Y$ is
+        Let \(X\) and \(Y\) be random variables. Then the \emph{covariance} of \(X\) and \(Y\) is
         \begin{align*}
             \Cov(X, Y) = \EE[(X-\EE[X])(Y-\EE[Y])]
         \end{align*}
     \end{definition}
     We have some properties:
     \begin{itemize}
-        \item $\Cov(X, Y) = \Cov(Y, X)$;
-        \item $\Cov(X, X) = \Var(X)$;
-        \item for any $c \in \RR$, $\Cov(cX, Y) = c\Cov(X, Y)$ and $\Cov(X + c, Y) = \Cov(X, Y)$;
-        \item for any $c \in \RR$, $\Cov(c, X) = 0$.
+        \item \(\Cov(X, Y) = \Cov(Y, X)\);
+        \item \(\Cov(X, X) = \Var(X)\);
+        \item for any \(c \in \RR\), \(\Cov(cX, Y) = c\Cov(X, Y)\) and \(\Cov(X + c, Y) = \Cov(X, Y)\);
+        \item for any \(c \in \RR\), \(\Cov(c, X) = 0\).
     \end{itemize}
     
     \begin{lemma}
-        The covariance of $X$ and $Y$ is given by
+        The covariance of \(X\) and \(Y\) is given by
         \begin{align*}
             \Cov(X, Y) = \EE[XY] - \EE[X]\EE[Y]
         \end{align*}
@@ -1017,7 +1017,7 @@
     \end{proof}
 
     \begin{lemma}
-        For random variables $X$ and $Y$, we have
+        For random variables \(X\) and \(Y\), we have
         \begin{align*}
             \Var(X+Y) = \Var(X) + \Var(Y) + 2\Cov(X, Y)
         \end{align*}
@@ -1032,7 +1032,7 @@
     \end{proof}
     
     \begin{lemma}
-        For $c_1, \dots, c_n$ and $d_1, \dots, d_n \in \RR$,
+        For \(c_1, \dots, c_n\) and \(d_1, \dots, d_n \in \RR\),
         \begin{align*}
             \Cov\left(\sum_{i=1}^n c_iX_i, \sum_{j=1}^n d_iY_i\right) = \sum_{i,j=1}^n c_id_j \Cov(X_i, Y_j)
         \end{align*}
@@ -1049,7 +1049,7 @@
     Let us consider some results on independence.
 
     \begin{lemma}
-        Suppose $X_1$, $X_2$ and $X_3$ are independent -- then $X_1$ and $X_2$ are independent.
+        Suppose \(X_1\), \(X_2\) and \(X_3\) are independent -- then \(X_1\) and \(X_2\) are independent.
     \end{lemma}
 
     \begin{proof}
@@ -1066,14 +1066,14 @@
     \end{remark*}
     
     \begin{lemma}
-        Let $X$ and $Y$ be two independent random variables, and let $f$, $g: \RR \to \RR_{+}$. Then
+        Let \(X\) and \(Y\) be two independent random variables, and let \(f\), \(g: \RR \to \RR_{+}\). Then
         \begin{align*}
             \EE[f(X)g(Y)] &= \EE[f(X)]\EE[g(Y)]
         \end{align*}
     \end{lemma}
     
     \begin{proof}
-        Let the random variable $Z = (X, Y)$, so $h(Z) = f(X)g(Y)$. Then
+        Let the random variable \(Z = (X, Y)\), so \(h(Z) = f(X)g(Y)\). Then
         \begin{align*}
             \EE[h(Z)] &= \sum_{(x, y)}h(x, y) \PP(Z = (x, y)) \\
             &= \sum_{(x, y)}f(x)g(y) \PP(X = x, Y = y) \\
@@ -1083,7 +1083,7 @@
     \end{proof}
     
     \begin{proposition}
-        If $X$ and $Y$ are independent, $\Cov(X, Y) = 0$.
+        If \(X\) and \(Y\) are independent, \(\Cov(X, Y) = 0\).
     \end{proposition}
     
     \begin{remark*}
@@ -1091,17 +1091,17 @@
     \end{remark*}
     
     \begin{example}
-        Let $X_1, X_2, X_3$ be independent Bernoulli random variables with $p=\frac{1}{2}$. Let $Y_1 = 2X_1-1$, $Y_2 = 2X_2-1$. Also let $Z_1 = Y_1X_3$, $Z_2 = Y_2X_3$. Then $\EE[Y_1] = \EE[Y_2] = 0$, and $\EE[Z_1] = \EE[Z_2] = 0$ by independence. Then
+        Let \(X_1, X_2, X_3\) be independent Bernoulli random variables with \(p=\frac{1}{2}\). Let \(Y_1 = 2X_1-1\), \(Y_2 = 2X_2-1\). Also let \(Z_1 = Y_1X_3\), \(Z_2 = Y_2X_3\). Then \(\EE[Y_1] = \EE[Y_2] = 0\), and \(\EE[Z_1] = \EE[Z_2] = 0\) by independence. Then
         \begin{align*}
             \Cov(Z_1, Z_2) = \EE[Z_1Z_2] = \EE[Y_1Y_2X_3^2]
         \end{align*}
-        But we claim $Z_1$ and $Z_2$ are not independent. Observe $\PP(Z_1 = 0, Z_2 = 0) = \PP(X_3 = 0) = \frac{1}{2}$. But $\PP(Z_1 = 0) = \PP(Z_2 = 0) = \frac 1 2$.
+        But we claim \(Z_1\) and \(Z_2\) are not independent. Observe \(\PP(Z_1 = 0, Z_2 = 0) = \PP(X_3 = 0) = \frac{1}{2}\). But \(\PP(Z_1 = 0) = \PP(Z_2 = 0) = \frac 1 2\).
     \end{example}
     
     \subsection{Inequalities on random variables}
 
     \begin{proposition}[Markov's inequality]
-        Let $X$ be a non-negative random variable and $a > 0$. Then
+        Let \(X\) be a non-negative random variable and \(a > 0\). Then
         \begin{align*}
             \PP(X \geq a) \leq \frac{\EE[X]}{a}
         \end{align*}
@@ -1117,7 +1117,7 @@
     \end{proof}
     
     \begin{proposition}[Chebyshev's inequality]
-        Let $X$ be a random variable with $\EE[X] < \infty$. Then, for any $a > 0$,
+        Let \(X\) be a random variable with \(\EE[X] < \infty\). Then, for any \(a > 0\),
         \begin{align*}
             \PP(|X - \EE[X]| \geq a) \leq \frac{\Var(X)}{a^2}
         \end{align*}
@@ -1133,21 +1133,21 @@
     \end{proof}
     
     \begin{proposition}[Cauchy-Schwarz]
-        Let $X$ and $Y$ be random variables, then
+        Let \(X\) and \(Y\) be random variables, then
         \begin{align*}
             \EE[|XY|] \leq \sqrt{\EE[X^2] \cdot \EE[Y^2]}
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Assume that $\EE[X^2]$ and $\EE[Y^2]$ are finite, otherwise there is nothing to prove. Then, $|XY| \leq \frac 1 2 (X^2 + Y^2)$, so, taking expectations, $\EE[|XY|]$ is also finite. We may also assume $\EE[X^2] > 0$, $\EE[Y^2] > 0$. Let us also assume for the time being that $X, Y \geq 0$.
+        Assume that \(\EE[X^2]\) and \(\EE[Y^2]\) are finite, otherwise there is nothing to prove. Then, \(|XY| \leq \frac 1 2 (X^2 + Y^2)\), so, taking expectations, \(\EE[|XY|]\) is also finite. We may also assume \(\EE[X^2] > 0\), \(\EE[Y^2] > 0\). Let us also assume for the time being that \(X, Y \geq 0\).
 
-        Let $t \in \RR$ and consider $(X-tY)^2$. We have
+        Let \(t \in \RR\) and consider \((X-tY)^2\). We have
         \begin{align*}
             0 &\leq \EE[(X-tY)^2] \\
             &= \EE[X^2] - 2t\EE[XY] + t^2\EE[Y^2] := f(t)
         \end{align*}
-        Then $f'(t) = -2\EE[XY] + 2t\EE[Y^2]$, so $\min f(t)$ is achieved at $t^* = \frac{\EE[XY]}{\EE[Y^2]}$. We hence have
+        Then \(f'(t) = -2\EE[XY] + 2t\EE[Y^2]\), so \(\min f(t)\) is achieved at \(t^* = \frac{\EE[XY]}{\EE[Y^2]}\). We hence have
         \begin{align*}
             0 &\leq \EE[X^2] - 2\frac{\EE[XY]^2}{\EE[Y^2]} + \frac{\EE[XY]^2}{\EE[Y^2]} \\
             \implies \EE[XY]^2 &\leq \EE[X^2] \cdot \EE[Y^2]
@@ -1155,42 +1155,42 @@
     \end{proof}
     
     \begin{remark*}
-        We could also have just put in our value for $t*$ from the beginning -- the minimisation approach is purely to provide rationale.
+        We could also have just put in our value for \(t*\) from the beginning -- the minimisation approach is purely to provide rationale.
     \end{remark*}
     
     \begin{remark*}
-        When is equality achieved? We would need $f(t^*) = 0$, that is
+        When is equality achieved? We would need \(f(t^*) = 0\), that is
         \begin{align*}
             \EE[(X - t^*Y)^2] &= 0 \\
             \implies P(X = t^*Y) &= \PP(X - t^*Y = 0) = 1
         \end{align*}
-        so $X$ is just a multiple of $Y$.        
+        so \(X\) is just a multiple of \(Y\).        
     \end{remark*}
     
     \begin{definition}[Convexity]
-        A function $f: \RR \to \RR$ is called \emph{convex} if, for any $x$, $y \in \RR$ and any $t \in [0, 1]$,
+        A function \(f: \RR \to \RR\) is called \emph{convex} if, for any \(x\), \(y \in \RR\) and any \(t \in [0, 1]\),
         \begin{align*}
             f(tx + (1-t)y) \leq tf(x) + (1-t)f(y)
         \end{align*}
     \end{definition}
     
     \begin{proposition}[Jensen's inequality]
-        Let $X$ be a random variable, and $X: \RR \to \RR$ a convex function. Then
+        Let \(X\) be a random variable, and \(X: \RR \to \RR\) a convex function. Then
         \begin{align*}
             \EE[f(X)] \geq f(\EE[X])
         \end{align*}
     \end{proposition}
     
     \begin{remark*}
-        We can remember the direction of the inequality by putting $f(x) = x^2$ and using non-negativity of the variance.
+        We can remember the direction of the inequality by putting \(f(x) = x^2\) and using non-negativity of the variance.
     \end{remark*}
     
     \begin{lemma}
-        Let $f: \RR \to \RR$ be a convex function. Then $f$ is the supremum of all the lines lying below it. In other words, for all $m$ in $\RR$, there exist $a$, $b$ in $\RR$ such that $f(m) = am + b$ and $f(x) \geq ax + b$ for all $x$.
+        Let \(f: \RR \to \RR\) be a convex function. Then \(f\) is the supremum of all the lines lying below it. In other words, for all \(m\) in \(\RR\), there exist \(a\), \(b\) in \(\RR\) such that \(f(m) = am + b\) and \(f(x) \geq ax + b\) for all \(x\).
     \end{lemma}
     
     \begin{proof}[Proof of lemma]
-        Let $m \in \RR$, and suppose $x < m < y$. Then $m = tx + (1-t)y$ for some $t \in [0, 1]$, or, equivalently,
+        Let \(m \in \RR\), and suppose \(x < m < y\). Then \(m = tx + (1-t)y\) for some \(t \in [0, 1]\), or, equivalently,
         \begin{align*}
             t(m-x) = (1-t)(y-m) && (*)
         \end{align*}
@@ -1204,15 +1204,15 @@
         \begin{align*}
             a = \sup_{x < m} \frac{f(m)-f(x)}{m-x}
         \end{align*}
-        so that, for any $x < m < y$,
+        so that, for any \(x < m < y\),
         \begin{align*}
              \frac{f(m)-f(x)}{m-x} \leq a \leq \frac{f(y)-f(m)}{y-m}
         \end{align*}
-        Hence, by rearrangement, we conclude $f(z) \geq a(z-m) + f(m)$, for any $z$ (depending on whether $z$ is greater than $m$ or less than $m$, we use either the left or right inequality.)        
+        Hence, by rearrangement, we conclude \(f(z) \geq a(z-m) + f(m)\), for any \(z\) (depending on whether \(z\) is greater than \(m\) or less than \(m\), we use either the left or right inequality.)        
     \end{proof}
     
     \begin{proof}[Proof of proposition]
-        Let $m = \EE[X]$. By the claim, we have $a$, $b \in \RR$ such that $f(m) = am + b$ and $f(x) \geq ax + b$ for all $x$. We have
+        Let \(m = \EE[X]\). By the claim, we have \(a\), \(b \in \RR\) such that \(f(m) = am + b\) and \(f(x) \geq ax + b\) for all \(x\). We have
         \begin{align*}
             f(X) &\geq aX + b \\
             \implies \EE[f(X)] &\geq a\EE[X] + b = am + b = f(m) = f(\EE[X])
@@ -1222,39 +1222,39 @@
     \begin{remark*}
         When is equality achieved?
         
-        Suppose $f$ convex with the extra property that, for $n = \EE[X]$, there exist $a$, $b \in \RR$ with $f(m) = am + b$ but $f(x) > ax + b$, note the strict inequality, for $x \neq m$. When should $X$ satisfy $\EE[f(X)] = f(\EE[X])$?
+        Suppose \(f\) convex with the extra property that, for \(n = \EE[X]\), there exist \(a\), \(b \in \RR\) with \(f(m) = am + b\) but \(f(x) > ax + b\), note the strict inequality, for \(x \neq m\). When should \(X\) satisfy \(\EE[f(X)] = f(\EE[X])\)?
 
-        Since $f(X) \geq aX + b$, we have $f(X) - (aX + b) \geq 0$. Taking expectations, we have
+        Since \(f(X) \geq aX + b\), we have \(f(X) - (aX + b) \geq 0\). Taking expectations, we have
         \begin{align*}
             \EE[f(X)] \geq a\EE[X] + b = am + b = f(m) = f(\EE[X])
         \end{align*}
-        Since we want $\EE[f(X)] = f(\EE[X])$, we must have
+        Since we want \(\EE[f(X)] = f(\EE[X])\), we must have
         \begin{align*}
             \EE[f(X) - (aX + b)] &= 0 \\
             \implies \PP(f(X) = aX + b) &= 1
         \end{align*}
-        but then, since $f(x) > ax + b$ for $x \neq m$, we conclude $\PP(X = m) = 1$ (if we didn't have that extra part, we'd conclude $f$ is just a linear function).
+        but then, since \(f(x) > ax + b\) for \(x \neq m\), we conclude \(\PP(X = m) = 1\) (if we didn't have that extra part, we'd conclude \(f\) is just a linear function).
         
     \end{remark*}
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
     \begin{proposition}[AM-GM inequality]
-        Let $x_1, \dots, x_n > 0$. Then 
+        Let \(x_1, \dots, x_n > 0\). Then 
         \begin{align*}
             \left(\prod_{k=1}^n x_k\right)^{\frac 1 n} \leq \frac 1 n \sum_{k=1}^n x_k
         \end{align*}
     \end{proposition}
     
     \begin{lemma}
-        Let $f$ be a convex function. Then, for any $x_1, \dots, x_n \in \RR$ we have
+        Let \(f\) be a convex function. Then, for any \(x_1, \dots, x_n \in \RR\) we have
         \begin{align*}
             \frac 1 n \sum_{k=1}^n f(x_k) \geq f\left(\frac 1 n \sum_{k=1}^n x_k\right)
         \end{align*}
     \end{lemma}
     
     \begin{proof}[Proof of lemma]
-        Let $X$ be a random variable with $\PP(X = x_i) = \frac 1 n$, $i=1, \dots, n$. Then
+        Let \(X\) be a random variable with \(\PP(X = x_i) = \frac 1 n\), \(i=1, \dots, n\). Then
         \begin{align*}
             \frac 1 n \sum_{k=1}^n f(x_k) = \sum_x f(x) \PP(X = x) = \EE[f(X)]
         \end{align*}
@@ -1266,7 +1266,7 @@
     \end{proof}
     
     \begin{proof}[Proof of proposition]
-        Let $f(x) = -\log x$ and suppose $x_1, \dots, x_n > 0$. Then
+        Let \(f(x) = -\log x\) and suppose \(x_1, \dots, x_n > 0\). Then
         \begin{align*}
             -\frac 1 n \sum_{k=1}^n \log x_k &\geq -\log \left(\frac 1 n \sum_{k=1}^n x_n\right) \\
             \implies \left(\prod_{k=1}^n x_k\right)^{\frac 1 n} &\leq \frac 1 n \sum_{k=1}^n x_k
@@ -1276,14 +1276,14 @@
     
     \subsection{Joint distribution and conditional expectation}
 
-    Recall if $X$ is a discrete random variable, then the disttribution of $X$ is $(\PP(X = x))_x$.
+    Recall if \(X\) is a discrete random variable, then the disttribution of \(X\) is \((\PP(X = x))_x\).
 
     \begin{definition}
-        Let $X_1, \dots, X_n$ be discrete random variables. Their \emph{joint distribution} is defined to be the set of values of
+        Let \(X_1, \dots, X_n\) be discrete random variables. Their \emph{joint distribution} is defined to be the set of values of
         \begin{align*}
             \PP(X_1 = x_1, \dots, X_n = x_n)
         \end{align*}
-        for any $x_1, \dots, x_n$.        
+        for any \(x_1, \dots, x_n\).        
     \end{definition}
     
     \begin{remark*}
@@ -1295,7 +1295,7 @@
     \end{remark*}
     
     \begin{definition}
-        Let $X$ and $Y$ be discrete random variables. The \emph{conditional distribution} of $X$ given $Y = y$ is
+        Let \(X\) and \(Y\) be discrete random variables. The \emph{conditional distribution} of \(X\) given \(Y = y\) is
         \begin{align*}
             \PP(X = x \mid Y = y) = \frac{\PP(X = x, Y = y)}{\PP(Y = y)}
         \end{align*}
@@ -1307,7 +1307,7 @@
     
     % \subsubsection{Distribution of the sum of independent random variables}
 
-    Let $X$ and $Y$ be independent -- what is the distribution of $X+Y$? We have
+    Let \(X\) and \(Y\) be independent -- what is the distribution of \(X+Y\)? We have
     \begin{align*}
         \PP(X + Y = z) &= \sum_y \PP(X + Y = z, Y = y) \\
         &= \sum_y \PP(X = z-y, Y = y) \\
@@ -1316,26 +1316,26 @@
     where the last line is by independence. This is of course a convolution.
 
     \begin{example*}
-        Let $X \sim \Poi(\lambda)$ and $Y \sim \Poi(\mu)$, with $\lambda, \mu > 0$ and $X \perp Y$. Then
+        Let \(X \sim \Poi(\lambda)\) and \(Y \sim \Poi(\mu)\), with \(\lambda, \mu > 0\) and \(X \perp Y\). Then
         \begin{align*}
             \PP(X + Y = n) &= \sum_{k=0}^n \PP(X = n-k)\PP(Y = k) \\
             &= e^{-\lambda}\frac{\lambda^{n-k}}{(n-k)!} \cdot e^{-\mu}\frac{\mu^k}{k!} \\
             &= \frac{e^{-(\lambda+\mu)}}{n!} \sum_{k=0}^n \binom n k \lambda^{n-k} \mu^k \\
             &= e^{-(\lambda+\mu)}\frac{(\lambda+\mu)^n}{n!}
         \end{align*}
-        so in particular $X + Y \sim \Poi(\lambda + \mu)$.        
+        so in particular \(X + Y \sim \Poi(\lambda + \mu)\).        
     \end{example*}
-    Let us derive conditional expectation for random variables. First, take $B \in \mathcal F$ to be an event with $\PP(B) > 0$. We have
+    Let us derive conditional expectation for random variables. First, take \(B \in \mathcal F\) to be an event with \(\PP(B) > 0\). We have
     \begin{align*}
         \EE[X \mid B] = \frac{\EE[X \cdot 1(B)]}{\PP(B)}
     \end{align*}
-    and, if $X = 1(A)$, then
+    and, if \(X = 1(A)\), then
     \begin{align*}
         \EE[1(A) \mid B] = \frac{\EE[1(A) \cdot 1(B)]}{\PP(B)} = \frac{\EE[1(A \cap B)]}{\PP(B)} = \PP(A \mid B)
     \end{align*}
     We can now formulate the \emph{law of total expectation}.
     \begin{proposition}[Law of total expectation]
-        Let $X$ be a random variable and $(\Omega_n)$ a partition of $\Omega$ with $\PP(\Omega_n) > 0$ for any $n$. Then
+        Let \(X\) be a random variable and \((\Omega_n)\) a partition of \(\Omega\) with \(\PP(\Omega_n) > 0\) for any \(n\). Then
         \begin{align*}
             \EE[X] = \sum_n \EE[X \mid \Omega_n] \PP(\Omega_n)
         \end{align*}
@@ -1352,30 +1352,30 @@
         &= \sum_x x \cdot \frac{\PP(X = x, Y = y)}{\PP(Y = y)} \\
         &= \sum_x x \cdot \PP(X = x \mid Y = y)
     \end{align*}
-    Let us now define $g(y) = \EE[X \mid Y = y]$.
+    Let us now define \(g(y) = \EE[X \mid Y = y]\).
     \begin{definition}
-        The expectation of $X$ given $Y$, $\EE[X \mid Y]$, is a random variable which is a function of $Y$. In particular,
+        The expectation of \(X\) given \(Y\), \(\EE[X \mid Y]\), is a random variable which is a function of \(Y\). In particular,
         \begin{align*}
             \EE[X \mid Y] = g(Y)
         \end{align*}
     \end{definition}
     
     \begin{example*}
-        Toss a $p$-coin independently $n$ times, and let $X_i = 1(i^\text{th} \text{ toss is H})$. Let $Y_n = X_1 + \dots + X_n$. Let us attempt to calculate $\EE[X_1 \mid Y_n]$. First, let
+        Toss a \(p\)-coin independently \(n\) times, and let \(X_i = 1(i^\text{th} \text{ toss is H})\). Let \(Y_n = X_1 + \dots + X_n\). Let us attempt to calculate \(\EE[X_1 \mid Y_n]\). First, let
         \begin{align*}
             g(y) = \EE[X_1 \mid Y_n = y] &= \frac{\EE[X_1 \cdot 1(Y_n=y)]}{\PP(Y_n=y)} \\
             &= \frac{\PP(X_1 = 1, Y_n = y)}{\PP(Y_n=y)} \\
             &= \frac{p \binom{n-1}{y-1} p^{y-1} (1-p)^{n-y}}{\binom{n}{y} p^y (1-p)^{n-y}} \\
             &= \frac{y}{n}
         \end{align*}
-        Hence, $\EE[X_1 \mid Y_n] = \frac{Y_n}{n}$.        
+        Hence, \(\EE[X_1 \mid Y_n] = \frac{Y_n}{n}\).        
     \end{example*}
     We have some simple and uninspiring properties:
     \begin{itemize}
-        \item $\EE[cX \mid Y] = c\EE[X \mid Y]$;
-        \item $\EE[c + X \mid Y] = c + \EE[X \mid Y]$;
-        \item $\EE[c \mid Y] = c$;
-        \item If $X_1, \dots, X_n$ are random variables,
+        \item \(\EE[cX \mid Y] = c\EE[X \mid Y]\);
+        \item \(\EE[c + X \mid Y] = c + \EE[X \mid Y]\);
+        \item \(\EE[c \mid Y] = c\);
+        \item If \(X_1, \dots, X_n\) are random variables,
         \begin{align*}
             \EE\left[\sum_{i=1}^n X_i \mid Y\right] = \sum_{i=1}^n \EE[X_i \mid Y]
         \end{align*}
@@ -1385,7 +1385,7 @@
         \EE[X \mid Y] &= \sum_y 1(Y = y) \EE[X \mid Y = y] \\
         \implies \EE[\EE[X \mid Y]] &= \sum_y \EE[X \mid Y = y]\PP(Y = y)= \EE[X]
     \end{align*}
-    Suppose now $X$ and $Y$ are independent random variables. Then
+    Suppose now \(X\) and \(Y\) are independent random variables. Then
     \begin{align*}
         \EE[X \mid Y] &= \sum_y 1(Y = y) \EE[X \mid Y = y] \\
         &= \sum_y 1(Y = y) \sum_x x \cdot \PP(X = x \mid Y = y) \\
@@ -1394,24 +1394,24 @@
     \end{align*}
     
     \begin{proposition}
-        Let $Y$ and $Z$ be independent. Then
+        Let \(Y\) and \(Z\) be independent. Then
         \begin{align*}
             \EE[\EE[X \mid Y] \mid Z] = \EE[X]
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let $g(Y) = \EE[X \mid Y]$, $g(y) = \EE[X \mid Y = y]$. We claim $g(Y)$ is independent of $\ZZ$. Observe
+        Let \(g(Y) = \EE[X \mid Y]\), \(g(y) = \EE[X \mid Y = y]\). We claim \(g(Y)\) is independent of \(\ZZ\). Observe
         \begin{align*}
             \PP(g(Y) = w, Z = z) &= \sum_{y \in g^{-1}(\{\omega\})} \PP(Y = y, Z = z) \\
             &= \sum_{y \in g^{-1}(\{\omega\})} \PP(Y = y) \PP(Z = z) \\
             &= \PP(g(Y) = w) \PP(Z = z)
         \end{align*}
-        Hence, previous results give $\EE[g(Y) \mid Z] = \EE[g(Y)]$, and this is $\EE[\EE[X \mid Y]] = \EE[X]$.        
+        Hence, previous results give \(\EE[g(Y) \mid Z] = \EE[g(Y)]\), and this is \(\EE[\EE[X \mid Y]] = \EE[X]\).        
     \end{proof}
     
     \begin{proposition}
-        Let $X$, $Y$ be two random variables, and $h: \RR \to \RR$. Then
+        Let \(X\), \(Y\) be two random variables, and \(h: \RR \to \RR\). Then
         \begin{align*}
             \EE[h(Y) \cdot X \mid Y] = h(Y) \cdot \EE[X \mid Y]
         \end{align*}
@@ -1432,9 +1432,9 @@
     \end{corollary}
     
     \begin{example*}
-        Toss a $p$-coin independently $n$ times, and let $X_i = 1(i^\text{th} \text{ toss is H})$. Let $Y_n = X_1 + \dots + X_n$. What is $\EE[X_1 \mid Y_n]$?
+        Toss a \(p\)-coin independently \(n\) times, and let \(X_i = 1(i^\text{th} \text{ toss is H})\). Let \(Y_n = X_1 + \dots + X_n\). What is \(\EE[X_1 \mid Y_n]\)?
 
-        By symmetry, $\EE[X_1 \mid Y_n] = \EE[X_i \mid Y_n]$ for any $i$, $1 \leq i \leq n$. Then
+        By symmetry, \(\EE[X_1 \mid Y_n] = \EE[X_i \mid Y_n]\) for any \(i\), \(1 \leq i \leq n\). Then
         \begin{align*}
             Y_n = \EE[Y_n \mid Y_n] = \EE[X_1 + \dots + X_n \mid Y_n] = n \EE[X_1 \mid Y_n] 
         \end{align*}
@@ -1444,7 +1444,7 @@
     \section{Random walks}
 
     \begin{definition}[Random process]
-        A \emph{random process} or \emph{stochastic process} is a sequence of random variables $(X_n)$.
+        A \emph{random process} or \emph{stochastic process} is a sequence of random variables \((X_n)\).
     \end{definition}
     
     \begin{definition}[Random walks]
@@ -1452,7 +1452,7 @@
         \begin{align*}
             X_n = x + Y_1 + \dots + Y_n
         \end{align*}
-        where $x$ is a number and $(Y_i)$ are independent identically distributed (i.i.d.) random variables. We call the $Y_i$ the \emph{steps} of the random variable.         
+        where \(x\) is a number and \((Y_i)\) are independent identically distributed (i.i.d.) random variables. We call the \(Y_i\) the \emph{steps} of the random variable.         
     \end{definition}
     
     A \emph{simple random walk} has
@@ -1464,10 +1464,10 @@
     \end{align*}
     We will write
     \begin{itemize}
-        \item $\PP_x(A) = \PP(A \mid X_0 = x)$;
-        \item $h(x) = \PP_x((X_n) \text{ reaches } a \text{ before }0)$, where $a$ is some arbitrary constant at which the game ends.
+        \item \(\PP_x(A) = \PP(A \mid X_0 = x)\);
+        \item \(h(x) = \PP_x((X_n) \text{ reaches } a \text{ before }0)\), where \(a\) is some arbitrary constant at which the game ends.
     \end{itemize}
-    so $h(0) = 0$, $h(a) = 1$. Then
+    so \(h(0) = 0\), \(h(a) = 1\). Then
     \begin{align*}
         h(x) &= \PP_x((X_n) \text{ hits } a \text{ bef. }0) \\
         &= \PP_x((X_n) \text{ hits } a \text{ bef. }0 \mid Y_1 = 1) \cdot p + \PP_x((X_n) \text{ hits } a \text{ bef. }0 \mid Y_1 = -1) \cdot q \\
@@ -1477,14 +1477,14 @@
     \lecture{Lecture 12 -- 18/02/26}
     
     \begin{itemize}
-        \item \emph{Case $p=q=\frac 1 2$}, then $X_n$ is a \emph{simple symmetric random walk}. We have
+        \item \emph{Case \(p=q=\frac 1 2\)}, then \(X_n\) is a \emph{simple symmetric random walk}. We have
         \begin{align*}
             h(x) &= \frac 1 2 h(x+1) + \frac 1 2 h(x-1) \\
             \implies h(x+1) - h(x) &= h(x) - h(x-1) \\
             \implies \Aboxed{h(x) &= cx}
         \end{align*}
-        for some constant $c$. Since $h(a) = 1$, $c = \frac 1 a$, and hence $h(x) = \frac h a$.
-        \item \emph{Case $p\neq q$}. Let us try a solution of the form $\lambda^x$ for some lambda -- we have
+        for some constant \(c\). Since \(h(a) = 1\), \(c = \frac 1 a\), and hence \(h(x) = \frac h a\).
+        \item \emph{Case \(p\neq q\)}. Let us try a solution of the form \(\lambda^x\) for some lambda -- we have
         \begin{align*}
             \lambda^x &= p\lambda^{x+1} + q\lambda^{x-1} \\
             \implies \lambda &= 1, \lambda = \frac q p
@@ -1501,25 +1501,25 @@
     
     These results are called the \emph{gambler's ruin estimates}.
 
-    Now let us consider a new quantity -- let $T = \min\{n \geq 0: X_n \in \{0, a\}\}$ -- the first $n$ such that $X_n$ is either 0 or $a$, i.e. the duration of the game. We want to find $\EE[T \mid X_0 = x] = \EE_x[T] = k(x)$. We have from the law of total expectation
+    Now let us consider a new quantity -- let \(T = \min\{n \geq 0: X_n \in \{0, a\}\}\) -- the first \(n\) such that \(X_n\) is either 0 or \(a\), i.e. the duration of the game. We want to find \(\EE[T \mid X_0 = x] = \EE_x[T] = k(x)\). We have from the law of total expectation
     \begin{align*}
         k(x) &= \EE_x[T \mid Y_1 = 1]\cdot\PP(Y_1 = 1) + \EE_x[T \mid Y_1 = -1]\cdot\PP(Y_1 = -1) \\
         &= p(1 + k(x+1)) + q(1 + k(x-1)) \\
         &= 1 + pk(x+1) + qk(x-1)
     \end{align*}
-    with $k(0) = k(a) = 0$.
+    with \(k(0) = k(a) = 0\).
 
     \begin{itemize}
-        \item \emph{Case $p=q=\frac 1 2$}. Try a solution of the form $Ax^2$, to get
+        \item \emph{Case \(p=q=\frac 1 2\)}. Try a solution of the form \(Ax^2\), to get
         \begin{align*}
             Ax^2 &= 1 + pA(x+1)^2 + qA(x-1)^2 \\
             \implies A &= -1
         \end{align*}
-        giving a general solution of the form $k(x) = -x^2 + Bx + C$. Applying boundary conditions, we obtain
+        giving a general solution of the form \(k(x) = -x^2 + Bx + C\). Applying boundary conditions, we obtain
         \begin{align*}
             \Aboxed{k(x) = x(a-x)}
         \end{align*}
-        \item \emph{Case $p\neq q$}. Try $k(x) = Cx$ to get
+        \item \emph{Case \(p\neq q\)}. Try \(k(x) = Cx\) to get
         \begin{align*}
             Cx &= 1 + pC(x+1) + qC(x-1) \\
             \implies c &= \frac 1 {q-p}
@@ -1536,14 +1536,14 @@
     
     \section{Probability generating functions}
 
-    Let $X$ be a random variable with values in $\NN$ -- recall $p_r = \PP(X=r)$ for $r \in \NN$ constitutes the probability mass function.
+    Let \(X\) be a random variable with values in \(\NN\) -- recall \(p_r = \PP(X=r)\) for \(r \in \NN\) constitutes the probability mass function.
 
     \begin{definition}[Probability generating function]
-        The \emph{probability generating function (PGF)} for a random variable $X$ with values in $\NN$ and probability masses $(p_r)$ is
+        The \emph{probability generating function (PGF)} for a random variable \(X\) with values in \(\NN\) and probability masses \((p_r)\) is
         \begin{align*}
             p(z) = \EE[z^X] = \sum_{r=0}^\infty p_r z^r
         \end{align*}
-        with $|z| \leq 1$.        
+        with \(|z| \leq 1\).        
     \end{definition}
     
     \begin{remark*}
@@ -1551,25 +1551,25 @@
         \begin{align*}
             |p(z)| = \left|\sum_{r=0}^\infty p_rz^r\right| \leq \sum_{r=0}^\infty p_r |z|^r \leq \sum_{r=0}^\infty p_r = 1
         \end{align*}
-        so $p$ converges absolutely for $|z| \leq 1$.        
+        so \(p\) converges absolutely for \(|z| \leq 1\).        
     \end{remark*}
     
     \begin{theorem}
-        The pgf uniquely determines the distribution of $X$. \label{pgf-unique}
+        The pgf uniquely determines the distribution of \(X\). \label{pgf-unique}
     \end{theorem}
     
     \begin{proof}
-        Let $(p_r)$ and $(q_r)$ be two probability distributions with the same pgf's -- for all $|z| \leq 1$, $\sum p_r z^r = \sum q_r z^r$.
+        Let \((p_r)\) and \((q_r)\) be two probability distributions with the same pgf's -- for all \(|z| \leq 1\), \(\sum p_r z^r = \sum q_r z^r\).
 
-        Plugging in $z=0$ gives $p_0 = q_0$. We now proceed by strong induction. Suppose $p_r = q_r$ for all $r \leq n$, so
+        Plugging in \(z=0\) gives \(p_0 = q_0\). We now proceed by strong induction. Suppose \(p_r = q_r\) for all \(r \leq n\), so
         \begin{align*}
             \sum_{r=n+1}^\infty p_r z^r &= \sum_{r=n+1}^\infty q_rz^r
         \end{align*}
-        Clearly dividing by $z^{n+1}$ and setting $z=0$ gives $p_{n+1} = q_{n+1}$ as required.        
+        Clearly dividing by \(z^{n+1}\) and setting \(z=0\) gives \(p_{n+1} = q_{n+1}\) as required.        
     \end{proof}
 
     \begin{proposition}
-        Suppose $X_1, \dots, X_n$ are independent random variables with pgf's $q_i(z)$, and let $X = X_1 + \dots + X_n$ have pgf $p$. Then
+        Suppose \(X_1, \dots, X_n\) are independent random variables with pgf's \(q_i(z)\), and let \(X = X_1 + \dots + X_n\) have pgf \(p\). Then
         \begin{align*}
             p(z) = q_1(z)\dots q_n(z)
         \end{align*}
@@ -1586,17 +1586,17 @@
     \begin{example*}
         Let us calculate some pgf's for important distributions.
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item \emph{Binomial}. Suppose $X \sim \Bin(n, p)$. Then
+            \item \emph{Binomial}. Suppose \(X \sim \Bin(n, p)\). Then
             \begin{align*}
                 p(z) &= \sum_{k=0}^n z^k \binom n k p^k (1-p)^{n-k} \\
                 &= (pz + 1-p)^n
             \end{align*}
-            \item \emph{Geometric}. Suppose $X \sim \Geo(p)$. Then
+            \item \emph{Geometric}. Suppose \(X \sim \Geo(p)\). Then
             \begin{align*}
                 \EE[z^X] &= \sum_{r=0}^\infty z^r (1-p)^r p \\
                 &= \frac p {1-z(1-p)}
             \end{align*}
-            \item \emph{Poisson}. Suppose $X \sim \Poi(\lambda)$. Then
+            \item \emph{Poisson}. Suppose \(X \sim \Poi(\lambda)\). Then
             \begin{align*}
                 \EE[z^X] &= \sum_{r=0}^\infty z^r e^{\lambda} \frac{\lambda^r}{r!} \\
                 &= e^{\lambda(z-1)}
@@ -1605,18 +1605,18 @@
     \end{example*}
     
     \begin{example*}
-        This fact can make calculating the pmf of sums of random variables easier. For example, suppose $X \sim \Bin(n, p)$ and $Y \sim \Bin(m, p)$ with $X \perp Y$. Then
+        This fact can make calculating the pmf of sums of random variables easier. For example, suppose \(X \sim \Bin(n, p)\) and \(Y \sim \Bin(m, p)\) with \(X \perp Y\). Then
         \begin{align*}
             \EE[z^{X+Y}] = \EE[z^X] \EE[z^Y] &= (pz+1-p)^n \cdot (pz+1-p)^m \\
             &= (pz+1-p)^{n+m}
         \end{align*}
-        from which it follows that $X + Y \sim \Bin(n + m, p)$.
+        from which it follows that \(X + Y \sim \Bin(n + m, p)\).
 
-        What about Poisson? Suppose $X \sim \Poi(\lambda)$, $Y \sim \Poi(\mu)$, and $X \perp Y$. Then
+        What about Poisson? Suppose \(X \sim \Poi(\lambda)\), \(Y \sim \Poi(\mu)\), and \(X \perp Y\). Then
         \begin{align*}
             \EE[z^{X+Y}] = e^{\lambda(z-1)}e^{\mu(z-1)} = e^{(\lambda+\mu)(z-1)}
         \end{align*}
-        from which it follows that $X + Y \sim \Poi(\lambda + \mu)$.
+        from which it follows that \(X + Y \sim \Poi(\lambda + \mu)\).
     \end{example*}
 
     For the following results, it will be helpful to introduce the notation
@@ -1625,7 +1625,7 @@
     \end{align*}
 
     \begin{proposition}
-        Let $X$ be a discrete random variable with pgf $p(z)$, then
+        Let \(X\) be a discrete random variable with pgf \(p(z)\), then
         \begin{align*}
             \EE[X] = p'(1^-)
         \end{align*}
@@ -1633,21 +1633,21 @@
     
     \begin{proof}
         \begin{itemize}
-            \item Assume $\EE[X] < \infty$, and take $0 < z < 1$. We have
+            \item Assume \(\EE[X] < \infty\), and take \(0 < z < 1\). We have
             \begin{align*}
                 p'(z) = \sum_{r=1}^\infty rp_r z^{r-1} \leq \sum_{r=1}^\infty rp_r = \EE[X]
             \end{align*}
-            Hence $p'$ is upper bounded by $\EE[X]$, and it is clearly increasing, so the limit exists and is $\leq \EE[X]$.
+            Hence \(p'\) is upper bounded by \(\EE[X]\), and it is clearly increasing, so the limit exists and is \(\leq \EE[X]\).
 
-            Let $\eps > 0$. There exists $N$ such that
+            Let \(\eps > 0\). There exists \(N\) such that
             \begin{align*}
                 \sum_{r=1}^N rp_r \geq \EE[X] - \eps
             \end{align*}
-            since this is what it means for the infinite sum to be equal to $\EE[X]$. Furthermore,
+            since this is what it means for the infinite sum to be equal to \(\EE[X]\). Furthermore,
             \begin{align*}
                 \lim_{z \to 1^-} p'(z) \geq \lim_{z \to 1^-} \sum_{r=1}^N rp_r z^{r-1} = \sum_{r=1}^N rp_r \geq \EE[X] - \eps
             \end{align*}
-            \item If $\EE[X] = \infty$, then, for any $M \geq 0$, we have $N$ such that
+            \item If \(\EE[X] = \infty\), then, for any \(M \geq 0\), we have \(N\) such that
             \begin{align*}
                 \sum_{r=1}^N rp_r \geq M
             \end{align*}
@@ -1660,21 +1660,21 @@
     \end{proof}
     
     \begin{proposition}
-        Let $X$ be a discrete random variable with pgf $p(z)$, then
+        Let \(X\) be a discrete random variable with pgf \(p(z)\), then
         \begin{align*}
             \EE[X(X-1)\dots(X-k+1)] = p^{(k)}(1^-)
         \end{align*}
     \end{proposition}
     
     \begin{corollary}
-        Let $X$ be a discrete random variable with pgf $p(z)$, then
+        Let \(X\) be a discrete random variable with pgf \(p(z)\), then
         \begin{align*}
             \Var(X) = p''(1^-) + p'(1^-) - (p'(1^-))^2
         \end{align*}
     \end{corollary}
     
     \begin{proposition}
-        Let $X$ be a discrete random variable with pgf $p(z)$, then
+        Let \(X\) be a discrete random variable with pgf \(p(z)\), then
         \begin{align*}
             \PP(X = n) = \frac 1{n!}\left.\frac{d^np}{dz^n}\right|_{z=0}
         \end{align*}
@@ -1686,7 +1686,7 @@
     
     \subsection{Sum of a random number of random variables}
 
-    Let $X_1, X_2, \dots$ be i.i.d. random variables and let $N$ be an independent random variable with values in $\NN$. Set
+    Let \(X_1, X_2, \dots\) be i.i.d. random variables and let \(N\) be an independent random variable with values in \(\NN\). Set
     \begin{align*}
         S_n = X_1 + \dots + X_n
     \end{align*}
@@ -1694,13 +1694,13 @@
     \begin{align*}
         S_n(\omega) = \sum_{i=1}^n X_i(\omega)
     \end{align*}
-    Passing to the random variable $N$, we obtain
+    Passing to the random variable \(N\), we obtain
     \begin{align*}
         S_N(\omega) = S_{N(\omega)}(\omega) = \sum_{i=1}^{N(\omega)} X_i(\omega)
     \end{align*}
     
     \begin{lemma}
-        Let $q(z) = \EE[z^N]$ be the pgf of $N$, and $p(z) = \EE[z^{X_i}]$ be the pgf of $X_i$. Then
+        Let \(q(z) = \EE[z^N]\) be the pgf of \(N\), and \(p(z) = \EE[z^{X_i}]\) be the pgf of \(X_i\). Then
         \begin{align*}
             r(z) = \EE[z^{S_N}] = q(p(z))
         \end{align*}
@@ -1751,7 +1751,7 @@
             &= \lim_{z\to 1^-} r'(z) \\
             &= \lim_{z\to 1^-} q'(p(z)) \lim_{z\to 1^-} p'(z) 
         \end{align*}
-        Clearly $p(z)$ approaches 1 from below as $z$ approaches 1 from below, so this is just
+        Clearly \(p(z)\) approaches 1 from below as \(z\) approaches 1 from below, so this is just
         \begin{align*}
             q'(1-)p'(1-) = \EE[N] \cdot \EE[X_1]
         \end{align*}
@@ -1762,9 +1762,9 @@
     
     \section{Branching processes}
     
-    Think of a branching process as a series of generations of offspring. We have $X_0 = 1$, there being one person in the first generation; then, in each generation, each individual produces $k$ offspring independently with a fixed distribution (in particular, the distribution of $X_1$)
+    Think of a branching process as a series of generations of offspring. We have \(X_0 = 1\), there being one person in the first generation; then, in each generation, each individual produces \(k\) offspring independently with a fixed distribution (in particular, the distribution of \(X_1\))
 
-    Let $Y_{k,n}$ with $k \geq 1$, $n \geq 0$ be i.i.d. random variables with the distribution of $X_1$, interpreted as the number of offspring produced by the $k^\text{th}$ individual in the $n^\text{th}$ generation. Hence
+    Let \(Y_{k,n}\) with \(k \geq 1\), \(n \geq 0\) be i.i.d. random variables with the distribution of \(X_1\), interpreted as the number of offspring produced by the \(k^\text{th}\) individual in the \(n^\text{th}\) generation. Hence
     \begin{align*}
         X_{n+1} = \begin{cases}
             Y_{1, n} + \dots + Y_{X_n, n} & X_n \geq 1 \\
@@ -1781,42 +1781,42 @@
     \end{proposition}
     
     \begin{proof}
-        We will proceed by induction. The base case is clear. Let us consider the conditional expectation $\EE[X_{n+1} \mid X_n = m]$ -- we have
+        We will proceed by induction. The base case is clear. Let us consider the conditional expectation \(\EE[X_{n+1} \mid X_n = m]\) -- we have
         \begin{align*}
             \EE[X_{n+1} \mid X_n = m] &= \EE[Y_{1,n} + \dots + Y_{m,n} \mid X_n = m] \\
             &= \EE[Y_{1,n} + \dots + Y_{m,n}] && \text{(independence)} \\
             &= m\EE[X_1]
         \end{align*}
-        so that $\EE[X_{n+1} \mid X_n] = X_n\EE[X_1]$. Hence $\EE[X_{n+1}] = \EE[\EE[X_{n+1} \mid X_n]] = \EE[X_n\EE[X_1]] = \EE[X_n] \EE[X_1]$, which completes the result by induction.        
+        so that \(\EE[X_{n+1} \mid X_n] = X_n\EE[X_1]\). Hence \(\EE[X_{n+1}] = \EE[\EE[X_{n+1} \mid X_n]] = \EE[X_n\EE[X_1]] = \EE[X_n] \EE[X_1]\), which completes the result by induction.        
     \end{proof}
     
     \begin{proposition}
-        Let $G(z) = \EE[z^{X_1}]$, $G_n(z) = \EE[z^{X_n}]$, then
+        Let \(G(z) = \EE[z^{X_1}]\), \(G_n(z) = \EE[z^{X_n}]\), then
         \begin{align*}
             G_{n+1}(z) = G(G_n(z))
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Again, let us consider $\EE[z^{X_{n+1}} \mid X_n = m]$. We have
+        Again, let us consider \(\EE[z^{X_{n+1}} \mid X_n = m]\). We have
         \begin{align*}
             \EE[z^{X_{n+1}} \mid X_n = m] &= \EE[z^{Y_{1, n} + \dots + Y_{m, n}} \mid X_n = m] \\
             &= \EE[z^{Y_{1, n} + \dots + Y_{m, n}}] \\
             &= (G(z))^m
         \end{align*}
-        Hence $G_{n+1}(z) = \EE[\EE[z^{X_{n+1}} \mid X_n]] = \EE[G(z)^{X_n}] = G_n(G(z))$
+        Hence \(G_{n+1}(z) = \EE[\EE[z^{X_{n+1}} \mid X_n]] = \EE[G(z)^{X_n}] = G_n(G(z))\)
     \end{proof}
     
     \subsection{Extinction probability}
 
-    Let $q_n = \PP(X_n = 0)$, and $q = \PP(X_n = 0 \text{ for some }n \geq 0)$. Letting $A_n$ be the event that $X_n = 0$ for some $n$, we can see $q = \PP(\cup A_n)$, and $A_n \subseteq A_{n+1}$, so the $A_n$ form an increasing sequence and we get
+    Let \(q_n = \PP(X_n = 0)\), and \(q = \PP(X_n = 0 \text{ for some }n \geq 0)\). Letting \(A_n\) be the event that \(X_n = 0\) for some \(n\), we can see \(q = \PP(\cup A_n)\), and \(A_n \subseteq A_{n+1}\), so the \(A_n\) form an increasing sequence and we get
     \begin{align*}
         \PP(A_n) \to \PP\left(\bigcup A_n\right)
     \end{align*}
     by \cref{continuity} (continuity of probability measures).
     
     \begin{lemma}
-        Let $G(z) = \EE[z^{X_1}]$, then $q_{n+1} = G(q_n)$ and $q = G(q)$.
+        Let \(G(z) = \EE[z^{X_1}]\), then \(q_{n+1} = G(q_n)\) and \(q = G(q)\).
     \end{lemma}
     
     \begin{proof}[Proof 1]
@@ -1827,11 +1827,11 @@
             &= G(G_n(0)) \\
             &= G(q_n)
         \end{align*}
-        Then, since $G$ is continuous and $q_n \to q$, we can simply take the limit on both sides to get $q=G(q)$ as required.
+        Then, since \(G\) is continuous and \(q_n \to q\), we can simply take the limit on both sides to get \(q=G(q)\) as required.
     \end{proof}
     
     \begin{proof}[Proof 2]
-        We will condition $q_{n+1}$ on the number of individuals in the first generation, i.e. $X_1$. Supposing $X_1 = m$, let $X_n^{(1)}, \dots, X_n^{(m)}$ be i.i.d. branching processes with the same distribution as the original one. Hence
+        We will condition \(q_{n+1}\) on the number of individuals in the first generation, i.e. \(X_1\). Supposing \(X_1 = m\), let \(X_n^{(1)}, \dots, X_n^{(m)}\) be i.i.d. branching processes with the same distribution as the original one. Hence
         \begin{align*}
             X_{n+1} = X_n^{(1)} + \dots + X_n^{(m)}
         \end{align*}
@@ -1850,55 +1850,55 @@
     
     Recalling \cref{expected-branching}, we have that
     \begin{itemize}
-        \item if $\EE[X_1] < 1$, $\EE[X_n] \to 0$ as $n \to \infty$, so we expect $q=1$;
-        \item if $\EE[X_1] > 1$, $\EE[X_n] \to \infty$ as $n \to \infty$, so we expect $q<1$;
-        \item if $\EE[X_1] = 1$, then $\EE[X_n] = 1$ for all $n$. But it is not clear what $q$ will be. Let us focus on this last case.
+        \item if \(\EE[X_1] < 1\), \(\EE[X_n] \to 0\) as \(n \to \infty\), so we expect \(q=1\);
+        \item if \(\EE[X_1] > 1\), \(\EE[X_n] \to \infty\) as \(n \to \infty\), so we expect \(q<1\);
+        \item if \(\EE[X_1] = 1\), then \(\EE[X_n] = 1\) for all \(n\). But it is not clear what \(q\) will be. Let us focus on this last case.
     \end{itemize}
 
-    We can also interpret these results in the context of a graph of $G$. We know that the graph of $G$ will intersect $x$ at $x=1$, and we could either have another intersection in the range $0 \leq x < 1$, or no intersections.
+    We can also interpret these results in the context of a graph of \(G\). We know that the graph of \(G\) will intersect \(x\) at \(x=1\), and we could either have another intersection in the range \(0 \leq x < 1\), or no intersections.
 
     \begin{itemize}
-        \item \emph{There is another intersection}. Then iterating $G$ starting from $G(0)$ will lead us to the other intersection. Furthermore, the gradient of $G$ at $1$, $G(1-) = \EE[X_1]$ must be greater than 1 for there to be such an intersection, as we expect;
-        \item \emph{There is not another intersection}. Then iterating $G$ will take us all the way to 1, and the gradient of $G$ at 1, $G(1-) = \EE[X_1]$ must be less than or equal to 1 for there not to be any further intersections. We conclude that $q = 1$ in the case $\EE[X_1] = 1$.
+        \item \emph{There is another intersection}. Then iterating \(G\) starting from \(G(0)\) will lead us to the other intersection. Furthermore, the gradient of \(G\) at \(1\), \(G(1-) = \EE[X_1]\) must be greater than 1 for there to be such an intersection, as we expect;
+        \item \emph{There is not another intersection}. Then iterating \(G\) will take us all the way to 1, and the gradient of \(G\) at 1, \(G(1-) = \EE[X_1]\) must be less than or equal to 1 for there not to be any further intersections. We conclude that \(q = 1\) in the case \(\EE[X_1] = 1\).
     \end{itemize}
     
     \begin{proposition}
-        Assume $P(X_1 = 1) < 1$. The extinction probability $q$ is the minimal non-negative solution to $G(x) = x$. Furthermore, $q < 1$ if and only if $\EE[X_1] > 1$.
+        Assume \(P(X_1 = 1) < 1\). The extinction probability \(q\) is the minimal non-negative solution to \(G(x) = x\). Furthermore, \(q < 1\) if and only if \(\EE[X_1] > 1\).
     \end{proposition}
     
     \begin{proof}
-        We know $q = G(q)$. Let $t$ be the smallest minimal solution of $x=G(x)$. We will show by induction that, for any $n$, $q_n \leq t$, and then take limits to establish $q \leq t \implies q = t$.
+        We know \(q = G(q)\). Let \(t\) be the smallest minimal solution of \(x=G(x)\). We will show by induction that, for any \(n\), \(q_n \leq t\), and then take limits to establish \(q \leq t \implies q = t\).
 
-        For the base case, $0 = q_0 \leq t$. Suppose $q_n \leq t$, then
+        For the base case, \(0 = q_0 \leq t\). Suppose \(q_n \leq t\), then
         \begin{align*}
             q_{n+1} = G(q_n) \leq G(t) = t
         \end{align*}
-        since $G$ is increasing.      
+        since \(G\) is increasing.      
         
-        Now, we show $q < 1$ if and only if $\EE[X_1] > 1$. Suppose for now $g_0 + g_1 = \PP(X_1) \leq 1 < 1$.
+        Now, we show \(q < 1\) if and only if \(\EE[X_1] > 1\). Suppose for now \(g_0 + g_1 = \PP(X_1) \leq 1 < 1\).
 
-        Let $H(z) = G(z) - z = \sum_{r=0}^\infty g_rz^r - z$, so $H(1) = 0$. First, we show that $H$ can have at most one root in $[0, 1)$. Observe
+        Let \(H(z) = G(z) - z = \sum_{r=0}^\infty g_rz^r - z\), so \(H(1) = 0\). First, we show that \(H\) can have at most one root in \([0, 1)\). Observe
         \begin{align*}
             H''(z) = \sum_{r=0}^\infty r(r-1)g_rz^{r-1} > 0
         \end{align*}
-        in $(0, 1)$, because $g_0 + g_1 < 1$, so there must be some later $r$ with a positive value of $g_r$, making the sum strictly larger than zero. Hence $H'(z)$ is strictly increasing, and hence can have at most one more root other than 1 -- otherwise, we would have a point $c$ with $H'(c) = 0$ by Rolle's theorem.
+        in \((0, 1)\), because \(g_0 + g_1 < 1\), so there must be some later \(r\) with a positive value of \(g_r\), making the sum strictly larger than zero. Hence \(H'(z)\) is strictly increasing, and hence can have at most one more root other than 1 -- otherwise, we would have a point \(c\) with \(H'(c) = 0\) by Rolle's theorem.
 
         We now split into two cases.
         \begin{itemize}
-            \item $H$ has no root other than 1, so $q=1$. Then $H'(1-) = G'(1-) - 1 = \EE[X_1] - 1$. Furthermore, $H(0) = G(0) = g_0 \geq 0$ while $H(1) = 0$, so $H(z) \geq 0$ for all $z \in [0, 1]$. Now
+            \item \(H\) has no root other than 1, so \(q=1\). Then \(H'(1-) = G'(1-) - 1 = \EE[X_1] - 1\). Furthermore, \(H(0) = G(0) = g_0 \geq 0\) while \(H(1) = 0\), so \(H(z) \geq 0\) for all \(z \in [0, 1]\). Now
             \begin{align*}
                 H'(1-) = \lim_{z \to 1^-} \frac{H(z)-H(0)}{z-1} \leq 0
             \end{align*}
-            since the denominator is $H(z) - 0 \geq 0$ while the denominator is $z-1 \leq 0$. Hence $H'(1-) \leq 0 \implies \EE[X_1] \leq 1$, as required.
-            \item $H$ has one more root $r$, so $r$ is the extinction probability. We hence have $H(r) = 0$ and $H(1) = 0$ with $r<1$, so we have $z \in (r, 1)$ with $H'(z) = 0$ by Rolle. Hence $\EE[X_1] - 1 = H'(-1) > H'(z) = 0$, so $\EE[X_1] > 1$ as required. 
+            since the denominator is \(H(z) - 0 \geq 0\) while the denominator is \(z-1 \leq 0\). Hence \(H'(1-) \leq 0 \implies \EE[X_1] \leq 1\), as required.
+            \item \(H\) has one more root \(r\), so \(r\) is the extinction probability. We hence have \(H(r) = 0\) and \(H(1) = 0\) with \(r<1\), so we have \(z \in (r, 1)\) with \(H'(z) = 0\) by Rolle. Hence \(\EE[X_1] - 1 = H'(-1) > H'(z) = 0\), so \(\EE[X_1] > 1\) as required. 
         \end{itemize}
 
-        On the other hand, if $\PP(X_1 \leq 1) = 1$, then $\EE[X_1] = g_1$, so
+        On the other hand, if \(\PP(X_1 \leq 1) = 1\), then \(\EE[X_1] = g_1\), so
         \begin{align*}
             G(z) &= g_0 + g_1z \\
             &= 1 - \EE[X_1] + \EE[X_1]z
         \end{align*}
-        Then, if $G(z) = z$, we have $(1-\EE[X_1])z = 1-\EE[X_1]$ and, since $\EE[X_1] = g_1 < 1$, $1-\EE[X_1] \neq 0$ so $z=1$.
+        Then, if \(G(z) = z\), we have \((1-\EE[X_1])z = 1-\EE[X_1]\) and, since \(\EE[X_1] = g_1 < 1\), \(1-\EE[X_1] \neq 0\) so \(z=1\).
         
     \end{proof}
     
@@ -1907,7 +1907,7 @@
     Recall \cref{random-variables}, that
 
     \begin{definition*}
-        Given a probability space $(\Omega, \mathcal F, \PP)$, a \emph{random variable} is a function
+        Given a probability space \((\Omega, \mathcal F, \PP)\), a \emph{random variable} is a function
         \begin{align*}
             X: \Omega \to \RR
         \end{align*}
@@ -1915,25 +1915,25 @@
         \begin{align*}
             \{\omega \in \Omega : X(\omega) \leq x\} \in \mathcal F
         \end{align*}
-        for any $x$.
+        for any \(x\).
     \end{definition*}
     
     and \cref{probability-distribution-function}, that
 
     \begin{definition*}
-        Suppose $X$ is a random variable. The \emph{probability distribution function} of $X$ is given by
+        Suppose \(X\) is a random variable. The \emph{probability distribution function} of \(X\) is given by
         \begin{align*}
             F_X(x): \RR &\to [0, 1] \\
             x &\mapsto \PP(\{\omega \in \Omega: X(\omega) \leq x\}) = \PP(X \leq x)
         \end{align*}
     \end{definition*}
     
-    When dealing with discrete random variables, it was possible to only consider $\PP(X = x)$ for some $x$. But now, we will have to work in more generality.
+    When dealing with discrete random variables, it was possible to only consider \(\PP(X = x)\) for some \(x\). But now, we will have to work in more generality.
 
     Let us observe some important properties.
     \begin{enumerate}[label=\protect\circled{\arabic*}]
-        \item if $x \leq y$, then $F(x) \leq F(y)$;
-        \item for any $a < b$,
+        \item if \(x \leq y\), then \(F(x) \leq F(y)\);
+        \item for any \(a < b\),
         \begin{align*}
             \PP(a < x \leq b) = F(b) - F(a)
         \end{align*}
@@ -1949,58 +1949,58 @@
     \lecture{Lecture 15 -- 25/02/26}
     
     \begin{proposition}
-        A probability distribution function $F$ is right continuous, and always has left limits satisfying
+        A probability distribution function \(F\) is right continuous, and always has left limits satisfying
         \begin{align*}
             \lim_{y \to x^-}F(y) \leq F(x)
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let $(x_n)$ be a decreasing sequence satisfying $x_n \to x$ as $n \to \infty$. We want to show $F(x_n) \to F(x)$ as $n \to \infty$.
+        Let \((x_n)\) be a decreasing sequence satisfying \(x_n \to x\) as \(n \to \infty\). We want to show \(F(x_n) \to F(x)\) as \(n \to \infty\).
 
-        Let $A_n = \{x < X \leq x_n\}$, so $\PP(A_n) = F(x_n) - F(x)$ by the previous. Furthermore, $A_{n+1} \subseteq A_n$ -- the sequence is decreasing -- so $\PP(A_n) \to \PP\left(\bigcap_n A_n\right)$ by continuity of probability measures. But $\PP\left(\bigcap_n A_n\right)$, so $\PP(A_n) \to 0$. Hence $\PP(A_n)= F(x_n) - F(x) \to 0$ as $n \to \infty$.
+        Let \(A_n = \{x < X \leq x_n\}\), so \(\PP(A_n) = F(x_n) - F(x)\) by the previous. Furthermore, \(A_{n+1} \subseteq A_n\) -- the sequence is decreasing -- so \(\PP(A_n) \to \PP\left(\bigcap_n A_n\right)\) by continuity of probability measures. But \(\PP\left(\bigcap_n A_n\right)\), so \(\PP(A_n) \to 0\). Hence \(\PP(A_n)= F(x_n) - F(x) \to 0\) as \(n \to \infty\).
 
-        Since $F$ is increasing (and bounded), left limits always exist. That $\lim_{y \to x^-} F(y) \leq F(x)$ follows again from the fact $F$ is increasing.
+        Since \(F\) is increasing (and bounded), left limits always exist. That \(\lim_{y \to x^-} F(y) \leq F(x)\) follows again from the fact \(F\) is increasing.
     \end{proof}
     
     \begin{enumerate}[resume,label=\protect\circled{\arabic*}]
-        \item $F(x-) = \lim_{y \to x^-} F(y) = \PP(X < x)$.
+        \item \(F(x-) = \lim_{y \to x^-} F(y) = \PP(X < x)\).
         \begin{proof}
-            Clearly $F(x-) = \lim_{n \to \infty} F\left(x - \frac 1 n \right)$. Define $B_n = \left\{X \leq x - \frac 1 n \right\}$, so $B_n \subseteq B_{n+1}$. Then
+            Clearly \(F(x-) = \lim_{n \to \infty} F\left(x - \frac 1 n \right)\). Define \(B_n = \left\{X \leq x - \frac 1 n \right\}\), so \(B_n \subseteq B_{n+1}\). Then
             \begin{align*}
                 \PP(B_n) \to \PP\left(\bigcup_n B_n\right) = \PP(X < x)
             \end{align*}
-            since $\bigcup_n B_n = \{X < x\}$.            
+            since \(\bigcup_n B_n = \{X < x\}\).            
         \end{proof}
 
-        \item $\lim_{x \to \infty} F(x) = 1$ and $\lim_{x \to -\infty} F(x) = 0$.
+        \item \(\lim_{x \to \infty} F(x) = 1\) and \(\lim_{x \to -\infty} F(x) = 0\).
     \end{enumerate}
     
     \begin{definition}[Continuous random variables]
-        A random variable $X$ is called \emph{continuous} if its probability distribution $F$ is a continuous function.
+        A random variable \(X\) is called \emph{continuous} if its probability distribution \(F\) is a continuous function.
     \end{definition}
     
-    Some important properties equivalent to continuity include (fixing $x \in \RR$):
+    Some important properties equivalent to continuity include (fixing \(x \in \RR\)):
     \begin{itemize}
-        \item $F(x-) = F(x)$;
-        \item $\PP(X < x) = \PP(X \leq x)$;
-        \item $\PP(X = x) = 0$.
+        \item \(F(x-) = F(x)\);
+        \item \(\PP(X < x) = \PP(X \leq x)\);
+        \item \(\PP(X = x) = 0\).
     \end{itemize}
     
-    From now on we will consider only continuous random variables satisfying additionally that $F$ is differentiable.
+    From now on we will consider only continuous random variables satisfying additionally that \(F\) is differentiable.
 
     \begin{definition}[Probability density functions]
-        The \emph{probability density function} of a random variable $X$ is $f(x) = F'(x)$, where $F$ is its probability distribution.
+        The \emph{probability density function} of a random variable \(X\) is \(f(x) = F'(x)\), where \(F\) is its probability distribution.
     \end{definition}
     
     Let us now consider some important properties of pdf's:
     \begin{itemize}
-        \item $f \geq 0$;
-        \item $\int_{-\infty}^\infty f(x) \D x = 1$;
+        \item \(f \geq 0\);
+        \item \(\int_{-\infty}^\infty f(x) \D x = 1\);
     \end{itemize}
     
     \begin{proposition}
-        For every $A \subseteq \RR$,
+        For every \(A \subseteq \RR\),
         \begin{align*}
             \PP(X \in A) = \int_A f(x) \D x
         \end{align*}
@@ -2012,75 +2012,75 @@
             F(x) = \int_{-\infty}^x f(y) \D y
         \end{align*}
     \end{remark*}
-    What is the intuitive meaning of the probability density function? For a small $\Delta x$,
+    What is the intuitive meaning of the probability density function? For a small \(\Delta x\),
     \begin{align*}
         \PP(x < X \leq x + \Delta x) = \int_x^{x+\Delta x} f(y) \D y \approx f(x) \Delta x
     \end{align*}
-    so we can think of $f(x)$ as being proportional to the probability that $X$ is close to $x$.
+    so we can think of \(f(x)\) as being proportional to the probability that \(X\) is close to \(x\).
 
     Let us consider some important examples of continuous probability distributions.
 
     \begin{enumerate}[label=\protect\circled{\arabic*}]
-        \item \emph{Uniform distribution} on $[a, b]$, $a < b$. We have
+        \item \emph{Uniform distribution} on \([a, b]\), \(a < b\). We have
         \begin{align*}
             f(x) = \begin{cases}
                 \frac 1{b-a} & x \in [a, b] \\
                 0 & \text{o/w}
             \end{cases}
         \end{align*}
-        $f \geq 0$ and $\int_{-\infty}^\infty f(x) \D x = 1$, so $f$ is indeed a pdf. Let $X$ be a random variable with density $f$, denoted $X \sim [a, b]$. Then, for $x \in [a, b]$,
+        \(f \geq 0\) and \(\int_{-\infty}^\infty f(x) \D x = 1\), so \(f\) is indeed a pdf. Let \(X\) be a random variable with density \(f\), denoted \(X \sim [a, b]\). Then, for \(x \in [a, b]\),
         \begin{align*}
             \PP(X \leq x) = \int_{-\infty}^x f(y) \D y = \frac{x-a}{b-a}
         \end{align*}
-        Also, if $x>b$, $\PP(X \leq x) = 1$, and if $x < a$, $\PP(X \leq x) = 0$. A special case is the \emph{standard uniform distribution} $X \sim U(0, 1)$
-        \item \emph{Exponential distribution}. Let $\lambda > 0$, $f(x) = \lambda e^{-\lambda x}$, $x > 0$. Then
+        Also, if \(x>b\), \(\PP(X \leq x) = 1\), and if \(x < a\), \(\PP(X \leq x) = 0\). A special case is the \emph{standard uniform distribution} \(X \sim U(0, 1)\)
+        \item \emph{Exponential distribution}. Let \(\lambda > 0\), \(f(x) = \lambda e^{-\lambda x}\), \(x > 0\). Then
         \begin{align*}
             \int_{-\infty}^\infty f(x) \D x = \int_0^\infty \lambda e^{-\lambda x} \D x = 1
         \end{align*}
-        so $f$ is a density. letting $X$ have density $f$, we write $X \sim \Exp(\lambda)$. We have
+        so \(f\) is a density. letting \(X\) have density \(f\), we write \(X \sim \Exp(\lambda)\). We have
         \begin{align*}
             \PP(X \leq x) &= \int_0^x f(y) \D y = 1 - e^{-\lambda x} \\
             \PP(X \geq x) &= e^{-\lambda x}
         \end{align*}
-        Let $T \sim \Exp(\lambda)$, $n \in \NN$, $T_n = \left\lfloor nT \right\rfloor$. What is the distribution of $T_n$?
+        Let \(T \sim \Exp(\lambda)\), \(n \in \NN\), \(T_n = \left\lfloor nT \right\rfloor\). What is the distribution of \(T_n\)?
 
-        Let $k \in \NN$, and let us try to evaluate $\PP(T_n \geq k) = \PP(nT \geq k) = \PP(T \geq \frac k n) = e^{-\lambda \frac k n} = \left(e^{-\frac{\lambda}n}\right)^k$
-        So $T_n$ has the geometric distribution with success parameter $p = 1 - e^{-\frac{\lambda}n} \approx \frac{\lambda} n$ for $n$ large. In particular,
+        Let \(k \in \NN\), and let us try to evaluate \(\PP(T_n \geq k) = \PP(nT \geq k) = \PP(T \geq \frac k n) = e^{-\lambda \frac k n} = \left(e^{-\frac{\lambda}n}\right)^k\)
+        So \(T_n\) has the geometric distribution with success parameter \(p = 1 - e^{-\frac{\lambda}n} \approx \frac{\lambda} n\) for \(n\) large. In particular,
         \begin{align*}
             \frac{T_n} n \to T
         \end{align*}
-        as $n \to \infty$ -- we can obtain the exponential random variable as a scaled limit of geometrics.
+        as \(n \to \infty\) -- we can obtain the exponential random variable as a scaled limit of geometrics.
         
-        The exponential distribution has a cool property! Let $T \sim \Exp(\lambda)$, and let $t$, $s \in \RR^+$. Then
+        The exponential distribution has a cool property! Let \(T \sim \Exp(\lambda)\), and let \(t\), \(s \in \RR^+\). Then
         \begin{align*}
             \PP(T \geq s + t \mid T \geq s) &= \frac{\PP(T \geq s + t \mid T \geq s)}{\PP(T \geq s)} \\
             &= \frac{e^{-\lambda(s+t)}}{e^{-\lambda s}} = e^{-\lambda t}
         \end{align*}
-        so $\PP(T \geq s + t \mid T \geq s) = \PP(T \geq t)$. This is called the \emph{memoryless} property (the geometric distribution also has it).
+        so \(\PP(T \geq s + t \mid T \geq s) = \PP(T \geq t)\). This is called the \emph{memoryless} property (the geometric distribution also has it).
     \end{enumerate}
 
     \begin{proposition}
-        Let $T$ be a positive random variable which is not identically zero or infinity. Then $T$ has the exponential distribution if and only if $T$ has the memoryless property.
+        Let \(T\) be a positive random variable which is not identically zero or infinity. Then \(T\) has the exponential distribution if and only if \(T\) has the memoryless property.
     \end{proposition}
     
     \begin{proof}
-        Suppose $T$ has the memoryless property. Set $g(t) = \PP(T \geq t)$, so
+        Suppose \(T\) has the memoryless property. Set \(g(t) = \PP(T \geq t)\), so
         \begin{align*}
             g(t+s) = g(t)g(s)
         \end{align*}
-        Therefore, $g(mt) = g(t)^m$ for any $t > 0$, $m \in \NN$. Putting $t=1$, we have $g(m) = g(1)^m$, and we will define $\lambda = -\log \PP(T \geq 1)$ such that $g(1) = \PP(T \geq 1) = e^{-\lambda}$. Hence $g(m) = e^{-\lambda m}$ for all $m \in \NN$, and, for $m$, $n \in \NN$, $\left(g\left(\frac m n \right)\right)^n = g(m)$, so $g(q) = e^{-\lambda q}$ for rationals $q$. How do we extend this to the reals?
+        Therefore, \(g(mt) = g(t)^m\) for any \(t > 0\), \(m \in \NN\). Putting \(t=1\), we have \(g(m) = g(1)^m\), and we will define \(\lambda = -\log \PP(T \geq 1)\) such that \(g(1) = \PP(T \geq 1) = e^{-\lambda}\). Hence \(g(m) = e^{-\lambda m}\) for all \(m \in \NN\), and, for \(m\), \(n \in \NN\), \(\left(g\left(\frac m n \right)\right)^n = g(m)\), so \(g(q) = e^{-\lambda q}\) for rationals \(q\). How do we extend this to the reals?
         
-        Let $t > 0$, and let $r$, $s \in \QQ^+$ such that $s < t < r$ and $|s-r| \leq \eps$, which can be done by density of the rationals. Then
+        Let \(t > 0\), and let \(r\), \(s \in \QQ^+\) such that \(s < t < r\) and \(|s-r| \leq \eps\), which can be done by density of the rationals. Then
         \begin{align*}
             \underbrace{g(r)}_{e^{-\lambda r}} \leq g(t) \leq \underbrace{g(s)}_{e^{-\lambda s}}
         \end{align*}
-        Taking $\eps \to 0$, we get $g(t) = e^{-\lambda t}$ as required.
+        Taking \(\eps \to 0\), we get \(g(t) = e^{-\lambda t}\) as required.
     \end{proof}
 
     \lecture{Lecture 16 -- 27/02/26}
 
     \begin{definition}
-        The \emph{expectation} of a non-negative continuous random variable $X$, $X \geq 0$, with density $f$, is given by
+        The \emph{expectation} of a non-negative continuous random variable \(X\), \(X \geq 0\), with density \(f\), is given by
         \begin{align*}
             \EE[X] = \int_{-\infty}^\infty xf(x) \D x
         \end{align*}
@@ -2091,19 +2091,19 @@
     \end{definition}
     
     \begin{definition}
-        The expectation of a general continuous random variable $X$ with density $f$ is defined as follows. We put
+        The expectation of a general continuous random variable \(X\) with density \(f\) is defined as follows. We put
         \begin{align*}
             X_+ &= \max(X, 0) \\
             X_- &= \max(-X, 0)
         \end{align*}
-        so $X = X_+ - X_-$. If $\EE[X_+]$ or $\EE[X_-] < \infty$, we define
+        so \(X = X_+ - X_-\). If \(\EE[X_+]\) or \(\EE[X_-] < \infty\), we define
         \begin{align*}
             \EE[X] = \EE[X_+] - \EE[X_-] = \int_{-\infty}^\infty xf(x) \D x
         \end{align*}
     \end{definition}
     
     \begin{lemma}
-        If $X$ is a continuous random variable with $X \geq 0$, then
+        If \(X\) is a continuous random variable with \(X \geq 0\), then
         \begin{align*}
             \EE[X] = \int_0^\infty \PP(X \geq x) \D x
         \end{align*}
@@ -2136,11 +2136,11 @@
     \begin{example*}
         Let us consider some examples.
         \begin{itemize}
-            \item Take $X \sim U(a, b)$. Then
+            \item Take \(X \sim U(a, b)\). Then
             \begin{align*}
                 \EE[X] = \int_a^b xf(x) \D x = \frac{a+b} 2
             \end{align*}
-            \item Take $X \sim \Exp(\lambda)$. Then
+            \item Take \(X \sim \Exp(\lambda)\). Then
             \begin{align*}
                 \EE[X] = \int_0^\infty \lambda x e^{-\lambda x} \D x = \frac 1 \lambda
             \end{align*}
@@ -2154,7 +2154,7 @@
     \subsection{The normal distribution}
 
     \begin{definition}[Normal distribution]
-        Let $\mu \in \RR$, $\sigma > 0$ be two parameters. Then
+        Let \(\mu \in \RR\), \(\sigma > 0\) be two parameters. Then
         \begin{align*}
             f(x) = \frac 1 {\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
         \end{align*}
@@ -2162,22 +2162,22 @@
     \end{definition}
     
     \begin{proof}
-        We must check $f$ is a density. Observe
+        We must check \(f\) is a density. Observe
         \begin{align*}
             \int_{-\infty}^\infty f(x) \D x &= \int_{-\infty}^\infty \frac 1 {\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x \\
             &= \int_{-\infty}^\infty \frac 1 {\sqrt{2\pi}} \exp\left(-\frac {u^2}2\right) \D u \\
             &= 2 \int_0^\infty \frac 1 {\sqrt{2\pi}} \exp\left(-\frac {u^2}2\right) \D u
         \end{align*}
-        Let this integral be $I$. We find
+        Let this integral be \(I\). We find
         \begin{align*}
             I^2 &= \frac 2 \pi \int_0^\infty \int_0^\infty \exp\left(-\frac{u^2}2\right)\exp\left(\frac{v^2}2\right) \D u \D v \\
             &= \frac 2 \pi \int_0^\infty \int_0^{\pi/2} re^{-\frac{r^2}2} d\theta dr \\
             &= \int_0^\infty r e^{-\frac{r^2}2} \D r = 1
         \end{align*}
-        Since $f(x) > 0$, we are done.
+        Since \(f(x) > 0\), we are done.
     \end{proof}
     
-    Let $X$ be a random variable with density $f$. We have
+    Let \(X\) be a random variable with density \(f\). We have
     \begin{align*}
         \EE[X] &= \int_{-\infty}^\infty xf(x) \D x \\
         &= \underbrace{\int_{-\infty}^\infty (x-\mu)\frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x}_{\text{odd around } -\mu} + \underbrace{\int_{-\infty}^\infty \frac{\mu}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}_{\mu} \\
@@ -2189,19 +2189,19 @@
         &= \sigma^2 \underbrace{\int_{-\infty}^\infty \frac{u^2}{\sqrt{2\pi}} \exp\left(-\frac{u^2}2\right) \D u}_{\text{1 after integration by parts}} \\
         &= \sigma^2
     \end{align*}
-    after $u = \frac{x-\mu}{\sigma}$. So $\Var(X) = \sigma^2$.
+    after \(u = \frac{x-\mu}{\sigma}\). So \(\Var(X) = \sigma^2\).
 
-    When $X$ has the normal distribution, we write $X \sim \mc N(\mu, \sigma^2)$ and we call it a normal random variable. If $X \sim \mc N(1, 0)$, $X$ is a \emph{standard normal variable}.
+    When \(X\) has the normal distribution, we write \(X \sim \mc N(\mu, \sigma^2)\) and we call it a normal random variable. If \(X \sim \mc N(1, 0)\), \(X\) is a \emph{standard normal variable}.
 
     \begin{proposition}
-        Let $X$ have density $f$. Let $g$ be a strictly monotone function with $g^{-1}$ differentiable. Then $g(X)$ has density given by
+        Let \(X\) have density \(f\). Let \(g\) be a strictly monotone function with \(g^{-1}\) differentiable. Then \(g(X)\) has density given by
         \begin{align*}
             f(g^{-1}(x)) \left|\frac{d}{dx}g^{-1}(x)\right|
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Suppose $g$ is increasing. Then
+        Suppose \(g\) is increasing. Then
         \begin{align*}
             \PP(g(X) \leq x) &= \PP(X \leq g^{-1}(x)) = F(g^{-1}(x))
         \end{align*}
@@ -2209,12 +2209,12 @@
         \begin{align*}
             \frac{d}{dx} \PP(g(X) \leq x) = \frac{d}{dx}\left(F(g^{-1}(x))\right) = f(g^{-1}(x)) \underbrace{\frac{d}{dx} g^{-1}(x)}_{>0}
         \end{align*}
-        If $g$ is decreasing, we put $\PP(g(X) \leq x)$ and proceed analogously.       
+        If \(g\) is decreasing, we put \(\PP(g(X) \leq x)\) and proceed analogously.       
     \end{proof}
     
     \subsubsection{Linear transformations of a normal random variable}
 
-    Let $X \sim \mc N(\mu, \sigma^2)$. Let $a \neq 0$, and $g(x) = ax + b$. What is the density of $Y = g(X)$? Clearly
+    Let \(X \sim \mc N(\mu, \sigma^2)\). Let \(a \neq 0\), and \(g(x) = ax + b\). What is the density of \(Y = g(X)\)? Clearly
     \begin{align*}
         g^{-1}(x) = \frac{x-b}a \implies \frac d{dx}g^{-1}(x) = \frac 1 a
     \end{align*}
@@ -2224,11 +2224,11 @@
         &= \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(\frac{y-b}{a}-\mu)^2}{2\sigma^2}\right) \cdot \frac 1 {|a|} \\
         &= \frac{1}{|a|\sigma \sqrt{2\pi}} \exp\left(-\frac{(y-(a\mu+b))^2}{2a^2\sigma^2}\right)
     \end{align*}
-    so $Y \sim \mc N(a\mu+b, (a\sigma)^2)$. Hence, letting $X \sim \mc N(\mu, \sigma)^2$, we have
+    so \(Y \sim \mc N(a\mu+b, (a\sigma)^2)\). Hence, letting \(X \sim \mc N(\mu, \sigma)^2\), we have
     \begin{align*}
         \frac{X-\mu}{\sigma} \sim \mc N(0, 1)
     \end{align*}
-    This is a very helpful result! Say, for example, I have $X \sim \mc N(\mu, \sigma^2)$, and I want to find $\PP(-2\sigma < X-\mu < 2\sigma)$. This is just $\PP(-2 < \mc N(0, 1) < 2)$ for the standard normal variable $\mc N(0, 1)$. 
+    This is a very helpful result! Say, for example, I have \(X \sim \mc N(\mu, \sigma^2)\), and I want to find \(\PP(-2\sigma < X-\mu < 2\sigma)\). This is just \(\PP(-2 < \mc N(0, 1) < 2)\) for the standard normal variable \(\mc N(0, 1)\). 
 
     \begin{definition}[Standard normal probability distribution function]
         Let 
@@ -2240,10 +2240,10 @@
     \begin{align*}
         \phi(x) = \Phi'(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}2}
     \end{align*}
-    so $\phi(x) - \phi(-x) = 0$, and hence $(\Phi(x)+\Phi(-x))' = 0$, so $\Phi(x) + \Phi(-x)$ takes a constant value of 1.
+    so \(\phi(x) - \phi(-x) = 0\), and hence \((\Phi(x)+\Phi(-x))' = 0\), so \(\Phi(x) + \Phi(-x)\) takes a constant value of 1.
     
     \begin{definition}[Median]
-        Let $X$ be a continuous random variable. The \emph{median} of $X$, denoted by $m$, is the number satisfying
+        Let \(X\) be a continuous random variable. The \emph{median} of \(X\), denoted by \(m\), is the number satisfying
         \begin{align*}
             \PP(X \geq m) = \PP(X \leq m) = \frac 1 2
         \end{align*}
@@ -2254,7 +2254,7 @@
     \end{definition}
     
     \begin{example*}
-        Suppose $X \sim \mc N(\mu, \sigma^2)$. We claim the median is $\mu$. Observe
+        Suppose \(X \sim \mc N(\mu, \sigma^2)\). We claim the median is \(\mu\). Observe
         \begin{align*}
             \PP(X \leq \mu) = \PP\left(\frac{X-\mu}{\sigma} \leq 0\right) = \PP(\mc N(0, 1) \leq 0) = \frac 1 2
         \end{align*}
@@ -2262,21 +2262,21 @@
     
     \subsection{Multivariate density functions}
 
-    In the discrete case, we defined the joint distribution of $X_1, \dots, X_n$ in terms of
+    In the discrete case, we defined the joint distribution of \(X_1, \dots, X_n\) in terms of
     \begin{align*}
         \PP(X_1 = x_1, \dots, X_n = x_n)
     \end{align*}
     However, in the continuous case, such a probability is of course zero, so we cannot talk about this. Instead, we say
 
     \begin{definition}[Joint probability distribution function]
-        The \emph{probability distribution function} $F$ for a vector $X = (X_1, \dots, X_n)$, where $X_i$ are random variables, is such that
+        The \emph{probability distribution function} \(F\) for a vector \(X = (X_1, \dots, X_n)\), where \(X_i\) are random variables, is such that
         \begin{align*}
             F(x_1, \dots, x_n) = \PP(X_1 \leq x_1, \dots, X_n \leq x_n)
         \end{align*}
     \end{definition}
     
     \begin{definition}[Joint probability density function]
-        The \emph{probability density function} $f$ for a vector $X = (X_1, \dots, X_n)$, where $X_i$ are random variables, is such that
+        The \emph{probability density function} \(f\) for a vector \(X = (X_1, \dots, X_n)\), where \(X_i\) are random variables, is such that
         \begin{align*}
             f(x_1, \dots, x_n) = \pd{^nF}{x_1\dots \pr x_n}(x_1, \dots, x_n)
         \end{align*}
@@ -2287,24 +2287,24 @@
     \end{definition}
     
     \begin{proposition}
-        Let $B \subset \RR^n$. Then
+        Let \(B \subset \RR^n\). Then
         \begin{align*}
             \PP((X_1, \dots, X_n) \in B) = \int_B f(y_1, \dots, y_n) \D y_1 \dots \D y_n
         \end{align*}
     \end{proposition}
     
     \begin{definition}[Independence]
-        Let $X_1, \dots, X_n$ be random variables. We say they are independent if, for any $x_1, \dots, x_n$,
+        Let \(X_1, \dots, X_n\) be random variables. We say they are independent if, for any \(x_1, \dots, x_n\),
         \begin{align*}
             \PP(X_1 \leq x_1, \dots, X_n \leq x_n) = \PP(X_1 \leq x_1) \dots \PP(X_n \leq x_n)
         \end{align*}
     \end{definition}
     
     \begin{proposition}
-        Suppose $X = (X_1, \dots, X_n)$ has density $f$. Then
+        Suppose \(X = (X_1, \dots, X_n)\) has density \(f\). Then
         \begin{itemize}
-            \item Suppose $X_1, \dots X_n$ are independent and have densities given by $f_1, \dots, f_n$. Then $f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)$.
-            \item Suppose $f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)$ for some non-negative functions $f_1, \dots, f_n$. Then $X_1, \dots X_n$ are independent with densities proportional to each of $f_1, \dots, f_n$.
+            \item Suppose \(X_1, \dots X_n\) are independent and have densities given by \(f_1, \dots, f_n\). Then \(f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)\).
+            \item Suppose \(f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)\) for some non-negative functions \(f_1, \dots, f_n\). Then \(X_1, \dots X_n\) are independent with densities proportional to each of \(f_1, \dots, f_n\).
         \end{itemize}
     \end{proposition}
     
@@ -2316,18 +2316,18 @@
                 &= \left(\int_{-\infty}^{x_1} f_1(y_1) \D y_1\right) \dots \left(\int_{-\infty}^{x_n}f_n(y_n)\right) \\
                 &= \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f_1(y_1) \dots f_n(y_n) \D y_n \dots \D y_1
             \end{align*}
-            so $f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)$ as required.         
+            so \(f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)\) as required.         
             
             \item We have
             \begin{align*}
                 \PP(X_1 \leq x_1, \dots, X_n \leq x_n) &= \int_{-\infty}^{x_1} \dots \int_{-\infty}^{x_n} f(y_1, \dots, y_n) \D y_n \dots \D y_1 \\
                 &= \left(\int_{-\infty}^{x_1} f_1(y_1) \D y_1\right) \dots \left(\int_{-\infty}^{x_n} f_n(y_n) \D y_n\right)
             \end{align*}
-            Observe $\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f_1(y_1) \dots f_n(y_n) \D x_1 \dots \D x_n = 1$. Hence
+            Observe \(\int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f_1(y_1) \dots f_n(y_n) \D x_1 \dots \D x_n = 1\). Hence
             \begin{align*}
                 \PP(X_1 \leq x_1, \dots, X_n \leq x_n) = \frac{\int_{-\infty}^{x_1} f_1(y_1) \D y_1}{\int_{-\infty}^\infty f_1(y_1) \D y_1} \cdots \frac{\int_{-\infty}^{x_n} f_n(y_n) \D y_n}{\int_{-\infty}^\infty f_n(y_n) \D y_n}
             \end{align*}
-            So $X_1, \dots, X_n$ are independent, with $X_i$ having density
+            So \(X_1, \dots, X_n\) are independent, with \(X_i\) having density
             \begin{align*}
                 \frac{f(x_i)}{\int_{-\infty}^\infty f(y_i) \D y_i}
             \end{align*}
@@ -2337,30 +2337,30 @@
     \subsubsection{Marginal density}
 
     \begin{definition}[Marginal density]
-        Let $X = (X_1, \dots, X_n)$ be a vector of random variables. The \emph{marginal density} of $X_i$, $f_{X_i}(x_i)$, is the density of $X_i$, where all other variables' values are ignored.
+        Let \(X = (X_1, \dots, X_n)\) be a vector of random variables. The \emph{marginal density} of \(X_i\), \(f_{X_i}(x_i)\), is the density of \(X_i\), where all other variables' values are ignored.
     \end{definition}
     
     \begin{proposition}
-        Let $X = (X_1, \dots, X_n)$ be a vector of random variables. The marginal density is given by
+        Let \(X = (X_1, \dots, X_n)\) be a vector of random variables. The marginal density is given by
         \begin{align*}
             f_{X_i}(x_i) = \int_{-\infty}^\infty \cdots \int_{-\infty}^\infty f(x_1, \dots, x_i, \dots, x_n) \D x_n \dots \D x_{i+1} \D x_{i-1} \dots \D x_1
         \end{align*}
     \end{proposition}
 
     \begin{proof}
-        Without loss of generality take $i=1$. Then
+        Without loss of generality take \(i=1\). Then
         \begin{align*}
             \PP(X_1 \leq x) &= \PP(X_1 \leq x, X_2 \in \RR, \dots, X_n \in \RR) \\
             &= \int_{-\infty}^x \left(\int_{-\infty}^\infty \dots \int_{-\infty}^\infty f(x_1, \dots, x_n) \D x_n \dots \D x_2 \right)\D x_1
         \end{align*}
-        so the expression inside the integral must be the density of $X_1$.
+        so the expression inside the integral must be the density of \(X_1\).
     \end{proof}
     
     \subsubsection{Sum of independent random variables}
 
 
     \begin{proposition}
-        Suppose $X$ and $Y$ are independent random variables with density $f_X$ and $f_Y$ respectively. The density of $X+Y$ is given by
+        Suppose \(X\) and \(Y\) are independent random variables with density \(f_X\) and \(f_Y\) respectively. The density of \(X+Y\) is given by
         \begin{align*}
             f_{X+Y}(z) = \int_{-\infty}^\infty f_X(x)f_Y(z-x) \D x
         \end{align*}
@@ -2376,17 +2376,17 @@
             &= \int_{-\infty}^\infty f_X(x) \int_{-\infty}^z f_Y(y-x) \D y \D x \\
             &= \int_{-\infty}^z \left(\int_{-\infty}^\infty f_X(x)f_Y(y-x) \D x\right) \D y
         \end{align*}
-        so the density of $X+Y$ is as required.
+        so the density of \(X+Y\) is as required.
     \end{proof}
     
     \subsubsection{Conditional density}
 
     \begin{definition}[Conditional density]
-        Let $X$ and $Y$ be random variables with joint density $f_{X, Y}$ and marginal densities $f_X$ and $f_Y$. The \emph{conditional density} of $X$ given $Y=y$ is
+        Let \(X\) and \(Y\) be random variables with joint density \(f_{X, Y}\) and marginal densities \(f_X\) and \(f_Y\). The \emph{conditional density} of \(X\) given \(Y=y\) is
         \begin{align*}
             f_{X \mid Y}(x \mid y) = \frac{f_{X, Y}(x, y)}{f_Y(y)}
         \end{align*}
-        for $f_Y(y) > 0$.
+        for \(f_Y(y) > 0\).
     \end{definition}
     
     \begin{proposition}[Law of total probability for continuous random variables]
@@ -2396,7 +2396,7 @@
     \end{proposition}
     
     \begin{definition}[Conditional expectation for continuous random variables]
-        We define $\EE[X \mid Y]$, the \emph{conditional expectation of $X$ given y}, to be $g(Y)$, where
+        We define \(\EE[X \mid Y]\), the \emph{conditional expectation of \(X\) given y}, to be \(g(Y)\), where
         \begin{align*}
             g(y) = \int_{-\infty}^\infty x f_{X \mid Y}(x \mid y) \D x
         \end{align*}
@@ -2404,25 +2404,25 @@
     
     \begin{theorem}
         \label{functions-multivariate}
-        Let $X$ be a random variable with values in $D \subseteq \RR^n$ and density $f$. Let $g$ be a bijection from $D$ to $g(D)$ with a continuous derivative on $D$ and $|J| \neq 0$ for any $x \in D$, where $|J|$ is the Jacobian. Then, the random variable $Y = g(X)$ has density
+        Let \(X\) be a random variable with values in \(D \subseteq \RR^n\) and density \(f\). Let \(g\) be a bijection from \(D\) to \(g(D)\) with a continuous derivative on \(D\) and \(|J| \neq 0\) for any \(x \in D\), where \(|J|\) is the Jacobian. Then, the random variable \(Y = g(X)\) has density
         \begin{align*}
             f_Y(y) = f_X\left(g^{-1}(y)\right) |J|
         \end{align*}  
     \end{theorem}
     
     \begin{example*}
-        Suppose $X$, $Y$ are independent and $X, Y \sim \mc N(0, 1)$. What are the distributions of the magnitude and argument of $X+iY$? By the above,
+        Suppose \(X\), \(Y\) are independent and \(X, Y \sim \mc N(0, 1)\). What are the distributions of the magnitude and argument of \(X+iY\)? By the above,
         \begin{align*}
             f_{R, \theta}(r, \theta) &= f_{X, Y}(r \cos \theta, r \sin \theta) |J| = f_X(r \cos \theta)f_Y(r \sin \theta)r \\
             &= \frac 1 {\sqrt{2\pi}} e^{-\frac{r^2\cos^2\theta}2} \cdot \frac 1 {\sqrt{2\pi}} e^{-\frac{r^2\sin^2\theta}2} r \\
             &= \frac 1 {2\pi} re^{-\frac{r^2}2}
         \end{align*}
-        Hence, $\theta \sim U(0, 2\pi)$, $R$ has density $re^{-\frac{r^2}2}$, and they are independent.        
+        Hence, \(\theta \sim U(0, 2\pi)\), \(R\) has density \(re^{-\frac{r^2}2}\), and they are independent.        
     \end{example*}
 
     \subsection{Order statistics of a random sample}
     
-    Let $X_1, \dots, X_n$ be i.i.d. random variables with probability distribution function $F$ and density $f$. For a given sample, let $Y_1 \leq \dots \leq Y_n$ be the $X_i$ ordered from smallest to largest -- called the order statistics -- and let us try to find the density of $(Y_1, \dots, Y_n)$.
+    Let \(X_1, \dots, X_n\) be i.i.d. random variables with probability distribution function \(F\) and density \(f\). For a given sample, let \(Y_1 \leq \dots \leq Y_n\) be the \(X_i\) ordered from smallest to largest -- called the order statistics -- and let us try to find the density of \((Y_1, \dots, Y_n)\).
 
     Firstly, observe
     \begin{align*}
@@ -2439,7 +2439,7 @@
     \end{align*}
     Can we generalise these results? Yes!
     \begin{proposition}
-        Let $X_1, \dots, X_n$ be i.i.d. random variables with probability distribution function $F$ and density $f$, and let $Y_1, \dots, Y_n$ be their order statistics. Then
+        Let \(X_1, \dots, X_n\) be i.i.d. random variables with probability distribution function \(F\) and density \(f\), and let \(Y_1, \dots, Y_n\) be their order statistics. Then
         \begin{align*}
             f_{(Y_1, \dots, Y_n)}(x_1, \dots, x_n) = \begin{cases}
                 n!f(x_1) \dots f(x_n) & x_1 < \dots < x_n \\
@@ -2449,7 +2449,7 @@
     \end{proposition}
 
     \begin{proof}
-        Considering all permutations of the $X_i$ which give the same ordered $Y_i$'s, we have
+        Considering all permutations of the \(X_i\) which give the same ordered \(Y_i\)'s, we have
         \begin{align*}
             &\:\PP(Y_1 \leq x_1, \dots, Y_n \leq x_n) \\ =&\: n! \cdot \PP(X_1 \leq x_1, \dots, X_n \leq x_n, X_1 \leq \dots \leq X_n) \\
             =&\: n! \int_{-\infty}^{x_1} \int_{u_1}^{x_2} \dots \int_{u_{n=1}}^{x_n} f(u_n)f(u_{n-1})\dots f(u_1) \D u_n \dots \D u_1 \\
@@ -2458,16 +2458,16 @@
                 0 & \text{o/w}
             \end{cases}
         \end{align*}
-        after differentiation and the application of FTC. Notably, the $Y_i$ are not independent, since the joint distribution only factorises in the case $x_1 < \dots < x_n$.      
+        after differentiation and the application of FTC. Notably, the \(Y_i\) are not independent, since the joint distribution only factorises in the case \(x_1 < \dots < x_n\).      
     \end{proof}
 
     \begin{example*}
-        Let $X_i$ be independent with $X_i \sim \Exp(\lambda_i)$, and let $X = \min(X_1, \dots, X_n)$. Then
+        Let \(X_i\) be independent with \(X_i \sim \Exp(\lambda_i)\), and let \(X = \min(X_1, \dots, X_n)\). Then
         \begin{align*}
             \PP(X \leq x) &= 1 - \left(1-\left(1-e^{-\lambda_1x}\right)\right)\cdots\left(1-\left(1-e^{-\lambda_nx}\right)\right) \\
             &= 1 - e^{-(\lambda_1 + \dots + \lambda_n)x}
         \end{align*}
-        so $X \sim \Exp\left(\sum_{i=1}^n \lambda_i\right)$. Now let $Y_1, \dots, Y_n$ be the order statistics, and set $Z_1 = Y_1$, $Z_2 = Y_2 - Y_1$, $Z_i = Y_i - Y_{i-1}$ for $i \leq n$ -- so the $Z_i$'s represent the spacing between the samples. What is the joint density of $(Z_1, \dots, Z_n)$?
+        so \(X \sim \Exp\left(\sum_{i=1}^n \lambda_i\right)\). Now let \(Y_1, \dots, Y_n\) be the order statistics, and set \(Z_1 = Y_1\), \(Z_2 = Y_2 - Y_1\), \(Z_i = Y_i - Y_{i-1}\) for \(i \leq n\) -- so the \(Z_i\)'s represent the spacing between the samples. What is the joint density of \((Z_1, \dots, Z_n)\)?
 
         Observe
         \begin{align*}
@@ -2499,13 +2499,13 @@
             &= n!\lambda e^{-\lambda z_1}\lambda e^{-\lambda(z_1+z_2)} \cdots \lambda e^{-\lambda(z_1+\dots+z_n)} \\
             &= \prod_{i=1}^n \left((n-i+1)\lambda e^{-\lambda(n-i+1)z_i}\right)
         \end{align*}
-        so the $Z_i$'s are independent, and $Z_i \sim \Exp(\lambda(n-i+1))$.
+        so the \(Z_i\)'s are independent, and \(Z_i \sim \Exp(\lambda(n-i+1))\).
     \end{example*}
         
     \section{Moment generating functions}
 
     \begin{definition}[Moment generating functions]
-        Let $X$ be a random variable with density $f$. The \emph{moment generating function} or \emph{mgf} of $X$ is defined to be
+        Let \(X\) be a random variable with density \(f\). The \emph{moment generating function} or \emph{mgf} of \(X\) is defined to be
         \begin{align*}
             m(\theta) = \EE[e^{\theta X}] = \int_{-\infty}^\infty e^{\theta x}f(x) \D x
         \end{align*}
@@ -2513,57 +2513,57 @@
     \end{definition}
 
     \begin{theorem}
-        The mgf uniquely determines the distribution of a random variable, provided it is defined for an open interval of values of $\theta$. Furthermore,
+        The mgf uniquely determines the distribution of a random variable, provided it is defined for an open interval of values of \(\theta\). Furthermore,
         \begin{align*}
             m^{(r)}(\theta) = \EE[X^r]
         \end{align*}
     \end{theorem}
     
     \begin{example*}
-        The \emph{gamma distribution}, for $n \in \NN$ and $\lambda > 0$, has density
+        The \emph{gamma distribution}, for \(n \in \NN\) and \(\lambda > 0\), has density
         \begin{align*}
             f(x) = \frac{e^{-\lambda x}\lambda^nx^{n-1}}{(n-1)!}
         \end{align*}
-        which has the distribution of a sum of $n$ i.i.d. exponential random variables. Let us check that it is a density.
+        which has the distribution of a sum of \(n\) i.i.d. exponential random variables. Let us check that it is a density.
         \begin{align*}
             I_n &= \int_0^\infty f(x) \D x = \int_0^{\infty} \lambda e^{-\lambda x} \cdot \frac{\lambda^{n-1}x^{n-1}}{(n-1)!} \\
             &= \int_0^\infty \lambda e^{-\lambda x} \cdot \frac{\lambda^{n-2}x^{n-2}}{(n-2)!} && \text{(parts)} \\
             &= I_{n-1} = \cdots = I_1 = 1
         \end{align*}
-        Suppose $X \sim \Gamma(n, \lambda)$. What is the mgf of $X$? We have
+        Suppose \(X \sim \Gamma(n, \lambda)\). What is the mgf of \(X\)? We have
         \begin{align*}
             m(\theta) &= \int_0^\infty e^{\theta x}e^{-\lambda x} \frac{\lambda^n x^{n-1}}{(n-1)!} \D x \\
             &= \frac{\lambda^n}{(\lambda-\theta)^n}\int_0^\infty e^{-(\lambda-\theta)x} \frac{(\lambda-\theta)^nx^{n-1}}{(n-1)!} \D x 
         \end{align*}
-        If $\theta < \lambda$, then
+        If \(\theta < \lambda\), then
         \begin{align*}
             m(\theta) = \left(\frac{\lambda}{\lambda-\theta}\right)^n
         \end{align*}
     \end{example*}
 
-    \lecture{Lecture $n+1$ -- 06/03/26}
+    \lecture{Lecture \(n+1\) -- 06/03/26}
     
     \begin{proposition}
-        If $X_1, \dots, X_n$ are independent, then $X_1 + \dots + X_n$ has mgf
+        If \(X_1, \dots, X_n\) are independent, then \(X_1 + \dots + X_n\) has mgf
         \begin{align*}
             m(\theta) = \EE[e^{\theta(X_1 + \dots + X_n)}] = \prod_{i=1}^n \EE[e^{\theta X_i}]
         \end{align*}
     \end{proposition}
     
     \begin{example*}[Sum of gamma random variables]
-        Suppose $X \sim \Gamma(n, \lambda)$ and $Y \sim \Gamma(m, \lambda)$, and $X \perp Y$. Then
+        Suppose \(X \sim \Gamma(n, \lambda)\) and \(Y \sim \Gamma(m, \lambda)\), and \(X \perp Y\). Then
         \begin{align*}
             \EE[e^{\theta(X+Y)}] = \EE[e^{\theta X}]\EE[e^{\theta Y}] = \left(\frac{\lambda}{\lambda-\theta}\right)^n \left(\frac{\lambda}{\lambda-\theta}\right)^m = \left(\frac{\lambda}{\lambda-\theta}\right)^{n+m}
         \end{align*}
-        so $X+Y \sim \Gamma(n+m,\lambda)$. It is a consequence of this that, if $X_1, \dots, X_n$ are i.i.d. $\Exp(\lambda)$ random variables, then $X_1 + \dots + X_n \sim \Gamma(n, \lambda)$.
+        so \(X+Y \sim \Gamma(n+m,\lambda)\). It is a consequence of this that, if \(X_1, \dots, X_n\) are i.i.d. \(\Exp(\lambda)\) random variables, then \(X_1 + \dots + X_n \sim \Gamma(n, \lambda)\).
     \end{example*}
     
     \begin{remark*}
-        One can generalise the gamma distribution to non-integer $m$ by replacing $(n-1)!$ with
+        One can generalise the gamma distribution to non-integer \(m\) by replacing \((n-1)!\) with
         \begin{align*}
             \Gamma(\alpha) = \int_0^{\infty} e^{-x} x^{\alpha-1} \D x
         \end{align*}
-        so that $X \sim \Gamma(\alpha, \lambda)$ if
+        so that \(X \sim \Gamma(\alpha, \lambda)\) if
         \begin{align*}
             f(x) = \frac{e^{-\lambda x}\lambda^{\alpha}x^{\alpha-1}}{\Gamma(\alpha)}
         \end{align*}
@@ -2579,7 +2579,7 @@
     \begin{align*}
         m(\theta) = \int_{-\infty}^{\infty} \frac{e^{\theta x}}{\pi(1+x^2)} \D x = \infty
     \end{align*}
-    Suppose $X \sim f$, then observe $X$, $2X, \dots$ all have the same mgf, but not the same distribution. Hence mgfs do not uniquely determine distributions unless they are finite.
+    Suppose \(X \sim f\), then observe \(X\), \(2X, \dots\) all have the same mgf, but not the same distribution. Hence mgfs do not uniquely determine distributions unless they are finite.
     
     What is the mgf of a normally distributed random variable? We have
     \begin{align*}
@@ -2589,65 +2589,65 @@
         &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2+\mu\theta+\frac{\theta^2\sigma^2}2\right) \\
         &= \exp\left(\mu\theta + \frac{\theta^2\sigma^2}2\right) \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2\right)
     \end{align*}
-    Then, the integrand is the density of $\mc N(\mu+\theta\sigma^2, \sigma^2)$, so we obtain
+    Then, the integrand is the density of \(\mc N(\mu+\theta\sigma^2, \sigma^2)\), so we obtain
     \begin{align*}
         m(\theta) = \exp\left(\mu\theta + \frac{\theta^2\sigma^2}{2}\right)
     \end{align*}
     This gives an easy way to see that
     \begin{proposition}
-        If $X \sim \mc N(\mu, \sigma^2)$, $Y \sim \mc N(\nu, \tau^2)$ and $X \perp Y$, then $X + Y \sim \mc N(\mu+\nu, \sigma^2+\tau^2)$.
+        If \(X \sim \mc N(\mu, \sigma^2)\), \(Y \sim \mc N(\nu, \tau^2)\) and \(X \perp Y\), then \(X + Y \sim \mc N(\mu+\nu, \sigma^2+\tau^2)\).
     \end{proposition}
     
     \subsection{Multivariate moment generating functions}
 
     \begin{definition}[Multivariate moment generating functions]
-        Let $ X = (X_1, \dots, X_n)$ be a random variable. The mgf of $ X$ is defined to be
+        Let \( X = (X_1, \dots, X_n)\) be a random variable. The mgf of \( X\) is defined to be
         \begin{align*}
             m( \theta) = \EE[e^{ \theta^\intercal  X}]
         \end{align*}
     \end{definition}
     
     \begin{theorem}
-        If the mgf is finite for an open set of values of $ \theta$, then it uniquely determines the distribution -- furthermore,
+        If the mgf is finite for an open set of values of \( \theta\), then it uniquely determines the distribution -- furthermore,
         \begin{align*}
             \pd[\theta=0]{^r m}{\theta_i^r} = \EE[X_i^r], \qquad \pd[\theta=0]{^{r+s}m}{\theta_i^r \pr \theta_j^s} = \EE[X_i^r X_j^s]
         \end{align*}
     \end{theorem}
     
     \begin{proposition}
-        Let $(X_1, \dots, X_n) =  X$ be a random variable in $\RR^n$. Then
+        Let \((X_1, \dots, X_n) =  X\) be a random variable in \(\RR^n\). Then
         \begin{align*}
             m( \theta) = \prod_{i=1}^n \EE[e^{\theta_i X_i}]
         \end{align*}
-        if and only if $X_1, \dots, X_n$ are independent.        
+        if and only if \(X_1, \dots, X_n\) are independent.        
     \end{proposition}
     
     \begin{proof}
-        If $X_1, \dots, X_n$ are independent, then $m(\theta)$ factorises. Conversely, if $m(\theta)$ factorises, then the $X_i$ must be independent by the uniqueness of mgfs.       
+        If \(X_1, \dots, X_n\) are independent, then \(m(\theta)\) factorises. Conversely, if \(m(\theta)\) factorises, then the \(X_i\) must be independent by the uniqueness of mgfs.       
     \end{proof}
     
     \subsection{Multivariate Gaussian random variables}
 
     \begin{definition}[Multivariate Gaussian random variables]
-        Let $X = (X_1, \dots, X_n)$ be a random variable. We say $X$ is \emph{Gaussian} if, for any $u \in \RR^n$, $u^\intercal X$ is a Gaussian random variable in $\RR$.
+        Let \(X = (X_1, \dots, X_n)\) be a random variable. We say \(X\) is \emph{Gaussian} if, for any \(u \in \RR^n\), \(u^\intercal X\) is a Gaussian random variable in \(\RR\).
     \end{definition}
     
     \begin{proposition}
         \label{linear-preserves-gaussian}
-        Let $X \in \RR^n$ be a Gaussian vector. Let $A$ be an $m$ by $n$ matrix and let $b \in \RR^m$. Then $AX + b$ is also Gaussian.
+        Let \(X \in \RR^n\) be a Gaussian vector. Let \(A\) be an \(m\) by \(n\) matrix and let \(b \in \RR^m\). Then \(AX + b\) is also Gaussian.
     \end{proposition}
     
     \begin{proof}
-        Let $u \in \RR^m$ -- we want to show $u^\intercal (AX + b)$ is Gaussian in $\RR$. Observe
+        Let \(u \in \RR^m\) -- we want to show \(u^\intercal (AX + b)\) is Gaussian in \(\RR\). Observe
         \begin{align*}
             u^\intercal(AX + b) &= u^\intercal AX + u^\intercal b \\
             &= v^\intercal X + u^\intercal b
         \end{align*}
-        where $v^\intercal X$ is Gaussian (since $X$ is) and $u^\intercal b$ is constant. The result follows.        
+        where \(v^\intercal X\) is Gaussian (since \(X\) is) and \(u^\intercal b\) is constant. The result follows.        
     \end{proof}
     
     \begin{proposition}[Multivariate mean]
-        A random vector variable $X$ has mean
+        A random vector variable \(X\) has mean
         \begin{align*}
             \mu = \EE[X] = \begin{pmatrix}
              \EE[X_1] \\
@@ -2659,16 +2659,16 @@
         \begin{align*}
             V = \Var(X) = \EE[(X-\mu) \cdot (X-\mu)^\intercal]
         \end{align*}
-        which is an $n$-by-$n$ symmetric matrix, where expectation is taken pointwise.
+        which is an \(n\)-by-\(n\) symmetric matrix, where expectation is taken pointwise.
     \end{proposition}
     
     \begin{remark*}
-        Observe that $\Var(X)_{i,j} = \Cov(X_i, X_j)$.
+        Observe that \(\Var(X)_{i,j} = \Cov(X_i, X_j)\).
     \end{remark*}
     
-    \lecture{Lecture $n+1$ -- 09/03/26}
+    \lecture{Lecture \(n+1\) -- 09/03/26}
 
-    What is the expectation of $u^\intercal X$? It should be
+    What is the expectation of \(u^\intercal X\)? It should be
     \begin{align*}
         \EE\left[\sum_{i=1}^n u_iX_i\right] &= \sum_{i=1}^n u_i\EE[X_i] = u^\intercal \mu
     \end{align*}
@@ -2678,66 +2678,66 @@
     \end{align*}
     
     \begin{proposition}
-        $V$ is a non-negative definite matrix -- for any $u \in \RR^n$,
+        \(V\) is a non-negative definite matrix -- for any \(u \in \RR^n\),
         \begin{align*}
             u^\intercal V u \geq 0
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        $u^\intercal V u = \Var(u^\intercal X) \geq 0$.
+        \(u^\intercal V u = \Var(u^\intercal X) \geq 0\).
     \end{proof}
     
-    Let us also find the mgf. We have, for any vector $\lambda$, $\lambda^\intercal X \sim \mc N(\lambda^\intercal mu, \lambda^\intercal V \lambda)$. It follows immediately from the expression for the mgf of a Gaussian random variable in $\RR$ that 
+    Let us also find the mgf. We have, for any vector \(\lambda\), \(\lambda^\intercal X \sim \mc N(\lambda^\intercal mu, \lambda^\intercal V \lambda)\). It follows immediately from the expression for the mgf of a Gaussian random variable in \(\RR\) that 
     \begin{align*}
         m(\lambda) = \exp\left(\lambda^\intercal \mu + \frac{\lambda^\intercal V \lambda} 2\right)
     \end{align*}
     
-    Recall that the mgf uniquely defines the distribution in any case -- hence, for a Gaussian random variable in particular, we conclude $\mu$ and $V$ are sufficient.
+    Recall that the mgf uniquely defines the distribution in any case -- hence, for a Gaussian random variable in particular, we conclude \(\mu\) and \(V\) are sufficient.
     
     \begin{lemma}[Construction of a Gaussian random variable]
-        Let $Z_1, \dots, Z_n$ be i.i.d $\mc N(0, 1)$ random variables. Then $Z = (Z_1, \dots, Z_n)$ is a Gaussian vector.
+        Let \(Z_1, \dots, Z_n\) be i.i.d \(\mc N(0, 1)\) random variables. Then \(Z = (Z_1, \dots, Z_n)\) is a Gaussian vector.
     \end{lemma}
     
     \begin{proof}
-        Let $u \in \RR^n$, and we need to show $u^\intercal Z$ is normal in $\RR$. We have that the mgf of $u^\intercal Z$ is
+        Let \(u \in \RR^n\), and we need to show \(u^\intercal Z\) is normal in \(\RR\). We have that the mgf of \(u^\intercal Z\) is
         \begin{align*}
             m(\lambda) &= \EE\left[e^{\lambda \sum_{i=1}^n u_iZ_i}\right] \\
             &= \prod_{i=1}^n \EE\left[e^{\lambda u_i z_i}\right] \\
             &= \prod_{i=1}^n \exp\left(\frac{\lambda^2u_i^2}2\right) \\
             &= \exp\left(\frac{\lambda^2|u|^2}2\right)
         \end{align*}
-        Hence, $u^\intercal Z \sim \mc N(0, |u|^2)$.
+        Hence, \(u^\intercal Z \sim \mc N(0, |u|^2)\).
     \end{proof}
     
     \begin{remark*}
-        For this vector, we have in particular $\mu = \V 0$, $V = I_n$ -- we write $Z \sim \mc N(0, I_n)$.
+        For this vector, we have in particular \(\mu = \V 0\), \(V = I_n\) -- we write \(Z \sim \mc N(0, I_n)\).
     \end{remark*}
     
-    Let $\mu \in \RR^n$ and let $V$ be a non-negative definite matrix. We want to construct a Gaussian vector with mean $\mu$ and variance $V$, using the standard Gaussian $Z$. Recall that, for $n=1$, we can do this by taking $X = \mu + \sigma Z$. However, for this, we need to somehow take the square root of the variance -- how will this generalise?
+    Let \(\mu \in \RR^n\) and let \(V\) be a non-negative definite matrix. We want to construct a Gaussian vector with mean \(\mu\) and variance \(V\), using the standard Gaussian \(Z\). Recall that, for \(n=1\), we can do this by taking \(X = \mu + \sigma Z\). However, for this, we need to somehow take the square root of the variance -- how will this generalise?
 
     \begin{definition}[Matrix square root]
-        Let $V$ be a non-negative definite matrix such that
+        Let \(V\) be a non-negative definite matrix such that
         \begin{align*}
             V = U^\intercal D U
         \end{align*}
-        where $U^\intercal = U^{-1}$ and $D$ is a diagonal matrix, which has diagonal entries all $\geq 0$. Then
+        where \(U^\intercal = U^{-1}\) and \(D\) is a diagonal matrix, which has diagonal entries all \(\geq 0\). Then
         \begin{align*}
             \sqrt V = U^\intercal \sqrt D U
         \end{align*}
-        where the square root of $D$ is produced by taking the square root of each of its diagonal entries.       
+        where the square root of \(D\) is produced by taking the square root of each of its diagonal entries.       
     \end{definition}
     
     \begin{remark*}
-        Reassuringly, this definition satisfies $(\sqrt V)^2 = V$.
+        Reassuringly, this definition satisfies \((\sqrt V)^2 = V\).
     \end{remark*}
     
     \begin{lemma}[Construction of a general Gaussian random variable]
-        Let $\mu \in \RR^n$ and $V$ be a non-negative definite matrix. Let $Z_1, \dots, Z_n$ be i.i.d $\mc N(0, 1)$ random variables and $Z = (Z_1, \dots, Z_n)$. Let $X = \mu + \sigma Z$, where $\sigma$ is the square root of $V$. Then $X$ is Gaussian with mean $\mu$ and variance $V = \sigma^2$, denoted $X \sim \mc N(\mu, V)$.
+        Let \(\mu \in \RR^n\) and \(V\) be a non-negative definite matrix. Let \(Z_1, \dots, Z_n\) be i.i.d \(\mc N(0, 1)\) random variables and \(Z = (Z_1, \dots, Z_n)\). Let \(X = \mu + \sigma Z\), where \(\sigma\) is the square root of \(V\). Then \(X\) is Gaussian with mean \(\mu\) and variance \(V = \sigma^2\), denoted \(X \sim \mc N(\mu, V)\).
     \end{lemma}
     
     \begin{proof}
-        $X$ is Gaussian by \cref{linear-preserves-gaussian}. Clearly $\EE[X] = \mu$, and
+        \(X\) is Gaussian by \cref{linear-preserves-gaussian}. Clearly \(\EE[X] = \mu\), and
         \begin{align*}
             \Var(X) &= \EE[(X-\mu)(X-\mu)^\intercal] \\
             &= \EE[(\sigma Z)(Z^\intercal \sigma^\intercal)] \\
@@ -2748,14 +2748,14 @@
     \end{proof}
     
     \begin{proposition}
-        Let $X \sim \mc N(\mu, V)$, where $V$ is positive definite. Then, the density of $X$ is given by
+        Let \(X \sim \mc N(\mu, V)\), where \(V\) is positive definite. Then, the density of \(X\) is given by
         \begin{align*}
             f_X(x) = \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\frac{(x-\mu)^\intercal V^{-1} (x-\mu)} 2\right)
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        We can write $X = \mu + \sigma Z$, where $Z \sim \mc N(0, I_N)$, and $Z = \sigma^{-1}(x-\mu)$. Hence, by \cref{functions-multivariate}, we have
+        We can write \(X = \mu + \sigma Z\), where \(Z \sim \mc N(0, I_N)\), and \(Z = \sigma^{-1}(x-\mu)\). Hence, by \cref{functions-multivariate}, we have
         \begin{align*}
             f_X(x) &= f_Z(z) |J| \\
             &= \frac 1{(2\pi)^{n/2}}\exp\left(-\frac{z^\intercal z}2\right) \frac 1{\det \sigma} \\
@@ -2764,20 +2764,20 @@
         \end{align*}
     \end{proof}
     
-    We now seek to generalise this result to non-negative definite variance. If $V$ has some eigenvalue equal to zero, there exists an orthogonal change of basis such that
+    We now seek to generalise this result to non-negative definite variance. If \(V\) has some eigenvalue equal to zero, there exists an orthogonal change of basis such that
     \begin{align*}
         V = \begin{pmatrix}
             U & 0 \\
             0 & 0 \\
         \end{pmatrix}
     \end{align*}
-    where $U$ is an $m$ by $m$ positive definite matrix with all other entries filled in by zero. Then, we can write $\mu = (\lambda, \nu)$ where $\lambda \in \RR^m$, $\nu \in \RR^{n-m}$, so that $X = (y, \nu)$ for a constant vector $\nu$ and $Y \sim \mc N(\lambda, U)$ with density
+    where \(U\) is an \(m\) by \(m\) positive definite matrix with all other entries filled in by zero. Then, we can write \(\mu = (\lambda, \nu)\) where \(\lambda \in \RR^m\), \(\nu \in \RR^{n-m}\), so that \(X = (y, \nu)\) for a constant vector \(\nu\) and \(Y \sim \mc N(\lambda, U)\) with density
     \begin{align*}
         f_Y(y) = \frac 1{\sqrt{(2\pi)^m \det U}} \exp\left(-\frac{(y-\lambda)^\intercal U^{-1} (y-\lambda)} 2\right)
     \end{align*}
     
     \begin{proposition}
-        Let $X = (X_1, \dots, X_n)$ be a Gaussian vector, $\mu = \EE[X]$, $V = \Var(X)$ positive definite. Then $X_1, \dots, X_n$ are independent if and only if $V$ is diagonal.
+        Let \(X = (X_1, \dots, X_n)\) be a Gaussian vector, \(\mu = \EE[X]\), \(V = \Var(X)\) positive definite. Then \(X_1, \dots, X_n\) are independent if and only if \(V\) is diagonal.
     \end{proposition}
     
     The forward implication is true for any random variable. We give two proofs of the converse.
@@ -2791,13 +2791,13 @@
                 0 & \cdots & \lambda_n \\
             \end{pmatrix}
         \end{align*}
-        Let $\mu = (\mu_1, \dots, \mu_n)$, so that
+        Let \(\mu = (\mu_1, \dots, \mu_n)\), so that
         \begin{align*}
             f_X(x) &= \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\frac{(x-\mu)^\intercal V^{-1} (x-\mu)}{2}\right) \\
             &= \frac 1{\sqrt{(2\pi)^n \det V}} \exp\left(-\sum_{i=1}^n \frac{(x_i-\mu_i)^2}{2\lambda_i}\right) \\
             &= \prod_{i=1}^n \frac 1 {\lambda_i \sqrt{2\pi}} \exp\left(-\frac{(x_i-\mu_i)^2}{2\lambda_i}\right)
         \end{align*}
-        so $X_i$ are independent as required, and furthermore each is normal with mean $\mu_i$ and variance $\lambda_i$.
+        so \(X_i\) are independent as required, and furthermore each is normal with mean \(\mu_i\) and variance \(\lambda_i\).
     \end{proof}
     
     \begin{proof}[Proof 2]
@@ -2807,20 +2807,20 @@
             &= \exp\left(\sum_{i=1}^n \theta_i \mu_i + \sum_{i=1}^n \frac{\theta_i^2 \lambda_i}2\right) \\
             &= \prod_{i=1}^n \exp\left(\theta_i \mu_i + \frac{\theta_i^2 \lambda_i} 2\right)
         \end{align*}
-        so the mgf factorises and hence the $X_i$ are independent.
+        so the mgf factorises and hence the \(X_i\) are independent.
     \end{proof}
     
     \subsection{Bivariate Gaussians}
 
     \begin{definition}[Correlation]
-        Let $X = (X_1, X_2)$ be a random variable in $\RR^2$, with $\mu_i = \EE[X_i]$, $\sigma^2_i = \Var(X_i)$. Then the \emph{correlation} is given by
+        Let \(X = (X_1, X_2)\) be a random variable in \(\RR^2\), with \(\mu_i = \EE[X_i]\), \(\sigma^2_i = \Var(X_i)\). Then the \emph{correlation} is given by
         \begin{align*}
             \rho = \Corr(X_1, X_2) = \frac{\Cov(X_1, X_2)}{\sqrt{\Var(X_1)\Var(X_2)}}
         \end{align*}
     \end{definition}
     
     \begin{lemma}
-        For any $X$, $-1 \leq \rho \leq 1$.
+        For any \(X\), \(-1 \leq \rho \leq 1\).
     \end{lemma}
 
     \begin{proof}
@@ -2828,7 +2828,7 @@
     \end{proof}
 
     \begin{lemma}
-        The variance matrix of $X$, which is given by
+        The variance matrix of \(X\), which is given by
         \begin{align*}
             V = \begin{pmatrix}
                 \sigma_1^2 & \rho\sigma_1\sigma_2 \\
@@ -2839,17 +2839,17 @@
     \end{lemma}
     
     \begin{proof}
-        Let $u = (u_1, u_2)^\intercal$, so
+        Let \(u = (u_1, u_2)^\intercal\), so
         \begin{align*}
             u^\intercal V u = (1 \pm \rho)(\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2) \mp \rho(\sigma_1 u_1 - \sigma_2 u_2)^2
         \end{align*}
-        Depending on whether $\rho \in [-1, 0]$ or $\rho \in [0, 1]$, we use take the first plus sign or the first minus sign, respectively.       
+        Depending on whether \(\rho \in [-1, 0]\) or \(\rho \in [0, 1]\), we use take the first plus sign or the first minus sign, respectively.       
     \end{proof}
     
-    What is $\EE[X_2 \mid X_1]$
+    What is \(\EE[X_2 \mid X_1]\)
 
     \begin{proof}
-        Let $Y = X_2 - aX_1$. Observe
+        Let \(Y = X_2 - aX_1\). Observe
         \begin{align*}
             \begin{pmatrix}
                 X_1 \\
@@ -2862,12 +2862,12 @@
                 X_2 \\
             \end{pmatrix} 
         \end{align*}
-        so $(X_1, Y)$ is Gaussian. Observe
+        so \((X_1, Y)\) is Gaussian. Observe
         \begin{align*}
             \Cov(X_1, Y) &= \Cov(X_1, X_2 - aX_1) \\
             &= \Cov(X_1, X_2) - a\Var(X_1)
         \end{align*}
-        Taking $a = \frac{\Cov(X_1, X_2)}{\Var(X_1)}$ gives $\Cov(X_1, Y) = 0$, so $X_1$ and $Y$ are independent. Then
+        Taking \(a = \frac{\Cov(X_1, X_2)}{\Var(X_1)}\) gives \(\Cov(X_1, Y) = 0\), so \(X_1\) and \(Y\) are independent. Then
         \begin{align*}
             \EE[X_2 \mid X_1] &= \EE[X_2 - aX_1 \mid X_1] + \EE[aX_1 \mid X_1]\\
             &= \EE[X_2 - aX_1] + aX_1 \\
@@ -2878,49 +2878,49 @@
     \section{Convergence results and limit theorems}
     
     \begin{definition}[Convergence in probability]
-        A sequence of random variables $(X_n)$ converges to $X$ \emph{in probability}, $X_n \pto X$ if, for any $\eps > 0$,
+        A sequence of random variables \((X_n)\) converges to \(X\) \emph{in probability}, \(X_n \pto X\) if, for any \(\eps > 0\),
         \begin{align*}
             \PP(|X_n-X| > \eps) \to 0
         \end{align*}
-        as $n \to \infty$.
+        as \(n \to \infty\).
     \end{definition}
     
     \begin{theorem}[Weak law of large numbers]
-        Let $(X_n)$ be a sequence of i.i.d. random variables with finite mean. Let $S_n = X_1 + \dots + X_n$, then 
+        Let \((X_n)\) be a sequence of i.i.d. random variables with finite mean. Let \(S_n = X_1 + \dots + X_n\), then 
         \begin{align*}
             \frac{S_n}{n} \pto \mu
         \end{align*}
-        as $n \to \infty$.
+        as \(n \to \infty\).
     \end{theorem}
     
     \begin{proof}
-        Assume $\sigma^2 = \Var(X_1) < \infty$. Observe
+        Assume \(\sigma^2 = \Var(X_1) < \infty\). Observe
         \begin{align*}
             \PP\left(\left|\frac{S_n}{n}-\mu\right| > \eps\right) &= \PP(|S_n - n\mu| > n\eps) \\
             &\leq \frac{\Var(S_n)}{n^2\eps^2} \\
             &= \frac{\sigma^2}{n\eps^2} \to 0
         \end{align*}
-        as $n \to \infty$.
+        as \(n \to \infty\).
     \end{proof}
     
     \begin{definition}[Almost sure/probability 1 convergence]
-        Let $(X_n)$ be a sequence of random variables and $X$ a random variable. We say that $X_n \to X$ \emph{almost surely} or \emph{with probability 1} if
+        Let \((X_n)\) be a sequence of random variables and \(X\) a random variable. We say that \(X_n \to X\) \emph{almost surely} or \emph{with probability 1} if
         \begin{align*}
             \PP(\lim_{n \to \infty} X_n = X) = 1
         \end{align*}
-        Perhaps it is most helpful to return to the definition of random variables. We have that there exists $A \in \mc F$ such that $\PP(A) = 1$ and, for $\omega$ in that set, the functions $X_n$ converge pointwise to the function $X$.
+        Perhaps it is most helpful to return to the definition of random variables. We have that there exists \(A \in \mc F\) such that \(\PP(A) = 1\) and, for \(\omega\) in that set, the functions \(X_n\) converge pointwise to the function \(X\).
     \end{definition}
     
     \begin{proposition}
-        If $X_n \to 0$ as $n \to \infty$ a.s., then $X_n \pto 0$ as $n \to \infty$.
+        If \(X_n \to 0\) as \(n \to \infty\) a.s., then \(X_n \pto 0\) as \(n \to \infty\).
     \end{proposition}
     
     \begin{proof}
-        We want to show that $\PP(|X_n| \leq \eps) \to 1$ as $n \to \infty$. Observe
+        We want to show that \(\PP(|X_n| \leq \eps) \to 1\) as \(n \to \infty\). Observe
         \begin{align*}
             \PP(|X_n| \leq \eps) &\geq \PP\left(\underbrace{\bigcap_{m=n}^\infty |X_m| \leq \eps}_{A_n}\right)
         \end{align*}
-        Then the events $A_n$ are increasing, that is $A_n \subseteq A_{n+1}$. It follows by continuity of probability measures that $\PP(A_n)$ is increasing and converges to $\PP\left(\bigcup_n A_n\right)$ as $n \to \infty$. Hence
+        Then the events \(A_n\) are increasing, that is \(A_n \subseteq A_{n+1}\). It follows by continuity of probability measures that \(\PP(A_n)\) is increasing and converges to \(\PP\left(\bigcup_n A_n\right)\) as \(n \to \infty\). Hence
         \begin{align*}
             \PP(A_n) \to \PP\left(\bigcup_n \bigcap_{m=n}^\infty |X_m| \leq \eps\right)
         \end{align*}
@@ -2929,7 +2929,7 @@
             \lim_{n \to \infty} \PP(|X_n| \leq \eps) &\geq \PP(\exists n \text{ s.t. } m \geq n \implies |X_m| < \eps) \\
             &\geq \PP(\forall \eps > 0, \exists n \text{ s.t. } m \geq n \implies |X_m| < \eps)
         \end{align*}
-        But this is exactly the set of $\omega$ such that $X_n$ converges pointwise to $X$, so it has probability 1 by assumption. Hence
+        But this is exactly the set of \(\omega\) such that \(X_n\) converges pointwise to \(X\), so it has probability 1 by assumption. Hence
         \begin{align*}
             \lim_{n \to \infty} \PP(|X_n| \leq \eps) &\geq 1 \\
             \implies \lim_{n \to \infty} \PP(|X_n| \leq \eps) &= 1
@@ -2942,19 +2942,19 @@
     \end{remark*}
     
     \begin{theorem}[Strong law of large numbers]
-        Let $(X_n)$ be a sequence of i.i.d. random variables with finite mean. Let $S_n = X_1 + \dots + X_n$, then
+        Let \((X_n)\) be a sequence of i.i.d. random variables with finite mean. Let \(S_n = X_1 + \dots + X_n\), then
         \begin{align*}
             \frac{S_n}n \to \mu
         \end{align*}
-        a.s. as $n \to \infty$.        
+        a.s. as \(n \to \infty\).        
     \end{theorem}
 
     \begin{proof}[Proof (non-examinable)]
-        Assume $\sigma^2 = \Var(X_1) < \infty$ and $\EE[X_1^4] < \infty$. Let $Y_i = X_i - \mu$, so $\EE[Y_i] = 0$, and 
+        Assume \(\sigma^2 = \Var(X_1) < \infty\) and \(\EE[X_1^4] < \infty\). Let \(Y_i = X_i - \mu\), so \(\EE[Y_i] = 0\), and 
         \begin{align*}
             \EE[Y_1^4] = \EE[(X_1-\mu)^4] \leq \EE[\left(2\max(\EE[X_1], \mu)\right)^4] \leq 2^4 \left(\EE[X_1^4]+\mu^4\right)
         \end{align*}
-        Set now $S_n = \sum_{i=1}^n Y_i$, and we must show $S_n/n \to 0$ a.s. as $n \to \infty$.
+        Set now \(S_n = \sum_{i=1}^n Y_i\), and we must show \(S_n/n \to 0\) a.s. as \(n \to \infty\).
 
         We claim that
         \begin{align*}
@@ -2969,17 +2969,17 @@
             \EE\left[\sum \left(\frac{S_n}n\right)^4\right] &= \sum \frac{1}{n^4} \EE[S_n^4] \\
             &= \sum \frac{1}{n^4} \EE\left[\sum_{i=1}^n Y_i^4 + \binom 4 2 \sum_{1\leq i < j \leq n} Y_i^2 Y_j^2 + R\right]
         \end{align*}
-        where $R$ is a sum of terms of the form
+        where \(R\) is a sum of terms of the form
         \begin{align*}
             Y_i^3Y_j, \; Y_i^2Y_jY_k, \; Y_iY_jY_kY_l
         \end{align*}
-        for distinct indices $i$, $j$, $k$, $l$. For such a term, the expectation factorises by independence, and then, since $\EE[X_i] = 0$ and a first power appears in each of them, we obtain 0.
+        for distinct indices \(i\), \(j\), \(k\), \(l\). For such a term, the expectation factorises by independence, and then, since \(\EE[X_i] = 0\) and a first power appears in each of them, we obtain 0.
 
-        Let us consider the $X_i^2X_j^2$ terms. We have
+        Let us consider the \(X_i^2X_j^2\) terms. We have
         \begin{align*}
             \EE[X_i^2X_j^2] = \EE[Y_i^2]^2
         \end{align*}
-        Now, by Jensen with $f(x) = x^2$ or just non-negativity of variance, we have $\EE[Y_i^2]^2 \leq \EE[Y_i^4]$, which is finite. Now
+        Now, by Jensen with \(f(x) = x^2\) or just non-negativity of variance, we have \(\EE[Y_i^2]^2 \leq \EE[Y_i^4]\), which is finite. Now
         Furthermore,
         \begin{align*}
             \sum \frac 1{n^4} \EE\left[\sum_{i=1}^n Y_i^4 + \binom 4 2 \sum_{1 \leq i < j \leq n}Y_i^2Y_j^2\right] &\leq \sum \frac 1{n^4} \left(n \EE[Y_1^4] + 6\frac{n(n-1)}{2} \EE[Y_1^4]\right) \\
@@ -2990,27 +2990,27 @@
         \begin{align*}
             \PP\left(\sum_{n=1}^\infty \left(\frac{S_n}n\right)^4 < \infty\right) = 1
         \end{align*}
-        so, applying the $n^\text{th}$ term test, $\left(\frac{S_n}{n}\right)^4 \to 0$ with probability 1, so taking fourth roots immediately gives the result.
+        so, applying the \(n^\text{th}\) term test, \(\left(\frac{S_n}{n}\right)^4 \to 0\) with probability 1, so taking fourth roots immediately gives the result.
     \end{proof}
     
     \subsection{Central limit theorem}
 
     \begin{definition}[Convergence in probability]
-        A sequence of random variables $(X_n)$ \emph{converges to $X$ in distribution}, $X_n \dto X$, if
+        A sequence of random variables \((X_n)\) \emph{converges to \(X\) in distribution}, \(X_n \dto X\), if
         \begin{align*}
             F_{X_n}(x) \to F_X(x)
         \end{align*}
-        as $n \to \infty$ for all $x \in \RR$ that are continuity points of $F_X$.
+        as \(n \to \infty\) for all \(x \in \RR\) that are continuity points of \(F_X\).
     \end{definition}
 
     \lecture{Lecture 23 -- 16/03/26}
     
     \begin{proposition}
-        If $X_n \pto X$ as $n \to \infty$, then $X_n \dto X$ as $n \to \infty$.
+        If \(X_n \pto X\) as \(n \to \infty\), then \(X_n \dto X\) as \(n \to \infty\).
     \end{proposition}
     
     \begin{proof}
-        Let $x$ be a continuity point of $F_X$, and let $\eps > 0$. We claim that
+        Let \(x\) be a continuity point of \(F_X\), and let \(\eps > 0\). We claim that
         \begin{align*}
             \{X \leq x - \eps\} \subseteq \{X_n \leq x\} \cup \{|X_n-X| > \eps\}
         \end{align*}
@@ -3032,35 +3032,35 @@
         \begin{align*}
             F_X(x-\eps) \leq \liminf F_{X_n}(x) \leq \limsup F_{X_n}(x) \leq F_X(x+\eps)
         \end{align*}
-        Now, taking $\eps \to 0$, since $x$ is a continuity point, we obtain
+        Now, taking \(\eps \to 0\), since \(x\) is a continuity point, we obtain
         \begin{align*}
             \liminf F_{X_n}(x) = \limsup F_{X_n}(x) = \lim_{n \to \infty} F_{X_n}(x) = F_X(x)
         \end{align*}
     \end{proof}
 
     \begin{proposition}[Continuity property for mgf's]
-        Let $X_n$ be random variables with mgfs $m_n(\theta) = \EE[e^{\theta X_n}]$ for $\theta \in \RR$, and $X$ a random variable with mgf $m(\theta) = \EE[e^{\theta X}]$. Suppose $m(\theta) < \infty$ for some $\theta \neq 0$. If $m_n(\theta) \to m(\theta)$ as $n \to \infty$ for all $\theta \in \RR$, then $X_n \dto X$ as $n \to \infty$.
+        Let \(X_n\) be random variables with mgfs \(m_n(\theta) = \EE[e^{\theta X_n}]\) for \(\theta \in \RR\), and \(X\) a random variable with mgf \(m(\theta) = \EE[e^{\theta X}]\). Suppose \(m(\theta) < \infty\) for some \(\theta \neq 0\). If \(m_n(\theta) \to m(\theta)\) as \(n \to \infty\) for all \(\theta \in \RR\), then \(X_n \dto X\) as \(n \to \infty\).
     \end{proposition}
 
     We will need this result for the next theorem, although we will not prove it.
     
     \begin{theorem}[Central limit theorem]
-        Let $X_n$ be i.i.d. random variables with finite mean $\mu$ and finite variance $\sigma^2$. Let $S_n = X_1 + \dots + X_n$, then
+        Let \(X_n\) be i.i.d. random variables with finite mean \(\mu\) and finite variance \(\sigma^2\). Let \(S_n = X_1 + \dots + X_n\), then
         \begin{align*}
             \frac{S_n-n\mu}{\sigma \sqrt n} \dto Z
         \end{align*}
-        as $n \to \infty$, where $Z \sim \mc N(0, 1)$. In other words,
+        as \(n \to \infty\), where \(Z \sim \mc N(0, 1)\). In other words,
         \begin{align*}
             \PP\left(\frac{S_n-n\mu}{\sigma \sqrt n} \leq x\right) \longrightarrow \int_{-\infty}^x \frac{1}{\sqrt{2\pi}} e^{-\frac{y^2}2} \D y = \Phi(x)
         \end{align*}
     \end{theorem}
     
     \begin{proof}
-        Let $Y_i = \frac{X_i-\mu}{\sigma}$, so $\EE[Y_i] = 0$ and $\Var(Y_i) = 1$. It suffices, then, to show the theorem for a sequence $X_1, \dots, X_n$ i.i.d. with mean 0 and variance 1.
+        Let \(Y_i = \frac{X_i-\mu}{\sigma}\), so \(\EE[Y_i] = 0\) and \(\Var(Y_i) = 1\). It suffices, then, to show the theorem for a sequence \(X_1, \dots, X_n\) i.i.d. with mean 0 and variance 1.
 
-        We will unjustifiably assume for our proof that there exists some $\delta > 0$ with $\EE[e^{\delta X_1}] + \EE[e^{-\delta X_1}]$ is finite.
+        We will unjustifiably assume for our proof that there exists some \(\delta > 0\) with \(\EE[e^{\delta X_1}] + \EE[e^{-\delta X_1}]\) is finite.
 
-        Let $m(\theta) = \EE[e^{\theta X_1}]$. By the continuity property of mgf's, it suffices to show that
+        Let \(m(\theta) = \EE[e^{\theta X_1}]\). By the continuity property of mgf's, it suffices to show that
         \begin{align*}
             \EE\left[e^{\theta \frac{S_n}{\sqrt n}}\right] \longrightarrow \EE[e^{\theta Z}] = e^{\frac{\theta^2}{2}}
         \end{align*}
@@ -3074,7 +3074,7 @@
         \begin{align*}
             \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right| = o(|\theta|^2)
         \end{align*}
-        as $\theta \to 0$. Let $|\theta| < \delta/2$. Then
+        as \(\theta \to 0\). Let \(|\theta| < \delta/2\). Then
         \begin{align*}
             \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right| &\leq \EE\left[\sum_{k \geq 3} \frac{|\theta X_1|^k}{k!}\right] \\
             &= \EE\left[|\theta X_1|^3 \sum_{k \geq 0} \frac{|\theta X_1|^k}{(k+3)!}\right] \\
@@ -3086,7 +3086,7 @@
         \begin{align*}
             |\theta X_1|^3 = |\theta|^3 \frac{\left|\frac{\delta}2 X_1\right|^3}{3!} \cdot \frac{3!}{\left(\frac{\delta}2\right)^2} \leq C|\theta|^3 e^{\frac{\delta|X_1|}{2}}
         \end{align*}
-        where $C = 3! \cdot \frac{2^3}{\delta^3}$ (where does this come from)? Hence
+        where \(C = 3! \cdot \frac{2^3}{\delta^3}\) (where does this come from)? Hence
         \begin{align*}
             \EE\left[|\theta X_1|^3 e^{\frac{\delta|X_1|}{2}}\right] &\leq C|\theta|^3 \EE\left[e^{\frac{\delta|X_1|}{2}} \cdot e^{\frac{\delta|X_1|}{2}}\right] \\
             &= C|\theta|^3 \EE\left[e^{\delta|X_1|}\right] \\
@@ -3096,20 +3096,20 @@
         \begin{align*}
             \left|\EE\left[\sum_{k \geq 3} \frac{\theta^k}{(\sqrt n)^k} \cdot \frac 1{k!} X_1^k\right]\right| \leq C' \cdot |\theta|^3
         \end{align*}
-        Hence the LHS is $O(|\theta|^3)$, so $o(|\theta|^2)$ as required. Now
+        Hence the LHS is \(O(|\theta|^3)\), so \(o(|\theta|^2)\) as required. Now
         \begin{align*}
             m\left(\frac{\theta}{\sqrt n}\right) &= 1 + \frac{\theta^2}{2n} + o\left(\frac{\theta^2}{n}\right) \\
             \implies \left(m\left(\frac{\theta}{\sqrt n}\right)\right)^n &\to e^{\frac{\theta^2}{2}}
         \end{align*}
-        as $n \to \infty$ (aren't we implicitly taking $\theta \to 0$ here? how can this be valid for any $\theta \neq 0$ then? since we take $\theta \to 0$ for little o of $|\theta|^2$ as well as $n \to \infty$).
+        as \(n \to \infty\) (aren't we implicitly taking \(\theta \to 0\) here? how can this be valid for any \(\theta \neq 0\) then? since we take \(\theta \to 0\) for little o of \(|\theta|^2\) as well as \(n \to \infty\)).
     \end{proof}
     
     \begin{example}
-        Suppose $S_n \sim \Bin(n, p)$. We can write
+        Suppose \(S_n \sim \Bin(n, p)\). We can write
         \begin{align*}
             S_n = X_1 + \dots + X_n
         \end{align*}
-        where the $X_i$ are i.i.d. Bernoulli random variables with parameter $p$. Hence, inserting the mean and variance of the Bernoulli distribution, we obtain
+        where the \(X_i\) are i.i.d. Bernoulli random variables with parameter \(p\). Hence, inserting the mean and variance of the Bernoulli distribution, we obtain
         \begin{align*}
             \frac{S_n-np}{\sqrt{np(1-p)}} \dto \mc N(0, 1)
         \end{align*}
@@ -3117,15 +3117,15 @@
         \begin{align*}
             S_n \approx \mc N(np, np(1-p))
         \end{align*}
-        for large $n$.        
+        for large \(n\).        
     \end{example}
     
     \begin{example*}
-        Suppose $S_n \sim \Poi(n)$, so that
+        Suppose \(S_n \sim \Poi(n)\), so that
         \begin{align*}
             S_n = X_1 + \dots + X_n
         \end{align*}
-        where the $X_i$ are i.i.d. distributed $\Poi(1)$. Subbing in the mean and variance of the Poisson distribution, we obtain
+        where the \(X_i\) are i.i.d. distributed \(\Poi(1)\). Subbing in the mean and variance of the Poisson distribution, we obtain
         \begin{align*}
             \frac{S_n-n}{\sqrt n} &\dto \mc N(0, 1) \\
             \implies S_n &\approx \mc N(n, n)
@@ -3134,9 +3134,9 @@
     
     \lecture{Lecture 24 -- 18/03/26}
 
-    Suppose that, in a referendum, every individual votes yes with probability $p$ and no with probability $1-p$, independently of one another, and that we want to estimate $p$ by sampling.
+    Suppose that, in a referendum, every individual votes yes with probability \(p\) and no with probability \(1-p\), independently of one another, and that we want to estimate \(p\) by sampling.
 
-    Let $X_i$ be 1 if the $i^\text{th}$ individual sampled voted `yes', 0 otherwise. Let $S_N = X_1 + \dots + X_n$, and let $\hat p_N = \frac{S_N}{N}$, which goes to $p$ a.s. as $n \to \infty$ by the strong law of large numbers -- in particular, $S_N \sim \Bin(n, p)$. For a given desired error, how large should $N$ be?
+    Let \(X_i\) be 1 if the \(i^\text{th}\) individual sampled voted `yes', 0 otherwise. Let \(S_N = X_1 + \dots + X_n\), and let \(\hat p_N = \frac{S_N}{N}\), which goes to \(p\) a.s. as \(n \to \infty\) by the strong law of large numbers -- in particular, \(S_N \sim \Bin(n, p)\). For a given desired error, how large should \(N\) be?
 
     By the CLT,
     \begin{align*}
@@ -3148,59 +3148,59 @@
     \begin{align*}
         \PP\left(\frac{\sqrt{p(1-p)}}{\sqrt N} |Z| \geq \eps\right) \leq p'
     \end{align*}
-    We can solve this using $\Phi$, and we can avoid worrying about not knowing what $p$ is by simply using the fact that $\sqrt{p(1-p)} \leq \frac 1 {\sqrt 2}$.
+    We can solve this using \(\Phi\), and we can avoid worrying about not knowing what \(p\) is by simply using the fact that \(\sqrt{p(1-p)} \leq \frac 1 {\sqrt 2}\).
 
     \section{Simulation of random variables}
 
-    Suppose one can generate uniform random numbers in $[0, 1]$. How can we sample some other random variable?
+    Suppose one can generate uniform random numbers in \([0, 1]\). How can we sample some other random variable?
 
-    Suppose first $F$ is one-to-one -- then set $X = F^{-1}(U)$, so
+    Suppose first \(F\) is one-to-one -- then set \(X = F^{-1}(U)\), so
     \begin{align*}
         \PP(X \leq x) = \PP(F^{-1}(U) \leq x) = \PP(U \leq F(x)) = F(x)
     \end{align*}
     
-    If $F$ is not one-to-one, we define its \emph{generalised inverse}
+    If \(F\) is not one-to-one, we define its \emph{generalised inverse}
     \begin{align*}
         G(u) = \inf\{x \in \RR: u \leq F(x)\}
     \end{align*}
     
     \begin{lemma}
-        $G(u) \leq x$ if and only if $u \leq F(x)$.
+        \(G(u) \leq x\) if and only if \(u \leq F(x)\).
     \end{lemma}
     
     \begin{proof}
-        The reverse implication is immediate. For the forward implication, observe there exists $x_n \geq G(u)$ such that $x_n \to G(u)$ from above and $u \leq F(x_n)$. By right continuity of $F$, $F(x_n) \to F(G(u))$ as $n \to \infty$, so $u \leq F(G(u))$. Hence, if $G(u) \leq x$, then $u \leq F(G(u)) \leq F(x)$ as $F$ is increasing.
+        The reverse implication is immediate. For the forward implication, observe there exists \(x_n \geq G(u)\) such that \(x_n \to G(u)\) from above and \(u \leq F(x_n)\). By right continuity of \(F\), \(F(x_n) \to F(G(u))\) as \(n \to \infty\), so \(u \leq F(G(u))\). Hence, if \(G(u) \leq x\), then \(u \leq F(G(u)) \leq F(x)\) as \(F\) is increasing.
     \end{proof}
     
-    Now, we can set $X = G(U)$, so that
+    Now, we can set \(X = G(U)\), so that
     \begin{align*}
         \PP(X \leq x) = \PP(G(U) \leq x) = \PP(U \leq F(x)) = F(x)
     \end{align*}
 
     \subsection{Box-Muller transform}
 
-    We would like to simulate $X$ and $Y$ independent $\mc N(0, 1)$ using two independent $U[0, 1]$ random variables, $U$ and $V$. Theoretically, we can just apply $\Phi^{-1}$ to each of the uniform random variables, but indeed this does not have a closed form.
+    We would like to simulate \(X\) and \(Y\) independent \(\mc N(0, 1)\) using two independent \(U[0, 1]\) random variables, \(U\) and \(V\). Theoretically, we can just apply \(\Phi^{-1}\) to each of the uniform random variables, but indeed this does not have a closed form.
 
-    Consider making a complex number $X+iY$ from $X$ and $Y$ -- we have already shown that, for this complex number, $R$ has density $re^{-\frac{r^2}{2}}$, $\theta \sim U[0, 2\pi]$, and these are independent. Now put
+    Consider making a complex number \(X+iY\) from \(X\) and \(Y\) -- we have already shown that, for this complex number, \(R\) has density \(re^{-\frac{r^2}{2}}\), \(\theta \sim U[0, 2\pi]\), and these are independent. Now put
     \begin{align*}
         \theta &= 2\pi U \\
         R &= \sqrt{-2 \log V}
     \end{align*}
-    where the $R$ expression comes from the inverse of the CDF for $R$. Indeed, we have
+    where the \(R\) expression comes from the inverse of the CDF for \(R\). Indeed, we have
     \begin{align*}
         \PP(R \geq r) = \PP\left(\sqrt{-2\log V} \geq r\right) = \PP\left(V \leq e^{-\frac{r^2}2}\right) = re^{-\frac{r^2}{2}}
     \end{align*}
-    so $R$ has the correct cdf.
+    so \(R\) has the correct cdf.
 
     \subsection{Rejection sampling}
 
-    Suppose we have an r.v. $X$ with density
+    Suppose we have an r.v. \(X\) with density
     \begin{align*}
         f(x) = \frac{1(x \in A)}{|A|}
     \end{align*}
-    where $A \in [0,1]^d$ has volume $|A|$. We can sample uniformly in $A$ by sampling coordinates uniformly, and discarding samples until we end up in $A$.
+    where \(A \in [0,1]^d\) has volume \(|A|\). We can sample uniformly in \(A\) by sampling coordinates uniformly, and discarding samples until we end up in \(A\).
 
-    Let $N = \min\{n: U_n \in A\}$, and $X = U_N$ -- we need to show $X$ has density $f$. It suffices to show that
+    Let \(N = \min\{n: U_n \in A\}\), and \(X = U_N\) -- we need to show \(X\) has density \(f\). It suffices to show that
     \begin{align*}
         \PP(X \in B) = \frac{|B \cap A|}{|A|}
     \end{align*}

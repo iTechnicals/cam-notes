@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  17 MAR 2026 10:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.9)  27 MAR 2026 22:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -451,7 +451,7 @@ Package: thm-restate 2023/05/04 v0.76
 Package: thm-amsthm 2023/05/04 v0.76
 \thmt@style@headstyle=\toks33
 ))
-Package hyperref Info: Option `hypertexnames' set `false' on input line 498.
+Package hyperref Info: Option `hypertexnames' set `false' on input line 499.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/zref/zref-abspage.sty
@@ -745,11 +745,7 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package thmtools Info: Key `mdframed' (with value `style=mdbluebox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmbluebox' on input line 534.
-Package thmtools Info: Key `preheadhook' (with value `\Needspace {0.4\textheight }')
-(thmtools)             is not a known style key.
-(thmtools)             Will pass this to every \declaretheorem
-(thmtools)             that uses `style=thmredbox' on input line 554.
+(thmtools)             that uses `style=thmbluebox' on input line 535.
 Package thmtools Info: Key `mdframed' (with value `style=mdredbox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
@@ -766,7 +762,9 @@ Package thmtools Info: Key `mdframed' (with value `style=mdpurplebox')
 (thmtools)             is not a known style key.
 (thmtools)             Will pass this to every \declaretheorem
 (thmtools)             that uses `style=thmpurplebox' on input line 617.
-Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 628.
+\envheight=\dimen266
+\pageavail=\dimen267
+Package thmtools Info: Automatically pulling in `thmdef-mdframed' on input line 686.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/thmtools/thmdef-mdframed.sty
 Package: thmdef-mdframed 2023/05/04 v0.76
 )
@@ -776,14 +774,14 @@ Package: thmdef-mdframed 2023/05/04 v0.76
 \lst@gtempboxa=\box76
 \lst@token=\toks46
 \lst@length=\count334
-\lst@currlwidth=\dimen266
+\lst@currlwidth=\dimen268
 \lst@column=\count335
 \lst@pos=\count336
-\lst@lostspace=\dimen267
-\lst@width=\dimen268
+\lst@lostspace=\dimen269
+\lst@width=\dimen270
 \lst@newlines=\count337
 \lst@lineno=\count338
-\lst@maxwidth=\dimen269
+\lst@maxwidth=\dimen271
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/listings/lstpatch.sty
 File: lstpatch.sty 2024/05/25 1.10b (Carsten Heinz)
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
@@ -803,7 +801,7 @@ Package: textcomp 2024/04/24 v2.1b Standard LaTeX package
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip142
-\enit@outerparindent=\dimen270
+\enit@outerparindent=\dimen272
 \enit@toks=\toks47
 \enit@inbox=\box78
 \enit@count@id=\count341
@@ -825,8 +823,8 @@ File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count344
 \calc@Bcount=\count345
-\calc@Adimen=\dimen271
-\calc@Bdimen=\dimen272
+\calc@Adimen=\dimen273
+\calc@Bdimen=\dimen274
 \calc@Askip=\skip143
 \calc@Bskip=\skip144
 LaTeX Info: Redefining \setlength on input line 80.
@@ -840,7 +838,7 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip146
 \multirow@cntb=\count348
 \multirow@dima=\skip147
-\bigstrutjot=\dimen273
+\bigstrutjot=\dimen275
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/ellipsis/ellipsis.sty
 Package: ellipsis 2020/05/22 v1.8 fixes spacing around ellipses (three dots)
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/tools/xspace.sty
@@ -862,16 +860,16 @@ Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
 )
 \g_MT_multlinerow_int=\count349
-\l_MT_multwidth_dim=\dimen274
+\l_MT_multwidth_dim=\dimen276
 \origjot=\skip152
-\l_MT_shortvdotswithinadjustabove_dim=\dimen275
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen276
-\l_MT_above_intertext_sep=\dimen277
-\l_MT_below_intertext_sep=\dimen278
-\l_MT_above_shortintertext_sep=\dimen279
-\l_MT_below_shortintertext_sep=\dimen280
+\l_MT_shortvdotswithinadjustabove_dim=\dimen277
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen278
+\l_MT_above_intertext_sep=\dimen279
+\l_MT_below_intertext_sep=\dimen280
+\l_MT_above_shortintertext_sep=\dimen281
+\l_MT_below_shortintertext_sep=\dimen282
 \xmathstrut@box=\box79
-\xmathstrut@dim=\dimen281
+\xmathstrut@dim=\dimen283
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2024/03/29 v3.1b Micro-typographical refinements (RS)
 \MT@toks=\toks50
@@ -882,7 +880,7 @@ LaTeX Info: Redefining \leftprotrusion on input line 1062.
 \MT@prot@toks=\toks51
 LaTeX Info: Redefining \rightprotrusion on input line 1081.
 LaTeX Info: Redefining \textls on input line 1392.
-\MT@outer@kern=\dimen282
+\MT@outer@kern=\dimen284
 LaTeX Info: Redefining \textmicrotypecontext on input line 2013.
 \MT@listname@count=\count351
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/microtype/microtype-pdftex.def
@@ -900,8 +898,8 @@ File: microtype.cfg 2024/03/29 v3.1b microtype main configuration file (RS)
 )
 Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/wrapfig/wrapfig.sty
-\wrapoverhang=\dimen283
-\WF@size=\dimen284
+\wrapoverhang=\dimen285
+\WF@size=\dimen286
 \c@WF@wrappedlines=\count354
 \WF@box=\box81
 \WF@everypar=\toks52
@@ -932,19 +930,19 @@ File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen285
-\pgfarrowlength=\dimen286
-\pgfarrowwidth=\dimen287
-\pgfarrowlinewidth=\dimen288
+\pgfarrowinset=\dimen287
+\pgfarrowlength=\dimen288
+\pgfarrowwidth=\dimen289
+\pgfarrowlinewidth=\dimen290
 ))) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen289
-\pgfdecoratedremainingdistance=\dimen290
-\pgfdecoratedinputsegmentcompleteddistance=\dimen291
-\pgfdecoratedinputsegmentremainingdistance=\dimen292
-\pgf@decorate@distancetomove=\dimen293
+\pgfdecoratedcompleteddistance=\dimen291
+\pgfdecoratedremainingdistance=\dimen292
+\pgfdecoratedinputsegmentcompleteddistance=\dimen293
+\pgfdecoratedinputsegmentremainingdistance=\dimen294
+\pgf@decorate@distancetomove=\dimen295
 \pgf@decorate@repeatstate=\count364
-\pgfdecorationsegmentamplitude=\dimen294
-\pgfdecorationsegmentlength=\dimen295
+\pgfdecorationsegmentamplitude=\dimen296
+\pgfdecorationsegmentlength=\dimen297
 )
 \tikz@lib@dec@box=\box82
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex))
@@ -973,14 +971,14 @@ Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen296
-\captionmargin=\dimen297
-\caption@leftmargin=\dimen298
-\caption@rightmargin=\dimen299
-\caption@width=\dimen300
-\caption@indent=\dimen301
-\caption@parindent=\dimen302
-\caption@hangindent=\dimen303
+\caption@tempdima=\dimen298
+\captionmargin=\dimen299
+\caption@leftmargin=\dimen300
+\caption@rightmargin=\dimen301
+\caption@width=\dimen302
+\caption@indent=\dimen303
+\caption@parindent=\dimen304
+\caption@hangindent=\dimen305
 Package caption Info: KOMA-Script document class detected.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/caption/caption-koma.sto
 File: caption-koma.sto 2023/09/08 v2.0e Adaption of the caption package to the KOMA-Script document classes (AR)
@@ -990,8 +988,8 @@ File: caption-koma.sto 2023/09/08 v2.0e Adaption of the caption package to the K
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: KOMA-Script scrextend package detected.
-\caption@addmargin@hsize=\dimen304
-\caption@addmargin@linewidth=\dimen305
+\caption@addmargin@hsize=\dimen306
+\caption@addmargin@linewidth=\dimen307
 Package caption Info: wrapfig package is loaded.
 )
 Package caption Info: New subtype `subfigure' on input line 238.
@@ -1000,11 +998,11 @@ Package caption Info: New subtype `subtable' on input line 238.
 \c@subtable=\count375
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
-\TX@col@width=\dimen306
-\TX@old@table=\dimen307
-\TX@old@col=\dimen308
-\TX@target=\dimen309
-\TX@delta=\dimen310
+\TX@col@width=\dimen308
+\TX@old@table=\dimen309
+\TX@old@col=\dimen310
+\TX@target=\dimen311
+\TX@delta=\dimen312
 \TX@cols=\count376
 \TX@ftn=\toks53
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/quiver/quiver.sty
@@ -1023,7 +1021,7 @@ Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
 \l__siunitx_number_group_first_int=\count384
 \l__siunitx_number_group_size_int=\count385
 \l__siunitx_number_group_minimum_int=\count386
-\l__siunitx_angle_tmp_dim=\dimen311
+\l__siunitx_angle_tmp_dim=\dimen313
 \l__siunitx_angle_marker_box=\box83
 \l__siunitx_angle_unit_box=\box84
 \l__siunitx_compound_count_int=\count387
@@ -1031,49 +1029,54 @@ Package: siunitx 2024-08-01 v3.3.20 A comprehensive (SI) units package
 Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
 )
 \l__siunitx_table_tmp_box=\box85
-\l__siunitx_table_tmp_dim=\dimen312
-\l__siunitx_table_column_width_dim=\dimen313
+\l__siunitx_table_tmp_dim=\dimen314
+\l__siunitx_table_column_width_dim=\dimen315
 \l__siunitx_table_integer_box=\box86
 \l__siunitx_table_decimal_box=\box87
 \l__siunitx_table_uncert_box=\box88
 \l__siunitx_table_before_box=\box89
 \l__siunitx_table_after_box=\box90
-\l__siunitx_table_before_dim=\dimen314
-\l__siunitx_table_carry_dim=\dimen315
+\l__siunitx_table_before_dim=\dimen316
+\l__siunitx_table_carry_dim=\dimen317
 \l__siunitx_unit_tmp_int=\count388
 \l__siunitx_unit_position_int=\count389
 \l__siunitx_unit_total_int=\count390
-) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
-Package: stmaryrd 1994/03/03 St Mary's Road symbol package
-\symstmry=\mathgroup8
-LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
-(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2023/12/19 v1.2f Bold Symbol Support (DPC/FMi)
-\symboldoperators=\mathgroup9
-\symboldletters=\mathgroup10
-\symboldsymbols=\mathgroup11
+\symboldoperators=\mathgroup8
+\symboldletters=\mathgroup9
+\symboldsymbols=\mathgroup10
 Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
 Package bm Info: No bold for \U/msa/m/n, using \pmb.
 Package bm Info: No bold for \U/msb/m/n, using \pmb.
 Package bm Info: No bold for \OMX/yhex/m/n, using \pmb.
 Package bm Info: No bold for \U/rsfs/m/n, using \pmb.
-\symboldstmry=\mathgroup12
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/oberdiek/centernot.sty
 Package: centernot 2016/05/16 v1.4 Centers the not symbol horizontally (HO)
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/esint/esint.sty
 Package: esint 
-\symlargesymbolsA=\mathgroup13
+\symlargesymbolsA=\mathgroup11
+) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+ (c:/Program Files/texlive/2024/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+)) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count391
+\float@exts=\toks54
+\float@box=\box91
+\@float@everytoks=\toks55
+\@floatcapt=\box92
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/tikzlibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pgflibraryhobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/hobby.code.tex (c:/Program Files/texlive/2024/texmf-dist/tex/latex/hobby/pml3array.sty
-\l_array_base_int=\count391
-\l_array_top_int=\count392
-\l_array_tmp_int=\count393
-\g_array_map_int=\count394
-\g_array_base_int=\count395
+\l_array_base_int=\count392
+\l_array_top_int=\count393
+\l_array_tmp_int=\count394
+\g_array_map_int=\count395
+\g_array_base_int=\count396
 )
-\g__hobby_npoints_int=\count396
-\g__hobby_draw_int=\count397
+\g__hobby_npoints_int=\count397
+\g__hobby_draw_int=\count398
 ))))
 Package translations Info: No language package found. I am going to use `english' as default language. on input line 7.
  (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/dynamics-and-relativity.aux)
@@ -1108,17 +1111,17 @@ Package scrbase Info: activating english \refname on input line 7.
 Package scrbase Info: activating english \indexname on input line 7.
  (c:/Program Files/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count398
-\scratchdimen=\dimen316
-\scratchbox=\box91
-\nofMPsegments=\count399
-\nofMParguments=\count400
-\everyMPshowfont=\toks54
-\MPscratchCnt=\count401
-\MPscratchDim=\dimen317
-\MPnumerator=\count402
-\makeMPintoPDFobject=\count403
-\everyMPtoPDFconversion=\toks55
+\scratchcounter=\count399
+\scratchdimen=\dimen318
+\scratchbox=\box93
+\nofMPsegments=\count400
+\nofMParguments=\count401
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count402
+\MPscratchDim=\dimen319
+\MPnumerator=\count403
+\makeMPintoPDFobject=\count404
+\everyMPtoPDFconversion=\toks57
 ) (c:/Program Files/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1142,9 +1145,9 @@ Class scrartcl Info: loading recommended package `bookmark'.
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
-\BKM@id=\count404
+\BKM@id=\count405
 ))
-\c@lstlisting=\count405
+\c@lstlisting=\count406
 Package tocbasic Info: omitting babel extension for `lol'
 (tocbasic)             because of missing \bbl@set@language on input line 7.
 \scr@dte@lstlisting@maxnumwidth=\skip154
@@ -1170,6 +1173,7 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 )
 isodate: babel.sty, (n)german.sty have not been loaded
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 (c:/Program Files/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
@@ -1200,14 +1204,8 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 10.
  (c:/Program Files/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 10.
- (c:/Program Files/texlive/2024/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-
-LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 10.
-
 LaTeX Font Info:    Trying to load font information for U+esint on input line 10.
-(c:/Program Files/texlive/2024/texmf-dist/tex/latex/esint/uesint.fd
+ (c:/Program Files/texlive/2024/texmf-dist/tex/latex/esint/uesint.fd
 File: uesint.fd 
 )
 Package tocbasic Info: character protrusion at toc deactivated on input line 11.
@@ -1256,13 +1254,18 @@ Package hyperref Info: bookmark level for unknown remark* defaults to 0 on input
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 153.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 190.
+Package hyperref Info: bookmark level for unknown baseexample defaults to 0 on input line 190.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 190.
 
 
 [5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 170.
-Package hyperref Info: bookmark level for unknown example defaults to 0 on input line 170.
+(mdframed)              on input line 190.
 Package mdframed Info: Not enough space on this page on input line 190.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1297,18 +1300,27 @@ Package mdframed Info: mdframed detected package amsthm
 Package hyperref Info: bookmark level for unknown corollary defaults to 0 on input line 419.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 422.
-Package hyperref Info: bookmark level for unknown example* defaults to 0 on input line 422.
+(mdframed)              on input line 436.
+Package hyperref Info: bookmark level for unknown baseexample* defaults to 0 on input line 436.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 436.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 436.
 
 
 [11]
-
-[12]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 472.
-Package mdframed Info: Not enough space on this page on input line 478.
+(mdframed)              on input line 478.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 478.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 478.
 
+
+[12]
 
 [13]
 Package mdframed Info: mdframed detected package amsthm 
@@ -1317,18 +1329,24 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 554.
-
-
-[14]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 588.
 
 
+[14]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 644.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 644.
+
+
 [15]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 633.
+(mdframed)              on input line 644.
+Package mdframed Info: Not enough space on this page on input line 644.
 
 
 [16]
@@ -1337,12 +1355,12 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 760.
-
-
-[18]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 764.
+
+
+[18]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 782.
@@ -1385,22 +1403,25 @@ Package mdframed Info: mdframed detected package amsthm
 [26]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1126.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
 (mdframed)              on input line 1150.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1150.
 
 
 [27]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1154.
+(mdframed)              on input line 1150.
+Package mdframed Info: Not enough space on this page on input line 1150.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1173.
+(mdframed)              on input line 1154.
 
 
 [28]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1173.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1192.
@@ -1409,14 +1430,23 @@ Package mdframed Info: mdframed detected package amsthm
 [29]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1225.
-Package mdframed Info: Not enough space on this page on input line 1255.
+(mdframed)              on input line 1255.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1255.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1255.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1285.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1285.
 
 
 [30]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1257.
+(mdframed)              on input line 1285.
 Package mdframed Info: Not enough space on this page on input line 1285.
 
 
@@ -1430,50 +1460,79 @@ Package mdframed Info: mdframed detected package amsthm
 
 
 [32]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1422.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1422.
+
 
 [33]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1405.
+(mdframed)              on input line 1422.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1440.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1440.
 
 
 [34]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1432.
+(mdframed)              on input line 1440.
 Package mdframed Info: Not enough space on this page on input line 1440.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1443.
-Package mdframed Info: Box was splittet wrong
- starting loop to iterate the splitting point
 (mdframed)              on input line 1474.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1474.
 
 
 [35]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1478.
+(mdframed)              on input line 1474.
+Package mdframed Info: Not enough space on this page on input line 1474.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1500.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1500.
 
 
 [36]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1500.
+Package mdframed Info: Not enough space on this page on input line 1500.
+
 
 [37]
 
 [38]
-<../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf, id=420, 418.4433pt x 375.32219pt>
+<../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf, id=419, 418.4433pt x 375.32219pt>
 File: ../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf Graphic file (type pdf)
 <use ../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf>
 Package pdftex.def Info: ../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf  used on input line 1618.
 (pdftex.def)             Requested size: 271.86356pt x 243.84772pt.
 
 
-[39 <../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf>]
+[39]
 
-[40]
+[40 <../notes/figures/dynamics-and-relativity/spacetime-diagram.pdf>]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1687.
+(mdframed)              on input line 1694.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 1694.
+
+
+[41]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 1694.
 Package mdframed Info: Not enough space on this page on input line 1694.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1481,19 +1540,19 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: Not enough space on this page on input line 1773.
 
 
-[41]
+[42]
 Package mdframed Info: Not enough space on this page on input line 1773.
 
 
-[42]
-
 [43]
+
+[44]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1895.
 
 
-[44]
+[45]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 1964.
@@ -1505,52 +1564,54 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 1975.
 
 
-[45]
-
 [46]
 
 [47]
 
 [48]
+
+[49]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 2184.
 
 
-[49]
-
 [50]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 2228.
+(mdframed)              on input line 2254.
+Package mdframed Info: mdframed inside a box 
+ mdframed uses option nobreak mdframed on input line 2254.
+
+
+[51]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 2254.
 Package mdframed Info: Not enough space on this page on input line 2254.
 
 
-[51] (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/dynamics-and-relativity.aux)
+[52] (c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/dynamics-and-relativity.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2020/03/25>
  ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
 Package rerunfilecheck Info: File `dynamics-and-relativity.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 46609 strings out of 473579
- 1021701 string characters out of 5725188
+ 46456 strings out of 473579
+ 1020896 string characters out of 5725188
  1954960 words of memory out of 5000000
- 68265 multiletter control sequences out of 15000+600000
- 591105 words of font info for 267 fonts, out of 8000000 for 9000
+ 68112 multiletter control sequences out of 15000+600000
+ 589677 words of font info for 260 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  138i,21n,145p,10972b,1210s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/esint-type1/esint10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1095.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/Program Files/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/dynamics-and-relativity.pdf (51 pages, 700058 bytes).
+Output written on c:/Users/olive/Documents/maths/Cambridge/cam-notes/pdf/render/dynamics-and-relativity.pdf (52 pages, 700737 bytes).
 PDF statistics:
- 895 PDF objects out of 1000 (max. 8388607)
- 711 compressed objects within 8 object streams
- 219 named destinations out of 1000 (max. 500000)
+ 899 PDF objects out of 1000 (max. 8388607)
+ 714 compressed objects within 8 object streams
+ 220 named destinations out of 1000 (max. 500000)
  57882 words of extra memory for PDF output out of 61914 (max. 10000000)
 

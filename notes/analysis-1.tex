@@ -19,58 +19,58 @@
     \subsection{Basics}
 
     \begin{definition}
-        A sequence $(x_n)_{n \in \NN}$ on a set $X$ is an enumerated list where each element is in $X$.
+        A sequence \((x_n)_{n \in \NN}\) on a set \(X\) is an enumerated list where each element is in \(X\).
         
-        In this chapter, $X \subseteq \RR$ or $X \subseteq \CC$.
+        In this chapter, \(X \subseteq \RR\) or \(X \subseteq \CC\).
     \end{definition}
 
-    What does it mean for a sequence $(x_n)$ to converge to a point $x \in X$? What does it mean for $(x_n)$ to diverge to infinity?
+    What does it mean for a sequence \((x_n)\) to converge to a point \(x \in X\)? What does it mean for \((x_n)\) to diverge to infinity?
 
-    For convergence, we want $|x_n - x|$ to be small. But what is small? In fact, we want $|x_n - x|$ to be arbitrarily small, i.e. smaller than any $\varepsilon > 0$ we choose. What really matters is the \emph{tail} of the sequence -- we can always ignore the first $N$ terms, and we should pick $N$ depending on $\varepsilon$.
+    For convergence, we want \(|x_n - x|\) to be small. But what is small? In fact, we want \(|x_n - x|\) to be arbitrarily small, i.e. smaller than any \(\varepsilon > 0\) we choose. What really matters is the \emph{tail} of the sequence -- we can always ignore the first \(N\) terms, and we should pick \(N\) depending on \(\varepsilon\).
 
-    For divergence to infinity, we want $|x_n|$ to get arbitrarily large, i.e. larger than any $L > 0$ we choose. Again, we ignore the first $N$ terms depending on $L$.
+    For divergence to infinity, we want \(|x_n|\) to get arbitrarily large, i.e. larger than any \(L > 0\) we choose. Again, we ignore the first \(N\) terms depending on \(L\).
     
     \begin{definition}
-        We say $(x_n)$ converges to some finite $x$, $x_n \to x$, if, for any $\varepsilon > 0$, there exists $N(\varepsilon)$ such that $|x_n - x| < \varepsilon$ for all $n \geq N$.
+        We say \((x_n)\) converges to some finite \(x\), \(x_n \to x\), if, for any \(\varepsilon > 0\), there exists \(N(\varepsilon)\) such that \(|x_n - x| < \varepsilon\) for all \(n \geq N\).
 
-        We say $(x_n)$ diverges to infinity if, for any $L > 0$, there exists $N(L)$ such that $x_n > L$ for all $n \geq N$, analogously for negative infinity. For complex sequences, we must consider $|x_n|$.
+        We say \((x_n)\) diverges to infinity if, for any \(L > 0\), there exists \(N(L)\) such that \(x_n > L\) for all \(n \geq N\), analogously for negative infinity. For complex sequences, we must consider \(|x_n|\).
     \end{definition}
     
     \begin{example}
         \begin{itemize}
-            \item Take $x_n = \frac{1}{n}$, then $x_n \to 0$ because $|x_n - 0| = \frac{1}{n} < \varepsilon$ for any $n \geq N = 1 + \lceil \frac{1}{\varepsilon} \rceil$.
-            \item Take $x_n = \frac{1}{2^n}$, then $x_n \to 0$ because $|x_n - 0| = \frac{1}{2^n} < \varepsilon$ for any $n \geq N = \max(1 + \lceil \log_2(\frac{1}{\varepsilon}) \rceil, 1)$.
-            \item Take $x_n = in$, then $x_n \to \infty$, since $\frac{x_n}{i} = n > L$ for any $n \geq N = 1 + \lceil L \rceil$.
-            \item Take $x_n = (-1)^n$, then $x_n$ doesn't converge or diverge to infinity.
+            \item Take \(x_n = \frac{1}{n}\), then \(x_n \to 0\) because \(|x_n - 0| = \frac{1}{n} < \varepsilon\) for any \(n \geq N = 1 + \lceil \frac{1}{\varepsilon} \rceil\).
+            \item Take \(x_n = \frac{1}{2^n}\), then \(x_n \to 0\) because \(|x_n - 0| = \frac{1}{2^n} < \varepsilon\) for any \(n \geq N = \max(1 + \lceil \log_2(\frac{1}{\varepsilon}) \rceil, 1)\).
+            \item Take \(x_n = in\), then \(x_n \to \infty\), since \(\frac{x_n}{i} = n > L\) for any \(n \geq N = 1 + \lceil L \rceil\).
+            \item Take \(x_n = (-1)^n\), then \(x_n\) doesn't converge or diverge to infinity.
         \end{itemize}
     \end{example}
     
     \begin{lemma}
-        If it exists, the limit of $(x_n)$ is unique.
+        If it exists, the limit of \((x_n)\) is unique.
     \end{lemma}
     
     \begin{proof}
-        Suppose $x_n \to a$ and $x_n \to b$. Take $\varepsilon > 0$, then we have
+        Suppose \(x_n \to a\) and \(x_n \to b\). Take \(\varepsilon > 0\), then we have
         \begin{align*}
             &\exists N_1 = N_1(\varepsilon) \text{ s.t. } |x_n - a| < \varepsilon \; \forall n \geq N_1 \\
             &\exists N_2 = N_2(\varepsilon) \text{ s.t. } |x_n - b| < \varepsilon \; \forall n \geq N_2 \\
         \end{align*}
-        Now take $N = \max(N_1, N_2)$. We have
+        Now take \(N = \max(N_1, N_2)\). We have
         \begin{align*}
             |a-b| &= |a-x_n+x_n-b| \\
             &\leq |x_n-a|+|x_n-b| \\
             &< 2\varepsilon
         \end{align*}
-        for all $\varepsilon > 0$. It follows that $|a-b| = 0$, so $a=b$.
+        for all \(\varepsilon > 0\). It follows that \(|a-b| = 0\), so \(a=b\).
     \end{proof}
     
-    This justifies the notation $\lim_{n \to \infty} x_n = x$.
+    This justifies the notation \(\lim_{n \to \infty} x_n = x\).
 
     \begin{proposition}[Sandwich theorems]
-        Let $(x_n), (y_n), (z_n)$ be real sequences. Then
+        Let \((x_n), (y_n), (z_n)\) be real sequences. Then
         \begin{itemize}
-            \item If $x_n \leq y$ for all $n$ and $x_n \to x$, then $x \leq y$. Note that $x_n < y$ does not imply $x < y$.
-            \item If $x_n \to x$, $z_n \to x$ and $x_n \leq y_n \leq z_n$ for all $n$, then $y_n \to x$.
+            \item If \(x_n \leq y\) for all \(n\) and \(x_n \to x\), then \(x \leq y\). Note that \(x_n < y\) does not imply \(x < y\).
+            \item If \(x_n \to x\), \(z_n \to x\) and \(x_n \leq y_n \leq z_n\) for all \(n\), then \(y_n \to x\).
         \end{itemize}
     \end{proposition}
     
@@ -79,19 +79,19 @@
     \end{proof}
     
     \begin{lemma}
-        Let $(x_n)$ be a complex sequence. Then $x_n \to x$ if and only if $\Re(x_n) \to \Re(x)$ and $\Im(x_n) \to \Im(x)$.
+        Let \((x_n)\) be a complex sequence. Then \(x_n \to x\) if and only if \(\Re(x_n) \to \Re(x)\) and \(\Im(x_n) \to \Im(x)\).
     \end{lemma}
     
     \begin{proof}
-        Recall that, for $z \in \CC$, $|z| = \sqrt{\Re(z)^2 + \Im(z)^2}$.
+        Recall that, for \(z \in \CC\), \(|z| = \sqrt{\Re(z)^2 + \Im(z)^2}\).
         \begin{itemize}
-            \item[$\implies$] Use $|\Re(z)| \leq |z|$ and $|\Im(z)| \leq |z|$ with $z = x_n - x$.
-            \item[$\impliedby$] Use $|z| \leq |\Re(z)| + |\Im(z)|$, again with $z = x_n - x$. Fixing $\varepsilon > 0$, we can get $|x_n - x| < 2\varepsilon$, so we're done.
+            \item[\(\implies\)] Use \(|\Re(z)| \leq |z|\) and \(|\Im(z)| \leq |z|\) with \(z = x_n - x\).
+            \item[\(\impliedby\)] Use \(|z| \leq |\Re(z)| + |\Im(z)|\), again with \(z = x_n - x\). Fixing \(\varepsilon > 0\), we can get \(|x_n - x| < 2\varepsilon\), so we're done.
         \end{itemize}
     \end{proof}
     
     \begin{lemma}
-        Let $x_n \to x$, $y_n \to y$. Then $x_n + y_n \to x + y$, $x_ny_n \to xy$.
+        Let \(x_n \to x\), \(y_n \to y\). Then \(x_n + y_n \to x + y\), \(x_ny_n \to xy\).
     \end{lemma}
     
     \begin{proof}
@@ -102,16 +102,16 @@
             |x_ny_n - xy| &= |x_ny_n - xy_n + xy_n - xy| \\
             &\leq |y_n||x_n-x| + |x||y_n-y|
         \end{align*}
-        Now, for $\varepsilon > 0$, we can pick an $N$ to make $|x_n - x| < \varepsilon$, $|y_n - y| < \varepsilon$. Hence
+        Now, for \(\varepsilon > 0\), we can pick an \(N\) to make \(|x_n - x| < \varepsilon\), \(|y_n - y| < \varepsilon\). Hence
         \begin{align*}
             |x_ny_n - xy| &< \varepsilon(|x| + |y_n|) \\
             &< \varepsilon(|x| + Y) && \text{by \cref{convergent-bounded}, } Y>0
         \end{align*}
-        and so picking $\varepsilon = \frac{\varepsilon'}{|x| + Y}$ shows the result.
+        and so picking \(\varepsilon = \frac{\varepsilon'}{|x| + Y}\) shows the result.
     \end{proof}
     
     \begin{definition}[Bounded sequences]
-        We say $(x_n)$ is \emph{bounded} if there exists $M > 0$ such that $|x_n| \leq M$ for all $n$, or, equivalently, if $\sup |x_n| \leq M$.
+        We say \((x_n)\) is \emph{bounded} if there exists \(M > 0\) such that \(|x_n| \leq M\) for all \(n\), or, equivalently, if \(\sup |x_n| \leq M\).
     \end{definition}
     
     \begin{lemma}
@@ -120,11 +120,11 @@
     \end{lemma}
     
     \begin{proof}
-        Take $\varepsilon = 1$, then there exists $N$ such that $|x_n - x| \leq 1$ for any $n \geq N$, and so $|x_n| \leq 1 + |x|$ for any $n \geq N$. But for $n < N$, $|x_n| \leq \max_{1 \leq i < N}|x_n| < \infty$.
+        Take \(\varepsilon = 1\), then there exists \(N\) such that \(|x_n - x| \leq 1\) for any \(n \geq N\), and so \(|x_n| \leq 1 + |x|\) for any \(n \geq N\). But for \(n < N\), \(|x_n| \leq \max_{1 \leq i < N}|x_n| < \infty\).
     \end{proof}
     
     \begin{definition}[Monotone sequences]
-        We say a real sequence $(x_n)$ is \emph{monotone} if either
+        We say a real sequence \((x_n)\) is \emph{monotone} if either
         \begin{itemize}
             \item it is increasing;
             \item or it is decreasing.
@@ -137,57 +137,57 @@
     \end{proposition}
     
     \begin{proof}[Proof sketch]
-        Without loss of generality, suppose the sequence is strictly increasing. Using the least upper bound property, we can show that $x_n \to \sup\{x_n\}$.
+        Without loss of generality, suppose the sequence is strictly increasing. Using the least upper bound property, we can show that \(x_n \to \sup\{x_n\}\).
     \end{proof}
     
-    Can we strengthen to non-monotonic sequences? Clearly not fully, since $x_n = (-1)^n$ is bounded but not convergent. But, if we delete all the even terms, then it indeed becomes convergent.
+    Can we strengthen to non-monotonic sequences? Clearly not fully, since \(x_n = (-1)^n\) is bounded but not convergent. But, if we delete all the even terms, then it indeed becomes convergent.
     
     \subsection{Bolzano-Weierstrass theorem}
 
     \begin{theorem}[Bolzano-Weierstrass]
         \label{bw}
-        If $(x_n)$ is a real bounded sequence, then it has at least one convergent subsequence.
+        If \((x_n)\) is a real bounded sequence, then it has at least one convergent subsequence.
     \end{theorem}
     
     \begin{definition}[Subsequences]
-        Given a sequence $(x_n)$, a subsequence of $(x_n)$ is a sequence of the form $(x_{n_k})_{k \in \NN}$, where $(n_k)$ is a strictly increasing sequence of natural numbers.
+        Given a sequence \((x_n)\), a subsequence of \((x_n)\) is a sequence of the form \((x_{n_k})_{k \in \NN}\), where \((n_k)\) is a strictly increasing sequence of natural numbers.
     \end{definition}
     
     \begin{lemma}
-        If $x_n \to x$, then any subsequence $(x_{n_k})$ of $(x_n)$ must converge to $x$.
+        If \(x_n \to x\), then any subsequence \((x_{n_k})\) of \((x_n)\) must converge to \(x\).
     \end{lemma}
     
     \begin{proof}
-        Since $n_k < n_{k+1}$, $n_{k+1} \geq n_k + 1$. By induction, we can show $n_k \geq k$.
+        Since \(n_k < n_{k+1}\), \(n_{k+1} \geq n_k + 1\). By induction, we can show \(n_k \geq k\).
 
-        Now, take $\varepsilon > 0$, so we have $N(\varepsilon)$ such that $|x_n-x| < \varepsilon$ for any $n \geq N$. So, if $k \geq N$, then $n_k \geq k \geq N$, and so $|x_{n_k}-x|<\varepsilon$, so $\lim_{k \to \infty}x_{n_k} = x$ as required.
+        Now, take \(\varepsilon > 0\), so we have \(N(\varepsilon)\) such that \(|x_n-x| < \varepsilon\) for any \(n \geq N\). So, if \(k \geq N\), then \(n_k \geq k \geq N\), and so \(|x_{n_k}-x|<\varepsilon\), so \(\lim_{k \to \infty}x_{n_k} = x\) as required.
     \end{proof}
     
     \begin{proposition}[Nested interval property]
         \label{nested-interval}
-        Let $(I_n)_{n \in \NN}$ be a sequence of closed intervals in $\RR$ satisfiyng $I_{n+1} \subseteq I_n$ for every $n \in \NN$, and suppose $I_n = [a_n, b_n]$. If $b_n - a_n = |I_n| \to 0$ as $n \to \infty$, then $\bigcap_{n \in \NN} I_n$ contains exactly one point.
+        Let \((I_n)_{n \in \NN}\) be a sequence of closed intervals in \(\RR\) satisfiyng \(I_{n+1} \subseteq I_n\) for every \(n \in \NN\), and suppose \(I_n = [a_n, b_n]\). If \(b_n - a_n = |I_n| \to 0\) as \(n \to \infty\), then \(\bigcap_{n \in \NN} I_n\) contains exactly one point.
     \end{proposition}
     
     \begin{proof}
-        We can see that $(a_n)$ and $(b_n)$ are bounded monotone sequences, so we probably want to apply \cref{monotone-convergence}. Indeed, we have $a_n \to a$, $b_n \to b$. Since limits preserve inequalities and $a_n \leq b_n$, we have $a \leq b$. Now we are ready to show the result.
+        We can see that \((a_n)\) and \((b_n)\) are bounded monotone sequences, so we probably want to apply \cref{monotone-convergence}. Indeed, we have \(a_n \to a\), \(b_n \to b\). Since limits preserve inequalities and \(a_n \leq b_n\), we have \(a \leq b\). Now we are ready to show the result.
         \begin{itemize}
-            \item \emph{Existence}. For all $k \geq n$, $a_k \in [a_k, b_k] \subseteq [a_n, b_n]$, and so $a_n \leq a_k \leq b_n$. Taking $k$ to infinity, we have $a_n \leq a \leq b_n$ for every $n$, so $a \in I_n$ for every $n$, so it is in their intersection.
-            \item \emph{Uniqueness}. We know $b_n - a_n \to b - a$. But we know $b_n - a_n \to 0$, so $a = b$. Hence, if $x$ is in the intersection, $a_n \leq x \leq b_n$ for all $n$, so $a \leq x \leq a$, and hence $x=a$ as required.
+            \item \emph{Existence}. For all \(k \geq n\), \(a_k \in [a_k, b_k] \subseteq [a_n, b_n]\), and so \(a_n \leq a_k \leq b_n\). Taking \(k\) to infinity, we have \(a_n \leq a \leq b_n\) for every \(n\), so \(a \in I_n\) for every \(n\), so it is in their intersection.
+            \item \emph{Uniqueness}. We know \(b_n - a_n \to b - a\). But we know \(b_n - a_n \to 0\), so \(a = b\). Hence, if \(x\) is in the intersection, \(a_n \leq x \leq b_n\) for all \(n\), so \(a \leq x \leq a\), and hence \(x=a\) as required.
         \end{itemize}
     \end{proof}
     
     \begin{proof}[Proof of theorem]
-        We are given $(x_n)$ and $M > 0$ such that $|x_n| \leq M$ for any $n$. We will construct a series of nested intervals from which we can sample our subsequence and apply \cref{nested-interval}.
+        We are given \((x_n)\) and \(M > 0\) such that \(|x_n| \leq M\) for any \(n\). We will construct a series of nested intervals from which we can sample our subsequence and apply \cref{nested-interval}.
 
-        Let $a_1 = -M$, $b_1 = M$, so $I_1 = [-M, M] \supset (x_n)$. Now take $c = \frac{a_1+b_1}{2}$. Then, at least one of the halves $[a_1, c]$ and $[c, b_1]$ will have infinitely many elements of $(x_n)$ -- we take $I_2$ to be a half that has infinitely many elements. Continue inductively to get $(I_n)$, which are nested by construction and all of which have infinitely many elements of the sequence -- and by \cref{nested-interval}, there exists exactly one $x$ in their intersection.
+        Let \(a_1 = -M\), \(b_1 = M\), so \(I_1 = [-M, M] \supset (x_n)\). Now take \(c = \frac{a_1+b_1}{2}\). Then, at least one of the halves \([a_1, c]\) and \([c, b_1]\) will have infinitely many elements of \((x_n)\) -- we take \(I_2\) to be a half that has infinitely many elements. Continue inductively to get \((I_n)\), which are nested by construction and all of which have infinitely many elements of the sequence -- and by \cref{nested-interval}, there exists exactly one \(x\) in their intersection.
         
-        We choose $(x_{n_k})$ as follows: pick $n_1$ such that $x_{n_1} \in I_1$. Then $I_2$ has infinitely many elements of $(x_n)$ with index greater than $n_1$, so pick $n_2 > n_1$ such that $x_{n_2} \in I_2$. Continue inductively.
+        We choose \((x_{n_k})\) as follows: pick \(n_1\) such that \(x_{n_1} \in I_1\). Then \(I_2\) has infinitely many elements of \((x_n)\) with index greater than \(n_1\), so pick \(n_2 > n_1\) such that \(x_{n_2} \in I_2\). Continue inductively.
 
-        We have $x_{n_k} \in I_k$ for every $k$, so $x_{n_k} \in \bigcap_{n \leq k} I_n$, and so $x_{n_k} \to x$.
+        We have \(x_{n_k} \in I_k\) for every \(k\), so \(x_{n_k} \in \bigcap_{n \leq k} I_n\), and so \(x_{n_k} \to x\).
     \end{proof}
 
     \begin{corollary}
-        The Bolzano-Weierstrass theorem holds in $\CC$.
+        The Bolzano-Weierstrass theorem holds in \(\CC\).
     \end{corollary}
     
     
@@ -197,65 +197,65 @@
     A Cauchy sequence is a sequence in which the elements are getting closer as the sequence progresses.
 
     \begin{definition}
-        A sequence $(x_n)$ on $X \subseteq \CC$ is \emph{Cauchy} if, for any $\varepsilon > 0$, there exists $N$ such that, for all $n, m \geq N$, $|x_n - x_m| < \varepsilon$.
+        A sequence \((x_n)\) on \(X \subseteq \CC\) is \emph{Cauchy} if, for any \(\varepsilon > 0\), there exists \(N\) such that, for all \(n, m \geq N\), \(|x_n - x_m| < \varepsilon\).
     \end{definition}
     
     \begin{example*}
         \begin{itemize}
-            \item Take $x_n = \frac{1}{n}$. Assume wlog $m \geq n$. Then
+            \item Take \(x_n = \frac{1}{n}\). Assume wlog \(m \geq n\). Then
             \begin{align*}
                 \left|\frac 1 n - \frac 1 m\right| = \frac 1 n - \frac 1 m = \frac{m-n}{mn} \leq \frac{1}{n} < \eps
             \end{align*}
-            and this holds for any $m \geq n \geq N = \left\lceil\frac1 \eps\right\rceil + 1$. So $(x_n)$ is Cauchy.
-            \item Take $x_n = (-1)^n$. This is not a Cauchy sequence -- take $n = 2k$, $m = 2k+1$ for any $k \in \NN$, so $|x_n - x_m| = 2$. Hence we can't take $\eps < 2$.
-            \item Take $(x_n)$ on $\QQ$ defined by truncation of the decimal expansion of $\sqrt 2$. Assume wlog $m \geq n$, so
+            and this holds for any \(m \geq n \geq N = \left\lceil\frac1 \eps\right\rceil + 1\). So \((x_n)\) is Cauchy.
+            \item Take \(x_n = (-1)^n\). This is not a Cauchy sequence -- take \(n = 2k\), \(m = 2k+1\) for any \(k \in \NN\), so \(|x_n - x_m| = 2\). Hence we can't take \(\eps < 2\).
+            \item Take \((x_n)\) on \(\QQ\) defined by truncation of the decimal expansion of \(\sqrt 2\). Assume wlog \(m \geq n\), so
             \begin{align*}
                 \left|x_n - x_m\right| < 10^{-(n-1)} \to 0
             \end{align*}
-            Note that this sequence does not converge in $\QQ$.
+            Note that this sequence does not converge in \(\QQ\).
         \end{itemize}
     \end{example*}
     
     \begin{lemma}
-        If $(x_n)$ is Cauchy, then it is bounded.
+        If \((x_n)\) is Cauchy, then it is bounded.
     \end{lemma}
     
     \begin{proof}
-        Take $\varepsilon = 1$. Then we have $N$ such that
+        Take \(\varepsilon = 1\). Then we have \(N\) such that
         \begin{align*}
             |x_n - x_N| < 1
         \end{align*}
-        for any $n \geq N$ (we have fixed $m = N$). So $|x_n| < 1 + |x_N|$.
+        for any \(n \geq N\) (we have fixed \(m = N\)). So \(|x_n| < 1 + |x_N|\).
     \end{proof}
     
     \begin{lemma}
-        A complex sequence $(x_n)$ is Cauchy if and only if $(\Re x_n)$ and $(\Im x_n)$ are both Cauchy.
+        A complex sequence \((x_n)\) is Cauchy if and only if \((\Re x_n)\) and \((\Im x_n)\) are both Cauchy.
     \end{lemma}    
     
     \begin{lemma}
-        If $x_n \to x$, then $(x_n)$ is Cauchy.
+        If \(x_n \to x\), then \((x_n)\) is Cauchy.
     \end{lemma}
     
     \begin{proof}
-        For any $\eps > 0$, we have $N$ such that
+        For any \(\eps > 0\), we have \(N\) such that
         \begin{align*}
             |x_n - x_m| &\leq |x_n - x| + |x_m - x| \\
             &\leq 2\varepsilon
         \end{align*}
-        for $n$, $m \geq N$. This completes the proof.        
+        for \(n\), \(m \geq N\). This completes the proof.        
     \end{proof}
-    Is the converse true? Not in $\QQ$ at least -- see $\sqrt 2$ example. But we can still aspire to the converse being true in $\RR$.
+    Is the converse true? Not in \(\QQ\) at least -- see \(\sqrt 2\) example. But we can still aspire to the converse being true in \(\RR\).
 
-    \begin{theorem}[Completeness of $\RR$ and $\CC$]
-        Every Cauchy sequence in $\RR$ or $\CC$ converges.
+    \begin{theorem}[Completeness of \(\RR\) and \(\CC\)]
+        Every Cauchy sequence in \(\RR\) or \(\CC\) converges.
     \end{theorem}
     
     \begin{proof}
-        Suppose $(x_n)$ is Cauchy. Then it is bounded, and so by Bolzano-Weierstrass it has a convergent subsequence $(x_{n_k})$ converging to some $x$. We claim $x_n \to x$. Observe
+        Suppose \((x_n)\) is Cauchy. Then it is bounded, and so by Bolzano-Weierstrass it has a convergent subsequence \((x_{n_k})\) converging to some \(x\). We claim \(x_n \to x\). Observe
         \begin{align*}
             |x_n - x| \leq |x_n - x_{n_k}| + |x_{n_k} - x|
         \end{align*}
-        Taking $\eps > 0$, Cauchy gives $|x_n - x_{n_k}| < \eps$ for $n$, $n_k \geq N_1$, and $x_{n_k} \to x$ gives $|x_{n_k} - x| < \eps$ for $k \geq N_2$. Fixing $k \geq N_2$ such that $n_k \geq N_1$, we have $|x_n - x| < 2\eps$ for every $n \geq N_1$, which suffices for the result.        
+        Taking \(\eps > 0\), Cauchy gives \(|x_n - x_{n_k}| < \eps\) for \(n\), \(n_k \geq N_1\), and \(x_{n_k} \to x\) gives \(|x_{n_k} - x| < \eps\) for \(k \geq N_2\). Fixing \(k \geq N_2\) such that \(n_k \geq N_1\), we have \(|x_n - x| < 2\eps\) for every \(n \geq N_1\), which suffices for the result.        
     \end{proof}
     
     \begin{remark*}
@@ -265,7 +265,7 @@
     \subsection{Series and convergent series}
 
     \begin{definition}
-        Let $(a_n)$ be a sequence in $\RR$ or $\CC$. We say that $\sum_{n=1}^\infty a_n$ is a \emph{series}, and we say it converges if the sequence of partial sums $s_k = \sum_{n=1}^k a_n$ converges to some finite $s$. In this case, $s$ is called the sum of the series, and we write
+        Let \((a_n)\) be a sequence in \(\RR\) or \(\CC\). We say that \(\sum_{n=1}^\infty a_n\) is a \emph{series}, and we say it converges if the sequence of partial sums \(s_k = \sum_{n=1}^k a_n\) converges to some finite \(s\). In this case, \(s\) is called the sum of the series, and we write
         \begin{align*}
             s = \sum_{n=1}^\infty a_n
         \end{align*}        
@@ -273,9 +273,9 @@
     
     \begin{example*}
         \begin{itemize}
-            \item $\sum_{n=1}^\infty n$ does not converge: $s_k = \frac{n(n+1)}2$.
-            \item geometric series: $\sum_{n=1}^\infty r^n$ converges iff $|r| < 1$. We have $s_k = \frac{1-r^k}{1-r}$ (unless $r=1$).
-            \item $\sum_{n=1}^infty \frac{1}{n(n+1)}$ conerges to 1. We have
+            \item \(\sum_{n=1}^\infty n\) does not converge: \(s_k = \frac{n(n+1)}2\).
+            \item geometric series: \(\sum_{n=1}^\infty r^n\) converges iff \(|r| < 1\). We have \(s_k = \frac{1-r^k}{1-r}\) (unless \(r=1\)).
+            \item \(\sum_{n=1}^infty \frac{1}{n(n+1)}\) conerges to 1. We have
             \begin{align*}
                 s_k = \sum_{n=1}^k \frac{1}{n(n+1)} = \sum_{n=1}^k \left(\frac 1 n - \frac 1 {n+1}\right) = 1 - \frac{1}{k+1} \to 1
             \end{align*}
@@ -283,7 +283,7 @@
     \end{example*}
     
     \begin{lemma}
-        Fix $\lambda \in \CC$. If $\sum a_n$ and $\sum b_n$ converge, then $\sum(\lambda a_n + b_n)$ also converges
+        Fix \(\lambda \in \CC\). If \(\sum a_n\) and \(\sum b_n\) converge, then \(\sum(\lambda a_n + b_n)\) also converges
     \end{lemma}
     
     \begin{proof}
@@ -293,7 +293,7 @@
     As usual, we should understand that the tail of the series is what is significant to its convergence.
 
     \begin{lemma}
-        If $a_n = b_n$ for all $n \geq N$, then $\sum a_n$ converges if and only if $\sum b_n$ converges.
+        If \(a_n = b_n\) for all \(n \geq N\), then \(\sum a_n\) converges if and only if \(\sum b_n\) converges.
     \end{lemma}
     
     \begin{proof}
@@ -310,8 +310,8 @@
         which concludes.        
     \end{proof}
     
-    \begin{proposition}[$n^\text{th}$ term test]
-        If $\sum a_n$ converges, then $a_n \to 0$.
+    \begin{proposition}[\(n^\text{th}\) term test]
+        If \(\sum a_n\) converges, then \(a_n \to 0\).
     \end{proposition}
     
     \begin{remark}
@@ -325,29 +325,29 @@
             &\geq s_k + \frac 1 {2n} + \dots + \frac 1 {2n} \\
             &= s_k + \frac{1}{2}
         \end{align*}
-        Hence $s_k$ is not Cauchy, so it does not converge.
+        Hence \(s_k\) is not Cauchy, so it does not converge.
     \end{remark}
     
     \begin{proof}
-        $\sum a_n$ converges $\implies$ $s_k$ converges, so $(s_k)$ is Cauchy. Then $s_{k+1} - s_k = a_{k+1} \to 0$.
+        \(\sum a_n\) converges \(\implies\) \(s_k\) converges, so \((s_k)\) is Cauchy. Then \(s_{k+1} - s_k = a_{k+1} \to 0\).
     \end{proof}
     
-    Let's first focus on tests for the convergence of $\sum a_n$, where $a_n \geq 0$ for all $n$.
+    Let's first focus on tests for the convergence of \(\sum a_n\), where \(a_n \geq 0\) for all \(n\).
 
     \begin{proposition}[Comparison test]
-        Suppose we have sequences satisfying $0 \leq b_n \leq a_n$ for all $n$. Then $\sum a_n$ converges $\implies \sum b_n$ converges.
+        Suppose we have sequences satisfying \(0 \leq b_n \leq a_n\) for all \(n\). Then \(\sum a_n\) converges \(\implies \sum b_n\) converges.
     \end{proposition}
     
     \begin{proof}
-        Set $s_k$ and $r_k$ to be the partial sums of $a_n$, $b_n$ respectively. Since $a_n$, $b_n \geq 0$, $(s_k)$ and $(r_k)$ are increasing. Furthermore, $s_k \to s \implies s_k \leq s$. But      
+        Set \(s_k\) and \(r_k\) to be the partial sums of \(a_n\), \(b_n\) respectively. Since \(a_n\), \(b_n \geq 0\), \((s_k)\) and \((r_k)\) are increasing. Furthermore, \(s_k \to s \implies s_k \leq s\). But      
         \begin{align*}
             b_n \leq a_n \implies \sum_{n=1}^k b_n \leq \sum_{n=1}^k a_n
         \end{align*}
-        so $r_k \leq s_k$, and hence $r_k$ converges by the monotone convergence theorem.
+        so \(r_k \leq s_k\), and hence \(r_k\) converges by the monotone convergence theorem.
     \end{proof}
     
     \begin{example}
-        $\sum_{n=1}^\infty \frac 1 {n^2}$ converges. We have
+        \(\sum_{n=1}^\infty \frac 1 {n^2}\) converges. We have
         \begin{align*}
             \sum_{n=1}^\infty \frac 1 {n^2} = 1 + \sum_{n=2}^\infty \frac 1 {n^2} = 1 + \sum_{n=1}^\infty \frac 1 {(n+1)^2}
         \end{align*}
@@ -355,44 +355,44 @@
         \begin{align*}
             0 \leq \frac 1 {(n+1)^2} \leq \frac 1 {n(n+1)}
         \end{align*}
-        and we know $\sum \frac 1 {n(n+1)} \to 1$. So $\frac 1 {n^2}$ converges by the comparison test.
+        and we know \(\sum \frac 1 {n(n+1)} \to 1\). So \(\frac 1 {n^2}\) converges by the comparison test.
     \end{example}
     
     \begin{proposition}[Root test]
-        Suppose $a_n \geq 0$ for all $n$. Suppose there exists $a$ such that $a = \lim_{n \to \infty} a_n^{1/n}$. If
+        Suppose \(a_n \geq 0\) for all \(n\). Suppose there exists \(a\) such that \(a = \lim_{n \to \infty} a_n^{1/n}\). If
         \begin{itemize}
-            \item $a < 1$, then $\sum a_n$ converges;
-            \item $a > 1$, then $\sum a_n$ diverges;
-            \item $a = 1$, then the test is inconclusive.
+            \item \(a < 1\), then \(\sum a_n\) converges;
+            \item \(a > 1\), then \(\sum a_n\) diverges;
+            \item \(a = 1\), then the test is inconclusive.
         \end{itemize}
     \end{proposition}
     
     \begin{proof}
-        If $a > 1$, then we have $N$ such that $a_n^{1/n} > 1$ for any $n \geq N$. But then $a_n > 1$, so $a_n \not\to 0$, and we fail the $n^\text{th}$ term test. Hence the series diverges.
+        If \(a > 1\), then we have \(N\) such that \(a_n^{1/n} > 1\) for any \(n \geq N\). But then \(a_n > 1\), so \(a_n \not\to 0\), and we fail the \(n^\text{th}\) term test. Hence the series diverges.
 
-        If $a < 1$, then we can find $r \in \RR$ with $a < r < 1$. Then we have $N$ such that $a_n^{1/n} < r$ for any $n \geq N$. But then $a_n < r^n$ for all $n \geq N$. By the comparison test on the tails with a geometric series, $\sum a_n$ converges.
+        If \(a < 1\), then we can find \(r \in \RR\) with \(a < r < 1\). Then we have \(N\) such that \(a_n^{1/n} < r\) for any \(n \geq N\). But then \(a_n < r^n\) for all \(n \geq N\). By the comparison test on the tails with a geometric series, \(\sum a_n\) converges.
     \end{proof}
     
     \begin{example}
         \begin{itemize}
-            \item Consider $\sum \frac 1{2^n}$, then $a_n^{1/n} = \frac{1}{2}$, so $\sum a_n$ converges.
-            \item Consider $\sum 4^n$, then $a_n^{1/n} = 4$, so $\sum a_n$ does not converge.
+            \item Consider \(\sum \frac 1{2^n}\), then \(a_n^{1/n} = \frac{1}{2}\), so \(\sum a_n\) converges.
+            \item Consider \(\sum 4^n\), then \(a_n^{1/n} = 4\), so \(\sum a_n\) does not converge.
         \end{itemize}
     \end{example}
 
     \begin{proposition}[Ratio test]
-        If $a_n \geq 0$ for all $n$ and $\frac{a_{n+1}}{a_n} \to a$ for some finite $a$, then if
+        If \(a_n \geq 0\) for all \(n\) and \(\frac{a_{n+1}}{a_n} \to a\) for some finite \(a\), then if
         \begin{itemize}
-            \item $a < 1$, then $\sum a_n$ converges;
-            \item $a > 1$, then $\sum a_n$ diverges;
-            \item $a = 1$, then the test is inconclusive.
+            \item \(a < 1\), then \(\sum a_n\) converges;
+            \item \(a > 1\), then \(\sum a_n\) diverges;
+            \item \(a = 1\), then the test is inconclusive.
         \end{itemize}
     \end{proposition}
     
     \begin{example}
         \begin{itemize}
-            \item If we check $\sum \frac 1 n$ and $\sum \frac 1 {n^2}$, we see both lie in the inconclusive regions for both tests.
-            \item Let us consider $\sum \frac{n}{2^n}$. The ratio test gives
+            \item If we check \(\sum \frac 1 n\) and \(\sum \frac 1 {n^2}\), we see both lie in the inconclusive regions for both tests.
+            \item Let us consider \(\sum \frac{n}{2^n}\). The ratio test gives
             \begin{align*}
                 \frac{a_{n+1}}{a_n} = \frac{\frac{n+1}{2^{n+1}}}{\frac{n}{2^n}} = \frac{n+1}{2n} \to \frac 1 2
             \end{align*}
@@ -400,7 +400,7 @@
             \begin{align*}
                 \left(\frac n {2^n}\right)^{\frac 1 n} = \frac{n^{1/n}}{2} \to \frac 1 2
             \end{align*}
-            But actually showing that $n^{1/n} \to 1$ is non-trivial... we need to apply l'H\^opital. Observe
+            But actually showing that \(n^{1/n} \to 1\) is non-trivial... we need to apply l'H\^opital. Observe
             \begin{align*}
                 n^{1/n} = e^{\log(n^{1/n})} = e^{\frac 1 n \log n} \to e^0 = 1
             \end{align*}
@@ -417,14 +417,14 @@
         \end{itemize}
     \end{example}
     
-    \lecture{Lecture $n$}
+    \lecture{Lecture \(n\)}
 
     \begin{proposition}[Integral test]
-        Suppose $f: [1, \infty) \to [0, \infty)$ is a continous decreasing function (and hence integrable in $[1, N]$ for each $N \in \NN$), and define $a_n = f(n)$. Then
+        Suppose \(f: [1, \infty) \to [0, \infty)\) is a continous decreasing function (and hence integrable in \([1, N]\) for each \(N \in \NN\)), and define \(a_n = f(n)\). Then
         \begin{align*}
             \sum a_n \text{ converges } \iff \lim_{n \to \infty} \int_1^n f(t) \; dt \text{ exists}
         \end{align*}
-        Furthermore, as $k \to \infty$,
+        Furthermore, as \(k \to \infty\),
         \begin{align*}
             \sum^k a_n - \int_1^k f(x) \; dx \to l \text{ for some }l \in [0, f(1)]
         \end{align*}        
@@ -438,8 +438,8 @@
         \end{align*}
         Now
         \begin{itemize}
-            \item[$\implies$] $\int_1^k f(t) \; dt \leq s_{k-1} \leq s$ since $s_k$ is increasing and converges by assumption. Hence $(\int_1^k f(t) \; dt)_k$ converges by MCT.
-            \item[$\impliedby$] $s_k \leq a_1 + \int_1^k f(t) \; dt \leq a_1 + \lim_{k \to \infty}\int_1^k f(t) \; dt$. Hence $s_k$ converges by MCT. 
+            \item[\(\implies\)] \(\int_1^k f(t) \; dt \leq s_{k-1} \leq s\) since \(s_k\) is increasing and converges by assumption. Hence \((\int_1^k f(t) \; dt)_k\) converges by MCT.
+            \item[\(\impliedby\)] \(s_k \leq a_1 + \int_1^k f(t) \; dt \leq a_1 + \lim_{k \to \infty}\int_1^k f(t) \; dt\). Hence \(s_k\) converges by MCT. 
         \end{itemize}
         For the last part, let
         \begin{align*}
@@ -455,23 +455,23 @@
             \implies \sum_{n=1}^k - \int_1^k f(t) \; dt &\geq a_k \\
             \implies b_k &\geq a_k = f(k) \geq 0
         \end{align*}
-        Hence $b_k$ is decreasing and bounded below, so converges to some $l \in \RR$. Since $0 \leq b_k \leq b_1 = a_1 = f(1)$, we conclude $0 \leq l \leq f(1)$.
+        Hence \(b_k\) is decreasing and bounded below, so converges to some \(l \in \RR\). Since \(0 \leq b_k \leq b_1 = a_1 = f(1)\), we conclude \(0 \leq l \leq f(1)\).
     \end{proof}
 
     \begin{example}
         \begin{itemize}
-            \item $\sum \frac 1 {n^p}$ converges if and only if $p > 1$, since
+            \item \(\sum \frac 1 {n^p}\) converges if and only if \(p > 1\), since
             \begin{align*}
                 \lim_{x \to \infty}\int_1^x \frac{1}{t^p} \; dt = \lim_{x \to \infty} \begin{cases}
                     \frac{1}{1-p}x^{1-p} & p \neq 1 \\
                     \log x & p = 1
                 \end{cases}
             \end{align*}
-            \item $\sum \frac 1 {n \log n}$ diverges, since
+            \item \(\sum \frac 1 {n \log n}\) diverges, since
             \begin{align*}
                 \int \frac 1 {t \log t} \; dt = \log \log t + C
             \end{align*}
-            \item $\sum \frac 1 {n \log^2 n}$ converges, since
+            \item \(\sum \frac 1 {n \log^2 n}\) converges, since
             \begin{align*}
                 \int \frac 1 {t \log^2 t} \; dt = -\frac 1 {\log t} + C
             \end{align*}
@@ -479,7 +479,7 @@
     \end{example}
     
     \begin{proposition}[Cauchy condensation test, non-examinable]
-        Let $a_n \geq 0$ and $(a_n)$ be decreasing. Then $\sum a_n$ converges if and only if $\sum 2^n a_{2^n}$ converges.
+        Let \(a_n \geq 0\) and \((a_n)\) be decreasing. Then \(\sum a_n\) converges if and only if \(\sum 2^n a_{2^n}\) converges.
     \end{proposition}
     
     \begin{proof}
@@ -498,27 +498,27 @@
     
     
     \begin{proposition}[Alternating series test]
-        Let $(a_n)$ be a decreasing sequence, and suppose $a_n \geq 0$, $a_n \to 0$. Then $\sum (-1)^{n+1}a_n$ converges.
+        Let \((a_n)\) be a decreasing sequence, and suppose \(a_n \geq 0\), \(a_n \to 0\). Then \(\sum (-1)^{n+1}a_n\) converges.
     \end{proposition}
     
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
     \begin{proof}
-        Set $s_k = \sum^k (-1)^{n+1} a_n$. Then
+        Set \(s_k = \sum^k (-1)^{n+1} a_n\). Then
         \begin{align*}
             s_{2k} = \underbrace{(a_1 - a_2)}_{\geq 0} + \underbrace{(a_3 - a_4)}_{\geq 0} + \dots + \underbrace{(a_{2k-1} - a_{2k})}_{\geq 0}
         \end{align*}
-        and so $s_2 \leq s_4 \leq \cdots$. Likewise, $s_1 \geq s_3 \geq \cdots$. Moreover, $s_{2k+1} - s_{2k} = a_{2k+1} \geq 0$, so that
+        and so \(s_2 \leq s_4 \leq \cdots\). Likewise, \(s_1 \geq s_3 \geq \cdots\). Moreover, \(s_{2k+1} - s_{2k} = a_{2k+1} \geq 0\), so that
         \begin{align*}
             s_2 \leq s_{2k} \leq s_{2k+1} \leq s_1
         \end{align*}
-        so $s_{2k+1}$ is bounded below by $s_2$, and $s_{2k}$ is bounded above by $s_1$. Hence, by the monotone convergence theorem, we have $s_{2k} \to s$, $s_{2k+1} \to \tilde s$. Now, note $s_{2k+1}-s_{2k} = a_{2k+1} \to 0$, and so $s = \tilde s$.
+        so \(s_{2k+1}\) is bounded below by \(s_2\), and \(s_{2k}\) is bounded above by \(s_1\). Hence, by the monotone convergence theorem, we have \(s_{2k} \to s\), \(s_{2k+1} \to \tilde s\). Now, note \(s_{2k+1}-s_{2k} = a_{2k+1} \to 0\), and so \(s = \tilde s\).
 
-        Finally, let us show $s_n$ converges. We have for every $\varepsilon > 0$ an $N_1$ such that $|s_{2k}-s| < \varepsilon$ for any $k \geq N_1$, and an $N_2$ such that $|s_{2k+1}-s| < \varepsilon$ for any $k \geq N_2$. But then, taking $N = 2\max(N_1, N_2)+1$, we can see that $|s_k - s| < \varepsilon$ for any $k \geq N$.
+        Finally, let us show \(s_n\) converges. We have for every \(\varepsilon > 0\) an \(N_1\) such that \(|s_{2k}-s| < \varepsilon\) for any \(k \geq N_1\), and an \(N_2\) such that \(|s_{2k+1}-s| < \varepsilon\) for any \(k \geq N_2\). But then, taking \(N = 2\max(N_1, N_2)+1\), we can see that \(|s_k - s| < \varepsilon\) for any \(k \geq N\).
     \end{proof}
     
     \begin{proposition}[Dirichlet test]
-        Let $(a_n)$ be a decreasing sequence, and suppose $a_n \geq 0$, $a_n \to 0$. Let $(b_n)$ be another sequence such that $s_k = (\sum^k b_n)$ is bounded. Then $\sum a_nb_n$ converges.
+        Let \((a_n)\) be a decreasing sequence, and suppose \(a_n \geq 0\), \(a_n \to 0\). Let \((b_n)\) be another sequence such that \(s_k = (\sum^k b_n)\) is bounded. Then \(\sum a_nb_n\) converges.
     \end{proposition}
     
     \begin{proof}
@@ -526,22 +526,22 @@
     \end{proof}
     
     \begin{definition}[Absolute convergence]
-        We say $\sum a_n$ is \emph{absolutely convergent} if $\sum |a_n|$ is convergent.
+        We say \(\sum a_n\) is \emph{absolutely convergent} if \(\sum |a_n|\) is convergent.
     \end{definition}
     
     \begin{lemma}
-        If $\sum a_n$ converges absolutely, then $\sum a_n$ converges.
+        If \(\sum a_n\) converges absolutely, then \(\sum a_n\) converges.
     \end{lemma}
     
     \begin{proof}
-        Let $s_k = \sum^k a_n$, $r_k = \sum^k |a_n|$. Observe
+        Let \(s_k = \sum^k a_n\), \(r_k = \sum^k |a_n|\). Observe
         \begin{align*}
             |s_k - s_l| &= \left|\sum_{n=l+1}^k a_n\right| \\
             &\leq \sum_{n=l+1}^k |a_n| \\
             &= r_k - r_l \\
             &= |r_k - r_l|
         \end{align*}
-        Hence $r_k$ convergent $\implies r_k$ Cauchy $\implies s_k$ Cauchy $\implies s_k$ convergent.        
+        Hence \(r_k\) convergent \(\implies r_k\) Cauchy \(\implies s_k\) Cauchy \(\implies s_k\) convergent.        
     \end{proof}
     
     \begin{remark*}
@@ -565,15 +565,15 @@
     \end{example}
     
     \begin{proposition}[Rearrangements under absolute convergence]
-        Let $\sigma: \NN \to \NN$ be a bijection. Let $a'_n = a_{\sigma(n)}$. Then, if $\sum a_n$ is absolutely convergent, $\sum a_n' = \sum a_n$.        
+        Let \(\sigma: \NN \to \NN\) be a bijection. Let \(a'_n = a_{\sigma(n)}\). Then, if \(\sum a_n\) is absolutely convergent, \(\sum a_n' = \sum a_n\).        
     \end{proposition}
     
     \begin{proof}
-        Let $s_k = \sum^k a_n$, and suppose $s_k \to s$. Then, for any $\eps$ we have $N$ such that, for $k \geq N$,
+        Let \(s_k = \sum^k a_n\), and suppose \(s_k \to s\). Then, for any \(\eps\) we have \(N\) such that, for \(k \geq N\),
         \begin{align*}
             |s_k - s| < \eps \text{ and } \sum_{k > N} |a_n| < \eps
         \end{align*}
-        Furthermore, there exists $N_1 \geq N$ such that $a_1, \dots, a_N$ are included in $a_1', \dots, a_N'$. Hence, for $m \geq N_1$, 
+        Furthermore, there exists \(N_1 \geq N\) such that \(a_1, \dots, a_N\) are included in \(a_1', \dots, a_N'\). Hence, for \(m \geq N_1\), 
         \begin{align*}
             \sum^m a_n' &= \underbrace{\sum^N a_n}_{s_N} + \;(m-N\text{ terms of }(a_n)\text{ with index}\geq N) \\
             \implies \left|\sum^m a_n'-s\right| &\leq \underbrace{|s_N - s|}_{<\eps} + \underbrace{\sum_{k > N}|a_n|}_{<\eps} \\
@@ -586,87 +586,87 @@
 
     \subsection{Limits of functions}
 
-    Take $f: \CC \to \CC$. We want to define what we mean by $f(z) \to y$ as $z \to a$, even if $a \notin X$. A classic example is $\frac{\sin x}{x}$ at $a=0$ -- even though 0 is not in the domain, there are points in the domain that are very close to 0, so it feels like we should be able to assign 0 some value.
+    Take \(f: \CC \to \CC\). We want to define what we mean by \(f(z) \to y\) as \(z \to a\), even if \(a \notin X\). A classic example is \(\frac{\sin x}{x}\) at \(a=0\) -- even though 0 is not in the domain, there are points in the domain that are very close to 0, so it feels like we should be able to assign 0 some value.
 
     \begin{definition}[Accumulation point]
-        Let $X \subseteq \CC$. We say $a$ is an \emph{accumulation point} for $X$ if, for any $\delta > 0$, there exists $z \in X \setminus \{a\}$ such that $|z-a| < \delta$. Otherwise, we say $a$ is \emph{isolated}.
+        Let \(X \subseteq \CC\). We say \(a\) is an \emph{accumulation point} for \(X\) if, for any \(\delta > 0\), there exists \(z \in X \setminus \{a\}\) such that \(|z-a| < \delta\). Otherwise, we say \(a\) is \emph{isolated}.
     \end{definition}
     
     \begin{example}
         \begin{itemize}
-            \item Take $X = \{0\} \cup [1, 2]$ -- then 0 is an isolated point, but all points in $[1, 2]$ are accumulation points.
-            \item Take $S = \{|z| = 1\}$ -- these are accumulation points for the set $D = \{|z| < 1\}$ (also, every point in $D$ is an accumulation point for $D$).
+            \item Take \(X = \{0\} \cup [1, 2]\) -- then 0 is an isolated point, but all points in \([1, 2]\) are accumulation points.
+            \item Take \(S = \{|z| = 1\}\) -- these are accumulation points for the set \(D = \{|z| < 1\}\) (also, every point in \(D\) is an accumulation point for \(D\)).
         \end{itemize}
     \end{example}
     
     \begin{lemma}
-        Let $X \subseteq \CC$, $a \in \CC$. Then $a$ is an accumulation point for $X$ if and only if there exists $(x_n)$ in $X \setminus \{a\}$ such that $x_n \to a$.
+        Let \(X \subseteq \CC\), \(a \in \CC\). Then \(a\) is an accumulation point for \(X\) if and only if there exists \((x_n)\) in \(X \setminus \{a\}\) such that \(x_n \to a\).
     \end{lemma}
     
-    Let's return to thinking about $f(z) \to y$ as $z \to a$. We should be able to make sense of this if $a$ is either in the domain of $f$, or is an accumulation point for the domain of $f$.
+    Let's return to thinking about \(f(z) \to y\) as \(z \to a\). We should be able to make sense of this if \(a\) is either in the domain of \(f\), or is an accumulation point for the domain of \(f\).
     
     \begin{definition}
-        Let $f: X \subseteq \CC \to \CC$. Let $a \in \CC$ an accumulation point of $X$. Then we say $f(z) \to y$ as $z \to a$ if, for any $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta, z \in X \setminus \{a\} \implies |f(z)-f(a)| < \eps$. We may also write
+        Let \(f: X \subseteq \CC \to \CC\). Let \(a \in \CC\) an accumulation point of \(X\). Then we say \(f(z) \to y\) as \(z \to a\) if, for any \(\eps > 0\), there exists \(\delta = \delta(\eps)\) such that \(|z-a| < \delta, z \in X \setminus \{a\} \implies |f(z)-f(a)| < \eps\). We may also write
         \begin{align*}
             \lim_{z \to a}f(z) = y
         \end{align*}
 
-        Furthermore, if $a$ is an accumulation point (but not in the domain), we say $f(z) \to \infty$ as $z \to a$ if
+        Furthermore, if \(a\) is an accumulation point (but not in the domain), we say \(f(z) \to \infty\) as \(z \to a\) if
         \begin{itemize}
-            \item $f(z)/|f(z)| \to l$ for some $l \in \CC$;
-            \item and, for any $L > 0$, there exists $\delta = \delta(L)$ such that $|z-a| < \delta, z \in X \setminus \{a\} \implies |f(z)| > L$.
+            \item \(f(z)/|f(z)| \to l\) for some \(l \in \CC\);
+            \item and, for any \(L > 0\), there exists \(\delta = \delta(L)\) such that \(|z-a| < \delta, z \in X \setminus \{a\} \implies |f(z)| > L\).
         \end{itemize}
     \end{definition}
     
     \begin{remark}
-        If $a$ is an isolated point of $X$, then we can always find $\delta$ sufficiently small such that $|z-a| < \delta, z \in X \iff z = a$. So we could define a limit for isolated points if we really wanted, but it wouldn't be very interesting.
+        If \(a\) is an isolated point of \(X\), then we can always find \(\delta\) sufficiently small such that \(|z-a| < \delta, z \in X \iff z = a\). So we could define a limit for isolated points if we really wanted, but it wouldn't be very interesting.
     \end{remark}
     
     \begin{example}
-        Take $f(x) = \frac{\sin x}{x}$ with domain $\RR \setminus \{0\}$. We claim $\frac{\sin x}{x} \to 1$ as $x \to 0$.
+        Take \(f(x) = \frac{\sin x}{x}\) with domain \(\RR \setminus \{0\}\). We claim \(\frac{\sin x}{x} \to 1\) as \(x \to 0\).
         
-        Recall the geometric argument that shows $\cos x < \frac{\sin x}{x} < 1$ for every $x \in (0, \frac{\pi}2)$. Hence
+        Recall the geometric argument that shows \(\cos x < \frac{\sin x}{x} < 1\) for every \(x \in (0, \frac{\pi}2)\). Hence
         \begin{align*}
             \left|\frac{\sin x}x - 1\right| < \left|1-\cos x\right| = 2\sin^2\left(\frac x 2\right) < \frac{x^2}{2}
         \end{align*}
-        Hence, for any $\eps > 0$, choosing $\delta = \sqrt{2\eps}$ gives the result.
+        Hence, for any \(\eps > 0\), choosing \(\delta = \sqrt{2\eps}\) gives the result.
     \end{example}
     
     \begin{lemma}
-        Let $f: X \subseteq \CC \to \CC$, and take $a \in \CC$ an accumulation point of $X$. Then
+        Let \(f: X \subseteq \CC \to \CC\), and take \(a \in \CC\) an accumulation point of \(X\). Then
         \begin{itemize}
-            \item $f(z) \to y$ as $z \to a$ if and only if $f(z_n) \to y$ for every sequence $(z_n)$ on $X \setminus \{a\}$ with $z_n \to a$;
-            \item $f(z)$ diverges as $z \to a$ if and only if $f(z_n)$ diverges for every sequence $(z_n)$ on $X \setminus \{a\}$ with $z_n \to a$.
+            \item \(f(z) \to y\) as \(z \to a\) if and only if \(f(z_n) \to y\) for every sequence \((z_n)\) on \(X \setminus \{a\}\) with \(z_n \to a\);
+            \item \(f(z)\) diverges as \(z \to a\) if and only if \(f(z_n)\) diverges for every sequence \((z_n)\) on \(X \setminus \{a\}\) with \(z_n \to a\).
         \end{itemize}
     \end{lemma}
     
     \begin{lemma}
-        If $f: X \subseteq \CC \to \CC$ has a limit at $a \in \CC$, then this limit is unique.
+        If \(f: X \subseteq \CC \to \CC\) has a limit at \(a \in \CC\), then this limit is unique.
     \end{lemma}
 
     \begin{proof}
-        Suppose $f(z) \to x$ and $f(z) \to y$ as $z \to a$. Then
+        Suppose \(f(z) \to x\) and \(f(z) \to y\) as \(z \to a\). Then
         \begin{align*}
             |x-y| &\leq |x-f(z)| + |f(z)-y|
         \end{align*}
-        Taking the limit as $z \to a$, we have
+        Taking the limit as \(z \to a\), we have
         \begin{align*}
             |x-y| &\leq 0 + 0
         \end{align*}
-        so $x=y$ as required.        
+        so \(x=y\) as required.        
     \end{proof}    
     
     \begin{remark*}
-        This justifies the notation $\lim_{z \to a} f(z) = y$.
+        This justifies the notation \(\lim_{z \to a} f(z) = y\).
     \end{remark*}
     
     \begin{lemma}
-        Let $f$, $g: X \subseteq \CC \to \CC$, and $a \in \CC$ an accumulation point of $X$. Suppose $\lim_{z \to a}f(z) = y$, $\lim_{z \to a}g(z) = x$. Then
+        Let \(f\), \(g: X \subseteq \CC \to \CC\), and \(a \in \CC\) an accumulation point of \(X\). Suppose \(\lim_{z \to a}f(z) = y\), \(\lim_{z \to a}g(z) = x\). Then
         \begin{align*}
             \lim_{z \to a} f(z) + g(z) &= y + x \\
             \lim_{z \to a} f(z)g(z) &= yx
         \end{align*}
-        If $g(z) \neq 0$ for any $z \in X$, and $x \neq 0$, then
+        If \(g(z) \neq 0\) for any \(z \in X\), and \(x \neq 0\), then
         \begin{align*}
             \lim_{z \to a} \frac{f(z)}{g(z)} = \frac{y}{x}
         \end{align*}
@@ -675,33 +675,33 @@
     \subsection{Continuity of functions}
 
     \begin{definition}
-        Let $f: X \subseteq \CC \to \CC$. Then $f$ is continuous at $a \in X$ if
+        Let \(f: X \subseteq \CC \to \CC\). Then \(f\) is continuous at \(a \in X\) if
         \begin{align*}
             f(a) = \lim_{z \to a}f(z)
         \end{align*}
-        or, equivalently, for every $\eps > 0$, there exists $\delta = \delta(\eps)$ such that $|z-a| < \delta$, $z \in X \implies |f(z)-f(a)| < \eps$.        
+        or, equivalently, for every \(\eps > 0\), there exists \(\delta = \delta(\eps)\) such that \(|z-a| < \delta\), \(z \in X \implies |f(z)-f(a)| < \eps\).        
     \end{definition}
 
-    If $a$ is an isolated point, $f$ is continuous at $a$, since $|z-a| < \delta \implies z = a$ for sufficiently small $\delta$. If, on the other hand, $a$ is an accumulation point, $f$ is continuous at $a$ if and only if
+    If \(a\) is an isolated point, \(f\) is continuous at \(a\), since \(|z-a| < \delta \implies z = a\) for sufficiently small \(\delta\). If, on the other hand, \(a\) is an accumulation point, \(f\) is continuous at \(a\) if and only if
     \begin{align*}
         \lim_{z \to a} f(z) = f(a)
     \end{align*}
     
 
     \begin{definition}
-        Let $f: X \subseteq \CC \to \CC$. We say $f$ is continuous if it is continuous at every point in $X$.
+        Let \(f: X \subseteq \CC \to \CC\). We say \(f\) is continuous if it is continuous at every point in \(X\).
     \end{definition}
 
     \begin{example}
         \begin{itemize}
-            \item $f(z) = z$ is continuous -- take $\delta = \eps$.
+            \item \(f(z) = z\) is continuous -- take \(\delta = \eps\).
             \item Consider \begin{align*}
                 f(x) = \begin{cases}
                     \sin\left(\frac 1 x\right) & x \neq 0 \\
                     0 & x = 0
                 \end{cases}
             \end{align*}
-            This function is not continuous. Take $x_n = \frac{1}{(2n+\frac 1 2)\pi}$, which satisfies $x_n \to 0$ -- but $f(x_n) = \sin\left(\left(2n+\frac 1 2\right)\pi\right) = 1$ for any $n$, so $f(x_n) \to 1 \neq f(0)$.
+            This function is not continuous. Take \(x_n = \frac{1}{(2n+\frac 1 2)\pi}\), which satisfies \(x_n \to 0\) -- but \(f(x_n) = \sin\left(\left(2n+\frac 1 2\right)\pi\right) = 1\) for any \(n\), so \(f(x_n) \to 1 \neq f(0)\).
         \end{itemize}
     \end{example}
     
@@ -710,51 +710,51 @@
     There is another, equivalent notion of continuity which is extremely useful.
 
     \begin{definition}[Sequential continuity]
-        Let $f: X \subseteq \CC \to \CC$. We say $f$ is \emph{sequentially continuous} at $a \in X$ if $f(z_n) \to f(a)$ for all $(z_n)$ on $X$ with $z_n \to a$.
+        Let \(f: X \subseteq \CC \to \CC\). We say \(f\) is \emph{sequentially continuous} at \(a \in X\) if \(f(z_n) \to f(a)\) for all \((z_n)\) on \(X\) with \(z_n \to a\).
     \end{definition}
     
     \begin{proposition}
-        Let $f: X \subseteq \CC \to \CC$. Then $f$ is continuous if and only if it is sequentially continuous.
+        Let \(f: X \subseteq \CC \to \CC\). Then \(f\) is continuous if and only if it is sequentially continuous.
     \end{proposition}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\implies$] By continuity of $f$, for any $\eps > 0$ we have $\delta$ such that $|z-a| < \delta$, $z \in X$ implies $|f(z) - f(a)| < \eps$. Take $(z_n)$ on $X$ with $z_n \to a$, then there exists $N = N(\delta(\eps))$ such that, for any $n \geq N$, $|z_n-a| < \delta$ and hence $|f(z_n)-f(a)| < \eps$.
-            \item[$\impliedby$] Let us take the contrapositive. If $f$ is not continuous at $a$, then there exists $\eps > 0$ suchb that, for any $\delta > 0$, one can find $z = z(\delta) \in X$ such that $|f(z)-f(a)| \geq \eps$ while $|z-a| < \delta$. Now take $\delta = 1, \frac 1 2, \dots, \frac 1 n, \dots$ to find $(z_n)$ with $|z_n-a| < \frac 1 n$, so $z_n \to a$, but $|f(z_n)-f(a)| \geq \eps$ for all $n$ and a non-zero $\eps$. Hence $f$ cannot be sequentially continuous, as required.
+            \item[\(\implies\)] By continuity of \(f\), for any \(\eps > 0\) we have \(\delta\) such that \(|z-a| < \delta\), \(z \in X\) implies \(|f(z) - f(a)| < \eps\). Take \((z_n)\) on \(X\) with \(z_n \to a\), then there exists \(N = N(\delta(\eps))\) such that, for any \(n \geq N\), \(|z_n-a| < \delta\) and hence \(|f(z_n)-f(a)| < \eps\).
+            \item[\(\impliedby\)] Let us take the contrapositive. If \(f\) is not continuous at \(a\), then there exists \(\eps > 0\) suchb that, for any \(\delta > 0\), one can find \(z = z(\delta) \in X\) such that \(|f(z)-f(a)| \geq \eps\) while \(|z-a| < \delta\). Now take \(\delta = 1, \frac 1 2, \dots, \frac 1 n, \dots\) to find \((z_n)\) with \(|z_n-a| < \frac 1 n\), so \(z_n \to a\), but \(|f(z_n)-f(a)| \geq \eps\) for all \(n\) and a non-zero \(\eps\). Hence \(f\) cannot be sequentially continuous, as required.
         \end{itemize}
     \end{proof}
     
     \begin{example*}
         Let us have some more examples.
         \begin{itemize}
-            \item Consider the Dirichlet function $f(x) = 1_\QQ(x)$. This is discontinuous at every real $a$:
+            \item Consider the Dirichlet function \(f(x) = 1_\QQ(x)\). This is discontinuous at every real \(a\):
             \begin{itemize}
-                \item if $a \in \QQ$, we can find $(x_n) \subset \RR \setminus \QQ$ with $x_n \to a$, but of course $f(x_n) = 0$, so $f(x_n) \to 0 \neq 1 = f(a)$;
-                \item if $a \in \RR \setminus \QQ$, we proceed analogously.
+                \item if \(a \in \QQ\), we can find \((x_n) \subset \RR \setminus \QQ\) with \(x_n \to a\), but of course \(f(x_n) = 0\), so \(f(x_n) \to 0 \neq 1 = f(a)\);
+                \item if \(a \in \RR \setminus \QQ\), we proceed analogously.
             \end{itemize}
-            \item $f(x) = \sin x$ is continuous as a real function. Fix $a \in \RR$ and, for some $\eps > 0$, pick $\delta = \min(\eps, \pi)$. Now
+            \item \(f(x) = \sin x\) is continuous as a real function. Fix \(a \in \RR\) and, for some \(\eps > 0\), pick \(\delta = \min(\eps, \pi)\). Now
             \begin{align*}
                 |f(x)-f(a)| &= |\sin x - \sin a| \\
                 &= 2\left|\cos\left(\frac{x+a}2\right)\sin\left(\frac{x-a}2\right)\right| \\
                 &\leq 2\left|\sin\left(\frac{x-a}2\right)\right| \\
                 &\leq |x-a| < \eps
             \end{align*}
-            since $\frac{x-a}{2} \in \left[-\frac \pi 2, \frac \pi 2\right]$.
+            since \(\frac{x-a}{2} \in \left[-\frac \pi 2, \frac \pi 2\right]\).
         \end{itemize}
     \end{example*}
     
     Now let us look at some important properties of continuous functions.    
 
     \begin{lemma}
-        Let $f$, $g: X \subseteq \CC \to \CC$ be continuous at $a \in \CC$. Then, so are $\lambda f + g$ for $\lambda \in \CC$ fixed, $fg$ and, if $f(z) \neq 0$ for any $z \in X$, $1/f(z)$.
+        Let \(f\), \(g: X \subseteq \CC \to \CC\) be continuous at \(a \in \CC\). Then, so are \(\lambda f + g\) for \(\lambda \in \CC\) fixed, \(fg\) and, if \(f(z) \neq 0\) for any \(z \in X\), \(1/f(z)\).
     \end{lemma}
     
     \begin{lemma}
-        Let $U$, $V \subseteq \CC$, and $f: U \to V$, $g: V \to \CC$. Suppose $f$ is continuous at $a \in U$ and $g$ is continuous at $f(a) \in V$ -- then, $g \circ f: U \to \CC$ is continuous at $a$.
+        Let \(U\), \(V \subseteq \CC\), and \(f: U \to V\), \(g: V \to \CC\). Suppose \(f\) is continuous at \(a \in U\) and \(g\) is continuous at \(f(a) \in V\) -- then, \(g \circ f: U \to \CC\) is continuous at \(a\).
     \end{lemma}
     
     \begin{proof}
-        Since $g$ is continuous at $f(a)$, we have $\sigma = \sigma(\eps)$ such that $y \in V$, $|y-f(a)| < \sigma$ implies $|g(y) - g(f(a))| < \eps$. Furthermore, since $f$ is continuous at $a$, we have for any $\sigma$ a $\delta = \delta(\sigma) = \delta(\eps)$ such that
+        Since \(g\) is continuous at \(f(a)\), we have \(\sigma = \sigma(\eps)\) such that \(y \in V\), \(|y-f(a)| < \sigma\) implies \(|g(y) - g(f(a))| < \eps\). Furthermore, since \(f\) is continuous at \(a\), we have for any \(\sigma\) a \(\delta = \delta(\sigma) = \delta(\eps)\) such that
         \begin{align*}
             z \in V, |z-a| < \delta \implies |f(z) - f(a)| < \sigma \implies |g(f(z)) - g(f(a))| < \eps
         \end{align*}
@@ -764,34 +764,34 @@
     \subsection{Extreme value theorem}
 
     \begin{definition}[Closed sets]
-        A set $X \subseteq \CC$ is \emph{closed} if all sequences $(x_n)$ in $X$ which converge in $\CC$ have limits in $X$.
+        A set \(X \subseteq \CC\) is \emph{closed} if all sequences \((x_n)\) in \(X\) which converge in \(\CC\) have limits in \(X\).
     \end{definition}
     
     \begin{example*}
         \begin{itemize}
-            \item The closed interval $[0, 1]$ is closed, while the open interval $(0, 1)$ is not.
-            \item $[0, 1)$ and $(0, 1]$ are not closed.
-            \item $[0, \infty)$ is closed, while $(0, \infty]$ is not.
+            \item The closed interval \([0, 1]\) is closed, while the open interval \((0, 1)\) is not.
+            \item \([0, 1)\) and \((0, 1]\) are not closed.
+            \item \([0, \infty)\) is closed, while \((0, \infty]\) is not.
         \end{itemize}
     \end{example*}
 
     \begin{definition}[Bounded sets]
-        We say $X \subseteq \CC$ is \emph{bounded} if there exists $M > 0$ such that $X \subseteq \{z \in \CC: |z| \leq M\}$, or in other words $\sup_{z \in X} |z| \leq M$.
+        We say \(X \subseteq \CC\) is \emph{bounded} if there exists \(M > 0\) such that \(X \subseteq \{z \in \CC: |z| \leq M\}\), or in other words \(\sup_{z \in X} |z| \leq M\).
     \end{definition}
     
     \begin{example*}
-        $[0, 1]$, $(0, 1)$, $[0, 1)$ and $(0, 1]$ are all bounded, while $[0, \infty)$ and $(0, \infty)$ are not.
+        \([0, 1]\), \((0, 1)\), \([0, 1)\) and \((0, 1]\) are all bounded, while \([0, \infty)\) and \((0, \infty)\) are not.
     \end{example*}
     
     \begin{proposition}
         \label{cts-preserves-cbdd}
-        Let $X \subseteq \CC$ be a closed bounded set. If $f: X \to \CC$ is continuous, then $f(X) \subseteq \CC$ is a closed bounded subset of $\CC$.
+        Let \(X \subseteq \CC\) be a closed bounded set. If \(f: X \to \CC\) is continuous, then \(f(X) \subseteq \CC\) is a closed bounded subset of \(\CC\).
     \end{proposition}
 
     \begin{proof}
         \begin{itemize}
-            \item \emph{$f(X)$ is bounded}. Suppose not. Then, for each $n \in \NN$, we can find $x_n \in X$ such that $|f(x_n)| > n$. Now, $(x_n)$ is a sequence in $X$, so it must be bounded, so Bolzano-Weierstrass applies -- there exists a convergent subsequence $(x_{n_k})$ such that $x_{n_k} \to x$ and, by closedness of $X$, $x \in X$. On the other hand, $|f(x_{n_k})| > n_k \geq k$, so $f(x_{n_k})$ cannot converge as $k \to \infty$. But then $f$ is not continuous, since it is not sequentially continuous.
-            \item \emph{$f(X)$ is closed}. Take $(y_n)$ in $f(X)$, and suppose it converges to some $y \in \CC$ -- we want to show $y \in f(X)$. Since $y_n \in f(X)$, we have $x_n \in X$ such that $f(x_n) = y_n$, and $(x_n)$ has a subsequence $(x_{n_k})$ converging to $x \in X$ by the closure of $X$ and the Bolzano-Weierstrass theorem. By continuity of $f$,
+            \item \emph{\(f(X)\) is bounded}. Suppose not. Then, for each \(n \in \NN\), we can find \(x_n \in X\) such that \(|f(x_n)| > n\). Now, \((x_n)\) is a sequence in \(X\), so it must be bounded, so Bolzano-Weierstrass applies -- there exists a convergent subsequence \((x_{n_k})\) such that \(x_{n_k} \to x\) and, by closedness of \(X\), \(x \in X\). On the other hand, \(|f(x_{n_k})| > n_k \geq k\), so \(f(x_{n_k})\) cannot converge as \(k \to \infty\). But then \(f\) is not continuous, since it is not sequentially continuous.
+            \item \emph{\(f(X)\) is closed}. Take \((y_n)\) in \(f(X)\), and suppose it converges to some \(y \in \CC\) -- we want to show \(y \in f(X)\). Since \(y_n \in f(X)\), we have \(x_n \in X\) such that \(f(x_n) = y_n\), and \((x_n)\) has a subsequence \((x_{n_k})\) converging to \(x \in X\) by the closure of \(X\) and the Bolzano-Weierstrass theorem. By continuity of \(f\),
             \begin{align*}
                 y = \lim_{k \to \infty} y_{n_k} = \lim_{k \to \infty} f(x_{n_k}) = f\left(\lim_{k \to \infty} x_{n_k}\right) = f(x)
             \end{align*}
@@ -804,7 +804,7 @@
 
     \begin{theorem}[Extreme value theorem]
         \label{evt}
-        Let $X \subseteq \RR$ be a closed bounded set, and let $f: X \to \RR$ be continuous. Then there exist $a$, $b \in X$ satisfying
+        Let \(X \subseteq \RR\) be a closed bounded set, and let \(f: X \to \RR\) be continuous. Then there exist \(a\), \(b \in X\) satisfying
         \begin{align*}
             f(a) = \sup f(X); \qquad f(b) = \inf f(X)
         \end{align*}
@@ -815,27 +815,27 @@
     \begin{proof}
         We will consider specifically the supremum, since the infimum is analogous.
 
-        Let $M = \sup f(X)$, which exists since $f(X)$ is bounded by \cref{cts-preserves-cbdd}. By definition, $M - \frac 1 n$ is not an upper bound on $f(X)$ for any $n \in \NN$, that is, we can find a sequence $(y_n)$ with elements in $f(X)$ such that $M - \frac 1 n < y_n \leq M$, which produces a sequence $(x_n)$ on $X$ such that $M - \frac 1 n < f(x_n) \leq M$. Now take limits and use the fact that $f$ is continuous -- we have $M \leq \lim_{n \to \infty} f(x_n) \leq M$.
+        Let \(M = \sup f(X)\), which exists since \(f(X)\) is bounded by \cref{cts-preserves-cbdd}. By definition, \(M - \frac 1 n\) is not an upper bound on \(f(X)\) for any \(n \in \NN\), that is, we can find a sequence \((y_n)\) with elements in \(f(X)\) such that \(M - \frac 1 n < y_n \leq M\), which produces a sequence \((x_n)\) on \(X\) such that \(M - \frac 1 n < f(x_n) \leq M\). Now take limits and use the fact that \(f\) is continuous -- we have \(M \leq \lim_{n \to \infty} f(x_n) \leq M\).
 
-        Finally, by \cref{cts-preserves-cbdd}, we know that, $f(X)$ is closed, so, since $(y_n)$ is a sequence in $f(X)$, its limit is also in the image of $X$.        
+        Finally, by \cref{cts-preserves-cbdd}, we know that, \(f(X)\) is closed, so, since \((y_n)\) is a sequence in \(f(X)\), its limit is also in the image of \(X\).        
     \end{proof}
 
     \begin{remark*}
-        We know that the sup and inf exist -- the key point is that $f$ actually achieves both of these.
+        We know that the sup and inf exist -- the key point is that \(f\) actually achieves both of these.
     \end{remark*}
     
     \subsection{Intermediate value theorem}
     
     \begin{theorem}[Intermediate value theorem]
         \label{ivt}
-        If $f: [a, b] \to \RR$ is continuous then, for any $y$ satisfying $f(a) \leq y \leq f(b)$, there exists $x$ satisfying $a \leq x \leq b$ such that $f(x) = y$.
+        If \(f: [a, b] \to \RR\) is continuous then, for any \(y\) satisfying \(f(a) \leq y \leq f(b)\), there exists \(x\) satisfying \(a \leq x \leq b\) such that \(f(x) = y\).
     \end{theorem}
     
     \begin{proof}
-        If $f$ is constant, $y=f(a)$ or $y=f(b)$, then the result is clear. If not, wlog let $f(a) < y < f(b)$. Set $S = \{x \in [a, b]: f(x) \leq y\}$. Then $a \in S$, so $S$ is non-empty -- furthermore, $S$ is bounded above by $b$, so we have $c = \sup S \in [a, b]$. We claim that $f(c) = y$. Observe:
+        If \(f\) is constant, \(y=f(a)\) or \(y=f(b)\), then the result is clear. If not, wlog let \(f(a) < y < f(b)\). Set \(S = \{x \in [a, b]: f(x) \leq y\}\). Then \(a \in S\), so \(S\) is non-empty -- furthermore, \(S\) is bounded above by \(b\), so we have \(c = \sup S \in [a, b]\). We claim that \(f(c) = y\). Observe:
         \begin{itemize}
-            \item We claim $f(c) \leq y$. Suppose not. Then $\eps = f(c) - y > 0$. By continuity of $f$, we have $\delta$ such that $|x-c| < \delta$, $x \in [a, b]$ implies $|f(x) - f(c)| < \eps$, so $f(x) > f(c) - \eps = y$, so $x \notin S$. This means $(c - \delta, c) \cap S = \emptyset$, which contradicts the definition of $c$ (in particular that $c$ is the least upper bound).
-            \item We claim $f(c) \geq y$. Suppose not. Then $\eps = y - f(c) > 0$. By continuity of $f$, we have $\delta$ such that $|x-c| < \delta$, $x \in [a, b]$ implies $|f(x) - f(c)| < \eps$, so $f(x) < f(c) + \eps = y$. But then $f(c + \frac{\delta}2) < y$, so $c \leq c + \frac{\delta}2 \in S$, which contradicts the definition of $c$ (in particular that $c$ is an upper bound).
+            \item We claim \(f(c) \leq y\). Suppose not. Then \(\eps = f(c) - y > 0\). By continuity of \(f\), we have \(\delta\) such that \(|x-c| < \delta\), \(x \in [a, b]\) implies \(|f(x) - f(c)| < \eps\), so \(f(x) > f(c) - \eps = y\), so \(x \notin S\). This means \((c - \delta, c) \cap S = \emptyset\), which contradicts the definition of \(c\) (in particular that \(c\) is the least upper bound).
+            \item We claim \(f(c) \geq y\). Suppose not. Then \(\eps = y - f(c) > 0\). By continuity of \(f\), we have \(\delta\) such that \(|x-c| < \delta\), \(x \in [a, b]\) implies \(|f(x) - f(c)| < \eps\), so \(f(x) < f(c) + \eps = y\). But then \(f(c + \frac{\delta}2) < y\), so \(c \leq c + \frac{\delta}2 \in S\), which contradicts the definition of \(c\) (in particular that \(c\) is an upper bound).
         \end{itemize}
         The result follows.        
     \end{proof}
@@ -845,36 +845,36 @@
     \end{remark*}
     
     \begin{example*}
-        We can use this result to show the existence of $n^\text{th}$ roots. Take $t > 0$ and $N \in \NN$, and consider
+        We can use this result to show the existence of \(n^\text{th}\) roots. Take \(t > 0\) and \(N \in \NN\), and consider
         \begin{align*}
             f: [0, 1 + t] &\to \RR \\
             x &\mapsto x^N
         \end{align*}
-        This is continuous, and $f(0) = 0 < t < (1+t)^N = f(1+t)$. Hence, there exists a $c$ satisfying $c^N = t$ by the intermediate value theorem. Note that we do not have uniqueness.        
+        This is continuous, and \(f(0) = 0 < t < (1+t)^N = f(1+t)\). Hence, there exists a \(c\) satisfying \(c^N = t\) by the intermediate value theorem. Note that we do not have uniqueness.        
     \end{example*}
     
     \begin{definition}[Monotone functions]
-        A function $f: [a, b] \to \RR$ is \emph{monotone} if it is either increasing, $x_1 \leq x_2 \implies f(x_1) \leq f(x_2)$; or decreasing, $x_1 \leq x_2 \implies f(x_2) \leq f(x_1)$.
+        A function \(f: [a, b] \to \RR\) is \emph{monotone} if it is either increasing, \(x_1 \leq x_2 \implies f(x_1) \leq f(x_2)\); or decreasing, \(x_1 \leq x_2 \implies f(x_2) \leq f(x_1)\).
     \end{definition}
     
     \begin{proposition}[Inverse function theorem]
         \label{ift-1}
-        Let $f: [a, b] \to \RR$ be continuous and strictly monotone. Let $c = \min(f(a), f(b))$, $d = \max(f(a), f(b))$. Then $f: [a, b] \to [c, d]$ is a bijection, and $f^{-1}: [c, d] \to [a, b]$ is continuous and strictly monotone.
+        Let \(f: [a, b] \to \RR\) be continuous and strictly monotone. Let \(c = \min(f(a), f(b))\), \(d = \max(f(a), f(b))\). Then \(f: [a, b] \to [c, d]\) is a bijection, and \(f^{-1}: [c, d] \to [a, b]\) is continuous and strictly monotone.
     \end{proposition}
 
     \begin{proof}
-        Since $f$ is continuous, it achieves its extrema by \cref{evt}; since it is monotone, it achieves them at its endpoints, so it maps $[a, b] \to [c, d]$ -- since it is strictly monotone, it does so injectively. By \cref{ivt}, it is surjective, and hence it is bijective.
+        Since \(f\) is continuous, it achieves its extrema by \cref{evt}; since it is monotone, it achieves them at its endpoints, so it maps \([a, b] \to [c, d]\) -- since it is strictly monotone, it does so injectively. By \cref{ivt}, it is surjective, and hence it is bijective.
 
-        For the rest of the proof, we suppose wlog that $f$ is strictly increasing. Suppose for contradiction that $f^{-1}: [c, d] \to [a, b]$ is not strictly increasing -- then we have $y_1, y_2 \in [c, d]$ with $y_1 < y_2$ and $f^{-1}(y_1) \geq f^{-1}(y_2)$. But then, applying $f$ to both sides, we obtain $y_1 = f(f^{-1}(y_1)) \geq f(f^{-1}(y_2)) = y_2$, which is a contradiction.
+        For the rest of the proof, we suppose wlog that \(f\) is strictly increasing. Suppose for contradiction that \(f^{-1}: [c, d] \to [a, b]\) is not strictly increasing -- then we have \(y_1, y_2 \in [c, d]\) with \(y_1 < y_2\) and \(f^{-1}(y_1) \geq f^{-1}(y_2)\). But then, applying \(f\) to both sides, we obtain \(y_1 = f(f^{-1}(y_1)) \geq f(f^{-1}(y_2)) = y_2\), which is a contradiction.
 
-        Finally, it remains to show $f^{-1}$ is continuous. Let $y_0 \in [c, d]$ and $x_0 = f^{-1}(y_0)$. We split into three cases.
+        Finally, it remains to show \(f^{-1}\) is continuous. Let \(y_0 \in [c, d]\) and \(x_0 = f^{-1}(y_0)\). We split into three cases.
         \begin{itemize}
-            \item $x_0 \in (a, b)$. Fix $\eps > 0$, and choose $\eta \in (0, \eps]$ sufficiently small for $[x_0 - \eta, x_0 + \eta] \subseteq [a, b]$. Now, since $f$ is strictly increasing,
+            \item \(x_0 \in (a, b)\). Fix \(\eps > 0\), and choose \(\eta \in (0, \eps]\) sufficiently small for \([x_0 - \eta, x_0 + \eta] \subseteq [a, b]\). Now, since \(f\) is strictly increasing,
             \begin{align*}
                 x_0 - \eta &< x_0 < x_0 + \eta \\
                 \implies f(x_0 - \eta) &< f(x_0) = y_0 < f(x_0 + \eta)
             \end{align*}
-            Let us now take $\delta = \min(f(x_0 + \eta) - y_0, y_0 - f(x_0 - \eta)) > 0$. Suppose $|y-y_0| < \delta$, then
+            Let us now take \(\delta = \min(f(x_0 + \eta) - y_0, y_0 - f(x_0 - \eta)) > 0\). Suppose \(|y-y_0| < \delta\), then
             \begin{align*}
                 f(x_0 - \eta) \leq y_0 - \delta < y &< y_0 + \delta \leq f(x_0 + \eta) \\
                 \implies f(x_0 - \eta) < y &< f(x_0 + \eta) \\
@@ -882,14 +882,14 @@
                 \implies |f^{-1}(y) - f^{-1}(y_0)| &< \eps
             \end{align*}
             as required.
-            \item $x_0 = a$, $y_0 = f(a)$. Fix $\eps > 0$, and choose $\eta = \min(\eps, b-a)$. Set $\delta = f(a + \eta) - f(a) > 0$. Then $|y-y_0| < \delta$, $y \in [c, d]$ gives
+            \item \(x_0 = a\), \(y_0 = f(a)\). Fix \(\eps > 0\), and choose \(\eta = \min(\eps, b-a)\). Set \(\delta = f(a + \eta) - f(a) > 0\). Then \(|y-y_0| < \delta\), \(y \in [c, d]\) gives
             \begin{align*}
                 f(a) \leq y &< f(a + \eta) \\
                 \implies a \leq f^{-1}(y) &< a + \eta \\
                 \implies |f^{-1}(y)-f^{-1}(y_0)| &< \eta \leq \eps
             \end{align*}
             as required.
-            \item $x_0 = b$ proceeds analogously.               
+            \item \(x_0 = b\) proceeds analogously.               
         \end{itemize}
         This completes the result.        
     \end{proof}
@@ -903,11 +903,11 @@
     \subsection{Basics}
 
     \begin{definition}[Derivative]
-        Let $f: X \subseteq \CC \to \CC$, $a \in X$. We say $f$ is differentiable at $a$ if the limit
+        Let \(f: X \subseteq \CC \to \CC\), \(a \in X\). We say \(f\) is differentiable at \(a\) if the limit
         \begin{align*}
             \lim_{x \to a} \frac{f(x)-f(a)}{x-a} = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h}
         \end{align*}
-        exists. We call this limit the derivative of $f$ at $a$, $f'(a)$ or $\frac{df}{dx}(a)$.        
+        exists. We call this limit the derivative of \(f\) at \(a\), \(f'(a)\) or \(\frac{df}{dx}(a)\).        
     \end{definition}
     
     \begin{remark*}
@@ -920,11 +920,11 @@
     
     \begin{example*}
         \begin{itemize}
-            \item $f(z) = z$ is differentiable everywhere:
+            \item \(f(z) = z\) is differentiable everywhere:
             \begin{align*}
                 f'(z) = \lim_{h \to 0} \frac{f(z+h)-f(z)}{h} = \lim_{h \to 0} 1 = 1
             \end{align*}
-            \item $f(z) = \bar z$ is not differentiable anywhere. Indeed,
+            \item \(f(z) = \bar z\) is not differentiable anywhere. Indeed,
             \begin{align*}
                 h = \lambda \in \RR: \lim_{\lambda \to 0} \frac{f(z+\lambda)-f(z)}{\lambda} &= \lim_{\lambda \to 0} \frac{\overline{z+\lambda}-\bar z}{\lambda} \\
                 &= \lim_{\lambda \to 0} \frac{\lambda}{\lambda} = 1 \\[10pt]
@@ -933,18 +933,18 @@
                 &= -1
             \end{align*}
             Hence, the limit is different depending on the direction we approach from, and so does not exist.
-            \item $f(z) = \sin z$ is differentiable. Observe
+            \item \(f(z) = \sin z\) is differentiable. Observe
             \begin{align*}
                 f'(x) &=^? \lim_{h \to 0} \frac{\sin(x+h)-\sin x}{h} \\
                 &= \lim_{h \to 0} \frac{\sin h \cos x}{h} + \lim_{h \to 0} \frac{\sin x(\cos h-1)}{h} \\ 
                 &= cos x \lim_{h \to 0} \frac{\sin h}{h} + \sin x \lim_{h \to 0} \frac{\cos h - 1}{h}
             \end{align*}
-            The limit of $\frac{\sin h}{h}$ is 1 as already established, and the limit of $\frac{\cos h-1}{h}$ can be shown to be zero by, for example, using a double angle formula.  
+            The limit of \(\frac{\sin h}{h}\) is 1 as already established, and the limit of \(\frac{\cos h-1}{h}\) can be shown to be zero by, for example, using a double angle formula.  
         \end{itemize}
     \end{example*}
 
     \begin{lemma}
-        Let $f$, $g: X \subseteq \CC \to \CC$ be differentiable at $a \in X$. Then so are $f+g$, $fg$ and, if $f(z) \neq 0$ for any $z \in X$, so is $1/f$. Furthermore, we have
+        Let \(f\), \(g: X \subseteq \CC \to \CC\) be differentiable at \(a \in X\). Then so are \(f+g\), \(fg\) and, if \(f(z) \neq 0\) for any \(z \in X\), so is \(1/f\). Furthermore, we have
         \begin{align*}
             (f+g)'(a) &= f'(a) + g'(a) \\
             (fg)'(a) &= f'(a)g(a) + f(a)g'(a) \\
@@ -967,43 +967,43 @@
     \begin{example*}
         Let us consider some examples.
         \begin{itemize}
-            \item $f(z) = z^2 = z \cdot z$ is differentiable with $f'(z) = 2z$. By induction, $z^n$ is differentiable with $f'(z) = nz^{n-1}$, so polynomials are differentiable.
-            \item $f(z) = \frac 1 z$ is differentiable on $\CC \setminus \{0\}$ with $f'(z) = -\frac 1 {z^2}$. By induction, $\frac 1 {z^n}$ has derivative $-\frac n {z^{n+1}}$.
+            \item \(f(z) = z^2 = z \cdot z\) is differentiable with \(f'(z) = 2z\). By induction, \(z^n\) is differentiable with \(f'(z) = nz^{n-1}\), so polynomials are differentiable.
+            \item \(f(z) = \frac 1 z\) is differentiable on \(\CC \setminus \{0\}\) with \(f'(z) = -\frac 1 {z^2}\). By induction, \(\frac 1 {z^n}\) has derivative \(-\frac n {z^{n+1}}\).
         \end{itemize}
-        More generally, rational functions $\frac{p(x)}{q(x)}$ with $p$, $q$ polynomials are differentiable wherever $q(x) \neq 0$.        
+        More generally, rational functions \(\frac{p(x)}{q(x)}\) with \(p\), \(q\) polynomials are differentiable wherever \(q(x) \neq 0\).        
     \end{example*}
 
     \lecture{Lecture 11 -- 17/02/26}
     
     \begin{proposition}[Chain rule]
-        Let $U$, $V \subseteq \CC$ and $f: U \to V$, $g: V \to \CC$. Suppose that $f$ is differentiable at $a \in U$ and $g$ is differentiable at $f(a) \in V$. Then $g \circ f: U \to \CC$ is differentiable at $a \in U$, and $(g \circ f)'(a) = g'(f(a))f'(a)$.
+        Let \(U\), \(V \subseteq \CC\) and \(f: U \to V\), \(g: V \to \CC\). Suppose that \(f\) is differentiable at \(a \in U\) and \(g\) is differentiable at \(f(a) \in V\). Then \(g \circ f: U \to \CC\) is differentiable at \(a \in U\), and \((g \circ f)'(a) = g'(f(a))f'(a)\).
     \end{proposition}
     
     We will first need a lemma.
 
     \begin{lemma}
         \label{little-o-derivative}
-        Let $f: X \subseteq \CC \to \CC$. Then $f$ is differentiable at $a \in X$ if and only if there exists $A \in \CC$ and $\xi: \{z: z + a \in X\} \to \CC$ satisfying $\xi(h) \to 0$ as $h \to 0$ such that
+        Let \(f: X \subseteq \CC \to \CC\). Then \(f\) is differentiable at \(a \in X\) if and only if there exists \(A \in \CC\) and \(\xi: \{z: z + a \in X\} \to \CC\) satisfying \(\xi(h) \to 0\) as \(h \to 0\) such that
         \begin{align*}
             f(a+h) = f(a) + Ah + \xi(h)|h|
         \end{align*}
-        Furthermore, $A = f'(a)$.
+        Furthermore, \(A = f'(a)\).
     \end{lemma}
     
     \begin{remark*}
-        In other words, $f(a+h) \approx f(a) + Ah$, and the function $\xi(h)$ allows us to quantify that error. In little o notation, this statement is $f(a+h) = f(a) + Ah + o(h)$.
+        In other words, \(f(a+h) \approx f(a) + Ah\), and the function \(\xi(h)\) allows us to quantify that error. In little o notation, this statement is \(f(a+h) = f(a) + Ah + o(h)\).
     \end{remark*}
     
     \begin{proof}[Proof of lemma]
         \begin{itemize}
-            \item[$\impliedby$] We have
+            \item[\(\impliedby\)] We have
             \begin{align*}
                 \lim_{h \to 0} \frac{f(a+h)-f(a)}h &= \lim_{h \to 0}\frac{Ah + \xi(h) |h|}{h} \\
                 &= A + \lim_{h \to 0} \left(\xi(h) \frac{|h|}{h}\right) \\
                 &= A
             \end{align*}
-            since $\frac{|h|}{h}$ is bounded and $\xi(h) \to 0$ as $h \to 0$. Hence the limit exists and $f$ is differentiable as required.
-            \item[$\implies$] Let $A = f'(a)$, so
+            since \(\frac{|h|}{h}\) is bounded and \(\xi(h) \to 0\) as \(h \to 0\). Hence the limit exists and \(f\) is differentiable as required.
+            \item[\(\implies\)] Let \(A = f'(a)\), so
             \begin{align*}
                 \lim_{h \to 0} \frac{f(a+h)-f(a)}{h} &= A \\
                 \implies \lim_{h \to 0} \frac{f(a+h)-f(a)-Ah}{h} &= 0
@@ -1015,12 +1015,12 @@
                     0 & h = 0
                 \end{cases}
             \end{align*}
-            which satisfies $\xi(h) \to 0$ as $h \to 0$.
+            which satisfies \(\xi(h) \to 0\) as \(h \to 0\).
         \end{itemize}
     \end{proof}
     
     \begin{proof}[Proof of proposition]
-        Since $f$, $g$ are differentiable at $a$, $f(a)$ respectively, there exist error functions $\xi_f$, $\xi_g$ satisfying $\xi_f(h) \to 0$ as $h \to 0$ and $\xi_g(k) \to 0$ as $k \to 0$, and
+        Since \(f\), \(g\) are differentiable at \(a\), \(f(a)\) respectively, there exist error functions \(\xi_f\), \(\xi_g\) satisfying \(\xi_f(h) \to 0\) as \(h \to 0\) and \(\xi_g(k) \to 0\) as \(k \to 0\), and
         \begin{align*}
             f(a+h) &= f(a) + f'(a)h + \xi_f(h)|h| \\
             g(f(a)+k) &= g(f(a)) + g'(f(a))k + \xi_g(k)|k|
@@ -1037,12 +1037,12 @@
             \xi(h) &= g'(f(a))\xi_f(h) + \xi_g(k)\frac{|k|}{|h|} \\
             &= g'(f(a))\xi_f(h) + \xi_g(hf'(a)+\xi_f(h)|h|)\cdot|f'(a)+\xi_f(h)| \\
         \end{align*}
-        It remains only to check that $\xi(h) \to 0$ as $h \to 0$. We have
+        It remains only to check that \(\xi(h) \to 0\) as \(h \to 0\). We have
         \begin{align*}
             \lim_{h \to 0} \xi(h) &= \lim_{h \to 0} \left(g'(f(a))\xi_f(h) + \xi_g(hf'(a)+\xi_f(h)|h|)\cdot|f'(a)+\xi_f(h)|\right) \\
             &= \lim_{h \to 0} g'(f(a))\xi_f(h) + \lim_{h \to 0} \xi_g(hf'(a)+\xi_f(h)|h|) \cdot \lim_{h \to 0} |f'(a)+\xi_f(h)|
         \end{align*}
-        Then the first term is zero because $\xi_f(h) \to 0$ as $h \to 0$, and the first multiplicand in the second term goes to 0 as $h \to 0$ because it is clear that its argument goes to 0 as $h \to 0$.
+        Then the first term is zero because \(\xi_f(h) \to 0\) as \(h \to 0\), and the first multiplicand in the second term goes to 0 as \(h \to 0\) because it is clear that its argument goes to 0 as \(h \to 0\).
     \end{proof}
     
     \begin{example*}
@@ -1053,12 +1053,12 @@
                 0 & x = 0
             \end{cases}
         \end{align*}
-        At $x \neq 0$, the chain and product rules give
+        At \(x \neq 0\), the chain and product rules give
         \begin{align*}
             f'(x) &= 1 \cdot \sin\left(\frac 1 x \right) + x \cdot \cos\left(\frac 1 x\right) \cdot \left(-\frac 1 {x^2}\right) \\
             &= \sin \left(\frac 1 x\right) - \frac 1 x \cos\left(\frac 1 x\right)
         \end{align*}
-        At $x = 0$, the definition gives
+        At \(x = 0\), the definition gives
         \begin{align*}
             f'(x) = \lim_{h \to 0} \frac{f(h)-f(0)}h = \lim_{h \to 0} \frac{f(h)} h = \lim_{h \to 0} \sin \left(\frac 1 x\right)
         \end{align*}
@@ -1067,7 +1067,7 @@
     
     \begin{lemma}
         \label{diff-cont}
-        If $f: X \subseteq \CC \to \CC$ is differentiable at $a \in X$, then it is continuous at $a \in X$.
+        If \(f: X \subseteq \CC \to \CC\) is differentiable at \(a \in X\), then it is continuous at \(a \in X\).
     \end{lemma}
     
     \begin{proof}
@@ -1088,32 +1088,32 @@
     
     \begin{proposition}[Rolle's theorem]
         \label{rolle}
-        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$, and suppose $f(a) = f(b)$. Then there exists $c \in (a, b)$ such that $f'(c) = 0$.
+        Let \(f\) cts\(: [a, b] \to \RR\) be differentiable on \((a, b)\), and suppose \(f(a) = f(b)\). Then there exists \(c \in (a, b)\) such that \(f'(c) = 0\).
     \end{proposition}
     
     \begin{proof}
-        By \cref{evt}, $f$ attains its min and max, that is there exist $x_m$ and $x_M \in [a, b]$ with
+        By \cref{evt}, \(f\) attains its min and max, that is there exist \(x_m\) and \(x_M \in [a, b]\) with
         \begin{align*}
             \sup_{[a, b]} f = f(x_M) \qquad \qquad \inf_{[a, b]} f = f(x_m)
         \end{align*}
-        If $f$ is constant, then $f'(c) = 0$ for any $c \in (a, b)$, so we are done. Otherwise, it either holds that $f(x_M) > f(a)$ (so $x_M \in (a, b)$) or $f(x_m) < f(a)$ (so $x_m \in (a, b)$). It reamins to show that, at either of these points, $f' = 0$. We take cases.
+        If \(f\) is constant, then \(f'(c) = 0\) for any \(c \in (a, b)\), so we are done. Otherwise, it either holds that \(f(x_M) > f(a)\) (so \(x_M \in (a, b)\)) or \(f(x_m) < f(a)\) (so \(x_m \in (a, b)\)). It reamins to show that, at either of these points, \(f' = 0\). We take cases.
         \begin{itemize}
-            \item $x_m \in (a,b)$. Then, for sufficiently small $h$,
+            \item \(x_m \in (a,b)\). Then, for sufficiently small \(h\),
             \begin{align*}
                 \sign\left(\frac{f(x_m + h)-f(x_m)}h\right) = \sign(h)
             \end{align*}
-            so, taking $h \to 0$ from the right and left, we conclude $f'(x_m)$ is both positive and negative respectively, i.e. $f'(x_m) = 0$.
-            \item $x_M \in (a, b)$. Then we have
+            so, taking \(h \to 0\) from the right and left, we conclude \(f'(x_m)\) is both positive and negative respectively, i.e. \(f'(x_m) = 0\).
+            \item \(x_M \in (a, b)\). Then we have
             \begin{align*}
                 \sign\left(\frac{f(x_M + h)-f(x_M)}h\right) = -\sign(h)
             \end{align*}
-            which again shows $f'(x_M) = 0$ by taking limits on both sides.
+            which again shows \(f'(x_M) = 0\) by taking limits on both sides.
         \end{itemize}
     \end{proof}
     
     \begin{theorem}[Mean value theorem]
         \label{mvt}
-        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$. Then, there exists $c \in (a, b)$ such that
+        Let \(f\) cts\(: [a, b] \to \RR\) be differentiable on \((a, b)\). Then, there exists \(c \in (a, b)\) such that
         \begin{align*}
             f'(c) = \frac{f(b)-f(a)}{b-a}
         \end{align*}
@@ -1124,7 +1124,7 @@
         \begin{align*}
             l(x) = f(a) + \frac{f(b)-f(a)}{b-a}(x-a)
         \end{align*}
-        in other words, the secant line connecting $(a, f(a))$ to $(b, f(b))$. Then let $\phi(x) = f(x) - l(x)$, so $\phi(a) = \phi(b) = 0$. Hence Rolle gives $c$ satisfying $\phi'(c) = 0$, that is
+        in other words, the secant line connecting \((a, f(a))\) to \((b, f(b))\). Then let \(\phi(x) = f(x) - l(x)\), so \(\phi(a) = \phi(b) = 0\). Hence Rolle gives \(c\) satisfying \(\phi'(c) = 0\), that is
         \begin{align*}
             f'(c) - \frac{f(b)-f(a)}{b-a} &= 0 \\
             \implies f'(c) &= \frac{f(b)-f(a)}{b-a}
@@ -1134,28 +1134,28 @@
     
     \begin{corollary}
         \label{mvt-cor-1}
-        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$. Given $h$ such that $a + h \in [a, b]$, there exists $\theta \in (0, 1)$ such that
+        Let \(f\) cts\(: [a, b] \to \RR\) be differentiable on \((a, b)\). Given \(h\) such that \(a + h \in [a, b]\), there exists \(\theta \in (0, 1)\) such that
         \begin{align*}
             f(a+h) = f(a) + hf'(a+\theta h)
         \end{align*}
     \end{corollary}
     
     \begin{proof}
-        Restrict the domain of $f$ to $[a, a+h]$. Then, by the mean value theorem, we have $c \in [a, a+h]$ with
+        Restrict the domain of \(f\) to \([a, a+h]\). Then, by the mean value theorem, we have \(c \in [a, a+h]\) with
         \begin{align*}
             f'(c) &= \frac{f(a+h)-f(a)}{h} \\
             \implies f(a+h) &= f(a) + hf'(c)
         \end{align*}
-        Then, let $\theta$ be such that $c = a+\theta h$.        
+        Then, let \(\theta\) be such that \(c = a+\theta h\).        
     \end{proof}
     
     \begin{corollary}
         \label{mvt-cor-2}
-        Let $f$ cts $: [a, b] \to \RR$ be differentiable on $(a, b)$. Then
+        Let \(f\) cts \(: [a, b] \to \RR\) be differentiable on \((a, b)\). Then
         \begin{itemize}
-            \item $f' \geq 0$ on $(a,b) \implies f$ is increasing, resp. strictly increasing;
-            \item $f' \leq 0$ on $(a,b) \implies f$ is decreasing, resp. strictly decreasing;
-            \item $f' = 0$ on $(a,b) \implies f$ is constant.
+            \item \(f' \geq 0\) on \((a,b) \implies f\) is increasing, resp. strictly increasing;
+            \item \(f' \leq 0\) on \((a,b) \implies f\) is decreasing, resp. strictly decreasing;
+            \item \(f' = 0\) on \((a,b) \implies f\) is constant.
         \end{itemize}
     \end{corollary}
     
@@ -1164,7 +1164,7 @@
     \end{proof}
     
     \begin{remark*}
-        Statements such as \cref{mvt-cor-2} do not necessarily hold if the domain $X$ is an arbitrary subset of $\RR$. For instance, take
+        Statements such as \cref{mvt-cor-2} do not necessarily hold if the domain \(X\) is an arbitrary subset of \(\RR\). For instance, take
         \begin{align*}
             f: \QQ &\to \RR \\
             x &\mapsto \begin{cases}
@@ -1172,66 +1172,66 @@
                 1 & x^2 < 2
             \end{cases}
         \end{align*}
-        which is continuous (yes, really!) and satisfies $f'(x) = 0$ for any $x \in \QQ$, but is not constant.        
+        which is continuous (yes, really!) and satisfies \(f'(x) = 0\) for any \(x \in \QQ\), but is not constant.        
     \end{remark*}
     
     \begin{lemma}
-        Let $f: \CC \to \CC$ be differentiable ($\implies$ continuous) in $\CC$. Then, $f'(z) = 0$ for all $z \in \CC \implies f$ constant.
+        Let \(f: \CC \to \CC\) be differentiable (\(\implies\) continuous) in \(\CC\). Then, \(f'(z) = 0\) for all \(z \in \CC \implies f\) constant.
     \end{lemma}
     
     \begin{proof}
-        We want to reduce to the $\RR$ case. For some $z \in \CC$, take $g(t) = f(tz)$ where $g: [0, 1] \to \CC$. Note $g$ is continuous on $[0, 1]$, $g$ is differentiable on $(0, 1)$, so we can apply \cref{mvt} and its corollaries to $\Re(g(t))$ and $\Im(g(t))$:
+        We want to reduce to the \(\RR\) case. For some \(z \in \CC\), take \(g(t) = f(tz)\) where \(g: [0, 1] \to \CC\). Note \(g\) is continuous on \([0, 1]\), \(g\) is differentiable on \((0, 1)\), so we can apply \cref{mvt} and its corollaries to \(\Re(g(t))\) and \(\Im(g(t))\):
         \begin{align*}
             g'(t) = zf'(tz) = 0 \implies \begin{cases}
                 \Re(g'(t)) = 0 \\
                 \Im(g'(t)) = 0
             \end{cases}
         \end{align*}
-        and so $g(t)$ is constant -- hence $f(0) = g(0) = g(1) = f(z)$. But $z$ was arbitrary, so $f(z) = f(0)$ for any $z \in \CC$.
+        and so \(g(t)\) is constant -- hence \(f(0) = g(0) = g(1) = f(z)\). But \(z\) was arbitrary, so \(f(z) = f(0)\) for any \(z \in \CC\).
     \end{proof}
     
     \begin{remark*}
-        We can use similar ideas to show a version of the mean value theorem in $\CC$.
+        We can use similar ideas to show a version of the mean value theorem in \(\CC\).
     \end{remark*}
     
     \begin{theorem}[Inverse function theorem -- differentiable version]
         \label{ift-2}
-        Let $f$ cts$: [a, b] \to \RR$ be differentiable on $(a, b)$. Assume that $f'(x) > 0$ for any $x \in (a, b)$. Then $f: [a, b] \to [f(a), f(b)]$ is a bijection with $f^{-1}$ cts$: [f(a), f(b)] \to [a, b]$ differentiable on $(f(a), f(b))$ with
+        Let \(f\) cts\(: [a, b] \to \RR\) be differentiable on \((a, b)\). Assume that \(f'(x) > 0\) for any \(x \in (a, b)\). Then \(f: [a, b] \to [f(a), f(b)]\) is a bijection with \(f^{-1}\) cts\(: [f(a), f(b)] \to [a, b]\) differentiable on \((f(a), f(b))\) with
         \begin{align*}
             (f^{-1})'(y) = \frac 1 {f'(f^{-1}(y))}
         \end{align*}
     \end{theorem}
     
     \begin{proof}
-        By \cref{mvt-cor-2}, $f$ is strictly increasing, so our previous version of IFT, \cref{ift-1}, gives that $f$ is a bijection and has a continuous inverse $f^{-1}$. It remains to show that $f^{-1}$ is differentiable and satisfies the above.
+        By \cref{mvt-cor-2}, \(f\) is strictly increasing, so our previous version of IFT, \cref{ift-1}, gives that \(f\) is a bijection and has a continuous inverse \(f^{-1}\). It remains to show that \(f^{-1}\) is differentiable and satisfies the above.
 
-        Let $y \in (f(a), f(b))$ and $x = f^{-1}(y)$. Given $h$ such that $y + h \in (f(a), f(b))$, define $k$ such that $y+h=f(x+k)$, or equivalently $k=f^{-1}(y+h)-x$. Then
+        Let \(y \in (f(a), f(b))\) and \(x = f^{-1}(y)\). Given \(h\) such that \(y + h \in (f(a), f(b))\), define \(k\) such that \(y+h=f(x+k)\), or equivalently \(k=f^{-1}(y+h)-x\). Then
         \begin{align*}
             \frac{f^{-1}(y+h)-f^{-1}(y)}{h} &= \frac{x+k-x}{f(x+k)-y} \\
             &= \frac{k}{f(x+k)-f(x)} \\
             &= \frac 1{\frac{f(x+k)-f(x)}{k}}
         \end{align*}
-        so the result holds so long as $k \to 0$ as $h \to 0$ -- then we can take limits on both sides. But
+        so the result holds so long as \(k \to 0\) as \(h \to 0\) -- then we can take limits on both sides. But
         \begin{align*}
             \lim_{h \to 0} k &= \lim_{h \to 0} f^{-1}(y+h) - f^{-1}(y) \\
             &= 0
         \end{align*}
-        because $f^{-1}$ is continuous.       
+        because \(f^{-1}\) is continuous.       
     \end{proof}
     
     \begin{example}
         Let us consider some examples.
         \begin{itemize}
-            \item Fix $R > 0$, and define
+            \item Fix \(R > 0\), and define
             \begin{align*}
                 f: [0, R] &\to \RR \\
                 x &\to x^N
             \end{align*}
-            so $f$ is continuous on $[0, R]$ and differentiable on $(0, R)$ with $f'(x) = Nx^{N-1}$. Hence, by \cref{ift-2}, $f: [0, R] \to [0, R^N]$ is a bijection, and $f^{-1}(y) = y^{1/N}$ is differentiable with
+            so \(f\) is continuous on \([0, R]\) and differentiable on \((0, R)\) with \(f'(x) = Nx^{N-1}\). Hence, by \cref{ift-2}, \(f: [0, R] \to [0, R^N]\) is a bijection, and \(f^{-1}(y) = y^{1/N}\) is differentiable with
             \begin{align*}
                 (f^{-1})'(y) = \frac 1 {f'(f^{-1}(y))} = \frac 1 {N (f^{-1}(y))^{N-1}} = \frac 1 N y^{\frac 1 N - 1}
             \end{align*}
-            \item $f(x) = e^x$ is continuous and differentiable on $\RR$ with $f'(x) = e^x > 0$. Hence, we have an inverse $f^{-1}(y) = \log y$ such that
+            \item \(f(x) = e^x\) is continuous and differentiable on \(\RR\) with \(f'(x) = e^x > 0\). Hence, we have an inverse \(f^{-1}(y) = \log y\) such that
             \begin{align*}
                 (f^{-1})'(y) = \frac 1 {e^{f^{-1}(y)}} = \frac 1 {e^{\log y}} = \frac 1 y
             \end{align*}
@@ -1239,7 +1239,7 @@
     \end{example}
     
     \begin{proposition}[Cauchy's mean value theorem]
-        Let $f, g$ cts$:[a, b] \to \RR$ be differentiable on $(a, b)$. Then there exists $c \in (a, b)$ such that
+        Let \(f, g\) cts\(:[a, b] \to \RR\) be differentiable on \((a, b)\). Then there exists \(c \in (a, b)\) such that
         \begin{align*}
             g'(c) \left(f(b)-f(a)\right) = f'(c)\left(g(b)-g(a)\right)
         \end{align*}
@@ -1251,11 +1251,11 @@
             \phi(x) &= \left(g(x)-g(a)\right)\left(f(b)-f(a)\right) - \left(g(b)-g(a)\right)\left(f(x)-f(a)\right) \\
             \implies \phi'(x) &= g'(x)\left(f(b)-f(a)\right) - f'(x)\left(g(b)-g(a)\right)
         \end{align*}
-        and $\phi(a) = \phi(b) = 0$. The result follows.        
+        and \(\phi(a) = \phi(b) = 0\). The result follows.        
     \end{proof}
     
     \begin{proposition}[L'H\^opital's rule, informal statement]
-        For certain limits expressed as a ratio of functions $f$ and $g$, one can calculate the limit by taking derivatives first.
+        For certain limits expressed as a ratio of functions \(f\) and \(g\), one can calculate the limit by taking derivatives first.
     \end{proposition}
     
     \lecture{Lecture 13 -- 21/02/26}
@@ -1263,7 +1263,7 @@
     \subsection{Higher derivatives and Taylor's theorem}
     
     \begin{definition}[Higher derivatives]
-        Suppose $f: X \subseteq \CC \to \CC$ is differentiable on $X$. We say $f$ is \emph{$n$-times differentiable on $X$} if $f$ is $(n-1)$-times differentiable on $X$ and
+        Suppose \(f: X \subseteq \CC \to \CC\) is differentiable on \(X\). We say \(f\) is \emph{\(n\)-times differentiable on \(X\)} if \(f\) is \((n-1)\)-times differentiable on \(X\) and
         \begin{align*}
             f^{(n-1)}: X &\to \CC \\
             x &\mapsto f^{(n-1)}(x)
@@ -1272,69 +1272,69 @@
     \end{definition}
     
     \begin{definition}[Continuous differentiability]
-        We say $f: X \subseteq \CC \to \CC$ is $k$-times \emph{continuously differentiable} on $X$, and write $f \in C^k(X)$, if $f$ is $k$-times differentiable on $X$ and $f^{(k)}$ is continuous.
+        We say \(f: X \subseteq \CC \to \CC\) is \(k\)-times \emph{continuously differentiable} on \(X\), and write \(f \in C^k(X)\), if \(f\) is \(k\)-times differentiable on \(X\) and \(f^{(k)}\) is continuous.
     \end{definition}
     
     \begin{remark*}
-        Recall that $f$ differentiable $\implies f$ continuous, so $f$ $k$-times differentiable $\implies f$ $(k-1)$-times continuously differentiable.
+        Recall that \(f\) differentiable \(\implies f\) continuous, so \(f\) \(k\)-times differentiable \(\implies f\) \((k-1)\)-times continuously differentiable.
     \end{remark*}
     
     \begin{definition}[Smoothness]
-        We say $f: X \subseteq \CC \to \CC$ is \emph{smooth} if it is $k$-times differentiable for any $k$, or, equivalently, if $f \in C^k(X)$ for any $k$.
+        We say \(f: X \subseteq \CC \to \CC\) is \emph{smooth} if it is \(k\)-times differentiable for any \(k\), or, equivalently, if \(f \in C^k(X)\) for any \(k\).
     \end{definition}
     
-    Since the derivative of a function at a point $x_0$ determines the slope of the tangent, $f(x_0)$ and $f'(x_0)$ together yield a linear approximation to the graph of $f$ at $x_0$:
+    Since the derivative of a function at a point \(x_0\) determines the slope of the tangent, \(f(x_0)\) and \(f'(x_0)\) together yield a linear approximation to the graph of \(f\) at \(x_0\):
     \begin{align*}
         f(x) \approx f(x_0) + f'(x_0)(x-x_0)
     \end{align*}
-    for $x \approx x_0$. If we have more derivatives, however, we should in principle be able to get a better approximation:
+    for \(x \approx x_0\). If we have more derivatives, however, we should in principle be able to get a better approximation:
     \begin{align*}
         f'(x) &\approx f'(x_0) + f''(x_0)(x-x_0) \\
         \implies f(x) &\approx f(x_0) + f'(x_0)(x-x_0) + \frac 1 2 f''(x_0)(x-x_0)^2 
     \end{align*}
-    and, if $f$ is $n$-times differentiable,
+    and, if \(f\) is \(n\)-times differentiable,
     \begin{align*}
         f(x) \approx \sum_{k=0}^n \frac 1 {k!} f^{(k)}(x_0)(x-x_0)^k
     \end{align*}
-    for $x \approx x_0$.    
+    for \(x \approx x_0\).    
     
     \begin{definition}[Taylor polynomials and Taylor series]
-        If $f: X \subseteq \CC \to \CC$ is $n$-times differentiable and $x_0 \in X$, then
+        If \(f: X \subseteq \CC \to \CC\) is \(n\)-times differentiable and \(x_0 \in X\), then
         \begin{align*}
             T_{n,f,x_0}(x) = \sum_{k=0}^n \frac 1 {k!} f^{(k)}(x_0)(x-x_0)^k
         \end{align*}
-        is called the \emph{$n^\text{th}$-order Taylor polynomial of $f$ at $x_0$}. If $f$ is smooth, then
+        is called the \emph{\(n^\text{th}\)-order Taylor polynomial of \(f\) at \(x_0\)}. If \(f\) is smooth, then
         \begin{align*}
             T_{f,x_0}(x) = \sum_{k=0}^\infty \frac 1 {k!} f^{(k)}(x_0)(x-x_0)^k
         \end{align*}
-        is called the \emph{Taylor series of $f$ at $x_0$}.        
+        is called the \emph{Taylor series of \(f\) at \(x_0\)}.        
     \end{definition}
     
     We would like to quantify exactly how good this approximation is.
 
     \begin{theorem}[Taylor's theorem, Lagrange remainder]
         \label{taylor-lagrange}
-        Suppose $f: X \subseteq \RR \to \RR$ and its $n-1$ derivatives are continuous on $[a, a+h]$ and $f$ is $n$-times differentiable on $(a, a+h)$. Set
+        Suppose \(f: X \subseteq \RR \to \RR\) and its \(n-1\) derivatives are continuous on \([a, a+h]\) and \(f\) is \(n\)-times differentiable on \((a, a+h)\). Set
         \begin{align*}
             R_{n, f, a}(h) = f(a+h) - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k)}(a) h^k = f(a+h) - T_{n-1, f, a}(h)
         \end{align*}
-        Then, there exists $\theta(h) \in (0, 1)$ such that
+        Then, there exists \(\theta(h) \in (0, 1)\) such that
         \begin{align*}
             R_{n, f, a}(h) = \frac 1 {n!} h^n f^{(n)}(a+\theta h) 
         \end{align*}
     \end{theorem}
     
     \begin{remark*}
-        The conditions for the above are a consequence of $f \in C^n((c, d))$ for any $(c, d) \supset [a, a+h]$. In this case, $f^{(n)}$ is also bounded on $[a, a+h]$, so there exists $M_n = \sup_{[a, a+h]}|f^{(n)}|$. Then
+        The conditions for the above are a consequence of \(f \in C^n((c, d))\) for any \((c, d) \supset [a, a+h]\). In this case, \(f^{(n)}\) is also bounded on \([a, a+h]\), so there exists \(M_n = \sup_{[a, a+h]}|f^{(n)}|\). Then
         \begin{align*}
             |R_{n,f,a}(h)| \leq M_n \frac{h^n}{n!}
         \end{align*}
     \end{remark*}
 
-    Morally speaking, we are saying that $R_{n, f, a}(h) = O(h^n)$ as $h \to 0$, and we know exactly what the constant is. Unfortunately, this does \emph{not} tell us anything about whether $R_{n, f, a}(h) \to 0$ as $n \to \infty$: even if $f \in C^\infty$, we have no idea how $M_n$ changes with $n$.
+    Morally speaking, we are saying that \(R_{n, f, a}(h) = O(h^n)\) as \(h \to 0\), and we know exactly what the constant is. Unfortunately, this does \emph{not} tell us anything about whether \(R_{n, f, a}(h) \to 0\) as \(n \to \infty\): even if \(f \in C^\infty\), we have no idea how \(M_n\) changes with \(n\).
 
     \begin{remark*}
-        We should also note that there is nothing important about $h > 0$ -- if $h = -t < -0$, and $f$ and its $n-1$ derivatives are continuous and $[a-t, a]$ and $f$ is $n$-times differentiable on $(a-t, a)$, then we can apply the above to $g(x) = f(-x)$ to obtain
+        We should also note that there is nothing important about \(h > 0\) -- if \(h = -t < -0\), and \(f\) and its \(n-1\) derivatives are continuous and \([a-t, a]\) and \(f\) is \(n\)-times differentiable on \((a-t, a)\), then we can apply the above to \(g(x) = f(-x)\) to obtain
         \begin{align*}
             g(-a+t) &= \sum_{k=0}^{n-1} \frac{(-1)^k}{k!} f^{(k)}(a) t^k + \frac{(-1)^n}{n!}t^n f^{(n)}(a-\theta t) \\
             \implies f(a-t) &= \sum_{k=0}^{n-1} \frac{1}{k!} f^{(k)}(a)(-t)^k + \frac{1}{n!}(-t)^n f^{(n)}(a+\theta(-t))
@@ -1342,71 +1342,71 @@
     \end{remark*}
     
     \begin{proof}
-        Without loss of generality, we may take $a=0$ (otherwise apply to $g(x) = f(x+a)$). Let
+        Without loss of generality, we may take \(a=0\) (otherwise apply to \(g(x) = f(x+a)\)). Let
         \begin{align*}
             \phi: [0, h] &\to \RR \\
             t &\mapsto f(t) - \sum_{k=0}^{n-1} \frac{1}{k!} f^{(k)}(0)t^k - \frac{t^n}{n!}B = f(t) - T_{n-1,f,0}(t) - \frac{t^n}{n!}B
         \end{align*}
-        where $B$ is chosen such that $\phi(h) = 0$. Note $\phi$ and its first $n-1$ derivatives are continuous on $[0, h]$, and its $n^\text{th}$ derivative exists on $(0, h)$. One can see fairly easily that $\phi^{(k)}(0) = 0$ for $k = 0, \dots, n-1$. We can thus apply \cref{mvt-cor-1} repeatedly:
+        where \(B\) is chosen such that \(\phi(h) = 0\). Note \(\phi\) and its first \(n-1\) derivatives are continuous on \([0, h]\), and its \(n^\text{th}\) derivative exists on \((0, h)\). One can see fairly easily that \(\phi^{(k)}(0) = 0\) for \(k = 0, \dots, n-1\). We can thus apply \cref{mvt-cor-1} repeatedly:
         \begin{align*}
             \phi(0) = \phi(h) = 0 &\implies \exists \theta_1 \in (0, 1) \text{ s.t. } \phi'(\theta_1h) = 0 \\
             \phi'(0) = \phi'(\theta_1h) = 0 &\implies \exists \theta_2 \in (0, 1) \text{ s.t. } \phi''(\theta_2\theta_1h) = 0 \\
             \vdots \\
             \phi^{(n-1)}(0) = \phi^{(n-1)}(\theta_{n-1}\cdots\theta_1h) = 0 &\implies \exists \theta_n \in (0, 1) \text{ s.t. } \phi^{(n)}(\theta_n\cdots\theta_1h) = 0 \\
         \end{align*}
-        Now, setting $\theta = \theta_n \cdots \theta_1 \in (0, 1)$, we end up with $\theta \in (0, 1)$ such that $\phi^{(n)}(\theta h) = f^{(n)}(\theta h) - B = 0$, so $B = f^{(n)}(\theta h)$ as required.
+        Now, setting \(\theta = \theta_n \cdots \theta_1 \in (0, 1)\), we end up with \(\theta \in (0, 1)\) such that \(\phi^{(n)}(\theta h) = f^{(n)}(\theta h) - B = 0\), so \(B = f^{(n)}(\theta h)\) as required.
     \end{proof}
     
     \begin{proof}[Proof (alternative)]
-        Again wlog let us take $a=0$. Now let
+        Again wlog let us take \(a=0\). Now let
         \begin{align*}
             g: [0, h] &\to \RR \\
             t &\mapsto f(h) - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k)}(t) (h-t)^k = f(h) - T_{n-1,f,0}(h-t)
         \end{align*}
-        Note that $g$ is continuous on $[0, h]$ and differentiable on $(0, h)$ with
+        Note that \(g\) is continuous on \([0, h]\) and differentiable on \((0, h)\) with
         \begin{align*}
             g'(t) &= -\sum_{k=1}^{n-1} \frac 1 {(k-1)!} f^{(k)}(t) (-1) (h-t)^{k-1} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
             &= -\sum_{k=0}^{n-2} \frac 1 {k!} f^{(k+1)}(t)(h-t)^{k} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
             &= -\frac 1 {(n-1)!} f^{(n)}(t) (h-t)^{n-1}
         \end{align*}
-        For $p \in \{1, \dots, n\}$, set
+        For \(p \in \{1, \dots, n\}\), set
         \begin{align*}
             \phi_p(t) = g(t) - \left(\frac{h-t}{h}\right)^pg(0)
         \end{align*}
-        Then $\phi_p(0) = \phi_p(h) = 0$ for each $p$, so, for each $p$, there exists $\theta \in (0, 1)$ with
+        Then \(\phi_p(0) = \phi_p(h) = 0\) for each \(p\), so, for each \(p\), there exists \(\theta \in (0, 1)\) with
         \begin{align*}
             0 &= \phi_p'(\theta h) = g'(\theta h) + \frac{p(1-\theta)^{p-1}}{h}g(0) \\
             \implies g(0) &= -\frac{hg'(\theta h)}{p(1-\theta)^{p-1}}
         \end{align*}
-        But we can see $g(0) = R_{n, f, 0}(h)$, so
+        But we can see \(g(0) = R_{n, f, 0}(h)\), so
         \begin{align*}
             R_{n, f, 0}(h) = -\frac{hg'(\theta h)}{p(1-\theta)^{p-1}} = \frac{h^n}{p(n-1)!}(1-\theta)^{n-p}f^{(n)}(\theta h)
         \end{align*}
-        so putting $p = n$ gives the result.
+        so putting \(p = n\) gives the result.
     \end{proof}
     
     This alternative proof approach will become extremely useful for our next theorem.
 
     \begin{theorem}[Taylor's theorem, Cauchy remainder]
         \label{taylor-cauchy}
-        Let $f$ and $R_{n,f,a}$ be as in \cref{taylor-lagrange}. Then there exists $\theta \in (0, 1)$ such that
+        Let \(f\) and \(R_{n,f,a}\) be as in \cref{taylor-lagrange}. Then there exists \(\theta \in (0, 1)\) such that
         \begin{align*}
             R_{n, f, a}(h) = h^n \frac{(1-\theta)^{n-1}}{(n-1)!} f^{(n)}(a + \theta h)
         \end{align*}
     \end{theorem}
 
     \begin{proof}
-        This follows immediately from taking $p=1$ in the final line of the above.
+        This follows immediately from taking \(p=1\) in the final line of the above.
     \end{proof}
     
     \lecture{Lecture 14 -- 24/02/26}
     
     \begin{remark*}
-        Supposing $f \in C^n((c, d))$ for some $(c, d) \supset [a, a+h]$, we again have $R_{n,f,a}(h) = O(h^n)$. However, as we will see, the form of the remainder is often better behaved in $n$.
+        Supposing \(f \in C^n((c, d))\) for some \((c, d) \supset [a, a+h]\), we again have \(R_{n,f,a}(h) = O(h^n)\). However, as we will see, the form of the remainder is often better behaved in \(n\).
     \end{remark*}
     
     \begin{example*}
-        Consider $f(x) = x^q$, $q \in \QQ$, which is smooth on $(0, \infty)$ with
+        Consider \(f(x) = x^q\), \(q \in \QQ\), which is smooth on \((0, \infty)\) with
         \begin{align*}
             f^{(n)}(x) = q (q-1) \dots (q-k+1) x^{q-k}
         \end{align*}
@@ -1419,56 +1419,56 @@
         \begin{align*}
             R_{n,f,1}(x) = (1+x)^q - \sum_{k=0}^{n-1} \binom q k x^k
         \end{align*}
-        for $x$ in the interval $(-1, 1)$. Let us compare both our remainder options:
+        for \(x\) in the interval \((-1, 1)\). Let us compare both our remainder options:
         \begin{itemize}
-            \item \emph{Lagrange remainder}. We have $\theta \in (0, 1)$ such that
+            \item \emph{Lagrange remainder}. We have \(\theta \in (0, 1)\) such that
             \begin{align*}
                 R_{n,f,1}(x) = \binom q n (1+\theta x)^{q-n}x^n
             \end{align*}
-            Then, if $n \geq q$, $(1+\theta x)^{q-n} = \frac 1{(1+\theta x)^{n-q}} \leq 1$ for $x \in [0, 1)$, so
+            Then, if \(n \geq q\), \((1+\theta x)^{q-n} = \frac 1{(1+\theta x)^{n-q}} \leq 1\) for \(x \in [0, 1)\), so
             \begin{align*}
                 |R_{n,f,1}(x)| \leq \left|\binom q n x^n\right| \to 0
             \end{align*}
-            as $n \to \infty$. But this argument fails for $(-1, 0)$.
-            \item \emph{Cauchy remainder}. We have $\theta \in (0, 1)$ such that
+            as \(n \to \infty\). But this argument fails for \((-1, 0)\).
+            \item \emph{Cauchy remainder}. We have \(\theta \in (0, 1)\) such that
             \begin{align*}
                 R_{n,f,1}(x) &= (1-\theta)^{n-1}n\binom q n (1+\theta x)^{q-n}x^n \\
                 &= (1-\theta)^{n-1}q\binom {q-1}{n-1} (1+\theta x)^{q-n}x^n \\
                 &= q \binom{q-1}{n-1} \left(\frac{1-\theta}{1+\theta x}\right)^{n-1} (1+\theta x)^{q-1}x^n
             \end{align*}
-            Now $1+\theta x = (1-\theta) + \theta(x+1) \geq 1-\theta$, so $\left(\frac{1-\theta}{1+\theta x}\right)^{n-1} \leq 1$ for $n \geq 1$. Hence
+            Now \(1+\theta x = (1-\theta) + \theta(x+1) \geq 1-\theta\), so \(\left(\frac{1-\theta}{1+\theta x}\right)^{n-1} \leq 1\) for \(n \geq 1\). Hence
             \begin{align*}
                 |R_{n,f,1}(x) &\leq |qx|\left|\binom{q-1}{n-1}\right||1+\theta x|^{q-1} \\
                 &\leq C\left|\binom{q-1}{n-1}\right|
             \end{align*}
-            by taking the sup over all $x \in (-1, 1)$. But this goes to 0 as $n \to \infty$. So in fact the Cauchy remainder does give us a stronger result.    
+            by taking the sup over all \(x \in (-1, 1)\). But this goes to 0 as \(n \to \infty\). So in fact the Cauchy remainder does give us a stronger result.    
         \end{itemize}
     \end{example*}
     
     \begin{definition}[Analyticity, non-examinable]
-        We say $f \in C^\infty((c, d))$ is \emph{analytic} if, for every $a \in (c, d)$, there exists an $r > 0$ such that, for any $|h| < r$, 
+        We say \(f \in C^\infty((c, d))\) is \emph{analytic} if, for every \(a \in (c, d)\), there exists an \(r > 0\) such that, for any \(|h| < r\), 
         \begin{align*}
             f(a+h) = \lim_{n \to \infty} T_{n, f, a}(h) \iff \lim_{n \to \infty} R_{n,f,a}(h) = 0
         \end{align*}
-        in other words, $f$ is equal to its Taylor series.
+        in other words, \(f\) is equal to its Taylor series.
     \end{definition}
     
     \begin{example*}
-        As we spent the last page showing, $x^q$ is analytic in $(0, 2) \iff (1+x)^q$ is analytic in $(-1, 1)$.
+        As we spent the last page showing, \(x^q\) is analytic in \((0, 2) \iff (1+x)^q\) is analytic in \((-1, 1)\).
     \end{example*}
     
     \begin{remark*}
-        Note that, even if $R_{n,f,a}(h)$ does not go to zero, the Taylor series might still converge -- just not to the actual function.
+        Note that, even if \(R_{n,f,a}(h)\) does not go to zero, the Taylor series might still converge -- just not to the actual function.
     \end{remark*}
     
     \section{Integration of functions}
 
     \subsection{Basics}
 
-    We want to define $\int_a^b f(x) \D x$ as the signed area under a graph, which is easy if it's, say, a rectangle. Otherwise, we can try approximating it with slices.
+    We want to define \(\int_a^b f(x) \D x\) as the signed area under a graph, which is easy if it's, say, a rectangle. Otherwise, we can try approximating it with slices.
     
     \begin{definition}[Upper and lower Riemann sums]
-        Let $f: [a, b] \to \RR$ be bounded. Given a partition $\mathcal P = \{x_0, \dots, x_n\}$ with $a = x_0 < \dots < x_n = b$ of $[a, b]$, we set
+        Let \(f: [a, b] \to \RR\) be bounded. Given a partition \(\mathcal P = \{x_0, \dots, x_n\}\) with \(a = x_0 < \dots < x_n = b\) of \([a, b]\), we set
         \begin{align*}
             L(f, \mathcal P) &= \sum_{j=1}^n (x_j-x_{j-1})\inf_{x \in [x_{j-1},x_j]}f(x)\\
             U(f, \mathcal P) &= \sum_{j=1}^n (x_j-x_{j-1})\sup_{x \in [x_{j-1},x_j]}f(x)
@@ -1485,7 +1485,7 @@
                 0 & x \in \RR \setminus \QQ
             \end{cases}
         \end{align*}
-        No matter what $\mathcal P$ we take, each of our intervals will contain both a rational and an irrational, so
+        No matter what \(\mathcal P\) we take, each of our intervals will contain both a rational and an irrational, so
         \begin{align*}
             U(f, \mathcal P) &= 1 \\
             L(f, \mathcal P) &= 0
@@ -1493,7 +1493,7 @@
     \end{example*}
     
     \begin{remark*}
-        For $f$ bounded, i.e. $\sup_{[a, b]} |f| = k$ for some $k$,
+        For \(f\) bounded, i.e. \(\sup_{[a, b]} |f| = k\) for some \(k\),
         \begin{align*}
             U(f, \mathcal P) &\leq \sum_{j=1}^n (x_j-x_{j-1})\sup_{[a,b]}|f| \\
             = k(b-a)
@@ -1503,7 +1503,7 @@
             L(f, \mathcal P) &\geq \sum_{j=1}^n (x_j-x_{j-1})(-\sup_{[a,b]}|f|) \\
             = -k(b-a)
         \end{align*}
-        Also, it's clear that $U(f, \mathcal P) \geq L(f, \mathcal P)$. Hence
+        Also, it's clear that \(U(f, \mathcal P) \geq L(f, \mathcal P)\). Hence
         \begin{align*}
             &\{L(f, \mathcal P): \mathcal P \text{ a partition of }[a,b]\} \\
             &\{U(f, \mathcal P): \mathcal P \text{ a partition of }[a,b]\}
@@ -1512,7 +1512,7 @@
     \end{remark*}
     
     \begin{definition}[Upper and lower integrals]
-        Let $f: [a, b] \to \RR$ be bounded. We say
+        Let \(f: [a, b] \to \RR\) be bounded. We say
         \begin{align*}
             I_*(f) &= \sup_{\mathcal P} L(f, \mathcal P) \\
             I^*(f) &= \inf_{\mathcal P} U(f, \mathcal P)
@@ -1521,58 +1521,58 @@
     \end{definition}
     
     \begin{definition}[Riemann integrability]
-        We say $f$ is \emph{Riemann integrable} if $I_* = I^*$. Then we say
+        We say \(f\) is \emph{Riemann integrable} if \(I_* = I^*\). Then we say
         \begin{align*}
             I(f) = \int_a^b f(x) \D x = I_*(f) = I^*(f)
         \end{align*}
     \end{definition}
     
     \begin{remark*}
-        By convention, $\int_a^b f = -\int_b^a f$.
+        By convention, \(\int_a^b f = -\int_b^a f\).
     \end{remark*}
     
     \begin{example*}
-        Take $f$ as in the previous example. Then $I_*(f) = 0$ and $I^*(f) = 1$, so $f$ is not Riemann integrable.
+        Take \(f\) as in the previous example. Then \(I_*(f) = 0\) and \(I^*(f) = 1\), so \(f\) is not Riemann integrable.
     \end{example*}
     
     \lecture{Lecture 15 -- 26/02/26}
     
-    The coarsest possible partition for $[a, b]$ is $\{a, b\}$. Our intuition suggests that finer partitions lead to a better estimate for the integral.
+    The coarsest possible partition for \([a, b]\) is \(\{a, b\}\). Our intuition suggests that finer partitions lead to a better estimate for the integral.
 
     \begin{lemma}
-        Let $\mc P$ and $\mc P'$ be partitions of $[a, b]$, and suppose $\mc P \supseteq \mc P'$, so $\mc P'$ is a refinement of $\mc P$. Then 
+        Let \(\mc P\) and \(\mc P'\) be partitions of \([a, b]\), and suppose \(\mc P \supseteq \mc P'\), so \(\mc P'\) is a refinement of \(\mc P\). Then 
         \begin{align*}
             L(f, \mc P) \leq L(f, \mc P') \leq U(f, \mc P') \leq U(f, \mc P)
         \end{align*}
-        for every bounded $f: [a, b] \to \RR$.
+        for every bounded \(f: [a, b] \to \RR\).
     \end{lemma}
     
     \begin{proof}
-        Let us induct. Take $\mc P = \{x_0, \dots, x_n\}$ and pick $y \in (x_{k-1}, x_k)$ for some $x$ -- then, put $\mc P' = P \cup \{y\}$. Then
+        Let us induct. Take \(\mc P = \{x_0, \dots, x_n\}\) and pick \(y \in (x_{k-1}, x_k)\) for some \(x\) -- then, put \(\mc P' = P \cup \{y\}\). Then
         \begin{align*}
             \sup_{x \in [x_{k-1},y]} f(x), \, \sup_{x \in [y,x_k]} f(x) &\leq \sup_{x \in [x_{k-1}, x_k]}f(x) \\ 
             \implies (y-x_{k-1})\sup_{x \in [x_{k-1},y]} f(x) + (x_k-y)\sup_{x \in [y,x_k]} f(x) &\leq (x_k-x_{k-1}) \sup_{x \in [x_{k-1}, x_k]}f(x)
         \end{align*}
-        so that $U(f, \mc P') \leq U(f, \mc P)$ as required. Similar reasoning with the infimum would suffice for the lower sums. Hence we can induct on the elements of $\mc P' \setminus \mc P$.
+        so that \(U(f, \mc P') \leq U(f, \mc P)\) as required. Similar reasoning with the infimum would suffice for the lower sums. Hence we can induct on the elements of \(\mc P' \setminus \mc P\).
     \end{proof}
     
     \begin{lemma}
-        Let $\mc P$ and $\mc P'$ be any partitions of $[a, b]$. Then
+        Let \(\mc P\) and \(\mc P'\) be any partitions of \([a, b]\). Then
         \begin{align*}
             L(f, \mc P) \leq U(f, \mc P')
         \end{align*}
-        for every bounded $f: [a, b] \to \RR$.
+        for every bounded \(f: [a, b] \to \RR\).
     \end{lemma}
     
     \begin{proof}
-        Let $\mc P'' = \mc P \cup \mc P'$, so $\mc P''$ is a refinement of both $\mc P$ and $\mc P'$. Then
+        Let \(\mc P'' = \mc P \cup \mc P'\), so \(\mc P''\) is a refinement of both \(\mc P\) and \(\mc P'\). Then
         \begin{align*}
             L(f, \mc P) \leq U(f, \mc P'') \leq U(f, \mc P')
         \end{align*}
     \end{proof}
     
     \begin{lemma}
-        For a bounded $f: [a, b] \to \RR$,
+        For a bounded \(f: [a, b] \to \RR\),
         \begin{align*}
             I_*(f) \leq I^*(f)
         \end{align*}
@@ -1587,11 +1587,11 @@
     \end{proof}
     
     \begin{remark*}
-        It follows that $f$ is integrable if and only if $I_*(f) \geq I^*(f)$.
+        It follows that \(f\) is integrable if and only if \(I_*(f) \geq I^*(f)\).
     \end{remark*}
     
     \begin{proposition}[Riemann integrability criterion]
-        Let $f: [a, b] \to \RR$ be bounded. Then $f$ is Riemann integrable if and only if, for any $\eps > 0$, there exists a partition $\mc P$ of $[a, b]$ such that
+        Let \(f: [a, b] \to \RR\) be bounded. Then \(f\) is Riemann integrable if and only if, for any \(\eps > 0\), there exists a partition \(\mc P\) of \([a, b]\) such that
         \begin{align*}
             U(f, \mc P) - L(f, \mc P) < \eps
         \end{align*}
@@ -1599,16 +1599,16 @@
 
     \begin{proof}
         \begin{itemize}
-            \item[$\impliedby$] We have, for any $\eps > 0$,
+            \item[\(\impliedby\)] We have, for any \(\eps > 0\),
             \begin{align*}
                 0 \leq I^*(f) - I_*(f) \leq U(f, \mc P) - L(f, \mc P) < \eps
             \end{align*}
-            \item[$\implies$] From the definition of $\sup$ and $\inf$, we can find partitions $\mc P$ and $\mc P'$ such that
+            \item[\(\implies\)] From the definition of \(\sup\) and \(\inf\), we can find partitions \(\mc P\) and \(\mc P'\) such that
             \begin{align*}
                 U(f, \mc P) &\leq I^*(f) + \frac{\eps} 2 \\
                 L(f, \mc P) &\geq I_*(f) - \frac{\eps} 2
             \end{align*}
-            which implies $U(f, \mc P) - L(f, \mc P') \leq \eps$. To conclude, we need to show this for a single partition. Let $\mc P'' = \mc P \cup \mc P'$, then
+            which implies \(U(f, \mc P) - L(f, \mc P') \leq \eps\). To conclude, we need to show this for a single partition. Let \(\mc P'' = \mc P \cup \mc P'\), then
             \begin{align*}
                 U(f, \mc P'') - L(f, \mc P'') \leq U(f, \mc P) - L(f, \mc P') \leq \eps < 2\eps
             \end{align*}
@@ -1616,15 +1616,15 @@
     \end{proof}
     
     \begin{remark*}
-        As an exericse, one can show that this is equivalent to a sequential characterisation -- finding a sequence of partitions $(\mc P_n)$ such that
+        As an exericse, one can show that this is equivalent to a sequential characterisation -- finding a sequence of partitions \((\mc P_n)\) such that
         \begin{align*}
             U(f, \mc P_n) - L(f, \mc P_n) \to 0
         \end{align*}
-        as $n \to \infty$.        
+        as \(n \to \infty\).        
     \end{remark*}
     
     \begin{example*}
-        Let us attempt to integrate $f(x) = x$ on $[0, 1]$. Let $\mc P_n = \{0, \frac 1 n, \dots, \frac {n-1} n, 1\}$. Then
+        Let us attempt to integrate \(f(x) = x\) on \([0, 1]\). Let \(\mc P_n = \{0, \frac 1 n, \dots, \frac {n-1} n, 1\}\). Then
         \begin{align*}
             U(f, \mc P_n) &= \sum_{j=1}^n \frac 1 n \sup_{\left[\frac{j-1}n, \frac jn\right]} x \\
             &= \frac 1 {n^2} \sum_{j=1}^n \sup_{[j-1, j]} x = \frac 1 {n^2} \sum_{j=1}^n j \\
@@ -1641,13 +1641,13 @@
             I_*(f) = \sup_{\mc P}L(f, \mc P) \geq \sup_n L(f, \mc P_n) &= \frac 1 2 \\
             I^*(f) = \inf_{\mc P}U(f, \mc P) \leq \inf_n U(f, \mc P_n) &= \frac 1 2
         \end{align*}
-        so $I_*(f) \geq I^*(f)$, so $f$ is integrable as required, with $\int_0^1 x = \frac 1 2$.
+        so \(I_*(f) \geq I^*(f)\), so \(f\) is integrable as required, with \(\int_0^1 x = \frac 1 2\).
         
         Alternatively, with the Riemann integration criterion,
         \begin{align*}
             U(f, \mc P_n) - L(f, \mc P_n) \leq \frac 1 n \to 0
         \end{align*}
-        as $n \to \infty$ (but this doesn't give us the value of the integral).
+        as \(n \to \infty\) (but this doesn't give us the value of the integral).
     \end{example*}
     
     \begin{example*}
@@ -1658,7 +1658,7 @@
                 1 & x > \frac 1 2
             \end{cases}
         \end{align*}
-        on $[0, 1]$. Then take $\mc P_n$ as before for $n \geq 3$. So
+        on \([0, 1]\). Then take \(\mc P_n\) as before for \(n \geq 3\). So
         \begin{align*}
             \sup_{[x_{n-1},x_n]}f - \inf_{[x_{n-1},x_n]}f = \begin{cases}
                 1 & \frac 1 2 \in [x_{n-1}, x_n] \\
@@ -1669,43 +1669,43 @@
         \begin{align*}
             U(f, \mc P_n) - L(f, \mc P_n) = \frac 1 n \to 0
         \end{align*}
-        as $n \to \infty$.
+        as \(n \to \infty\).
     \end{example*}
     
     We would like now to generalise the above examples to get whole classes of functions that are integrable.
 
-    \begin{proposition}[Monotone $\implies$ integrable]
-        Let $f: [a, b] \to \RR$ be bounded and monotone. Then $f$ is integrable.
+    \begin{proposition}[Monotone \(\implies\) integrable]
+        Let \(f: [a, b] \to \RR\) be bounded and monotone. Then \(f\) is integrable.
     \end{proposition}
 
     \lecture{Lecture 16 -- 28/02/26}
     
     \begin{proof}
-        Since $f$ is monotone, $f$ is bounded by $\max\left(|f(a)|, |f(b)|\right)$. Without loss of generality, suppose $f$ is increasing, so
+        Since \(f\) is monotone, \(f\) is bounded by \(\max\left(|f(a)|, |f(b)|\right)\). Without loss of generality, suppose \(f\) is increasing, so
         \begin{align*}
             U(f, \mc P) - L(f, \mc P) &= \sum_{j=1}^n \left(\sup_{I_j} f - \inf_{I_j} f\right)|I_j| \\
             &= \sum_{j=1}^n \left(f(x_j)-f(x_{j-1})\right)|I_j|
         \end{align*}
-        for any partition $\mc P = \{x_0, \dots, x_n\}$. Now, set
+        for any partition \(\mc P = \{x_0, \dots, x_n\}\). Now, set
         \begin{align*}
             \mc P_n = \left\{a, a + \frac 1 n (b-a), \dots, a + \frac{n-1}{n}(b-a), b\right\}
         \end{align*}
-        so that $|I_j| = \frac{b-a}{n}$. Then
+        so that \(|I_j| = \frac{b-a}{n}\). Then
         \begin{align*}
             U(f, \mc P_n) - L(f, \mc P_n) &= \frac{b-a}n \sum_{j=1}^n \frac{b-a}{n} \left[f\left(a + \frac j n (b-a)\right) - f\left(a + \frac{j-1} n (b-a)\right)\right] \\
             &= \frac{b-a}{n}(f(b)-f(a))
         \end{align*}
-        since the sum telescopes. But this clearly goes to 0 as $n \to \infty$.
+        since the sum telescopes. But this clearly goes to 0 as \(n \to \infty\).
     \end{proof}
 
-    \begin{proposition}[Continuous $\implies$ integrable]
-        Let $f: [a, b] \to \RR$ be continuous. Then $f$ is integrable.
+    \begin{proposition}[Continuous \(\implies\) integrable]
+        Let \(f: [a, b] \to \RR\) be continuous. Then \(f\) is integrable.
     \end{proposition}
     
     \begin{proof}
-        Since $[a, b]$ is a closed bounded set, $f$ is bounded by \cref{evt} (EVT).
+        Since \([a, b]\) is a closed bounded set, \(f\) is bounded by \cref{evt} (EVT).
         
-        We will show the contrapositive. Suppose $f$ is not integrable, so there exists $\eps > 0$ such that, for any $\mc P$,
+        We will show the contrapositive. Suppose \(f\) is not integrable, so there exists \(\eps > 0\) such that, for any \(\mc P\),
         \begin{align*}
             U(f, \mc P) - L(f, \mc P) \geq \eps
         \end{align*}
@@ -1717,42 +1717,42 @@
         \begin{align*}
             \max_{1 \leq j \leq n} \left(\sup_{I_j} f - \inf_{I_j} f\right) \geq \frac{\eps}{b-a}
         \end{align*}
-        so, in particular, we obtain a particular $j$ such that
+        so, in particular, we obtain a particular \(j\) such that
         \begin{align*}
             \sup_{I_j} f - \inf_{I_j} f \geq \frac{\eps}{b-a}
         \end{align*}
-        Since $I_j$ is closed and bounded, we apply \cref{evt} (EVT) to obtain $y$, $z \in [x_{j-1}, x_j]$ such that
+        Since \(I_j\) is closed and bounded, we apply \cref{evt} (EVT) to obtain \(y\), \(z \in [x_{j-1}, x_j]\) such that
         \begin{align*}
             f(y) - f(z) \geq \frac{\eps}{b-a}
         \end{align*}
-        Applying this result to $\mc P_n = \left\{a, a + \frac 1 n (b-a), \dots, a + \frac{n-1}{n}(b-a), b\right\}$ as used previously, we obtain for each $n$ values of $y_n$ and $z_n$ satisfying
+        Applying this result to \(\mc P_n = \left\{a, a + \frac 1 n (b-a), \dots, a + \frac{n-1}{n}(b-a), b\right\}\) as used previously, we obtain for each \(n\) values of \(y_n\) and \(z_n\) satisfying
         \begin{align*}
             |y_n - z_n| < \frac{b-a}{n} \qquad\qquad |f(y_n)-f(z_n)| \geq \frac{\eps}{b-a}
         \end{align*}
-        Now apply \cref{bw} to $(y_n)$ to obtain $(y_{n_k})$ convergent to $y \in [a, b]$ -- then,
+        Now apply \cref{bw} to \((y_n)\) to obtain \((y_{n_k})\) convergent to \(y \in [a, b]\) -- then,
         \begin{align*}
             |z_{n_k}-y_{n_k}| < \frac{b-a}{n_k} \to 0
         \end{align*}
-        as $k \to infty$, so $z_{n_k} \to y$ also. However, since $|f(z_{n_k})-f(y_{n_k})| \geq \frac{\eps}{b-a}$, we conclude $f(z_{n_k})$ and $f(y_{n_k})$ do not have the same limit, so at least one must not tend to $f(y)$. Hence $f$ is not sequentially continuous, and so it is not continuous either.       
+        as \(k \to infty\), so \(z_{n_k} \to y\) also. However, since \(|f(z_{n_k})-f(y_{n_k})| \geq \frac{\eps}{b-a}\), we conclude \(f(z_{n_k})\) and \(f(y_{n_k})\) do not have the same limit, so at least one must not tend to \(f(y)\). Hence \(f\) is not sequentially continuous, and so it is not continuous either.       
     \end{proof}
 
     \begin{lemma}
         \label{finite-diff-integrable}
-        Let $f$, $g: [a, b] \to \RR$ be bounded. Suppose $g$ is integrable, and 
+        Let \(f\), \(g: [a, b] \to \RR\) be bounded. Suppose \(g\) is integrable, and 
         \begin{align*}
             \{x \in [a, b]: f(x) \neq g(x)\}
         \end{align*}
-        is finite. Then $f$ is integrable and $\int_a^b f = \int_a^b g$.
+        is finite. Then \(f\) is integrable and \(\int_a^b f = \int_a^b g\).
     \end{lemma}
     
     \begin{proof}
-        Let $M = \sup_{[a, b]} |f|$. Fix $\eps > 0$, then there exists a partition $\mc P$ of $[a, b]$ such that $U(g, \mc P) - L(g, \mc P) < \eps$. Let $\{x \in [a, b]: f(x) \neq g(x)\} = {z_1, \dots, z_N}$.
+        Let \(M = \sup_{[a, b]} |f|\). Fix \(\eps > 0\), then there exists a partition \(\mc P\) of \([a, b]\) such that \(U(g, \mc P) - L(g, \mc P) < \eps\). Let \(\{x \in [a, b]: f(x) \neq g(x)\} = {z_1, \dots, z_N}\).
 
-        For each $k$, $1 \leq k \leq N$, let $J_k = [z_k-r_k, z_k+r_k]$, where the $r_k$ satisfy
+        For each \(k\), \(1 \leq k \leq N\), let \(J_k = [z_k-r_k, z_k+r_k]\), where the \(r_k\) satisfy
         \begin{align*}
             2\sum_{n=1}^N r_k < \eps
         \end{align*}
-        so that $\sum_{k=1}^N |J_k| < \eps$. Let $\mc P' = \mc P \cup \{z_1 \pm r_1, \dots, z_N \pm r_N\}$, and let $J = \bigcup J_k$. Clearly, $U(g, \mc P') - L(g, \mc P') \leq U(g, \mc P) - L(g, \mc P) < \eps$. Now,
+        so that \(\sum_{k=1}^N |J_k| < \eps\). Let \(\mc P' = \mc P \cup \{z_1 \pm r_1, \dots, z_N \pm r_N\}\), and let \(J = \bigcup J_k\). Clearly, \(U(g, \mc P') - L(g, \mc P') \leq U(g, \mc P) - L(g, \mc P) < \eps\). Now,
         \begin{align*}
             U(f, \mc P') - L(f, \mc P') &= \sum_{j} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right) \\
             &= \sum_{I_j \subset J} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right) + \sum_{I_j \not\subset J} |I_j| \left(\sup_{I_j} f - \inf_{I_j} f\right)
@@ -1763,17 +1763,17 @@
             &\leq \sum_j |I_j| \left(\sup_{I_j} g - \inf_{I_j} g\right) \\
             &= U(g, \mc P') - L(g, \mc P') < \eps
         \end{align*}
-        For the first sum, we instead know $\sup_{I_j} f - \inf_{I_j} f \leq 2M$, so that
+        For the first sum, we instead know \(\sup_{I_j} f - \inf_{I_j} f \leq 2M\), so that
         \begin{align*}
             \sum_{I_j \subset J} \left(\sup_{I_j} f - \inf_{I_j} f\right) &\leq 2M \sum_{I_j \subset J} |I_j| \\
             &\leq 2M |J| \\
             &< 2M\eps
         \end{align*}
-        Thus $U(f, \mc P') - L(f, \mc P') < (2M+1)\eps$, so $f$ is integrable. It remains to show $\int_a^b f = \int_a^b g$. Observe
+        Thus \(U(f, \mc P') - L(f, \mc P') < (2M+1)\eps\), so \(f\) is integrable. It remains to show \(\int_a^b f = \int_a^b g\). Observe
         \begin{align*}
             L(f, \mc P') \leq \int_a^b f \leq U(f, \mc P') \qquad \qquad L(g, \mc P') \leq \int_a^b g \leq U(g, \mc P')
         \end{align*}
-        Hence, again taking $\mc P$ such that $U(g, \mc P) - L(g, \mc P) < \eps$,
+        Hence, again taking \(\mc P\) such that \(U(g, \mc P) - L(g, \mc P) < \eps\),
         \begin{align*}
             \int_a^b f - \int_a^b g &\leq U(f, \mc P') - U(g, \mc P') + \underbrace{U(g, \mc P') - L(g, \mc P')}_{< \eps}
         \end{align*}
@@ -1788,23 +1788,23 @@
         \begin{align*}
             \left|\int_a^b f - \int_a^b g\right| < (M+1)\eps 
         \end{align*}
-        for any $\eps > 0$, so, taking the inf over $\eps$, the LHS is 0 as required.
+        for any \(\eps > 0\), so, taking the inf over \(\eps\), the LHS is 0 as required.
     \end{proof}
     
     \lecture{Lecture 17 -- 03/03/26}
 
     \begin{proposition}[Additivity of integrals]
         \label{additivity-integrals}
-        Let $f: [a, b] \to \RR$ and $c \in (a, b)$. Then $f$ is integrable if and only if $\left.f\right|_{[a,c]}$ and $\left.f\right|_{[c,b]}$ are integrable, and furthermore
+        Let \(f: [a, b] \to \RR\) and \(c \in (a, b)\). Then \(f\) is integrable if and only if \(\left.f\right|_{[a,c]}\) and \(\left.f\right|_{[c,b]}\) are integrable, and furthermore
         \begin{align*}
             \int_a^b f = \int_a^c f + \int_c^b f
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let $I_L = [a, c]$ and $I_R = [c, b]$, and $f_L = \left.f\right|_{I_L}$, $f_R = \left.f\right|_{I_R}$.
+        Let \(I_L = [a, c]\) and \(I_R = [c, b]\), and \(f_L = \left.f\right|_{I_L}\), \(f_R = \left.f\right|_{I_R}\).
         \begin{itemize}
-            \item[$\implies$] Fix $\eps > 0$. Then, there exists a partition $\mc P$ of $[a, b]$ such that $U(f, \mc P) - L(f, \mc P) < \eps$. Without loss of generality, $c = x_l$ for some $l \in \{0, \dots, n\}$ (else add $c$ to $\mc P$ -- this can only make $U(f, \mc P) - L(f, \mc P)$ smaller). Then $\mc P = \mc P_L \cup \mc P_R$ where $\mc P_L = \{a = x_0, \dots, x_l = c\}$ and $\mc P_R = \{c = x_l, \dots, x_n = b\}$ are partitions of $[a, c]$ and $[c, b]$ respectively. Furthermore,
+            \item[\(\implies\)] Fix \(\eps > 0\). Then, there exists a partition \(\mc P\) of \([a, b]\) such that \(U(f, \mc P) - L(f, \mc P) < \eps\). Without loss of generality, \(c = x_l\) for some \(l \in \{0, \dots, n\}\) (else add \(c\) to \(\mc P\) -- this can only make \(U(f, \mc P) - L(f, \mc P)\) smaller). Then \(\mc P = \mc P_L \cup \mc P_R\) where \(\mc P_L = \{a = x_0, \dots, x_l = c\}\) and \(\mc P_R = \{c = x_l, \dots, x_n = b\}\) are partitions of \([a, c]\) and \([c, b]\) respectively. Furthermore,
             \begin{align*}
                 U(f, \mc P) &= U(f_L, \mc P_L) + U(f_R, \mc P_R) \\
                 L(f, \mc P) &= L(f_L, \mc P_L) + L(f_R, \mc P_R)
@@ -1813,14 +1813,14 @@
             \begin{align*}
                 \left(U(f_L, \mc P_L)-L(f_L, \mc P_L)\right) + \left(U(f_R, \mc P_R)-L(f_R, \mc P_R)\right) < \eps
             \end{align*}
-            Since both brackets are $\geq 0$, they must each be $< \eps$. Hence $f_L$ and $f_R$ are both integrable.
+            Since both brackets are \(\geq 0\), they must each be \(< \eps\). Hence \(f_L\) and \(f_R\) are both integrable.
 
-            \item[$\impliedby$] Fix $\eps > 0$, so there exist $\mc P_L$, $\mc P_R$ partitions of $I_L$, $I_R$ respectively such that
+            \item[\(\impliedby\)] Fix \(\eps > 0\), so there exist \(\mc P_L\), \(\mc P_R\) partitions of \(I_L\), \(I_R\) respectively such that
             \begin{align*}
                 U(f_R, \mc P_R) - L(f_R, \mc P_R) &< \eps
                 U(f_L, \mc P_L) - L(f_L, \mc P_L) &< \eps
             \end{align*}
-            so $U(f, \mc P) - L(f, \mc P) < 2\eps$, since $\mc P = \mc P_L \cup \mc P_R$ is a partition of $[a, b]$. 
+            so \(U(f, \mc P) - L(f, \mc P) < 2\eps\), since \(\mc P = \mc P_L \cup \mc P_R\) is a partition of \([a, b]\). 
         \end{itemize}
         Furthermore,
         \begin{align*}
@@ -1835,15 +1835,15 @@
         \begin{align*}
             \left|\int_a^b f - \left(\int_a^c f_L + \int_c^b f_R\right)\right| < 2\eps
         \end{align*}
-        Since $\eps$ is arbitrary, this is what we wanted.        
+        Since \(\eps\) is arbitrary, this is what we wanted.        
     \end{proof}
 
     \begin{definition}[Piecewise continuity]
-        Let $f: [a, b] \to \RR$. Then $f$ is \emph{piecewise continuous} if there exists a partition $\mc P$ such that $\left.f\right|_{(x_{j-1},x_j)}$ is continuous for each $j$, and has a finite limit as $x \to x_{j-1}$ from above and $x \to x_j$ from below.
+        Let \(f: [a, b] \to \RR\). Then \(f\) is \emph{piecewise continuous} if there exists a partition \(\mc P\) such that \(\left.f\right|_{(x_{j-1},x_j)}\) is continuous for each \(j\), and has a finite limit as \(x \to x_{j-1}\) from above and \(x \to x_j\) from below.
     \end{definition}
     
-    \begin{proposition}[Piecewise continuous $\implies$ integrable]
-        Let $f: [a, b] \to \RR$ be piecewise continuous with $\mc P$ the relevant partition. Then $f$ is integrable, and
+    \begin{proposition}[Piecewise continuous \(\implies\) integrable]
+        Let \(f: [a, b] \to \RR\) be piecewise continuous with \(\mc P\) the relevant partition. Then \(f\) is integrable, and
         \begin{align*}
             \int_a^b f(x) \D x = \sum_{j=1}^n \int_{x_{j-1}}^{x_j} \bar{f}_j(x) \D x
         \end{align*}
@@ -1858,7 +1858,7 @@
     \end{proposition}
 
     \begin{proof}
-        \Cref{finite-diff-integrable} gives that $\left.f\right|_{[x_{j-1},x_j]}$ is integrable and $\int_{x_{j-1}}^{x_j} f = \int_{x_{j-1}}^{x_j} \bar f_j$. The result follows from \cref{additivity-integrals}.
+        \Cref{finite-diff-integrable} gives that \(\left.f\right|_{[x_{j-1},x_j]}\) is integrable and \(\int_{x_{j-1}}^{x_j} f = \int_{x_{j-1}}^{x_j} \bar f_j\). The result follows from \cref{additivity-integrals}.
     \end{proof}
 
     Continuous, piecewise continuous and monotone functions are all integrable, as are functions made from adding these. Are these all the Riemann integrable functions? No.
@@ -1872,12 +1872,12 @@
                 0 & x \in \RR \setminus \QQ
             \end{cases}
         \end{align*}
-        Since $\RR \setminus \QQ$ is dense in $\RR$, $L(f, \mc P) = 0$ for any partition $\mc P$ of $[0, 1]$, so $I_*(f) = 0$. We claim $f$ is integrable, so, for any $\eps > 0$, it is necessary to find a partition $\mc P$ of $[0, 1]$ such that $U(f, \mc P) < \eps$.
+        Since \(\RR \setminus \QQ\) is dense in \(\RR\), \(L(f, \mc P) = 0\) for any partition \(\mc P\) of \([0, 1]\), so \(I_*(f) = 0\). We claim \(f\) is integrable, so, for any \(\eps > 0\), it is necessary to find a partition \(\mc P\) of \([0, 1]\) such that \(U(f, \mc P) < \eps\).
 
-        Pick $N \in \NN$ such that $N > \frac 1 \eps$. Set $X_N = \{x \in [0, 1]: f(x) \geq \frac 1 N\} \subseteq \{\frac p q: 1 \leq q \leq N, 0 \leq p \leq q\} = \{y_1, \dots, y_M\}$, which is clearly finite. Define $\mc P$ such that
+        Pick \(N \in \NN\) such that \(N > \frac 1 \eps\). Set \(X_N = \{x \in [0, 1]: f(x) \geq \frac 1 N\} \subseteq \{\frac p q: 1 \leq q \leq N, 0 \leq p \leq q\} = \{y_1, \dots, y_M\}\), which is clearly finite. Define \(\mc P\) such that
         \begin{itemize}
-            \item each $y_k$ is in some subinterval of $\mc P$;
-            \item each subinterval has length $< \frac{\eps} M$.
+            \item each \(y_k\) is in some subinterval of \(\mc P\);
+            \item each subinterval has length \(< \frac{\eps} M\).
         \end{itemize}
         Now
         \begin{align*}
@@ -1887,8 +1887,8 @@
         \end{align*}
     \end{example*}
     
-    \begin{proposition}[Countable discontinuities $\implies$ integrable]
-        Let $f$ bounded $: [a, b] \to \RR$, and let $D$ be the set of discontinuities of $f$. If $D$ is finite or countable, $f$ is Riemann-integrable.
+    \begin{proposition}[Countable discontinuities \(\implies\) integrable]
+        Let \(f\) bounded \(: [a, b] \to \RR\), and let \(D\) be the set of discontinuities of \(f\). If \(D\) is finite or countable, \(f\) is Riemann-integrable.
     \end{proposition}
     
     \begin{remark*}
@@ -1902,14 +1902,14 @@
     Let us have some boring lemmas.
 
     \begin{lemma}
-        Let $I$ be a closed bounded interval, and let $f, g$ bounded $: I \to \RR$. Then
+        Let \(I\) be a closed bounded interval, and let \(f, g\) bounded \(: I \to \RR\). Then
         \begin{enumerate}
-            \item $f(x) \leq g(x)$ for all $x \in I \implies$ sup and inf preserve the inequality;
-            \item $\sup_I (-f) = -\inf_I f$;
-            \item for $\lambda > 0$, $\sup_I(\lambda f) = \lambda \sup_I f$;
-            \item $\sup_I(f+g) \leq \sup_I f + \sup_I g$, and $\inf_I(f+g) \geq \inf_I f + \inf_I g$, without equality necessarily holding;
-            \item $\sup_I |f| - \inf_I |f| \leq \sup_I f - \inf_I f$;
-            \item $\sup_I f^2 - \inf_I f^2 \leq 2 \sup_I |f|\left(\sup_I f - \inf_I f\right)$.
+            \item \(f(x) \leq g(x)\) for all \(x \in I \implies\) sup and inf preserve the inequality;
+            \item \(\sup_I (-f) = -\inf_I f\);
+            \item for \(\lambda > 0\), \(\sup_I(\lambda f) = \lambda \sup_I f\);
+            \item \(\sup_I(f+g) \leq \sup_I f + \sup_I g\), and \(\inf_I(f+g) \geq \inf_I f + \inf_I g\), without equality necessarily holding;
+            \item \(\sup_I |f| - \inf_I |f| \leq \sup_I f - \inf_I f\);
+            \item \(\sup_I f^2 - \inf_I f^2 \leq 2 \sup_I |f|\left(\sup_I f - \inf_I f\right)\).
         \end{enumerate}
     \end{lemma}
     
@@ -1918,7 +1918,7 @@
     \begin{proof}
         We leave 1 to 4 and part of 5 as an exercise. Then
         \begin{enumerate}
-            \item[5.] If $f \geq 0$ or $f \leq 0$ on all of $I$, the reuslt is immediate, or follows from 2. Otherwise, if $\inf_I f < 0 < \sup_I f$, then
+            \item[5.] If \(f \geq 0\) or \(f \leq 0\) on all of \(I\), the reuslt is immediate, or follows from 2. Otherwise, if \(\inf_I f < 0 < \sup_I f\), then
             \begin{align*}
                 \text{LHS} &\leq \sup_I |f| \leq \max(\sup_I f, \sup_I (-f)) \\
                 &\leq \sup_I f + \sup_I(-f) = \sup_I f - \inf_I f
@@ -1933,24 +1933,24 @@
     \end{proof}
 
     \begin{lemma}
-        Let $f$, $g: [a, b] \to \RR$ be integrable. Then
+        Let \(f\), \(g: [a, b] \to \RR\) be integrable. Then
         \begin{enumerate}
-            \item $f(x) \leq g(x)$ for all $x \implies \int_a^b f \leq \int_a^b g$;
-            \item[2, 3.] for $\lambda \in \RR$, $\int_a^b \lambda f = \lambda \int_a^b f$;
-            \item[4] $f+g$ is integrable, and $\int_a^b (f+g) = \int_a^b f + \int_a^b g$;
-            \item[5] $|f|$ is integrable, and $\int_a^b |f| \geq \left|\int_a^b f\right|$;
-            \item[6] $fg$ is integrable.
+            \item \(f(x) \leq g(x)\) for all \(x \implies \int_a^b f \leq \int_a^b g\);
+            \item[2, 3.] for \(\lambda \in \RR\), \(\int_a^b \lambda f = \lambda \int_a^b f\);
+            \item[4] \(f+g\) is integrable, and \(\int_a^b (f+g) = \int_a^b f + \int_a^b g\);
+            \item[5] \(|f|\) is integrable, and \(\int_a^b |f| \geq \left|\int_a^b f\right|\);
+            \item[6] \(fg\) is integrable.
         \end{enumerate}
     \end{lemma}
     
     \begin{proof}
         Again, we leave 1 to 4 as exercises.
         \begin{enumerate}
-            \item[5.] For any partition $\mc P$ of $[a, b]$,
+            \item[5.] For any partition \(\mc P\) of \([a, b]\),
             \begin{align*}
                 U(|f|, \mc P) - L(|f|, \mc P) \leq U(f, \mc P) - L(f, \mc P)
             \end{align*}
-            so, if $f$ is integrable, then $|f|$ is integrable. Now
+            so, if \(f\) is integrable, then \(|f|\) is integrable. Now
             \begin{align*}
                 -|f(x)| \leq f(x) \leq |f(x)|
             \end{align*}
@@ -1964,7 +1964,7 @@
             \begin{align*}
                 f(x)g(x) = \frac 1 4 \left((f(x)+g(x))^2-(f(x)-g(x))^2\right)
             \end{align*}
-            Hence, it is only necessary to show that, if $f$ is integrable, $f^2$ is integrable. For any partition $\mc P$ of $[a, b]$, we have
+            Hence, it is only necessary to show that, if \(f\) is integrable, \(f^2\) is integrable. For any partition \(\mc P\) of \([a, b]\), we have
             \begin{align*}
                 U(f^2, \mc P) - L(f^2, \mc P) \leq 2 \sup_I |f| \left(U(f, \mc P) - L(f, \mc P)\right)
             \end{align*}
@@ -1977,7 +1977,7 @@
     We all know that integration and differentiation are famously opposites -- but why?
 
     \begin{definition}[Indefinite integral]
-        The \emph{indefinite integral} of a function $f: [a, b] \to \RR$ is
+        The \emph{indefinite integral} of a function \(f: [a, b] \to \RR\) is
         \begin{align*}
             F: [a, b] &\to \RR \\
             x &\mapsto \int_a^x f(t) \D t
@@ -1985,7 +1985,7 @@
     \end{definition}
     
     \begin{proposition}[Integrals are continuous]
-        Let $f: [a, b] \to \RR$ be Riemann integrable, and let $F$ be its indefinite integral. Then $F$ is continuous.
+        Let \(f: [a, b] \to \RR\) be Riemann integrable, and let \(F\) be its indefinite integral. Then \(F\) is continuous.
     \end{proposition}
     
     \begin{proof}
@@ -1996,12 +1996,12 @@
             &\leq \int_x^{x+h} |f(t)| \D t \\
             &\leq \sup_{[a,b]} f \int_x^{x+h} 1 \D t
         \end{align*}
-        which goes to 0 as $h \to 0$.
+        which goes to 0 as \(h \to 0\).
     \end{proof}
     
     \begin{theorem}[Fundamental theorem of calculus, part 1]
         \label{ftc-1}
-        If $f: [a, b] \to \RR$ is Riemann integrable and continuous at $x_0$, then its indefinite integral $F$ is differentiable at $x_0$. Furthermore,
+        If \(f: [a, b] \to \RR\) is Riemann integrable and continuous at \(x_0\), then its indefinite integral \(F\) is differentiable at \(x_0\). Furthermore,
         \begin{align*}
             F'(x_0) = \left.\frac{d}{dx} \int_a^x f(t) \D t\right|_{x_0} = f(x_0)
         \end{align*}
@@ -2012,7 +2012,7 @@
         \begin{align*}
             \xi(h) = \frac{F(x_0+h)-F(x_0)-hf(x_0)}{|h|}
         \end{align*}
-        and we will show $\xi(h) \to 0$ as $h \to 0$. Observe
+        and we will show \(\xi(h) \to 0\) as \(h \to 0\). Observe
         \begin{align*}
             |F(x_0+h)-F(x_0)-hf(x_0)| &= \left|\int_x^{x_0+h} f(t) \D t - hf(x_0)\right| \\
             &= \left|\int_x^{x_0+h} (f(t)-f(x_0)) \D t\right| \\
@@ -2027,7 +2027,7 @@
     \end{proof}
     
     \begin{example*}
-        Take $[a, b] = [-1, 1]$, and
+        Take \([a, b] = [-1, 1]\), and
         \begin{align*}
             f(x) = \begin{cases}
                 -1 & x \leq 0 \\
@@ -2041,34 +2041,34 @@
                 x-1 & x > 0
             \end{cases} = |x| - 1
         \end{align*}
-        which is not differentiable at $x=0$. Hence, continuity is necessary in the theorem.       
+        which is not differentiable at \(x=0\). Hence, continuity is necessary in the theorem.       
     \end{example*}
     
     \begin{corollary}
-        If $f = g'$ continuous on $[a, b]$, then
+        If \(f = g'\) continuous on \([a, b]\), then
         \begin{align*}
             F(x) = \int_a^x f(t) \D t = g(x) - g(a)
         \end{align*}
     \end{corollary}
     
     \begin{proof}
-        Observe $(F-g)' = 0$ on $[a, b]$, so $F-g$ is constant on $[a, b]$ by the mean value theorem. Then $F(x) - g(x) = F(a) - g(a)$, but $F(a) = 0$, yielding the result.
+        Observe \((F-g)' = 0\) on \([a, b]\), so \(F-g\) is constant on \([a, b]\) by the mean value theorem. Then \(F(x) - g(x) = F(a) - g(a)\), but \(F(a) = 0\), yielding the result.
     \end{proof}
     
     \begin{theorem}[Fundamental theorem of calculus, part 2]
         \label{ftc-2}
-        If $f: [a, b] \to \RR$ is Riemann integrable and there exists a differentiable $F: [a, b] \to \RR$ such that $F'(x) = f(x)$, then
+        If \(f: [a, b] \to \RR\) is Riemann integrable and there exists a differentiable \(F: [a, b] \to \RR\) such that \(F'(x) = f(x)\), then
         \begin{align*}
             \int_a^b f(t) \D t = \int_a^b F'(t) \D t = F(b) - F(a)
         \end{align*}
     \end{theorem}
     
     \begin{proof}
-        By assumption, there exists for any $\eps > 0$ a partition $\mc P$ of $[a, b]$ such that $U(f, \mc P) - L(f, \mc P) < \eps$. Applying the mean value theorem to $F$ on intervals of this partition, we have
+        By assumption, there exists for any \(\eps > 0\) a partition \(\mc P\) of \([a, b]\) such that \(U(f, \mc P) - L(f, \mc P) < \eps\). Applying the mean value theorem to \(F\) on intervals of this partition, we have
         \begin{align*}
             F(x_j) - F(x_{j-1}) = f(t_j)(x_j-x_{j-1})
         \end{align*}
-        for some $t_j \in (x_{j-1}, x_j)$. Now
+        for some \(t_j \in (x_{j-1}, x_j)\). Now
         \begin{align*}
             F(b) - F(a) = \sum_{j=1}^n f(t_j)(x_j-x_{j-1}) \in [L(f, \mc P), U(f, \mc P)]
         \end{align*}
@@ -2076,7 +2076,7 @@
         \begin{align*}
             I_*(f) \leq F(b)-F(a) \leq I^*(f)
         \end{align*}
-        so $F(b)-F(a) = \int_a^b f$ as required.
+        so \(F(b)-F(a) = \int_a^b f\) as required.
     \end{proof}
 
     \lecture{Lecture 19 -- 07/03/26}
@@ -2084,29 +2084,29 @@
     Let us now derive some important consequences of this result.
 
     \begin{proposition}[Integration by parts]
-        Suppose $f$, $g \in C^1([a, b])$. Then
+        Suppose \(f\), \(g \in C^1([a, b])\). Then
         \begin{align*}
             \int_a^b f'g = f(b)g(b) - f(a)g(a) - \int_a^b fg'
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        The product rule gives $f'g = (fg)' - fg'$. Integrating this over $[a, b]$ and applying \cref{ftc-2} to evaluate the $(fg')$ integral gives the result.
+        The product rule gives \(f'g = (fg)' - fg'\). Integrating this over \([a, b]\) and applying \cref{ftc-2} to evaluate the \((fg')\) integral gives the result.
     \end{proof}
     
     \begin{proposition}[Integration by substitution]
-        Let $f: [a, b] \to \RR$ be continuous, and let $g: [\alpha, \beta] \to [a, b]$ satisfy $g \in C^1([\alpha, \beta])$ with $g(\alpha) = a$, $g(\beta) = b$. Then
+        Let \(f: [a, b] \to \RR\) be continuous, and let \(g: [\alpha, \beta] \to [a, b]\) satisfy \(g \in C^1([\alpha, \beta])\) with \(g(\alpha) = a\), \(g(\beta) = b\). Then
         \begin{align*}
             \int_a^b f(x) \D x = \int_\alpha^\beta f(g(t)) g'(t) \D t
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let $F(x) = \int_a^x f(t) \D t$, then $F: [a, b] \to \RR$ is well-defined and differentiable by \cref{ftc-1}. Set $h = F \circ g: [\alpha, \beta] \to \RR$. Then $h$ is differentiable, with
+        Let \(F(x) = \int_a^x f(t) \D t\), then \(F: [a, b] \to \RR\) is well-defined and differentiable by \cref{ftc-1}. Set \(h = F \circ g: [\alpha, \beta] \to \RR\). Then \(h\) is differentiable, with
         \begin{align*}
             h'(t) = F'(g(t))g(t) = f(g(t))g'(t)
         \end{align*}
-        by the chain rule and \cref{ftc-1}. Hence, applying $\cref{ftc-2}$,
+        by the chain rule and \cref{ftc-1}. Hence, applying \(\cref{ftc-2}\),
         \begin{align*}
             \int_a^b f(x) \D x &= F(b) - F(a) = h(\beta) - h(\alpha) \\
             &= \int_\alpha^\beta h'(t) \D t \\
@@ -2116,7 +2116,7 @@
     \end{proof}
     
     \begin{theorem}[Taylor's theorem, integral remainder]
-        Let $f \in C^n([a, a+h])$, and let $R_{n,f,a}$ be as before. Then
+        Let \(f \in C^n([a, a+h])\), and let \(R_{n,f,a}\) be as before. Then
         \begin{align*}
             R_{n,f,a}(h) &= \frac{h^n}{(n-1)!} \int_0^1 (1-t)^{n-1}f^{(n)}(a+th) \D t \\
             &= \frac 1 {(n-1)!} \int_0^h (h-u)^{n-1} f^{(n)}(a+u) \D u
@@ -2124,16 +2124,16 @@
     \end{theorem}
     
     \begin{remark*}
-        Letting $M_n = \sup_{[a,a+h]}|f^(n)|$ as before, we know
+        Letting \(M_n = \sup_{[a,a+h]}|f^(n)|\) as before, we know
         \begin{align*}
             \left|R_{n,f,a}(h)\right| &\leq \frac{h^n}{n!} \int_0^1 \left|(1-t)^{h-1} f^{(n)}(a+th)\right| \D t \\
             &\leq \frac{h^n}{n!} M_n \int_0^1 1 \D t
         \end{align*}
-        so $R_{n,f,a}(h) \to 0$ as $h \to 0$ for $n$ fixed. Furthermore, if we know $\sup_{n \geq 0} M_n = M < \infty$, we would obtain
+        so \(R_{n,f,a}(h) \to 0\) as \(h \to 0\) for \(n\) fixed. Furthermore, if we know \(\sup_{n \geq 0} M_n = M < \infty\), we would obtain
         \begin{align*}
             |R_{n,f,a}(h)| \leq \frac{Mh^n}{h!} \to 0
         \end{align*}
-        as $n \to \infty$ for all $|h| < 1$, so $f$ analytic around $a$.       
+        as \(n \to \infty\) for all \(|h| < 1\), so \(f\) analytic around \(a\).       
     \end{remark*}
     
     \begin{proof}
@@ -2148,32 +2148,32 @@
     \end{proof}
     
     \begin{proposition}[Cauchy mean value theorem for integrals]
-        Let $f$, $g: [a, b] \to \RR$ continuous, $g(x) \neq 0$ for any $x \in [a, b]$. Then there exists $c \in (a, b)$ such that
+        Let \(f\), \(g: [a, b] \to \RR\) continuous, \(g(x) \neq 0\) for any \(x \in [a, b]\). Then there exists \(c \in (a, b)\) such that
         \begin{align*}
             \int_a^b f(x)g(x) \D x = f(c) \int_a^b g(x) \D x
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let us apply Cauchy MVT to $F(x) = \int_a^x f(t)g(t) \D t$, $G(x) = \int_a^x g(t) \D t$, which are differentiable by \cref{ftc-1}. We obtain $c \in (a, b)$ such that
+        Let us apply Cauchy MVT to \(F(x) = \int_a^x f(t)g(t) \D t\), \(G(x) = \int_a^x g(t) \D t\), which are differentiable by \cref{ftc-1}. We obtain \(c \in (a, b)\) such that
         \begin{align*}
             g(c) \int_a^b f(t)g(t) \D t = (F(b)-F(a))G'(c) = F'(c)(G(b)-G(a)) = f(c)g(c) \int_a^b g(t) \D t
         \end{align*}
-        so the result follows after division by $g(c)$.        
+        so the result follows after division by \(g(c)\).        
     \end{proof}
     
     We can now give alternative proofs of the Lagrange (\cref{taylor-lagrange}) and Cauchy (\cref{taylor-cauchy}) remainders for Taylor's theorem.
 
-    \begin{proof}[Lagrange remainder (\emph{assuming $f^{(n)}$ continuous})]
-        Let $g(t) = (1-t)^{n-1}$, then there exists $\theta \in (0, 1)$ such that
+    \begin{proof}[Lagrange remainder (\emph{assuming \(f^{(n)}\) continuous})]
+        Let \(g(t) = (1-t)^{n-1}\), then there exists \(\theta \in (0, 1)\) such that
         \begin{align*}
             R_{n,f,a} &= \frac{h^n}{(h-1)!} f^{(n)}(a + \theta h) \int_0^1 (1-t)^{n-1} \D t \\
             &= \frac{h^n}{n!} f^{(n)}(a+\theta h)
         \end{align*}
     \end{proof}
     
-    \begin{proof}[Cauchy remainder (\emph{asumming $f^{(n)}$ continuous})]
-        Take $g=1$. Then
+    \begin{proof}[Cauchy remainder (\emph{asumming \(f^{(n)}\) continuous})]
+        Take \(g=1\). Then
         \begin{align*}
             R_{n,f,a}(h) &= \frac{h^n}{(n-1)!} (1-\theta)^{n-1} f^{(n)}(a+\theta h) \int_0^1 \D t \\
             &= \frac{h^n}{(n-1)!} (1-\theta)^{n-1} f^{(n)}(a+\theta h)
@@ -2186,18 +2186,18 @@
     We know how to integrate bounded functions on bounded domains, but what about functions with unbounded image or domain? Let's start with unbounded domains.
 
     \begin{definition}[Improper integrals on unbounded domain]
-        Suppose $f: [a, \infty) \to \RR$ is integrable on $[a, R]$ for every $a \leq R < \infty$, and set
+        Suppose \(f: [a, \infty) \to \RR\) is integrable on \([a, R]\) for every \(a \leq R < \infty\), and set
         \begin{align*}
             F: [a, \infty) &\to \RR \\
             R &\mapsto \int_a^R f(x) \D x
         \end{align*}
-        Then we say $\int_a^\infty f(x) \D x$ exists/converges if $\lim_{R \to \infty} = L \in \RR$ exists and is finite, in which case we define
+        Then we say \(\int_a^\infty f(x) \D x\) exists/converges if \(\lim_{R \to \infty} = L \in \RR\) exists and is finite, in which case we define
         \begin{align*}
             \int_a^\infty f(x) \D x = L
         \end{align*}
-        Otherwise, we say $\int_a^\infty f(x) \D x$ does not exist/does not converge.
+        Otherwise, we say \(\int_a^\infty f(x) \D x\) does not exist/does not converge.
         
-        If $f: \RR \to \RR$ is such that $\int_a^\infty f(x) \D x = L_1$ and $\int_{-\infty}^a f(x) \D x = L_2$, then we say $\int_{-\infty}^\infty f(x) \D x$ exists, and we set
+        If \(f: \RR \to \RR\) is such that \(\int_a^\infty f(x) \D x = L_1\) and \(\int_{-\infty}^a f(x) \D x = L_2\), then we say \(\int_{-\infty}^\infty f(x) \D x\) exists, and we set
         \begin{align*}
             \int_{-\infty}^\infty f(x) \D x = L_1 + L_2 = \lim_{R \to \infty} \int_a^R f(x) \D x + \lim_{r \to \infty} \int_{-r}^a f(x) \D x
         \end{align*}
@@ -2208,7 +2208,7 @@
         \begin{align*}
             \lim_{R \to \infty} \int_{-R}^R f(x) \D x
         \end{align*}
-        which is called the \emph{principal value} of the integral. Indeed, for the integral to exist, the limit must exist irrespectively of how quickly we approach $\infty$ and $-\infty$ on each side.        
+        which is called the \emph{principal value} of the integral. Indeed, for the integral to exist, the limit must exist irrespectively of how quickly we approach \(\infty\) and \(-\infty\) on each side.        
     \end{remark*}
     
     \begin{example*}
@@ -2217,7 +2217,7 @@
             \begin{align*}
                 \int_1^\infty \frac{1}{x^p} \D x = \lim_{R \to \infty} \int_1^R \frac{1}{x^p} \D x
             \end{align*}
-            which exists if and only if $p > 1$.
+            which exists if and only if \(p > 1\).
             \item Take
             \begin{align*}
                 \int_2^\infty \frac{1}{x \log^2 x }\D x = \lim_{R \to \infty} \int_2^R \frac{1}{x \log^2 x}\D x = \frac 1{\log 2}
@@ -2226,29 +2226,29 @@
     \end{example*}
     
     \begin{proposition}[Comparison test for integrals]
-        Suppose $f$, $g: [a, \infty)$ are integrable on $[a, R]$ for every $R < \infty$, and satisfy $0 \leq f(x) \leq g(x)$ for any $x \in [a, \infty)$. Then
+        Suppose \(f\), \(g: [a, \infty)\) are integrable on \([a, R]\) for every \(R < \infty\), and satisfy \(0 \leq f(x) \leq g(x)\) for any \(x \in [a, \infty)\). Then
         \begin{itemize}
-            \item $\int_a^\infty g(x) \D x$ converges $\implies \int_a^\infty f(x) \D x$ converges, and $\int_a^\infty f(x) \D x \leq \int_a^\infty g(x) \D x$;
-            \item $\int_a^\infty f(x) \D x$ diverges to $\infty$ $\implies \int_a^\infty g(x) \D x$ diverges to $\infty$.
+            \item \(\int_a^\infty g(x) \D x\) converges \(\implies \int_a^\infty f(x) \D x\) converges, and \(\int_a^\infty f(x) \D x \leq \int_a^\infty g(x) \D x\);
+            \item \(\int_a^\infty f(x) \D x\) diverges to \(\infty\) \(\implies \int_a^\infty g(x) \D x\) diverges to \(\infty\).
         \end{itemize}
     \end{proposition}
     
     \begin{proof}
         \begin{itemize}
-            \item Let $F(R) = \int_a^R f(x) \D x$, which is increasing since $f \geq 0$. It is also bounded, since
+            \item Let \(F(R) = \int_a^R f(x) \D x\), which is increasing since \(f \geq 0\). It is also bounded, since
             \begin{align*}
                 0 \leq F(R) \leq \int_a^R g(x) \D x \leq \int_a^\infty g(x) \D x
             \end{align*}
-            Since $F$ is monotone and bounded, $L = \sup_{R \geq a} F(R) < \infty$ exists. We claim $L = \int_a^\infty f(x) \D x$. By definition of sup, for any $\eps > 0$, there exists $R_0 \in [a, \infty)$ such that
+            Since \(F\) is monotone and bounded, \(L = \sup_{R \geq a} F(R) < \infty\) exists. We claim \(L = \int_a^\infty f(x) \D x\). By definition of sup, for any \(\eps > 0\), there exists \(R_0 \in [a, \infty)\) such that
             \begin{align*}
                 L-\eps \leq F(R_0) \leq F(R) \leq L
             \end{align*}
-            Now, taking $R \to \infty$, we obtain
+            Now, taking \(R \to \infty\), we obtain
             \begin{align*}
                 L-\eps \leq \lim_{R \to \infty} F(R) \leq L
             \end{align*}
-            for any $\eps > 0$, so $\lim_{R \to \infty} F(R) = L$ as required.
-            \item Since $f \geq 0$, $\lim_{R \to \infty} \int_a^R f(x) \D x = \infty$. Hence, for any $L > 0$, there exists $R$ such that $F(r) > L$ for all $r \geq R$. But then
+            for any \(\eps > 0\), so \(\lim_{R \to \infty} F(R) = L\) as required.
+            \item Since \(f \geq 0\), \(\lim_{R \to \infty} \int_a^R f(x) \D x = \infty\). Hence, for any \(L > 0\), there exists \(R\) such that \(F(r) > L\) for all \(r \geq R\). But then
             \begin{align*}
                 \int_a^R g(x) \D x \geq F(R) > L
             \end{align*}
@@ -2261,7 +2261,7 @@
     \end{proof}
     
     \begin{example*}
-        Let us show that $\int_{-\infty}^\infty e^{-x^2} \D x$ converges. Suppose $x \geq 1$, then $x^2 \geq x \implies e^{-x^2} \leq e^{-x}$. Hence
+        Let us show that \(\int_{-\infty}^\infty e^{-x^2} \D x\) converges. Suppose \(x \geq 1\), then \(x^2 \geq x \implies e^{-x^2} \leq e^{-x}\). Hence
         \begin{align*}
             \int_1^\infty e^{-x^2} \D x \leq \int_1^\infty e^{-x} \D x = \left[-e^{-x}\right]_1^{\infty} = \frac 1 e
         \end{align*}
@@ -2272,11 +2272,11 @@
     \end{example*}
     
     \begin{proposition}[Ratio test for integrals]
-        Suppose $f$, $g: [a, \infty)$ are integrable on $[a, R]$ for every $R < \infty$, satisfy $f$, $g \geq 0$, and suppose further
+        Suppose \(f\), \(g: [a, \infty)\) are integrable on \([a, R]\) for every \(R < \infty\), satisfy \(f\), \(g \geq 0\), and suppose further
         \begin{align*}
             \lim_{x \to \infty} \frac{f(x)}{g(x)} = L \in (0, \infty)
         \end{align*}
-        Then $\int_a^\infty f(x) \D x$ converges if and only if $\int_a^\infty g(x) \D x$ converges.
+        Then \(\int_a^\infty f(x) \D x\) converges if and only if \(\int_a^\infty g(x) \D x\) converges.
     \end{proposition}
     
     \begin{proof}
@@ -2284,11 +2284,11 @@
     \end{proof}
     
     \begin{remark*}
-        If $\lim_{x \to \infty} \frac{f(x)}{g(x)} = 0$, then $f(x) \leq g(x)$ from some point, so by comparison test from that point onwards
+        If \(\lim_{x \to \infty} \frac{f(x)}{g(x)} = 0\), then \(f(x) \leq g(x)\) from some point, so by comparison test from that point onwards
         \begin{align*}
             \int_a^\infty g(x) \D x \text{ convergent } \implies \int_a^\infty f(x) \D x \text{ convergent} 
         \end{align*}
-        Likewise, if $\lim_{x \to \infty} \frac{f(x)}{g(x)} = \infty$, then $f(x) \geq g(x)$ from some point, so by comparison test from that point onwards
+        Likewise, if \(\lim_{x \to \infty} \frac{f(x)}{g(x)} = \infty\), then \(f(x) \geq g(x)\) from some point, so by comparison test from that point onwards
         \begin{align*}
             \int_a^\infty g(x) \D x \text{ divergent } \implies \int_a^\infty f(x) \D x \text{ divergent }
         \end{align*}
@@ -2296,32 +2296,32 @@
     
     \begin{example*}
         \begin{itemize}
-            \item Consider again $e^{-x^2}$. We have $\lim_{x \to \infty} \frac{e^{-x^2}}{e^{-x}} = 0$, and $\int_0^\infty e^{-x} \D x = 1 < \infty$, so applying the remark gives $\int_0^\infty e^{-x^2} \D x < \infty$.
-            \item Consider $\int_1^\infty \frac x{x^4+1} \D x$. We have
+            \item Consider again \(e^{-x^2}\). We have \(\lim_{x \to \infty} \frac{e^{-x^2}}{e^{-x}} = 0\), and \(\int_0^\infty e^{-x} \D x = 1 < \infty\), so applying the remark gives \(\int_0^\infty e^{-x^2} \D x < \infty\).
+            \item Consider \(\int_1^\infty \frac x{x^4+1} \D x\). We have
             \begin{align*}
                 \lim_{x \to \infty} \frac{\frac{x}{x^4+1}}{\frac 1 {x^3}} = 1
             \end{align*}
-            so, by the ratio test, since $\int_1^\infty \frac 1 {x^3} \D x < \infty$, we know $\int_1^\infty \frac{x}{x^4+1} \D x < \infty$.
+            so, by the ratio test, since \(\int_1^\infty \frac 1 {x^3} \D x < \infty\), we know \(\int_1^\infty \frac{x}{x^4+1} \D x < \infty\).
         \end{itemize}
     \end{example*}
     
     Indeed, on sheet 4 we will see that the root test and Dirichlet test also have natural generalisations to integrals. The integral test can also be nicely thought of in the context of this chapter.
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
     \begin{definition}[Improper integrals with an isolated singularity]
-        Let $f: (a, b] \to \RR$ be integrable on $[a + \delta, b]$ for any $0 < \delta \leq b-a$. Set 
+        Let \(f: (a, b] \to \RR\) be integrable on \([a + \delta, b]\) for any \(0 < \delta \leq b-a\). Set 
         \begin{align*}
             F: (0, b-a] &\to \RR
             \delta &\mapsto \int_{a+\delta}^b f(x) \D x
         \end{align*}
-        Then, we say $\int_a^b f(x) \D x$ exists/converges if $\lim_{\delta \to 0} F(\delta)$ exists and is finite, and we say
+        Then, we say \(\int_a^b f(x) \D x\) exists/converges if \(\lim_{\delta \to 0} F(\delta)\) exists and is finite, and we say
         \begin{align*}
             \int_a^b f(x) \D x = \lim_{\delta \to 0} F(\delta)
         \end{align*}
-        Otherwise, we say $\int_a^b f(x) \D x$ does not exist/does not converge.
+        Otherwise, we say \(\int_a^b f(x) \D x\) does not exist/does not converge.
 
-        If $f: [B, b] \setminus \{a\}$ is such that $\int_B^a f(x) \D x = l_1$ and $\int_a^b f(x) \D x = l_2$, then we say $\int_B^b f(x) \D x$ exists, and we set
+        If \(f: [B, b] \setminus \{a\}\) is such that \(\int_B^a f(x) \D x = l_1\) and \(\int_a^b f(x) \D x = l_2\), then we say \(\int_B^b f(x) \D x\) exists, and we set
         \begin{align*}
             \int_B^b f(x) \D x = l_1 + l_2 = \lim_{\delta_1 \to 0} \int_B^{a-\delta_1} f(x) \D x + \lim_{\delta_2 \to 0} \int_{a+\delta_2}^b f(x) \D x
         \end{align*}
@@ -2332,36 +2332,36 @@
         \begin{align*}
             \lim_{\delta \to 0} \left(\int_B^{a-\delta} f(x) \D x + \int_{a+\delta}^b f(x) \D x\right)
         \end{align*}
-        as exemplified by, for example, $f(x) = \frac 1 x$.
+        as exemplified by, for example, \(f(x) = \frac 1 x\).
     \end{remark*}
     
     \begin{example*}
-        $\int_0^1 \frac 1 {x^p} \D x$ converges if and only if $p < 1$. Observe
+        \(\int_0^1 \frac 1 {x^p} \D x\) converges if and only if \(p < 1\). Observe
         \begin{align*}
             \int_\delta^1 \frac 1 {x^p} \D x = \begin{cases}
                 [\log x]_{\delta}^1 = -\log \delta & p = 1 \\
                 \left[\frac{x^{1-p}}{1-p}\right]_\delta^1 = \frac{\delta^{1-p}-1}{p-1} & p \neq 1
             \end{cases}
         \end{align*}
-        Taking $\delta \to 0$, we see that the limit does not exist if $p \geq 1$, but exists otherwise.
+        Taking \(\delta \to 0\), we see that the limit does not exist if \(p \geq 1\), but exists otherwise.
     \end{example*}
     
     Indeed, it turns out that these two types of improper integral are in some strong sense equivalent -- with a suitable substitution, we can always interconvert between them.
 
     \begin{lemma}
-        Let $f: (a, b] \to \RR$ be Riemann integrable on $[a+\delta, b]$ for any $\delta \in (0, b-a)$. Choose $\phi: [c, \infty) \to (a, b]$ a $C^1$ strictly decreasing bijection with $\phi(c) = b$, $\lim_{t \to \infty}\phi(t) = a$. Then
+        Let \(f: (a, b] \to \RR\) be Riemann integrable on \([a+\delta, b]\) for any \(\delta \in (0, b-a)\). Choose \(\phi: [c, \infty) \to (a, b]\) a \(C^1\) strictly decreasing bijection with \(\phi(c) = b\), \(\lim_{t \to \infty}\phi(t) = a\). Then
         \begin{align*}
             \int_a^b f(x) \D x \text{ exists } \iff \int_c^\infty f(\phi(t))(-\phi'(t)) \D t \text{ exists}
         \end{align*}
     \end{lemma}
     
-    \lecture{Lecture $n$}
+    \lecture{Lecture \(n\)}
 
     \section{?}
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
-    \lecture{Lecture $n+2$}
+    \lecture{Lecture \(n+2\)}
 
     \subsection{Exponential and logarithm}
     
@@ -2369,11 +2369,11 @@
     \begin{align*}
         R_{N,0}(x) = e^x - \sum_{n=1}^{N-1} \sum_{x^n}{n!} = e^\xi \frac{x^N}{N!}
     \end{align*}
-    For fixed $x \in \RR$, $|R_{N,0}(x)| \leq |e^\xi| \frac{|x|^N}{N!}$, which goes to 0 as $N \to \infty$. We conclude that, for $x \in \RR$,
+    For fixed \(x \in \RR\), \(|R_{N,0}(x)| \leq |e^\xi| \frac{|x|^N}{N!}\), which goes to 0 as \(N \to \infty\). We conclude that, for \(x \in \RR\),
     \begin{align*}
         e^x = \sum_{n=0}^\infty \frac{x^n}{n!}
     \end{align*}
-    Now, extending to $\CC$, we will make this definitional.
+    Now, extending to \(\CC\), we will make this definitional.
 
     \begin{definition}[Exponential function]
         The \emph{exponential function} is given by
@@ -2384,11 +2384,11 @@
     \end{definition}
     
     \begin{lemma}
-        $\exp$ is smooth with $\exp' = \exp$, $\exp(0) = 1$, and $\exp(a+b) = \exp a \exp b$.
+        \(\exp\) is smooth with \(\exp' = \exp\), \(\exp(0) = 1\), and \(\exp(a+b) = \exp a \exp b\).
     \end{lemma}
     
     \begin{proof}
-        The first two properties are clear. For the third part, let $f(z) = \exp(a+b-z)\exp(z)$, which is smooth and hence differentiable, with $f'(z) = 0$ after applying $\exp = \exp'$. Hence $f$ is constant, so $f(a) = f(0)$ -- we have
+        The first two properties are clear. For the third part, let \(f(z) = \exp(a+b-z)\exp(z)\), which is smooth and hence differentiable, with \(f'(z) = 0\) after applying \(\exp = \exp'\). Hence \(f\) is constant, so \(f(a) = f(0)\) -- we have
         \begin{align*}
             \exp(a+b-a)\exp(a) = \exp(a+b)
         \end{align*}
@@ -2396,26 +2396,26 @@
     \end{proof}
     
     \begin{lemma}
-        Restrict $\exp$ to $\RR \to \RR$. Then
+        Restrict \(\exp\) to \(\RR \to \RR\). Then
         \begin{itemize}
-            \item $\exp(x) > 0$ for all $x \in \RR$;
-            \item $\exp$ is strictly increasing;
-            \item $\exp(x) \to \infty$ as $x \to \infty$, $\exp(x) \to 0$ as $x \to -\infty$;
-            \item $\exp: \RR \to (0, \infty)$ is a bijection.
+            \item \(\exp(x) > 0\) for all \(x \in \RR\);
+            \item \(\exp\) is strictly increasing;
+            \item \(\exp(x) \to \infty\) as \(x \to \infty\), \(\exp(x) \to 0\) as \(x \to -\infty\);
+            \item \(\exp: \RR \to (0, \infty)\) is a bijection.
         \end{itemize}
     \end{lemma}
     
     \begin{proof}
-        For $x < 0$, every term in the series is positive, so $\exp(x) \geq 1 + x$, so that $\exp(x) > 0$ and $\lim_{x \to \infty}\exp(x) = \infty$. On the other hand, for $x < 0$, $\exp(-x)\exp(x) = 1$, so $\exp(-x) > 0 \implies \exp(x) > 0$, and furthermore $\exp(-x) \to \infty \implies \exp(x) \to 0^+$.
+        For \(x < 0\), every term in the series is positive, so \(\exp(x) \geq 1 + x\), so that \(\exp(x) > 0\) and \(\lim_{x \to \infty}\exp(x) = \infty\). On the other hand, for \(x < 0\), \(\exp(-x)\exp(x) = 1\), so \(\exp(-x) > 0 \implies \exp(x) > 0\), and furthermore \(\exp(-x) \to \infty \implies \exp(x) \to 0^+\).
 
-        That $\exp$ is strictly increasing follows from $\exp' = \exp > 0$. From this it follows that $\exp$ is injective. Now, given
+        That \(\exp\) is strictly increasing follows from \(\exp' = \exp > 0\). From this it follows that \(\exp\) is injective. Now, given
         \begin{align*}
             y \in (0, \infty) = \left(\lim_{x \to -\infty}\exp(x), \lim_{x \to \infty}\exp(x)\right)
         \end{align*}
-        Hence, there are reals $a$, $b$ with $\exp(a) < y < \exp(b)$. Applying the intermediate value theorem gives surjectivity and hence bijectivity as required.               
+        Hence, there are reals \(a\), \(b\) with \(\exp(a) < y < \exp(b)\). Applying the intermediate value theorem gives surjectivity and hence bijectivity as required.               
     \end{proof}
     
-    Since $\exp: \RR \to (0, \infty)$ is bijective, it must have an inverse.
+    Since \(\exp: \RR \to (0, \infty)\) is bijective, it must have an inverse.
     
     \begin{definition}[Natural logarithm]
         The \emph{natural logarithm} is defined as follows:
@@ -2428,20 +2428,20 @@
     \begin{lemma}
         We have that
         \begin{itemize}
-            \item $\log$ is smooth and monotone, with $\log'(y) = \frac 1 y$ and $\log y = \int_1^y \frac 1 t \D t$;
-            \item $\log(yz) = \log y + \log z$;
-            \item $\log(y) \to \infty$ as $y \to \infty$, $\log(y) \to -\infty$ as $y \to 0^+$.
+            \item \(\log\) is smooth and monotone, with \(\log'(y) = \frac 1 y\) and \(\log y = \int_1^y \frac 1 t \D t\);
+            \item \(\log(yz) = \log y + \log z\);
+            \item \(\log(y) \to \infty\) as \(y \to \infty\), \(\log(y) \to -\infty\) as \(y \to 0^+\).
         \end{itemize}
     \end{lemma}
     
     \begin{proof}
-        The inverse function theorem says that $\log$ is smooth, monotone and has derivative $\frac 1 y$. Then, FTC gives
+        The inverse function theorem says that \(\log\) is smooth, monotone and has derivative \(\frac 1 y\). Then, FTC gives
         \begin{align*}
             \int_1^y \frac 1 t \D t = \log y - \log 1 = \log y
         \end{align*}
-        since $\log y = \log(\exp(0)) = 0$.        
+        since \(\log y = \log(\exp(0)) = 0\).        
 
-        For the second part, we have $\log(yz) = \log(\exp(u)\exp(v)) = \log(\exp(u+v)) = u + v = \log(y) + \log(z)$.
+        For the second part, we have \(\log(yz) = \log(\exp(u)\exp(v)) = \log(\exp(u+v)) = u + v = \log(y) + \log(z)\).
 
         The last part is left as an exercise.
     \end{proof}
@@ -2452,30 +2452,30 @@
             \log(1+y) &= \int_1^y \frac 1{1+t} \D t \\
             &= \int_1^y \sum_{n=0}^\infty (-1)^n t^n \D t
         \end{align*}
-        if $|t| \leq |y| < 1$. Since the inner power series has radius of convergence 1, and we are already restricted to $|t| < 1$, we can integrate term-by-term to obtain
+        if \(|t| \leq |y| < 1\). Since the inner power series has radius of convergence 1, and we are already restricted to \(|t| < 1\), we can integrate term-by-term to obtain
         \begin{align*}
             \log(1+y) = \sum_{n=0}^\infty \frac{(-1)^n}{n+1}y^{n+1}
         \end{align*}
-        By taking limits as $y \to 1$, we can show
+        By taking limits as \(y \to 1\), we can show
         \begin{align*}
             \sum_{n=0}^\infty \frac{(-1)^{n-1}}{n} = \log 2
         \end{align*}
     \end{remark*}
     
     \begin{definition}[Exponentiation]
-        Let $x > 0$, then we define
+        Let \(x > 0\), then we define
         \begin{align*}
             x^\alpha := \exp(\alpha \log x)
         \end{align*}
     \end{definition}
     
     \begin{lemma}
-        Let $x$, $y > 0$, $\alpha$, $\beta \in \RR$. Then
+        Let \(x\), \(y > 0\), \(\alpha\), \(\beta \in \RR\). Then
         \begin{itemize}
-            \item $(xy)^\alpha = x^\alpha y^\alpha$;
-            \item $x^{\alpha+\beta} = x^\alpha x^\beta$;
-            \item $(x^\beta)^\alpha = x^{\alpha\beta}$;
-            \item $x^1 = x$, $x^0 = 1$;
+            \item \((xy)^\alpha = x^\alpha y^\alpha\);
+            \item \(x^{\alpha+\beta} = x^\alpha x^\beta\);
+            \item \((x^\beta)^\alpha = x^{\alpha\beta}\);
+            \item \(x^1 = x\), \(x^0 = 1\);
         \end{itemize}
     \end{lemma}
     
@@ -2489,7 +2489,7 @@
     \end{proof}
     
     \begin{corollary}
-        Let $p$, $q \in \ZZ$, then
+        Let \(p\), \(q \in \ZZ\), then
         \begin{align*}
             x^p = \underbrace{x \cdots x}_{p \text{ times}}
         \end{align*}
@@ -2497,38 +2497,38 @@
         \begin{align*}
             x^{\frac p q} = \sqrt[q]{x^p}
         \end{align*}
-        so our new definition matches our normal definition of exponentiation on exponents in $\QQ$.
+        so our new definition matches our normal definition of exponentiation on exponents in \(\QQ\).
     \end{corollary}
     
     \begin{corollary}
-        We have, for $x \in \QQ$, $\exp(x) = e^x$ in the normal sense.
+        We have, for \(x \in \QQ\), \(\exp(x) = e^x\) in the normal sense.
     \end{corollary}
     
     \begin{proposition}[Growth of exponentials, powers and logarithms]
-        Let $r \in \RR^+$. Then
+        Let \(r \in \RR^+\). Then
         \begin{itemize}
-            \item $x^r e^{-x} \to 0$ as $x \to \infty$;
-            \item $x^{-r} \log x \to 0$ as $x \to \infty$;
-            \item $x^r \log x \to 0^+$ as $x \to 0^+$.
+            \item \(x^r e^{-x} \to 0\) as \(x \to \infty\);
+            \item \(x^{-r} \log x \to 0\) as \(x \to \infty\);
+            \item \(x^r \log x \to 0^+\) as \(x \to 0^+\).
         \end{itemize}
     \end{proposition}
     
     \begin{proof}
         \begin{itemize}
-            \item Let $x > 1$, then
+            \item Let \(x > 1\), then
             \begin{align*}
                 e^x = \sum_{k\geq 0} \frac{x^k}{k!} > \frac{x^n}{n!}
             \end{align*}
-            for any $n$. Choose $n-r \geq 1$, then $0 \leq x^r e^{-x} \leq \frac{n!}{x^{n-r}} \leq \frac{n!}{x}$, so $x^r e^{-x} \to 0$ by sandwich.         
-            \item We have $t^{-1} \leq t^{\eps-1}$ for $t \geq 1$ and any $\eps > 0$. Pick $\eps \in (0, r)$, so
+            for any \(n\). Choose \(n-r \geq 1\), then \(0 \leq x^r e^{-x} \leq \frac{n!}{x^{n-r}} \leq \frac{n!}{x}\), so \(x^r e^{-x} \to 0\) by sandwich.         
+            \item We have \(t^{-1} \leq t^{\eps-1}\) for \(t \geq 1\) and any \(\eps > 0\). Pick \(\eps \in (0, r)\), so
             \begin{align*}
                 0 \leq x^{-r} \log x &= x^-r \int_1^x \frac 1 t \D t  
                 \\
                 &\leq x^{-r} \int_1^x t^{\eps-1} \D t \\
                 &\leq \frac 1 \eps x^{\eps-r}
             \end{align*}
-            which goes to 0 as $x \to \infty$, giving the result.
-            \item By putting $x = e^{-t}$ and $y=rt$, we have
+            which goes to 0 as \(x \to \infty\), giving the result.
+            \item By putting \(x = e^{-t}\) and \(y=rt\), we have
             \begin{align*}
                 \lim_{x \to 0^+} x^r \log x = -\lim_{t \to \infty} -t e^{-tr} = -\lim_{y \to \infty} \frac 1 r ye^{-y} = 0
             \end{align*}
@@ -2548,13 +2548,13 @@
     \end{definition}
     
     \begin{lemma}
-        We have, for $w$, $z \in \CC$,
+        We have, for \(w\), \(z \in \CC\),
         \begin{itemize}
-            \item $\cos(0) = 1$, $\sin(0) = 0$;
-            \item $\cos'(z) = \sin z$, $\sin'(z) = \cos(z)$;
-            \item $\sin(z+w) = \sin z \cos w + \cos z \sin w$;
-            \item $\cos(z+w) = \cos z \cos w - \sin z \sin w$;
-            \item $\sin^2 z + \cos^2 z = 1$
+            \item \(\cos(0) = 1\), \(\sin(0) = 0\);
+            \item \(\cos'(z) = \sin z\), \(\sin'(z) = \cos(z)\);
+            \item \(\sin(z+w) = \sin z \cos w + \cos z \sin w\);
+            \item \(\cos(z+w) = \cos z \cos w - \sin z \sin w\);
+            \item \(\sin^2 z + \cos^2 z = 1\)
         \end{itemize}
     \end{lemma}
     
@@ -2564,46 +2564,46 @@
             \cos z \cos w - \sin z \sin w &= \frac 1 4 \left(e^{iz}+e^{-iz}\right)\left(e^{iw}+e^{-iw}\right) + \frac 1 4 \left(e^{iz}-e^{-iz}\right)\left(e^{iw}-e^{-iw}\right) \\
             &= \frac{1}{2} \left(e^{iz}e^{iw}+e^{-iz}e^{-iw}\right) = \cos(z+w)
         \end{align*}
-        Taking now $z=-w$, we can obtain the last result.
+        Taking now \(z=-w\), we can obtain the last result.
     \end{proof}
     
-    On the reals, the identity $\sin^2 x + \cos^2 x = 1$ gives that $|\sin x|$, $|\cos x| \leq 1$.
+    On the reals, the identity \(\sin^2 x + \cos^2 x = 1\) gives that \(|\sin x|\), \(|\cos x| \leq 1\).
 
     \begin{proposition}[Periodicity of sine and cosine]
-        There exists a smallest positive value $\omega$ such that $\cos(\omega/2) = 0$, $\sin(\omega/2)=1$, and
+        There exists a smallest positive value \(\omega\) such that \(\cos(\omega/2) = 0\), \(\sin(\omega/2)=1\), and
         \begin{itemize}
-            \item $\sin$ and $\cos$ are periodic with period $2\omega$;
-            \item $\sin(x+\omega) = -\sin x$, $\cos(x+\omega)=-\cos x$;
-            \item $\sin(x+\omega/2) = \cos x$, $\cos(x+\omega/2)=-\sin x$.
+            \item \(\sin\) and \(\cos\) are periodic with period \(2\omega\);
+            \item \(\sin(x+\omega) = -\sin x\), \(\cos(x+\omega)=-\cos x\);
+            \item \(\sin(x+\omega/2) = \cos x\), \(\cos(x+\omega/2)=-\sin x\).
         \end{itemize}
     \end{proposition}
     
     \begin{proof}
-        Once we have shown the very first part of the statement, the rest of the results follow by the addition theorems. Let us look at $x \in (0, 2)$, and note that
+        Once we have shown the very first part of the statement, the rest of the results follow by the addition theorems. Let us look at \(x \in (0, 2)\), and note that
         \begin{align*}
             \cos(x) = -\sin(x) = -\left[\left(x-\frac{x^3}{3!}\right)+\left(\frac{x^5}{5!}-\frac{x^7}{7!}\right)+\dots\right]
         \end{align*}
-        since we can rearrange and combine terms by the absolute convergence of the series. Examining each of these parirs of terms, they are all positive, so we conclude $\cos$ is decreasing on this interval (and $\sin$ is positive).
+        since we can rearrange and combine terms by the absolute convergence of the series. Examining each of these parirs of terms, they are all positive, so we conclude \(\cos\) is decreasing on this interval (and \(\sin\) is positive).
 
-        It follows $\cos$ has at most one root in this interval by Rolle's theorem. To see the existence of the root, observe
+        It follows \(\cos\) has at most one root in this interval by Rolle's theorem. To see the existence of the root, observe
         \begin{align*}
             \cos(\sqrt 2) &= \underbrace{\left(1 - \frac{(\sqrt 2)^2}{2!}\right)}_{>0} + \underbrace{\left(\frac{(\sqrt 2)^4}{4!} - \frac{(\sqrt 2)^6}{6!}\right)}_{>0} + \dots \\
             \cos(\sqrt 3) &= \underbrace{1 - \frac{(\sqrt 3)^2}{2!} + \frac{(\sqrt 3)^4}{4!}}_{-\frac 1 8} - \underbrace{\left(\frac{(\sqrt 3)^6}{6!}-\frac{(\sqrt 3)^8}{8!}\right)}_{>0} - \dots
         \end{align*}
-        so that $\cos(\sqrt 2) > 0$ and $\cos(\sqrt 3) < 0$. Hence, by the intermediate value theorem, we have $\omega \in (\sqrt 2, \sqrt 3) \subset (0, 2)$ with $\cos(\omega/2) = 0$. Hence, $\sin(\omega/2) = \pm 1$, but we know $\sin$ is positive, so $\sin(\omega/2)=1$.
+        so that \(\cos(\sqrt 2) > 0\) and \(\cos(\sqrt 3) < 0\). Hence, by the intermediate value theorem, we have \(\omega \in (\sqrt 2, \sqrt 3) \subset (0, 2)\) with \(\cos(\omega/2) = 0\). Hence, \(\sin(\omega/2) = \pm 1\), but we know \(\sin\) is positive, so \(\sin(\omega/2)=1\).
     \end{proof}
     
     \begin{corollary}
         We have that
         \begin{itemize}
-            \item For $x \in \RR$, the function $e^{ix}$ is periodic with period $2\omega$;
-            \item $e^{i\omega} = -1$;
-            \item $e^{i\omega/2} = i$.
+            \item For \(x \in \RR\), the function \(e^{ix}\) is periodic with period \(2\omega\);
+            \item \(e^{i\omega} = -1\);
+            \item \(e^{i\omega/2} = i\).
         \end{itemize}
     \end{corollary}
     
     \begin{lemma}
-        $2\omega$ is the perimeter of the unit circle, $S^1 = \{|z| = 1: z \in \CC\}$.
+        \(2\omega\) is the perimeter of the unit circle, \(S^1 = \{|z| = 1: z \in \CC\}\).
     \end{lemma}
     
     \begin{proof}
@@ -2614,14 +2614,14 @@
         \end{align*}
         is a bijection. We show
         \begin{itemize}
-            \item \emph{$\gamma$ is surjective.} Take $z \in \S^1$ with $z=a+ib$, $a$, $b \in \RR$, and $a^2+b^2=1$. Hence $|a|$, $|b| \leq 1$, so, since $c: [0, \omega] \to [-1, 1]$ is continuous and strictly monotone, we have $t \in [0, \omega]$ with $c(t) = a$.
+            \item \emph{\(\gamma\) is surjective.} Take \(z \in \S^1\) with \(z=a+ib\), \(a\), \(b \in \RR\), and \(a^2+b^2=1\). Hence \(|a|\), \(|b| \leq 1\), so, since \(c: [0, \omega] \to [-1, 1]\) is continuous and strictly monotone, we have \(t \in [0, \omega]\) with \(c(t) = a\).
             
-            Furthermore, since $s: [0, \omega] \to [-1, 1]$ is non-negative, we have $\sin(t) = \sqrt{1-a^2}$. Hence, if $b=\sqrt{1-a^2}$, we get the result as desired. On the other hand, if $b=-\sqrt{1-a^2}$, we can make $b=-\sin(t)=\sin(2\omega-t)$, and use that $\cos(t)=\cos(2\omega-t)$. This gives the result.
+            Furthermore, since \(s: [0, \omega] \to [-1, 1]\) is non-negative, we have \(\sin(t) = \sqrt{1-a^2}\). Hence, if \(b=\sqrt{1-a^2}\), we get the result as desired. On the other hand, if \(b=-\sqrt{1-a^2}\), we can make \(b=-\sin(t)=\sin(2\omega-t)\), and use that \(\cos(t)=\cos(2\omega-t)\). This gives the result.
 
-            \item \emph{$\gamma$ is injective.} Since $e^{it}$ has least positive period $2\omega$ by definition, it is injective on $[0, 2\omega)$.
+            \item \emph{\(\gamma\) is injective.} Since \(e^{it}\) has least positive period \(2\omega\) by definition, it is injective on \([0, 2\omega)\).
         \end{itemize}
 
-        Now, the perimeter of $S^1$ is the length of $\gamma$, i.e.
+        Now, the perimeter of \(S^1\) is the length of \(\gamma\), i.e.
         \begin{align*}
             \int_0^{2\omega} |\gamma'(t)| \D t &= \int_0^{2\omega} |ie^{it}| \D t \\
             &= \int_0^{2\omega} \D t = 2\omega
@@ -2639,11 +2639,11 @@
     \end{definition}
     
     \begin{lemma}
-        We have, for $z \in \CC$,
+        We have, for \(z \in \CC\),
         \begin{itemize}
-            \item $\cosh'z=\sinh z$;
-            \item $\sinh'z=\cosh z$;
-            \item $\cosh^2z-\sinh^2z=1$.
+            \item \(\cosh'z=\sinh z\);
+            \item \(\sinh'z=\cosh z\);
+            \item \(\cosh^2z-\sinh^2z=1\).
         \end{itemize}
     \end{lemma}
     

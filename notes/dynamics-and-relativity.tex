@@ -16,8 +16,8 @@
 
     \begin{itemize}
         \item Three dimensional space endowed with a \emph{Cartesian reference frame} -- an origin and some axes.
-        \item Time can be labelled in an arbitrary reference frame, by a real number $t$.
-        \item A \emph{point particle} is an idealised object that is completely determined by its position at a given point in time, $\vec x(t)$. Its velocity
+        \item Time can be labelled in an arbitrary reference frame, by a real number \(t\).
+        \item A \emph{point particle} is an idealised object that is completely determined by its position at a given point in time, \(\vec x(t)\). Its velocity
         \begin{align*}
             \vec v = \frac{d \vec x}{dt} = \left(\frac{dx_1}{dt}, \frac{dx_2}{dt}, \frac{dx_3}{dt}\right) = \dot{\vec x}
         \end{align*}
@@ -26,7 +26,7 @@
             \vec a = \frac{d^2\vec x}{dt^2} = \left(\frac{d^2x_1}{dt^2}, \frac{d^2x_2}{dt^2}, \frac{d^2x_3}{dt^2}\right) = \ddot{\vec x} = \dot{\vec v}
         \end{align*}
     \end{itemize}
-    The above is \emph{not} sufficient to write down Newton's equations. Consider, for example, a free particle not experiencing any forces. The position of this particle is $\vec x(t)$, but which frame should we use?
+    The above is \emph{not} sufficient to write down Newton's equations. Consider, for example, a free particle not experiencing any forces. The position of this particle is \(\vec x(t)\), but which frame should we use?
     
     \subsection{Law of inertia}
 
@@ -43,7 +43,7 @@
         \begin{align*}
             \vec x' = R \vec x + \vec k + \vec w t
         \end{align*}
-        where $R \in O(3)$, $\vec k$ is a translation vector, and $\vec w$ is a \emph{boost}. In particular, $\ddot{\vec x'} = \ddot{\vec x}$.
+        where \(R \in O(3)\), \(\vec k\) is a translation vector, and \(\vec w\) is a \emph{boost}. In particular, \(\ddot{\vec x'} = \ddot{\vec x}\).
     \end{definition}
 
     \begin{proposition}[Galilean relativity principle]
@@ -67,30 +67,30 @@
         \begin{align*}
             \dot{\vec p} = \vec F
         \end{align*}
-        where the \emph{momentum} $\vec p$ is $m \vec v$, where $m$ is the \emph{inertial mass}, mass for short.
+        where the \emph{momentum} \(\vec p\) is \(m \vec v\), where \(m\) is the \emph{inertial mass}, mass for short.
     \end{theorem}
     
     The mass is an additional property for point particles that we take to be constant in time unless otherwise stated.
 
-    The force $\vec F$ depends on the ongoing interactions, but it can only depend (axiomatically) on $\vec x$ and $\vec v$. This implies that Newton's second law is a second-order differential equation, and that, given $\vec x$ and $\vec v$ at $t=0$ for all particles, Newton's equations will uniquely determine $\vec x(t)$ for all future times.
+    The force \(\vec F\) depends on the ongoing interactions, but it can only depend (axiomatically) on \(\vec x\) and \(\vec v\). This implies that Newton's second law is a second-order differential equation, and that, given \(\vec x\) and \(\vec v\) at \(t=0\) for all particles, Newton's equations will uniquely determine \(\vec x(t)\) for all future times.
 
     We should note that Newtonian mechanics has been superseded by quantum mechanics (for small things) and general relativity (for fast things).
     
     \subsection{Conservative forces}
 
     \begin{definition}
-        A force $\vec F$ is called \emph{conservative} if it can be written
+        A force \(\vec F\) is called \emph{conservative} if it can be written
         \begin{align*}
             \vec F = -\grad V
         \end{align*}
-        for some \emph{potential} scalar field $V$.
+        for some \emph{potential} scalar field \(V\).
     \end{definition}
     
-    For example, \emph{gravitational potential energy} of a particle of mass $m$ at $\vec x$ due to a particle of mass $M$ at $\vec x_0$ is
+    For example, \emph{gravitational potential energy} of a particle of mass \(m\) at \(\vec x\) due to a particle of mass \(M\) at \(\vec x_0\) is
     \begin{align*}
         V = -\frac{GMm}{|\vec x - \vec x_0|}
     \end{align*}
-    where $G$ is a constant.
+    where \(G\) is a constant.
 
     Now we can get the force by taking the gradient. First,
     \begin{align*}
@@ -112,24 +112,24 @@
     \begin{align*}
         \vec F = -\grad V = -GMm \frac{\vec x - \vec x_0}{|\vec x - \vec x_0|^3}
     \end{align*}
-    Let $\vec r = \vec x - \vec x_0$, then
+    Let \(\vec r = \vec x - \vec x_0\), then
     \begin{align*}
         \vec F = -\frac{GMm}{r^2} \hvec r
     \end{align*}
-    where $\hvec r = \vec r / r$ is a unit vector. Thus we have the inverse square law of gravity.
+    where \(\hvec r = \vec r / r\) is a unit vector. Thus we have the inverse square law of gravity.
 
     \begin{remark*}
-        Sometimes we write $V = m\varphi$ where $\varphi = -\frac{GM}{|\vec x - \vec x_0|}$ is called the \emph{gravitational potential}. 
+        Sometimes we write \(V = m\varphi\) where \(\varphi = -\frac{GM}{|\vec x - \vec x_0|}\) is called the \emph{gravitational potential}. 
     \end{remark*}
     
-    Near the surface of the Earth, take $\vec x_0 = \vec 0$, and $|\vec x| = R + z$, where $R$ is the radius of the Earth and $z \ll R$. Then
+    Near the surface of the Earth, take \(\vec x_0 = \vec 0\), and \(|\vec x| = R + z\), where \(R\) is the radius of the Earth and \(z \ll R\). Then
 
     \begin{align*}
         \varphi(R + z) &= -\frac{GM}{R+z} \\
         &= -\frac{GM}{R}\left[1-\frac{z}{R}+\frac{z^2}{R^2} + \cdots\right] \\
         &\approx \text{constant} + \underbrace{\frac{GM}{R^2}}_{g}z
     \end{align*}
-    where $g \approx 9.8 \si{ms^{-2}}$. Since the constant will drop out when taking the gradient, we ignore it, so we have
+    where \(g \approx 9.8 \si{ms^{-2}}\). Since the constant will drop out when taking the gradient, we ignore it, so we have
     \begin{align*}
         \varphi &\approx gz \\
         \implies \vec F &= -mg \hvec z
@@ -139,13 +139,13 @@
     \begin{align*}
         m \ddot{\vec x} = m \vec g
     \end{align*}
-    where $\vec g = (0, 0, -g)$. We need only consider the $z$ component, which gives
+    where \(\vec g = (0, 0, -g)\). We need only consider the \(z\) component, which gives
     \begin{align*}
         m \ddot z &= -mg \\
         \implies \dot z &= v_0 - gt \\
         \implies z &= z_0 + v_0t - \frac{1}{2}gt^2
     \end{align*}
-    for an initial height $z_0$ and an initial velocity $v_0$.
+    for an initial height \(z_0\) and an initial velocity \(v_0\).
 
     \subsection{Energy}
 
@@ -174,19 +174,19 @@
             E = \frac{1}{2}mv^2 - \frac{GMm}{R}
         \end{align*}
 
-        To not fall back, the object must reach $|\vec x| \to \infty$ without the velocity going to zero. We have
+        To not fall back, the object must reach \(|\vec x| \to \infty\) without the velocity going to zero. We have
         \begin{align*}
             E_\infty = \frac{1}{2}mv_{\infty}^2 - 0
         \end{align*}
-        By conservation of energy, $E = E_\infty$, and so to make $v_\infty > 0$ we must have
+        By conservation of energy, \(E = E_\infty\), and so to make \(v_\infty > 0\) we must have
         \begin{align*}
             \frac{1}{2}mv^2 &> \frac{GMm}{R} \\
             \implies v^2 &> \frac{2GM}{R} \\
             \implies v &> \sqrt{\frac{2GM}{R}}
         \end{align*}
-        which is approximately $10\si{kms^{-1}}$ for Earth.
+        which is approximately \(10\si{kms^{-1}}\) for Earth.
         
-        Note: the mass cancels in $v_\text{escape}$ because the \emph{gravitational mass} (from the inverse square law) is equal to the \emph{inertial mass} (that appears in Newton's second).
+        Note: the mass cancels in \(v_\text{escape}\) because the \emph{gravitational mass} (from the inverse square law) is equal to the \emph{inertial mass} (that appears in Newton's second).
     \end{example}
     
     \begin{proposition}[Principle of equivalence]
@@ -197,10 +197,10 @@
         This is not known and there is no reason why we would expect this to be true -- whether there may be tiny deviations between the masses is under investigation.
     \end{remark*}
     
-    It's useful to write energy as $E = T + V$, where $T$ is the \emph{kinetic energy} $\frac{1}{2}m \dot{\vec x} \cdot \dot{\vec x}$. 
+    It's useful to write energy as \(E = T + V\), where \(T\) is the \emph{kinetic energy} \(\frac{1}{2}m \dot{\vec x} \cdot \dot{\vec x}\). 
 
     \begin{definition}
-        The \emph{work done} by a force as a particle moves along a trajectory $C$ is given by
+        The \emph{work done} by a force as a particle moves along a trajectory \(C\) is given by
         \begin{align*}
             W = \int_C \vec F \cdot d \vec x
         \end{align*}
@@ -236,7 +236,7 @@
 
     Forces that depend on velocity typically don't have a conserved energy (e.g. friction), but the Lorentz force is an exception.
 
-    Electromagnetic fields $\vec E$ and $\vec B$ exert the following force on a particle with \emph{charge} $q$:
+    Electromagnetic fields \(\vec E\) and \(\vec B\) exert the following force on a particle with \emph{charge} \(q\):
     \begin{align*}
         \V F = q\left[\V E(\V x) + \dot{\V x} \times \V B(\V x)\right]
     \end{align*}
@@ -246,7 +246,7 @@
         \V E = -\grad \varphi
     \end{align*}
     
-    for some electric potential $\varphi$. We claim the conserved energy is $E = \frac{1}{2}m \dot{\V x}^2 + q\varphi(\V x)$. We have
+    for some electric potential \(\varphi\). We claim the conserved energy is \(E = \frac{1}{2}m \dot{\V x}^2 + q\varphi(\V x)\). We have
 
     \begin{align*}
         \frac{dE}{dt} &= m \ddot{\V x} \cdot \dot{\V x} + q \grad \varphi \cdot \dot{\V x} \\
@@ -257,11 +257,11 @@
     
     The velocity-dependent force is orthogonal to the trajectory of the particle, so it does no work on the particle and energy is still conserved.
 
-    Electric forces are similar to gravitational ones: the potential $\varphi$ at $\V x$ due to another particle of charge $Q$ at $\V x_0$ is
+    Electric forces are similar to gravitational ones: the potential \(\varphi\) at \(\V x\) due to another particle of charge \(Q\) at \(\V x_0\) is
     \begin{align*}
         \varphi = \frac{Q}{4 \pi \eps_0} \cdot \frac{1}{|\V x - \V x_0|}
     \end{align*}
-    where $\eps_0$ is the \emph{permittivity of free space}. Just like with gravity, this leads to an inverse square law called the \emph{Coulomb force}.
+    where \(\eps_0\) is the \emph{permittivity of free space}. Just like with gravity, this leads to an inverse square law called the \emph{Coulomb force}.
 
     An important distinction from gravity is that charges can be positive or negative, but mass is always positive. 
 
@@ -269,22 +269,22 @@
     \begin{align*}
         m \ddot{\V x} = q \dot{\V x} \times \vec B
     \end{align*}
-    This is a vector differential equation, which we can solve by writing out in Cartesian coordinates (we will also take $\V B$ constant and in the $z$-direction, $\V B = (0, 0, B) = B \hvec z$). The equations become
+    This is a vector differential equation, which we can solve by writing out in Cartesian coordinates (we will also take \(\V B\) constant and in the \(z\)-direction, \(\V B = (0, 0, B) = B \hvec z\)). The equations become
     \begin{align*}
         m \ddot x &= q \dot y B && (1)\\
         m \ddot y &= -q \dot x B && (2)\\
         m \ddot z &= 0 && (3)
     \end{align*}
     
-    The first thing we can observe is that $z = z_0 + v_zt$, that is, the particle moves with constant velocity in the $z$-direction. Now, differentiating (1) and subbing into (2), we have
+    The first thing we can observe is that \(z = z_0 + v_zt\), that is, the particle moves with constant velocity in the \(z\)-direction. Now, differentiating (1) and subbing into (2), we have
     \begin{align*}
         m \dddot{x} = q \ddot{y} B = -\frac{q^2\dot x B^2}{m}
     \end{align*}
-    and this is a second-order equation for $\dot x$ -- we have
+    and this is a second-order equation for \(\dot x\) -- we have
     \begin{align*}
         \dot x = \tilde{A} \sin(\omega t + \varphi)
     \end{align*}
-    where $\omega = \frac{qB}{m}$ is the \emph{cyclotron frequency}. Hence
+    where \(\omega = \frac{qB}{m}\) is the \emph{cyclotron frequency}. Hence
     \begin{align*}
         \Aboxed{x = x_0 + A \cos(\omega t + \varphi)}
     \end{align*}
@@ -294,15 +294,15 @@
         \implies \Aboxed{y &= y_0 - A \sin(\omega t + \varphi)}
     \end{align*}
     
-    Hence, the particle is moving in a circle in the $x$-$y$ plane while moving with a constant velocity in the $z$-direction.
+    Hence, the particle is moving in a circle in the \(x\)-\(y\) plane while moving with a constant velocity in the \(z\)-direction.
 
     DIAGRAM.
 
-    Alternatively, let $\xi = x + iy$, and write $(1) + i(2)$. We have
+    Alternatively, let \(\xi = x + iy\), and write \((1) + i(2)\). We have
     \begin{align*}
         m \ddot \xi = -iqB \dot \xi
     \end{align*}
-    which we can solve nice and easily: $\xi = c_1 e^{-i\omega t} + c_2$. Let's put
+    which we can solve nice and easily: \(\xi = c_1 e^{-i\omega t} + c_2\). Let's put
     \begin{align*}
         c_1 &= Ae^{-i\varphi} \\
         c_2 &= x_0 + iy_0
@@ -319,15 +319,15 @@
     \begin{align*}
         m \ddot x = F_x
     \end{align*}
-    If $F_x$ is independent of velocity, it can always be written as the gradient of a potential by setting
+    If \(F_x\) is independent of velocity, it can always be written as the gradient of a potential by setting
     \begin{align*}
         V(x) = -\int_{x_0}^x F_x(x') dx'
     \end{align*}
-    for an arbitrary reference point $x_0$. So the energy
+    for an arbitrary reference point \(x_0\). So the energy
     \begin{align*}
         E = \frac{1}{2} m \dot x^2 + V(x)
     \end{align*}
-    is always conserved. Then, putting $E = $ constant, we get a first-order differential equation for $x(t)$ which is easily integrated: we have
+    is always conserved. Then, putting \(E = \) constant, we get a first-order differential equation for \(x(t)\) which is easily integrated: we have
     \begin{align*}
         \dot x &= \pm \sqrt{\frac 2 m \left(E - V(x)\right)} \\
         \implies t - t_0 &= \pm \int_{x_0}^x \frac{1}{\sqrt{\frac 2 m \left(E - V(x')\right)}} \D x'
@@ -340,37 +340,37 @@
     \begin{align*}
         E = \frac{1}{2} \dot{x} \cdot \dot{x} + V(x)
     \end{align*}
-    we conclude that $E > V(x)$. This restricts the range of where the particle can possibly be. The points where $E = V(x)$ and $\dot{x} = \vec 0$ are called \emph{turning points}, since the particle typically `bounces off' the potential barrier at these points. Depending on whether there are potential barriers on all sides or just a few, the motion of the particle may be \emph{bounded} or \emph{unbounded}.
+    we conclude that \(E > V(x)\). This restricts the range of where the particle can possibly be. The points where \(E = V(x)\) and \(\dot{x} = \vec 0\) are called \emph{turning points}, since the particle typically `bounces off' the potential barrier at these points. Depending on whether there are potential barriers on all sides or just a few, the motion of the particle may be \emph{bounded} or \emph{unbounded}.
 
-    A special case occurs when $E = V(x)$ and $V'(x) = 0$. These are called \emph{equilibrium points} -- the particle can sit indefinitely. At such a point, we have
+    A special case occurs when \(E = V(x)\) and \(V'(x) = 0\). These are called \emph{equilibrium points} -- the particle can sit indefinitely. At such a point, we have
     \begin{align*}
         m \ddot x &= -V'(x) = 0 \\
         E &= \frac 1 2 m \dot x^2 + V(x) \\
         \implies \Aboxed{\dot x &= \ddot x = 0}
     \end{align*}
     
-    Furthermore, motion near an equilibrium point is especially simple. Let $x_0$ be an equilibrium point, and Taylor expand:
+    Furthermore, motion near an equilibrium point is especially simple. Let \(x_0\) be an equilibrium point, and Taylor expand:
     \begin{align*}
         V(x) \approx V(x_0) + \underbrace{(x-x_0)V'(x_0)}_0 + \frac{1}{2}(x-x_0)^2 V''(x_0)
     \end{align*}
-    If $V''(x_0) > 0$, this is the potential for a harmonic oscillator. We end up with
+    If \(V''(x_0) > 0\), this is the potential for a harmonic oscillator. We end up with
     \begin{align*}
         m \ddot x &= -V'(x) = -(x-x_0)V''(x_0) \\
         \implies x &= x_0 + A \cos(\omega t + \varphi)
     \end{align*}
-    so we have oscillations with frequency $\omega = (V''(x_0)/m)^{1/2}$.
+    so we have oscillations with frequency \(\omega = (V''(x_0)/m)^{1/2}\).
 
-    If the amplitude $A$ is small enough, then we can neglect higher-order terms in the Taylor expansion and the solution is self-consistent (we won't end up getting too far from the potential well). This is called a \emph{stable equilibrium point}.
+    If the amplitude \(A\) is small enough, then we can neglect higher-order terms in the Taylor expansion and the solution is self-consistent (we won't end up getting too far from the potential well). This is called a \emph{stable equilibrium point}.
 
-    If instead $V''(x_0) < 0$, we have an unstable equilibrium point:
+    If instead \(V''(x_0) < 0\), we have an unstable equilibrium point:
     \begin{align*}
         x = x_0 + Ae^{\gamma t} + Be^{-\gamma t}
     \end{align*}
-    where $\gamma = \sqrt{-V''(x_0)/m}$. If $A \neq 0$, then we will move far from the equilibrium point and so the Taylor expansion will break down.
+    where \(\gamma = \sqrt{-V''(x_0)/m}\). If \(A \neq 0\), then we will move far from the equilibrium point and so the Taylor expansion will break down.
 
-    The case where $A=0$ corresponds to the particle having just enough energy to reach a maximum of the potential somewhere else.
+    The case where \(A=0\) corresponds to the particle having just enough energy to reach a maximum of the potential somewhere else.
 
-    If $V''(x_0) = 0$, we simply go to a higher order of the Taylor expansion.
+    If \(V''(x_0) = 0\), we simply go to a higher order of the Taylor expansion.
     
     \subsection{Dimensional analysis}
 
@@ -382,12 +382,12 @@
     \begin{align*}
         \frac{d^2\theta}{dt^2} = -\frac g l \sin \theta
     \end{align*}
-    and let us attempt to find the period of $\theta$. First, we substitute $t = \sqrt{\frac l g} \tau$. We then have
+    and let us attempt to find the period of \(\theta\). First, we substitute \(t = \sqrt{\frac l g} \tau\). We then have
     \begin{align*}
         \theta(t(\tau)) = F(\tau) \\
         \frac{d^2F}{d\tau^2} = -\sin F
     \end{align*}
-    Clearly now the solution must be some function $f(\tau)$ -- it cannot possibly depend on $g$ and $l$. We conclude that the period $\Delta \tau$ satisfies
+    Clearly now the solution must be some function \(f(\tau)\) -- it cannot possibly depend on \(g\) and \(l\). We conclude that the period \(\Delta \tau\) satisfies
     \begin{align*}
         F(\tau) &= F(\tau + \Delta \tau) \\
         \implies F\left(\sqrt{\frac g l} t\right) &= F\left(\sqrt{\frac g l} t + \Delta \tau\right) \\
@@ -398,9 +398,9 @@
 
     In general the necessary rescaling may not be obvious. By endowing our constants and variables with so-called `dimensions', we can perform this sort of analysis much more easily. Our basic dimensions are
     \begin{itemize}
-        \item \emph{length}, $L$;
-        \item \emph{time}, $T$;
-        \item and \emph{mass}, $M$.
+        \item \emph{length}, \(L\);
+        \item \emph{time}, \(T\);
+        \item and \emph{mass}, \(M\).
     \end{itemize}
     Then we have results such as
     \begin{align*}
@@ -420,7 +420,7 @@
     \end{corollary}
     
     \begin{example*}[Pendulum revisited]
-        We have $[g] = \si{LT^{-2}}$, $[l] = \si{L}$, $[m] = \si{M}$, $[\theta_0] = 1$. We want the period $T$ to have $[T] = \si{T}$. So we let
+        We have \([g] = \si{LT^{-2}}\), \([l] = \si{L}\), \([m] = \si{M}\), \([\theta_0] = 1\). We want the period \(T\) to have \([T] = \si{T}\). So we let
         \begin{align*}
             T &= f(\theta_0) g^A l^B m^C \\
             \implies [T] &= [g]^A [l]^B [m]^C \\
@@ -432,10 +432,10 @@
             0 &= A + B \\
             1 &= 2A
         \end{align*}
-        which gives $T = f(\theta_0) \sqrt{\frac l g}$, as before.
+        which gives \(T = f(\theta_0) \sqrt{\frac l g}\), as before.
     \end{example*}
     
-    If $A$, $B$, $C$ are not all fixed, we have a dimensionless ratio and it will be necessary to apply some more thought.
+    If \(A\), \(B\), \(C\) are not all fixed, we have a dimensionless ratio and it will be necessary to apply some more thought.
 
     \lecture{Lecture 5 -- 31/01/26}
 
@@ -453,10 +453,10 @@
     Let us consider two important cases:
 
     \begin{enumerate}[label=\protect\circled{\arabic*}]
-        \item \emph{Linear drag}. We have $\V F = -k_1 \V v$.
-        \item \emph{Quadratic drag}. We have $\V F = -k_2 |\V v| \V v$.
+        \item \emph{Linear drag}. We have \(\V F = -k_1 \V v\).
+        \item \emph{Quadratic drag}. We have \(\V F = -k_2 |\V v| \V v\).
     \end{enumerate}
-    where $k_1$ and $k_2$ are called \emph{coefficients of friction}.
+    where \(k_1\) and \(k_2\) are called \emph{coefficients of friction}.
 
     Quadratic drag is more intuitive since collisions per unit time and momentum lost in each collision are both proportional to the particle's velocity.
 
@@ -465,29 +465,29 @@
         [F] &= \si{MLT^{-2}} \\
         [k_2v^2] &= \si{ML^{-3}L^2L^2T^{-2}}
     \end{align*}
-    and these are equal, suggesting we have probably accounted for the main factors influencing $k_2$.
+    and these are equal, suggesting we have probably accounted for the main factors influencing \(k_2\).
 
-    What about linear drag? Linear drag depends on viscous effects -- the fact than an object drags the medium along with it as it moves and, as we move closer to the object, the velocity of the medium approaches $v$. It can then be shown that the momentum loss here is in fact linear in the velocity.
+    What about linear drag? Linear drag depends on viscous effects -- the fact than an object drags the medium along with it as it moves and, as we move closer to the object, the velocity of the medium approaches \(v\). It can then be shown that the momentum loss here is in fact linear in the velocity.
     
     \begin{example*}[Stokes' law]
         For a spherical object, we have linear drag, and the coefficient is
         \begin{align*}
             k_1 = 6\pi \eta L
         \end{align*}
-        where $\eta$ is the viscosity.
+        where \(\eta\) is the viscosity.
     \end{example*}
     
-    In general, we see both linear and quadratic drag, and which one dominates depends on the ratios of certain quantities. For example, taking $k_1$ equal to the value for Stokes' law above, we have
+    In general, we see both linear and quadratic drag, and which one dominates depends on the ratios of certain quantities. For example, taking \(k_1\) equal to the value for Stokes' law above, we have
     \begin{align*}
         \frac{F_\text{quad}}{F_\text{lin}} \sim \frac{\rho A v^2}{\eta L v} \sim \frac{\rho L v}{\eta} = R
     \end{align*}
-    and this $R$ is called the \emph{Reynolds number}.
+    and this \(R\) is called the \emph{Reynolds number}.
 
     We are also yet to come onto \emph{dry friction}, in other words the friction between two rigid bodies.
 
     \subsubsection{Terminal velocity}
 
-    Consider a particle falling under gravity with quadratic drag. For the $z$-component, we have
+    Consider a particle falling under gravity with quadratic drag. For the \(z\)-component, we have
     \begin{align*}
         m \frac{dv}{dt} = -mg+kv^2
     \end{align*}
@@ -498,7 +498,7 @@
     \end{align*}
     Unlike escape velocity, we still have a mass here, so heavier objects reach a larger terminal velocity.
 
-    We can solve this equation analytically, but we can ask simple questions like: on what timescale does the object reach its terminal velocity? Since this should only depend on mass, gravity and $k$, we can apply dimensional analysis:
+    We can solve this equation analytically, but we can ask simple questions like: on what timescale does the object reach its terminal velocity? Since this should only depend on mass, gravity and \(k\), we can apply dimensional analysis:
     \begin{align*}
         t &\propto m^A g^B k^C \\
         \implies \si{T} &= \si{M^AL^BT^{-2B}M^CL^{-C}} \\
@@ -512,11 +512,11 @@
     \begin{align*}
         t_0 = \sqrt{\frac{m}{kg}}
     \end{align*}
-    Hence, we know that $v$ as a function of time takes the form
+    Hence, we know that \(v\) as a function of time takes the form
     \begin{align*}
         v = v_\text{term} F\left(\frac t {t_0}\right)
     \end{align*}
-    and so $t_0$ is the timescale on which the object reaches its terminal velocity.    
+    and so \(t_0\) is the timescale on which the object reaches its terminal velocity.    
 
     We should also note that we can have terminal velocities arise from movement in the full 3 dimensions, giving the vector differential equation
     \begin{align*}
@@ -533,15 +533,15 @@
     \begin{align*}
         x = e^{-\alpha t}\left(A_+ e^{i\Omega t} + A_- e^{-i\Omega t}\right)
     \end{align*}
-    where $\Omega = \Re\left(\sqrt{\omega_0^2-\alpha^2}\right)$. We have three cases:
+    where \(\Omega = \Re\left(\sqrt{\omega_0^2-\alpha^2}\right)\). We have three cases:
     \begin{itemize}
-        \item \emph{$\omega_0^2 > \alpha^2$: Underdamping}. Here we have decaying oscillations
-        \item \emph{$\omega_0^2 < \alpha^2$: Underdamping}. Here we have exponential decay.
-        \item \emph{$\omega_0^2 = \alpha^2$: Critical damping}. Here we have a repeated root and instead get $x = (A + Bt)e^{-\alpha t}$.
+        \item \emph{\(\omega_0^2 > \alpha^2\): Underdamping}. Here we have decaying oscillations
+        \item \emph{\(\omega_0^2 < \alpha^2\): Underdamping}. Here we have exponential decay.
+        \item \emph{\(\omega_0^2 = \alpha^2\): Critical damping}. Here we have a repeated root and instead get \(x = (A + Bt)e^{-\alpha t}\).
     \end{itemize}
     
     \begin{remark*}
-        $x$ and $\ddot x$ are invariant under \emph{time reversal}, $t \to -t$. But $\dot x$ is not. As far as we know, all laws of nature are invariant under \emph{CPT}, or charge-parity-time, symmetry, i.e. taking $q \to -q$, $\V x \to -\V x$ and $t \to -t$. But friction forces are odd under time reversal (and lack charge to compensate), so they are not fundamental.
+        \(x\) and \(\ddot x\) are invariant under \emph{time reversal}, \(t \to -t\). But \(\dot x\) is not. As far as we know, all laws of nature are invariant under \emph{CPT}, or charge-parity-time, symmetry, i.e. taking \(q \to -q\), \(\V x \to -\V x\) and \(t \to -t\). But friction forces are odd under time reversal (and lack charge to compensate), so they are not fundamental.
     \end{remark*}
     
     \section{Central forces}
@@ -569,44 +569,44 @@
     The most important fact about central forces is that they conserve angular momentum.
 
     \begin{definition}[Angular momentum]
-        The \emph{angular momentum} of an object with position vector $\V x$ is given by
+        The \emph{angular momentum} of an object with position vector \(\V x\) is given by
         \begin{align*}
             \V L = m \V x \times \dot{\V x} = \V x \times \V p
         \end{align*}
     \end{definition}
-    We can see that $\V L$ is orthogonal to both position and velocity/momentum. It is important to note that $\V L$ is defined relative to a particular origin -- here we are taking the origin at $\V x = \V 0$, the same point as the centre of the central potential.
+    We can see that \(\V L\) is orthogonal to both position and velocity/momentum. It is important to note that \(\V L\) is defined relative to a particular origin -- here we are taking the origin at \(\V x = \V 0\), the same point as the centre of the central potential.
 
-    For a general force $\V F$, we have
+    For a general force \(\V F\), we have
     \begin{align*}
         \frac{d\V L}{dt} &= m \frac{d}{dt}(\V x \times \dot{\V x}) \\
         &= m(\dot{\V x} \times \dot{\V x} + \V x \times \ddot{\V x}) \\
         &= \V x \times \V F = \V G
     \end{align*}
-    where $\V G$ is defined to be the \emph{torque}, the angular analogue of force.
+    where \(\V G\) is defined to be the \emph{torque}, the angular analogue of force.
     
     \begin{proposition}
         Central forces conserve angular momentum.
     \end{proposition}
     
     \begin{proof}
-        By \cref{central-forces}, we have $\V F \parallel \V x$ for such a force. Then $\frac{d\V L}{dt} = \V x \times \V F = \V 0$.
+        By \cref{central-forces}, we have \(\V F \parallel \V x\) for such a force. Then \(\frac{d\V L}{dt} = \V x \times \V F = \V 0\).
     \end{proof}
     
-    Furthermore, because $\V L$ is constant, and $\V x$ and $\dot{\V x}$ obey
+    Furthermore, because \(\V L\) is constant, and \(\V x\) and \(\dot{\V x}\) obey
     \begin{align*}
         \V L \cdot \V x &= 0 \\
         \V L \cdot \dot{\V x} &= 0
     \end{align*}
-    we can see that $\V x$ and $\dot{\V x}$ are constrained to a plane orthogonal to $\V L$. So, for such a force, we can reduce to a two-dimensional case.
+    we can see that \(\V x\) and \(\dot{\V x}\) are constrained to a plane orthogonal to \(\V L\). So, for such a force, we can reduce to a two-dimensional case.
     
     \subsection{Polar coordinates in the plane}
 
-    Consider coordinates $r$ and $\theta$, with
+    Consider coordinates \(r\) and \(\theta\), with
     \begin{align*}
         x &= r \cos \theta \\
         y &= r \sin \theta
     \end{align*}
-    We would like to define some basis vectors $\hvec r$ and $\hvec \theta$ in polar coordinates. In Cartesian coordinates, we have
+    We would like to define some basis vectors \(\hvec r\) and \(\hvec \theta\) in polar coordinates. In Cartesian coordinates, we have
     \begin{align*}
         \hvec r = \begin{pmatrix}
          \cos \theta \\
@@ -648,21 +648,21 @@
         r \ddot \theta + 2 \dot r \dot \theta &= 0 \\
         m\left(\ddot r - r \dot{\theta}^2\right) &= -\frac{dV}{dr}
     \end{align*}
-    Focusing for now on the easier-looking $\hvec \theta$ equation, we have
+    Focusing for now on the easier-looking \(\hvec \theta\) equation, we have
     \begin{align*}
         \frac 1 r \frac{d}{dt}(r^2 \dot \theta) &= 0 \\
         \implies l = r^2 \dot \theta &= \text{const.}
     \end{align*}
-    In fact, this quantity $l$ is (nearly) the magnitude of the angular momentum. We have
+    In fact, this quantity \(l\) is (nearly) the magnitude of the angular momentum. We have
     \begin{align*}
         \V L &= m \V x \times \dot{\V x} \\
         &= mr \hvec r \times (\dot r \hvec r + r \dot \theta \hvec \theta) \\
         &= mr^2 \dot \theta \hvec r \times \hvec \theta \\
         \implies |\V L| &= ml
     \end{align*}
-    but we often call $l$ the angular momentum regardless.
+    but we often call \(l\) the angular momentum regardless.
 
-    Now, let us focus on the $\hvec r$ equation. Applying the definition of $l$, we have
+    Now, let us focus on the \(\hvec r\) equation. Applying the definition of \(l\), we have
     \begin{align*}
         m(\ddot r - r\frac{l^2}{r^4}) &= -\frac{dV}{dr} \\
         \implies m \ddot r &= -\frac{dV_\text{eff}}{dr}
@@ -675,7 +675,7 @@
 
     \subsection{The effective potential}
 
-    Consider a potential $V(r) = -\frac k r$, such as in gravity. Let us now plot $V_\text{eff}$ against $r$ -- we have DIAGRAM. For small $r$, the $\frac{ml^2}{2r^2}$ term is most important, while for large $r$, the $-\frac k r$ dominates. This phenomenon is called the \emph{centrifugal barrier} -- conservation of angular momentum prevents the particle from getting too close to the origin. This is why orbits happen!
+    Consider a potential \(V(r) = -\frac k r\), such as in gravity. Let us now plot \(V_\text{eff}\) against \(r\) -- we have DIAGRAM. For small \(r\), the \(\frac{ml^2}{2r^2}\) term is most important, while for large \(r\), the \(-\frac k r\) dominates. This phenomenon is called the \emph{centrifugal barrier} -- conservation of angular momentum prevents the particle from getting too close to the origin. This is why orbits happen!
 
     We can also see the effective potential by looking at the conserved energy. We have
     \begin{align*}
@@ -688,17 +688,17 @@
 
     DIAGRAM: horizontal energy lines on the potential graph correspond to hyperbolic, parabolic, elliptical and circular orbits. Closest point for elliptical periapsis/perihelion, furthest apoapsis/aphelion.
 
-    Let us quickly consider a world in which the potential takes the form $-kr^{-n}$, $n > 2$. Then
+    Let us quickly consider a world in which the potential takes the form \(-kr^{-n}\), \(n > 2\). Then
 
     DIAGRAM: potential graph, inverted.
 
-    Now we don't have any stable orbits! In fact, gravity in $d$ spatial dimensions has $V \propto \frac 1 {r^{d-2}}$ -- so circular orbits are only stable in dimensions $d < 4$.
+    Now we don't have any stable orbits! In fact, gravity in \(d\) spatial dimensions has \(V \propto \frac 1 {r^{d-2}}\) -- so circular orbits are only stable in dimensions \(d < 4\).
 
     Let us now solve the equations of motion.
 
     \subsection{The orbit equation}
 
-    The cleanest solution starts with a clever change of variables, to $u = \frac 1 r$. We now want to find the orbit equation for $u(\theta)$ (instead of $r(t)$). We have
+    The cleanest solution starts with a clever change of variables, to \(u = \frac 1 r\). We now want to find the orbit equation for \(u(\theta)\) (instead of \(r(t)\)). We have
 
     \begin{align*}
         \frac{dr}{dt} &= \frac{dr}{d\theta} \dot \theta = \frac{dr}{d\theta} \frac{l}{r^2} = -l \frac{du}{d\theta} \\
@@ -710,23 +710,23 @@
         \implies -l^2mu^2 \frac{d^2u}{d\theta^2} - mu^3l^2 &= F\left(\frac 1 u\right) \\
         \implies \frac{d^2u}{d\theta^2} + u &= -\frac{1}{ml^2u^2}F\left(\frac 1 u\right)
     \end{align*}
-    Of course, in our case, we have $V = -\frac{km}{r}$ (where $k = GM$). This gives
+    Of course, in our case, we have \(V = -\frac{km}{r}\) (where \(k = GM\)). This gives
     \begin{align*}
         \frac{d^2u}{d\theta^2} + u = \frac{k}{l^2} \\
         \implies u = A \cos (\theta - \theta_0) + \frac{k}{l^2}
     \end{align*}
-    We can see that $u$ is largest at $\theta = \theta_0$, so $r$ is smallest there -- this is the periapsis. We will choose our axes such that $\theta_0 = 0$. We obtain
+    We can see that \(u\) is largest at \(\theta = \theta_0\), so \(r\) is smallest there -- this is the periapsis. We will choose our axes such that \(\theta_0 = 0\). We obtain
     \begin{align*}
         \Aboxed{r = \frac{r_0}{e \cos \theta + 1}}
     \end{align*}
-    where $r_0 = \frac{l^2}{k}$ is a fixed constant, and $e$ is a constant of integration. This is a conic section!
+    where \(r_0 = \frac{l^2}{k}\) is a fixed constant, and \(e\) is a constant of integration. This is a conic section!
 
-    The constant of integration $e$ is called the \emph{eccentricity}. We have that
+    The constant of integration \(e\) is called the \emph{eccentricity}. We have that
     \begin{itemize}
-        \item $e = 0$ is a \emph{circular orbit};
-        \item $0 < e < 1$ is a \emph{elliptical orbit};
-        \item $e = 1$ is a \emph{parabolic} orbit;
-        \item $e > 1$ is a \emph{hyperbolic} orbit.
+        \item \(e = 0\) is a \emph{circular orbit};
+        \item \(0 < e < 1\) is a \emph{elliptical orbit};
+        \item \(e = 1\) is a \emph{parabolic} orbit;
+        \item \(e > 1\) is a \emph{hyperbolic} orbit.
     \end{itemize}
     
     Let us consider the elliptical case. We have
@@ -735,16 +735,16 @@
         \implies (r_0-ex)^2 &= x^2 + y^2 \\
         \implies \frac{(x-x_c)^2}{a^2} + \frac{y^2}{b^2} &= 1
     \end{align*}
-    where $r=0$ is the \emph{focus}, not the centre. The semi-axes $a$ and $b$ are given in terms of $e$ and $r_0$, as is $x_c$.
+    where \(r=0\) is the \emph{focus}, not the centre. The semi-axes \(a\) and \(b\) are given in terms of \(e\) and \(r_0\), as is \(x_c\).
 
-    Planets in the solar system have small $e$. The most elliptical orbit, Mercury, has $e \approx 0.2$. Halley's comet, on the other hand, has $e \approx 0.97$.
+    Planets in the solar system have small \(e\). The most elliptical orbit, Mercury, has \(e \approx 0.2\). Halley's comet, on the other hand, has \(e \approx 0.97\).
 
     Let us consider the parabolic case. We have
     \begin{align*}
         r_0^2 - 2r_0x + x^2 &= x^2 + y^2 \\
         \implies r_0^2 - 2r_0x &= y^2
     \end{align*}
-    In the hyperbolic case, we see that $r \to \infty$ at $\cos \theta = -\frac 1 e$ (in particular, $\theta > \pi/2$, so with our convention of $\theta_0 = 0$, it goes to infinity on the left).
+    In the hyperbolic case, we see that \(r \to \infty\) at \(\cos \theta = -\frac 1 e\) (in particular, \(\theta > \pi/2\), so with our convention of \(\theta_0 = 0\), it goes to infinity on the left).
 
     One important result allows us to evaluate the energy of a particular solution. We have
     \begin{align*}
@@ -777,31 +777,31 @@
         which is constant by conservation of angular momentum.
     \end{proof}
     
-    \lecture{Lecture $n$}
+    \lecture{Lecture \(n\)}
 
     \begin{proposition}[Kepler's third law]
-        The orbital period $T$ is proportional to the radius $R^{3/2}$.
+        The orbital period \(T\) is proportional to the radius \(R^{3/2}\).
     \end{proposition}
     
     \begin{proof}[Dimensional analysis]
-        It's natural to first show this using dimensional analysis. The only parameter in Newton's equation is $k = GM$ (since $m$ cancels). Hence, the period is
+        It's natural to first show this using dimensional analysis. The only parameter in Newton's equation is \(k = GM\) (since \(m\) cancels). Hence, the period is
         \begin{align*}
             T &= cR^Ak^B \\
             \implies \si{L} &= \si{L^A L^{3B} T^{-2B}}
         \end{align*}
-        which gives $B = -\frac 1 2$, $A = \frac 3 2$, giving $T = c\frac{R^{3/2}}{k^{1/2}}$ as required.  
+        which gives \(B = -\frac 1 2\), \(A = \frac 3 2\), giving \(T = c\frac{R^{3/2}}{k^{1/2}}\) as required.  
         
-        We should remark that, since there is no canonical `radius' for an ellipse, this $c$ depends on whether we pick the semi-major axis, semi-minor axis or anything in between.
+        We should remark that, since there is no canonical `radius' for an ellipse, this \(c\) depends on whether we pick the semi-major axis, semi-minor axis or anything in between.
     \end{proof}
 
     \begin{proof}[Direct]
-        It is in fact true that K3 only holds for inverse-square law orbits, which is a subtlety we would not notice doing dimensional analysis. So let us derive the law directly. Recall that $\frac{dA}{dt} = \frac l 2$. Then
+        It is in fact true that K3 only holds for inverse-square law orbits, which is a subtlety we would not notice doing dimensional analysis. So let us derive the law directly. Recall that \(\frac{dA}{dt} = \frac l 2\). Then
         \begin{align*}
             T = \int_0^T \D t &= \int_0^A \frac 2 l \D A \\
             &= \frac{2\pi ab}{l} \\
             &= \frac{2\pi} l \cdot \frac{r_0^2}{(1-e^2)^{3/2}}
         \end{align*}
-        Let us recall also that $l^2 = kr_0$, so we have
+        Let us recall also that \(l^2 = kr_0\), so we have
         \begin{align*}
             T &= \frac{2\pi}{\sqrt{GM}}\left(\frac{r_0}{1-e^2}\right)^{3/2} \\
             &= \frac{2\pi}{\sqrt{GM}}R_\text{avg}^{3/2}
@@ -815,43 +815,43 @@
     
     \subsection{Repulsive potentials and scattering}
 
-    Given a central potential $V(r)$ satisfying $V \to 0$ as $r \to \infty$, one can perform \emph{scattering experiments} -- shoot a particle in from large $r$ and see how it flies out again. We have an important new concept.
+    Given a central potential \(V(r)\) satisfying \(V \to 0\) as \(r \to \infty\), one can perform \emph{scattering experiments} -- shoot a particle in from large \(r\) and see how it flies out again. We have an important new concept.
 
     \begin{definition}[Impact parameter]
-        The \emph{impact parameter} for a scattering experiment, $b$, is the closest the particle would have come to the target in the absence of forces.
+        The \emph{impact parameter} for a scattering experiment, \(b\), is the closest the particle would have come to the target in the absence of forces.
     \end{definition}
 
     \begin{proposition}
-        The impact parameter $b$ satisfies
+        The impact parameter \(b\) satisfies
         \begin{align*}
             l = bv
         \end{align*}
-        where $l$ is the (specific) angular momentum, and $v$ is the particle's initial velocity.        
+        where \(l\) is the (specific) angular momentum, and \(v\) is the particle's initial velocity.        
     \end{proposition}
     
     \begin{proof}
-        If we imagine the particle proceeding along the path without forces, it will have velocity $v$ at the point of closest approach, in particular $b$. At this point, the vector $\V v$ is orthogonal to the radial vector from the central object to the particle, so $|\V v \times \V r| = |\V v||\V r| = vb$. Since angular momentum is conserved, this must hold for the particle anywhere along its path, even when forces are applied.
+        If we imagine the particle proceeding along the path without forces, it will have velocity \(v\) at the point of closest approach, in particular \(b\). At this point, the vector \(\V v\) is orthogonal to the radial vector from the central object to the particle, so \(|\V v \times \V r| = |\V v||\V r| = vb\). Since angular momentum is conserved, this must hold for the particle anywhere along its path, even when forces are applied.
     \end{proof}
     
     Let us consider the Rutherford scattering experiment, which showed the existence of the nucleus. For two positively charged particles, we have a potential of
     \begin{align*}
         V = \frac{\kappa}{r}
     \end{align*}
-    where $\kappa$ is $\frac{qQ}{4\pi\eps_0}$ (this is just Coulomb's law).
+    where \(\kappa\) is \(\frac{qQ}{4\pi\eps_0}\) (this is just Coulomb's law).
 
-    We may reuse results from the Kepler problem, replacing all instances of $-km$ with $\kappa$. In particular, the orbits are still
+    We may reuse results from the Kepler problem, replacing all instances of \(-km\) with \(\kappa\). In particular, the orbits are still
     \begin{align*}
         r = \frac{r_0}{\tilde e \cos \theta - 1}
     \end{align*}
-    with $r_0 = \frac{l^2m}{\kappa}$ (note we've changed some signs but it is in fact the same equation). We want to find the scattering angle $\varphi$ between the particle's incoming and outgoing paths.
+    with \(r_0 = \frac{l^2m}{\kappa}\) (note we've changed some signs but it is in fact the same equation). We want to find the scattering angle \(\varphi\) between the particle's incoming and outgoing paths.
 
-    First, note the incoming and outgoing impact parameters are equal, since angular momentum is conserved and, at a given distance, the speed is the same by symmetry or the conservation of energy. Looking at the orbit equation, we can clearly see that $r$ goes to infinity when the denominator is zero, i.e. $\tilde e \cos \theta = 1$. Let us consider energies. We have
+    First, note the incoming and outgoing impact parameters are equal, since angular momentum is conserved and, at a given distance, the speed is the same by symmetry or the conservation of energy. Looking at the orbit equation, we can clearly see that \(r\) goes to infinity when the denominator is zero, i.e. \(\tilde e \cos \theta = 1\). Let us consider energies. We have
     \begin{align*}
         \frac 1 2 mv^2 &= \frac{\kappa^2}{2l^2m} \left(\tilde e^2 - 1\right) \\
         &= \frac{\kappa^2}{2m(bv)^2} \left(\frac{1}{\cos^2 \theta}-1\right) \\
         &= \frac{\kappa^2}{2mb^2v^2} \tan^2 \theta
     \end{align*}
-    Also, we can see (DIAGRAM!!!!) that the angle of deviation of the particle's path, $\varphi$, satisfies $\varphi + 2\theta = \pi$, so
+    Also, we can see (DIAGRAM!!!!) that the angle of deviation of the particle's path, \(\varphi\), satisfies \(\varphi + 2\theta = \pi\), so
     \begin{align*}
         \tan \theta = \tan \left(\frac{\pi-\varphi}2\right) = \frac 1 {\tan \frac{\varphi}2}
     \end{align*}
@@ -860,34 +860,34 @@
         \frac 1 2 mv^2 &= \frac{\kappa^2}{2mb^2v^2} \cdot \frac 1 {\tan^2 \frac{\varphi}2} \\
         \implies \varphi &= 2 \arctan \left(\frac \kappa{bmv^2}\right)
     \end{align*}
-    We see that a small $b$ leads to a large scattering angle, which allows scattering experiments to probe very small distances.
+    We see that a small \(b\) leads to a large scattering angle, which allows scattering experiments to probe very small distances.
 
     \section{Systems of particles}
     
-    Let us consider now systems of $N$ particles, labelled with $i = 1, \dots, n$. Each particle has position $\V x_i$, mass $m_i$ and momentum $\V p_i = m_i \dot{\V x}_i$. And of course each particle obeys Newton's law.
+    Let us consider now systems of \(N\) particles, labelled with \(i = 1, \dots, n\). Each particle has position \(\V x_i\), mass \(m_i\) and momentum \(\V p_i = m_i \dot{\V x}_i\). And of course each particle obeys Newton's law.
     
-    The force $\V F_i$ on the $i^\text{th}$ particle can be either \emph{external} or due to the other particles:
+    The force \(\V F_i\) on the \(i^\text{th}\) particle can be either \emph{external} or due to the other particles:
     \begin{align*}
         \V F_i = \V F_i^\text{ext} + \sum_{i \neq j} \V F_{ij}
     \end{align*}
-    where $\V F_{ij}$ is the force on the $i^\text{th}$ particle due to the $j^\text{th}$ particle.
+    where \(\V F_{ij}\) is the force on the \(i^\text{th}\) particle due to the \(j^\text{th}\) particle.
     
     We have the following important result:
     \begin{theorem}[Newton's third law]
-        For two particles with labels $i$, $j$,
+        For two particles with labels \(i\), \(j\),
         \begin{align*}
             \V F_{ij} = -\V F_{ji}
         \end{align*}
         -- or, in words, `every action has an equal and opposite reaction.'
     \end{theorem}
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
     
     Let us consider some consequence of Newton's third law for systems of particles.
 
     \subsection{Centre of mass}
 
-    The total mass is $M = \sum_{i=1}^N M_i$. We define the \emph{centre of mass}
+    The total mass is \(M = \sum_{i=1}^N M_i\). We define the \emph{centre of mass}
     \begin{align*}
         \V R = \frac 1 M \sum_{i=1}^N M_i \V x_i
     \end{align*}
@@ -897,16 +897,16 @@
         &= \sum_i m_i \dot{\V x}_i \\
         &= m \dot{\V R}
     \end{align*}
-    so the centre of mass behaves like a single particle of mass $M$. Furthermore,
+    so the centre of mass behaves like a single particle of mass \(M\). Furthermore,
     \begin{align*}
         \dot{\V P} &= \sum_i \dot{\V p}_i \\
         &= \sum_i (\V F_i^\text{ext} + \sum_{j \neq i}\V F_{ij}) \\
         &= \sum_i \V F_i^\text{ext} + \sum_{i < j}\V F_{ij} + \V F_{ji} \\
         &= \V F,\, \text{the total external force}
     \end{align*}
-    where the second term in the penultimate line is zero by Newton's third law. We conclude that $M \ddot{\V R} = \V F$, the total external force -- we are allowed to view composite objects like point particles. In particular, $\V F = \V 0 \implies \dot{\V p} = \V 0$ -- total momentum is conserved in the absence of external forces.
+    where the second term in the penultimate line is zero by Newton's third law. We conclude that \(M \ddot{\V R} = \V F\), the total external force -- we are allowed to view composite objects like point particles. In particular, \(\V F = \V 0 \implies \dot{\V p} = \V 0\) -- total momentum is conserved in the absence of external forces.
 
-    We would like to show the same result for total \emph{angular} momentum. Let us work relative to an arbitrary fixed point $\V a$: we have
+    We would like to show the same result for total \emph{angular} momentum. Let us work relative to an arbitrary fixed point \(\V a\): we have
     \begin{align*}
         \V L &= \sum_i (\V x_i - \V a) \times \V p_i \\
         \implies \dot{\V L} &= \sum_i (\V x_i - \V a) \times \dot{\V p}_i \\
@@ -918,31 +918,31 @@
     \begin{align*}
         \V G = \sum_i (\V x_i - \V a) \times \V F_i^\text{ext}
     \end{align*}
-    but the vanishing of the second term in $(\dagger)$ is not a given.  
+    but the vanishing of the second term in \((\dagger)\) is not a given.  
     
-    Let us consider the special case where the interaction forces come from a potential that depends on the distance between $\V x_i$ and $\V x_j$, that is
+    Let us consider the special case where the interaction forces come from a potential that depends on the distance between \(\V x_i\) and \(\V x_j\), that is
     \begin{align*}
         \V F_{ij} = -\grad_i V(|\V x_i - \V x_j|)
     \end{align*}
-    where we are taking the gradient with respect to $\V x_i$ This is
+    where we are taking the gradient with respect to \(\V x_i\) This is
     \begin{align*}
         \V F_{ij} = -V'(|\V x_i - \V x_j|)\frac{\V x_i - \V x_j}{|\V x_i - \V x_j|}
     \end{align*}
-    from which it clearly follows that $(\V x_i - \V x_j) \times \V F_{ij} = \vec 0$. In this case, $\dot{\V L} = \V G$.
+    from which it clearly follows that \((\V x_i - \V x_j) \times \V F_{ij} = \vec 0\). In this case, \(\dot{\V L} = \V G\).
 
-    In fact, there are tools that allow us to show that the second term in $(\dagger)$ will vanish for all known forces, but we cannot do this right now. In general, we conclude $\dot{\V L} = \V G$ -- an object cannot spin itself.
+    In fact, there are tools that allow us to show that the second term in \((\dagger)\) will vanish for all known forces, but we cannot do this right now. In general, we conclude \(\dot{\V L} = \V G\) -- an object cannot spin itself.
 
-    It's natural to take $\V a$, our `centre', to be the centre of mass. However, in general, the centre of mass will change as a function of time, which will require us to redo the derivation above. But all will be well.
+    It's natural to take \(\V a\), our `centre', to be the centre of mass. However, in general, the centre of mass will change as a function of time, which will require us to redo the derivation above. But all will be well.
 
     The total \emph{energy} also splits up nicely: we have
     \begin{align*}
         \V x_i = \V R + \V y_i
     \end{align*}
-    where $\V y_i$ is the position of the $i^\text{th}$ particle relative to the centre of mass. But, since
+    where \(\V y_i\) is the position of the \(i^\text{th}\) particle relative to the centre of mass. But, since
     \begin{align}
         M\V R = \sum_i m_i \V x_i
     \end{align}
-    we conclude that $\sum_i m_i \V y_i = \V 0$ for all time. Then
+    we conclude that \(\sum_i m_i \V y_i = \V 0\) for all time. Then
     \begin{align}
         T &= \sum_i \frac 1 2 m_i \dot{\V x}_i \cdot \dot{\V x}_i \\
         &= \sum_i \frac 1 2 m_i \left(\dot{\V R}^2 + \dot{\V y}_i^2 + 2 \dot{\V R} \dot \dot{\V y}_i\right) \\
@@ -955,7 +955,7 @@
         \V F_i^\text{ext} &= -\grad_i V_i(\V x_i) \\
         \V F_{ij} &= -\grad_i V_{ij}(|\V x_i - \V x_j|)
     \end{align*}
-    where $V_{ij} = V_{ji}$ to respect N3. We now have a conserved energy.
+    where \(V_{ij} = V_{ji}\) to respect N3. We now have a conserved energy.
 
     \begin{proposition}
         The total energy
@@ -976,13 +976,13 @@
         by Newton's second law.
     \end{proof}
     
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
     \subsection{The two-body problem}
 
     The two-body problem is an important special system with two particles and no external forces, for example, the Earth and Moon.
 
-    Let $\V r = \V x_1 - \V x_2$ be the relative separation of the particles. The centre of mass, $\V R$, is given by $M \V R = m_1 \V x_1 + m_2 \V x_2$, so that
+    Let \(\V r = \V x_1 - \V x_2\) be the relative separation of the particles. The centre of mass, \(\V R\), is given by \(M \V R = m_1 \V x_1 + m_2 \V x_2\), so that
     \begin{align*}
         \V x_1 &= \V R \underbrace{+ \frac{m_2} M \V r}_{\V y_1} \\
         \V x_2 &= \V R \underbrace{- \frac{m_1} M \V r}_{\V y_2}
@@ -992,7 +992,7 @@
         T &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 m_1 \frac{m_2^2}{M^2} \dot{\V r}^2 + \frac 1 2 m_2 \frac{m_1^2}{M^2} \dot{\V r}^2 \\ 
         &= \frac 1 2 M \dot{\V R}^2 + \frac 1 2 \mu \dot{\V r}^2
     \end{align*}
-    where $\mu = \frac{m_1m_2}{m_1 + m_2}$ is the \emph{reduced mass}. With no external forces, we know $\ddot{\V R} = 0$ -- the centre of mass doesn't accelerate. Let us consider
+    where \(\mu = \frac{m_1m_2}{m_1 + m_2}\) is the \emph{reduced mass}. With no external forces, we know \(\ddot{\V R} = 0\) -- the centre of mass doesn't accelerate. Let us consider
     \begin{align*}
         \mu \ddot{\V r} &= \mu(\ddot{\V x}_1 - \ddot{\V x}_2) \\
         &= \mu \left(\frac{\V F_{12}}{m_1} - \frac{\V F_{21}}{m_2}\right) \\
@@ -1000,17 +1000,17 @@
     \end{align*}
     so the relative separation behaves as in a single particle problem.
 
-    Furthermore, if $m_1 \gg m_2$, then $\mu = \frac{m_1m_2}{m_1 + 0} = m_2$, so the reduced mass is just the smaller mass -- the heavy object is essentially still and the light object orbits around it.
+    Furthermore, if \(m_1 \gg m_2\), then \(\mu = \frac{m_1m_2}{m_1 + 0} = m_2\), so the reduced mass is just the smaller mass -- the heavy object is essentially still and the light object orbits around it.
     
-    In general, for the number of particles $N > 2$, one cannot solve. However, if $N \gg 1$, we can use new models -- statistical physics.
+    In general, for the number of particles \(N > 2\), one cannot solve. However, if \(N \gg 1\), we can use new models -- statistical physics.
     
     \subsection{Rocket equation and variable mass}
 
-    The relation $\dot{\V P} = \V F^\text{ext}$ is very useful when the internal forces are very complicated. Consider, for example, a rocket that ejects fuel with speed $u$ relative to the rocket. The process of ejection may be complicated, but total momentum must obey
+    The relation \(\dot{\V P} = \V F^\text{ext}\) is very useful when the internal forces are very complicated. Consider, for example, a rocket that ejects fuel with speed \(u\) relative to the rocket. The process of ejection may be complicated, but total momentum must obey
     \begin{align*}
         \dot P = \frac{P(t + \delta t) - P(t)}{\delta t} = F^\text{ext}
     \end{align*}
-    where everything is now in the $z$-direction. We have
+    where everything is now in the \(z\)-direction. We have
     \begin{align*}
         P(t) &= m(t)v(t) \\[10pt]
         P(t + \delta t) &= m(t + \delta t)v(t + \delta t) + (m(t) - m(t + \delta t))(v(t) - u) \\
@@ -1021,24 +1021,24 @@
     \begin{align*}
         m \dot v = F^\text{ext} - u \dot m
     \end{align*}
-    and we can identify $u \dot m$ as the \emph{thrust force}.
+    and we can identify \(u \dot m\) as the \emph{thrust force}.
     
     \section{Rigid bodies}
     
-    We can think of rigid body problems as $N$-body problems in which the distances between the particles are fixed.
+    We can think of rigid body problems as \(N\)-body problems in which the distances between the particles are fixed.
 
     The only motions a rigid body can undergo are translations of the centre of mass, and rotations.
 
     \subsection{Angular velocity}
 
-    In three dimensions, rotations are described by a vector called the \emph{angular velocity} $\V \omega$.
+    In three dimensions, rotations are described by a vector called the \emph{angular velocity} \(\V \omega\).
 
     \begin{definition}
-        The \emph{angular velocity} $\V \omega$ of an object is such that
+        The \emph{angular velocity} \(\V \omega\) of an object is such that
         \begin{align*}
             \V \omega = \omega \hvec n
         \end{align*}
-        such that $\hvec n$ points along the axis of rotation and $\omega = |\V \omega| = \dot \theta$ is the angular speed. The direction that $\V \omega$ points is given by the right-hand grip rule, where the thumb gives the direction of $\V \omega$ and the fingers give the direction of rotation. 
+        such that \(\hvec n\) points along the axis of rotation and \(\omega = |\V \omega| = \dot \theta\) is the angular speed. The direction that \(\V \omega\) points is given by the right-hand grip rule, where the thumb gives the direction of \(\V \omega\) and the fingers give the direction of rotation. 
     \end{definition}
     
     \begin{proposition}
@@ -1050,7 +1050,7 @@
     
     DIAGRAM!!!
 
-    In addition to the angular velocity, a rotation must specify a point through which the axis of rotation passes -- in \cref{angular-velocity}, the choice of point is implicit in the choice of origin for the vector $\V x$.
+    In addition to the angular velocity, a rotation must specify a point through which the axis of rotation passes -- in \cref{angular-velocity}, the choice of point is implicit in the choice of origin for the vector \(\V x\).
 
     \lecture{Lecture 11 -- 17/02/26}
 
@@ -1062,7 +1062,7 @@
         &= \frac 1 2 m (\V \omega \times \V x) \cdot (\V \omega \times \V x) \\
         &= \frac 1 2 m \omega^2 d^2
     \end{align*}
-    where $d = |\hvec n \times \V x$ is the perpendicular distance of the particle from the axis of rotation.
+    where \(d = |\hvec n \times \V x\) is the perpendicular distance of the particle from the axis of rotation.
 
     In a rigid body, all particles rotate with the same angular velocity (in order to keep the distances between the particles fixed) -- we have
     \begin{align*}
@@ -1072,11 +1072,11 @@
     \end{align*}
 
     \begin{definition}[Moment of inertia]
-        The \emph{moment of inertia} of a rigid body with particles labelled by $i$ is
+        The \emph{moment of inertia} of a rigid body with particles labelled by \(i\) is
         \begin{align*}
             I = \sum_i m_i d_i^2
         \end{align*}
-        where $d_i = |\hvec n \times \V x_i|$ is the distance of the $i^\text{th}$ particle from the axis of rotation.        
+        where \(d_i = |\hvec n \times \V x_i|\) is the distance of the \(i^\text{th}\) particle from the axis of rotation.        
     \end{definition}
     
     The motivation of this definition is that the kinetic energy of a rigid body is then
@@ -1095,7 +1095,7 @@
         &= \sum_i m_i \V x_i \times (\V \omega \times \V x_i)
     \end{align*}
     
-    We will for now only consider the component of $\V L$ along the direction of $\V omega$, which is
+    We will for now only consider the component of \(\V L\) along the direction of \(\V omega\), which is
     \begin{align*}
         L &= \V L \cdot \hvec n \\
         &= \omega \sum_i m_i \left(\V x_i \times (\hvec n \times \V x_i)\right) \\
@@ -1103,20 +1103,20 @@
         &= \omega \sum_i m_i d_i^2 \\
         &= \omega I
     \end{align*}
-    and once again $I$ plays the role of mass.
+    and once again \(I\) plays the role of mass.
 
-    Recall that the application of a torque causes a change in the angular momentum -- $\dot{\V L} = \V G$. If the torque is also around the axis of rotation, then $\V G = G \hvec n$, and
+    Recall that the application of a torque causes a change in the angular momentum -- \(\dot{\V L} = \V G\). If the torque is also around the axis of rotation, then \(\V G = G \hvec n\), and
     \begin{align*}
         \V G &= \dot{\V L} \\
         \implies \hvec n \cdot \V G &= \hvec n \cdot \dot{\V L} \\
         \implies G &= I \dot{\omega}
     \end{align*}
     
-    Typically we calculate the moment of inertia by taking $N \to \infty$ and turning our sums into integrals -- we get
+    Typically we calculate the moment of inertia by taking \(N \to \infty\) and turning our sums into integrals -- we get
     \begin{align*}
         \sum_i m_i f(\V x_i) \approx \int d^3x \, \rho(\V x) f(\V x)
     \end{align*}
-    where $\rho(\V x)$ is the \emph{density}. We will also typically consider a uniform density, so $\rho(\V x) = \rho_0$ a constant. Hence we have
+    where \(\rho(\V x)\) is the \emph{density}. We will also typically consider a uniform density, so \(\rho(\V x) = \rho_0\) a constant. Hence we have
     \begin{align*}
         M &= \rho \int d^3x \, \\
         I &= \rho \int d^3x \, x_\perp^2
@@ -1139,7 +1139,7 @@
                 M &= \pi a^2 \rho \\
                 I &= 2\pi \rho \int_0^a r \D r \cdot r^2 = 2\pi \rho \frac{a^4}{4} = \frac 1 2 Ma^2
             \end{align*}
-            where the $r \D r$ appears from the Jacobian.
+            where the \(r \D r\) appears from the Jacobian.
             \item \emph{Sphere} Consider a sphere rotating about any axis through its centre. We have
             \begin{align*}
                 M &= \frac 4 3 \pi a^3 \rho \\
@@ -1152,7 +1152,7 @@
     \subsection{Perpendicular axis theorem}
     
     \begin{proposition}[Perpendicular axis theorem]
-        Consider any 2D body (a `lamina'), lying in the $x$-$y$ plane, and let $I_x$, $I_y$ and $I_z$ be moments of inertia around those axes. Then
+        Consider any 2D body (a `lamina'), lying in the \(x\)-\(y\) plane, and let \(I_x\), \(I_y\) and \(I_z\) be moments of inertia around those axes. Then
         \begin{align*}
             I_z = I_x + I_y
         \end{align*}
@@ -1171,21 +1171,21 @@
     \subsection{Parallel axis theorem}
     
     \begin{proposition}[Parallel axis theorem]
-        Consider an axis through a body's centre of mass and an axis parallel to the above, separated by a distance $h$. Let $I_\text{c.o.m.}$ and $I$ be the moments of inertia of rotation about these axes respectively. Then
+        Consider an axis through a body's centre of mass and an axis parallel to the above, separated by a distance \(h\). Let \(I_\text{c.o.m.}\) and \(I\) be the moments of inertia of rotation about these axes respectively. Then
         \begin{align*}
             I = I_\text{c.o.m.} + Mh^2
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Set $\V x_i = \V R + \V y_i$. Then, recalling a unit vector along the rotation axis is given by $\hvec n$,
+        Set \(\V x_i = \V R + \V y_i\). Then, recalling a unit vector along the rotation axis is given by \(\hvec n\),
         \begin{align*}
             I &= \sum_i m_i d^2 = \sum_i m_i (\hvec n \times \V x_i) \cdot (\hvec n \times \V x_i) \\
             &= \sum_i m_i (\hvec n \times (R + \V y_i)) \cdot (\hvec n \times (R + \V y_i)) \\
             &= \sum_i m_i (\hvec n \times \V R) \cdot (\hvec n \times \V R) + (\hvec n \times \V y_i) \cdot (\hvec n \times \V y_i) + 2(\hvec n \times \V R) \cdot (\hvec n \times \V y_i) \\
             &= Mh^2 + I_{\text{c.o.m.}} + 0
         \end{align*}
-        where the last term vanishes by linearity of the cross product and the fact that $\sum_i m_i \V y_i = 0$.        
+        where the last term vanishes by linearity of the cross product and the fact that \(\sum_i m_i \V y_i = 0\).        
     \end{proof}
     
     \begin{remark*}
@@ -1198,7 +1198,7 @@
     \begin{align*}
         \V x_i = \V R(t) + \V y_i
     \end{align*}
-    where $\V y_i$ satisfies $\dot{\V y}_i = \V \omega \times \V y_i$ -- in other words, each $\V y_i$ is rotating only with the same angular velocity.
+    where \(\V y_i\) satisfies \(\dot{\V y}_i = \V \omega \times \V y_i\) -- in other words, each \(\V y_i\) is rotating only with the same angular velocity.
     
     Let us now consider the energy. Starting from our previous result,
     \begin{align*}
@@ -1220,24 +1220,24 @@
         \implies V = \sum_i V_i &= g \sum_i m_iz_i \\
         &= gMR_z
     \end{align*}
-    where $R_z$ is the $z$-component of the centre of mass -- in other words, a rigid body behaves just like a point particle under the influence of gravity.
+    where \(R_z\) is the \(z\)-component of the centre of mass -- in other words, a rigid body behaves just like a point particle under the influence of gravity.
 
     \begin{example*}[Pendulum]
-        Consider a rigid rod pendulum with mass $M$ and length $L$, fixed at some point and free to rotate under the influence of gravity. DIAGRAM.
+        Consider a rigid rod pendulum with mass \(M\) and length \(L\), fixed at some point and free to rotate under the influence of gravity. DIAGRAM.
 
-        Our approach will be to find the energy and then set $\frac{dE}{dt} = 0$. We will find $E$ by two methods.
+        Our approach will be to find the energy and then set \(\frac{dE}{dt} = 0\). We will find \(E\) by two methods.
 
         \begin{enumerate}[label=\protect\circled{\arabic*}]
             \item Observe the pivot is fixed, so there is only rotational kinetic energy. Hence
             \begin{align*}
                 T = \frac 1 2 I\dot \theta^2
             \end{align*}
-            where $\dot \theta = \omega$ and $I = \frac 1 3 ML^2$.
-            \item Consider the centre of mass, which moves with velocity $\frac{l\dot \theta} 2$. Then
+            where \(\dot \theta = \omega\) and \(I = \frac 1 3 ML^2\).
+            \item Consider the centre of mass, which moves with velocity \(\frac{l\dot \theta} 2\). Then
             \begin{align*}
                 T = \frac 1 2 M\left(\frac{l\dot \theta}{2}\right)^2 + \frac 1 2 I_\text{c.o.m.}\dot \theta^2
             \end{align*}
-            where $I = \frac 1 3 ML^2 - M\left(\frac L 2\right)^2$ by the parallel axis theorem. Why is the angular velocity around the centre of mass the same as the centre of mass around the pivot? DIAGRAM!
+            where \(I = \frac 1 3 ML^2 - M\left(\frac L 2\right)^2\) by the parallel axis theorem. Why is the angular velocity around the centre of mass the same as the centre of mass around the pivot? DIAGRAM!
             We obtain
             \begin{align*}
                 T = \frac 1 2 I \dot \theta^2
@@ -1248,14 +1248,14 @@
         \begin{align*}
             E = \frac 1 2 I \dot \theta^2 + \frac 1 2 MgL \cos \theta
         \end{align*}
-        as can be seen by considering a diagram. Hence, after differentiating and cancelling $\dot \theta$, we obtain
+        as can be seen by considering a diagram. Hence, after differentiating and cancelling \(\dot \theta\), we obtain
         \begin{align*}
             I \ddot \theta = -\frac 1 2 MgL \sin \theta
         \end{align*}
     \end{example*}
     
     \begin{example*}[Rolling ball]
-        No-slip rolling occurs when the friction between the ball and the ground is so strong that the point of contact is not moving. DIAGRAM!!! In particular, we have the result $v = a\dot \theta$, where $a$ is the radius of the ball and $v$ its velocity.
+        No-slip rolling occurs when the friction between the ball and the ground is so strong that the point of contact is not moving. DIAGRAM!!! In particular, we have the result \(v = a\dot \theta\), where \(a\) is the radius of the ball and \(v\) its velocity.
 
         The kinetic energy is
         \begin{align*}
@@ -1264,11 +1264,11 @@
         \end{align*}
         Importantly, normally including friction in our models will lead to energy not being conserved -- but, because there is no relative velocity at the point of contact, no work is done by the friction, and so energy is conserved.
 
-        Let us, then, put our ball on a slope of incline $\alpha$ and have it roll down. We have
+        Let us, then, put our ball on a slope of incline \(\alpha\) and have it roll down. We have
         \begin{align*}
             E &= \frac 1 2 \left(M + \frac I {a^2}\right) \dot x^2 - Mgx \sin \alpha
         \end{align*}
-        so, once again differentiating and dividing by $\dot x$, we have
+        so, once again differentiating and dividing by \(\dot x\), we have
         \begin{align*}
             \left(M + \frac I{a^2}\right) \ddot x = Mg \sin \alpha
         \end{align*}
@@ -1281,7 +1281,7 @@
             &= -F\dot x + a F \dot \theta \\
             &= F(-\dot x + a \dot \theta) = 0
         \end{align*}
-        where $\dot x + a \dot \theta$ is exactly the fact that the ball is rolling.        
+        where \(\dot x + a \dot \theta\) is exactly the fact that the ball is rolling.        
     \end{example*}
 
     \subsection{Normal forces}
@@ -1292,13 +1292,13 @@
 
     The normal force is most important when we are on a slope.
 
-    DIAGRAM: slope $\theta$ above horizontal, block of mass $mg$, forces resolved, dry friction $F_F$ also labelled.
+    DIAGRAM: slope \(\theta\) above horizontal, block of mass \(mg\), forces resolved, dry friction \(F_F\) also labelled.
 
-    Normal force doesn't prevent the object from sliding -- that is due to the \emph{dry friction} force, $F_F$. Typically, once the object starts moving, we have
+    Normal force doesn't prevent the object from sliding -- that is due to the \emph{dry friction} force, \(F_F\). Typically, once the object starts moving, we have
     \begin{align*}
         F_F = \mu F_N
     \end{align*}
-    where $\mu$, the coefficient of friction, is a dimensionless constant. Note that the friction is independent of speed, but always opposes the direction of motion.
+    where \(\mu\), the coefficient of friction, is a dimensionless constant. Note that the friction is independent of speed, but always opposes the direction of motion.
 
     Normal forces also produce elastic bounces:
 
@@ -1306,21 +1306,21 @@
 
     The normal force on impact is in the direction normal to the surface at the point of impact. Let us show that the angle of incidence equals the angle of reflection.
 
-    First, assume that total energy is conserved -- the collision is \emph{elastic}. By momentum conservation (in the $y$-direction), we have
+    First, assume that total energy is conserved -- the collision is \emph{elastic}. By momentum conservation (in the \(y\)-direction), we have
     \begin{align*}
         p_y &= q_y + Q_y
     \end{align*}
-    where $Q_y$ is the momentum of the Earth/wall imparted by the collision. Conservation of energy (in the $y$-direction) gives
+    where \(Q_y\) is the momentum of the Earth/wall imparted by the collision. Conservation of energy (in the \(y\)-direction) gives
     \begin{align*}
         \frac{p_y^2}{2m} &= \frac{q_y^2}{2m} + \frac{Q_y^2}{2M} \\
         \implies \frac{(q_y+Q_y)^2}{2m} &= \frac{q_y^2}{2m} + \frac{Q_y^2}{2M}
     \end{align*}
-    If $M \gg m$, $\frac{Q_y^2}{2M} \ll \frac{Q_y^2}{2m}$, so we can drop the $\frac{Q_y^2}{2M}$. Hence
+    If \(M \gg m\), \(\frac{Q_y^2}{2M} \ll \frac{Q_y^2}{2m}\), so we can drop the \(\frac{Q_y^2}{2M}\). Hence
     \begin{align*}
         Q_y &= -2q_y \\
         \implies p_y = -q_y
     \end{align*}
-    so $\beta = \alpha$ as we expect.
+    so \(\beta = \alpha\) as we expect.
 
     \begin{remark*}
         This problem involves an almost instantaneous change in momentum -- this is called an \emph{impulse}.
@@ -1333,7 +1333,7 @@
     \subsection{Newton's equations in a rotating reference frame}
 
     \begin{theorem}[Newton's equations in a rotating reference frame]
-        In a reference frame with angular velocity $\V \omega$,
+        In a reference frame with angular velocity \(\V \omega\),
         \begin{align*}
             \left(\frac{d^2\V x}{dt^2}\right)_{S'} = \frac{\V F}m - \dot{\V \omega} \times \V x - 2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'} - \V \omega \times (\V \omega \times \V x)
         \end{align*}
@@ -1341,9 +1341,9 @@
     \end{theorem}
 
     \begin{proof}
-        Let us consider an inertial frame $S$ with Cartesian axes $\V e_1, \V e_2, \V e_3$, and a rotating frame $S'$ with axes $\V e_1'$, $\V e_2'$, $\V e_3'$. 
+        Let us consider an inertial frame \(S\) with Cartesian axes \(\V e_1, \V e_2, \V e_3\), and a rotating frame \(S'\) with axes \(\V e_1'\), \(\V e_2'\), \(\V e_3'\). 
 
-        From the perspective of the inertial frame, the $\V e_i'$ axes rotate with angular velocity $\V \omega$ -- that is,
+        From the perspective of the inertial frame, the \(\V e_i'\) axes rotate with angular velocity \(\V \omega\) -- that is,
         \begin{align*}
             \dot{\V e}_i' = \V \omega \times \V e_i'
         \end{align*}
@@ -1357,7 +1357,7 @@
             &= \left(\frac{d\V x}{dt}\right)_S' + \V \omega \times \V x \\
             \implies \left(\frac{d\V x}{dt}\right)_S &= \left(\frac{d\V x}{dt}\right)_S' + \V \omega \times \V x
         \end{align*}
-        where this notation indicates coordinate-wise differentiation in a given frame. This makes sense -- the difference, $\V \omega \times \V x$, is the relative velocity of the frames.
+        where this notation indicates coordinate-wise differentiation in a given frame. This makes sense -- the difference, \(\V \omega \times \V x\), is the relative velocity of the frames.
 
         Now for the acceleration!
         \begin{align*}
@@ -1370,9 +1370,9 @@
     
     We can see that the change to a rotating reference frame manifests itself as three so-called \emph{fictitious forces}:
     \begin{itemize}
-        \item $-\dot{\V \omega} \times \V x$ -- the \emph{Euler force};
-        \item $-2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'}$ -- the \emph{Coriolis force};
-        \item $\V \omega \times (\V \omega \times \V x)$ -- the \emph{centrifugal force}.
+        \item \(-\dot{\V \omega} \times \V x\) -- the \emph{Euler force};
+        \item \(-2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'}\) -- the \emph{Coriolis force};
+        \item \(\V \omega \times (\V \omega \times \V x)\) -- the \emph{centrifugal force}.
     \end{itemize}
     
     \lecture{Lecture 15 -- 24/02/26}
@@ -1383,7 +1383,7 @@
         R_\text{earth} &\approx 6 \times 10^{3} \si{km}
     \end{align*}
 
-    We will neglect the small `wobble' of Earth -- hence $\dot{\V \omega} = \V 0$, there is no Euler force (Euler force is the least interesting one anyways).
+    We will neglect the small `wobble' of Earth -- hence \(\dot{\V \omega} = \V 0\), there is no Euler force (Euler force is the least interesting one anyways).
     
     \subsection{Centrifugal force}
     
@@ -1402,20 +1402,20 @@
     which allows us to see that potential eneergy decreases moving away from the axis of rotation.
 
     \begin{example*}
-        Take a mass on a string hanging from a fixed point above the Earth at latitude $\theta$. We want to calculate $\varphi$, the angle between the string and the vertical (DIAGRAM). Let us find the forces acting on the particle. We have
+        Take a mass on a string hanging from a fixed point above the Earth at latitude \(\theta\). We want to calculate \(\varphi\), the angle between the string and the vertical (DIAGRAM). Let us find the forces acting on the particle. We have
         \begin{align*}
             \V g = -mg \hvec r
         \end{align*}
-        since the string is short compared to $R_\text{earth}$, we simplify by taking $\hvec r$ fixed. Also,
+        since the string is short compared to \(R_\text{earth}\), we simplify by taking \(\hvec r\) fixed. Also,
         \begin{align*}
             \V F_\text{cen} &= -m \V \omega \times (\V \omega \times \V x) \\
             &= m\omega^2 r \cos \theta (\cos \theta \hvec r - \sin \theta \hvec \theta)
         \end{align*}
-        (DIAGRAM). Then, to hold the string together, there must be a force exerted by the molecules in the string balancing the other forces --  the tension $\V T$. We can write (DIAGRAM)
+        (DIAGRAM). Then, to hold the string together, there must be a force exerted by the molecules in the string balancing the other forces --  the tension \(\V T\). We can write (DIAGRAM)
         \begin{align*}
             \V T = T \cos \varphi \hvec r + T \sin \varphi \hvec \theta
         \end{align*}
-        Now we have two equations for each of $\hvec r$ and $\hvec \theta$, and two unknowns $T$ and $\varphi$. So the system should be soluble. We obtain
+        Now we have two equations for each of \(\hvec r\) and \(\hvec \theta\), and two unknowns \(T\) and \(\varphi\). So the system should be soluble. We obtain
         \begin{align*}
             \tan \varphi = \frac{\omega^2 R \cos \theta \sin \theta}{g - \omega^2 R \cos^2\theta}
         \end{align*}       
@@ -1427,27 +1427,27 @@
     \begin{align*}
         \V F_\text{cor} = -2m \V \omega \times \V v
     \end{align*}
-    where $\V v$ is the velocity in the moving frame. Notably, this is the same as the Lorentz force for magnetic fields, but with $\V B$ replaced with $-2 \V \omega$. We conclude that, in essence, the particle will move in a circle or spiral.
+    where \(\V v\) is the velocity in the moving frame. Notably, this is the same as the Lorentz force for magnetic fields, but with \(\V B\) replaced with \(-2 \V \omega\). We conclude that, in essence, the particle will move in a circle or spiral.
     
     \begin{example*}[Formation of hurricanes]
         If a low pressure region forms in the atmosphere, then particles will move towards it -- the Coriolis force bends them to follow.
 
-        DIAGRAM: particles going to a point, $-\V \omega$ into the page at that point, Coriolis force going clockwise at each point by right-hand rule.
+        DIAGRAM: particles going to a point, \(-\V \omega\) into the page at that point, Coriolis force going clockwise at each point by right-hand rule.
 
         This, however, leads to a counter-clockwise swirling -- hurricanes in the northern hemisphere rotate counter-clockwise, while those in the southern hemisphere rotate clockwise.
 
-        Also, nearer the equator, particles moving north or south are almost parallel to $\V \omega$, so the Coriolis force is not so storng, explaining why hurricanes cannot form too near to the equator (although, for particles travelling east-west, it is very strong).
+        Also, nearer the equator, particles moving north or south are almost parallel to \(\V \omega\), so the Coriolis force is not so storng, explaining why hurricanes cannot form too near to the equator (although, for particles travelling east-west, it is very strong).
     \end{example*}
     
     \begin{example*}
-        Let us drop a ball from a tower of height $h$ on the Equator (DIAGRAM). Where does it fall?
+        Let us drop a ball from a tower of height \(h\) on the Equator (DIAGRAM). Where does it fall?
 
         As the ball falls, its angular velocity must increase to preserve angular momentum, so the ball rotates faster than the Earth and hence falls in front of the tower. Let us perform these computations exactly using the Coriolis force (neglecting centrifugal since it acts in the same direction as gravity). Then
         \begin{align*}
             \ddot{\V x} &= \V g - 2 \V \omega \times \dot{\V x}  && (*)\\
             \implies \dot{\V x} &= \V g t - 2 \V \omega \times (\V x - \V x_0)
         \end{align*}
-        Plugging this back into $(*)$, we have
+        Plugging this back into \((*)\), we have
         \begin{align*}
             \ddot{\V x} = \V g - 2 \V \omega \times \V g t + 4 \V \omega \times (\V \omega \times (\V x - \V x_0))
         \end{align*}
@@ -1456,7 +1456,7 @@
             \ddot{\V x} &= \V g - 2 \V \omega \times \V g t \\
             \implies \V x &= \V x_0 + \frac 1 2 \V g t^2 - \frac 1 3 \V \omega \times \V g t^3
         \end{align*}
-        Now, to actually solve this, let us introduce a basis, with $\V e_1$ pointing north, $\V e_2$ pointing west, and $\V e_3$ pointing up, so
+        Now, to actually solve this, let us introduce a basis, with \(\V e_1\) pointing north, \(\V e_2\) pointing west, and \(\V e_3\) pointing up, so
         \begin{align*}
             \V \omega &= \omega \V e_1 \\
             \V g &= -g \V e_3 \\
@@ -1470,7 +1470,7 @@
              R + h - \frac 1 2 gt^2 \\
             \end{pmatrix}
         \end{align*}
-        The particle hits the ground at $\frac 1 2 gt^2 = h$, and we can sub this in to find $x_2$, which will be negative -- i.e. we moved in front of the tower as expected.
+        The particle hits the ground at \(\frac 1 2 gt^2 = h\), and we can sub this in to find \(x_2\), which will be negative -- i.e. we moved in front of the tower as expected.
     \end{example*}
     
     \lecture{Lecture 16 -- 26/02/26}
@@ -1478,25 +1478,25 @@
     \begin{example}[Foucault's pendulum]
         As the Earth rotates under Foucault's pendulum, the pendulum itself appears to rotate from the point of view of someone on Earth.
 
-        DIAGRAM. At a general latitude $\theta$, we fix a basis $\V e_1$ north along a tangent to the surface, $\V e_2$ westward and $\V e_3$ upward. Specify vectors
+        DIAGRAM. At a general latitude \(\theta\), we fix a basis \(\V e_1\) north along a tangent to the surface, \(\V e_2\) westward and \(\V e_3\) upward. Specify vectors
         \begin{align*}
             \V x &= (x, y, z) \\
             \V g &= (0, 0, -g) \\
             \V \omega &= (\omega \cos \theta, 0, \omega \sin \theta)
         \end{align*}
-        where $\V x$ is the endpoint of the pendulum and $\V \omega$ is the angular velocity of the Earth. Let $l$ be the length of the pendulum, so 
+        where \(\V x\) is the endpoint of the pendulum and \(\V \omega\) is the angular velocity of the Earth. Let \(l\) be the length of the pendulum, so 
         \begin{align*}
             \V T = \frac{T}{l} (-x, -y, l-z)
         \end{align*}
-        is the tension in the string (DIAGRAM). In particular, the inextensibility of the string gives that $x^2 + y^2 + (l-z)^2 = l^2$. It is now time to write down the equation of motion:
+        is the tension in the string (DIAGRAM). In particular, the inextensibility of the string gives that \(x^2 + y^2 + (l-z)^2 = l^2\). It is now time to write down the equation of motion:
         \begin{align*}
             m \ddot{\V x} &= \V T + m \V g - 2m \V \omega \times \dot{\V x}
         \end{align*}
-        We have four equations and four unknowns, so the system should be soluble. The strategy is to solve the constraint to find $z$ as a function of $x$ and $y$, plug this into the ODE, eliminate $T$ and solve the coupled ODEs. We will not do this here. The upshot is that the pendulum follows a slowly rotating ellipse in the $x$-$y$ plane:
+        We have four equations and four unknowns, so the system should be soluble. The strategy is to solve the constraint to find \(z\) as a function of \(x\) and \(y\), plug this into the ODE, eliminate \(T\) and solve the coupled ODEs. We will not do this here. The upshot is that the pendulum follows a slowly rotating ellipse in the \(x\)-\(y\) plane:
         \begin{align*}
             x+iy = e^{-i\omega t \sin \theta}\left(a \cos\left(\sqrt{\frac g l}t\right)+b \sin\left(\sqrt{\frac g l}t\right)\right)
         \end{align*}
-        Note that the period of rotation of the ellipse depends only on the angle $\theta$.
+        Note that the period of rotation of the ellipse depends only on the angle \(\theta\).
     \end{example}
     
     \section{Special relativity}
@@ -1507,7 +1507,7 @@
     \begin{align*}
         c = 299,792,458 \si{ms^{-1}}
     \end{align*}
-    Any theory with a fixed velocity cannot have Galilean invariant, since in Galilean theory only relative velocities exist. Theoretically this could be OK -- the same is true for sound -- but we claim that, no matter one's own speed, light is still measured to travel at $c$.
+    Any theory with a fixed velocity cannot have Galilean invariant, since in Galilean theory only relative velocities exist. Theoretically this could be OK -- the same is true for sound -- but we claim that, no matter one's own speed, light is still measured to travel at \(c\).
 
     Hence, by analogy with sound, light was assumed to be travelling in the so-called `luminiferous ether'. But this was famously disproven by Michelson and Morley. Hence, Einstein built a new system based on the following postulates:
     \begin{enumerate}[label=\protect\circled{\arabic*}]
@@ -1519,14 +1519,14 @@
 
     \subsection{Lorentz transformations}
 
-    Let us for now consider only one spatial dimension $x$, and two frames with coordinates $(x, t)$ and $(x', t')$.
+    Let us for now consider only one spatial dimension \(x\), and two frames with coordinates \((x, t)\) and \((x', t')\).
 
     Recall that, according to Galileo,
     \begin{align*}
         x' &= x-vt \\
         t' &= t
     \end{align*}
-    since $t$ cannot change between frames. But let us allow now for a more general
+    since \(t\) cannot change between frames. But let us allow now for a more general
     \begin{align*}
         x' &= f(x, t) \\
         t' &= g(x, t)
@@ -1536,7 +1536,7 @@
         x &= A + Bt \\
         x' &= A' + B't'
     \end{align*}
-    We will also choose that our frames have a constant origin, so $x = t = 0 \iff x' = t' = 0$. We see that the transformation must map all lines through the origin in the $(x, t)$ plane to lines through the origin in the $(x', t')$ plane -- in other words, the transformation is linear. Hence
+    We will also choose that our frames have a constant origin, so \(x = t = 0 \iff x' = t' = 0\). We see that the transformation must map all lines through the origin in the \((x, t)\) plane to lines through the origin in the \((x', t')\) plane -- in other words, the transformation is linear. Hence
     \begin{align*}
         \begin{pmatrix}
          x' \\
@@ -1549,33 +1549,33 @@
          t \\
         \end{pmatrix}
     \end{align*}
-    for $a$, $b$, $c$, $d$ which don't depend on $x$, $t$, but can depend on the relative velocity between the frames.
+    for \(a\), \(b\), \(c\), \(d\) which don't depend on \(x\), \(t\), but can depend on the relative velocity between the frames.
     
     \lecture{Lecture 17 -- 28/02/26}
     
-    The frame $S'$ is moving at speeed $v$ in the frame $S$, but is at rest with respect to itself -- hence, the line $x=vt$ should map to $x'=0$ under the transformation. Hence, $x' = \gamma_v(x-vt)$ for some $\gamma_v$ depending on $v$. Now we have some more steps to do.
+    The frame \(S'\) is moving at speeed \(v\) in the frame \(S\), but is at rest with respect to itself -- hence, the line \(x=vt\) should map to \(x'=0\) under the transformation. Hence, \(x' = \gamma_v(x-vt)\) for some \(\gamma_v\) depending on \(v\). Now we have some more steps to do.
 
     \begin{enumerate}[label=\protect\circled{\arabic*}]
-        \item First, we would like to show $\gamma_v = \gamma_{-v}$. Consider $\tilde S$ and $\tilde S'$ where the $x$-axis is inverted in direction, i.e. $\tilde x = -x$, $\tilde x' = -x'$.
+        \item First, we would like to show \(\gamma_v = \gamma_{-v}\). Consider \(\tilde S\) and \(\tilde S'\) where the \(x\)-axis is inverted in direction, i.e. \(\tilde x = -x\), \(\tilde x' = -x'\).
         
-        Now, if $S'$ moves at speed $v$ with respect to $S$, then $\tilde S'$ moves at speed $-v$ with respect to $\tilde S$. Hence
+        Now, if \(S'\) moves at speed \(v\) with respect to \(S\), then \(\tilde S'\) moves at speed \(-v\) with respect to \(\tilde S\). Hence
         \begin{align*}
             \tilde x' &= \gamma_{-v} (\tilde x + vt) \\
             \implies x' &= \gamma_{-v} (x - vt)
         \end{align*}
-        so, compaing with the definition of $\gamma_v$, we obtain the desired result.
+        so, compaing with the definition of \(\gamma_v\), we obtain the desired result.
         
-        Another argument for this fact is that there is no preferred direction (by relativity), so $\gamma$ should only depend on the magnitude of $v$ (this will help us generalise to 3D).
+        Another argument for this fact is that there is no preferred direction (by relativity), so \(\gamma\) should only depend on the magnitude of \(v\) (this will help us generalise to 3D).
 
-        \item If we boost by $v$ and then by $-v$, we want to get back to the original frame. In equations,
+        \item If we boost by \(v\) and then by \(-v\), we want to get back to the original frame. In equations,
         \begin{align*}
             x &= x'' = \gamma_{-v}(x' + vt') = \gamma_{-v}\left(\gamma_v(x-vt)+vt'\right) \\
             &= \gamma^2(x-vt) + \gamma vt' \\
             \implies \Aboxed{t' &= \gamma t + \frac{1-\gamma^2}{\gamma v}x}
         \end{align*}
-        Now we have $x'$ and $t'$ in terms of $x$ and $t$, with $\gamma$ the only undetermined quantity.
+        Now we have \(x'\) and \(t'\) in terms of \(x\) and \(t\), with \(\gamma\) the only undetermined quantity.
 
-        \item Use postulate 2, that the speed of light is the same in all inertial frames. That is, the light ray $x = ct$ must map to $x'=ct'$. Hence
+        \item Use postulate 2, that the speed of light is the same in all inertial frames. That is, the light ray \(x = ct\) must map to \(x'=ct'\). Hence
         \begin{align*}
             x' = ct' &= c\left(\gamma t + \frac{1-\gamma^2}{\gamma v}x\right) \\
             \implies \gamma(c-v)t &= c\left(\gamma + \frac{1-\gamma^2}{\gamma} \cdot \frac c v\right)t \\
@@ -1583,30 +1583,30 @@
         \end{align*}
     \end{enumerate}
     
-    Notably, this transformation only makes sense for $v < c$. We have now derived the full form of a Lorentz transformation:
+    Notably, this transformation only makes sense for \(v < c\). We have now derived the full form of a Lorentz transformation:
     \begin{align*}
         x' &= \gamma(x-vt) \\
         t' &= \gamma\left(t-\frac v{c^2} x\right)
     \end{align*}
     
-    For velocities $v \ll c$ (the \emph{non-relativistic limit}), we would expect this to reduce to a Galilean transformation. We have that $\gamma \approx 1$, and $\frac v c \to 0$, and simply substituting gives $x' = x-vt$, $t' = t$ as expected.
+    For velocities \(v \ll c\) (the \emph{non-relativistic limit}), we would expect this to reduce to a Galilean transformation. We have that \(\gamma \approx 1\), and \(\frac v c \to 0\), and simply substituting gives \(x' = x-vt\), \(t' = t\) as expected.
 
     Let us now explore the surprising consequences of this formulation.
     
     \subsection{Addition of velocities}
     
-    Suppose a particle is moving with speed $u'$ in a frame $S'$, itself moving at a speed $v$ in frame $S$. What speed $u$ does the particle move at in $S$? We will need to apply the inverse Lorentz transformation, which is unsurprisingly
+    Suppose a particle is moving with speed \(u'\) in a frame \(S'\), itself moving at a speed \(v\) in frame \(S\). What speed \(u\) does the particle move at in \(S\)? We will need to apply the inverse Lorentz transformation, which is unsurprisingly
     \begin{align*}
         x' &= \gamma(x+vt) \\
         t' &= \gamma\left(t+\frac v{c^2} x\right)
     \end{align*}
-    (we just changed the signs of $v$). Hence
+    (we just changed the signs of \(v\)). Hence
     \begin{align*}
         u = \frac x t &= \frac{x'+vt'}{t'+ \frac v{c^2}x'} = \frac{\frac{x'}{t'}+v}{1 + \frac{v}{c^2} \cdot \frac{x'}{t'}} \\
         &= \frac{u' + v}{1 + \frac{vu'}{c^2}}
     \end{align*}
     
-    We can easily see that, if $v$, $u \ll c$, this reduces to a simple addition, and $u$ is also much less than the speed of light. Furthermore, this addition formula can never produce a velocity faster than the speed of light -- for example, if $u' = v = c$, then
+    We can easily see that, if \(v\), \(u \ll c\), this reduces to a simple addition, and \(u\) is also much less than the speed of light. Furthermore, this addition formula can never produce a velocity faster than the speed of light -- for example, if \(u' = v = c\), then
     \begin{align*}
         u = \frac{c + c}{1 + \frac{c^2}{c^2}} = c
     \end{align*}
@@ -1620,7 +1620,7 @@
         \label{fig:spacetime-diagram}
     \end{figure}
     
-    Note that light rays always travel at $45^{\circ}$ on such a diagram by the choice of axes. Importantly, we can put the axes for a frame $S'$ on the spacetime diagram for $S$. Since the $t'$ and $x'$ axes are at $x'=0$ and $t'=0$ respectively, we have
+    Note that light rays always travel at \(45^{\circ}\) on such a diagram by the choice of axes. Importantly, we can put the axes for a frame \(S'\) on the spacetime diagram for \(S\). Since the \(t'\) and \(x'\) axes are at \(x'=0\) and \(t'=0\) respectively, we have
     \begin{align*}
         ct &= \frac c v x \\
         ct &= \frac v c x
@@ -1630,27 +1630,27 @@
 
     giving:
     DIAGRAM.
-    Drawing lines of constant $t$ and $t'$, we can see that events which are simultaneous in one frame may not be simultaneous in another -- this is called the \emph{relativity of simultaneity}. This is in fact an unavoidable consequence of the speed of light being constant, as exemplified in a thought experiment of Einstein.
+    Drawing lines of constant \(t\) and \(t'\), we can see that events which are simultaneous in one frame may not be simultaneous in another -- this is called the \emph{relativity of simultaneity}. This is in fact an unavoidable consequence of the speed of light being constant, as exemplified in a thought experiment of Einstein.
 
     DIAGRAM.
 
     In the reference frame of the train, the light clearly reaches the back and front at the same time. On the other hand, in the reference frame of the platform, the back and front of the train have moved forwards, so the light has less far to travel to reach the back of the train, and further to reach the front -- the light rays do not hit simultaneously.
     
-    In Galilean physics, on the other hand, light would be observed going at speed $c+v$ in one direction and speed $c-v$ in the other, reaching both ends at the same time.
+    In Galilean physics, on the other hand, light would be observed going at speed \(c+v\) in one direction and speed \(c-v\) in the other, reaching both ends at the same time.
 
     One might worry that, if different frames see things at different times, one might be able to reverse cause and effect. However, this does not happen.
 
     DIAGRAM (light cones)
 
-    The lines of simultaneity of $S'$ can be at most at $45^\circ$, as $v \to c$. Hence, we can make events to the `side' of $P$, such as $R$, simultaneous, but not events in either of $P$'s light cones, such as $Q$ or $S$. In other words, causality is the same in all frames.
+    The lines of simultaneity of \(S'\) can be at most at \(45^\circ\), as \(v \to c\). Hence, we can make events to the `side' of \(P\), such as \(R\), simultaneous, but not events in either of \(P\)'s light cones, such as \(Q\) or \(S\). In other words, causality is the same in all frames.
 
     \subsection{Time dilation}
 
-    Suppose a clock at rest in frame $S'$ ticks an intervals $T'$ -- so the ticks occur at $(0, 0)$, $(0, cT')$, $(0, 2cT')$, etc. In frame $S$, using inverse Lorentz transformations,
+    Suppose a clock at rest in frame \(S'\) ticks an intervals \(T'\) -- so the ticks occur at \((0, 0)\), \((0, cT')\), \((0, 2cT')\), etc. In frame \(S\), using inverse Lorentz transformations,
     \begin{align*}
         t = \gamma \left(t + \frac v{c^2}x'\right)
     \end{align*}
-    With $x'=0$, ticks occur at $t = 0$, $t = \gamma T'$, etc -- in other words, at intervals $T = \gamma T'$. Since $\gamma > 1$, $T > T'$, so $S$ measures more time between the ticks of the clock in $S$' -- a moving clock runs more slowly.
+    With \(x'=0\), ticks occur at \(t = 0\), \(t = \gamma T'\), etc -- in other words, at intervals \(T = \gamma T'\). Since \(\gamma > 1\), \(T > T'\), so \(S\) measures more time between the ticks of the clock in \(S\)' -- a moving clock runs more slowly.
     
     \subsection{The twin paradox}
 
@@ -1660,21 +1660,21 @@
     
     DIAGRAM.
 
-    From the perspective of A, time $2T$ passes, while, from the perspective of B, time $2T' = 2T/\gamma$ has passed.
+    From the perspective of A, time \(2T\) passes, while, from the perspective of B, time \(2T' = 2T/\gamma\) has passed.
 
     DIAGRAM.
 
-    As we can see, while they are moving, they both see the other clock moving more slowly -- so $2\hat T = 2T'/\gamma$ passes -- but when $B$ turns around, the simultaneity line changes, so $A$'s clock skips some time.
+    As we can see, while they are moving, they both see the other clock moving more slowly -- so \(2\hat T = 2T'/\gamma\) passes -- but when \(B\) turns around, the simultaneity line changes, so \(A\)'s clock skips some time.
 
     \subsection{Length contraction}
 
-    A rod has length $L'$ at rest in $S'$:
+    A rod has length \(L'\) at rest in \(S'\):
 
     DIAGRAM.
 
-    Now, consider the moving frame $S$, in which the length of the rod is $P_1P_3 > P_1P_2$. How can we find the exact value of $L$ in terms of $L'$?
+    Now, consider the moving frame \(S\), in which the length of the rod is \(P_1P_3 > P_1P_2\). How can we find the exact value of \(L\) in terms of \(L'\)?
 
-    In both frames, we have $P_1 = (0, 0)$, and $P_2$ is $(ct', x') = (0, L')$, so, taking the inverse Lorentz transformation, $P_2 = (\gamma \frac v c L', \gamma L')$ in $S$. Then, for $P_3$ (why??),
+    In both frames, we have \(P_1 = (0, 0)\), and \(P_2\) is \((ct', x') = (0, L')\), so, taking the inverse Lorentz transformation, \(P_2 = (\gamma \frac v c L', \gamma L')\) in \(S\). Then, for \(P_3\) (why??),
     \begin{align*}
         \left.x\right|_{P_3} &= \left.x\right|_{P_2} - \left.vt\right|_{P_2} \\
         &= \gamma L' - v \frac{\gamma v}{c^2}L' \\
@@ -1684,11 +1684,11 @@
     so moving objects appear shorter. This is called \emph{Lorentz contraction}.
 
     \begin{example*}
-        Consider a man carrying a ladder of length $2L$ running towards a barn of length $L$.
+        Consider a man carrying a ladder of length \(2L\) running towards a barn of length \(L\).
 
         DIAGRAM (non-detailed)
 
-        From the point of view of a stationary observer, the ladder will appear to fit in the barn if $A$ moves fast enough, since its length is $\frac{2L}{\gamma}$. On the other hand, in the frame of the perosn carrying the ladder, it is the barn that gets contracted, and so the ladder will definitely not fit in.
+        From the point of view of a stationary observer, the ladder will appear to fit in the barn if \(A\) moves fast enough, since its length is \(\frac{2L}{\gamma}\). On the other hand, in the frame of the perosn carrying the ladder, it is the barn that gets contracted, and so the ladder will definitely not fit in.
 
         DIAGRAM (spacetime diagram)
     \end{example*}
@@ -1697,12 +1697,12 @@
 
     
     \begin{definition}[The invariant interval]
-        Consider two events $P_1$ and $P_2$ with coordinates $(ct_1, x_1)$ and $(ct_2, x_2)$ in frame $S$. Let
+        Consider two events \(P_1\) and \(P_2\) with coordinates \((ct_1, x_1)\) and \((ct_2, x_2)\) in frame \(S\). Let
         \begin{align*}
             \Delta t &= t_2 - t_1 \\
             \Delta x &= x_2 - x_1 
         \end{align*}
-        Then, the \emph{invariant interval} $\Delta s$ is given by
+        Then, the \emph{invariant interval} \(\Delta s\) is given by
         \begin{align*}
             (\Delta s)^2 = c^2 (\Delta t)^2 - (\Delta x)^2
         \end{align*}
@@ -1713,7 +1713,7 @@
         &= (\Delta t)^2(\gamma^2c^2-\gamma^2v^2) + (\Delta x)^2\left(\gamma^2 \frac{c^2v^2}{c^4}-\gamma^2\right) \\
         &= c^2(\Delta t)^2 - (\Delta x)^2
     \end{align*}
-    This is nice -- observers in all frames can agree on the value of $\Delta s$. Furthermore, we can write
+    This is nice -- observers in all frames can agree on the value of \(\Delta s\). Furthermore, we can write
     \begin{align*}
         (\Delta s)^2 = \begin{pmatrix}
          c\Delta t & \Delta x \\
@@ -1725,10 +1725,10 @@
          \Delta x \\
         \end{pmatrix}
     \end{align*}
-    where the matrix $\begin{pmatrix}
+    where the matrix \(\begin{pmatrix}
      1 & 0 \\
      0 & -1 \\
-    \end{pmatrix}$ is called the \emph{Minkowski metric}. Using this approach, we can write Lorentz transformations in the form
+    \end{pmatrix}\) is called the \emph{Minkowski metric}. Using this approach, we can write Lorentz transformations in the form
     \begin{align*}
         \begin{pmatrix}
          ct' \\
@@ -1741,7 +1741,7 @@
          x \\
         \end{pmatrix}
     \end{align*}
-    Then, invariance of $\Delta s$ is equivalent to the fact that
+    Then, invariance of \(\Delta s\) is equivalent to the fact that
     \begin{align*}
         \begin{pmatrix}
          \gamma & -\frac{\gamma v}{c} \\
@@ -1760,7 +1760,7 @@
     i.e., Lorentz transformations preserve the Minkowski metric.
 
     \begin{remark*}
-        This is analogous to the fact that rotations preserve the Euclidean metric, namely $I$ -- that is,
+        This is analogous to the fact that rotations preserve the Euclidean metric, namely \(I\) -- that is,
         \begin{align*}
             R\begin{pmatrix}
              1 & 0 \\
@@ -1774,21 +1774,21 @@
     
     We should think of the Minkowski metric as measuring distances in spacetime. It is notably not positive-definite, so we have a distinction --  points with
     \begin{itemize}
-        \item $(\Delta s)^2 > 0$ are called \emph{timelike separated};
-        \item $(\Delta s)^2 < 0$ are called \emph{spacelike separated};
-        \item $(\Delta s)^2 = 0$ are called \emph{lightlike separated}.
+        \item \((\Delta s)^2 > 0\) are called \emph{timelike separated};
+        \item \((\Delta s)^2 < 0\) are called \emph{spacelike separated};
+        \item \((\Delta s)^2 = 0\) are called \emph{lightlike separated}.
     \end{itemize}
     
     \subsection{Rapidity}
 
     \begin{definition}[Rapidity]
-        We define the \emph{rapidity} $\varphi$ to be such that 
+        We define the \emph{rapidity} \(\varphi\) to be such that 
         \begin{align*}
             \gamma = \cosh \varphi
         \end{align*}
     \end{definition}
     
-    Now nice things happpen -- for example, $\sinh \varphi = \sqrt{\cosh^2 \varphi - 1} = \frac{v\gamma}{c}$. Most nicely, the Lorentz transformation becomes
+    Now nice things happpen -- for example, \(\sinh \varphi = \sqrt{\cosh^2 \varphi - 1} = \frac{v\gamma}{c}\). Most nicely, the Lorentz transformation becomes
     \begin{align*}
         \begin{pmatrix}
          \gamma & -\frac{\gamma v}{c} \\
@@ -1820,22 +1820,22 @@
              0 & 0 & 0 & -1 \\
             \end{pmatrix}
         \end{align*}
-        We write this with indices as $\eta_{\mu\nu}$, where $\mu$, $\nu$ are 0, 1, 2, 3 -- conventionally, we use Greek letter indices for spacetime.
+        We write this with indices as \(\eta_{\mu\nu}\), where \(\mu\), \(\nu\) are 0, 1, 2, 3 -- conventionally, we use Greek letter indices for spacetime.
     \end{definition}
     An event in spacetime is now given by a 4-vector,
     \begin{align*}
         X = (ct, x, y, z)
     \end{align*}
-    which will be denoted by capital letters with no underlines. We index with exponents, $X^\mu$.
+    which will be denoted by capital letters with no underlines. We index with exponents, \(X^\mu\).
 
-    Now, the invariant distance between the origin and the event $X$ is given by the inner product
+    Now, the invariant distance between the origin and the event \(X\) is given by the inner product
     \begin{align*}
         X \cdot X &= X^T \eta X (=X^\mu \eta_{\mu\nu} X^\nu) \\
         &= c^2t^2 - x^2 - y^2 - z^2
     \end{align*}
     As before, we have the distinction between \emph{timelike}, \emph{spacelike} and \emph{lightlike} or \emph{null} vectors.
 
-    Then, the 4D Lorentz transformations are 4 by 4 matrices $\Lambda$ such that
+    Then, the 4D Lorentz transformations are 4 by 4 matrices \(\Lambda\) such that
     \begin{align*}
         X' = \Lambda X
     \end{align*}
@@ -1843,7 +1843,7 @@
     \begin{align*}
         \Lambda^\intercal \eta \Lambda = \eta && (\dagger)
     \end{align*}
-    Since $\Lambda$ has 16 components, and both sides of $(\dagger)$ are symmetric, giving ten constraints, we expect to find six families of transformations. In particular, we have
+    Since \(\Lambda\) has 16 components, and both sides of \((\dagger)\) are symmetric, giving ten constraints, we expect to find six families of transformations. In particular, we have
     \begin{itemize}
         \item \emph{Rotation and reflections}. These have
         \begin{align*}
@@ -1854,7 +1854,7 @@
              0 &  &  &  \\
             \end{pmatrix}
         \end{align*}
-        where $R^\intercal R = I_3$.
+        where \(R^\intercal R = I_3\).
         \item \emph{lorentz boosts} along the three possible axes. For example,
         \begin{align*}
             \Lambda_x = \begin{pmatrix}
@@ -1866,9 +1866,9 @@
         \end{align*}
         and similarly for other axes.
     \end{itemize}
-    These matrices $\Lambda$ form the Lorentz group, $O(1, 3)$. Because the inner product is preserved by these transformations, it automatically takes lightlike vectors to other lightlike vectors, so that the speed of light is the same in all frames.
+    These matrices \(\Lambda\) form the Lorentz group, \(O(1, 3)\). Because the inner product is preserved by these transformations, it automatically takes lightlike vectors to other lightlike vectors, so that the speed of light is the same in all frames.
 
-    The subgroup with $\det \Lambda = 1$ is called the \emph{proper Lorentz group}, $SO(1, 3)$. A further subgroup are those transformations that do not reverse time, i.e. with top left entry positive, called the \emph{proper orthochronous Lorentz group}, $SO^+(1, 3)$. For example,
+    The subgroup with \(\det \Lambda = 1\) is called the \emph{proper Lorentz group}, \(SO(1, 3)\). A further subgroup are those transformations that do not reverse time, i.e. with top left entry positive, called the \emph{proper orthochronous Lorentz group}, \(SO^+(1, 3)\). For example,
     \begin{align*}
         \Lambda = \begin{pmatrix}
          -1 & 0 & 0 & 0 \\
@@ -1877,19 +1877,19 @@
          0 & 0 & 0 & -1 \\
         \end{pmatrix}
     \end{align*}
-    is in $SO(1, 3)$ but not $SO^+(1, 3)$.
+    is in \(SO(1, 3)\) but not \(SO^+(1, 3)\).
     
     \subsection{Proper time}
 
-    We want to define a velocity to do physics with, but whose time should we differentiate with respect to? We should find a time $\tau$ that is invariant under Lorentz transformations, and define the 4-velocity as
+    We want to define a velocity to do physics with, but whose time should we differentiate with respect to? We should find a time \(\tau\) that is invariant under Lorentz transformations, and define the 4-velocity as
     \begin{align*}
         U = \frac{dX}{d\tau}
     \end{align*}
-    Recall that the invariant interval $(\Delta s)^2$ is the same in all inertial frames. Hence, we define
+    Recall that the invariant interval \((\Delta s)^2\) is the same in all inertial frames. Hence, we define
     \begin{align*}
         \Delta \tau = \frac{\Delta s}{c}
     \end{align*}
-    Note that, since a worldline is timelike, $(\Delta s)^2 > 0$, so $\Delta s$ is real. Now, we can parameterise the worldline as $x(\tau)$ and $t(\tau)$.
+    Note that, since a worldline is timelike, \((\Delta s)^2 > 0\), so \(\Delta s\) is real. Now, we can parameterise the worldline as \(x(\tau)\) and \(t(\tau)\).
 
     \begin{remark*}
         This is analogous to the notion of arc length, but for worldlines.
@@ -1899,19 +1899,19 @@
         d\tau &= \sqrt{dt^2 - \frac{d\V x^2}{c^2}} \\
         &= dt \sqrt{1-\frac{1}{c^2} \left(\frac{d\V x}{dt}\right)^2}
     \end{align*}
-    Then, our 3-velocity $\V u = \frac{d\V x}{dt}$, so
+    Then, our 3-velocity \(\V u = \frac{d\V x}{dt}\), so
     \begin{align*}
         d\tau = dt\sqrt{1-\frac{\V u^2}{c^2}} = \frac 1 \gamma dt
     \end{align*}
-    where $\gamma$ is a function of the instantaneous 3-velocity $\V u$. We have obtained
+    where \(\gamma\) is a function of the instantaneous 3-velocity \(\V u\). We have obtained
     \begin{align*}
         \frac{dt}{d\tau} = \gamma
     \end{align*}
-    For a clock following the worldline, $d \V x' = \V 0$, so $d\tau = dt'$ -- i.e., the proper time is the time measured by a (not necessarily inertial) observer following the worldline.
+    For a clock following the worldline, \(d \V x' = \V 0\), so \(d\tau = dt'\) -- i.e., the proper time is the time measured by a (not necessarily inertial) observer following the worldline.
     
     \subsection{4-velocity}
 
-    Because $\tau$ is invariant and $X(\tau) = (ct(\tau), \V x(\tau))$ transforms by Lorentz transformations, then
+    Because \(\tau\) is invariant and \(X(\tau) = (ct(\tau), \V x(\tau))\) transforms by Lorentz transformations, then
     \begin{align*}
         U = \frac{dX}{d\tau} = \frac{dt}{d\tau} \begin{pmatrix}
          c \\
@@ -1928,12 +1928,12 @@
     which is indeed invariant. Hence, we have a nice way of incorporating the familiar 3-velocity into a Lorentzian object.
     
     
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
     \subsection{4-momentum}
     
     \begin{definition}[Relativistic energy and momentum]
-        The \emph{relativistic energy} $E$ and the \emph{relativistic 3-momentum} $\V p$ are defined by
+        The \emph{relativistic energy} \(E\) and the \emph{relativistic 3-momentum} \(\V p\) are defined by
         \begin{align*}
             E &= m\gamma c^2 \\
             \V p &= m\gamma \V u
@@ -1948,20 +1948,20 @@
                 m\gamma \V u \\
             \end{pmatrix}
         \end{align*}
-        where $U$ is the 4-velocity, and $m$ is a property of the particle called its \emph{rest mass}.      
+        where \(U\) is the 4-velocity, and \(m\) is a property of the particle called its \emph{rest mass}.      
     \end{definition}
     
-    Observe that the 4-vector $P$ is
+    Observe that the 4-vector \(P\) is
     \begin{align*}
         \begin{pmatrix}
             E/c \\
             \V p \\
         \end{pmatrix}
     \end{align*}
-    so the 4-momentum combines energy and momentum in the exact same way that the 4-position $X$ combines time and space.
+    so the 4-momentum combines energy and momentum in the exact same way that the 4-position \(X\) combines time and space.
 
     \begin{proposition}
-        In the absence of external forces, $P$ is conserved, that is
+        In the absence of external forces, \(P\) is conserved, that is
         \begin{align*}
             \frac{dP}{d\tau} = 0
         \end{align*}
@@ -1979,30 +1979,30 @@
     \end{proposition}
     
     \begin{proof}
-        Since $U \cdot U = c^2 \implies P \cdot P = m^2c^2$,
+        Since \(U \cdot U = c^2 \implies P \cdot P = m^2c^2\),
         \begin{align*}
             \frac{E^2}{c^2} - \V p^2 &= m^2c^2 \\
             \implies E^2 &= \V p^2 c^2 + m^2c^4
         \end{align*}
     \end{proof}
     
-    In the non-relativistic limit, $\frac{|\V u|}{c} \ll 1$, so $\V p \approx m \V u$, and we obtain the usual non-relativistic momentum. Furthermore,
+    In the non-relativistic limit, \(\frac{|\V u|}{c} \ll 1\), so \(\V p \approx m \V u\), and we obtain the usual non-relativistic momentum. Furthermore,
     \begin{align*}
         E = m \gamma c^2 &= \frac{mc^2}{\sqrt{1-\frac{u^2}{c^2}}} \\
         &= mc^2 \left(1 + \frac 1 2 \frac{u^2}{c^2} + \dots\right) \\
         &= mc^2 + \frac 1 2 mu^2 + \dots
     \end{align*}
-    and we can identify our familiar non-relativistic kinetic energy, as well as the \emph{rest mass energy}, $mc^2$, a new consequence of relativity.
+    and we can identify our familiar non-relativistic kinetic energy, as well as the \emph{rest mass energy}, \(mc^2\), a new consequence of relativity.
 
     Let us now consider the high-velocity relativistic limit. Observe
     \begin{align*}
         \V p = \gamma m \V u
     \end{align*}
-    As $u \to c$, $\gamma \to \infty$, so the relativistic mass $\gamma m \to \infty$ as well. We end up needing more and more force to accelerate the particle by the same amount -- and any finite force cannot accelerate the particle to the speed of light. This suggests that any particle with $m \neq 0$ should have $u < c$.
+    As \(u \to c\), \(\gamma \to \infty\), so the relativistic mass \(\gamma m \to \infty\) as well. We end up needing more and more force to accelerate the particle by the same amount -- and any finite force cannot accelerate the particle to the speed of light. This suggests that any particle with \(m \neq 0\) should have \(u < c\).
     
     \subsection{Massless particles}
 
-    In Galilean physics, massless particles don't really make sense -- for example, the kinetic energy $\frac{p^2}{2m}$ would blow up. On the other hand, our relativistic expression suggests that
+    In Galilean physics, massless particles don't really make sense -- for example, the kinetic energy \(\frac{p^2}{2m}\) would blow up. On the other hand, our relativistic expression suggests that
     \begin{align*}
         P \cdot P = m^2c^2 = 0
     \end{align*}
@@ -2015,27 +2015,27 @@
             \hvec n \\
         \end{pmatrix}
     \end{align*}
-    where $\hvec n$ is a unit 3-vector. Interpreting $\hvec n$ as $\frac{\V u}c$, where $\V u$ is the 3-velocity, we obtain $\V u^2 = c^2$, so massless particles move at the speed of light. We conclude that a particle is massless if and only if it moves at the speed of light.
+    where \(\hvec n\) is a unit 3-vector. Interpreting \(\hvec n\) as \(\frac{\V u}c\), where \(\V u\) is the 3-velocity, we obtain \(\V u^2 = c^2\), so massless particles move at the speed of light. We conclude that a particle is massless if and only if it moves at the speed of light.
 
-    There are some remarkable consequences of these results. For example, along a light ray $d\tau = 0$, because points on the trajectory are lightlike separated. This means that, for a massless particle, no time passes.
+    There are some remarkable consequences of these results. For example, along a light ray \(d\tau = 0\), because points on the trajectory are lightlike separated. This means that, for a massless particle, no time passes.
 
     There are only two known massless particles, namely photons and gravitons. We will focus on photons, and we will have to borrow from quantum mechanics the formula that
     \begin{align*}
         E = \hbar \omega
     \end{align*}
-    where $\omega$ is the angular frequency of the light. Since frequency and wavelength are related, and length contraction causes a change in observed wavelength for different observers, the energy of photons may be perceived as different by different observers.
+    where \(\omega\) is the angular frequency of the light. Since frequency and wavelength are related, and length contraction causes a change in observed wavelength for different observers, the energy of photons may be perceived as different by different observers.
 
     \subsection{Particle physics}
 
-    Particle accelerators like CERN work by colliding particles at relativistic speeds. The proper framework for dealing with these collisions is quantum field theory, but we can still learn some things just from the fact that 4-momentum $P$ is conserved. The two basic processes we will consider are particle decay and particle collisions.
+    Particle accelerators like CERN work by colliding particles at relativistic speeds. The proper framework for dealing with these collisions is quantum field theory, but we can still learn some things just from the fact that 4-momentum \(P\) is conserved. The two basic processes we will consider are particle decay and particle collisions.
 
     \subsubsection{Particle decay}
 
-    Heavy particles are often unstable, and decay into lighter particles -- for example, the Higgs boson decays in about $10^{-22} \si{s}$. Such particles must be detected by their decay products, for example
+    Heavy particles are often unstable, and decay into lighter particles -- for example, the Higgs boson decays in about \(10^{-22} \si{s}\). Such particles must be detected by their decay products, for example
     \begin{align*}
         H \longrightarrow \gamma + \gamma
     \end{align*}
-    From the LHC, we know that $m_H c^2 \approx 125 \si{GeV}$, about $10^5$ times heavier than an electron. Conservation of 4-momentum tells us that
+    From the LHC, we know that \(m_H c^2 \approx 125 \si{GeV}\), about \(10^5\) times heavier than an electron. Conservation of 4-momentum tells us that
     \begin{align*}
         P_H = P_\gamma + P_{\gamma'}
     \end{align*}
@@ -2046,7 +2046,7 @@
     \end{enumerate}
     For decays, 2 is just the rest frame of the starting particle, which makes life very easy.   
     
-    \lecture{Lecture $n+2$ -- 12/02/26}
+    \lecture{Lecture \(n+2\) -- 12/02/26}
     
     In the centre of mass frame, we have
     \begin{align*}
@@ -2073,7 +2073,7 @@
     \end{align*}
     Hence, two photons emerge with opposite 3-momentum and equal energy, namely half the rest mass of the Higgs boson -- rest mass energy has been converted to kinetic energy.
 
-    Let us now try and do the same calculations in the lab frame. What angle $\theta$ does one of the emitted photons make with the path of the Higgs? (DIAGRAM)
+    Let us now try and do the same calculations in the lab frame. What angle \(\theta\) does one of the emitted photons make with the path of the Higgs? (DIAGRAM)
 
     We would like to use an \emph{invariant} -- for example, the inner product of two 4-vectors. Observe
     \begin{align*}
@@ -2095,39 +2095,39 @@
     \begin{align*}
         m_H^2 c^2 = 2\left(\frac{E_HE_\gamma}{c^2} - \frac{E\gamma}{c} |\V p_H| \cos \theta\right)
     \end{align*}
-    Given $E_H$ and $E_\gamma$, we can solve for $\theta$ (since we also know $E_H^2 = p_H^2 c^2 + m_H^2 c^4$).
+    Given \(E_H\) and \(E_\gamma\), we can solve for \(\theta\) (since we also know \(E_H^2 = p_H^2 c^2 + m_H^2 c^4\)).
 
     \subsubsection{Particle collisions}
 
-    Suppose two particles of mass $m$ collide and, in the centre of mass frame, scatter at an angle $\theta$ (DIAGRAM). Conservation of 4-momentum tells us that
+    Suppose two particles of mass \(m\) collide and, in the centre of mass frame, scatter at an angle \(\theta\) (DIAGRAM). Conservation of 4-momentum tells us that
     \begin{align*}
         P_1 + P_2 = P_3 + P_4 && (\dagger)
     \end{align*}
-    so that, in the centre of mass frame, $\V p_1 + \V p_2 = 0 = \V p_3 + \V p_4$, and hence $|\V p_1| = |\V p_2|$, $|\V p_3| = |\V p_4|$. Furthermore, because the incoming particles have the same mass and momentum, they have the same energy, $E_1 = E_2$, and likewise for $E_3 = E_4$. Considering the time component of $(\dagger)$, we hence obtain
+    so that, in the centre of mass frame, \(\V p_1 + \V p_2 = 0 = \V p_3 + \V p_4\), and hence \(|\V p_1| = |\V p_2|\), \(|\V p_3| = |\V p_4|\). Furthermore, because the incoming particles have the same mass and momentum, they have the same energy, \(E_1 = E_2\), and likewise for \(E_3 = E_4\). Considering the time component of \((\dagger)\), we hence obtain
     \begin{align*}
         E_1 = E_2 &= E_3 = E_4 \\
         |\V p_1| = |\V p_2| &= |\V p_3| = |\V p_4|
     \end{align*}
-    so that any angle $\theta$ is allowed, but the energy and momenta afterwards must equal the energy and momenta before. Since all momenta are in the same plane, we can furthermore specify, for example,
+    so that any angle \(\theta\) is allowed, but the energy and momenta afterwards must equal the energy and momenta before. Since all momenta are in the same plane, we can furthermore specify, for example,
     \begin{align*}
         \V p_1 &= |\V p_1|(1, 0, 0) = -\V p_2 \\
         \V p_3 &= |\V p_1|(\cos \theta, \sin \theta, 0) = -\V p_4
     \end{align*}
     Lecturer then proceeded to introduce the standard model.
 
-    Let us now work in the lab frame, assuming one particle is at rest, and with scattering angles $\phi$ and $\alpha$. (DIAGRAM) 
+    Let us now work in the lab frame, assuming one particle is at rest, and with scattering angles \(\phi\) and \(\alpha\). (DIAGRAM) 
     
-    Let's try and find $\phi$. Once again, we must use invariants. We have
+    Let's try and find \(\phi\). Once again, we must use invariants. We have
     \begin{align*}
         P_1 + P_2 = P_3 + P_4
     \end{align*}
-    We want to get rid of $P_4$, and we can do this by dotting it with itself, giving
+    We want to get rid of \(P_4\), and we can do this by dotting it with itself, giving
     \begin{align*}
         m^2c^2 &= P_4^2 = (P_1 + P_2 - P_3)^2 \\
         &= P_1^2 + P_2^2 + P_3^2 - 2 P_1 \cdot P_3 - 2 P_2 \cdot P_3 + 2 P_1 \cdot P_2 \\
         &= 3m^2c^2 - 2 P_1 \cdot P_3 - 2 P_2 \cdot P_3 + 2 P_1 \cdot P_2
     \end{align*}
-    Since $P_2$ is at rest in the lab frame, it has the form
+    Since \(P_2\) is at rest in the lab frame, it has the form
     \begin{align*}
         P_2 = \begin{pmatrix}
             mc \\
@@ -2152,33 +2152,33 @@
     \begin{align*}
         m^2c^2 + m(E_1-E_3) - \frac{E_1E_3}{c^2} = -|\V p_1||\V p_3| \cos \phi
     \end{align*}
-    We have hence obtained $\cos \phi$ in terms of $E_1$, $E_3$ and $|\V p_1|$, $|\V p_3|$. Now we can simply apply
+    We have hence obtained \(\cos \phi\) in terms of \(E_1\), \(E_3\) and \(|\V p_1|\), \(|\V p_3|\). Now we can simply apply
     \begin{align*}
         E_i^2 = \V p_i^2 c^2 + m^2c^4
     \end{align*}
-    to eliminate $|\V p_i|$.
+    to eliminate \(|\V p_i|\).
     
-    \lecture{Lecture $n$}
+    \lecture{Lecture \(n\)}
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture \(n+1\)}
 
     We have
     \begin{align*}
         \int \frac{du}{a' \left(1-\frac{u^2}{c^2}\right)^{3/2}} = \int dt
     \end{align*}
-    Setting $u = c \sin \theta$ to do the integral and recalling $a'$ is constant, we obtain
+    Setting \(u = c \sin \theta\) to do the integral and recalling \(a'\) is constant, we obtain
     \begin{align*}
         u = \frac{a'ct}{\sqrt{c^2+a'^2t^2}}
     \end{align*}
-    Hence, at early timees, $a't \ll c$, we have $u = a't$, while at late times, $a't \gg c$, so $u \to c$ -- we cannot exceed $c$.
+    Hence, at early timees, \(a't \ll c\), we have \(u = a't\), while at late times, \(a't \gg c\), so \(u \to c\) -- we cannot exceed \(c\).
 
-    Since $u = \frac{dx}{dt}$, we can integrate again, to obtain
+    Since \(u = \frac{dx}{dt}\), we can integrate again, to obtain
     \begin{align*}
         x = \frac c {a'} \sqrt{c^2+a'^2t^2} + C
     \end{align*}
     which is the equation of a hyperbola in spacetime -- an accelerated particle follows such a hyperbola (DIAGRAM).
 
-    Observe that the accelerated particle never sees signals sent from $x$ on the left of a certain light cone -- this is called the \emph{Rindler horizon}, separating the `accessible' and `inaccessible' regions of spacetime.
+    Observe that the accelerated particle never sees signals sent from \(x\) on the left of a certain light cone -- this is called the \emph{Rindler horizon}, separating the `accessible' and `inaccessible' regions of spacetime.
 
     \begin{remark*}
         A black hole's event horizon works similarly, since it is necessary to accelerate not to fall in.
@@ -2191,11 +2191,11 @@
         \begin{align*}
             F = \frac{dP}{d \tau}
         \end{align*}
-        where $P$ is the 4-momentum. Then Newton's second law is that
+        where \(P\) is the 4-momentum. Then Newton's second law is that
         \begin{align*}
             F = mA
         \end{align*}
-        We parameterise $F$ as
+        We parameterise \(F\) as
         \begin{align*}
             F = \begin{pmatrix}
                 F^0 \\
@@ -2207,18 +2207,18 @@
     \begin{align*}
         \frac{d\V p}{dt} = \frac 1 \gamma \frac{d\V p}{d\tau} = \frac{1}{\gamma} \gamma \V f = \V f
     \end{align*}
-    so $\V f$ is actually just the normal force from the typical Newton's second law, even though $\V p = \gamma m \V u$ is not the typical momentum. Furthermore, $\V f$ constant implies $a'$ is constant in the instantaneous frame $A$, as we assumed earlier.
+    so \(\V f\) is actually just the normal force from the typical Newton's second law, even though \(\V p = \gamma m \V u\) is not the typical momentum. Furthermore, \(\V f\) constant implies \(a'\) is constant in the instantaneous frame \(A\), as we assumed earlier.
 
     Now let us consider the time component: we have
     \begin{align*}
         F^0 = \frac 1 c \frac{dE}{d\tau} = \frac{\gamma}c \frac{dE}{dt}
     \end{align*}
-    so $F^0$ is proportional to the rate of change of energy. Indeed,
+    so \(F^0\) is proportional to the rate of change of energy. Indeed,
     \begin{align*}
         0 &= \frac{d}{d\tau} P \cdot P = 2P \cdot \frac{dP}{d\tau} \\
         &= 2\left(\frac E c \frac{dE}{d\tau} - \V p \cdot \frac{d\V p}{d\tau}\right)
     \end{align*}
-    Recalling that $E=\gamma mc^2$ and $\V p = \gamma m u^2$, we have
+    Recalling that \(E=\gamma mc^2\) and \(\V p = \gamma m u^2\), we have
     \begin{align*}
         0 &= 2\gamma^2 m \left(\frac{dE}{dt}-\V u \cdot \frac{d\V p}{dt}\right) \\
         \implies \frac{dE}{dt} &= \V u \cdot \frac{d\V p}{dt} = \V u \cdot \V f
@@ -2230,7 +2230,7 @@
         \begin{align*}
             \frac{dP}{d\tau} = \frac{q}{c} G \cdot U && (*)
         \end{align*}
-        where $G$ is the electromagnetic 4-tensor, given by
+        where \(G\) is the electromagnetic 4-tensor, given by
         \begin{align*}
             G = \begin{pmatrix}
                 0 & -E_x & -E_y & -E_z \\
@@ -2239,18 +2239,18 @@
                 E_z & -cB_y & cB_x & 0 \\
             \end{pmatrix}
         \end{align*}
-        The time component of $(*)$ states that
+        The time component of \((*)\) states that
         \begin{align*}
             \gamma \frac{dE}{dt} &= \frac{q}{c} \V E \cdot \gamma \V u \\
             \implies \frac{dE}{dt} &= \frac{q}{c} \V E \cdot \V u
         \end{align*}
-        i.e. the electric field does work (and the magnetic field does not). The spatial components of $(*)$ say that
+        i.e. the electric field does work (and the magnetic field does not). The spatial components of \((*)\) say that
         \begin{align*}
             \left(\gamma \frac{d\V p}{dt}\right)^i &= \frac{q}{c}\left(G^{i0}U_0-G^{ij}u_j\right) \\
             &= \frac q c \left(E^i \gamma c + \eps^{ijk}B^kc\gamma u_j\right) \\
             \implies \frac{d\V p}{dt} &= \frac q c \left(\V E + \V u \times \V B\right)
         \end{align*}
-        so the Lorentz force is indeed relativistically invariant, although only after accounting for the mixing of $\V E$ and $\V B$ under Lorentz transformations.    
+        so the Lorentz force is indeed relativistically invariant, although only after accounting for the mixing of \(\V E\) and \(\V B\) under Lorentz transformations.    
     \end{example*}
     
     This concludes the course.

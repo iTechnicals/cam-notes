@@ -33,7 +33,7 @@
     \end{figure}
 
     \begin{remark*}
-        Can we generalise? How many symmetries does a regular $n$-gon have?
+        Can we generalise? How many symmetries does a regular \(n\)-gon have?
     \end{remark*}
     
     Things get more interesting if we \emph{compose} -- \emph{multiply?} our symmetries.
@@ -70,7 +70,7 @@
     Time to go back to algebra.
 
     \begin{definition}
-        A \emph{binary operation} on a set $X$ is a function
+        A \emph{binary operation} on a set \(X\) is a function
         \begin{align*}
             \cdot\; \colon X \times X &\to X \\
             (x, y) &\mapsto x \cdot y
@@ -78,18 +78,18 @@
     \end{definition}
     
     \begin{definition}
-        A \emph{group} is a triple $(G, \cdot, e)$ where
+        A \emph{group} is a triple \((G, \cdot, e)\) where
         \begin{itemize}
-            \item $G$ is a set;
-            \item $\cdot$ is a binary operation;
-            \item and $e$ is an element of $G$.
+            \item \(G\) is a set;
+            \item \(\cdot\) is a binary operation;
+            \item and \(e\) is an element of \(G\).
         \end{itemize}
         such that the following \emph{group axioms} hold:
         \begin{itemize}
-            \item \emph{Closure}. For all $a$, $b \in G$, $a \cdot b \in G$ (we actually already know this because it's part of the definition of a binary operation).
-            \item \emph{Associativity}. For all $a$, $b$, $c \in G$, $(a \cdot b) \cdot c = a \cdot (b \cdot c)$.
-            \item \emph{Identity}. For all $a \in G$, $a \cdot e = a$.
-            \item \emph{Right inverses}. For all $a \in G$, there exists $b \in G$ such that $a \cdot b = e$. 
+            \item \emph{Closure}. For all \(a\), \(b \in G\), \(a \cdot b \in G\) (we actually already know this because it's part of the definition of a binary operation).
+            \item \emph{Associativity}. For all \(a\), \(b\), \(c \in G\), \((a \cdot b) \cdot c = a \cdot (b \cdot c)\).
+            \item \emph{Identity}. For all \(a \in G\), \(a \cdot e = a\).
+            \item \emph{Right inverses}. For all \(a \in G\), there exists \(b \in G\) such that \(a \cdot b = e\). 
         \end{itemize}        
     \end{definition}
     
@@ -98,30 +98,18 @@
     \end{example*}
     
     \begin{exercise}
-        Show that $(\ZZ, +, 0)$ is a group.
+        Show that \((\ZZ, +, 0)\) is a group.
     \end{exercise}
-    
-    \begin{proposition}
-        Let $(G, \cdot, e)$ be a group, and let $a, b, b', e'$ be elements of $G$.
-        \begin{enumerate}
-            \item If $a \cdot b = e$, then $b \cdot a = e$ -- right inverses are left inverses;
-            \item $e \cdot a = a$ -- the identity is also a left identity;
-            \item If $a$, $b$ and $b'$ are such that $a \cdot b = a \cdot b' = e$, then $b = b'$ -- inverses are unique;
-            \item If $a \cdot e' = a$ then $e' = e$ -- the identity is unique.
-        \end{enumerate}
-        
-        
-    \end{proposition}
 
     \lecture{Lecture 2 -- 13/10/25}
 
     \begin{proposition}
-        Let $(G, \cdot, e)$ be a group, and let $a, b, b', e'$ be elements of $G$.
+        Let \((G, \cdot, e)\) be a group, and let \(a, b, b', e'\) be elements of \(G\).
         \begin{enumerate}
-            \item If $a \cdot b = e$, then $b \cdot a = e$ -- right inverses are left inverses;
-            \item $e \cdot a = a$ -- the identity is also a left identity;
-            \item If $a$, $b$ and $b'$ are such that $a \cdot b = a \cdot b' = e$, then $b = b'$ -- inverses are unique;
-            \item If $a \cdot e' = a$ then $e' = e$ -- the identity is unique.
+            \item If \(a \cdot b = e\), then \(b \cdot a = e\) -- right inverses are left inverses;
+            \item \(e \cdot a = a\) -- the identity is also a left identity;
+            \item If \(a\), \(b\) and \(b'\) are such that \(a \cdot b = a \cdot b' = e\), then \(b = b'\) -- inverses are unique;
+            \item If \(a \cdot e' = a\) then \(e' = e\) -- the identity is unique.
         \end{enumerate}
         
         
@@ -130,24 +118,24 @@
     \begin{proof}
         We simply prove each part sequentially.
         \begin{enumerate}
-            \item Suppose $a \cdot b = e$. Then
+            \item Suppose \(a \cdot b = e\). Then
             \begin{align*}
                 b &= b \cdot e && \text{by identity} \\
                 &= b \cdot (a \cdot b) && \text{by assumption} \\
                 &= (b \cdot a) \cdot b && \text{by associativity} \\
-                \implies b \cdot b^{-1} &= ((b \cdot a ) \cdot b) \cdot b^{-1} && \text{where $b^{-1}$ is an inverse of $b$} \\
+                \implies b \cdot b^{-1} &= ((b \cdot a ) \cdot b) \cdot b^{-1} && \text{where \(b^{-1}\) is an inverse of \(b\)} \\
                 &= (b \cdot a) \cdot (b \cdot b^{-1}) && \text{by associativity} \\
                 \implies e &= (b \cdot a) \cdot e && \text{by definition of the inverse} \\
                 &= b \cdot a && \text{by definition of the identity}
             \end{align*}
-            \item Let $a^{-1}$ be an inverse of $a$, then by 1, $a \cdot a^{-1} = e = a^{-1} \cdot a$. Now
+            \item Let \(a^{-1}\) be an inverse of \(a\), then by 1, \(a \cdot a^{-1} = e = a^{-1} \cdot a\). Now
             \begin{align*}
                 e \cdot a &= (a \cdot a^{-1}) \cdot a \\
                 &= a \cdot (a^{-1} \cdot a) \\
                 &= a \cdot e \\
                 &= a
             \end{align*}
-            \item Suppose $a \cdot b = a \cdot b' = e$. Then
+            \item Suppose \(a \cdot b = a \cdot b' = e\). Then
             \begin{align*}
                 b' &= e \cdot b' && \text{by 2} \\
                 &= (b \cdot a) \cdot b' && \text{by 1} \\
@@ -155,7 +143,7 @@
                 &= b \cdot e \\
                 &= b
             \end{align*}
-            \item Let $a^{-1}$ be the inverse of $a$, so $a^{-1} \cdot a = e$.
+            \item Let \(a^{-1}\) be the inverse of \(a\), so \(a^{-1} \cdot a = e\).
             \begin{align*}
                 a &= a \cdot e' \\
                 \implies a^{-1} \cdot a &= a^{-1} \cdot (a \cdot e') \\
@@ -163,59 +151,59 @@
                 &= e \cdot e' \\
                 &= e'
             \end{align*}
-            Hence $e = e'$. Note we only needed $e'$ to be a `second inverse' for one element!
+            Hence \(e = e'\). Note we only needed \(e'\) to be a `second inverse' for one element!
         \end{enumerate}
     \end{proof}
     
-    A corollary of the uniqueness of inverses along with right inverses also being left inverses is that $a$ is the inverse of $a^{-1}$.
+    A corollary of the uniqueness of inverses along with right inverses also being left inverses is that \(a\) is the inverse of \(a^{-1}\).
 
     \begin{definition}[Powers of elements]
-        Fix $a \in G$, then
+        Fix \(a \in G\), then
         \begin{itemize}
-            \item $a^0 = e$;
-            \item For $n \in \NN$, $a^n = a^{n-1} \cdot a$.
-            \item For $n < 0$, $a^n = (a^{-1})^{-n}$.
+            \item \(a^0 = e\);
+            \item For \(n \in \NN\), \(a^n = a^{n-1} \cdot a\).
+            \item For \(n < 0\), \(a^n = (a^{-1})^{-n}\).
         \end{itemize}        
     \end{definition}
     
     \begin{proposition}
-        For $a \in G$, $n, m \in \ZZ$,
+        For \(a \in G\), \(n, m \in \ZZ\),
         \begin{itemize}
-            \item $a^m \cdot a^n = a^{m+n}$;
-            \item $(a^m)^n = a^{mn}$.
+            \item \(a^m \cdot a^n = a^{m+n}\);
+            \item \((a^m)^n = a^{mn}\).
         \end{itemize}
     \end{proposition}
     
     \begin{proposition}
-        For $a$, $b \in G$, $(a\cdot b)^{-1} = b^{-1}\cdot a^{-1}$.
+        For \(a\), \(b \in G\), \((a\cdot b)^{-1} = b^{-1}\cdot a^{-1}\).
     \end{proposition}
     
     \begin{definition}[Abelian groups]
-        For a group $(G, \cdot, e)$, if $a \cdot b = b \cdot a$ for all $a$, $b \in G$, then $G$ is \emph{abelian}.
+        For a group \((G, \cdot, e)\), if \(a \cdot b = b \cdot a\) for all \(a\), \(b \in G\), then \(G\) is \emph{abelian}.
     \end{definition}
     
     \begin{example*}[The trivial group]
-        The \emph{trivial group} has $G = \{e\}$ and $e \cdot e = e$
+        The \emph{trivial group} has \(G = \{e\}\) and \(e \cdot e = e\)
     \end{example*}
     
     
 
     \begin{example*}[Additive groups]
-        $(\ZZ, +, 0)$, $(\QQ, +, 0)$, $(\RR, +, 0)$, $(\CC, +, 0)$ -- all abelian. $(\NN, +, 0)$ is \emph{not} a group.
+        \((\ZZ, +, 0)\), \((\QQ, +, 0)\), \((\RR, +, 0)\), \((\CC, +, 0)\) -- all abelian. \((\NN, +, 0)\) is \emph{not} a group.
     \end{example*}
 
     \begin{example*}[Multiplicative groups]
-        $(\QQ, \times, 1)$ is not a group -- but $(\QQ \setminus \{0\}, \times, 1)$ is (abelian). As are $(\RR \setminus \{0\}, \times, 1)$ and $(\CC \setminus \{0\}, \times, 1)$.
+        \((\QQ, \times, 1)\) is not a group -- but \((\QQ \setminus \{0\}, \times, 1)\) is (abelian). As are \((\RR \setminus \{0\}, \times, 1)\) and \((\CC \setminus \{0\}, \times, 1)\).
     \end{example*}
     
     \begin{definition}
-        The \emph{order} of a group $(G, \cdot, e)$ is the number of elements of $G$, $|G|$. If $|G| < \infty$, then $(G, \cdot, e)$ is \emph{finite}.
+        The \emph{order} of a group \((G, \cdot, e)\) is the number of elements of \(G\), \(|G|\). If \(|G| < \infty\), then \((G, \cdot, e)\) is \emph{finite}.
     \end{definition}
     
     \begin{example*}[Finite groups]
         \begin{itemize}
-            \item For $n \in \NN$, let $C_n = \{z: z \in \CC, z^n = 1\}$. Then $(C_n, \times, 1)$ is an abelian group.
-            \item For $n \in \NN$, let $Z_n = \{0, \dots, n-1\}$. Let $a +_n b$ be the remainder when $a + b$ is divided by $n$. Then $(Z_n, +_n, 0)$ is an abelian group.
+            \item For \(n \in \NN\), let \(C_n = \{z: z \in \CC, z^n = 1\}\). Then \((C_n, \times, 1)\) is an abelian group.
+            \item For \(n \in \NN\), let \(Z_n = \{0, \dots, n-1\}\). Let \(a +_n b\) be the remainder when \(a + b\) is divided by \(n\). Then \((Z_n, +_n, 0)\) is an abelian group.
         \end{itemize}
         
         
@@ -226,15 +214,15 @@
     \subsection{Symmetric groups}
 
     \begin{definition}
-        Let $X$, $Y$ be sets. A \emph{bijection} is a map $f: X \to Y$ that has an inverse $g: Y \to X$ such that $f \circ g = \id_Y$ and $g \circ f = \id_X$.
+        Let \(X\), \(Y\) be sets. A \emph{bijection} is a map \(f: X \to Y\) that has an inverse \(g: Y \to X\) such that \(f \circ g = \id_Y\) and \(g \circ f = \id_X\).
     \end{definition}
     
     \begin{definition}
-        A bijection from a set $X$ to itself is called a \emph{permutation}.
+        A bijection from a set \(X\) to itself is called a \emph{permutation}.
     \end{definition}
     
     \begin{definition}
-        Given a set $X$, the set $\Sym(X)$ is the set of permutations of the set.
+        Given a set \(X\), the set \(\Sym(X)\) is the set of permutations of the set.
     \end{definition}
     
     \begin{lemma}[Associativity of function composition]
@@ -246,26 +234,26 @@
             \arrow["g", from=1-2, to=1-3]
             \arrow["h", from=1-3, to=1-4]
         \end{tikzcd}\]
-        Then $(h \circ g) \circ f = h \circ (g \circ f)$.
+        Then \((h \circ g) \circ f = h \circ (g \circ f)\).
         \label{associativity-of-function-composition}
     \end{lemma}
     
     \begin{proof}
-        For any $w \in W$, $((h \circ g) \circ f)(w) = h(g(f(w))) = (h \circ (g \circ f))(w)$.
+        For any \(w \in W\), \(((h \circ g) \circ f)(w) = h(g(f(w))) = (h \circ (g \circ f))(w)\).
     \end{proof}
     
     And that's all we need to show to make our next group!
 
     \begin{proposition}
-        For any set $X$, $(\Sym(X), \circ, \id_X)$ is a group.
+        For any set \(X\), \((\Sym(X), \circ, \id_X)\) is a group.
     \end{proposition}
     
     \begin{proof}
         We must verify the four group axioms.
         \begin{itemize}
-            \item \emph{Closure}. $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$, so the composition of two permutations is a permutation.
+            \item \emph{Closure}. \((f \circ g)^{-1} = g^{-1} \circ f^{-1}\), so the composition of two permutations is a permutation.
             \item \emph{Associativity}. By \cref{associativity-of-function-composition}.
-            \item \emph{Identity}. $\id_X$.
+            \item \emph{Identity}. \(\id_X\).
             \item \emph{Inverse}. By definition: we are working with bijections.
         \end{itemize}
         
@@ -273,46 +261,46 @@
     \end{proof}
     
     \begin{definition}
-        If $X = \{1, \dots, n\}$, we write $S_n$ for $(\Sym(X), \circ, \id_X)$.
+        If \(X = \{1, \dots, n\}\), we write \(S_n\) for \((\Sym(X), \circ, \id_X)\).
     \end{definition}
     
     \begin{example*}
         \begin{itemize}
-            \item $S_3$, for example, is the group of ways to arrange 3 flowerpots on the windowsill.
-            \item $S_{52}$ is the group of ways to shuffle a deck of cards.
+            \item \(S_3\), for example, is the group of ways to arrange 3 flowerpots on the windowsill.
+            \item \(S_{52}\) is the group of ways to shuffle a deck of cards.
         \end{itemize}
     \end{example*}
     
-    \noindent Fairly clear that $|S_n| = n!$.
+    \noindent Fairly clear that \(|S_n| = n!\).
 
     \begin{remark*}[Notation]
-        Writing $(G, \cdot, e)$ is cumbersome. Let's just write $G$ and leave the rest as implied. If we really want to emphasise that $e$ is the identity, we can always write $e_G$, and $\cdot_G$ for $\cdot$. Finally we might be so apathetic that we even write $ab$ instead of $a \cdot b$.
+        Writing \((G, \cdot, e)\) is cumbersome. Let's just write \(G\) and leave the rest as implied. If we really want to emphasise that \(e\) is the identity, we can always write \(e_G\), and \(\cdot_G\) for \(\cdot\). Finally we might be so apathetic that we even write \(ab\) instead of \(a \cdot b\).
     \end{remark*}
     
     \subsection{Subgroups}
 
-    We might want to focus on smaller groups within a group -- for example, $\ZZ$ inside $\RR$, or the rotations of a triangle instead of all its symmetries.
+    We might want to focus on smaller groups within a group -- for example, \(\ZZ\) inside \(\RR\), or the rotations of a triangle instead of all its symmetries.
 
     \begin{definition}
-        Let $G$ be a group, and $H \subseteq G$. If $H$ satisfies
+        Let \(G\) be a group, and \(H \subseteq G\). If \(H\) satisfies
         \begin{itemize}
-            \item $e \in H$;
-            \item for any $a$, $b \in H$, $ab \in H$;
-            \item for any $a \in H$, $a^{-1} \in H$
+            \item \(e \in H\);
+            \item for any \(a\), \(b \in H\), \(ab \in H\);
+            \item for any \(a \in H\), \(a^{-1} \in H\)
         \end{itemize}
-        then we say $H$ is a \emph{subgroup} of $G$. We write $H \leq G$.
+        then we say \(H\) is a \emph{subgroup} of \(G\). We write \(H \leq G\).
         
     \end{definition}
     
     \begin{remark*}
-        If $G$ is a group and $H$ is a subgroup, then $H$ is itself a group.
+        If \(G\) is a group and \(H\) is a subgroup, then \(H\) is itself a group.
     \end{remark*}
     
     \begin{example*}
         \begin{itemize}
-            \item Every group $G$ has itself and $\{e\}$ as subgroups. Any other subgroup is called \emph{proper}.
-            \item $\ZZ \leq \QQ \leq \RR \leq \CC$.
-            \item For $n \in \NN_0$, let $n\ZZ = \{nk : k \in \ZZ\}$ -- the set of multiples of $n$. Then $n\ZZ \leq \ZZ$. In fact these are the only subgroups of $\ZZ$
+            \item Every group \(G\) has itself and \(\{e\}\) as subgroups. Any other subgroup is called \emph{proper}.
+            \item \(\ZZ \leq \QQ \leq \RR \leq \CC\).
+            \item For \(n \in \NN_0\), let \(n\ZZ = \{nk : k \in \ZZ\}\) -- the set of multiples of \(n\). Then \(n\ZZ \leq \ZZ\). In fact these are the only subgroups of \(\ZZ\)
             
         \end{itemize}
         
@@ -320,17 +308,17 @@
     \end{example*}
     
     \begin{proposition}
-        If $H \leq \ZZ$, $H = n\ZZ$ for some $n \in \NN_0$.
+        If \(H \leq \ZZ\), \(H = n\ZZ\) for some \(n \in \NN_0\).
     \end{proposition}
     
     \begin{proof}
-        If $H = \{0\}$, then $H = 0\ZZ$. If $H \neq \{0\}$, then let $n$ be the smallest positive integer in $H$. By induction, $nk \in H$ for all $k \in \ZZ$, so $n\ZZ \leq H$. Now suppose for contradiction there exists $h \in H$ such that $h \notin n\ZZ$. Dividing $h$ by $n$ gives $h = nq + r$ with $0 \leq r < n$, and in particular by closure $r \in H$. Furthermore, $r \neq 0$ since $h \notin n\ZZ$. But this contradicts the minimality of $n$. Hence $H = n\ZZ$ as required.
+        If \(H = \{0\}\), then \(H = 0\ZZ\). If \(H \neq \{0\}\), then let \(n\) be the smallest positive integer in \(H\). By induction, \(nk \in H\) for all \(k \in \ZZ\), so \(n\ZZ \leq H\). Now suppose for contradiction there exists \(h \in H\) such that \(h \notin n\ZZ\). Dividing \(h\) by \(n\) gives \(h = nq + r\) with \(0 \leq r < n\), and in particular by closure \(r \in H\). Furthermore, \(r \neq 0\) since \(h \notin n\ZZ\). But this contradicts the minimality of \(n\). Hence \(H = n\ZZ\) as required.
     \end{proof}
     
     \lecture{Lecture 4 -- 17/10/25}
 
     \begin{proposition}
-        If $H$, $K \leq G$, then $H \cap K \leq G$
+        If \(H\), \(K \leq G\), then \(H \cap K \leq G\).
     \end{proposition}
     
     \begin{proof}
@@ -342,41 +330,41 @@
     \end{remark*}
     
     \begin{definition}
-        Let $X$ be a subset of a group $G$. Then
+        Let \(X\) be a subset of a group \(G\). Then
         \[
             \gen{X} := \bigcap_{X \leq H \leq G} H
         \]
-        is the \emph{subgroup generated by $X$} -- the intersection of all subgroups of $G$ that contain $X$. Intuition: the smallest subgroup of $G$ containing $X$.
+        is the \emph{subgroup generated by \(X\)} -- the intersection of all subgroups of \(G\) that contain \(X\). Intuition: the smallest subgroup of \(G\) containing \(X\).
     \end{definition}
     
     \begin{definition}
-        If $\gen X = G$, we say that $X$ \emph{generates} $G$ or is a \emph{generating set} for $G$. If $X$ generates $G$, it means that every $g \in G$ can be written as
+        If \(\gen X = G\), we say that \(X\) \emph{generates} \(G\) or is a \emph{generating set} for \(G\). If \(X\) generates \(G\), it means that every \(g \in G\) can be written as
         \[
             x_1^{\pm 1} \cdot x_2^{\pm 1} \cdots x_n^{\pm 1}
         \]
-        for some $n \geq 0$, where every $x_i \in X$.
+        for some \(n \geq 0\), where every \(x_i \in X\).
     \end{definition}
     
     \subsection{Geometric examples}
 
-    Let $\CC$ be the plane, equipped with the usual notion of distance. 
+    Let \(\CC\) be the plane, equipped with the usual notion of distance. 
 
     DIAGRAM: complex plane, w = w1 + iw2, z = z1 + iz2, line between them, labelled |z-w| = an expression due to Pythagoras
 
     \begin{definition}
-        For any subset $X \subseteq \CC$, an \emph{isometry} of $X$ is a bijection $f$ from $X$ to itself that preserves distance -- for any $x$, $y \in X$, $|f(x)-f(y)|=|x-y|$.
+        For any subset \(X \subseteq \CC\), an \emph{isometry} of \(X\) is a bijection \(f\) from \(X\) to itself that preserves distance -- for any \(x\), \(y \in X\), \(|f(x)-f(y)|=|x-y|\).
     \end{definition}
     
-    \begin{proposition}[Isometry groups in $\CC$]
-        Let $X \subseteq \CC$. The set of isometries of $X$, $\Isom(X)$, is a subgroup of $\Sym(X)$. In particular, $\Isom(X)$ is a group.
+    \begin{proposition}[Isometry groups in \(\CC\)]
+        Let \(X \subseteq \CC\). The set of isometries of \(X\), \(\Isom(X)\), is a subgroup of \(\Sym(X)\). In particular, \(\Isom(X)\) is a group.
     \end{proposition}
     
     \begin{proof}
-        Let $f$, $g \in \Isom(X)$, and $x$, $y \in X$.
+        Let \(f\), \(g \in \Isom(X)\), and \(x\), \(y \in X\).
         \begin{itemize}
-            \item \emph{Identity}. Clearly $\id_X$ is an isometry, so it is in $\Isom(X)$ as required.
+            \item \emph{Identity}. Clearly \(\id_X\) is an isometry, so it is in \(\Isom(X)\) as required.
             \item \emph{Closure}. Clear that the composition of isometries is an isometry by the transitivity of equality.
-            \item \emph{Inverse}. If $f$ is an isometry,
+            \item \emph{Inverse}. If \(f\) is an isometry,
             \begin{align*}
                 |f^{-1}(x) - f^{-1}(y)| &= |f \circ f^{-1}(x) - f \circ f^{-1}(y)| \\
                 &= |x - y|
@@ -385,53 +373,53 @@
     \end{proof}
     
     \begin{definition}
-        Let $n \geq 3$ and let $X_n \subseteq \CC$ be the $n$-gon with vertices $\{\exp(\frac{2 \pi i k}{n}) : k = 0, \dots, n-1\}$.
+        Let \(n \geq 3\) and let \(X_n \subseteq \CC\) be the \(n\)-gon with vertices \(\{\exp(\frac{2 \pi i k}{n}) : k = 0, \dots, n-1\}\).
 
-        DIAGRAM: $6$ points equally spaced around the unit circle in the complex plane, one point at $n=1$, label `e.g. $n=6$', hexagon drawn.
+        DIAGRAM: \(6\) points equally spaced around the unit circle in the complex plane, one point at \(n=1\), label `e.g. \(n=6\)', hexagon drawn.
 
-        Then the \emph{$n^\text{th}$ dihedral group}, $D_{2n} := \Isom(X_n)$. So for example, $D_6$ is the symmetry group of an equilateral triangle.
+        Then the \emph{\(n^\text{th}\) dihedral group}, \(D_{2n} := \Isom(X_n)\). So for example, \(D_6\) is the symmetry group of an equilateral triangle.
     \end{definition}
     
     \begin{theorem}
-        The size of the $n^\text{th}$ dihedral group is $2n$.
+        The size of the \(n^\text{th}\) dihedral group is \(2n\).
     \end{theorem}
     
     First, we need some geometric lemmas.
 
     \begin{lemma}[Kite lemma]
-        Let $x_1$, $x_2$, $y_1$, $y_2 \in \CC$. If $|y_1-x_1| = |y_2-x_1$ and $|y_1-x_2| = |y_2-x_2|$, then $x_2-x_1$ is perpendicular to $y_2-y_1$.
+        Let \(x_1\), \(x_2\), \(y_1\), \(y_2 \in \CC\). If \(|y_1-x_1| = |y_2-x_1|\) and \(|y_1-x_2| = |y_2-x_2|\), then \(x_2-x_1\) is perpendicular to \(y_2-y_1\).
     \end{lemma}
     
     \begin{proof}
-        DIAGRAM: Kite: diagonals y1y2 and x1x2. Whimsical kite tail attached to x2. Equal lengths of x1y1 and x1y2 and x2y1 and x2y2 indicated. Diagonals drawn. Point $z$ labelled at intersection.
+        DIAGRAM: Kite: diagonals y1y2 and x1x2. Whimsical kite tail attached to x2. Equal lengths of x1y1 and x1y2 and x2y1 and x2y2 indicated. Diagonals drawn. Point \(z\) labelled at intersection.
 
-        By symmetry, $\angle X_1 Z Y_1 = \angle X_1 Z Y_2$. But $Y_1Y_2$ is a straight line, so $\angle X_1 Z Y_1 + \angle X_1 Z Y_2 = \pi$. Hence $\angle X_1 Z Y_1 = \angle X_1 Z Y_2 = \frac \pi 2$ as required.
+        By symmetry, \(\angle X_1 Z Y_1 = \angle X_1 Z Y_2\). But \(Y_1Y_2\) is a straight line, so \(\angle X_1 Z Y_1 + \angle X_1 Z Y_2 = \pi\). Hence \(\angle X_1 Z Y_1 = \angle X_1 Z Y_2 = \frac \pi 2\) as required.
     \end{proof}
     
     \begin{lemma}[Three point lemma]
-        Let $X \subseteq \CC$ and $f \in \Isom(X)$. Suppose $x_1$, $x_2$, $x_3 \in X$ distinct and not collinear, such that $f(x_i) = x_i$ for $i=1,2,3$. Then $f = \id_X$.
+        Let \(X \subseteq \CC\) and \(f \in \Isom(X)\). Suppose \(x_1\), \(x_2\), \(x_3 \in X\) distinct and not collinear, such that \(f(x_i) = x_i\) for \(i=1,2,3\). Then \(f = \id_X\).
     \end{lemma}
     
     \begin{proof}
-        Suppose $f(y) \neq y$ for some $y \in X$. Then
+        Suppose \(f(y) \neq y\) for some \(y \in X\). Then
         \begin{align*}
             |f(y) - x_i| &= |f(y) - f(x_i)| \\
             &= |y - x_i| && \text{since } f \in \Isom(X)
         \end{align*}
-        Now apply the kite lemma with $y_1 = y$, $y_2 = f(y)$ and letting $x_1$, $x_2$ range over the $x_i$ to get $f(y) - y$ perpendicular to $x_i - x_j$ for any $i \neq j$. Then, since $f(y)-y \neq 0$,  $x_i - x_j$ are all parallel, so $x_1$, $x_2$, $x_3$ are collinear.
+        Now apply the kite lemma with \(y_1 = y\), \(y_2 = f(y)\) and letting \(x_1\), \(x_2\) range over the \(x_i\) to get \(f(y) - y\) perpendicular to \(x_i - x_j\) for any \(i \neq j\). Then, since \(f(y)-y \neq 0\),  \(x_i - x_j\) are all parallel, so \(x_1\), \(x_2\), \(x_3\) are collinear.
 
         DIAGRAM: ????
         
     \end{proof}
     
     \begin{remark*}
-        There is equally an $(n+1)$-point lemma valid in $\RR^n$.
+        There is equally an \((n+1)\)-point lemma valid in \(\RR^n\).
     \end{remark*}
     
     \lecture{Lecture 5 -- 20/10/25}
 
     \begin{proof}[Proof of theorem]
-        We first define two particular elements of $D_{2n}$:
+        We first define two particular elements of \(D_{2n}\):
         \begin{align*}
             r: z &\mapsto e^{\frac{2 \pi i}{n}}z && \text{rotation} \\
             s: z &\mapsto \overline{z} && \text{reflection} \\
@@ -440,33 +428,33 @@
         \begin{figure}[ht]
             \centering
             \incfig{0.3\textwidth}{dihedral-group-operations}
-            \caption{Graphical depictions of $r$ and $s$}
+            \caption{Graphical depictions of \(r\) and \(s\)}
             \label{fig:dihedral-group-operations}
         \end{figure}      
 
-        We will now further claim that $D_{2n} = \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}$. In particular, $\{r, s\}$ generates $D_{2n}$.
+        We will now further claim that \(D_{2n} = \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}\). In particular, \(\{r, s\}\) generates \(D_{2n}\).
 
-        First, it is necessary to show that $r$, $s \in D_{2n}$. For some $x$, $y \in \CC$,
+        First, it is necessary to show that \(r\), \(s \in D_{2n}\). For some \(x\), \(y \in \CC\),
         \begin{itemize}
-            \item $|r(x) - r(y)| = |e^{\frac{2 \pi i}{n}} x - e^{\frac{2 \pi i}{n}} y| = |e^{\frac{2 \pi i}{n}}||x - y| = |x-y|$, so $r$ is an isometry. Furthermore, $r(e^{\frac{2 \pi i k}{n}}) = e^{\frac{2 \pi i (k+1)}{n}}$, so $r$ sends vertices to other vertices, so $r$ really is a permutation of $X_n$.
-            \item $|s(x) - s(y)| = |\overline{x} - \overline{y}| = |\overline{x-y}| = |x-y|$, so $s$ is an isometry. To see that $s$ preserves the vertices of $X_n$, we can either proceed algebraically or appeal to the symmetry of $X_n$ in the real axis.
+            \item \(|r(x) - r(y)| = |e^{\frac{2 \pi i}{n}} x - e^{\frac{2 \pi i}{n}} y| = |e^{\frac{2 \pi i}{n}}||x - y| = |x-y|\), so \(r\) is an isometry. Furthermore, \(r(e^{\frac{2 \pi i k}{n}}) = e^{\frac{2 \pi i (k+1)}{n}}\), so \(r\) sends vertices to other vertices, so \(r\) really is a permutation of \(X_n\).
+            \item \(|s(x) - s(y)| = |\overline{x} - \overline{y}| = |\overline{x-y}| = |x-y|\), so \(s\) is an isometry. To see that \(s\) preserves the vertices of \(X_n\), we can either proceed algebraically or appeal to the symmetry of \(X_n\) in the real axis.
         \end{itemize}
         
-        From this it follows that $\{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\} \subseteq D_{2n}$ by closure. It remains to show that these are all the elements. Let $f$ arbitrary in $D_{2n}$. Let $x=1$, $y=e^{\frac{2\pi i}{n}}$, $z=e^{-\frac{2\pi i}{n}}$ (DIAGRAM?). Since $f \in D_{2n}$, $f(x)$ is some vertex of $X_n$ -- that is, $f(x) = e^{\frac{2 \pi i k}{n}}$ for some $k \in \{0, \dots, n-1\}$. Then $r^{-k} \circ f(x) = 1$. Since $r^{-k} \circ f$ is an isometry, we can also see $r^{-k} \circ f(y)$ and $r^{-k} \circ f(z)$ are themselves $y$ and $z$ in some order.
+        From this it follows that \(\{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\} \subseteq D_{2n}\) by closure. It remains to show that these are all the elements. Let \(f\) arbitrary in \(D_{2n}\). Let \(x=1\), \(y=e^{\frac{2\pi i}{n}}\), \(z=e^{-\frac{2\pi i}{n}}\) (DIAGRAM?). Since \(f \in D_{2n}\), \(f(x)\) is some vertex of \(X_n\) -- that is, \(f(x) = e^{\frac{2 \pi i k}{n}}\) for some \(k \in \{0, \dots, n-1\}\). Then \(r^{-k} \circ f(x) = 1\). Since \(r^{-k} \circ f\) is an isometry, we can also see \(r^{-k} \circ f(y)\) and \(r^{-k} \circ f(z)\) are themselves \(y\) and \(z\) in some order.
 
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item $r^{-k} \circ f(y) = y$ and $r^{-k} \circ f(z) = z$. Then, by the 3 point lemma, $r^{-k} \circ f = e$. So $f = r^k \in \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}$.
-            \item $r^{-k} \circ f(y) = z$ and $r^{-k} \circ f(z) = y$. Then $s \circ r^{-k} \circ f(y) = y$ and $s \circ r^{-k} \circ f(z) = z$, so $s \circ r^{-k} \circ f = e$. Hence $f = r^ks$, since $s$ is self-inverse, so $f \in \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}$, as required.
+            \item \(r^{-k} \circ f(y) = y\) and \(r^{-k} \circ f(z) = z\). Then, by the 3 point lemma, \(r^{-k} \circ f = e\). So \(f = r^k \in \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}\).
+            \item \(r^{-k} \circ f(y) = z\) and \(r^{-k} \circ f(z) = y\). Then \(s \circ r^{-k} \circ f(y) = y\) and \(s \circ r^{-k} \circ f(z) = z\), so \(s \circ r^{-k} \circ f = e\). Hence \(f = r^ks\), since \(s\) is self-inverse, so \(f \in \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}\), as required.
         \end{enumerate}
         
-        Thus $D_{2n} \subseteq \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}$. Finally, it is necessary to show that these elements are all distinct. One can simply verify that $x$ and $y$ are taken to different points by each of these. This concludes the proof.
+        Thus \(D_{2n} \subseteq \{e, r, \dots, r^{n-1}, s, rs, \dots, r^{n-1}s\}\). Finally, it is necessary to show that these elements are all distinct. One can simply verify that \(x\) and \(y\) are taken to different points by each of these. This concludes the proof.
         
     \end{proof}
     
-    To understand the group operation on $D_{2n}$, it is desirable to understand all the different ways to multiply $r$ and $s$.
+    To understand the group operation on \(D_{2n}\), it is desirable to understand all the different ways to multiply \(r\) and \(s\).
 
     \begin{lemma}[Dihedral relation]
-        For $r$, $s \in D_{2n}$ as above,
+        For \(r\), \(s \in D_{2n}\) as above,
         \[
             sr = r^{-1}s
         \]
@@ -480,10 +468,10 @@
     
     \subsection{Homomorphisms}
 
-    Some groups are not set-theoretically equal, but nevertheless have the same structure -- for example, $\Sym(\text{deck of cards})$ and $\Sym(\text{52 undergraduate mathematicians})$.
+    Some groups are not set-theoretically equal, but nevertheless have the same structure -- for example, \(\Sym(\text{deck of cards})\) and \(\Sym(\text{52 undergraduate mathematicians})\).
 
     \begin{definition}[Homomorphism]
-        A map between groups $\phi: G \to H$ is called a \emph{homomorphism} if, for any $g$, $g' \in G$,
+        A map between groups \(\phi: G \to H\) is called a \emph{homomorphism} if, for any \(g\), \(g' \in G\),
         \[
             \phi(g \cdot g') = \phi(g) \cdot \phi(g')
         \]
@@ -491,45 +479,45 @@
     
     \begin{example*}
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item For any groups $G$, $H$, the map $\phi: G \to H$, $g \mapsto e_H$ is the \emph{trivial homomorphism}.
-            \item If $H \leq G$, the map $i: H \to G$, $h \mapsto h$ is the \emph{inclusion homomorphism}
-            \item If $nk = m$, the map $\phi: C_m \to C_n$, $g \mapsto g^k$ is a homomorphism.
-            \item Since $\det(AB) = \det(A) \det(B)$, $\det: \GL_2 \RR \to (\RR \setminus \{0\}, \times)$, $A \mapsto \det A$ is a homomorphism.
+            \item For any groups \(G\), \(H\), the map \(\phi: G \to H\), \(g \mapsto e_H\) is the \emph{trivial homomorphism}.
+            \item If \(H \leq G\), the map \(i: H \to G\), \(h \mapsto h\) is the \emph{inclusion homomorphism}
+            \item If \(nk = m\), the map \(\phi: C_m \to C_n\), \(g \mapsto g^k\) is a homomorphism.
+            \item Since \(\det(AB) = \det(A) \det(B)\), \(\det: \GL_2 \RR \to (\RR \setminus \{0\}, \times)\), \(A \mapsto \det A\) is a homomorphism.
         \end{enumerate}
     \end{example*}
     
     \begin{lemma}
-        If $\phi: G \to H$ is a homomorphism, then
+        If \(\phi: G \to H\) is a homomorphism, then
         \begin{enumerate}
-            \item $\phi(e_G) = \phi(e_H)$, and
-            \item $\phi(g^{-1}) = \phi(g)^{-1}$ for all $g \in G$.
+            \item \(\phi(e_G) = \phi(e_H)\), and
+            \item \(\phi(g^{-1}) = \phi(g)^{-1}\) for all \(g \in G\).
         \end{enumerate}
         \label{homomorphism-identity-inverse}   
     \end{lemma}
     
     \begin{proof}
         \begin{enumerate}
-            \item $\phi(e_G) \cdot \phi(e_G) = \phi(e_G \cdot e_G) = \phi(e_G)$, so $\phi(e_G) = e_H$, by uniqueness of identities.
-            \item $\phi(g) \cdot \phi(g^{-1}) = \phi(g \cdot g^{-1}) = \phi(e_G) = e_H$, so $\phi(g)^{-1} = \phi(g^{-1})$, by uniqueness of inverses.
+            \item \(\phi(e_G) \cdot \phi(e_G) = \phi(e_G \cdot e_G) = \phi(e_G)\), so \(\phi(e_G) = e_H\), by uniqueness of identities.
+            \item \(\phi(g) \cdot \phi(g^{-1}) = \phi(g \cdot g^{-1}) = \phi(e_G) = e_H\), so \(\phi(g)^{-1} = \phi(g^{-1})\), by uniqueness of inverses.
         \end{enumerate}        
     \end{proof}
     
     \begin{definition}[Isomorphisms]
-        If a homomorphism $\phi: G \to H$ is also a bijection, then $\phi$ is called an \emph{isomorphism}, and we write $G \cong H$.
+        If a homomorphism \(\phi: G \to H\) is also a bijection, then \(\phi\) is called an \emph{isomorphism}, and we write \(G \cong H\).
     \end{definition}
     
     \begin{example*}
         \begin{enumerate}
-            \item $\ZZ_n \cong C_n$ -- we have the isomorphism $\phi: \ZZ_n \to C_n$, $k \mapsto e^{2\pi i k /n}$.
-            \item $(\RR, +, 0) \cong (\RR_{> 0}, \times, 1)$ -- we have the isomorphism $\phi: (\RR, +, 0) \to (\RR_{> 0}, \times, 1)$, $x \mapsto \exp(x)$.
+            \item \(\ZZ_n \cong C_n\) -- we have the isomorphism \(\phi: \ZZ_n \to C_n\), \(k \mapsto e^{2\pi i k /n}\).
+            \item \((\RR, +, 0) \cong (\RR_{> 0}, \times, 1)\) -- we have the isomorphism \(\phi: (\RR, +, 0) \to (\RR_{> 0}, \times, 1)\), \(x \mapsto \exp(x)\).
         \end{enumerate}
     \end{example*}
     
     \begin{lemma}
         \begin{enumerate}
-            \item If $\phi: G \to H$ is an isomorphism, so is $\phi^{-1}$.
-            \item If $\phi: G \to H$ and $\psi: H \to K$ are homomorphisms, so is $\psi \circ \phi$.
-            \item $\cong$ is an equivalence relation.
+            \item If \(\phi: G \to H\) is an isomorphism, so is \(\phi^{-1}\).
+            \item If \(\phi: G \to H\) and \(\psi: H \to K\) are homomorphisms, so is \(\psi \circ \phi\).
+            \item \(\cong\) is an equivalence relation.
         \end{enumerate}
     \end{lemma}
     
@@ -540,34 +528,34 @@
     We saw earlier that every subgroup induces an inclusion homomorphism. Furthermore, every homomorphism induces a subgroup.
 
     \begin{definition}[Image and kernel]
-        Let $\phi: G \to H$ be a homomorphism.
+        Let \(\phi: G \to H\) be a homomorphism.
         \begin{itemize}
-            \item The \emph{image} of $\phi$, $\im \phi $, is $\{h \in H: h = \phi(g) \text{ for some } g \in G\}$. (DIAGRAM)
-            \item The \emph{kernel} of $\phi$, $\ker \phi$, is $\{g \in G: \phi(g) = e_H\}$.
+            \item The \emph{image} of \(\phi\), \(\im \phi \), is \(\{h \in H: h = \phi(g) \text{ for some } g \in G\}\). (DIAGRAM)
+            \item The \emph{kernel} of \(\phi\), \(\ker \phi\), is \(\{g \in G: \phi(g) = e_H\}\).
         \end{itemize}        
     \end{definition}
     
     \begin{proposition}
-        If $\phi: G \to H$ is a homomorphism, then
+        If \(\phi: G \to H\) is a homomorphism, then
         \begin{enumerate}
-            \item $\im \phi \leq H$;
-            \item $\ker \phi \leq G$.
+            \item \(\im \phi \leq H\);
+            \item \(\ker \phi \leq G\).
         \end{enumerate}
     \end{proposition}
     
     \begin{proof}
         \begin{enumerate}
-            \item $e_H = \phi(e_G) \in \im \phi$, so we have the identity. $\phi(g_1)\phi(g_2) = \phi(g_1g_2) \in \im \phi$, so we have closure. Finally, by \cref{homomorphism-identity-inverse}, $\phi(g)^{-1} = \phi(g^{-1}) \in \im \phi$, so we have inverse.
-            \item $\phi(e_G) = e_H$, so $e_G \in \ker \phi$, so we have the identity. For $g_1, g_2 \in \ker \phi$, $\phi(g_1g_2) = \phi(g_1)\phi(g_2) = e_H \cdot e_H = e_H$, so $g_1g_2 \in \ker \phi$, so we have closure. Finally, by \cref{homomorphism-identity-inverse}, $\phi(g^{-1}) = \phi(g)^{-1} = e_H^{-1} = e_H$, so we have inverse.
+            \item \(e_H = \phi(e_G) \in \im \phi\), so we have the identity. \(\phi(g_1)\phi(g_2) = \phi(g_1g_2) \in \im \phi\), so we have closure. Finally, by \cref{homomorphism-identity-inverse}, \(\phi(g)^{-1} = \phi(g^{-1}) \in \im \phi\), so we have inverse.
+            \item \(\phi(e_G) = e_H\), so \(e_G \in \ker \phi\), so we have the identity. For \(g_1, g_2 \in \ker \phi\), \(\phi(g_1g_2) = \phi(g_1)\phi(g_2) = e_H \cdot e_H = e_H\), so \(g_1g_2 \in \ker \phi\), so we have closure. Finally, by \cref{homomorphism-identity-inverse}, \(\phi(g^{-1}) = \phi(g)^{-1} = e_H^{-1} = e_H\), so we have inverse.
         \end{enumerate}
     \end{proof}
     
     \begin{proposition}
         \label{surj-inv-crits}
-        Let $\phi: G \to H$ be a homomorphism.
+        Let \(\phi: G \to H\) be a homomorphism.
         \begin{enumerate}
-            \item $\phi$ is \emph{surjective} if and only if $\im \phi = H$;
-            \item $\phi$ is \emph{injective} if and only if $\ker \phi = \{e_G\}$.
+            \item \(\phi\) is \emph{surjective} if and only if \(\im \phi = H\);
+            \item \(\phi\) is \emph{injective} if and only if \(\ker \phi = \{e_G\}\).
         \end{enumerate}
     \end{proposition}
     
@@ -576,38 +564,38 @@
     \begin{proof}
         The surjectivity statement is very clear. For the injectivity, we will show each direction as follows:
         \begin{itemize}
-            \item[$\implies$] If $\phi$ is injective, then there is only one element that maps to $e_H$, i.e. the kernel must have one element. That element clearly must be $e_G$.
-            \item[$\impliedby$] Suppose $\ker \phi = \{e_G\}$, and $\phi(g_1) = \phi(g_2)$. Then $\phi(g_1g_2^{-1}) = \phi(g_1)\phi(g_2)^{-1} = e_H$. Hence, $g_1g_2^{-1} \in \ker \phi \implies g_1g_2^{-1} = e_G \implies g_1 = g_2$, which was what we wanted.
+            \item[\(\implies\)] If \(\phi\) is injective, then there is only one element that maps to \(e_H\), i.e. the kernel must have one element. That element clearly must be \(e_G\).
+            \item[\(\impliedby\)] Suppose \(\ker \phi = \{e_G\}\), and \(\phi(g_1) = \phi(g_2)\). Then \(\phi(g_1g_2^{-1}) = \phi(g_1)\phi(g_2)^{-1} = e_H\). Hence, \(g_1g_2^{-1} \in \ker \phi \implies g_1g_2^{-1} = e_G \implies g_1 = g_2\), which was what we wanted.
         \end{itemize}
     \end{proof}
     
-    Combining the two parts of the proposition, we see that a homomorphism $\phi$ is an isomorphism iff and only if $\im \phi = H$ and $\ker \phi = \{e_G\}$.
+    Combining the two parts of the proposition, we see that a homomorphism \(\phi\) is an isomorphism iff and only if \(\im \phi = H\) and \(\ker \phi = \{e_G\}\).
 
     \subsection{Cyclic groups}
 
     \begin{definition}[Cyclic groups]
-        A group $G$ is \emph{cyclic} if there exists $g \in G$ such that $G = \{g^k: k \in \ZZ\} = \gen g$. $g$ is called a \emph{generator} of $G$.
+        A group \(G\) is \emph{cyclic} if there exists \(g \in G\) such that \(G = \{g^k: k \in \ZZ\} = \gen g\). \(g\) is called a \emph{generator} of \(G\).
     \end{definition}
     
     \begin{example*}
         Let us have some examples.
         \begin{itemize}
-            \item $C_n = \{z \in \CC: z^n = 1\}$ is cyclic, with generator $e^{\frac{2\pi i}n}$;
-            \item $\ZZ$ is cyclic, with generator 1;
-            \item $\ZZ_n$ is cyclic, since $\ZZ_n \cong C_n$.
+            \item \(C_n = \{z \in \CC: z^n = 1\}\) is cyclic, with generator \(e^{\frac{2\pi i}n}\);
+            \item \(\ZZ\) is cyclic, with generator 1;
+            \item \(\ZZ_n\) is cyclic, since \(\ZZ_n \cong C_n\).
         \end{itemize}
     \end{example*}
     
     \begin{theorem}
-        If $G$ is cyclic, then either
+        If \(G\) is cyclic, then either
         \begin{itemize}
-            \item $G \cong C_n$ for some $n$;
-            \item or $G \cong \ZZ$.
+            \item \(G \cong C_n\) for some \(n\);
+            \item or \(G \cong \ZZ\).
         \end{itemize}
     \end{theorem}
     
     \begin{proof}
-        Let $G$ be a cyclic group with generator $g$. Let
+        Let \(G\) be a cyclic group with generator \(g\). Let
         \begin{align*}
             S = \{k \in \NN: g^k = e\}
         \end{align*}
@@ -620,42 +608,42 @@
         \end{align*}
         We now split into cases.
 
-        \emph{Case 1.} $n = \infty$. Define
+        \emph{Case 1.} \(n = \infty\). Define
         \begin{align*}
             \phi: \ZZ &\to G \\
             k &\mapsto g^k
         \end{align*}
-        which we would like to be an isomorphism. Since $\phi(k+l) = g^{k+l} = g^kg^l = \phi(k)\phi(l)$, $\phi$ is a homomorphism. Since $G$ is cyclic, every element of $G$ has the form $g^k$ for some $k$, so $\phi$ is surjective. To prove injectivity, suppose for contradiction $0 \neq k \in \ker \phi$ -- since $\ker \phi \leq \ZZ$, we may replace $k$ by $-k$ if necessary, and assume $k > 0$. But then $k \in S$, which is a contradiction. The result follows.
+        which we would like to be an isomorphism. Since \(\phi(k+l) = g^{k+l} = g^kg^l = \phi(k)\phi(l)\), \(\phi\) is a homomorphism. Since \(G\) is cyclic, every element of \(G\) has the form \(g^k\) for some \(k\), so \(\phi\) is surjective. To prove injectivity, suppose for contradiction \(0 \neq k \in \ker \phi\) -- since \(\ker \phi \leq \ZZ\), we may replace \(k\) by \(-k\) if necessary, and assume \(k > 0\). But then \(k \in S\), which is a contradiction. The result follows.
         
-        \emph{Case 2.} $n < \infty$. Define
+        \emph{Case 2.} \(n < \infty\). Define
         \begin{align*}
             \phi: \ZZ_n &\to G \\
             k &\mapsto g^k
         \end{align*}
-        as before. Since $k+l = qn + (k +_n l)$ for some $q \in \ZZ$,
+        as before. Since \(k+l = qn + (k +_n l)\) for some \(q \in \ZZ\),
         \begin{align*}
             \phi(k)\phi(l) &= g^kg^l = g^{k+l} = g^{qn+(k+_nl)} \\
             &= g^{k+_nl} = \phi(k +_n l)
         \end{align*}
-        since $g^n = e$. Hence $\phi$ is a homomorphism. Since $G$ is cyclic, every element is $g^k$ for some $k \in \ZZ$. Dividing $k$ by $n$, we obtain
+        since \(g^n = e\). Hence \(\phi\) is a homomorphism. Since \(G\) is cyclic, every element is \(g^k\) for some \(k \in \ZZ\). Dividing \(k\) by \(n\), we obtain
         \begin{align*}
             k = qn + r
         \end{align*}
-        for $q \in \RR$ and $r \in \ZZ_n$. Hence,
+        for \(q \in \RR\) and \(r \in \ZZ_n\). Hence,
         \begin{align*}
             g^k = g^{qn+r} = g^r = \phi(r)
         \end{align*}
-        as desired. To prove injectivity, suppose that $\phi(k) = e$ for some $k \in \ZZ_n$, that is $0 \leq k < n$. On the other hand, $k \in S$, so, if $k \neq 0$, $k \geq n$ by minimality of $n$, a contradiction. Hence $k=0$, so $\ker \phi = \{0\}$ and $\phi$ is injective as required. Hence $G \cong \ZZ_n \cong C_n$ as required.
+        as desired. To prove injectivity, suppose that \(\phi(k) = e\) for some \(k \in \ZZ_n\), that is \(0 \leq k < n\). On the other hand, \(k \in S\), so, if \(k \neq 0\), \(k \geq n\) by minimality of \(n\), a contradiction. Hence \(k=0\), so \(\ker \phi = \{0\}\) and \(\phi\) is injective as required. Hence \(G \cong \ZZ_n \cong C_n\) as required.
     \end{proof}
     
-    Because of the theorem, we will write $C_n$ for any cyclic group of order $n$, and write $C_\infty \cong \ZZ$.
+    Because of the theorem, we will write \(C_n\) for any cyclic group of order \(n\), and write \(C_\infty \cong \ZZ\).
 
     \begin{definition}[Order of an element]
-        For any group $G$ and $g \in G$, let
+        For any group \(G\) and \(g \in G\), let
         \begin{align*}
             \gen g = \{g^k : k \in \ZZ\} \leq G
         \end{align*}
-        Since $\gen g$ is cyclic, $\gen g \cong C_n$ for some $n \in \NN \cup \{\infty\}$. This is the \emph{order} of $g$, $o(g)$ or $|g|$.        
+        Since \(\gen g\) is cyclic, \(\gen g \cong C_n\) for some \(n \in \NN \cup \{\infty\}\). This is the \emph{order} of \(g\), \(o(g)\) or \(|g|\).        
     \end{definition}
     
     \subsection{Dihedral groups revisited}
@@ -664,58 +652,58 @@
 
     \begin{lemma}
         \label{gen-dih-relation}
-        Suppose $x$, $y \in G$ satisfy the dihedral relation $xy = yx^{-1}$. Then
+        Suppose \(x\), \(y \in G\) satisfy the dihedral relation \(xy = yx^{-1}\), and \(y^2=e\). Then
         \begin{align*}
             yx^l = x^{-l}y
         \end{align*}
-        for any $l \in \ZZ$.        
+        for any \(l \in \ZZ\).        
     \end{lemma}
     
     \begin{proof}
-        First, take $l>0$, then
+        First, take \(l>0\), then
         \begin{align*}
             yx^{-l} = x^ly
         \end{align*}
-        by induction. Furthermore, if $y^2 = e$, then
+        by induction. Furthermore, if \(y^2 = e\), then
         \begin{align*}
             yx^l = y (x^l y) y = y(yx^{-l})y = x^{-l}y
         \end{align*}
-        so that $yx^l = x^{-l}y$ for any $l \in \ZZ$.
+        so that \(yx^l = x^{-l}y\) for any \(l \in \ZZ\).
     \end{proof}
     
     \begin{lemma}
-        Let $G$ be a group, and $a$, $b \in G$ such that
+        Let \(G\) be a group, and \(a\), \(b \in G\) such that
         \begin{itemize}
-            \item $a^n = e$ for some $n \geq 3$;
-            \item $b^2 = e$;
-            \item $ab = ba^{-1}$.
+            \item \(a^n = e\) for some \(n \geq 3\);
+            \item \(b^2 = e\);
+            \item \(ab = ba^{-1}\).
         \end{itemize}
-        Then $\phi(r) = a$ and $\phi(s) = b$ defines a homomorphism $\phi: D_{2n} \to G$ sending $r$ to $a$ and $s$ to $b$.
+        Then \(\phi(r) = a\) and \(\phi(s) = b\) defines a homomorphism \(\phi: D_{2n} \to G\) sending \(r\) to \(a\) and \(s\) to \(b\).
     \end{lemma}
     
     \begin{proof}
         There are four cases to check.
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item $\phi(r^k)\phi(r^l) = a^ka^l = a^{k+l} = a^{k+_nl} = \phi(r^{k+_nl}) = \phi(r^{k+l})$;
-            \item $\phi(r^k)\phi(r^ls) = a^ka^lb = a^{k+l}b = a^{k+_nl}b = \phi(r^{k+_nl}s) = \phi(r^{k+l}s)$;
-            \item $\phi(r^ks)\phi(r^l) = a^kba^l = a^{k-l}b = \phi(r^{k-l}s) = \phi(r^ksr^l)$ by \cref{gen-dih-relation}.
-            \item $\phi(r^ks)\phi(r^ls) = a^k b a^l b = a^{k-l} b^2 = a^{k-l} = \phi(r^{k-l}) = \phi(r^{k-l}s^2) = \phi(r^k s r^l s)$, also by \cref{gen-dih-relation}.
+            \item \(\phi(r^k)\phi(r^l) = a^ka^l = a^{k+l} = a^{k+_nl} = \phi(r^{k+_nl}) = \phi(r^{k+l})\);
+            \item \(\phi(r^k)\phi(r^ls) = a^ka^lb = a^{k+l}b = a^{k+_nl}b = \phi(r^{k+_nl}s) = \phi(r^{k+l}s)\);
+            \item \(\phi(r^ks)\phi(r^l) = a^kba^l = a^{k-l}b = \phi(r^{k-l}s) = \phi(r^ksr^l)\) by \cref{gen-dih-relation}.
+            \item \(\phi(r^ks)\phi(r^ls) = a^k b a^l b = a^{k-l} b^2 = a^{k-l} = \phi(r^{k-l}) = \phi(r^{k-l}s^2) = \phi(r^k s r^l s)\), also by \cref{gen-dih-relation}.
         \end{enumerate}
     \end{proof}
     
     \begin{proposition}
-        Suppose $G$ has a generating set $\{a, b\}$ such that
+        Suppose \(G\) has a generating set \(\{a, b\}\) such that
         \begin{itemize}
-            \item $a^n = e$ for some $n \geq 3$;
-            \item $b^2 = e$;
-            \item $ab = ba^{-1}$;
-            \item $|G| = 2n$.
+            \item \(a^n = e\) for some \(n \geq 3\);
+            \item \(b^2 = e\);
+            \item \(ab = ba^{-1}\);
+            \item \(|G| = 2n\).
         \end{itemize}
-        Then $G \cong D_{2n}$.
+        Then \(G \cong D_{2n}\).
     \end{proposition}
     
     \begin{proof}
-        By the lemma, there is a homomorphism $\phi: D_{2n} \to G$. $\phi$ is surjective since $\{a, b\}$ generate $G$. Since $|D_{2n}| = 2n = |G|$, it must be a bijective. The result follows.
+        By the lemma, there is a homomorphism \(\phi: D_{2n} \to G\). \(\phi\) is surjective since \(\{a, b\}\) generate \(G\). Since \(|D_{2n}| = 2n = |G|\), it must be a bijection. The result follows.
     \end{proof}
     
     
@@ -730,40 +718,40 @@
     This very important theorem helps us think about the orders of groups and their subgroups.
 
     \begin{theorem}[Lagrange]
-        If $H \leq G$ and $|G| < \infty$, $|H| \mid |G|$.
+        If \(H \leq G\) and \(|G| < \infty\), \(|H| \mid |G|\).
     \end{theorem}
     
     \subsection{Cosets}
 
     \begin{definition}{Left cosets}
-        Let $H \leq G$ and $g \in G$. The corresponding \emph{left coset} is
+        Let \(H \leq G\) and \(g \in G\). The corresponding \emph{left coset} is
         \[
             gH = \{gh : h \in H\} \subseteq G
         \]
-        The set of all left cosets of $H$ is denoted by $G/H$.
+        The set of all left cosets of \(H\) is denoted by \(G/H\).
     \end{definition}
     
     \begin{remark*}
-        We may equally define right cosets, $Hg$ -- the set of right cosets of $H$ in $G$ is denoted by $H \backslash G$.
+        We may equally define right cosets, \(Hg\) -- the set of right cosets of \(H\) in \(G\) is denoted by \(H \backslash G\).
     \end{remark*}
     
     \begin{lemma}
-        If $H \leq G$, the left cosets of $H$ partition $G$ -- that is, every element of $G$ is in exactly one coset. In other words, the following hold:
+        If \(H \leq G\), the left cosets of \(H\) partition \(G\) -- that is, every element of \(G\) is in exactly one coset. In other words, the following hold:
         \begin{enumerate}
             \item
             \begin{align*}
                 G = \bigcup_{gH \in G/H} gH
             \end{align*}
-            \item If $g_1H \cap g_2H \neq \emptyset$, then $g_1H = g_2H$. 
+            \item If \(g_1H \cap g_2H \neq \emptyset\), then \(g_1H = g_2H\). 
         \end{enumerate} 
     \end{lemma}
     
     \begin{proof}
         \begin{enumerate}
-            \item For any $g \in G$, $g = g \cdot e \in gH$, and so clearly $\bigcup gH = G$.
-            \item Suppose $g_1H \cap g_2H \neq \emptyset$, so there exists $k$ with $k \in g_1H$, $k \in g_2H$, so $k = g_1h_1 = g_2h_2$ for some $h_1$, $h_2 \in H$. Thus $g_1 = g_2 (h_2h_1^{-1}) \in g_2H$.
+            \item For any \(g \in G\), \(g = g \cdot e \in gH\), and so clearly \(\bigcup gH = G\).
+            \item Suppose \(g_1H \cap g_2H \neq \emptyset\), so there exists \(k\) with \(k \in g_1H\), \(k \in g_2H\), so \(k = g_1h_1 = g_2h_2\) for some \(h_1\), \(h_2 \in H\). Thus \(g_1 = g_2 (h_2h_1^{-1}) \in g_2H\).
             
-            Furthermore, for any $H \in H$, $g_1h = g_2((h_2h_1^{-1})h) \in g_2H$, so $g_1H \subseteq g_2H$. But the same reasoning would show $g_2H \subseteq g_1H$, and so we are done.
+            Furthermore, for any \(H \in H\), \(g_1h = g_2((h_2h_1^{-1})h) \in g_2H\), so \(g_1H \subseteq g_2H\). But the same reasoning would show \(g_2H \subseteq g_1H\), and so we are done.
         \end{enumerate}
     \end{proof}
     
@@ -772,11 +760,11 @@
     But turns out things are even nicer than this -- all the cosets have the same size.
 
     \begin{lemma}
-        Let $H \leq G$ -- then there is a bijection $H \to gH$ for any $g \in G$.
+        Let \(H \leq G\) -- then there is a bijection \(H \to gH\) for any \(g \in G\).
     \end{lemma}
     
     \begin{proof}
-        We claim the map $H \to gH$, $h \mapsto gh$ is a bijection. Observe we have an inverse $gh \to H$, $gh \mapsto g^{-1}(gh) = h$. This concludes the proof.
+        We claim the map \(H \to gH\), \(h \mapsto gh\) is a bijection. Observe we have an inverse \(gh \to H\), \(gh \mapsto g^{-1}(gh) = h\). This concludes the proof.
     \end{proof}
     
     \begin{corollary}
@@ -786,7 +774,7 @@
     DIAGRAM: G as a rectangle made of equally sized rectangles.
 
     \begin{definition}[Index of a subgroup]
-        The \emph{index} of a subgroup $H \leq G$ is $|G : H| := |G / H|$, the number of cosets of $H$ in $G$.
+        The \emph{index} of a subgroup \(H \leq G\) is \(|G : H| := |G / H|\), the number of cosets of \(H\) in \(G\).
     \end{definition}
     
     \begin{remark*}
@@ -794,43 +782,43 @@
     \end{remark*}
     
     \begin{theorem}[Lagrange]
-        If $|G| < \infty$, then
+        If \(|G| < \infty\), then
         \[
             |G| = |G:H||H|
         \]
-        for any $H \leq G$.
+        for any \(H \leq G\).
     \end{theorem}
     
     \begin{proof}
-        Since left cosets partition $G$, $|G|$ is the sum of the sizes of all the cosets in $G$, which is $|G : H||H|$.
+        Since left cosets partition \(G\), \(|G|\) is the sum of the sizes of all the cosets in \(G\), which is \(|G : H||H|\).
     \end{proof}
     
     \subsection{Consequences of Lagrange's theorem}
 
     \begin{corollary}
-        If $|G| < \infty$ and $g \in G$, then $o(g) \mid |G|$.
+        If \(|G| < \infty\) and \(g \in G\), then \(o(g) \mid |G|\).
     \end{corollary}
     
     \begin{proof}
-        $o(g) = |\gen{g}|$.
+        \(o(g) = |\gen{g}|\).
     \end{proof}
     
     \begin{corollary}
-        If $|G| < \infty$ and $g \in G$, then $g^{|G|} = e$.
+        If \(|G| < \infty\) and \(g \in G\), then \(g^{|G|} = e\).
         \label{element-to-order-is-identity}
     \end{corollary}
     
     \begin{proof}
-        Since $o(g) \mid |G|$, $g^{|G|}$ = $(g^{o(g)})^{G/o(g)} = e^{G/o(g)} = e$.
+        Since \(o(g) \mid |G|\), \(g^{|G|}\) = \((g^{o(g)})^{G/o(g)} = e^{G/o(g)} = e\).
     \end{proof}
     
     \begin{corollary}
-        If $|G|$ is prime, then $G$ is cyclic.
+        If \(|G|\) is prime, then \(G\) is cyclic.
         \label{prime-groups-cyclic}
     \end{corollary}
     
     \begin{proof}
-        Let $g \in G$, $g \neq e$. Then $o(g) | |G|$, so, since $|G|$ prime, $o(g) = |G|$ (since $o(g) \neq e$). Therefore, $\gen g = G$.
+        Let \(g \in G\), \(g \neq e\). Then \(o(g) \mid |G|\), so, since \(|G|\) prime, \(o(g) = |G|\) (since \(o(g) \neq e\)). Therefore, \(\gen g = G\).
     \end{proof}
     
     In fact, Lagrange's theorem implies an important result from number theory -- the Fermat-Euler theorem.
@@ -844,21 +832,21 @@
     
     \lecture{Lecture 9 -- 29/10/25}
 
-    Let $\times_n$ denote multiplication modulo $n$ (on $\ZZ_n$). Recall that $x \in \ZZ_n$ has a multiplicative inverse modulo $n$ if and only if $\gcd(x, n) = 1$. Thus,
+    Let \(\times_n\) denote multiplication modulo \(n\) (on \(\ZZ_n\)). Recall that \(x \in \ZZ_n\) has a multiplicative inverse modulo \(n\) if and only if \(\gcd(x, n) = 1\). Thus,
     \[
         \ZZ_n^\times = \{x \in \ZZ_n : \gcd(x, n) = 1\}
     \]
     is an abelian group under multiplication.
 
     \begin{theorem}[Fermat-Euler]
-        Let $x, n \in \ZZ$ with $\gcd(x, n) = 1$. Then
+        Let \(x, n \in \ZZ\) with \(\gcd(x, n) = 1\). Then
         \[
             x^{\varphi(n)} \equiv 1 \pmod n
         \]
     \end{theorem}
     
     \begin{proof}
-        By \cref{element-to-order-is-identity}, $x^{|\ZZ_n^\times|} = 1$ for any $x \in \ZZ_n^\times$. But $|\ZZ_n^\times| = \varphi(n)$, so $x^{\varphi(n)} = 1$ in $\ZZ_n^\times$, and so $x^{\varphi(n)} \equiv 1 \pmod n$ as required.
+        By \cref{element-to-order-is-identity}, \(x^{|\ZZ_n^\times|} = 1\) for any \(x \in \ZZ_n^\times\). But \(|\ZZ_n^\times| = \varphi(n)\), so \(x^{\varphi(n)} = 1\) in \(\ZZ_n^\times\), and so \(x^{\varphi(n)} \equiv 1 \pmod n\) as required.
     \end{proof}
     
     \section{Group actions}
@@ -866,50 +854,50 @@
     Groups become groups of symmetries when we make them act on symmetric objects.
 
     \begin{definition}
-        An \emph{action} of a group $G$ on a set $X$ is a map
+        An \emph{action} of a group \(G\) on a set \(X\) is a map
         \begin{align*}
             G \times X &\to X \\
             (g, x) &\mapsto gx
         \end{align*}
         such that
         \begin{itemize}
-            \item $ex = x$ for all $x \in X$;
-            \item $(gh)x = g(hx)$ for all $g, h \in G$, $x \in X$.
+            \item \(ex = x\) for all \(x \in X\);
+            \item \((gh)x = g(hx)\) for all \(g, h \in G\), \(x \in X\).
         \end{itemize}        
     \end{definition}
 
     \begin{example*}
         \begin{itemize}
-            \item For any group $G$ and a set $X$, $gx = x$ for all $g \in G$ defines the \emph{trivial action}.
-            \item $\Sym(X) \acts X$ for any set $X$ by $fx = f(x)$ (remember $f$ is a permutation).
-            \item If $G \acts X$ and $H \leq G$, then $H \acts X$, so, for example, $\Isom(\CC) \acts \CC$.
-            \item $D_{2n}$ acts on $X_n$ (the regular $n$-gon), whether `filled in' or just the edges or vertices.
-            \item Every group $G$ acts on itself by the \emph{left regular action} -- just normal group multiplication on the left.           
+            \item For any group \(G\) and a set \(X\), \(gx = x\) for all \(g \in G\) defines the \emph{trivial action}.
+            \item \(\Sym(X) \acts X\) for any set \(X\) by \(fx = f(x)\) (remember \(f\) is a permutation).
+            \item If \(G \acts X\) and \(H \leq G\), then \(H \acts X\), so, for example, \(\Isom(\CC) \acts \CC\).
+            \item \(D_{2n}\) acts on \(X_n\) (the regular \(n\)-gon), whether `filled in' or just the edges or vertices.
+            \item Every group \(G\) acts on itself by the \emph{left regular action} -- just normal group multiplication on the left.           
         \end{itemize}
         
         
     \end{example*}
     
     \begin{theorem}
-        An action of a group $G$ on a set $X$ is equivalent to a homomorphism
+        \label{actions-are-homomorphisms}
+        An action of a group \(G\) on a set \(X\) is equivalent to a homomorphism
         \[
             \phi: G \to \Sym(X)
         \]
-        \label{actions-are-homomorphisms}
     \end{theorem}
     
     \begin{proof}
-        Suppose $G \acts X$, and consider
+        Suppose \(G \acts X\), and consider
         \begin{align*}
             t_g: X &\to X \\
             x &\mapsto gx
         \end{align*}
-        for any $g \in G$. Then $t_{g^{-1}} \circ t_g(x) = t_{g^{-1}}(gx) = g^{-1}(gx) = ex = x$, and so $t_g$ has an inverse. Thus $t_g$ is a bijection and in particular a permutation, so $t_g \in \Sym(X)$. Let us then define
+        for any \(g \in G\). Then \(t_{g^{-1}} \circ t_g(x) = t_{g^{-1}}(gx) = g^{-1}(gx) = ex = x\), and so \(t_g\) has an inverse. Thus \(t_g\) is a bijection and in particular a permutation, so \(t_g \in \Sym(X)\). Let us then define
         \begin{align*}
             \phi: G &\to \Sym(X) \\
             g &\mapsto t_g
         \end{align*}
-        We now wish to show that $\phi$ is a homomorphism. Observe
+        We now wish to show that \(\phi\) is a homomorphism. Observe
         \begin{align*}
             t_g \circ t_h (x) &= t_g(hx) \\
             &= ghx \\
@@ -919,48 +907,48 @@
         \[
             \phi: G \to \Sym(X)
         \]   
-        we define an action $G \acts X$ by $gx = \phi(g)(x)$. Let us now check that this is in fact an action:
+        we define an action \(G \acts X\) by \(gx = \phi(g)(x)\). Let us now check that this is in fact an action:
         \begin{itemize}
-            \item $ex = \phi(e)x = \id_X(x) = x$;
-            \item $(gh)x = \phi(gh)(x) = \phi(g) \circ \phi(h)(x) = g(hx)$.
+            \item \(ex = \phi(e)x = \id_X(x) = x\);
+            \item \((gh)x = \phi(gh)(x) = \phi(g) \circ \phi(h)(x) = g(hx)\).
         \end{itemize}
         Thus we are done.           
     \end{proof}
     
     \begin{theorem}[Cayley]
-        Every group $G$ is isomorphic to a subgroup of $\Sym(X)$ for some $X$. Furthermore, if $|G| < \infty$, we may require $|X| < \infty$.
+        Every group \(G\) is isomorphic to a subgroup of \(\Sym(X)\) for some \(X\). Furthermore, if \(|G| < \infty\), we may require \(|X| < \infty\).
     \end{theorem}
     
     \begin{proof}
-        Let $X = G$, and consider the left regular action $G \acts X=G$. By \cref{actions-are-homomorphisms}, this is equivalent to a homomorphism
+        Let \(X = G\), and consider the left regular action \(G \acts X=G\). By \cref{actions-are-homomorphisms}, this is equivalent to a homomorphism
         \[
             \phi: G \to \Sym(X)
         \]
-        Let $H = \im \phi \leq \Sym(X)$, so we may view $\phi$ as a homomorphism $G \to H$, and we claim this is in fact an isomorphism. It is surjective by the definition of $H$, so it remains to show it is injective. For this we will claim $\ker \phi = \{e\}$. Observe $g \in \ker \phi \implies \phi(g) = \id_X$, so $g\gamma = \gamma$ for all $\gamma \in G$. From this it is clear that $g = e$. Thus $G \cong H \leq \Sym(X)$, which was what we wanted. Since $G = X$, it is certainly true that $|G| < \infty \implies |X| < \infty$.
+        Let \(H = \im \phi \leq \Sym(X)\), so we may view \(\phi\) as a homomorphism \(G \to H\), and we claim this is in fact an isomorphism. It is surjective by the definition of \(H\), so it remains to show it is injective. For this we will claim \(\ker \phi = \{e\}\). Observe \(g \in \ker \phi \implies \phi(g) = \id_X\), so \(g\gamma = \gamma\) for all \(\gamma \in G\). From this it is clear that \(g = e\). Thus \(G \cong H \leq \Sym(X)\), which was what we wanted. Since \(G = X\), it is certainly true that \(|G| < \infty \implies |X| < \infty\).
     \end{proof}
     
     It turns out actions are extremely useful and we can use them to learn a great deal about groups.
 
     \begin{definition}[Orbits and stabilisers]
-        Let $G \acts X$ and $x \in X$.
+        Let \(G \acts X\) and \(x \in X\).
         \begin{itemize}
-            \item The \emph{orbit} of $x$ is the set $Gx = \{gx: g \in G\}$.
-            \item The \emph{stabiliser} of $x$ is the set $\Stab_G(x) = G_x = \{g \in G: gx = x\}$.
+            \item The \emph{orbit} of \(x\) is the set \(Gx = \{gx: g \in G\}\).
+            \item The \emph{stabiliser} of \(x\) is the set \(\Stab_G(x) = G_x = \{g \in G: gx = x\}\).
         \end{itemize}
-        If $Gx = X$ for any $x$, we say the action is \emph{transitive}. If every element $g \neq e \in G$ has some $x \in X$ such that $gx \neq x$, then $G \acts X$ is called \emph{faithful}.
+        If \(Gx = X\) for any \(x\), we say the action is \emph{transitive}. If every element \(g \neq e \in G\) has some \(x \in X\) such that \(gx \neq x\), then \(G \acts X\) is called \emph{faithful}.
     \end{definition}
     
     \begin{remark*}
-        $G \acts X$ is faithful if the associated homomorphism is injective $\iff$ the kernel is trivial.
+        \(G \acts X\) is faithful if the associated homomorphism is injective \(\iff\) the kernel is trivial.
     \end{remark*}
 
     \lecture{Lecture 10 -- 31/10/25}
     
     \begin{proposition}
-        Suppose $G \acts X$, then
+        Suppose \(G \acts X\), then
         \begin{itemize}
-            \item $\Stab_G(x) \leq G$ for any $x \in X$;
-            \item The orbits $\{Gy: y \in X\}$ form a partition of $X$.
+            \item \(\Stab_G(x) \leq G\) for any \(x \in X\);
+            \item The orbits \(\{Gy: y \in X\}\) form a partition of \(X\).
         \end{itemize}
         \label{stab-subgroup-orbits-partition}
     \end{proposition}
@@ -969,38 +957,38 @@
         \begin{itemize}
             \item We simply check that the stabiliser satisfies the definition of a subgroup.
             \begin{itemize}
-                \item \emph{Closure under multiplication}. If $g$, $h \in \Stab_G(x)$, $(gh)x$ = $g(hx) = gx = x$, so $gh \in \Stab_G(x)$;
-                \item \emph{Closure under inversion}. If $g \in \Stab_G(x)$, $g^{-1}x = g^{-1}(gx) = (g^{-1}g)x = ex = x$, so $g^{-1} \in \Stab_G(x)$;
-                \item \emph{Identity}. $ex = x$ by definition, so $e \in \Stab_G(x)$.
+                \item \emph{Closure under multiplication}. If \(g\), \(h \in \Stab_G(x)\), \((gh)x\) = \(g(hx) = gx = x\), so \(gh \in \Stab_G(x)\);
+                \item \emph{Closure under inversion}. If \(g \in \Stab_G(x)\), \(g^{-1}x = g^{-1}(gx) = (g^{-1}g)x = ex = x\), so \(g^{-1} \in \Stab_G(x)\);
+                \item \emph{Identity}. \(ex = x\) by definition, so \(e \in \Stab_G(x)\).
             \end{itemize}
-            Hence $\Stab_G(x) \leq G$ as required.
+            Hence \(\Stab_G(x) \leq G\) as required.
             \item We must show every element is in an orbit, and if two orbits overlap, they are the same orbit.
             \begin{itemize}
                 \item Every element is in its own orbit -- this shows the first part.
-                \item Now suppose $Gx_1 \cap Gx_2 \neq \emptyset$, so we have $y \in Gx_1$ and $\in Gx_2$, which means $y = g_1x_1 = g_2x_2$ for some $g_1$, $g_2 \in G$. Then
+                \item Now suppose \(Gx_1 \cap Gx_2 \neq \emptyset\), so we have \(y \in Gx_1\) and \(\in Gx_2\), which means \(y = g_1x_1 = g_2x_2\) for some \(g_1\), \(g_2 \in G\). Then
                 \begin{align*}
                     x_1 &= (g_1^{-1}g_1)x_1 \\
                     &= g_1^{-1} (g_1x_1) \\
                     &= g_1^{-1} (g_2x_2) \\
                     &= (g_1^{-1}g_2) x_2 \in Gx_2
                 \end{align*}
-                In fact, for any $gx_1 \in Gx_1$, $gx_1 = g(g_1^{-1}g_2)x_2 \in Gx_2$, so $Gx_1 \subseteq Gx_2$, and likewise $Gx_2 \subseteq Gx_1$, which concludes the proof.
+                In fact, for any \(gx_1 \in Gx_1\), \(gx_1 = g(g_1^{-1}g_2)x_2 \in Gx_2\), so \(Gx_1 \subseteq Gx_2\), and likewise \(Gx_2 \subseteq Gx_1\), which concludes the proof.
             \end{itemize}
         \end{itemize}
     \end{proof}
     
     \begin{example*}
-        Consider $D_{2n} \acts X_n$, the regular $n$-gon. Let us attempt to find the orbits and stabilisers associated with this action in the case $x=1$
+        Consider \(D_{2n} \acts X_n\), the regular \(n\)-gon. Let us attempt to find the orbits and stabilisers associated with this action in the case \(x=1\)
 
-        Clearly $r^js(x) = r^j(x) = e^{2 \pi i j/n}$, and so we can take $x$ to any other element -- that is, $D_{2n}x = X_n$. From this and \cref{stab-subgroup-orbits-partition}, it's clear that $D_{2n}x = X_n$ for any $x \in X_n$.  A similar calculation makes clear that $\Stab_G(x) = \{e, s\}$.
+        Clearly \(r^js(x) = r^j(x) = e^{2 \pi i j/n}\), and so we can take \(x\) to any other element -- that is, \(D_{2n}x = X_n\). From this and \cref{stab-subgroup-orbits-partition}, it's clear that \(D_{2n}x = X_n\) for any \(x \in X_n\).  A similar calculation makes clear that \(\Stab_G(x) = \{e, s\}\).
     \end{example*}
     
     \begin{theorem}[Orbit-stabiliser theorem]
-        Suppose $G \acts X$, and let $x \in X$. The formula $g \Stab_G(x) \mapsto gx$ gives a well-defined bijection $G/\Stab_G(x) \to Gx$ -- \emph{cosets of the stabiliser are in bijection with orbits}.
+        Suppose \(G \acts X\), and let \(x \in X\). The formula \(g \Stab_G(x) \mapsto gx\) gives a well-defined bijection \(G/\Stab_G(x) \to Gx\) -- \emph{cosets of the stabiliser are in bijection with orbits}.
     \end{theorem}
     
     \begin{corollary}
-        If $G \acts X$ and $x \in X$, then
+        If \(G \acts X\) and \(x \in X\), then
         \[
             |G| = |Gx||\Stab_G(x)|
         \]
@@ -1008,24 +996,24 @@
     \end{corollary}
     
     \begin{proof}[Proof of corollary]
-        The theorem gives that $|Gx|$ = $|G/\Stab_G(x)|$, since they are in bijection. But $|G/\Stab_G(x)| = |G|/|\Stab_G(x)|$ by Lagrange, which concludes the proof.
+        The theorem gives that \(|Gx|\) = \(|G/\Stab_G(x)|\), since they are in bijection. But \(|G/\Stab_G(x)| = |G|/|\Stab_G(x)|\) by Lagrange, which concludes the proof.
     \end{proof}
     
     \begin{example*}
-        Consider $D_{2n} \acts X_n$. We saw that, if $x \in X_n$, then $|D_{2n}| = n$ and $|\Stab_{D_{2n}}(x)| = 2$, so $|D_{2n}| = 2n$. This proof is circular, but this circularity could be resolved if we had approached things in a different way.
+        Consider \(D_{2n} \acts X_n\). We saw that, if \(x \in X_n\), then \(|D_{2n}| = n\) and \(|\Stab_{D_{2n}}(x)| = 2\), so \(|D_{2n}| = 2n\). This proof is circular, but this circularity could be resolved if we had approached things in a different way.
     \end{example*}
     
     \begin{proof}[Proof of theorem]
-        Let $S = \Stab_G(x)$, and let our as yet not well defined map $\Phi$ be such that $\Phi(gS) = gx$.
+        Let \(S = \Stab_G(x)\), and let our as yet not well defined map \(\Phi\) be such that \(\Phi(gS) = gx\).
         \begin{itemize}
-            \item \emph{Well-definedness}. For any $g_1$, $g_2 \in G$ with $g_1S = g_2S$, we must have $\Phi(g_1S) = \Phi(g_2S)$, i.e. $g_1x = g_2x$. Since $g_1S = g_2S$, we have $s \in S$ with $g_1 = g_2s$. Then $g_1x = (g_2s)x = g_2(sx) = g_2x$ as required.
-            \item \emph{Surjectivity}. For any $gx \in Gx$, we clearly have $\Phi(gS) = gx$.
-            \item \emph{Injectivity}. Suppose $\Phi(g_1S) = \Phi(g_2S)$, that is $g_1x = g_2x$. Let $s = g_2^{-1}g_1$, so $sx = (g_2^{-1}g_1)x = x$, and so $s \in S$. But $g_1 = g_2s$, so $g_1 \in g_2S$, and so $g_1S = g_2S$ as required (since cosets partition $G$).
+            \item \emph{Well-definedness}. For any \(g_1\), \(g_2 \in G\) with \(g_1S = g_2S\), we must have \(\Phi(g_1S) = \Phi(g_2S)\), i.e. \(g_1x = g_2x\). Since \(g_1S = g_2S\), we have \(s \in S\) with \(g_1 = g_2s\). Then \(g_1x = (g_2s)x = g_2(sx) = g_2x\) as required.
+            \item \emph{Surjectivity}. For any \(gx \in Gx\), we clearly have \(\Phi(gS) = gx\).
+            \item \emph{Injectivity}. Suppose \(\Phi(g_1S) = \Phi(g_2S)\), that is \(g_1x = g_2x\). Let \(s = g_2^{-1}g_1\), so \(sx = (g_2^{-1}g_1)x = x\), and so \(s \in S\). But \(g_1 = g_2s\), so \(g_1 \in g_2S\), and so \(g_1S = g_2S\) as required (since cosets partition \(G\)).
         \end{itemize}
     \end{proof}
     
     \begin{example*}[Symmetries of a cube]
-        Let $G$ be the group of isometries of a cube, and let $x$ be the centre of a face. Clearly $|Gx| = 6$, since there are 6 other faces to take $x$ to, and $\Stab_G(x)$ must fix the face on which $x$ lies, so it is isomorphic $D_8$. Thus $|\Stab_G(x)| = 8$, and so $|G| = 48$. Nice!
+        Let \(G\) be the group of isometries of a cube, and let \(x\) be the centre of a face. Clearly \(|Gx| = 6\), since there are 6 other faces to take \(x\) to, and \(\Stab_G(x)\) must fix the face on which \(x\) lies, so it is isomorphic \(D_8\). Thus \(|\Stab_G(x)| = 8\), and so \(|G| = 48\). Nice!
     \end{example*}
     
     \lecture{Lecture 11 -- 03/11/25}
@@ -1033,40 +1021,40 @@
     The next theorem is another cool application of the orbit-stabiliser theorem.
 
     \begin{theorem}[Cauchy]
-        If $G$ is a finite group and $p$ is a prime dividing $|G|$, there exists $g \in G$ with $o(g) = p$.
+        If \(G\) is a finite group and \(p\) is a prime dividing \(|G|\), there exists \(g \in G\) with \(o(g) = p\).
     \end{theorem}
     
     \begin{proof}
-        Consider the following set $X$ consisting of $p$-tuples of elements of $G$:
+        Consider the following set \(X\) consisting of \(p\)-tuples of elements of \(G\):
         \[
             X = \{(g_1, \dots, g_p): g_i \in G, g_1 \cdots g_p = e\}
         \]
-        Define an action of $C_p$ on $X$: if $C_p = \{1, t, t^2, \dots, t^{p-1}\}$, let
+        Define an action of \(C_p\) on \(X\): if \(C_p = \{1, t, t^2, \dots, t^{p-1}\}\), let
         \[
             t^k(g_1, \dots, g_p) = (g_{k+1}, \dots, g_p, g_1, \dots, g_k)
         \]
-        in other words, it cyclically permutes the tuple. Let us now verify that this is a bona fide action. It's easy to see that $t^k \cdot t^l (g_1, \dots, g_p) = t^{k+l} (g_1, \dots, g_p)$, and so it remains to verify
+        in other words, it cyclically permutes the tuple. Let us now verify that this is a bona fide action. It's easy to see that \(t^k \cdot t^l (g_1, \dots, g_p) = t^{k+l} (g_1, \dots, g_p)\), and so it remains to verify
         \[
             (g_{k+1}, \dots, g_p, g_1, \dots, g_k) \in X
         \]
-        Let us then suppose $g_1 \cdots g_p = e$. For convenience, write
+        Let us then suppose \(g_1 \cdots g_p = e\). For convenience, write
         \begin{align*}
             a &= g_1 \cdots g_k \\
             b &= g_{k+1} \cdots g_p
         \end{align*}
-        We know that $a \cdot b = e$, so $b = a^{-1}$ and hence $b \cdot a = e$ -- $a$ and $b$ commute. From this it follows that
+        We know that \(a \cdot b = e\), so \(b = a^{-1}\) and hence \(b \cdot a = e\) -- \(a\) and \(b\) commute. From this it follows that
         \[
             g_{k+1} \dots g_p \cdot g_1 \dots g_k = e
         \]
-        as required. Let us now compute $|X|$. Observe that, for any choices $g_1, \dots, g_{p-1} \in G$, $g_p = g_{p-1}^{-1} \cdots g_1^{-1}$ is the unique choice for $g_n$ such that $(g_1, \dots, g_p) \in X$, and so $|X| = |G|^{p-1}$. Furthermore, the action of $C_p$ partitions $X$ into orbits:
+        as required. Let us now compute \(|X|\). Observe that, for any choices \(g_1, \dots, g_{p-1} \in G\), \(g_p = g_{p-1}^{-1} \cdots g_1^{-1}\) is the unique choice for \(g_n\) such that \((g_1, \dots, g_p) \in X\), and so \(|X| = |G|^{p-1}\). Furthermore, the action of \(C_p\) partitions \(X\) into orbits:
         \[
             X = C_p x_1 \cup C_p x_2 \cup \cdots \cup C_p x_k
         \]
-        Then, by \cref{orbit-stabiliser-theorem} (orbit-stabiliser), for each $j$,
+        Then, by \cref{orbit-stabiliser-theorem} (orbit-stabiliser), for each \(j\),
         \[
             |C_p x_j| \;\big\vert\; |C_p| = p
         \] 
-        so either $|C_p x_j| = 1$ or $|C_p x_j| = p$. Let $l$ be the number of orbits of size 1, so after renumbering we may assume
+        so either \(|C_p x_j| = 1\) or \(|C_p x_j| = p\). Let \(l\) be the number of orbits of size 1, so after renumbering we may assume
         \[
             |C_p x_j| =
             \begin{cases}
@@ -1074,42 +1062,42 @@
                 p & l < j \leq k
             \end{cases}
         \]
-        Since the orbits partition $X$,
+        Since the orbits partition \(X\),
         \begin{align*}
             |G|^{p-1} &= |X| \\
             &= \sum_{j=1}^k |C_px_j| \\
             &= l + p(k-l)
         \end{align*}
-        and so, since $p \mid |G|$, $p \mid l$. But note that $x = (g_1, \dots, g_p)$ has an orbit of size 1 if and only if
+        and so, since \(p \mid |G|\), \(p \mid l\). But note that \(x = (g_1, \dots, g_p)\) has an orbit of size 1 if and only if
         \[
             g_1 = \cdots = g_p
         \]
-        and we can observe that $(e, \dots, e)$ is clearly in $X$ and has an orbit of size 1, so $l > 0$. But then $l \geq p > 1$, so there must be a further trivial orbit
+        and we can observe that \((e, \dots, e)\) is clearly in \(X\) and has an orbit of size 1, so \(l > 0\). But then \(l \geq p > 1\), so there must be a further trivial orbit
         \[
             (g, \dots, g) \in X
         \]
-        with $g \neq e$ and $g^p = e$. Thus $o(g) \mid p$, and so $o(g) = p$ as required.
+        with \(g \neq e\) and \(g^p = e\). Thus \(o(g) \mid p\), and so \(o(g) = p\) as required.
         
     \end{proof}
 
     \subsection{Conjugation}
 
     \begin{definition}
-        Let $G$ be a group and $g \in G$, For any $h \in G$,
+        Let \(G\) be a group and \(g \in G\), For any \(h \in G\),
         \[
             hgh^{-1}
         \]
-        is the \emph{conjugate} of $g$ by $h$.
+        is the \emph{conjugate} of \(g\) by \(h\).
     \end{definition}
     Intuition:
 
     \begin{itemize}
-        \item $hgh^{-1}$ has the `same shape' as $g$;
-        \item $hgh^{-1}$ corresponds to `changing the coordinates' of $g$.
+        \item \(hgh^{-1}\) has the `same shape' as \(g\);
+        \item \(hgh^{-1}\) corresponds to `changing the coordinates' of \(g\).
     \end{itemize}
 
     \begin{definition}
-        The \emph{conjugacy class} of $g \in G$ is
+        The \emph{conjugacy class} of \(g \in G\) is
         \[
             \ccl(g) = \{hgh^{-1} \mid g \in G\}
         \]
@@ -1117,28 +1105,28 @@
     
     \begin{example*}
         \begin{itemize}
-            \item If $G$ is abelian, then $hgh^{-1} = ghh^{-1} = g$, so the only conjugate of $g$ is $g$ itself.
-            \item $D_{2n}$ has one conjugacy class of reflections if $n$ is odd and two if $n$ is even.
+            \item If \(G\) is abelian, then \(hgh^{-1} = ghh^{-1} = g\), so the only conjugate of \(g\) is \(g\) itself.
+            \item \(D_{2n}\) has one conjugacy class of reflections if \(n\) is odd and two if \(n\) is even.
         \end{itemize}
     \end{example*}
     
-    $G$ acts on itself by conjugation, where we define $g\gamma = g\gamma g^{-1}$. This is an important action which is \emph{very} different to the regular action. Notably, $\ccl(g)$ is the orbit of $g$ under this action.
+    \(G\) acts on itself by conjugation, where we define \(g\gamma = g\gamma g^{-1}\). This is an important action which is \emph{very} different to the regular action. Notably, \(\ccl(g)\) is the orbit of \(g\) under this action.
 
     \begin{definition}
-        The \emph{centraliser} of $g \in G$ is defined as
+        The \emph{centraliser} of \(g \in G\) is defined as
         \[
             C_G(g) = \{h \in G: hgh^{-1} = g \iff hg = gh\}
         \]
-        which is the stabiliser of $g$ under the conjugation action. It is also clearly the set of elements that commute with $g$.
+        which is the stabiliser of \(g\) under the conjugation action. It is also clearly the set of elements that commute with \(g\).
     \end{definition}
     
     \begin{definition}
-        The \emph{centre} of $G$ is
+        The \emph{centre} of \(G\) is
         \begin{align*}
             Z(G) &= \{h \in G: hg = gh \text{ for all } g \in G\} \\
             &= \bigcap_{g \in G} C_G(g)
         \end{align*}
-        the set of elements that commute with all elements of $G$.
+        the set of elements that commute with all elements of \(G\).
     \end{definition}
     
     
@@ -1149,19 +1137,19 @@
 
     \section{The M\"obius group}
 
-    This group is \emph{almost} a group of bijections of $\CC$, \emph{but} we need to add a formal `point at $\infty$'.
+    This group is \emph{almost} a group of bijections of \(\CC\), \emph{but} we need to add a formal `point at \(\infty\)'.
 
     \begin{definition}
-        The \emph{Riemann sphere} $\CC_\infty$ is $\CC \cup \{\infty\}$.
+        The \emph{Riemann sphere} \(\CC_\infty\) is \(\CC \cup \{\infty\}\).
     \end{definition}
     
     \begin{remark*}
-        Why a sphere? We see there is a map $\pi: \CC \to$ a sphere $S^2$, called \emph{stereographic projection}, which misses out the north pole. Hence, by adding $\infty$ to $\CC$ and mapping this to the north pole, we have a bijection between $\CC_\infty$ and $S^2$.
+        Why a sphere? We see there is a map \(\pi: \CC \to\) a sphere \(S^2\), called \emph{stereographic projection}, which misses out the north pole. Hence, by adding \(\infty\) to \(\CC\) and mapping this to the north pole, we have a bijection between \(\CC_\infty\) and \(S^2\).
         DIAGRAM!
     \end{remark*}
     
     \begin{definition}
-        Let $a$, $b$, $c$, $d \in \CC$, with $ad - bc \neq 0$. If $c \neq 0$, then the corresponding \emph{M\"obius transformation}
+        Let \(a\), \(b\), \(c\), \(d \in \CC\), with \(ad - bc \neq 0\). If \(c \neq 0\), then the corresponding \emph{M\"obius transformation}
         \begin{align*}
             \mu: \CC_\infty &\to \CC_\infty \\
             z &\mapsto \begin{cases}
@@ -1170,7 +1158,7 @@
                 \displaystyle \frac{a}{c} & z = \infty
             \end{cases}
         \end{align*}
-        If $c = 0$, then
+        If \(c = 0\), then
         \begin{align*}
             \mu: \CC_\infty &\to \CC_\infty \\
             z &\mapsto \begin{cases}
@@ -1184,7 +1172,7 @@
         \]
         and all the edge cases are implicit.
 
-        The \emph{M\"obius} group $\mathcal M$ is then the group of M\"obius transformations under composition.
+        The \emph{M\"obius} group \(\mathcal M\) is then the group of M\"obius transformations under composition.
     \end{definition}
     
     \begin{proposition}
@@ -1221,7 +1209,7 @@
     \end{remark*}
 
     \begin{theorem}
-        $(\mathcal M, \circ, \id)$ is a group.
+        \((\mathcal M, \circ, \id)\) is a group.
     \end{theorem}
     
     \begin{proof}
@@ -1237,17 +1225,17 @@
         \[
             \nu: z \mapsto \frac{dz-b}{-cz+a}
         \]
-        (whose coefficients are given by the matrix inverse of those of $\mu$). It follows from \cref{mobius-composition} that $\mu \circ \nu = \id$ (here we are using $ad - bc \neq 0$). Closure again follows from \cref{mobius-composition} and the comparison with matrix multiplication.
+        (whose coefficients are given by the matrix inverse of those of \(\mu\)). It follows from \cref{mobius-composition} that \(\mu \circ \nu = \id\) (here we are using \(ad - bc \neq 0\)). Closure again follows from \cref{mobius-composition} and the comparison with matrix multiplication.
     \end{proof}
     
     One important way to study M\"obius transformations is via their fixed points.
 
     \begin{definition}
-        Suppose $f: X \to X$ is a permutation. If $f(x) = x$ for some $x \in X$, then $x$ is called a \emph{fixed point} of $f$.
+        Suppose \(f: X \to X\) is a permutation. If \(f(x) = x\) for some \(x \in X\), then \(x\) is called a \emph{fixed point} of \(f\).
     \end{definition}
     
     \begin{lemma}[3-point lemma for M\"obius transformations]
-        If $\mu \in \mathcal M$ fixes three distinct points $w_1$, $w_2$, $w_3 \in \CC_\infty$, then $\mu = \id$.
+        If \(\mu \in \mathcal M\) fixes three distinct points \(w_1\), \(w_2\), \(w_3 \in \CC_\infty\), then \(\mu = \id\).
     \end{lemma}
     
     \begin{proof}
@@ -1255,43 +1243,43 @@
         \[
             \mu(z) = \frac{az+b}{cz+d}
         \]
-        Then, a fixed point $w_i$ satisfies
+        Then, a fixed point \(w_i\) satisfies
         \[
             w_i = \frac{aw_i + b}{cw_i + d}
         \]
-        If $w_1 = \infty$, then $c = 0$, so $w_2$ and $w_3$ satisfy
+        If \(w_1 = \infty\), then \(c = 0\), so \(w_2\) and \(w_3\) satisfy
         \begin{align*}
             w_i &= \frac{aw_i + b}{d} \\
             \iff (a-d)w_i + b &= 0
         \end{align*}
-        which has two distinct roots $w_2$ and $w_3$. It follows that $a = d$, $b = 0$. Then it's clear that $\mu = \id$.
+        which has two distinct roots \(w_2\) and \(w_3\). It follows that \(a = d\), \(b = 0\). Then it's clear that \(\mu = \id\).
 
-        Now suppose that none of the $w_i$ are infinity. Again,
+        Now suppose that none of the \(w_i\) are infinity. Again,
         \begin{align*}
             w_i &= \frac{aw_i + b}{cw_i + d} \\
             \implies cw_i^2 + dw_i &= aw_i + b \\
             \implies cw_i^2 + (d-a)w_i - b &= 0
         \end{align*}
-        Now we have a quadratic with 3 distinct roots, so again, we must have $b = c = 0$, $a = d$. As before, $\mu = \id$.
+        Now we have a quadratic with 3 distinct roots, so again, we must have \(b = c = 0\), \(a = d\). As before, \(\mu = \id\).
     \end{proof}
     
     \begin{proposition}
-        Every $\mu \in \mathcal M$ has at least one fixed point.
+        Every \(\mu \in \mathcal M\) has at least one fixed point.
     \end{proposition}
 
     \begin{proof}[Sketch proof]
-        As above -- every quadratic has at least one root in $\CC$. Full proof an exercise
+        As above -- every quadratic has at least one root in \(\CC\). Full proof an exercise
     \end{proof}
     
     \begin{example*}
         \begin{itemize}
-            \item $\mu(z) = z+1$ has $\infty$ as its unique fixed point -- $\Fix(\mu) = \{\infty\}$.
-            \item $\mu(z) = 2z$ has 0 and $\infty$ as its two fixed points -- $\Fix(\mu) = \{0, \infty\}$.
+            \item \(\mu(z) = z+1\) has \(\infty\) as its unique fixed point -- \(\Fix(\mu) = \{\infty\}\).
+            \item \(\mu(z) = 2z\) has 0 and \(\infty\) as its two fixed points -- \(\Fix(\mu) = \{0, \infty\}\).
         \end{itemize}
     \end{example*}
     
     \begin{lemma}[Triple transitivity]
-        For any two triples of distinct points $z_1$, $z_2$, $z_3$ and $w_1$, $w_2$, $w_3 \in \CC_\infty$, there exists $\mu \in \mathcal M$ such that $\mu(z_i) = w_i$ for each $i$.
+        For any two triples of distinct points \(z_1\), \(z_2\), \(z_3\) and \(w_1\), \(w_2\), \(w_3 \in \CC_\infty\), there exists \(\mu \in \mathcal M\) such that \(\mu(z_i) = w_i\) for each \(i\).
     \end{lemma}
     
     \begin{proof}
@@ -1299,30 +1287,30 @@
         \[
             \alpha(z) = \frac{z_2-z_3}{z_2-z_1} \cdot \frac{z-z_1}{z-z_3}
         \]
-        (modify appropriately if any $z_i = \infty$). Note
+        (modify appropriately if any \(z_i = \infty\)). Note
         \begin{align*}
             z_1 &\longmapsto 0 \\
-            z_2 &\longmapsto \infty \\
-            z_3 &\longmapsto 1
+            z_2 &\longmapsto 1 \\
+            z_3 &\longmapsto \infty
         \end{align*}
-        Similarly, we can write down $\beta$ which sends $w_1$, $w_2$, $w_3$ to these three points. Then, $\beta^{-1} \circ \alpha$ is the M\"obius transformation we're after.
+        Similarly, we can write down \(\beta\) which sends \(w_1\), \(w_2\), \(w_3\) to these three points. Then, \(\beta^{-1} \circ \alpha\) is the M\"obius transformation we're after.
         
     \end{proof}
     
     \begin{remark*}
-        Named for the fact that it's a strengthening of transitivity when interpreting $\mathcal M$ as acting on $\CC_\infty$.
+        Named for the fact that it's a strengthening of transitivity when interpreting \(\mathcal M\) as acting on \(\CC_\infty\).
     \end{remark*}
     
     \begin{remark*}
-        The three-point lemma implies that this $\mu$ is unique. We then say further that the action $\mathcal M \acts \CC_\infty$ is \emph{sharply triply transitive}.
+        The three-point lemma implies that this \(\mu\) is unique. We then say further that the action \(\mathcal M \acts \CC_\infty\) is \emph{sharply triply transitive}.
     \end{remark*}
     
     \begin{definition}
-        Let $z_1$, $z_2$, $z_3$, $z_4 \in \CC_\infty$ be distinct. Since $\mathcal M \acts \CC_\infty$ sharply triply transitively, there is a unique $\alpha$ such that $\alpha(z_1) = 0$, $\alpha(z_2) = 1$, and $\alpha(z_3) = \infty$. Then the \emph{cross ratio}
+        Let \(z_1\), \(z_2\), \(z_3\), \(z_4 \in \CC_\infty\) be distinct. Since \(\mathcal M \acts \CC_\infty\) sharply triply transitively, there is a unique \(\alpha\) such that \(\alpha(z_1) = 0\), \(\alpha(z_2) = 1\), and \(\alpha(z_3) = \infty\). Then the \emph{cross ratio}
         \[
             [z_1, z_2, z_3, z_4] = \alpha(z_4)
         \]
-        If we really want, we can find an explicit formula using our explicit formula for $\alpha$:
+        If we really want, we can find an explicit formula using our explicit formula for \(\alpha\):
         \[
             [z_1, z_2, z_3, z_4] = \frac{z_2-z_3}{z_2-z_1} \cdot \frac{z_4-z_1}{z_4-z_3}
         \]
@@ -1333,61 +1321,61 @@
     Let's try and find a generating set for the M\"obius group.
     
     \begin{proposition}[Generating set for the M\"obius group]
-        $\mathcal M$ is generated by the set of elements of the following 3 forms:
+        \(\mathcal M\) is generated by the set of elements of the following 3 forms:
         \begin{itemize}
-            \item $\alpha_a: z \mapsto az$, $a \neq 0$;
-            \item $\beta_b: z \mapsto z + b$, $b \in \CC$;
-            \item $\gamma: z \to \frac{1}{z}$.
+            \item \(\alpha_a: z \mapsto az\), \(a \neq 0\);
+            \item \(\beta_b: z \mapsto z + b\), \(b \in \CC\);
+            \item \(\gamma: z \to \frac{1}{z}\).
         \end{itemize}
         \label{generators-mobius-group}
     \end{proposition}
     
     \begin{proof}
-        Let $\mu \in \mathcal M$ be arbitrary, and let $z_1 = \mu(0)$, $z_2 = \mu(1)$, $z_3 = \mu(\infty)$.
+        Let \(\mu \in \mathcal M\) be arbitrary, and let \(z_1 = \mu(0)\), \(z_2 = \mu(1)\), \(z_3 = \mu(\infty)\).
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item We want to construct $\mu_1$ such that $\mu_1(z_3) = \infty$. Either $z_3 = \infty$ and $\mu_1 = \id$, or
+            \item We want to construct \(\mu_1\) such that \(\mu_1(z_3) = \infty\). Either \(z_3 = \infty\) and \(\mu_1 = \id\), or
             \[
                 \mu_1(z) = \frac{1}{z+b} = \gamma \circ \beta_b(z)
             \]
-            where $b = -z_3$. Now, let $z_1' = \mu_1(z_1)$, $z_2' = \mu_1(z_2)$.
-            \item Let $b' = -z_1'$ and $\mu_2 = \beta_b'$, that is $\mu_2(z) = z + b'$. Observe $\mu_2(\infty) = \infty$ and $\mu_2(z_1') = 0$. Then by constructikn we have
+            where \(b = -z_3\). Now, let \(z_1' = \mu_1(z_1)\), \(z_2' = \mu_1(z_2)\).
+            \item Let \(b' = -z_1'\) and \(\mu_2 = \beta_{b'}\), that is \(\mu_2(z) = z + b'\). Observe \(\mu_2(\infty) = \infty\) and \(\mu_2(z_1') = 0\). Then by construction we have
             \begin{align*}
                 \mu_2 \circ \mu_1 (z_3) &= \infty \\
                 \mu_2 \circ \mu_1 (z_1) &= \mu_2(z_1') = 0
             \end{align*}
-            Lastly, let $z_2'' = \mu_2 \circ \mu_1(z_2) \neq 0$, $\infty$.
-            \item Let $a = \frac{1}{z_2''}$ and $\mu_3(z) = \alpha_a(z)$, that is $\frac{z}{z_2''}$.
+            Lastly, let \(z_2'' = \mu_2 \circ \mu_1(z_2) \neq 0\), \(\infty\).
+            \item Let \(a = \frac{1}{z_2''}\) and \(\mu_3(z) = \alpha_a(z)\), that is \(\frac{z}{z_2''}\).
         \end{enumerate}
-        It's now clear that 0, 1 and $\infty$ have the same image under $\mu$ and $\mu_1^{-1} \circ \mu_2^{-1} \circ \mu_3^{-1}$, from which it follows by the three-point lemma that $\mu = \mu_1^{-1} \circ \mu_2^{-1} \circ \mu_3^{-1}$. Hence our generating set generates $\mu$ as required.
+        It's now clear that 0, 1 and \(\infty\) have the same image under \(\mu\) and \(\mu_1^{-1} \circ \mu_2^{-1} \circ \mu_3^{-1}\), from which it follows by the three-point lemma that \(\mu = \mu_1^{-1} \circ \mu_2^{-1} \circ \mu_3^{-1}\). Hence our generating set generates \(\mu\) as required.
     \end{proof}
     
     \begin{definition}
-        A \emph{circle} in $\CC_\infty$ is
+        A \emph{circle} in \(\CC_\infty\) is
         \begin{itemize}
-            \item a standard Euclidean circle in $\CC$;
-            \item or $l \cup \{\infty\}$ where $l \subseteq \CC$ is a Euclidean straight line.
+            \item a standard Euclidean circle in \(\CC\);
+            \item or \(l \cup \{\infty\}\) where \(l \subseteq \CC\) is a Euclidean straight line.
         \end{itemize}
     \end{definition}
     
     \begin{remark}
-        For completeness, let us add that Euclidean circles in $\CC$ have the form $|z-c| = r$, $c \in \CC$, $r > 0 \in \RR$, while Euclidean lines have the form $|z-a| = |z-b|$ for $a$, $b$ not unique in $\CC$.
+        For completeness, let us add that Euclidean circles in \(\CC\) have the form \(|z-c| = r\), \(c \in \CC\), \(r > 0 \in \RR\), while Euclidean lines have the form \(|z-a| = |z-b|\) for \(a\), \(b\) not unique in \(\CC\).
     \end{remark}
     
     \begin{theorem}[Circles and M\"obius transformations]
-        If $C \subseteq \CC_\infty$ is a circle and $\mu \in \mathcal M$ is a M\"obius transformation, then $\mu(C)$ is also a circle.
+        If \(C \subseteq \CC_\infty\) is a circle and \(\mu \in \mathcal M\) is a M\"obius transformation, then \(\mu(C)\) is also a circle.
     \end{theorem}
     
     \begin{proof}
-        This is a great opportunity to apply \cref{generators-mobius-group} -- it is sufficient to check the result for only $\alpha_a(z) = az$, $\beta_b(z) = z + b$, $\gamma(z) = \frac{1}{z}$. Furthermore, it is really quite obvious that $\alpha_a$ and $\beta_b$ preserve circles.
+        This is a great opportunity to apply \cref{generators-mobius-group} -- it is sufficient to check the result for only \(\alpha_a(z) = az\), \(\beta_b(z) = z + b\), \(\gamma(z) = \frac{1}{z}\). Furthermore, it is really quite obvious that \(\alpha_a\) and \(\beta_b\) preserve circles.
 
-        If $C$ is a Euclidean circle, $\gamma(C)$ has equation
+        If \(C\) is a Euclidean circle, \(\gamma(C)\) has equation
         \begin{align*}
             \left|\frac{1}{z} - c\right| &= r \\
             \iff \left(\frac{1}{z} - c\right)\left(\frac{1}{\bar z} - \bar c\right) &= r^2 \\
-            \iff \frac{1}{|z|^2} - \frac{c}{z} - \frac{\bar c}{z} + |c|^2 - r^2 &= 0 \\
+            \iff \frac{1}{|z|^2} - \frac{c}{\bar z} - \frac{\bar c}{z} + |c|^2 - r^2 &= 0 \\
             \iff (|c|^2 - r^2)|z|^2 - cz - \bar c \bar z + 1 &= 0
         \end{align*}
-        In the case $|c|^2 = r^2$, we have
+        In the case \(|c|^2 = r^2\), we have
         \begin{align*}
             cz + \bar c \bar z &= 1 \\
             \iff \frac{z}{\bar c} + \frac{\bar z}{c} &= \frac{1}{|c|^2} \\
@@ -1395,27 +1383,27 @@
             &= \left|z-\frac{1}{c}\right|^2 \\
             \iff |z| &= \left|z - \frac{1}{c}\right|
         \end{align*}
-        which is a straight line -- furthermore, it is clear 0 is on the circle, and this point will go to infinity. Otherwise, $|c|^2 \neq r^2$, so we have
+        which is a straight line -- furthermore, it is clear 0 is on the circle, and this point will go to infinity. Otherwise, \(|c|^2 \neq r^2\), so we have
         \begin{align*}
             |z|^2 - \left(\frac{c}{|c|^2 - r^2}\right)z - \left(\frac{\bar c}{|c|^2 - r^2}\right) \bar z + \frac{1}{|c|^2 - r^2} &= 0 \\
             \iff \left|z - \frac{\bar c}{|c|^2 - r^2}\right|^2 &= \frac{|c|^2}{(|c|^2 - r^2)^2} - \frac{1}{|c|^2 - r^2} \\
             &= \frac{r^2}{(|c|^2 - r^2)^2}
         \end{align*}
-        which is a circle. The case where $C$ is a line union infinity is left as an exercise.        
+        which is a circle. The case where \(C\) is a line union infinity is left as an exercise.        
     \end{proof}
     
     \begin{corollary}
-        Four points $z_1$, $z_2$, $z_3$, $z_4 \in \CC$ lie on a circle if and only if
+        Four points \(z_1\), \(z_2\), \(z_3\), \(z_4 \in \CC\) lie on a circle if and only if
         \[
             [z_1, z_2, z_3, z_4] \in \RR \cup \{\infty\}
         \]
     \end{corollary}
     
     \begin{proof}
-        Let $\alpha \in \mathcal M$ be such that $\alpha(z_1) = 0$, $\alpha(z_2) = 1$, $\alpha(z_3) = \infty$, and $\alpha(z_4) = [z_1, z_2, z_3, z_4]$.
+        Let \(\alpha \in \mathcal M\) be such that \(\alpha(z_1) = 0\), \(\alpha(z_2) = 1\), \(\alpha(z_3) = \infty\), and \(\alpha(z_4) = [z_1, z_2, z_3, z_4]\).
         \begin{itemize}
-            \item[$\implies$] Suppose $z_1, \dots, z_4 \in C$ a circle. Then 0, 1, $\infty$ and $\alpha(z_4)$ will lie on $\alpha(C)$, also a circle. Since $\infty$ is on this circle, it is in fact a line union infinity, and so, since it passes through $0$ and $1$, it is $\RR \cup \{\infty\}$, so $\alpha(z_4) \in \RR \cup \{\infty\}$ as required.
-            \item[$\impliedby$] Suppose $\alpha(z_4) \in \RR \cup \{\infty\}$, and of course $\alpha(z_1) = 0$, $\alpha(z_2) = 1$, $\alpha(z_3) = \infty$ -- so they all lie on a circle. Hence $z_1, \dots, z_4 \in \alpha^{-1}(\RR \cup \{\infty\})$ which is a circle by the theorem. 
+            \item[\(\implies\)] Suppose \(z_1, \dots, z_4 \in C\) a circle. Then 0, 1, \(\infty\) and \(\alpha(z_4)\) will lie on \(\alpha(C)\), also a circle. Since \(\infty\) is on this circle, it is in fact a line union infinity, and so, since it passes through \(0\) and \(1\), it is \(\RR \cup \{\infty\}\), so \(\alpha(z_4) \in \RR \cup \{\infty\}\) as required.
+            \item[\(\impliedby\)] Suppose \(\alpha(z_4) \in \RR \cup \{\infty\}\), and of course \(\alpha(z_1) = 0\), \(\alpha(z_2) = 1\), \(\alpha(z_3) = \infty\) -- so they all lie on a circle. Hence \(z_1, \dots, z_4 \in \alpha^{-1}(\RR \cup \{\infty\})\) which is a circle by the theorem. 
         \end{itemize} 
     \end{proof}
     
@@ -1426,14 +1414,14 @@
     \lecture{Lecture 14 -- 10/11/25}
 
     \begin{itemize}
-        \item \emph{Order 1}. If $|G| = 1$, then $G \cong \{e\}$, the trivial group.
-        \item \emph{Order 2}. If $|G| = 2$, since 2 is prime, $G \cong C_2$ by \cref{prime-groups-cyclic}.
-        \item \emph{Order 3}. As above, $G \cong C_3$.
-        \item \emph{Order 4}. If $|G| = 4$, we have $C_4$. But is that all?
+        \item \emph{Order 1}. If \(|G| = 1\), then \(G \cong \{e\}\), the trivial group.
+        \item \emph{Order 2}. If \(|G| = 2\), since 2 is prime, \(G \cong C_2\) by \cref{prime-groups-cyclic}.
+        \item \emph{Order 3}. As above, \(G \cong C_3\).
+        \item \emph{Order 4}. If \(|G| = 4\), we have \(C_4\). But is that all?
     \end{itemize}
 
     \begin{definition}[Direct product]
-        If $G$ and $H$ are groups, the \emph{direct product} is
+        If \(G\) and \(H\) are groups, the \emph{direct product} is
         \[
             G \times H = \{(g, h): g \in G, h \in H\}
         \]
@@ -1441,7 +1429,7 @@
         \[
             (g_1, h_1) \cdot (g_2, h_2) = (g_1g_2, h_1h_2)
         \]
-        and identity $(e_G, e_H)$. Inverses are also pointwise -- $(g, h)^{-1} = (g^{-1}, h^{-1})$.
+        and identity \((e_G, e_H)\). Inverses are also pointwise -- \((g, h)^{-1} = (g^{-1}, h^{-1})\).
     \end{definition}
     
     \begin{example*}[Klein 4-group]
@@ -1449,17 +1437,17 @@
         \[
             K_4 := C_2 \times C_2
         \]
-        is often called the Klein 4-group (it also makes sense to think of $D_4$ as $K_4$). Note that every element in $K_4$ has order 2, while there exist elements of order 4 in $C_4$, so $K_4 \not\cong C_4$.
+        is often called the Klein 4-group (it also makes sense to think of \(D_4\) as \(K_4\)). Note that every element in \(K_4\) has order 2, while there exist elements of order 4 in \(C_4\), so \(K_4 \not\cong C_4\).
     \end{example*}
 
     \begin{theorem}[Direct product theorem]
-        If $H_1$, $H_2 \leq G$ and
+        If \(H_1\), \(H_2 \leq G\) and
         \begin{itemize}
-            \item $H_1 \cap H_2 = \{e\}$;
-            \item $h_1h_2 = h_2h_1$ for all $h_1 \in H_1$, $h_2 \in H_2$;
-            \item $G = H_1H_2$ -- for all $g \in G$, $g = h_1h_2$ for some $h_1 \in H_1$, $h_2 \in H_2$.
+            \item \(H_1 \cap H_2 = \{e\}\);
+            \item \(h_1h_2 = h_2h_1\) for all \(h_1 \in H_1\), \(h_2 \in H_2\);
+            \item \(G = H_1H_2\) -- for all \(g \in G\), \(g = h_1h_2\) for some \(h_1 \in H_1\), \(h_2 \in H_2\).
         \end{itemize}
-        Then $G \cong H_1 \times H_2$.
+        Then \(G \cong H_1 \times H_2\).
         \label{direct-product-theorem}
     \end{theorem}
     
@@ -1469,47 +1457,47 @@
             \Phi: H_1 \times H_2 &\to G \\
             (h_1, h_2) &\mapsto h_1h_2
         \end{align*}
-        We claim $\Phi$ is an isomorphism.
+        We claim \(\Phi\) is an isomorphism.
         \begin{itemize}
-            \item \emph{$\Phi$ is a homomorphism}. For any $h_1$, $h_1' \in H_1$, $h_2$, $h_2' \in H_2$, we have
+            \item \emph{\(\Phi\) is a homomorphism}. For any \(h_1\), \(h_1' \in H_1\), \(h_2\), \(h_2' \in H_2\), we have
             \begin{align*}
                 \Phi(h_1, h_2)\Phi(h_1', h_2') &= h_1h_2h_1'h_2' \\
                 &= h_1h_1'h_2h_2' \\
                 &= \Phi(h_1h_1', h_2h_2') \\
                 &= \Phi((h_1, h_2)(h_1', h_2'))
             \end{align*}
-            \item \emph{$\Phi$ is surjective}. Follows immediately from $G = H_1H_2$.
-            \item \emph{$\Phi$ is injective}. We will show $\ker \Phi$ is trivial. Suppose $\Phi(h_1, h_2) = e$ for some $(h_1, h_2) \in H_1 \times H_2$. Then
+            \item \emph{\(\Phi\) is surjective}. Follows immediately from \(G = H_1H_2\).
+            \item \emph{\(\Phi\) is injective}. We will show \(\ker \Phi\) is trivial. Suppose \(\Phi(h_1, h_2) = e\) for some \((h_1, h_2) \in H_1 \times H_2\). Then
             \begin{align*}
                 h_1h_2 &= e \\
                 \implies H_1 \ni h_1 &= h_2^{-1} \in H_2
             \end{align*}
-            so $h_1 = h_2^{-1} \in H_1 \cap H_2$. But $H_1 \cap H_2 = \{e\}$, so $h_1 = h_2 = e$. Thus $(h_1, h_2)$ is the identity in $H_1 \times H_2$ as required.            
+            so \(h_1 = h_2^{-1} \in H_1 \cap H_2\). But \(H_1 \cap H_2 = \{e\}\), so \(h_1 = h_2 = e\). Thus \((h_1, h_2)\) is the identity in \(H_1 \times H_2\) as required.            
         \end{itemize}
     \end{proof}
     
     \begin{remark*}
-        If we know $H_1 \cap H_2 = \{e\}$, then $|H_1 \times H_2| = |H_1||H_2|$. So if $|H_1||H_2| = |G|$, then we get that $G = H_1H_2$ automatically.
+        If we know \(H_1 \cap H_2 = \{e\}\), then \(|H_1 \times H_2| = |H_1||H_2|\). So if \(|H_1||H_2| = |G|\), then we get that \(G = H_1H_2\) automatically.
     \end{remark*}
     
     \begin{lemma}[Groups of order 4]
-        If $|G| = 4$, then either $G \cong C_4$ or $G \cong K_4$.
+        If \(|G| = 4\), then either \(G \cong C_4\) or \(G \cong K_4\).
     \end{lemma}
     
     \begin{proof}
-        By Lagrange, every non-trivial element has order 2 or 4. If there is an element $g \in G$ of order 4, then $G = \gen g \cong C_4$. Otherwise, every non-trivial element of $G$ has order 2. Let $a$, $b$ be distinct non-trivial elements of $G$, and let $H_1 = \gen a$, $H_2 = \gen b$. Clearly $H_1 \cap H_2 = \{e\}$ and, since $|H_1| = |H_2| = 2$, we have $G = H_1H_2$. Finally, since $o(ab) = 2$, $abab = e \implies ab = b^{-1}a^{-1} = ba$, so we have commutativity. Thus $G = H_1 \times H_2 \cong C_2 \times C_2$.
+        By Lagrange, every non-trivial element has order 2 or 4. If there is an element \(g \in G\) of order 4, then \(G = \gen g \cong C_4\). Otherwise, every non-trivial element of \(G\) has order 2. Let \(a\), \(b\) be distinct non-trivial elements of \(G\), and let \(H_1 = \gen a\), \(H_2 = \gen b\). Clearly \(H_1 \cap H_2 = \{e\}\) and, since \(|H_1| = |H_2| = 2\), we have \(G = H_1H_2\). Finally, since \(o(ab) = 2\), \(abab = e \implies ab = b^{-1}a^{-1} = ba\), so we have commutativity. Thus \(G = H_1 \times H_2 \cong C_2 \times C_2\).
     \end{proof}
     
     \begin{theorem}[Chinese remainder theorem]
-        If $\gcd(m, n) = 1$, then $C_m \times C_n \cong C_{mn}$.
+        If \(\gcd(m, n) = 1\), then \(C_m \times C_n \cong C_{mn}\).
         \label{chinese-remainder-theorem}
     \end{theorem}
     
     \begin{proof}
-        Let $C_{mn} = \gen g$. Let $H_1 = \gen{g^n} \cong C_m$, $H_2 = \gen{g^m} \cong C_n$. We will check the hypotheses of the direct product theorem.
+        Let \(C_{mn} = \gen g\). Let \(H_1 = \gen{g^n} \cong C_m\), \(H_2 = \gen{g^m} \cong C_n\). We will check the hypotheses of the direct product theorem.
         \begin{itemize}
-            \item Observe $g^k \in H_1 \iff k = np + mnq$ for some $p$, $q \in \ZZ$, i.e. if and only if $n \mid k$. Similarly, $g^k \in H_2$ if and only if $m \mid k$. Hence $g^k \in H_1 \cap H_2$ if and only if $n, m \mid k \iff \lcm(m, n) \mid k$. But $\gcd(m, n) = 1 \implies \lcm(m, n) = mn$, so $mn \mid k$ -- but $g^{mn} = e$, so $g^k = e$ as required.
-            \item $C_{mn}$ is abelian, so we definitely have commutativity.
+            \item Observe \(g^k \in H_1 \iff k = np + mnq\) for some \(p\), \(q \in \ZZ\), i.e. if and only if \(n \mid k\). Similarly, \(g^k \in H_2\) if and only if \(m \mid k\). Hence \(g^k \in H_1 \cap H_2\) if and only if \(n, m \mid k \iff \lcm(m, n) \mid k\). But \(\gcd(m, n) = 1 \implies \lcm(m, n) = mn\), so \(mn \mid k\) -- but \(g^{mn} = e\), so \(g^k = e\) as required.
+            \item \(C_{mn}\) is abelian, so we definitely have commutativity.
             \item Immediate by the remark.
         \end{itemize}
     \end{proof}
@@ -1517,33 +1505,33 @@
     Let's continue classifying groups!
 
     \begin{itemize}
-        \item \emph{Order 5}. $C_5$ is of course the only possibility.
+        \item \emph{Order 5}. \(C_5\) is of course the only possibility.
         \item \emph{Order 6}.
     \end{itemize}
     
     \begin{lemma}[Groups of order 6]
-        If $|G| = 6$, then $G \cong C_6$ or $G \cong D_6$.
+        If \(|G| = 6\), then \(G \cong C_6\) or \(G \cong D_6\).
     \end{lemma}
     
     \begin{proof}
-        By Cauchy's theorem, $G$ has an element $r$ of order 3 and an element $s$ of order 2. Since $|\gen r| = 3$, $|G:\gen r| = 2$, and $s \notin \gen r$, so $s \gen r = G \setminus \gen r = \gen r s$. We conclude that $sr = r^is$ for some $i = 0, 1, 2$.
+        By Cauchy's theorem, \(G\) has an element \(r\) of order 3 and an element \(s\) of order 2. Since \(|\gen r| = 3\), \(|G:\gen r| = 2\), and \(s \notin \gen r\), so \(s \gen r = G \setminus \gen r = \gen r s\). We conclude that \(sr = r^is\) for some \(i = 0, 1, 2\).
 
-        \emph{Case 1}. $i = 0$. Then $sr = s \implies r = e$, but this contradicts $o(r) = 3$.
+        \emph{Case 1}. \(i = 0\). Then \(sr = s \implies r = e\), but this contradicts \(o(r) = 3\).
 
-        \emph{Case 2}. $i = 1$. Then $sr = rs$, from which it's clear that $\gen r$ and $\gen s$ commute. Then \cref{direct-product-theorem} (the direct product theorem) applies, so $G \cong C_2 \times C_3 = C_6$ by \cref{chinese-remainder-theorem}.
+        \emph{Case 2}. \(i = 1\). Then \(sr = rs\), from which it's clear that \(\gen r\) and \(\gen s\) commute. Then \cref{direct-product-theorem} (the direct product theorem) applies, so \(G \cong C_2 \times C_3 = C_6\) by \cref{chinese-remainder-theorem}.
 
-        \emph{Case 3}. Then we have $sr = r^2s = r^{-1}s$ -- this is the dihedral relation. We conclude $G \cong D_6$ by proposition 1.31 (to be added).
+        \emph{Case 3}. Then we have \(sr = r^2s = r^{-1}s\) -- this is the dihedral relation. We conclude \(G \cong D_6\) by proposition 1.31 (to be added).
     \end{proof}
     
     \begin{remark*}
-        $S_3$ is a non-abelian group of order 6, so this gives us a way to conclude $S_3 \cong D_6$.
+        \(S_3\) is a non-abelian group of order 6, so this gives us a way to conclude \(S_3 \cong D_6\).
     \end{remark*}
 
     \lecture{Lecture 15 -- 12/11/25}
     
     \begin{itemize}
-        \item \emph{Order 7}. $C_7$ only.
-        \item \emph{Order 8}. Interesting! We have $C_2 \times C_2 \times C_2$, $C_4 \times C_2$, $C_8$ of course. We also have $D_8$. But there's another one!
+        \item \emph{Order 7}. \(C_7\) only.
+        \item \emph{Order 8}. Interesting! We have \(C_2 \times C_2 \times C_2\), \(C_4 \times C_2\), \(C_8\) of course. We also have \(D_8\). But there's another one!
     \end{itemize}
     
     \begin{example}[The quaternion group]
@@ -1582,83 +1570,83 @@
              i & 0 \\
             \end{pmatrix}
         \end{align*}
-        so that the group consists of $\{\pm 1, \pm i, \pm j, \pm k\}$. Then we have various properties:
+        so that the group consists of \(\{\pm 1, \pm i, \pm j, \pm k\}\). Then we have various properties:
         \begin{itemize}
-            \item $i^2 = j^2 = k^2 = -1$;
-            \item $(-1)i = -i$, etc;
-            \item $ij = k$, $jk = i$, $ki = j$;
-            \item $ji = -k$, $kj = -i$, $ik = -j$.
-            \item $-1$ commutes with everything.
+            \item \(i^2 = j^2 = k^2 = -1\);
+            \item \((-1)i = -i\), etc;
+            \item \(ij = k\), \(jk = i\), \(ki = j\);
+            \item \(ji = -k\), \(kj = -i\), \(ik = -j\).
+            \item \(-1\) commutes with everything.
         \end{itemize}
-        But is this in our list? It's not abelian, so if it were, it would have to be $D_8$. But $D_8$ has too many elements of order 2.
+        But is this in our list? It's not abelian, so if it were, it would have to be \(D_8\). But \(D_8\) has too many elements of order 2.
     \end{example}
     
     \begin{lemma}[Groups of order 8]
-        If $|G| = 8$, then $G \cong C_2 \times C_2 \times C_2$, $C_4 \times C_2$, $C_8$, $D_8$ or $Q_8$.
+        If \(|G| = 8\), then \(G \cong C_2 \times C_2 \times C_2\), \(C_4 \times C_2\), \(C_8\), \(D_8\) or \(Q_8\).
     \end{lemma}
     
     \begin{proof}
         By Lagrange, every element has order 1, 2, 4 or 8.
         \begin{itemize}
-            \item If we have an element of order 8, we're done ($G \cong C_8$).
-            \item Suppose that every non-trivial element has order 2. We know it's abelian, and then by picking $a$, $b \neq a$, $c \neq a, b, ab$, we see that
+            \item If we have an element of order 8, we're done (\(G \cong C_8\)).
+            \item Suppose that every non-trivial element has order 2. We know it's abelian, and then by picking \(a\), \(b \neq a\), \(c \neq a, b, ab\), we see that
             \[
                 G = \gen a \times \gen b \times \gen c \cong C_2 \times C_2 \times C_2
             \]
             by applying the direct product theorem twice.
-            \item Now we may suppose we have $a \in G$ with $o(a) = 4$, so $|G: \gen a| = 2$ -- also let $b \in G \setminus \gen a$. Then
+            \item Now we may suppose we have \(a \in G\) with \(o(a) = 4\), so \(|G: \gen a| = 2\) -- also let \(b \in G \setminus \gen a\). Then
             \[
                 b \gen a = G \setminus \gen a = \gen a b
             \]
-            so that $ba = a^ib$ for some $i = 0, 1, 2, 3$.
+            so that \(ba = a^ib\) for some \(i = 0, 1, 2, 3\).
             \begin{itemize}
-                \item $i = 0$, so $a = e$, which is a contradiction.
-                \item $i = 1$, so $ba = ab$, and it follows $ba^j = a^jb$ for all $j$. It follows from here that the whole group is abelian.
-                \item $i = 2$, so $ba = a^2b \implies bab^{-1} = a^2$. But $bab^{-1}$ is $a$ conjugated by $b$, so must have the same order as $a$, i.e. 4, while $a^2$ clearly has order 2. So this is a contradiction.
-                \item $i = 3$, so $ba = a^3 b = a^{-1} b$.
+                \item \(i = 0\), so \(a = e\), which is a contradiction.
+                \item \(i = 1\), so \(ba = ab\), and it follows \(ba^j = a^jb\) for all \(j\). It follows from here that the whole group is abelian.
+                \item \(i = 2\), so \(ba = a^2b \implies bab^{-1} = a^2\). But \(bab^{-1}\) is \(a\) conjugated by \(b\), so must have the same order as \(a\), i.e. 4, while \(a^2\) clearly has order 2. So this is a contradiction.
+                \item \(i = 3\), so \(ba = a^3 b = a^{-1} b\).
             \end{itemize}
-            Let's take a break and think about powers of $b$. If $b^2 = ba^j$, then $b = a^j$, so $b \in \gen a$, but we picked $b \in G \setminus \gen a$. So $b^2 \in \gen a$, and we get four more cases.
+            Let's take a break and think about powers of \(b\). If \(b^2 = ba^j\), then \(b = a^j\), so \(b \in \gen a\), but we picked \(b \in G \setminus \gen a\). So \(b^2 \in \gen a\), and we get four more cases.
             \begin{itemize}
-                \item $b^2 = e$.
-                \item $b^2 = a$. Then, since $a$ has order 4, $b$ has order 8, so we get $C_8$ again.
-                \item $b^2 = a^2$.
-                \item $b^2 = a^3 = a^{-1}$ -- again, $a^{-1}$ has order 4, and so we get $C_8$ once more.
+                \item \(b^2 = e\).
+                \item \(b^2 = a\). Then, since \(a\) has order 4, \(b\) has order 8, so we get \(C_8\) again.
+                \item \(b^2 = a^2\).
+                \item \(b^2 = a^3 = a^{-1}\) -- again, \(a^{-1}\) has order 4, and so we get \(C_8\) once more.
             \end{itemize}
             This leaves us with four combinations of cases to analyse.
             \begin{itemize}
-                \item $G$ is abelian, $b^2 = e$. Then $\gen b \cong C_2$, $\gen a \cong C_4$, $\gen b \cap \gen a = \{e\}$, so $G \cong C_4 \times C_2$ by the direct product theorem.
-                \item $G$ is abelian, $b^2 = a^2$. Then $ab^{-1}$ has order 2, and it turns out that once again $G \cong C_4 \times C_2$ by the direct product theorem.
-                \item $ba = a^{-1}b$, $b^2 = e$, and we already knew $a^4 = e$. That's enough to show that $G \cong D_8$ with $r = a$ and $s = b$.
-                \item $ba = a^{-1}b$, $b^2 = a^2$. We claim $G \cong Q_8$. Let $i = a$, $j = b$, $k = ab$, $-1 = a^2 = b^2$. Then
+                \item \(G\) is abelian, \(b^2 = e\). Then \(\gen b \cong C_2\), \(\gen a \cong C_4\), \(\gen b \cap \gen a = \{e\}\), so \(G \cong C_4 \times C_2\) by the direct product theorem.
+                \item \(G\) is abelian, \(b^2 = a^2\). Then \(ab^{-1}\) has order 2, and it turns out that once again \(G \cong C_4 \times C_2\) by the direct product theorem.
+                \item \(ba = a^{-1}b\), \(b^2 = e\), and we already knew \(a^4 = e\). That's enough to show that \(G \cong D_8\) with \(r = a\) and \(s = b\).
+                \item \(ba = a^{-1}b\), \(b^2 = a^2\). We claim \(G \cong Q_8\). Let \(i = a\), \(j = b\), \(k = ab\), \(-1 = a^2 = b^2\). Then
                 \begin{align*}
                     G &= \{e, a, a^2, a^3, b, ab, a^2b, a^3b\} \\
                     &= \{1, i, -1, -i, j, k, -j, -k\}
                 \end{align*}
-                and we can check multiplication works. So $G \cong Q_8$ as required.
+                and we can check multiplication works. So \(G \cong Q_8\) as required.
             \end{itemize}
         \end{itemize}
     \end{proof}
     
-    We have now categorised all the groups of order less than or equal to 8: $\{e\}$, $C_2$, $C_3$, $C_4$, $C_2 \times C_2$, $C_5$, $C_6$, $D_6$, $C_7$, $C_8$, $C_4 \times C_2$, $C_2 \times C_2 \times C_2$, $D_8$, $Q_8$.
+    We have now categorised all the groups of order less than or equal to 8: \(\{e\}\), \(C_2\), \(C_3\), \(C_4\), \(C_2 \times C_2\), \(C_5\), \(C_6\), \(D_6\), \(C_7\), \(C_8\), \(C_4 \times C_2\), \(C_2 \times C_2 \times C_2\), \(D_8\), \(Q_8\).
 
     \section{Quotients}
     
     \subsection{Normal subgroups}
 
     \begin{definition}
-        $H \leq G$ is called \emph{normal} if $ghg^{-1} \in H$ for every $h \in H$ and $g \in G$. We write $H \triangleleft G$.
+        \(H \leq G\) is called \emph{normal} if \(ghg^{-1} \in H\) for every \(h \in H\) and \(g \in G\). We write \(H \triangleleft G\).
     \end{definition}
     
     \begin{example}
         \begin{itemize}
-            \item $\{e\} \triangleleft G$, $G \triangleleft G$ for all $G$;
-            \item If $G$ is abelian, $H \triangleleft G$ for all $H \leq G$;
-            \item $\gen r \triangleleft D_{2n}$, but $\gen s$ is not a normal subgroup of $D_{2n}$.
+            \item \(\{e\} \triangleleft G\), \(G \triangleleft G\) for all \(G\);
+            \item If \(G\) is abelian, \(H \triangleleft G\) for all \(H \leq G\);
+            \item \(\gen r \triangleleft D_{2n}\), but \(\gen s\) is not a normal subgroup of \(D_{2n}\).
         \end{itemize}
     \end{example}
     
     \begin{proposition}
-        Let $\phi: G \to H$ be a homomorphism. Then $\ker \phi \triangleleft G$.
+        Let \(\phi: G \to H\) be a homomorphism. Then \(\ker \phi \triangleleft G\).
     \end{proposition}
     
     \begin{proof}
@@ -1668,62 +1656,62 @@
             &= \phi(g)\phi(g)^{-1} \\
             &= e
         \end{align*}
-        so $ghg^{-1} \in \ker \phi$. Hence $\ker \phi \triangleleft G$ as required.
+        so \(ghg^{-1} \in \ker \phi\). Hence \(\ker \phi \triangleleft G\) as required.
     \end{proof}
 
     \lecture{Lecture 16 -- 14/11/25}
     
     \begin{lemma}
-        Suppose $H \leq G$. Then $H \triangleleft G$ if and only if $gH = Hg$ for all $g \in G$.
+        Suppose \(H \leq G\). Then \(H \triangleleft G\) if and only if \(gH = Hg\) for all \(g \in G\).
         \label{normal-subgroups-equal-cosets}
     \end{lemma}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\implies$] Let $h \in H$, $g \in G$. Since $H \triangleleft G$, $ghg^{-1} \in H$. Hence $gh = (ghg^{-1})g \in Hg$, so $gH \subseteq Hg$. Similarly, $Hg \subseteq gH$, so $gH = Hg$ as required.
-            \item[$\impliedby$] Suppose $gH = Hg$. Let $h \in H$, so $gh \in gH = Hg$, so we have $h' \in H$ with $gh = h'g$. Hence $ghg^{-1} = h' \in H$ as required. 
+            \item[\(\implies\)] Let \(h \in H\), \(g \in G\). Since \(H \triangleleft G\), \(ghg^{-1} \in H\). Hence \(gh = (ghg^{-1})g \in Hg\), so \(gH \subseteq Hg\). Similarly, \(Hg \subseteq gH\), so \(gH = Hg\) as required.
+            \item[\(\impliedby\)] Suppose \(gH = Hg\). Let \(h \in H\), so \(gh \in gH = Hg\), so we have \(h' \in H\) with \(gh = h'g\). Hence \(ghg^{-1} = h' \in H\) as required. 
         \end{itemize}
     \end{proof}
     
     \begin{theorem}[Quotient groups]
-        If $H \triangleleft G$, the set of left cosets $G/H$ is a group with operation $(g_1H)(g_2H) = (g_1g_2)H$.
+        If \(H \triangleleft G\), the set of left cosets \(G/H\) is a group with operation \((g_1H)(g_2H) = (g_1g_2)H\).
         \label{quotient-is-a-group}
     \end{theorem}
     
     \begin{proof}
         We need to check that the operation is well-defined and satisfies the group axioms.
         \begin{itemize}
-            \item \emph{Well-defined}. Suppose $g_1H = g_1'H$ and $g_2H = g_2'H$, so $Hg_2 = Hg_2'$ (since $H$ normal in $G$). Hence, we have $h_1$, $h_2 \in H$ with $g_1 = g_1'h_1$ and $g_2 = h_2g_2'$. Therefore,
+            \item \emph{Well-defined}. Suppose \(g_1H = g_1'H\) and \(g_2H = g_2'H\), so \(Hg_2 = Hg_2'\) (since \(H\) normal in \(G\)). Hence, we have \(h_1\), \(h_2 \in H\) with \(g_1 = g_1'h_1\) and \(g_2 = h_2g_2'\). Therefore,
             \begin{align*}
                 g_1g_2 &= (g_1'h_1)(h_2g_2') \\
                 &= g_1'(h_1h_2)g_2' \\
                 &= g_1'g_2'h_3
             \end{align*}
-            for some $h_3 \in H$ by \cref{normal-subgroups-equal-cosets}. Therefore, $g_1g_2 \in g_1'g_2'H$, so $g_1g_2H = g_1'g_2'H$.
+            for some \(h_3 \in H\) by \cref{normal-subgroups-equal-cosets}. Therefore, \(g_1g_2 \in g_1'g_2'H\), so \(g_1g_2H = g_1'g_2'H\).
             \item \emph{Associativity}. Obvious from the definition.
-            \item \emph{Identity}. $H$.
-            \item \emph{Inverses}. Clearly $g^{-1}H = (gH)^{-1}$.
+            \item \emph{Identity}. \(H\).
+            \item \emph{Inverses}. Clearly \(g^{-1}H = (gH)^{-1}\).
         \end{itemize}
     \end{proof}
     
     \begin{definition}
-        If $H \triangleleft G$, then $G/H$, which is a group by \cref{quotient-is-a-group}, is called the \emph{quotient of $G$ by $H$}.
+        If \(H \triangleleft G\), then \(G/H\), which is a group by \cref{quotient-is-a-group}, is called the \emph{quotient of \(G\) by \(H\)}.
     \end{definition}
     
     \begin{example}
         \begin{itemize}
-            \item $G/\{e\} \cong G$, $G/G \cong \{e\}$.
-            \item Since $\ZZ$ is abelian, $n\ZZ \triangleleft \ZZ$ for any $n$, and $\ZZ/n\ZZ$ is cyclic of order $n$, with generator $1 + n\ZZ$, so $\ZZ/n\ZZ \cong C_n$.
-            \item Let $G$ be a group, $H \leq G$, and suppose $|G:H| = 2$. Then $H \triangleleft G$ as we've argued before. For example, $C_n \cong \gen r \triangleleft D_{2n}$, and $D_{2n} / C_n \cong C_2$.
+            \item \(G/\{e\} \cong G\), \(G/G \cong \{e\}\).
+            \item Since \(\ZZ\) is abelian, \(n\ZZ \triangleleft \ZZ\) for any \(n\), and \(\ZZ/n\ZZ\) is cyclic of order \(n\), with generator \(1 + n\ZZ\), so \(\ZZ/n\ZZ \cong C_n\).
+            \item Let \(G\) be a group, \(H \leq G\), and suppose \(|G:H| = 2\). Then \(H \triangleleft G\) as we've argued before. For example, \(C_n \cong \gen r \triangleleft D_{2n}\), and \(D_{2n} / C_n \cong C_2\).
         \end{itemize}
     \end{example}
     
     \begin{remark*}
-        Quotienting and the direct product are not opposites! $A / B \cong C \nRightarrow A \cong B \times C$.
+        Quotienting and the direct product are not opposites! \(A / B \cong C \nRightarrow A \cong B \times C\).
     \end{remark*}
     
     \begin{theorem}[Isomorphism theorem]
-        If $\phi: G \to H$ is a homomorphism, then
+        If \(\phi: G \to H\) is a homomorphism, then
         \[
             G/\ker \phi \cong \im \phi
         \]
@@ -1731,14 +1719,14 @@
     \end{theorem}
     
     \begin{proof}
-        Since $\ker \phi \triangleleft G$, the quotient $G/\ker \phi$ is indeed a group. Let's define
+        Since \(\ker \phi \triangleleft G\), the quotient \(G/\ker \phi\) is indeed a group. Let's define
         \begin{align*}
             \bar\phi: G/\ker\phi &\to \im \phi \\
             g \ker \phi &\mapsto \phi(g)
         \end{align*}
         We must perform all the usual checks.
         \begin{itemize}
-            \item \emph{Well-defined}. Suppose $g_1 \ker \phi = g_2 \ker \phi$, so $g_1 = g_2 k$ for some $k \in \ker \phi$. Then
+            \item \emph{Well-defined}. Suppose \(g_1 \ker \phi = g_2 \ker \phi\), so \(g_1 = g_2 k\) for some \(k \in \ker \phi\). Then
             \begin{align*}
                 \bar\phi(g_1 \ker \phi) &= \phi(g_1) \\
                 &= \phi(g_2k) \\
@@ -1746,45 +1734,45 @@
                 &= \phi(g_2) \\
                 &= \bar\phi(g_2 \ker \phi)
             \end{align*}
-            \item \emph{Homomorphism}. For $g_1$, $g_2 \in G$,
+            \item \emph{Homomorphism}. For \(g_1\), \(g_2 \in G\),
             \begin{align*}
                 \bar\phi((g_1 \ker \phi)(g_2 \ker \phi)) &= \bar\phi(g_1g_2 \ker \phi) \\
                 &= \phi(g_1g_2) \\
                 &= \phi(g_1)\phi(g_2) \\
                 &= \bar\phi(g_1 \ker \phi)\bar\phi(g_2 \ker \phi)
             \end{align*}
-            \item \emph{Injective}. If $\bar\phi(g \ker \phi) = e$, then $\phi(g) = \bar\phi(g \ker \phi) = e$, so $g \in \ker \phi$. Hence $g \ker \phi = \ker \phi$, and so $\ker \bar\phi = \{\ker \phi\}$ is trivial, hence $\bar\phi$ is injective as required.
-            \item \emph{Surjective}. An element of $\im \phi$ looks like $\phi(g)$, which is $\bar\phi(g \ker \phi)$ as required.           
+            \item \emph{Injective}. If \(\bar\phi(g \ker \phi) = e\), then \(\phi(g) = \bar\phi(g \ker \phi) = e\), so \(g \in \ker \phi\). Hence \(g \ker \phi = \ker \phi\), and so \(\ker \bar\phi = \{\ker \phi\}\) is trivial, hence \(\bar\phi\) is injective as required.
+            \item \emph{Surjective}. An element of \(\im \phi\) looks like \(\phi(g)\), which is \(\bar\phi(g \ker \phi)\) as required.           
         \end{itemize}
     \end{proof}
     
     \begin{example}
         \begin{itemize}
-            \item Since $\phi: \ZZ \to \CC_\times$, $k \mapsto e^{2\pi i k/n}$ is a homomorphism with image $C_n$ and kernel $n \ZZ$, we get that $\ZZ/n\ZZ \cong C_n$ by the isomorphism theorem.
-            \item Similarly, $\phi: \RR \to \CC_\times$, $k \mapsto e^{2\pi i t}$ is a homomorphism with image $\{z: |z| = 1\} = U(1)$ and kernel $\ZZ$, we have $\RR/\ZZ \cong U(1)$.
+            \item Since \(\phi: \ZZ \to \CC_\times\), \(k \mapsto e^{2\pi i k/n}\) is a homomorphism with image \(C_n\) and kernel \(n \ZZ\), we get that \(\ZZ/n\ZZ \cong C_n\) by the isomorphism theorem.
+            \item Similarly, \(\phi: \RR \to \CC_\times\), \(k \mapsto e^{2\pi i t}\) is a homomorphism with image \(\{z: |z| = 1\} = U(1)\) and kernel \(\ZZ\), we have \(\RR/\ZZ \cong U(1)\).
         \end{itemize}
     \end{example}
 
     \lecture{Lecture 17 -- 17/11/25}
     
     \begin{definition}
-        A group $G$ is \emph{simple} if the only normal subgroups are $\{e\}$ and $G$ itself. Thus every homomorphism out of $G$ is either injective or trivial by the isomorphism theorem.
+        A group \(G\) is \emph{simple} if the only normal subgroups are \(\{e\}\) and \(G\) itself. Thus every homomorphism out of \(G\) is either injective or trivial by the isomorphism theorem.
     \end{definition}
     
     \begin{example}
-        $C_p$ is simple for $p$ a prime.
+        \(C_p\) is simple for \(p\) a prime.
     \end{example}
     
     \begin{remark*}
-        The classification of finite simple groups is one of the great mathematical achievements of the $20^\text{th}$ century.
+        The classification of finite simple groups is one of the great mathematical achievements of the \(20^\text{th}\) century.
     \end{remark*}
     
     \section{Permutations}
 
-    Recall that a permutation of a set $X$ is a bijection $X \to X$, and that $\Sym(X)$ is the group of all such permutations under composition.
+    Recall that a permutation of a set \(X\) is a bijection \(X \to X\), and that \(\Sym(X)\) is the group of all such permutations under composition.
 
     \begin{definition}
-        Any list of $k$ distinct elements $a_1, \dots, a_k \in \{1, \dots, n\}$ determines a \emph{$k$-cycle}:
+        Any list of \(k\) distinct elements \(a_1, \dots, a_k \in \{1, \dots, n\}\) determines a \emph{\(k\)-cycle}:
         \[
             \sigma = (a_1 \; \dots \; a_k)
         \]
@@ -1798,7 +1786,7 @@
         \]
     \end{definition}
     \begin{example}
-        The permutation $\sigma$ taking 1 to 3, 2 to 1 and 3 to 2 is a 3-cycle represented as
+        The permutation \(\sigma\) taking 1 to 3, 2 to 1 and 3 to 2 is a 3-cycle represented as
         \begin{align*}
             \sigma &= (1\; 3\; 2) \\
             &= (3\; 2\; 1) \\
@@ -1823,35 +1811,35 @@
     \end{example}
     
     \begin{remark*}
-        Cycles which are cyclic permutations of one another are the same: $(a_1\; \dots \; a_k) = (a_2 \; \dots \; a_k\; a_1) = \cdots$
+        Cycles which are cyclic permutations of one another are the same: \((a_1\; \dots \; a_k) = (a_2 \; \dots \; a_k\; a_1) = \cdots\)
     \end{remark*}
     
     \begin{definition}
-        Cycles $(a_1 \; \dots \; a_k)$ and $(b_1 \; \dots \; b_l)$ are \emph{disjoint} if they are disjoint as sets -- $a_i \neq b_j$ for any $i$, $j$. Disjoint cycles have the nice property that they commute.
+        Cycles \((a_1 \; \dots \; a_k)\) and \((b_1 \; \dots \; b_l)\) are \emph{disjoint} if they are disjoint as sets -- \(a_i \neq b_j\) for any \(i\), \(j\). Disjoint cycles have the nice property that they commute.
     \end{definition}
     
     \begin{theorem}[Disjoint cycles]
-        Every $\sigma \in S_n$ can be written as a product of disjoint cycles. Furthermore, this product is unique up to cyclic permutation of cycle elements and cycle reordering.
+        Every \(\sigma \in S_n\) can be written as a product of disjoint cycles. Furthermore, this product is unique up to cyclic permutation of cycle elements and cycle reordering.
     \end{theorem}
     
     \begin{proof}
-        The action of $\gen \sigma$ on $X = \{1, \dots, n\}$ partitions $X$ into orbits:
+        The action of \(\gen \sigma\) on \(X = \{1, \dots, n\}\) partitions \(X\) into orbits:
         \[
             X = \gen \sigma i_1 \cup \gen \sigma i_2 \cup \dots \cup \gen \sigma i_k
         \]
-        Let $n_j = |\gen \sigma i_j|$. Then
+        Let \(n_j = |\gen \sigma i_j|\). Then
         \[
             \sigma = (i_1 \; \sigma(i_j) \; \dots \; \sigma^{n_1-1}(i_1)) \dots (i_k \; \sigma(i_k) \; \dots \; \sigma^{n_k-1}(i_k))
         \]
-        which proves existence. For uniqueness, note that the only choices we made were the orbit representatives in each orbit and the indexing of the orbits/their representatives. These correspond to cyclically permuting the cycles of $\sigma$ and changing the order of the cycles respectively, which are exactly the failures of uniqueness that we are allowed to have.
+        which proves existence. For uniqueness, note that the only choices we made were the orbit representatives in each orbit and the indexing of the orbits/their representatives. These correspond to cyclically permuting the cycles of \(\sigma\) and changing the order of the cycles respectively, which are exactly the failures of uniqueness that we are allowed to have.
     \end{proof}
     
     \begin{definition}[Cycle types]
-        If $\sigma = (a_1^1 \; \dots \; a_{k_1}^1) \dots (a_1^l \; \dots \; a_{k_l}^l)$ is a product of disjoint cycles then $\sigma$ is called a \emph{$(k_1, \dots, k_l)$-cycle}, and $\{k_1, \dots, k_l\}$ is called $\sigma$'s \emph{cycle type}.
+        If \(\sigma = (a_1^1 \; \dots \; a_{k_1}^1) \dots (a_1^l \; \dots \; a_{k_l}^l)\) is a product of disjoint cycles then \(\sigma\) is called a \emph{\((k_1, \dots, k_l)\)-cycle}, and \(\{k_1, \dots, k_l\}\) is called \(\sigma\)'s \emph{cycle type}.
     \end{definition}
     
     \begin{remark*}
-        If $\sigma$ is a $k$-cycle, then $\sigma$ has order $k$. Furthermore, if $\sigma$ has cycle type $\{k_1, \dots, k_l\}$, then $\sigma$ has order $\lcm(k_1, \dots, k_l)$.
+        If \(\sigma\) is a \(k\)-cycle, then \(\sigma\) has order \(k\). Furthermore, if \(\sigma\) has cycle type \(\{k_1, \dots, k_l\}\), then \(\sigma\) has order \(\lcm(k_1, \dots, k_l)\).
     \end{remark*}
     
     \begin{definition}
@@ -1859,65 +1847,65 @@
     \end{definition}
     
     \begin{theorem}[Generation by transpositions]
-        The set of transpositions in $S_n$ generates $S_n$.
+        The set of transpositions in \(S_n\) generates \(S_n\).
     \end{theorem}
     
     \begin{proof}
-        We proceed by induction on $n$. In the base case, $n=2$, and the result is obvious. For the inductive step, suppose $S_{n-1}$ is generated by transpositions, and let $\sigma \in S_n$. If $\sigma(n) = n$, then $\sigma \in S_{n-1} \leq S_n$, and so we conclude by the inductive hypothesis. Otherwise, let $\tau = (n \; \sigma(n))$, so $\tau \sigma(n) = n$. Then, as before, it follows that $\tau \sigma \in S_{n-1}$, so $\tau \sigma$ is a product of transpositions -- multiplying by $\tau^{-1} = \tau$ on both sides, $\sigma$ is a product of transpositions as required.
+        We proceed by induction on \(n\). In the base case, \(n=2\), and the result is obvious. For the inductive step, suppose \(S_{n-1}\) is generated by transpositions, and let \(\sigma \in S_n\). If \(\sigma(n) = n\), then \(\sigma \in S_{n-1} \leq S_n\), and so we conclude by the inductive hypothesis. Otherwise, let \(\tau = (n \; \sigma(n))\), so \(\tau \sigma(n) = n\). Then, as before, it follows that \(\tau \sigma \in S_{n-1}\), so \(\tau \sigma\) is a product of transpositions -- multiplying by \(\tau^{-1} = \tau\) on both sides, \(\sigma\) is a product of transpositions as required.
     \end{proof}
 
     \lecture{Lecture 18 -- 19/11/25}
     
     \begin{lemma}[Adjacent transpositions]
-        Any transposition $(i \; j)$ can be written as a product of an odd number of adjacent transpositions.
+        Any transposition \((i \; j)\) can be written as a product of an odd number of adjacent transpositions.
         \label{adjacent-transpositions}
     \end{lemma}
     
     \begin{proof}
-        Suppose $j > i$, we proceed by induction on $j-i$. In the base case, $j=i+1$, and so $(i \; j) = (i \; i+1)$ as required. Otherwise, if $j>i+1$, we write
+        Suppose \(j > i\), we proceed by induction on \(j-i\). In the base case, \(j=i+1\), and so \((i \; j) = (i \; i+1)\) as required. Otherwise, if \(j>i+1\), we write
         \[
             (i\; j) = (j-1 \; j)(i \; j-1)(j-1 \; j)
         \]
-        and the result follows by the inductive hypothesis applied to $(i \; j-1)$.
+        and the result follows by the inductive hypothesis applied to \((i \; j-1)\).
     \end{proof}
     
-    So it turns out that $S_n$ is generated by adjacent transpositions. But the really important part of this is the notion of parity.
+    So it turns out that \(S_n\) is generated by adjacent transpositions. But the really important part of this is the notion of parity.
 
     \begin{lemma}
-        If $\tau_1, \dots, \tau_k$ are all transpositions, and
+        If \(\tau_1, \dots, \tau_k\) are all transpositions, and
         \[
             \sigma = \tau_1 \cdots \tau_k = e
         \]
-        then $k$ is even.
+        then \(k\) is even.
     \end{lemma}
 
     \begin{definition}
-        An unordered pair $\{i, j\} \subseteq \{1, \dots, n\}$ is called an \emph{inversion} of a permutation $\sigma$ if $i < j$ but $\sigma(i) > \sigma(j)$.
+        An unordered pair \(\{i, j\} \subseteq \{1, \dots, n\}\) is called an \emph{inversion} of a permutation \(\sigma\) if \(i < j\) but \(\sigma(i) > \sigma(j)\).
     \end{definition}
     
     
     
     \begin{proof}
-        By \cref{adjacent-transpositions}, we may assume all $\tau_i$ are adjacent. We claim that, for any $\sigma = \tau_1 \cdots \tau_k$, $k \equiv \text{ the number of inversions of } \sigma \pmod 2$. We induct on $k$.
+        By \cref{adjacent-transpositions}, we may assume all \(\tau_i\) are adjacent. We claim that, for any \(\sigma = \tau_1 \cdots \tau_k\), \(k \equiv \text{ the number of inversions of } \sigma \pmod 2\). We induct on \(k\).
         
-        In the base case, $k=0$, so $\sigma = e$ and we're done.
+        In the base case, \(k=0\), so \(\sigma = e\) and we're done.
         
-        For the inductive step, let $\sigma = \tau \sigma'$, where $\tau = \tau_1 = (l \; l+1)$ and $\sigma' = \tau_2 \cdots \tau_k$. Which pairs $\{i, j\}$ could be inversions of $\sigma'$ but not of $\sigma$, or vice versa? The only such pair would have to satisfy
+        For the inductive step, let \(\sigma = \tau \sigma'\), where \(\tau = \tau_1 = (l \; l+1)\) and \(\sigma' = \tau_2 \cdots \tau_k\). Which pairs \(\{i, j\}\) could be inversions of \(\sigma'\) but not of \(\sigma\), or vice versa? The only such pair would have to satisfy
         \begin{align*}
             \sigma'(i) = l 
             \sigma'(j) = l+1
         \end{align*}
-        since $\tau$ fixes everything other than $l$ and $l+1$. Thus
+        since \(\tau\) fixes everything other than \(l\) and \(l+1\). Thus
         \begin{align*}
             \sigma'(i) = l < l + 1 = \sigma'(j) \\
             \sigma(i) = l+1 > l = \sigma(j)
         \end{align*}
-        So, if $i < j$, then $\{i, j\}$ is an inversion for $\sigma$ but not for $\sigma'$, while if $i > j$, then $\{i, j\}$ is an inversion for $\sigma'$ but not for $\sigma$. In either case,
+        So, if \(i < j\), then \(\{i, j\}\) is an inversion for \(\sigma\) but not for \(\sigma'\), while if \(i > j\), then \(\{i, j\}\) is an inversion for \(\sigma'\) but not for \(\sigma\). In either case,
         \begin{align*}
             \#\text{inversions of }\sigma &= \#\text{inversions of }\sigma' \pm 1 \\
             &\equiv \#\text{inversions of }\sigma' + 1 \pmod 2
         \end{align*}
-        as required. Then, the lemma follows, since $e$ has 0 inversions.
+        as required. Then, the lemma follows, since \(e\) has 0 inversions.
     \end{proof}
     
     This enables us to define the \emph{sign homomorphism}.
@@ -1928,7 +1916,7 @@
             \sign: S_n &\to C_2 = \{\pm 1\} \\
             \tau_1 \cdots \tau_k &\mapsto (-1)^k
         \end{align*}
-        where $\tau_i$ are transpositions, is a well-defined homomorphism.
+        where \(\tau_i\) are transpositions, is a well-defined homomorphism.
     \end{theorem}
     
     \begin{proof}
@@ -1938,7 +1926,7 @@
                 \tau_1 \cdots \tau_k &= \tau_1' \cdots \tau_l' \\
                 \implies \tau_k \cdots \tau_1 \tau_1' \cdots \tau_l' &= e
             \end{align*}
-            since all the transpositions are self-inverse. Hence, by the lemma, $k+l$ is even, so $k \equiv l \pmod 2$, and so $(-1)^k = (-1)^l$ as required.
+            since all the transpositions are self-inverse. Hence, by the lemma, \(k+l\) is even, so \(k \equiv l \pmod 2\), and so \((-1)^k = (-1)^l\) as required.
             \item \emph{Homomorphism}. Clearly
             \begin{align*}
                 \sign(\tau_1 \cdots \tau_k \tau_1' \cdots \tau_l') &= (-1)^{k+l} \\
@@ -1949,19 +1937,19 @@
     \end{proof}
     
     \begin{definition}[Parity and the alternating group]
-        If $\sign(\sigma) = 1$, then $\sigma$ is called \emph{even}, \emph{odd} otherwise. The subgroup
+        If \(\sign(\sigma) = 1\), then \(\sigma\) is called \emph{even}, \emph{odd} otherwise. The subgroup
         \[
             A_n = \ker(\sign) \triangleleft S_n
         \]
-        is called the \emph{alternating group} on $n$ elements -- it is the group of even permutations.
+        is called the \emph{alternating group} on \(n\) elements -- it is the group of even permutations.
     \end{definition}
     
     \begin{example}
-        Let's find $A_3$. We know
+        Let's find \(A_3\). We know
         \[
             S_3 = \{e, (1\; 2), (2 \; 3), (1 \; 3), (1 \; 2 \; 3), (3 \; 2 \; 1)\}
         \]
-        and we have $(1 \; 2 \; 3) = (1 \; 2)(2 \; 3)$, and $(3 \; 2 \; 1) = (2 \; 3)(1 \; 2)$, so these are even. Thus,
+        and we have \((1 \; 2 \; 3) = (1 \; 2)(2 \; 3)\), and \((3 \; 2 \; 1) = (2 \; 3)(1 \; 2)\), so these are even. Thus,
         \[
             A_3 = \{e, (1 \; 2 \; 3), (3 \; 2 \; 1)\} \cong C_3
         \]
@@ -1972,30 +1960,30 @@
         \[
             (a_1\; \cdots \; a_k) = (a_1 \; a_k) (a_1 \; a_{k-1}) \cdots (a_1 \; a_3)(a_1 \; a_2)
         \]
-        so $(a_1 \; \cdots \; a_k)$ is a product of $k-1$ transpositions. Thus, $(a_1 \; \cdots \; a_k)$ is even if and only if $k$ is odd. More generally, a $(k_1, \dots, k_l)$-cycle is even if and only if $|\{k_i : k_i \text{ even}\}|$ is even. For example, $(1 \; 2)(3 \; 4)$ is even, but $(1 \; 2)(3 \; 4)(5 \; 6)$ is odd.
+        so \((a_1 \; \cdots \; a_k)\) is a product of \(k-1\) transpositions. Thus, \((a_1 \; \cdots \; a_k)\) is even if and only if \(k\) is odd. More generally, a \((k_1, \dots, k_l)\)-cycle is even if and only if \(|\{k_i : k_i \text{ even}\}|\) is even. For example, \((1 \; 2)(3 \; 4)\) is even, but \((1 \; 2)(3 \; 4)(5 \; 6)\) is odd.
     \end{remark*}
     
-    Let's apply this to study conjugacy in $S_n$ and $A_n$. $S_n$ is surprisingly easy!
+    Let's apply this to study conjugacy in \(S_n\) and \(A_n\). \(S_n\) is surprisingly easy!
 
-    \begin{theorem}[Conjugacy in $S_n$]
-        Two permutations $\sigma_1$, $\sigma_2 \in S_n$ are conjugate if and only if they have the same cycle type.
+    \begin{theorem}[Conjugacy in \(S_n\)]
+        Two permutations \(\sigma_1\), \(\sigma_2 \in S_n\) are conjugate if and only if they have the same cycle type.
         \label{conjugacy-sn}
     \end{theorem}
     
     \begin{proof}
         \begin{itemize}
-            \item[$\implies$] Suppose $\sigma_1 = (a_1^1 \; \cdots \; a_{l_1}^1)\cdots (a_1^k \; \cdots a_{l_k}^k)$ is a product of disjoint cycles. Thus $\sigma_1(a_j^i) = a_{j+1}^i$, where the addition in the subscript is modulo $l_i$. Since the cycle types are the same, $\sigma_2 = (b_1^1 \; \cdots \; b_{l_1}^1)\cdots (b_1^k \; \cdots b_{l_k}^k)$. Now consider the permutation $\tau$ given by $\tau(a_j^i) = b_j^i$. We have
+            \item[\(\implies\)] Suppose \(\sigma_1 = (a_1^1 \; \cdots \; a_{l_1}^1)\cdots (a_1^k \; \cdots a_{l_k}^k)\) is a product of disjoint cycles. Thus \(\sigma_1(a_j^i) = a_{j+1}^i\), where the addition in the subscript is modulo \(l_i\). Since the cycle types are the same, \(\sigma_2 = (b_1^1 \; \cdots \; b_{l_1}^1)\cdots (b_1^k \; \cdots b_{l_k}^k)\). Now consider the permutation \(\tau\) given by \(\tau(a_j^i) = b_j^i\). We have
             \begin{align*}
                 \tau \sigma_1 \tau^{-1}(b_j^i) &= \tau\sigma_1(a_j^i) \\
                 &= \tau(a^i_{j+1}) \\
                 &= b^i_{j+1} \\
                 &= \sigma_2(b^i_j)
             \end{align*}
-            Therefore, $\sigma_2 = \tau\sigma_1\tau^{-1}$, so they are conjugate as required.
+            Therefore, \(\sigma_2 = \tau\sigma_1\tau^{-1}\), so they are conjugate as required.
         \end{itemize}
         \lecture{Lecture 19 -- 21/11/25}
         \begin{itemize}
-            \item[$\impliedby$] Suppose $\sigma_2 = \tau\sigma_1\tau^{-1}$. The above argument shows that, if
+            \item[\(\impliedby\)] Suppose \(\sigma_2 = \tau\sigma_1\tau^{-1}\). The above argument shows that, if
             \[
                 \sigma_1 = (a_1^1 \; \cdots \; a_{l_1}^1)\cdots (a_1^k \; \cdots a_{l_k}^k)
             \]
@@ -2003,20 +1991,20 @@
             \[
                 \sigma_2 = (b_1^1 \; \cdots \; b_{l_1}^1)\cdots (b_1^k \; \cdots b_{l_k}^k)
             \]
-            where $b_j^i = \tau(a_j^i)$ for all relevant $i$, $j$. Therefore, $\sigma_1$ and $\sigma_2$ have the same cycle type.
+            where \(b_j^i = \tau(a_j^i)\) for all relevant \(i\), \(j\). Therefore, \(\sigma_1\) and \(\sigma_2\) have the same cycle type.
         \end{itemize}
     \end{proof}
     
-    This makes it easy to count conjugacy classes in $S_n$.
+    This makes it easy to count conjugacy classes in \(S_n\).
 
-    \begin{example}[$n=3$]
+    \begin{example}[\(n=3\)]
         Recall
         \[
             S_3 = \{e, (1\; 2), (2 \; 3), (1 \; 3), (1 \; 2 \; 3), (3 \; 2 \; 1)\}
         \]
         \begin{itemize}
-            \item $|\ccl_{S_3}(1 \; 2)| = \binom{3}{2} = 3$;
-            \item $|\ccl_{S_3}(1 \; 2 \; 3)| = 2 \cdot 1 = 2$.
+            \item \(|\ccl_{S_3}(1 \; 2)| = \binom{3}{2} = 3\);
+            \item \(|\ccl_{S_3}(1 \; 2 \; 3)| = 2 \cdot 1 = 2\).
         \end{itemize}
     \end{example}
     Let's also recall that \cref{orbit-stabiliser-theorem} (the orbit-stabiliser theorem) implies that
@@ -2025,11 +2013,11 @@
     \end{align*}
     so we can also find the size of the centraliser pretty easily!
 
-    \begin{example}[$n=4$]
-        Now we want to do a similar calculation on the less familiar $S_4$.
+    \begin{example}[\(n=4\)]
+        Now we want to do a similar calculation on the less familiar \(S_4\).
         \begin{itemize}
-            \item $|\ccl_{S_4}[(1 \; 2)(3 \; 4)]| = \frac{1}{2} \binom{4}{2} = 3$;
-            \item $|C_{S_4}[(1 \; 2)(3 \; 4)]| = 24/3 = 8$. The cool thing about this is that we can start listing elements of the centraliser, and we know that, once we have 8 things, we're done. In particular, we have
+            \item \(|\ccl_{S_4}[(1 \; 2)(3 \; 4)]| = \frac{1}{2} \binom{4}{2} = 3\);
+            \item \(|C_{S_4}[(1 \; 2)(3 \; 4)]| = 24/3 = 8\). The cool thing about this is that we can start listing elements of the centraliser, and we know that, once we have 8 things, we're done. In particular, we have
             \begin{align*}
                 C_{S_4}[(1 \; 2)(3 \; 4)] = \{&e, (1 \; 2)(3 \; 4), (1 \; 2), (3 \; 4), (1 \; 3)(2 \; 4), \\ &(1 \; 4)(2 \; 3), (1 \; 4 \; 2 \; 3), (1 \; 3 \; 2 \; 4)\}
             \end{align*}
@@ -2037,28 +2025,28 @@
         Let's do this in full generality.
         \begin{center}
             \begin{tabular}{c | c | c}
-                Typical element $\gamma$ & $|\ccl_{S_4}(\gamma)|$ & $|C_{S_4}(\gamma)|$ \\
+                Typical element \(\gamma\) & \(|\ccl_{S_4}(\gamma)|\) & \(|C_{S_4}(\gamma)|\) \\
                 \hline
-                $e$ & 1 & 24 \\
-                $(1 \; 2)$ & $\binom 4 2 = 6$ & 4 \\
-                $(1 \; 2)(3 \; 4)$ & $\frac 1 2 \binom 4 2 = 3$ & 8 \\
-                $(1 \; 2 \; 3)$ & $2 \cdot \binom 4 3 = 8$ & 3 \\
-                $(1 \; 2 \; 3 \; 4)$ & $3! = 6$ & 4
+                \(e\) & 1 & 24 \\
+                \((1 \; 2)\) & \(\binom 4 2 = 6\) & 4 \\
+                \((1 \; 2)(3 \; 4)\) & \(\frac 1 2 \binom 4 2 = 3\) & 8 \\
+                \((1 \; 2 \; 3)\) & \(2 \cdot \binom 4 3 = 8\) & 3 \\
+                \((1 \; 2 \; 3 \; 4)\) & \(3! = 6\) & 4
             \end{tabular}
         \end{center}
     \end{example}
     
-    Counting conjugacy classes in $A_n$ can also be done with a little thought.
+    Counting conjugacy classes in \(A_n\) can also be done with a little thought.
 
-    \begin{lemma}[Conjugacy classes in $A_n$]
-        Let $\gamma \in A_n \triangleleft S_n$.
+    \begin{lemma}[Conjugacy classes in \(A_n\)]
+        Let \(\gamma \in A_n \triangleleft S_n\).
         \begin{itemize}
-            \item If an odd element of $S_n$ commutes with $\gamma$, then $\ccl_{A_n}(\gamma) = \ccl_{S_n}(\gamma)$.
-            \item If every element of $S_n$ that commutes with $\gamma$ is even, then $\ccl_{S_n}(\gamma)$ splits into two:
+            \item If an odd element of \(S_n\) commutes with \(\gamma\), then \(\ccl_{A_n}(\gamma) = \ccl_{S_n}(\gamma)\).
+            \item If every element of \(S_n\) that commutes with \(\gamma\) is even, then \(\ccl_{S_n}(\gamma)\) splits into two:
             \[
                 \ccl_{S_n}(\gamma) = \ccl_{A_n}(\gamma) \cup \ccl_{A_n}(\tau \gamma \tau^{-1})
             \]
-            where $\tau$ is any transposition.
+            where \(\tau\) is any transposition.
         \end{itemize}        
     \end{lemma}
     
@@ -2068,7 +2056,7 @@
             |S_n| &= |\ccl_{S_n}(\gamma)||C_{S_n}(\gamma)| \\
             |A_n| &= |\ccl_{A_n}(\gamma)||C_{A_n}(\gamma)|
         \end{align*}
-        Then, since $|S_n| = 2|A_n|$, we have
+        Then, since \(|S_n| = 2|A_n|\), we have
         \begin{align*}
             |\ccl_{S_n}(\gamma)| = 2 \frac{|C_{A_n}(\gamma)|}{|C_{S_n}(\gamma)|} \cdot |\ccl_{A_n}(\gamma)| && (*)
         \end{align*}
@@ -2081,12 +2069,12 @@
             |C_{S_n(\gamma)} : C_{A_n(\gamma)}| = 1 \text{ or } 2
         \]
         \begin{itemize}
-            \item If there is an odd element of $S_n$ that commmutes with $\gamma$, we hit $-1 \in C_2$, so the image has size 2 and hence
+            \item If there is an odd element of \(S_n\) that commmutes with \(\gamma\), we hit \(-1 \in C_2\), so the image has size 2 and hence
             \[
                 |C_{S_n(\gamma)} : C_{A_n(\gamma)}| = 2
             \]
-            Then, Lagrange and $(*)$ gives $|\ccl_{S_n}(\gamma)| = |\ccl_{A_n}(\gamma)|$ as required.
-            \item If no odd elements of $S_n$ commute with $\gamma$, $|C_{S_n(\gamma)} : C_{A_n(\gamma)}| = 1$, $C_{S_n}(\gamma) = C_{A_n}(\gamma)$, so $(*)$ gives $|\ccl_{S_n}(\gamma)| = 2|\ccl_{A_n}(\gamma)|$, so $\ccl_{A_n}(\gamma)$ is half as big. Now take a transposition $\tau \in S_n$. Observe $\tau \gamma \tau^{-1} \in \ccl_{S_n}(\gamma)$. If $\tau \gamma \tau^{-1} \in \ccl_{A_n}(\gamma)$, then $\tau \gamma \tau^{-1} = \alpha \gamma \alpha^{-1}$ for some $\alpha \in A_n$. But then $(\tau \alpha) \gamma (\tau \alpha)^{-1} = \gamma$, while $\tau \alpha$ is odd, being the product of an odd $\tau$ and an even $\alpha$, so $C_{S_n}(\gamma)$ contains an odd element. But this is a contradiction. Hence $\tau \gamma \tau^{-1} \notin \ccl_{A_n}(\gamma)$. From this it's fairly clear that 
+            Then, Lagrange and \((*)\) gives \(|\ccl_{S_n}(\gamma)| = |\ccl_{A_n}(\gamma)|\) as required.
+            \item If no odd elements of \(S_n\) commute with \(\gamma\), \(|C_{S_n(\gamma)} : C_{A_n(\gamma)}| = 1\), \(C_{S_n}(\gamma) = C_{A_n}(\gamma)\), so \((*)\) gives \(|\ccl_{S_n}(\gamma)| = 2|\ccl_{A_n}(\gamma)|\), so \(\ccl_{A_n}(\gamma)\) is half as big. Now take a transposition \(\tau \in S_n\). Observe \(\tau \gamma \tau^{-1} \in \ccl_{S_n}(\gamma)\). If \(\tau \gamma \tau^{-1} \in \ccl_{A_n}(\gamma)\), then \(\tau \gamma \tau^{-1} = \alpha \gamma \alpha^{-1}\) for some \(\alpha \in A_n\). But then \((\tau \alpha) \gamma (\tau \alpha)^{-1} = \gamma\), while \(\tau \alpha\) is odd, being the product of an odd \(\tau\) and an even \(\alpha\), so \(C_{S_n}(\gamma)\) contains an odd element. But this is a contradiction. Hence \(\tau \gamma \tau^{-1} \notin \ccl_{A_n}(\gamma)\). From this it's fairly clear that 
             \[
                 \ccl_{S_n}(\gamma) = \ccl_{A_n}(\gamma) \cup \ccl_{A_n}(\tau \gamma \tau^{-1})
             \]
@@ -2094,98 +2082,98 @@
         \end{itemize}
     \end{proof}
     
-    \begin{example}[$A_4$]
-        The even elements of $S_4$ are $e$, the $(2, 2)$-cycles and the 3-cycles.
+    \begin{example}[\(A_4\)]
+        The even elements of \(S_4\) are \(e\), the \((2, 2)\)-cycles and the 3-cycles.
         \begin{itemize}
-            \item Since there are an odd number of $(2, 2)$-cycles, the conjugacy class of them cannot possibly split, so it remains intact.
-            \item For a 3-cycle $\sigma = (1 \; 2 \; 3)$, $|C_{S_4}(1 \; 2 \; 3)| = 3$, so
+            \item Since there are an odd number of \((2, 2)\)-cycles, the conjugacy class of them cannot possibly split, so it remains intact.
+            \item For a 3-cycle \(\sigma = (1 \; 2 \; 3)\), \(|C_{S_4}(1 \; 2 \; 3)| = 3\), so
             \[
                 C_{S_4}(1 \; 2 \; 3) = \gen{(1 \; 2 \; 3)} \leq A_4
             \]
-            so every element that commutes with $C_{S_4}(1 \; 2 \; 3)$ is even, and hence it splits.
+            so every element that commutes with \(C_{S_4}(1 \; 2 \; 3)\) is even, and hence it splits.
         \end{itemize}
         Let us summarise:
         \begin{center}
             \begin{tabular}{c | c}
-                Typical element $\gamma$ & $|\ccl_{A_4}(\gamma)|$ \\
+                Typical element \(\gamma\) & \(|\ccl_{A_4}(\gamma)|\) \\
                 \hline
-                $e$ & 1 \\
-                $(1 \; 2)(3 \; 4)$ & 3 \\
-                $(1 \; 2 \; 3)$ & 4 \\
-                $(3 \; 2 \; 1)$ & 4 \\
+                \(e\) & 1 \\
+                \((1 \; 2)(3 \; 4)\) & 3 \\
+                \((1 \; 2 \; 3)\) & 4 \\
+                \((3 \; 2 \; 1)\) & 4 \\
             \end{tabular}
         \end{center}
     \end{example}
 
     \lecture{Lecture 20 -- 24/11/25}
     
-    Finally, let's look at conjugacy in $S_5$ and $A_5$.
+    Finally, let's look at conjugacy in \(S_5\) and \(A_5\).
 
-    \begin{example}[Conjugacy in $S_5$]
-        We take the same approach as $S_4$.
+    \begin{example}[Conjugacy in \(S_5\)]
+        We take the same approach as \(S_4\).
         \begin{center}
             \begin{tabular}{c | c | c | c}
-                Typical element $\gamma$ & $|\ccl_{S_5}(\gamma)|$ & $|C_{S_5}(\gamma)|$ & $\sign$ \\
+                Typical element \(\gamma\) & \(|\ccl_{S_5}(\gamma)|\) & \(|C_{S_5}(\gamma)|\) & \(\sign\) \\
                 \hline
-                $e$ & 1 & 120 & 1 \\
-                $(1 \; 2)$ & $\binom 5 2 = 10$ & 12 & -1 \\
-                $(1 \; 2 \; 3)$ & $2 \cdot \binom 5 3 = 20$ & 6 & 1 \\
-                $(1 \; 2)(3 \; 4)$ & $\frac 1 2 \binom 5 2 \binom 3 2 = 15$ & 8 & 1 \\
-                $(1 \; 2 \; 3)(4 \; 5)$ & $2 \binom 5 3 = 20$ & 6 & -1 \\
-                $(1 \; 2 \; 3 \; 4)$ & $3! \cdot \binom 5 4 = 30$ & 4 & -1 \\
-                $(1 \; 2 \; 3 \; 4 \; 5)$ & $4! = 24$ & 5 & 1 \\
+                \(e\) & 1 & 120 & 1 \\
+                \((1 \; 2)\) & \(\binom 5 2 = 10\) & 12 & -1 \\
+                \((1 \; 2 \; 3)\) & \(2 \cdot \binom 5 3 = 20\) & 6 & 1 \\
+                \((1 \; 2)(3 \; 4)\) & \(\frac 1 2 \binom 5 2 \binom 3 2 = 15\) & 8 & 1 \\
+                \((1 \; 2 \; 3)(4 \; 5)\) & \(2 \binom 5 3 = 20\) & 6 & -1 \\
+                \((1 \; 2 \; 3 \; 4)\) & \(3! \cdot \binom 5 4 = 30\) & 4 & -1 \\
+                \((1 \; 2 \; 3 \; 4 \; 5)\) & \(4! = 24\) & 5 & 1 \\
             \end{tabular}
         \end{center}
     \end{example}
     
-    \begin{example}[Conjugacy in $A_5$]
+    \begin{example}[Conjugacy in \(A_5\)]
         \begin{itemize}
-            \item The transposition $(4 \; 5)$ commutes with $(1 \; 2 \; 3)$ but is odd, so the conjugacy class doesn't split -- $\ccl_{A_5}(1 \; 2 \; 3) = \ccl_{S_5}(1 \; 2 \; 3)$.
-            \item There are an odd number of double transpositions, so they definitely can't split -- $\ccl_{A_5}[(1 \; 2)(3 \; 4)] = \ccl_{S_5}[(1 \; 2)(3 \; 4)]$
-            \item For 5-cycles, the centraliser is only of size 5 and, since it's of order 5, the elements of the centraliser must be exactly the cyclic subgroup it generates -- $C_{S_5}(1 \; 2 \; 3 \; 4 \; 5) = \gen {(1 \; 2 \; 3 \; 4 \; 5)} \leq A_5$. Hence, only even permutations commute with $(1 \; 2 \; 3 \; 4 \; 5)$, and so the conjugacy class splits.
+            \item The transposition \((4 \; 5)\) commutes with \((1 \; 2 \; 3)\) but is odd, so the conjugacy class doesn't split -- \(\ccl_{A_5}(1 \; 2 \; 3) = \ccl_{S_5}(1 \; 2 \; 3)\).
+            \item There are an odd number of double transpositions, so they definitely can't split -- \(\ccl_{A_5}[(1 \; 2)(3 \; 4)] = \ccl_{S_5}[(1 \; 2)(3 \; 4)]\)
+            \item For 5-cycles, the centraliser is only of size 5 and, since it's of order 5, the elements of the centraliser must be exactly the cyclic subgroup it generates -- \(C_{S_5}(1 \; 2 \; 3 \; 4 \; 5) = \gen {(1 \; 2 \; 3 \; 4 \; 5)} \leq A_5\). Hence, only even permutations commute with \((1 \; 2 \; 3 \; 4 \; 5)\), and so the conjugacy class splits.
         \end{itemize} \vspace{10pt}
         In summary,
         \begin{center}
             \begin{tabular}{c | c}
-                Typical element $\gamma$ & $|\ccl_{A_5}(\gamma)|$ \\
+                Typical element \(\gamma\) & \(|\ccl_{A_5}(\gamma)|\) \\
                 \hline
-                $e$ & 1 \\
-                $(1 \; 2 \; 3)$ & 20 \\
-                $(1 \; 2)(3 \; 4)$ & 15 \\
-                $(1 \; 2 \; 3 \; 4 \; 5)$ & 12 \\
-                $(2 \; 1 \; 3 \; 4 \; 5)$ & 12
+                \(e\) & 1 \\
+                \((1 \; 2 \; 3)\) & 20 \\
+                \((1 \; 2)(3 \; 4)\) & 15 \\
+                \((1 \; 2 \; 3 \; 4 \; 5)\) & 12 \\
+                \((2 \; 1 \; 3 \; 4 \; 5)\) & 12
             \end{tabular}
         \end{center}
     \end{example}
     
-    \begin{theorem}[$A_5$ is simple]
-        $A_5$ is simple.
+    \begin{theorem}[\(A_5\) is simple]
+        \(A_5\) is simple.
     \end{theorem}
     
     \begin{proof}
-        Suppose $N \triangleleft A_5$. Then $N$ is a union of conjugacy classes in $A_5$. Hence, it is necessary to express a factor of 60 (by Lagrange) as a sum of the sizes of the conjugacy classes, and importantly we must have $\{e\}$ as one of our conjugacy classes. One can see that this cannot be done unless $N = \{e\}$ or $N = A_5$.
+        Suppose \(N \triangleleft A_5\). Then \(N\) is a union of conjugacy classes in \(A_5\). Hence, it is necessary to express a factor of 60 (by Lagrange) as a sum of the sizes of the conjugacy classes, and importantly we must have \(\{e\}\) as one of our conjugacy classes. One can see that this cannot be done unless \(N = \{e\}\) or \(N = A_5\).
     \end{proof}
     
     \section{Matrix groups}
 
-    Let $M_n(\RR) = \{n \text{ by } n \text{ matrices with entries in } \RR\}$. Matrix multiplication is associative, and the identity matrix provides an identity. However, not all matrices are invertible.
+    Let \(M_n(\RR) = \{n \text{ by } n \text{ matrices with entries in } \RR\}\). Matrix multiplication is associative, and the identity matrix provides an identity. However, not all matrices are invertible.
     
     \begin{lemma}
-        $A \in M_n(\RR)$ has an inverse if and only if $\det A \neq 0$.
+        \(A \in M_n(\RR)\) has an inverse if and only if \(\det A \neq 0\).
     \end{lemma}
     
     Now we actually can make our matrices into a group.
 
     \begin{definition}[General linear group]
-        Let $\GL_n(\RR) = \{A \in M_n(\RR) : \det A \neq 0\}$. This is a group under matrix multiplication by the above, namely the \emph{general linear group}.
+        Let \(\GL_n(\RR) = \{A \in M_n(\RR) : \det A \neq 0\}\). This is a group under matrix multiplication by the above, namely the \emph{general linear group}.
     \end{definition}
     
     \begin{lemma}
-        For $A$, $B \in M_n(\RR)$, $\det(AB) = \det A \det B$.
+        For \(A\), \(B \in M_n(\RR)\), \(\det(AB) = \det A \det B\).
     \end{lemma}
     
     \begin{corollary}
-        It follows that $\det$ is a homomorphism:
+        It follows that \(\det\) is a homomorphism:
         \begin{align*}
             \det: \GL_n(\RR) &\to \RR_\times = (\RR \setminus \{0\}, 1, \times) \\
             A &\mapsto \det A
@@ -2193,36 +2181,36 @@
     \end{corollary}
     
     \begin{definition}[Special linear group]
-        The \emph{special linear group} $\SL_n(\RR) = \ker (\det) = \{A \in M_n(\RR): \det A = 1\}$.
+        The \emph{special linear group} \(\SL_n(\RR) = \ker (\det) = \{A \in M_n(\RR): \det A = 1\}\).
     \end{definition}
     
-    By \cref{isomorphism-theorem} (the isomorphism theorem), $\SL_n(\RR) \triangleleft \GL_n(\RR)$, and $\GL_n(\RR) / \SL_n(\RR) \cong \im(\det) \cong \RR_\times$ -- it's fairly clear to see that any real number can arise as a determinant.
+    By \cref{isomorphism-theorem} (the isomorphism theorem), \(\SL_n(\RR) \triangleleft \GL_n(\RR)\), and \(\GL_n(\RR) / \SL_n(\RR) \cong \im(\det) \cong \RR_\times\) -- it's fairly clear to see that any real number can arise as a determinant.
 
-    Furthermore, everything above still works with $\CC$, so we can talk about $\GL_n(\CC)$, $\SL_n(\CC)$, and analogously we have $\GL_n(\CC) / \SL_n(\CC) \cong \CC_\times$.
+    Furthermore, everything above still works with \(\CC\), so we can talk about \(\GL_n(\CC)\), \(\SL_n(\CC)\), and analogously we have \(\GL_n(\CC) / \SL_n(\CC) \cong \CC_\times\).
     
     \subsection{Change of basis}
 
-    There is a natural action by conjugation of $\GL_n(\RR)$ on $M_n(\RR)$:
+    There is a natural action by conjugation of \(\GL_n(\RR)\) on \(M_n(\RR)\):
     \begin{align*}
         \GL_n(\RR) &\acts M_n(\RR) \\
         P(A) &:= PAP^{-1}
     \end{align*}
     
     \begin{proposition}
-        Let $V$ be an $n$-dimensional vector space over $\RR$, and $\alpha: V \to V$ a linear map. If $A \in M_n(\RR)$ represents $\alpha$ in some basis, then the orbit
+        Let \(V\) be an \(n\)-dimensional vector space over \(\RR\), and \(\alpha: V \to V\) a linear map. If \(A \in M_n(\RR)\) represents \(\alpha\) in some basis, then the orbit
         \[
             \GL_n(\RR)A = \{PAP^{-1}: P \in \GL_n(\RR)\}
         \]
-        consists of all the matrices representing $\alpha$ in any basis.
+        consists of all the matrices representing \(\alpha\) in any basis.
     \end{proposition}
     
     \begin{proof}
-        A basis $\{\vec v_1, \dots, \vec v_n\}$ for $V$ defines an isomorphism of vector spaces
+        A basis \(\{\vec v_1, \dots, \vec v_n\}\) for \(V\) defines an isomorphism of vector spaces
         \begin{align*}
             \phi: \RR^n &\to V \\
             (\lambda_1, \dots, \lambda_n) &\mapsto \sum_{i=1}^n \lambda_i \vec v_i
         \end{align*}
-        The claim that $A$ represents $\alpha$ in this basis means that the following diagram commutes
+        The claim that \(A\) represents \(\alpha\) in this basis means that the following diagram commutes
         \[\begin{tikzcd}
             {\RR^n} & V \\
             {\RR^n} & V
@@ -2231,34 +2219,34 @@
             \arrow["\alpha", from=1-2, to=2-2]
             \arrow["\phi"', from=2-1, to=2-2]
         \end{tikzcd}\]
-        -- that is, $\alpha = \phi A \phi^{-1}$.
+        -- that is, \(\alpha = \phi A \phi^{-1}\).
         
         \lecture{Lecture 21 -- 24/11/25}
 
-        Likewise, another basis $\{\vec u_1, \dots, \vec u_n\}$ for $V$ corresponds to another isomorphism $\psi: \RR^n \to V$, and another matrix $B$ representing $\alpha$ in these coordinates, which again satisfies $\alpha = \psi B \psi^{-1}$. Therefore,
+        Likewise, another basis \(\{\vec u_1, \dots, \vec u_n\}\) for \(V\) corresponds to another isomorphism \(\psi: \RR^n \to V\), and another matrix \(B\) representing \(\alpha\) in these coordinates, which again satisfies \(\alpha = \psi B \psi^{-1}\). Therefore,
         \begin{align*}
             B &= \psi^{-1}\alpha \psi \\
             &= (\psi^{-1} \circ \phi) A(\phi^{-1} \circ \psi) \\
             &= PAP^{-1}
         \end{align*}
-        where $P \in \GL_n(\RR)$ represents the linear map $\psi^{-1} \circ \phi: \RR^n \to \RR^n$ in the standard basis (note we know $P$ is invertible since $P^{-1}$ is the matrix representing $\phi^{-1} \circ \psi$). Thus, the set of all matrices representing $\alpha$ is contained in the orbit of $A$ under conjugation.
+        where \(P \in \GL_n(\RR)\) represents the linear map \(\psi^{-1} \circ \phi: \RR^n \to \RR^n\) in the standard basis (note we know \(P\) is invertible since \(P^{-1}\) is the matrix representing \(\phi^{-1} \circ \psi\)). Thus, the set of all matrices representing \(\alpha\) is contained in the orbit of \(A\) under conjugation.
 
-        Conversely, if $B = PAP^{-1}$ for some $P \in \GL_n(\RR)$, putting $\psi = \phi \circ P^{-1}: \RR^n \to V$ gives us a basis $\{\vec u_i = \psi(\vec e_i)\}$ for $V$. In this basis, $B$ represents $\alpha$.
+        Conversely, if \(B = PAP^{-1}\) for some \(P \in \GL_n(\RR)\), putting \(\psi = \phi \circ P^{-1}: \RR^n \to V\) gives us a basis \(\{\vec u_i = \psi(\vec e_i)\}\) for \(V\). In this basis, \(B\) represents \(\alpha\).
     \end{proof}
 
     \subsection{M\"obius transformations: a new perspective}
 
-    Recall that multiplication in $\mathcal M$ looks similar to multiplication of 2 by 2 matrices.
+    Recall that multiplication in \(\mathcal M\) looks similar to multiplication of 2 by 2 matrices.
     
     \begin{proposition}
-        Represent $\CC_\times$ as a matrix group by 
+        Represent \(\CC_\times\) as a matrix group by 
         \[
             \CC_\times = \left\{\begin{pmatrix}
              \lambda & 0 \\
              0 & \lambda \\
             \end{pmatrix} \in \GL_2(\CC): \lambda \in \CC_\times\right\}
         \]
-        Then $\CC_\times \triangleleft \GL_2(\CC)$, and $\mathcal M \cong \GL_2(\CC)/\CC_\times$
+        Then \(\CC_\times \triangleleft \GL_2(\CC)\), and \(\mathcal M \cong \GL_2(\CC)/\CC_\times\)
     \end{proposition}
     
     \begin{proof}
@@ -2270,28 +2258,28 @@
              c & d \\
             \end{pmatrix} &\mapsto \left(z \mapsto \frac{az+b}{cz+d}\right)
         \end{align*}
-        By our computation of multiplication in $\mathcal M$, $\Phi$ is a homomorphism, and it's clearly surjective, so $\im \Phi = \mathcal M$. Furthermore, a matrix $M$ is in $\ker \Phi$ if and only if its image fixes $0$, $1$ and $\infty$ Then
+        By our computation of multiplication in \(\mathcal M\), \(\Phi\) is a homomorphism, and it's clearly surjective, so \(\im \Phi = \mathcal M\). Furthermore, a matrix \(M\) is in \(\ker \Phi\) if and only if its image fixes \(0\), \(1\) and \(\infty\) Then
         \begin{itemize}
-            \item $M$ fixes 0 $\implies b = 0$;
-            \item $M$ fixes 1 $\implies a = d$;
-            \item $M$ fixes $\infty$ $\implies c = 0$.
+            \item \(M\) fixes 0 \(\implies b = 0\);
+            \item \(M\) fixes 1 \(\implies a = d\);
+            \item \(M\) fixes \(\infty\) \(\implies c = 0\).
         \end{itemize}
-        So $\ker \Phi = \CC_\times$. The result now follows by the isomorphism theorem.
+        So \(\ker \Phi = \CC_\times\). The result now follows by the isomorphism theorem.
     \end{proof}
     
     \begin{remark*}
-        We get to simultaneously prove that $\CC_\times$ is normal and identify the quotient all just by looking at our homomorphism.
+        We get to simultaneously prove that \(\CC_\times\) is normal and identify the quotient all just by looking at our homomorphism.
     \end{remark*}
     
     \subsection{Orthogonal groups}
 
-    Let's write $||\cdot||$ for the usual notion of length in $\RR^n$ (the Euclidean norm) -- that is,
+    Let's write \(||\cdot||\) for the usual notion of length in \(\RR^n\) (the Euclidean norm) -- that is,
     \[
         ||\vec u|| = \sqrt{\sum_{i=1}^n u_i^2}
     \]
 
     \begin{definition}
-        The \emph{$n$-dimensional orthogonal group}, $O(n)$, is the subgroup of $\GL_n(\RR)$ that preserves the Euclidean norm.
+        The \emph{\(n\)-dimensional orthogonal group}, \(O(n)\), is the subgroup of \(\GL_n(\RR)\) that preserves the Euclidean norm.
     \end{definition}
     In fact, the dot product is often more convenient to work with:
     \[
@@ -2300,7 +2288,7 @@
     and it turns out that matrices preserve all dot products if and only if they preserve dot products of vectors with themselves, i.e. the Euclidean norm.
 
     \begin{lemma}[Polarisation identity]
-        For $\vec u$, $\vec v \in \RR^n$,
+        For \(\vec u\), \(\vec v \in \RR^n\),
         \[
             2(\vec u \cdot \vec v) = ||\vec u||^2 + ||\vec v||^2 - ||\vec u - \vec v||^2
         \]
@@ -2314,82 +2302,82 @@
         \end{align*}
         whence the identity follows by rearrangement.
     \end{proof}
-    In other words, length-preserving transformations also preserve angles. Importantly for us, this allows us to characterise $O(n)$ using the dot product.
-    \begin{lemma}[$O(n)$ and the dot product]
-        $O(n) = \{A \in \GL_n(\RR) : (A \vec x) \cdot (A \vec y) = \vec x \cdot \vec y \forall \vec x, \vec y \in \RR^n\}$.
+    In other words, length-preserving transformations also preserve angles. Importantly for us, this allows us to characterise \(O(n)\) using the dot product.
+    \begin{lemma}[\(O(n)\) and the dot product]
+        \(O(n) = \{A \in \GL_n(\RR) : (A \vec x) \cdot (A \vec y) = \vec x \cdot \vec y \forall \vec x, \vec y \in \RR^n\}\).
     \end{lemma}
     
     \begin{proof}
-        If $(A \vec x) \cdot (A \vec y) = \vec x \cdot \vec y$ for all $\vec x$, $\vec y \in \RR^n$, then, for any $\vec v \in \RR^n$,
+        If \((A \vec x) \cdot (A \vec y) = \vec x \cdot \vec y\) for all \(\vec x\), \(\vec y \in \RR^n\), then, for any \(\vec v \in \RR^n\),
         \begin{align*}
             ||A \vec v||^2 &= (A \vec v) \cdot (A \vec v) \\
             &= \vec v \cdot \vec v = ||\vec v||^2
         \end{align*}
-        We may take square roots on both sides since the norm is positive. Conversely, if $A \in O(n)$, then, for any $\vec x$, $\vec y \in \RR^n$,
+        We may take square roots on both sides since the norm is positive. Conversely, if \(A \in O(n)\), then, for any \(\vec x\), \(\vec y \in \RR^n\),
         \begin{align*}
             2(A \vec x) \cdot (A \vec y) &= ||A \vec x||^2 + ||A \vec y||^2 - ||A \vec x - A \vec y||^2 \\
             &= ||\vec x||^2 + ||\vec y||^2 + ||\vec x - \vec y||^2 \\
             &= 2 \vec x \cdot \vec y
         \end{align*}
     \end{proof}
-    This quickly leads to a nice characterisation of matrices in $O(n)$.
+    This quickly leads to a nice characterisation of matrices in \(O(n)\).
 
-    \begin{lemma}[Matrices in $O(n)$]
-        Let $A \in M_n(\RR)$. The following are equivalent:
+    \begin{lemma}[Matrices in \(O(n)\)]
+        Let \(A \in M_n(\RR)\). The following are equivalent:
         \begin{enumerate}[label=\protect\circled{\arabic*}]
-            \item $A \in O(n)$;
-            \item the columns of $A$ form an orthonormal basis;
-            \item $A^\intercal A = I$.
+            \item \(A \in O(n)\);
+            \item the columns of \(A\) form an orthonormal basis;
+            \item \(A^\intercal A = I\).
         \end{enumerate}
     \end{lemma}
     
     \begin{proof}
-        Let $A = (a_{ij})$.
+        Let \(A = (a_{ij})\).
         \begin{itemize}[leftmargin=60px]
-            \item[($1 \implies 2$)] Let $\{\vec e_1, \dots, \vec e_n\}$ be the standard basis for $\RR^n$. The $i^\text{th}$ column of $A$ is the column vector $A\vec e_i$. But then
+            \item[(\(1 \implies 2\))] Let \(\{\vec e_1, \dots, \vec e_n\}\) be the standard basis for \(\RR^n\). The \(i^\text{th}\) column of \(A\) is the column vector \(A\vec e_i\). But then
             \[
                 (A \vec e_i) \cdot (A \vec e_j) = \vec e_i \cdot \vec e_j = \delta_{ij}
             \]
             so the columns form an orthonormal basis, as required.
-            \item[($2 \implies 3$)] We know $(A\vec e_i) \cdot (A \vec e_j) = \delta_{ij}$. Then
+            \item[(\(2 \implies 3\))] We know \((A\vec e_i) \cdot (A \vec e_j) = \delta_{ij}\). Then
             \begin{align*}
                 (A^\intercal A)_ij &= \vec e_i^\intercal (A^\intercal A) \vec e_j \\
                 &= (A \vec e_i)^\intercal (A \vec e_j) = \delta_{ij}
             \end{align*}
-            so $A^\intercal A = I$ as required. \\
-            \item[($3 \implies 1$)] Suppose $\vec u$, $\vec v \in \RR^n$. Then
+            so \(A^\intercal A = I\) as required. \\
+            \item[(\(3 \implies 1\))] Suppose \(\vec u\), \(\vec v \in \RR^n\). Then
             \begin{align*}
                 (A \vec u) \cdot (A \vec v) &= (A \vec u)^\intercal (A \vec v) \\
                 &= \vec u^\intercal A^\intercal A \vec v \\
                 &= \vec u^\intercal \vec v \\
                 &= \vec u \cdot \vec v
             \end{align*}
-            so $A \in O(n)$ as required.            
+            so \(A \in O(n)\) as required.            
         \end{itemize}
     \end{proof}
-    Recall that $\det A^\intercal = \det A$. Therefore,
+    Recall that \(\det A^\intercal = \det A\). Therefore,
     \[
         1 = \det I = \det (A^\intercal A) = (\det A)^2
     \]
-    and so the determinant of any orthogonal matrix is $\pm 1$.
+    and so the determinant of any orthogonal matrix is \(\pm 1\).
 
     \lecture{Lecture 22 -- 26/11/25}
 
     \begin{definition}
-        The \emph{special orthogonal group} $SO(n) = O(n) \cap SL_n(\RR)$ -- the set of orthogonal matrices with determinant 1. Observe also that
+        The \emph{special orthogonal group} \(SO(n) = O(n) \cap SL_n(\RR)\) -- the set of orthogonal matrices with determinant 1. Observe also that
         \[
             SO(n) = \ker(\det: O(n) \to \{\pm 1\})
         \]
-        so $|O(n):SO(n)| = 2$.
+        so \(|O(n):SO(n)| = 2\).
     \end{definition}
-    Examples of elements of $O(n)$ which are not in $SO(n)$ are provided by reflections.
+    Examples of elements of \(O(n)\) which are not in \(SO(n)\) are provided by reflections.
 
     \begin{definition}[Reflections]
-        Any $\vec v \in \RR \setminus \{0\}$ defines an \emph{orthogonal plane}
+        Any \(\vec v \in \RR \setminus \{0\}\) defines an \emph{orthogonal plane}
         \[
             \vec v^\perp = P_{\vec v} = \{\vec x \in \RR^n: \vec x \cdot \vec v = 0\}
         \]
-        The \emph{reflection} in $P_{\vec v}$ is defined as
+        The \emph{reflection} in \(P_{\vec v}\) is defined as
         \[
             S_{\vec v}(\vec x) = \vec x - \frac{2(\vec x \cdot \vec v)}{||\vec v||^2}\vec v
         \]
@@ -2398,17 +2386,17 @@
     
     \begin{remark}
         \begin{itemize}
-            \item We will sometimes write $S_P$ for the reflection in the plane $P$.
-            \item We may replace $\vec v$ by $\frac{\vec v}{||\vec v||}$ and so we can clearly assume $||\vec v|| = 1$ -- then $S_{\vec v}(\vec x) = \vec x - 2(\vec x \cdot \vec v)\vec v$.
+            \item We will sometimes write \(S_P\) for the reflection in the plane \(P\).
+            \item We may replace \(\vec v\) by \(\frac{\vec v}{||\vec v||}\) and so we can clearly assume \(||\vec v|| = 1\) -- then \(S_{\vec v}(\vec x) = \vec x - 2(\vec x \cdot \vec v)\vec v\).
         \end{itemize}
     \end{remark}
     
     \begin{lemma}
-        $S_{\hvec v}^2 = I$ for any $\hvec v$, and $S_{\hvec v} \in O(n)$.
+        \(S_{\hvec v}^2 = I\) for any \(\hvec v\), and \(S_{\hvec v} \in O(n)\).
     \end{lemma}
     
     \begin{proof}
-        Note that $S_{\hvec v}$ is linear in $\vec x$, so $S_{\hvec v} \in M_n(\RR)$. Now, observe
+        Note that \(S_{\hvec v}\) is linear in \(\vec x\), so \(S_{\hvec v} \in M_n(\RR)\). Now, observe
         \begin{align*}
             S_{\hvec v}(\vec x) \cdot \vec v &= (\vec x \cdot \hvec v) - 2(\vec x \cdot \hvec v)(\hvec v \cdot \hvec v) \\
             &= -\vec x \cdot \vec v
@@ -2419,17 +2407,17 @@
             &= \vec x - 2(\vec x \cdot \hvec v)\hvec v + 2(\vec x \cdot \hvec v)\hvec v \\
             &= \vec x
         \end{align*}
-        so $S_{\hvec v}^2 = I$ as required. Hence $S_{\hvec v}$ is non-singular, so $S_{\hvec v} \in \GL_n(\RR)$. Finally, for $\vec x \in \RR^n$,
+        so \(S_{\hvec v}^2 = I\) as required. Hence \(S_{\hvec v}\) is non-singular, so \(S_{\hvec v} \in \GL_n(\RR)\). Finally, for \(\vec x \in \RR^n\),
         \begin{align*}
             ||S_{\hvec v}(\vec x)||^2 &= (\vec x - 2(\vec x \cdot \hvec v)\hvec v)(\vec x - 2(\vec x \cdot \hvec v)\hvec v) \\
             &= ||\vec x||^2 - 4(\vec x \cdot \hvec v)^2 + 4(\vec x \cdot \hvec v)^2 \\
             &= ||\vec x||^2
         \end{align*}
-        so $S_{\hvec v} \in O(n)$ as required.        
+        so \(S_{\hvec v} \in O(n)\) as required.        
     \end{proof}
     
     \begin{remark}
-        Take a basis $\{\vec v_1, \dots, \vec v_{n-1}\}$ for $P_{\hvec v}$. Then, in the basis $\{\vec v_1, \dots, \vec v_{n-1}, \hvec v\}$, $S_{\hvec v}$ has matrix
+        Take a basis \(\{\vec v_1, \dots, \vec v_{n-1}\}\) for \(P_{\hvec v}\). Then, in the basis \(\{\vec v_1, \dots, \vec v_{n-1}, \hvec v\}\), \(S_{\hvec v}\) has matrix
         \[
             \begin{pmatrix}
              1 & \cdots & 0 & 0 \\
@@ -2438,30 +2426,30 @@
              0 & 0 & 0 & -1 \\
             \end{pmatrix}
         \]
-        so $\det S_{\hvec v} = 1$ and hence $S_{\hvec v} \notin SO(n)$.
+        so \(\det S_{\hvec v} = 1\) and hence \(S_{\hvec v} \notin SO(n)\).
     \end{remark}
     
     \begin{theorem}[Generation by reflections]
-        Every $A \in O(n)$ is a product of at most $n$ reflections.
+        Every \(A \in O(n)\) is a product of at most \(n\) reflections.
     \end{theorem}
     
     \begin{proof}
-        We proceed by induction on $n$.
+        We proceed by induction on \(n\).
 
-        \emph{Base case}. $n=1$. $O(1) = \{\pm 1\} = \gen {-1}$.
+        \emph{Base case}. \(n=1\). \(O(1) = \{\pm 1\} = \gen {-1}\).
 
-        \emph{Inductive step}. Let $\{\vec e_1, \dots, \vec e_n\}$ be the standard basis for $\RR^n$. Let $\vec v = \vec e_n - A \vec e_n$.
+        \emph{Inductive step}. Let \(\{\vec e_1, \dots, \vec e_n\}\) be the standard basis for \(\RR^n\). Let \(\vec v = \vec e_n - A \vec e_n\).
 
-        DIAGRAM: $\vec e_n$ and $A \vec e_n$ shown as position vectors from the origin. They are connected, and perpendicular bisector drawn -- this is the plane we reflect in.
+        DIAGRAM: \(\vec e_n\) and \(A \vec e_n\) shown as position vectors from the origin. They are connected, and perpendicular bisector drawn -- this is the plane we reflect in.
 
-        Then $S_{\vec v}A \vec e_n = \vec e_n$. Since $S_{\vec v}A$ is orthogonal, it follows that $S_{\vec v}A$ preserves the plane $P_{\vec e_n} = \RR^{n-1} \times \{0\}$. By induction, there exist $\vec v_1, \dots, \vec v_{n-1} \in \RR^{n-1}$ such that $S_{\vec v}A = S_{\vec v_1} \cdots S_{\vec v_{n-1}}$ on $\RR^{n-1}$. Since both sides also fix $\vec e_n$, it follows they are also equal on $\RR^n$. Hence,
+        Then \(S_{\vec v}A \vec e_n = \vec e_n\). Since \(S_{\vec v}A\) is orthogonal, it follows that \(S_{\vec v}A\) preserves the plane \(P_{\vec e_n} = \RR^{n-1} \times \{0\}\). By induction, there exist \(\vec v_1, \dots, \vec v_{n-1} \in \RR^{n-1}\) such that \(S_{\vec v}A = S_{\vec v_1} \cdots S_{\vec v_{n-1}}\) on \(\RR^{n-1}\). Since both sides also fix \(\vec e_n\), it follows they are also equal on \(\RR^n\). Hence,
         \[  
             A = S_{\vec v}S_{\vec v_1} \cdots S_{\vec v_{n-1}}
         \]
         as required.
     \end{proof}
     
-    Let us consider orthogonal transformations in low dimensions -- especially $n=2$.
+    Let us consider orthogonal transformations in low dimensions -- especially \(n=2\).
 
     \begin{definition}[Rotations]
         A \emph{rotation} is
@@ -2473,31 +2461,31 @@
     
     
 
-    \begin{lemma}[Elements of $O(2)$]
-        Let $A \in O(2)$. If $A \notin SO(2)$, then $A$ is a reflection; if $A \in SO(2)$, then $A$ is a rotation about the origin.
+    \begin{lemma}[Elements of \(O(2)\)]
+        Let \(A \in O(2)\). If \(A \notin SO(2)\), then \(A\) is a reflection; if \(A \in SO(2)\), then \(A\) is a rotation about the origin.
     \end{lemma}
     
     \begin{proof}
-        Recall that $\det S_{\vec v} = -1$, so the product of $k$ reflections has determinant $(-1)^k$. By the theorem, we may take $k \leq 2$.
+        Recall that \(\det S_{\vec v} = -1\), so the product of \(k\) reflections has determinant \((-1)^k\). By the theorem, we may take \(k \leq 2\).
         \begin{itemize}
-            \item If $A \notin SO(2)$, then $k$ must be odd, so $k$ must be 1, so $A$ is a reflection.
-            \item If $A \in SO(2)$, then $k$ is even so, unless $A = I$, $A = S_{\vec u}S_{\vec v}$ for some $\vec u$, $\vec v$ not parallel. We claim that $A$ only fixes $\vec 0$. Suppose we have $\vec x \neq \vec 0$ such that
+            \item If \(A \notin SO(2)\), then \(k\) must be odd, so \(k\) must be 1, so \(A\) is a reflection.
+            \item If \(A \in SO(2)\), then \(k\) is even so, unless \(A = I\), \(A = S_{\vec u}S_{\vec v}\) for some \(\vec u\), \(\vec v\) not parallel. We claim that \(A\) only fixes \(\vec 0\). Suppose we have \(\vec x \neq \vec 0\) such that
             \begin{align*}
                 S_{\vec u}S_{\vec v}\vec x = \vec x \iff S_{\vec u} \vec x = S_{\vec v} \vec x
             \end{align*}
-            But $\vec v$ is parallel to $\vec x - S_{\vec v} \vec x$, and $\vec u$ is parallel to $\vec x - S_{\vec u} \vec x$, so $\vec u$ and $\vec v$ are parallel, which is a contradiction. Hence $A$ only fixes 0 as required, so it is a rotation.            
+            But \(\vec v\) is parallel to \(\vec x - S_{\vec v} \vec x\), and \(\vec u\) is parallel to \(\vec x - S_{\vec u} \vec x\), so \(\vec u\) and \(\vec v\) are parallel, which is a contradiction. Hence \(A\) only fixes 0 as required, so it is a rotation.            
         \end{itemize}
     \end{proof}
     
     \begin{remark*}
-        We've defined rotations to be orthogonal transformations that only fix the origin. But we can show that this is equivalent to other definitions. For example, let $A \in SO(2)$, so the columns of $A$ form an orthonormal basis. For the vectors to be perpendicular, we require
+        We've defined rotations to be orthogonal transformations that only fix the origin. But we can show that this is equivalent to other definitions. For example, let \(A \in SO(2)\), so the columns of \(A\) form an orthonormal basis. For the vectors to be perpendicular, we require
         \[
             A = \begin{pmatrix}
              a & b \\
              -b & a \\
             \end{pmatrix}
         \]
-        and then we further require $a^2 + b^2 = 1$. But then $a = \cos \theta$, $b = \sin \theta$ for some $\theta$, so
+        and then we further require \(a^2 + b^2 = 1\). But then \(a = \cos \theta\), \(b = \sin \theta\) for some \(\theta\), so
         \[
             A = \begin{pmatrix}
              \cos \theta & \sin \theta \\
@@ -2507,18 +2495,18 @@
         as required.
     \end{remark*}
 
-    That concludes our survey of $O(2)$ and $SO(2)$.
+    That concludes our survey of \(O(2)\) and \(SO(2)\).
     
-    \begin{lemma}[Elements of $SO(3)$]
-        If $A \in SO(3)$, $A$ is a rotation.
+    \begin{lemma}[Elements of \(SO(3)\)]
+        If \(A \in SO(3)\), \(A\) is a rotation.
     \end{lemma}
     
     \begin{proof}
-        As above, $A$ is a product of at most $3$ reflections so, for $\det A = 1$, $A = I$ or $A = S_{\vec u}S_{\vec v}$ for non-parallel $\vec u$, $\vec v$. It follows that
+        As above, \(A\) is a product of at most \(3\) reflections so, for \(\det A = 1\), \(A = I\) or \(A = S_{\vec u}S_{\vec v}\) for non-parallel \(\vec u\), \(\vec v\). It follows that
         \[
             P_{\vec u} \cap P_{\vec v} = l
         \]
-        a line, so $A$ fixes $l$. Also, $S_{\vec u}S_{\vec v}x = x \implies S_{\vec u}x = S_{\vec v}x$ and, arguing as in the previous lemma, we find that either $S_{\vec u} = S_{\vec v}$, in which case $A = I$, or $x \in S_{\vec u} \cap S_{\vec v}$. Hence $A$ fixes only the line $l$, so $A$ is a rotation.
+        a line, so \(A\) fixes \(l\). Also, \(S_{\vec u}S_{\vec v}x = x \implies S_{\vec u}x = S_{\vec v}x\) and, arguing as in the previous lemma, we find that either \(S_{\vec u} = S_{\vec v}\), in which case \(A = I\), or \(x \in S_{\vec u} \cap S_{\vec v}\). Hence \(A\) fixes only the line \(l\), so \(A\) is a rotation.
     \end{proof}
     
     \lecture{Lecture 23 -- 01/12/25}
@@ -2528,11 +2516,11 @@
     Amazingly, while there are infinitely many regular 2-dimensional polygons, there are only 5 \emph{Platonic solids} in 3 dimensions.
 
     \begin{definition}
-        A convex polyhedron $X \subseteq \RR^3$ is a \emph{Platonic solid} if
+        A convex polyhedron \(X \subseteq \RR^3\) is a \emph{Platonic solid} if
         \begin{itemize}
-            \item every face is a regular $n$-gon for some constant $n$;
-            \item $G = \Isom(X)$ acts transitively on the faces;
-            \item if $x \in X$ is the midpoint of a face, then $\Stab_G(x) \cong D_{2n}$.
+            \item every face is a regular \(n\)-gon for some constant \(n\);
+            \item \(G = \Isom(X)\) acts transitively on the faces;
+            \item if \(x \in X\) is the midpoint of a face, then \(\Stab_G(x) \cong D_{2n}\).
         \end{itemize}
     \end{definition}
     
@@ -2547,17 +2535,17 @@
     \end{itemize}
     
     \begin{definition}
-        Two solids $X$ and $Y$ are \emph{dual} if $Y$ can be constructed from $X$ by putting vertices in the centres of each face, and joining vertices in adjacent faces.
+        Two solids \(X\) and \(Y\) are \emph{dual} if \(Y\) can be constructed from \(X\) by putting vertices in the centres of each face, and joining vertices in adjacent faces.
     \end{definition}
     
-    The cube and the octahedron are dual (DIAGRAM), as are the dodecahedron and icosahedron. The tetrahedron is dual to itself. Furthermore, if $X$ and $Y$ are dual, $\Isom(X) \cong \Isom(Y)$, so we only have three groups to identify!
+    The cube and the octahedron are dual (DIAGRAM), as are the dodecahedron and icosahedron. The tetrahedron is dual to itself. Furthermore, if \(X\) and \(Y\) are dual, \(\Isom(X) \cong \Isom(Y)\), so we only have three groups to identify!
     
     \begin{example}[Tetrahedron]
-        Let $G = \Isom(\text{tetrahedron})$. We want to look for a group action. By definition, $G$ acts transitively on the (4) faces, and each stabiliser is isomorphic to $D_6$. Thus, orbit-stabiliser gives
+        Let \(G = \Isom(\text{tetrahedron})\). We want to look for a group action. By definition, \(G\) acts transitively on the (4) faces, and each stabiliser is isomorphic to \(D_6\). Thus, orbit-stabiliser gives
         \[
             |G| = 4 \times 6 = 24
         \]
-        Furthermore, the action of $G$ on the 4 vertices defines a homomorphism $\theta: G \to S_4$. Let us prove that $\theta$ is injective. Suppose $\theta(g) = e$. Then $g$ fixes four vertices, which are not coplanar, and so $g = \id$ by the four-point lemma, meaning $\theta$ is injective as required. Then, by comparing sizes, we see $G \cong S_4$.
+        Furthermore, the action of \(G\) on the 4 vertices defines a homomorphism \(\theta: G \to S_4\). Let us prove that \(\theta\) is injective. Suppose \(\theta(g) = e\). Then \(g\) fixes four vertices, which are not coplanar, and so \(g = \id\) by the four-point lemma, meaning \(\theta\) is injective as required. Then, by comparing sizes, we see \(G \cong S_4\).
 
         Let's also identify the group of rotational symmetries:
         \[
@@ -2566,12 +2554,12 @@
         assuming our tetrahedron is centred on the origin.
     \end{example}
     
-    \begin{lemma}[Uniqueness of $A_n$]
-        If $H \leq S_n$ and $|S_n:H|=2$, then $H=A_n$.
+    \begin{lemma}[Uniqueness of \(A_n\)]
+        If \(H \leq S_n\) and \(|S_n:H|=2\), then \(H=A_n\).
     \end{lemma}
     
     \begin{proof}
-        Because $|S_n:H|=2$, $H \triangleleft S_n$ and $S_n/H \cong C_2$. We therefore have a surjective homomorphism $\theta: S_n \to C_2$ with $\ker \theta = H$.
+        Because \(|S_n:H|=2\), \(H \triangleleft S_n\) and \(S_n/H \cong C_2\). We therefore have a surjective homomorphism \(\theta: S_n \to C_2\) with \(\ker \theta = H\).
     \end{proof}
     
     \lecture{Lecture 24 -- 03/12/25}
@@ -2579,21 +2567,21 @@
     Finally, (non-examinable), 
 
     \begin{example}[Dodecahedron/icosahedron]
-        Let $G = \Isom(\text{dodecahedron})$ and $G_0$ the rotational subgroup of $G$ (of index 2). Since a face has orbit of size 12 and stabiliser of size 10, $|G| = 120$, $|G_0| = 60$.
+        Let \(G = \Isom(\text{dodecahedron})\) and \(G_0\) the rotational subgroup of \(G\) (of index 2). Since a face has orbit of size 12 and stabiliser of size 10, \(|G| = 120\), \(|G_0| = 60\).
 
-        By drawing diagonals on the faces, we may inscribe 5 cubes into the dodecahedron. Since the cubes are built symmetrically from the geometry of the dodecahedron, $G_0$ acts on them, and so we obtain a homomorphism
+        By drawing diagonals on the faces, we may inscribe 5 cubes into the dodecahedron. Since the cubes are built symmetrically from the geometry of the dodecahedron, \(G_0\) acts on them, and so we obtain a homomorphism
         \[  
             \theta: G_0 \to S_5
         \]
-        The rotation around the axis through an opposite pair of vertices gives rise to a 3-cycle. There are ten different pairs of opposite vertices, so we get ten pairs of 3-cycles which are one another's inverses -- that way, we get all 20 3-cycles in $S_5$.
+        The rotation around the axis through an opposite pair of vertices gives rise to a 3-cycle. There are ten different pairs of opposite vertices, so we get ten pairs of 3-cycles which are one another's inverses -- that way, we get all 20 3-cycles in \(S_5\).
 
-        We claim that $A_5$ is generated by 3-cycles. Since the 3-cycles form a conjugacy class, we know the subgroup generated by 3-cycles is normal in $A_5$ but, since $A_5$ is simple, it must be $A_5$ itself. Hence, $A_5 \leq \im \theta$, but
+        We claim that \(A_5\) is generated by 3-cycles. Since the 3-cycles form a conjugacy class, we know the subgroup generated by 3-cycles is normal in \(A_5\) but, since \(A_5\) is simple, it must be \(A_5\) itself. Hence, \(A_5 \leq \im \theta\), but
         \[
             60 = |G_0| \geq |\im \theta| \geq |A_5| = 60
         \]
-        so $\theta$ is an isomorphism -- $G_0 \cong A_5$.
+        so \(\theta\) is an isomorphism -- \(G_0 \cong A_5\).
 
-        Finally, just as for the cube, $-e$ is a symmetry of the dodecahedron which commutes with everything, so, by the direct product theorem, $G \cong A_5 \times C_2 \cong S_5$.
+        Finally, just as for the cube, \(-e\) is a symmetry of the dodecahedron which commutes with everything, so, by the direct product theorem, \(G \cong A_5 \times C_2 \cong S_5\).
     \end{example}
     
     
