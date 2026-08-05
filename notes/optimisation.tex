@@ -1,0 +1,1438 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Optimisation}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 01/05/26}
+
+    What is optimisation? We aim to minimize $f(x)$ over $x \in X$ subject to $h(x) = b$, or $h(x) \leq b$, where comparison in $\RR^n$ is pointwise. Terminology is as follows:
+
+    \begin{itemize}
+        \item $f(x)$ is called the \emph{objective} function;
+        \item $h(x) = b$ or $h(x) \leq b$ is called the \emph{functional} constraint;
+        \item $x \in X$ is called the \emph{regional} constraint;
+        \item $\chi(b) = \{x: h(x) = b, x \in X\}$ is called the \emph{feasible set};
+        \item $x^*$ which solves the problem is called the \emph{optimal solution}, and $f(x^*)$ is called the \emph{optimal value} or \emph{optimal cost}.
+    \end{itemize}
+    
+    \begin{proposition}[Inequality constraints and equality constraints]
+        Any inequality constraint may be converted into an equality constraint with a \emph{slack variable} $s$ --
+        \begin{align*}
+            h(x) \leq b \iff h(x) + s = b,\; s \geq 0
+        \end{align*}
+        Hence, it is sufficient to consider equality constraints.
+    \end{proposition}
+
+    \section{Convex optimisation}
+
+    \subsection{Convex functions}
+
+    \begin{definition}[Convex sets]
+        A set $S \subseteq \RR^n$ is called \emph{convex} if, for every $x$, $y \in S$ and $\lambda \in [0, 1]$, the point $\lambda x + (1-\lambda)y \in S$ -- that is, every line segment with endpoints in $S$ is contained in $S$.
+    \end{definition}
+    
+    \begin{definition}[Convex functions]
+        A function $f: S \to \RR$ is called \emph{convex} if $S$ is convex and, for every $x$, $y \in S$ and $\lambda \in [0, 1]$,
+        \begin{align*}
+            f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y)
+        \end{align*}
+        Intuitively, such functions are U-shaped. Also, if $-f$ is convex, then $f$ is called \emph{concave}.
+    \end{definition}
+    
+    \subsubsection{First-order conditions for convexity}
+
+    Taking $y-x \to 0$, the condition for convexity becomes in terms of a tangent, as opposed to a secant, line. This motivates the following theorem.
+
+    \begin{theorem}[First-order condition]
+        A (differentiable) function $f: \RR^n \to \RR$ is convex if and only if, for every $x$, $y \in S$,
+        \begin{align*}
+            f(y) \geq f(x) + (y-x)^\intercal \grad f(x)
+        \end{align*}
+    \end{theorem}
+
+    \begin{remark*}
+        It follows from this that, if $\grad f(x) = 0$, $x$ is the minimum of $f$.
+    \end{remark*}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] When $n=1$, we have
+            \begin{align*}
+                f(x + t(y-x)) &\leq (1-t)f(x) + tf(y) \\
+                \implies f(y) &\geq f(x) + \frac{f(x+t(y-x))-f(x)}{t}
+            \end{align*}
+            Now, take $t \to 0$ -- the quotient becomes $(y-x)$ times the derivative due to the fact that $t$ is scaled by $y-x$.
+
+            To resolve the general case, set $g(t) = f((1-t)x+ty)$, i.e. restrict $f$ to a segment between $x$ and $y$. Clearly $g$ is convex, and is from $[0, 1] \to \RR$. Using the 1D result, we have
+            \begin{align*}
+                g(1) &\geq g(0) + (1-0)g'(0) \\
+                \implies f(y) \geq f(x) + (y-x)^\intercal \grad f(x)
+            \end{align*}
+            \item[$\impliedby$] Let $x_t = (1-t)x + ty$. Assuming the first-order condition, we have
+            \begin{align*}
+                f(x) &\geq f(x_t) + (x-x_t)^\intercal \grad f(x_t) \\
+                f(y) &\geq f(x_t) + (y-x_t)^\intercal \grad f(x_t)
+            \end{align*}
+            Multiplying the first inequality by $1-t$, the second by $t$, and summing, we obtain
+            \begin{align*}
+                (1-t)f(x) + tf(y) \geq f(x_t) + 0 = f((1-t)x + ty)
+            \end{align*}            
+        \end{itemize}
+    \end{proof}
+    
+    \subsubsection{Second-order conditions for convexity}
+
+    \begin{definition}[Hessian]
+        The \emph{Hessian} of $f: \RR^n \to \RR$ is $\grad^2 f(x)$, given by
+        \begin{align*}
+            \left[\grad^2 f(x)\right]_{ij} = \pd{^2f(x)}{x_i \pr x_j}
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}[Multivariate Taylor series]
+        The multivariate Taylor series of a function $f: \RR^n \to \RR$ is given by
+        \begin{align*}
+            f(y) = f(x) + (y-x)^\intercal \grad f(x) + \frac 1 2 (y-x)^\intercal \grad^2 f(x) (y-x) + \dots
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Apply 1D Taylor's theorem to $g(t) = f(x + t(y-x))$. We obtain
+        \begin{align*}
+            g(1) &= g(0) + g'(0) + \frac 1 2 g''(0) + \dots \\
+            \implies f(x) &= f(x) + \cdots
+        \end{align*}
+    \end{proof}
+
+    \begin{definition}[Positive semi-definite matrices]
+        We say a symmetric matrix $A$ is \emph{positive semidefinite}, written $A \geq 0$, if $x^\intercal A x \geq 0$ for any $x$. Equivalently, all the eigenvalues of $A$ are non-negative
+    \end{definition}   
+    
+    \begin{theorem}[Second-order condition]
+        A twice-differentiable function $f: \RR^n \to \RR$ is convex if and only if $\grad^2 f(x) \geq 0$ for all $x \in \RR^n$.
+    \end{theorem}
+    
+    \begin{proof}
+        We'll only prove the backward implication. For any $x$ and $y$, we have
+        \begin{align*}
+            f(y) &= f(x) + (y-x)^\intercal \grad f(x) + \frac 1 2 (y-x)^\intercal \grad^2 f(x) (y-x) \\
+            &\geq f(x) + (y-x)^\intercal \grad f(x)
+        \end{align*}
+        which is the first-order condition, so $f$ is convex as required.        
+    \end{proof}
+    
+    \lecture{Lecture 2 -- 04/05/26}
+
+    \subsection{Gradient descent}
+
+    Recall that, for \(y \approx x\),
+
+    \begin{align*}
+        f(y) \approx f(x) + \grad f(x)^\intercal (y-x)
+    \end{align*}
+    
+    Let us now suppose $y-x = -\eps\grad f(x)$, for some $\eps > 0$. Then
+
+    \begin{align*}
+        f(y) &\approx f(x) + \grad f(x)^\intercal (-\eps \grad f(x)) \\
+        &= f(x) - \eps |\grad f(x)|^2 \leq f(x)
+    \end{align*}
+    
+    This motivates the following algorithm.
+
+    \begin{algorithm}[Gradient descent]
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item Start from some $x_0$ and set $t=0$.
+            \item Repeat:
+            \begin{itemize}
+                \item Find a \emph{descent direction} $v_t$ (such as $-\grad f(x_t)$);
+                \item choose a \emph{step size} $\eta_t$;
+                \item update $x_{t+1} = x_t + \eta_n v_t$.
+            \end{itemize}
+            \item Stop when some suitable criteria are satisfied.
+        \end{enumerate}
+    \end{algorithm}
+    
+    What are some potential issues with this algorithm?
+
+    \begin{itemize}
+        \item We can `overshoot' our minimum or endlessly oscillate around it if our step size is too large or our function is too sharp;
+        \item or we might never make it to a minimum if our step size is too small or our function is too flat.
+    \end{itemize}
+    
+    We would like to make some new definitions to eliminate these possibilities.
+
+    \subsubsection{Smoothness and strong convexity}
+
+    \begin{definition}[Matrix ordering]
+        For square matrices of the same size $A$ and $B$, we say
+        \begin{align*}
+            A \leq B \iff B - A \geq 0
+        \end{align*}
+        i.e., $B-A$ is a positive semidefinite matrix. If either $A$ or $B$ is proportional to the identity matrix, this can also be expressed as a bound on the eigenvalues of the other.        
+    \end{definition}    
+
+    \begin{definition}
+        A twice-differentiable function $f: \RR^n \to \RR$ is \emph{$\beta$-smooth} if $\grad^2 f(x) \leq \beta I$ for all $x \in \RR^n$. It is \emph{$\alpha$-strongly convex} if $\grad^2 f(x) \geq \alpha I$ for all $x \in \RR^n$, $\alpha$, $\beta > 0$.
+    \end{definition}
+    
+    \begin{theorem}
+        If $f$ is $\beta$-smooth, then
+        \begin{align*}
+            f(y) \leq f(x) + \grad f(x)^\intercal (y-x) + \frac \beta 2 |y-x|^2
+        \end{align*}
+        and if $f$ is $\alpha$-s.c., then
+        \begin{align*}
+            f(y) \geq f(x) + \grad f(x)^\intercal (y-x) + \frac \alpha 2 |y-x|^2
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        Using the Taylor series expansion with remainder, we have
+        \begin{align*}
+            f(y) = f(x) + \grad f(x)^\intercal (y-x) + \frac 1 2 (y-x)^\intercal \grad^2f(z)(y-x)
+        \end{align*}
+        where $z$ is some point on the line segment joining $x$ and $y$. Then, substituting $\grad^2 f(z)$ for $\alpha I$ or $\beta I$ with the corresponding inequality gives the result.        
+    \end{proof}
+    
+    \begin{corollary}
+        \label{beta-smooth-bound}
+        For a $\beta$-smooth function $f$,
+        \begin{align*}
+            f\left(x - \frac 1 \beta \grad f(x)\right) \leq f(x) - \frac 1 {2\beta} |\grad f(x)|^2 
+        \end{align*}
+        or in other words, $\frac 1 \beta$ is a suitably small step size to ensure we do not overshoot the minimum.        
+    \end{corollary}
+    
+    \begin{proof}
+        Substitute into Theorem 1.11.
+    \end{proof}
+    
+    \begin{corollary}
+        \label{alpha-sc-bound}
+        Let $f(x^*)$ be the minimum of an $\alpha$-s.c. $f$. Then, for any $x$, we have
+        \begin{align*}
+            f(x) - f(x^*) \leq \frac 1 {2\alpha} |\grad f(x)|^2
+        \end{align*}        
+    \end{corollary}
+    
+    \begin{remark*}
+        It follows that, if $|\grad f(x)|^2 \leq 2\alpha\eps$, then $x$ is optimal up to an error of $\eps$.
+    \end{remark*}
+    
+    \begin{proof}
+        Take the minimum over $y$ of both sides of Theorem 1.11. We obtain
+        \begin{align*}
+            f(x^*) \geq \min_y \left(f(x) + \grad f(x)^\intercal (y-x) + \frac \alpha 2 |y-x|^2 \right)
+        \end{align*}
+        To find the RHS, let us differentiate. Observe
+        \begin{align*}
+            \grad_y \left(f(x) + \grad f(x)^\intercal (y-x) + \frac \alpha 2 |y-x|^2\right) = \grad f(x) + \alpha(y-x)
+        \end{align*}
+        so setting the gradient to 0 gives
+        \begin{align*}
+            y^* = x - \frac 1 \alpha \grad f(x)
+        \end{align*}
+        Plugging this back in, we obtain the result.       
+    \end{proof}
+    
+    \subsubsection{Convergence of gradient descent}
+
+    \begin{theorem}
+        Let $f$ be $\alpha$-s.c. and $\beta$-smooth, and suppose $f$ is minimised at $x^*$. Then gradient descent with $\eta_t = \frac 1 \beta$ satisfies
+        \begin{align*}
+            f(x_T) - f(x^*) = \left(1-\frac \alpha \beta\right)^T \left(f(x_0)-f(x^*)\right) \leq e^{-\frac{\alpha T}\beta} \left(f(x_0)-f(x^*)\right)
+        \end{align*}
+        since $e^{-x} \geq 1-x$. Hence, taking
+        \begin{align*}
+            T \geq \frac \beta \alpha \log\left(\frac{f(x_0)-f(x*)}{\eps}\right)
+        \end{align*}
+        will give an $\eps$-optimal result.       
+    \end{theorem}
+    
+    \begin{proof}
+        Have
+        \begin{align*}
+            f(x_{t+1}) - f(x^*) &\leq f(x_t) - f(x^*) - \frac 1 {2\beta} |\grad f(x_t)|^2 && \text{by \cref{beta-smooth-bound}} \\
+            &\leq f(x_t) - f(x^*) - \frac \alpha \beta \left(f(x_t)-f(x^*)\right) && \text{by \cref{alpha-sc-bound}} \\
+            &= \left(1-\frac \alpha\beta\right)\left(f(x_t)-f(x^*)\right)
+        \end{align*}
+        from which the result clearly follows.        
+    \end{proof}
+    
+    \begin{example}
+        Consider
+        \begin{align*}
+            f(x) = \frac 1 2 (x_1^2 + 100 x_2^2)
+        \end{align*}
+        This has
+        \begin{align*}
+            \begin{pmatrix}
+                1 & 0 \\
+                0 & 1 \\
+            \end{pmatrix} \leq \grad^2 f(x) = \begin{pmatrix}
+                1 & 0 \\
+                0 & 100 \\
+            \end{pmatrix}\leq \begin{pmatrix}
+                100 & 0 \\
+                0 & 100 \\
+            \end{pmatrix}
+        \end{align*}
+        so $\alpha = 1$, $\beta = 100$. But then $1 - \frac \alpha \beta = 0.99$, so gradient descent will have bad convergence. But if we just let $x_2' = 10x_2$, then we immediately have perfect convergence! This is called \emph{preconditioning} our function.       
+    \end{example}
+
+    \subsection{Newton's method}
+    
+    Recall the second-order Taylor approximation:
+    \begin{align*}
+        f(y) = f(x) + \grad f(x)^\intercal (y-x) + \frac 1 2 (y-x)^\intercal \grad^2 f(x) (y-x)
+    \end{align*}
+    
+    Since this is the best possible quadratic approximation, it seems reasonable to try and minimize this quantity. This motivates the update step of
+    \begin{align*}
+        x_{t+1} = \argmin_y \left(f(x_t) + \grad f(x_t)^\intercal (y-x_t) + \frac 1 2 (y-x_t)^\intercal \grad^2 f(x_t) (y-x_t)\right)
+    \end{align*}
+    To minimize this, let us take the grad with respect to $y$ and make it zero:
+    \begin{align*}
+        0 &= \grad f(x_t) + \grad^2 f(x_t) (y-x_t) \\
+        \implies \Aboxed{y &= x_t - \left(\grad^2 f(x_t)\right)^{-1} \grad f(x_t)}
+    \end{align*}
+    
+    In 1D, we can make this into a root-finding method for $f'(x)$. Observe
+    \begin{align*}
+        f'(x) &= g(x) \\
+        x_{t+1} &= x_t - \frac{g(x_t)}{g'(x_t)}
+    \end{align*}
+    which looks familiar!
+
+    \begin{definition}[Matrix norm]
+        For $A \in \RR^{n \times n}$, the \emph{norm} $|A$ is the smallest $a > 0$ such that $|Az| \leq a|z|$ for all $z \in \RR^n$. For $A$ positive semi-definite, this is just the largest eigenvalue.
+    \end{definition}
+    
+    \begin{theorem}
+        If $f$ is a twice-differentiable $\alpha$-smoothly convex function that has an $\ell$-Lipschitz Hessian, i.e. for any $x$, $y \in \RR^n$,
+        \begin{align*}
+            |\grad^2 f(x) - \grad^2 f(y)| \leq l|x-y|
+        \end{align*}
+        then Newton's method satisfies
+        \begin{align*}
+            f(x_k) - f(x^*) \leq \frac{2\alpha^3}{l^2} \left(\frac{l}{2\alpha^2}|\grad f(x_0)|\right)^{2^{k+1}}
+        \end{align*}
+    \end{theorem}
+    
+    \begin{remark*}
+        If $|\grad f(x_0)| < \frac{2\alpha^2}{l}$, then this will be getting small extremely extremely fast.
+    \end{remark*}
+    
+    \begin{remark*}
+        In applications such as AI, one prefers gradient descent, because calculating the Hessian of functions with $10^9$ inputs is just intractable.
+    \end{remark*}
+    
+    \subsubsection{Barrier method}
+
+    Suppose we want to minimize $f(x)$ subject to a condition $a_i^\intercal x \leq b_i$ for $1 \leq i \leq m$ (where $f$ is convex). There is a very silly way to do this...
+
+    Let
+    \begin{align*}
+        g(x) = f(x) + \sum_{i=1}^m \phi(a_i^\intercal x - b_i)
+    \end{align*}
+    where
+    \begin{align*}
+        \phi(x) = \begin{cases}
+            x & x \leq 0 \\
+            +\infty & \text{o/w}
+        \end{cases}
+    \end{align*}
+    This is cursed, because $\phi(x)$ lacks any reasonable properties. But we can settle for a smoothed-out version of this. For example, let
+    \begin{align*}
+        \phi(x) = -\log(-x)
+    \end{align*}
+    called a \emph{logarithmic barrier function}. This is pretty good, but of course minimising $g$ will not now lead exactly to minimizing $f$. To fix this, introduce a parameter $t >0$, and consider minimising
+    \begin{align*}
+        tf(x) + \sum_{i=1}^m \phi(a_i^\intercal x - b_i)
+    \end{align*}
+    and gradually increase $t$. This seems like it should work. Hence, we can write down the following algorithm.
+
+    \begin{algorithm}[Barrier method]
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item Find a strictly feasible $x$ and set $t > 0$, $\alpha > 1$.
+            \item Repeat:
+            \begin{itemize}
+                \item Compute $x^*(t)$ by minimising
+                \begin{align*}
+                    tf(x) + \sum_{i=1}^m \phi(a_i^\intercal x - b_i)
+                \end{align*}
+                using Newton's method with $x$ as the starting point.
+                \item Update $x := x^*(t)$, and set $t := \alpha t$.
+                \item When $t$ is sufficiently large, stop.
+            \end{itemize}
+        \end{enumerate}
+    \end{algorithm}
+
+    \section{Lagrange multipliers}
+
+    \begin{definition}[Lagragian]
+        For an optimisation problem, the \emph{Lagrangian} is given by
+        \begin{align*}
+            L(x, \lambda) = f(x) - \lambda^\intercal (h(x)-b)
+        \end{align*}
+    \end{definition}
+    
+    We now consider the unconstrained problem of minimising $L(x, \lambda)$.
+
+    \begin{theorem}[Lagrange sufficiency]
+        Let $x^* \in X$ such that $h(x^*)=b$, and $\lambda^* \in \RR^m$ such that
+        \begin{align*}
+            L(x^*, \lambda^*) = \min_{x \in X} L(x, \lambda^*)
+        \end{align*}
+        Then $x^*$ also solves the original problem.        
+    \end{theorem}
+    
+    \begin{proof}
+        Suppose $(x^*, \lambda*)$ is as given in the statement. Clearly
+        \begin{align*}
+            \min_{x \in X(b)} f(x) \leq f(x^*)
+        \end{align*}
+        since $x^* \in X(b)$. To prove the reverse inequality,
+        \begin{align*}
+            \min_{x \in X(b)} f(x) &= \min_{x \in X(b)} f(x) - \underbrace{{\lambda^*}^\intercal (h(x)-b)}_0 \\
+            &\geq \min_{x \in X} \underbrace{f(x) - {\lambda^*}^\intercal (h(x)-b)}_{L(x, \lambda^*)} \\
+            &= f(x^*) - {\lambda^*}^\intercal (h(x^*)-b) \\
+            &= f(x^*)
+        \end{align*}
+        as required.
+    \end{proof}
+    
+    \begin{example*}
+        Let us attempt to minimise
+        \begin{align*}
+            f(x) =-x_1-x_2+x_3
+        \end{align*}
+        subject to
+        \begin{align*}
+            x_1^2 + x_2^2 &= 4 \\
+            x_1+x_2+x_3 &= 1
+        \end{align*}
+        Have
+        \begin{align*}
+            L(x, \lambda) &= -x_1-x_2+x_3 - \lambda_1(x_1^2+x_2^2-4)-\lambda_2(x_1+x_2+x_3-1) \\
+            &= [(-1-\lambda_2)x_1 - \lambda_1x_1^2] + [(-1-\lambda_2)x_2-\lambda_1x_2^2] + [(1-\lambda_2)x_3] + 4\lambda_1 + \lambda_2
+        \end{align*}
+        Note that we must have $1-\lambda_2 = 0 \implies \lambda_2 = 1$, otherwise we could take $x_3 \to \infty$ and $L$ would have no minimum. Hence we have
+        \begin{align*}
+            L(x, \lambda) = (-2x_1-\lambda_1x_1^2) + (-2x_2-\lambda_1x^2) + 4\lambda_1+1
+        \end{align*}
+        We also need $\lambda_1 \leq 0$ for boundedness and, taking derivatives, we obtain
+        \begin{align*}
+            x_1 = x_2 = -\frac 1 {\lambda_1}
+        \end{align*}
+        so, for $\lambda = (\lambda_1, 1)$, we obtain $x^* = (-\frac 1 {\lambda_1}, -\frac 1{\lambda_1}, x_3)$ for any $x_3$. In order to find $x_3$, let us apply the feasibility conditions of the original problem -- we obtain
+        \begin{align*}
+            \frac 1 {\lambda_1^2} + \frac 1 {\lambda_1^2} &= 4 \\
+            -\frac 1{\lambda_1} - \frac 1{\lambda_1} + x_3 &= 1
+        \end{align*}
+        which gives
+        \begin{align*}
+            x^* = (\sqrt 2, \sqrt 2, 1-2\sqrt 2)
+        \end{align*}
+        Then Lagrange sufficiency allows us to conclude that $x^*$ solves the original problem.       
+    \end{example*}
+    
+    \begin{algorithm}[Method of Lagrange multipliers]
+        Without loss of generality, we may assume an equality constrant $h(x) = b$ by adding slack variables $s \geq 0$.
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item Set up
+            \begin{align*}
+                L(x, s, \lambda) = f(x) - \lambda^\intercal (h(x)+s-b)
+            \end{align*}
+            \item Let
+            \begin{align*}
+                \Lambda = \{\lambda \in \RR^m: \min L(x, s, \lambda) > -\infty\}
+            \end{align*}
+            \item For each $\lambda in \Lambda$, find $x^*(\lambda)$, $s^*(\lambda)$ which minimise $L$ for the unconstrained problem (still requiring $s \geq 0$).
+            \item Find $\lambda^*$ such that $(x^*(\lambda^*), s^*(\lambda^*))$ are feasible, and $s^* \geq 0$.           
+        \end{enumerate}      
+    \end{algorithm}
+    
+    Often this last step can be difficult. Let us introduce the notion of \emph{complementary slackness} to help. Recall the Lagrangian
+    \begin{align*}
+        L(x, s, \lambda) = f(x) - \lambda^\intercal(h(x)-b) - \lambda^\intercal s
+    \end{align*}
+    We must have every coordinate of $\lambda \leq 0$, otherwise we could make the corresponding coordinate of $s$ very large and there would be no minimum. Furthermore, it's clear that, if a particular $\lambda_i < 0$, then the Lagrangian is minimised at $s_i=0$. This is complementary slackness.
+    
+    \begin{example*}
+        Let us attempt to minimise
+        \begin{align*}
+            f(x) = x_1-3x^2
+        \end{align*}
+        subject to
+        \begin{align*}
+            x_1^2+x_2^2 &\leq 4 \\
+            x_1+x_2 &\leq 2
+        \end{align*}
+        Have
+        \begin{align*}
+            L(x, s, \lambda) &= x_1 - 3x_2 - \lambda_1(x_1^2+x_2^2+s_1-4) - \lambda_2(x_1+x_2+s_2-2) \\
+            &= [(1-\lambda_2)x_1 - \lambda_1x_1^2] + [(-3-\lambda_2)x_2-\lambda_1x_2^2 - \lambda_1s_1 - \lambda_2s_2 + 4\lambda_1 + 2\lambda_2]
+        \end{align*}
+        It is now necessary to study all four possible combinations of the $\lambda_i = 0$ and the $\lambda_i < 0$. Let us examine just the first case, with $\lambda_1$, $\lambda_2 < 0$, so that $s_1 = s_2 = 0$ by complementary slackness. Differentiating, we obtain
+        \begin{align*}
+            1-2\lambda_1x_1-\lambda_2 &= 0 \\
+            -3-2\lambda_1x_2-\lambda_2 &= 0 \\
+            x_1^2+x_2^2 &= 4 \\
+            x_1+x_2 &= 2
+        \end{align*}
+        The quadratic constraint gives $(x_1, x_2) = (0, 2)$ or $(x_1, x_2) = (2, 0)$. But we still need to solve for $\lambda_1$ and $\lambda_2$ -- we obtain in each case that one of the $\lambda_i$ is positive, contradicting our assumption. So there are no solutions here.        
+    \end{example*}
+    
+    \lecture{Lecture 5? -- 11/05/25}
+
+    Let us look at a general method to solve the Lagrangian, and let us start by counting how many equations and unknowns we have. We have
+    \begin{align*}
+        \begin{cases}
+            \pd{L(x,s,\lambda)}{x_i} = 0 & 1 \leq i \leq n\\
+            h(x)_j + s_j = b_j & 1 \leq j \leq m \\
+            \lambda_j s_j = 0 & 1 \leq j \leq m
+        \end{cases}
+    \end{align*}
+    i.e. $2n+m$ equations. And, indeed, we have
+    \begin{align*}
+        \underbrace n_x + \underbrace m_\lambda + \underbrace m_s = m+2n
+    \end{align*}
+    variables as required.
+
+    Then, if necessary, we can always split into every possible combination of conditions chosen from
+    \begin{align*}
+        \lambda_1 = 0 && \lambda_1 < 0 \\
+        \vdots \\
+        \lambda_m = 0 && \lambda_m < 0
+    \end{align*}   
+
+    \begin{remark*}
+        The cases outlined above are called the \emph{Karush-Kuhn-Tucker (KKT) conditions}.
+    \end{remark*}    
+
+    \subsection{Weak and strong duality}
+
+    \begin{definition}[Dual objective function]
+        Given an optimisation problem, the \emph{dual objective function} is defined as
+        \begin{align*}
+            g(\lambda) = \min_{x \in X} L(x, \lambda)
+        \end{align*}
+        where
+        \begin{align*}
+            \Lambda = \{\lambda: \min_{x \in X} L(x, \lambda) > -\infty\}
+        \end{align*}       
+    \end{definition}
+    
+    \begin{definition}[Dual problem]
+        The \emph{dual problem} is to maximise $g(\lambda)$ subject to $\lambda \in \Lambda$
+    \end{definition}
+    
+    \begin{remark*}
+        It is much easier to solve the dual problem. For every fixed $x$, the Lagrangian linear in $\lambda$!
+        \begin{align*}
+            L(x, \lambda) = f(x) - \lambda^\intercal (h(x)-b)
+        \end{align*}
+        Indeed, this is just concave!        
+    \end{remark*}
+    
+    \begin{theorem}[Weak duality]
+        If $x \in X(b)$ and $\lambda \in \Lambda$, then $f(x) \geq g(x)$. In particular,
+        \begin{align*}
+            \min_{x \in X(b)} f(x) \geq \max_{\lambda \in \Lambda} g(\lambda)
+        \end{align*}
+    \end{theorem}
+    
+    \begin{remark*}
+        If $f(x) = g(\lambda)$ for some $(x, \lambda)$, it follows that $x$ minimises $f$.
+    \end{remark*}
+    
+    \begin{proof}
+        For any $\lambda \in \Lambda$ and $x \in X(b)$,
+        \begin{align*}
+            f(x) &\geq \min_{x \in X(b)} f(x) \\
+            &= \min_{x \in X(b)} f(x) - \lambda^\intercal (h(x)-b) \\
+            &\geq \min_{x \in X} f(x) - \lambda^\intercal (h(x)-b) \\
+            &= \min_{x \in X} L(x, \lambda) \\
+            &= g(\lambda)
+        \end{align*}
+        Now we can just take the min over $x$ and max over $\lambda$, since this holds for every pair $(x, \lambda)$.
+    \end{proof}
+    
+    \begin{definition}[Duality gap]
+        The \emph{duality gap} is the difference between the two quantities above:
+        \begin{align*}
+            \min_{x \in X(b)} f(x) - \max_{\lambda \in \Lambda} g(\lambda)
+        \end{align*}       
+    \end{definition}
+    
+    If the duality gap is zero, then we say \emph{strong duality} holds.
+
+    \begin{theorem}[Strong duality]
+        The Lagrange method works if and only if strong duality holds.
+    \end{theorem}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] If the Lagrange method works, we have a pair $(x^*, \lambda^*)$ such that
+            \begin{align*}
+                \argmin_{x \in X} L(x, \lambda^*) = x^* \qquad h(x*) = b
+            \end{align*}
+            Then
+            \begin{align*}
+                g(\lambda^*) &= \min_{x \in X} f(x) - (\lambda^*)^\intercal (h(x)-b) \\
+                &= f(x^*) - (\lambda^*)^\intercal (h(x^*)-b) \\
+                &= f(x^*)
+            \end{align*}
+            Hence, since we have found a pair $(x^*, \lambda^*)$ with $f(x^*) = g(\lambda^*)$, then the duality gap is zero as required.
+            \item[$\impliedby$] Suppose we have $x \in X(b)$, $\lambda \in \Lambda$ such that $f(x) = g(\lambda)$. Then the Lagrange method works using this $\lambda$.            
+        \end{itemize}
+    \end{proof}
+    
+    \begin{definition}
+        A function $\phi: \RR^m \to \RR$ is said to have a \emph{supporting hyperplane} at a point $b \in \RR^m$ if there exists $\lambda$ such that, for all $c \in \RR^m$,
+        \begin{align*}
+            \phi(c) \geq \phi(b) + \lambda^\intercal (c-b)
+        \end{align*}
+    \end{definition}
+
+    \begin{definition}
+        Let $\phi: \RR^m \to \RR$ be defined as follows:
+        \begin{align*}
+            \phi(c) = \min_{x \in X(c)} f(x)
+        \end{align*}
+        where $X(c) = \{x: h(x) = c, x \in X\}$.        
+    \end{definition}
+    
+    \begin{theorem}
+        A problem satisfies strong duality if the value function $\phi$ has a supporting hyperplane at $b$. Conversely, if strong duality holds for some $\lambda$ ($g(\lambda) = \phi(b)$), then $\lambda$ defines a supporting hyperplane to $\phi$ at $b$.
+    \end{theorem}
+    
+    \begin{remark*}
+        It is a consequence of this that, if $\phi$ is convex, the Lagrange method will always work.
+    \end{remark*}
+
+    \begin{proof}
+        \begin{itemize}
+            \item[$\impliedby$] Suppose $\phi$ has a supporting hyperplane at $b$ given by $\lambda$, so
+            \begin{align*}
+                \phi(c) \geq \phi(b) + \lambda^\intercal (c-b)
+            \end{align*}
+            Hence,
+            \begin{align*}
+                g(\lambda) &= \min_{x \in X} f(x) - \lambda^\intercal (h(x)-b) \\
+                &= \min_c \min_{x \in X(c)} f(x) - \lambda^\intercal (h(x)-c) - \lambda^\intercal (c-b)
+            \end{align*}
+            Now observe that $h(x)-c = 0$ for $x in X(c)$, and, by definition, $\phi(c) = \min_{x \in X(c)} f(x)$. Hence this is
+            \begin{align*}
+                g(\lambda) &= \min_{c} \phi(c) - \lambda^\intercal (c-b) \\
+                &\geq \phi(b)
+            \end{align*}
+            as required. Now, by weak duality, $g(\lambda) \leq \phi(b)$. Hence $g(\lambda) = \phi(b)$, strong duality holds.
+            \item[$\implies$] Suppose $g(\lambda) = \phi(b)$ for some $\lambda$. Then
+            \begin{align*}
+                \phi(b) = g(\lambda) &= \min_{x \in X} f(x) - \lambda^\intercal (h(x)-b) \\
+                &= \min_{x \in X} f(x) - \lambda^\intercal (h(x)-c) - \lambda^\intercal (c-b) \\
+                &\leq \min_{x \in X(c)} f(x) - \lambda^\intercal (h(x)-c) - \lambda^\intercal (c-b) \\
+                &= \phi(c) - \lambda^\intercal (c-b)
+            \end{align*}
+            as required.          
+        \end{itemize}
+    \end{proof}  
+    
+    \begin{theorem}
+        The following problem has a convex value function $\phi$:
+        \begin{align*}
+            \min f(x) \\
+            h_j(x) \leq b_j && 1 \leq j \leq m \\
+            x \in X
+        \end{align*}
+        where $X$ is convex, $f$ is convex, and each $h_j$ is convex.        
+    \end{theorem}
+    
+    \begin{proof}
+        See example sheet.
+    \end{proof}    
+
+    \section{Linear programming}
+
+    \begin{definition}[Linear programs]
+        A \emph{linear program} is a problem of the following form:
+        \begin{align*}
+            \min c^\intercal x \\
+            a_i^\intercal x \geq b_i && i \in M_1 \\
+            a_i^\intercal x \leq b_i && i \in M_2 \\
+            a_i^\intercal x = b_i && i \in M_3 \\
+            x_j \geq 0 && j \in N_1 \\
+            x_j \leq 0 && j \in N_2 \\
+            x_j = 0 && j \in N_3
+        \end{align*}
+        Note $m = M_1 + M_2 + M_3$ is the number of constraints, and $n = N_1 + N_2 + N_3$ is the dimension of the feasible region.        
+
+        It is sometimes helpful to put the $a_i$ into a matrix, as follows:
+        \begin{align*}
+            \begin{pmatrix}
+                \lln & a_1^\intercal & \rln \\ 
+                 & \vdots & \\ 
+                \lln & a_m^\intercal & \rln \\ 
+            \end{pmatrix}
+        \end{align*}
+        
+        
+    \end{definition}
+    
+    \begin{theorem}[Duals of linear programs]
+        The dual of the linear program above is given by
+        \begin{align*}
+            \min b^\intercal x
+        \end{align*}
+        in a set $\Lambda$ as given below.
+        
+    \end{theorem}
+    
+    \begin{proof}
+        Adding slack variables with the relevant signs, we obtain
+        \begin{align*}
+            L(x, s, \lambda) &= c^\intercal x - \sum_{i \in M_1} \lambda_i (a_i^\intercal x - s_i - b_i) - \sum_{i \in M_2} \lambda_i (a_i^\intercal x + s_i - b_i) - \sum_{i \in M_3} \lambda_i (a_i^\intercal x - b_i) \\
+            &= \sum_{j \in N_1} (c_j - \lambda^\intercal A_j)x_j + \sum_{j \in N_2} (c_j - \lambda^\intercal A_j)x_j + \sum_{j \in N_3} (c_j - \lambda^\intercal A_j)x_j \\ &\qquad + \sum_{i \in M_1} \lambda_i s_i - \sum_{i \in M_2} \lambda_i s_i + \sum_{i \in M_1 \cup M_2 \cup M_3} \lambda_i b_i
+        \end{align*}
+        Then, once again considering what is necessary for us not to be able to send any of the terms to infinity, we obtain the following set of constraints on $\lambda$:
+        \begin{align*}
+            \lambda_i \geq 0 && i \in M_1 \\
+            \lambda_i \leq 0 && i \in M_2 \\
+            \lambda_i \text{ free} && i \in M_3 \\
+            \lambda^\intercal A_j \leq c_j && j \in N_1 \\
+            \lambda^\intercal A_j \geq c_j && j \in N_2 \\
+            \lambda^\intercal A_j = c_j && j \in N_3
+        \end{align*}
+        This is our set $\Lambda$. It is clear that, given these constraints, we can make every term 0, which is the minimum possible under these constraints, and we are simply left with
+        \begin{align*}
+            g(\lambda) = \sum_{i \in M_1 \cup M_2 \cup M_3} \lambda_i b_i = b^\intercal \lambda
+        \end{align*}
+        So the dual problem is to maximise $b^\intercal \lambda$ for $\lambda in \Lambda$.       
+    \end{proof}
+    
+    \subsection{Optimality conditions}
+
+    \begin{theorem}
+        Let $x$ and $\lambda$ be feasible solutions to the primal problem and its duals as above. Then these are optimal if and only if
+        \begin{align*}
+            \lambda_i (a_i^\intercal - b_i) &= 0 \\
+            (c_j - \lambda^\intercal A_j)x_j &= 0
+        \end{align*}
+        for all $i$, $j$.        
+    \end{theorem}
+    
+    \begin{remark*}
+        This is probably best thought of as analogous to the gradient being zero if and only if we are at the minimum of a convex function.
+    \end{remark*}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item [$\implies$] Define $u_i = \lambda_i (a_i^\intercal x - b_i)$, $v_j = (c_j - \lambda^\intercal A_j)x_j$. Since $x$ and $\lambda$ are each feasible, we can see $u_i \geq 0$ for all $i$ and $v_j \geq 0$ for all $j$, by comparing the sign restrictions in each feasible set.
+            
+            Summing, we obtain
+            \begin{align*}
+                \sum_i u_i + \sum_j v_j &= (\lambda^\intercal Ax - \lambda^\intercal b) + (c^\intercal x - \lambda^\intercal Ax) \\
+                &= c^\intercal x - \lambda^\intercal b
+            \end{align*}
+            By weak duality, we know $c^\intercal x \geq \lambda^\intercal b$. If $c^\intercal x = \lambda^\intercal b$, i.e. $x$ and $\lambda$ are optimal, then the LHS is zero, so, since all the quantities on the LHS are non-negative, they are all zero.
+            \item [$\impliedby$] Conversely, if $u_i = 0$ for all $i$, $v_j = 0$ for all $j$, then $c^\intercal x = \lambda^\intercal b$, so, by weak duality, $x$ and $\lambda$ are optimal.            
+        \end{itemize}
+    \end{proof}
+    
+    \subsection{Standard form for linear programs}
+
+    Observe that we can always write any linear program in \emph{general form}, namely
+    \begin{align*}
+        \min f(x) \\
+        Ax \leq b
+    \end{align*}
+    by fiddling with the signs of the constraints and adding slack variables as relevant. However, it is even better to look at \emph{standard form}, namely
+    \begin{align*}
+        \min f(x) \\
+        Ax = b \\
+        x \geq 0
+    \end{align*}
+    
+    \begin{proposition}
+        Every linear program may be converted into standard form.
+    \end{proposition}
+    
+    \begin{proof}
+        Any real $x$ can be written as
+        \begin{align*}
+            x = x_+ - x_-
+        \end{align*}
+        where $x_+$ and $x_-$ are both positive reals. Then, we can do the conversion as follows:
+        \begin{align*}
+            \min c^\intercal x \\
+            Ax \leq b \\[10pt]
+            \min c^\intercal x \\
+            Ax + s = b \\
+            s \geq 0 \\[10pt]
+            \min c^\intercal (x_+ - x_-) \\
+            A(x_+-x_-) + s = b \\
+            x_+,\, x_-,\, s \geq 0
+        \end{align*}
+        and the final problem is in the desired form.       
+    \end{proof}
+
+    \subsection{Solving linear programs}
+
+    Minimising $c^\intercal x$ is the same as maximising $-c^\intercal x$. But $-c^\intercal x$ is convex -- we're trying to \emph{maximise} a convex function.
+    
+    \begin{definition}[Extreme points]
+        A point $x \in C$, where $C \subset \RR^n$ is convex, is called an \emph{extreme point} if it cannot be written as a convex combination of two distinct elements of $C$.
+    \end{definition}
+    
+    Observe that the max of a convex function $f$ on a convex set $C$ occurs at an extreme point of $C$. Indeed, we have
+    \begin{align*}
+        f(ty + (1-t)z) \leq tf(y) + (1-t)f(z) \leq \max(f(x), f(y))
+    \end{align*}
+    
+    In general, sets can of course have infinitely many extreme points. But, happily, for a linear program, the constraint set is always a polytope, and hence has finitely many extreme points.
+    
+    \subsection{Basic solutions and basic feasible solutions}
+
+    Recall that $A$ is an $n$ by $m$ matrix. Denote its rows $a_1, \dots, a_m$ and its columns $A_1, \dots, A_n$. We make three assumptions.
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item \emph{The rows of $A$ are linearly independent.} This is without loss of generality, since otherwise the constraints are redundant.
+        \item \emph{Every set of $m$ columns of $A$ is linearly independent}. This assumption loses generality, but we can often make it work by adding some random noise to each entry.
+    \end{enumerate}
+    
+    \begin{definition}[Basic solutions and basic feasible solutions]
+        A point $x$ that satisfies $Ax = b$ and has at most $m$ non-zero entries is called a \emph{basic solution}. A basic solution $x$ that satisfies $x \geq 0$ is caled a \emph{basic feasible solution}
+    \end{definition}
+    
+    Choose indices $\{B(1), \dots, B(m)\}$ such that $x_i = 0$ for all $i \notin \{B(1), \dots, B(m)\}$. Then
+    \begin{align*}
+        Ax = \sum_{i=1}^n A_ix_i = \sum_{i=1}^m A_{B(i)}x_{B(i)} = Bx_b
+    \end{align*}
+    where
+    \begin{align*}
+        \begin{pmatrix}
+            \vline & & \vline \\ 
+            A_{B(1)} & \cdots & A_{B(m)} \\
+            \vline & & \vline \\ 
+        \end{pmatrix}
+    \end{align*}
+    and
+    \begin{align*}
+        x_B = \begin{pmatrix}
+            x_{B(1)} \\
+            \vdots \\
+            x_{B(m)} \\
+        \end{pmatrix}
+    \end{align*}
+    Then
+    \begin{align*}
+        Ax = b \iff Bx_B = b \iff x_B = B^{-1}b
+    \end{align*}
+    Terminology is that
+    \begin{itemize}
+        \item $A_{B(1)}, \dots, A_{B(m)}$ are the \emph{basic columns};
+        \item $x_{B(1)}, \dots, x_{B(m)}$ are the \emph{basic variables};
+        \item $B$ is the \emph{basis matrix}.
+    \end{itemize}
+    Note also that, for every choice of $B$, we obtain a basic solution. If $B^{-1}b \geq 0$, then that basis $B$ leads to a basic feasible solution. Now, we may state the final assumption:
+    \begin{enumerate}[resume, label=\protect\circled{\arabic*}] 
+        \item \emph{Every basic feasible solution is non-degenerate -- it has exactly $m$ non-zero entries}. This isn't essential, and loses generality, but will make our lives easier.
+    \end{enumerate}
+    
+    \subsection{Naive solutions}
+
+    \begin{theorem}
+        A vector $x$ is a basic feasible solution if and only if it is an extreme point of the set $X(b) = \{x: Ax = b, \; x \geq 0\}$.
+    \end{theorem}
+    
+    \begin{remark*}
+        Now we have a (bad) method to solve linear programs! Find all $\binom n m$ basic solutions, filter out the basic feasible solutions, and evaluate $c^\intercal x$ at each of these. This is bad, however, since $\binom n m$ is typically exponential in $n$.
+    \end{remark*}
+
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] Suppose $x$ is a basic feasible solution that can be written as $x = (1-t)y+tz$ for $y \neq z \in X(b)$ and $t \in (0, 1)$.
+
+            If $x_i = 0$, then, since
+            \begin{align*}
+                x_i = (1-t)y_i + tz_i
+            \end{align*}
+            and $y_i$ and $z_i$ are non-negative, it must be that $y_i = z_i = 0$. Hence $y$ and $z$ are basic solutions corresponding to the same basis as $x$, so $x=y=z$, contradiction.
+            \item[$\impliedby$] We take the contrapositive. Suppose $x$ is not a basic feasible solution. If $x \notin X(b)$, then clearly it is not an extreme point of $X(b)$, so we assume $X \in X(b)$.
+            
+            Because $x$ is not a basic feasible solution, it must have $r > m$ positive entries. Suppose $x_{i_1}, \dots, x_{i_r} > 0$, the columns $A_{i_1}, \dots, A_{i_r}$ are linearly dependent, so we have $w_{i_1}, \dots, w_{i_r}$ not all zero with
+            \begin{align*}
+                w_{i_1}A_{i_1} + \dots + w_{i_r}A_{i_r} = 0
+            \end{align*}
+            Make a vector $w$ which is zero everywhere except at locations $i_j$, where $w(i_j) = w_{i_j}$. Then $Aw = 0$. Now consider two new points
+            \begin{align*}
+                y &= x + \eps w \\
+                z &= x - \eps w
+            \end{align*}
+            for a small $\eps > 0$. These certainly have $Ay = Az = b$ and, for sufficiently small $\eps$, we can also ensure that all the entries are non-negative, since we are only changing the non-negative entries of $x$, and by a sufficiently small amount not to make them negative. But then
+            \begin{align*}
+                x = \frac 1 2 y + \frac 1 2 z
+            \end{align*}
+            so $x$ is not an extreme point.            
+        \end{itemize}
+    \end{proof}
+    
+    \subsection{Towards the simplex method}
+
+    Recall that, for a linear program in standard form, the optimality conditions are
+    \begin{itemize}
+        \item primal feasibility, $Ax = b$, $x \geq 0$;
+        \item dual feasibility, $A^\intercal \lambda \leq c$;
+        \item complementary slackness, $x^\intercal (c-A^\intercal \lambda) = 0$.
+    \end{itemize}
+    For any basic feasible solution, the complementary slackness equation reduces to
+    \begin{align*}
+        x_B^\intercal (c_B-B^\intercal \lambda) = 0
+    \end{align*}
+    But then, since $x_B > 0$ by non-degeneracy, we must have
+    \begin{align*}
+        c_B &= B^\intercal \lambda \\
+        \lambda &= (B^\intercal)^{-1} c_B
+    \end{align*}
+    Then, if
+    \begin{align*}
+        \Aboxed{A^\intercal (B^\intercal)^{-1} c_B \leq c}
+    \end{align*}
+    then $\lambda$ is dual feasible and hence optimal.
+    
+    \begin{definition}[Reduced cost vector]
+        The \emph{reduced cost vector} $\bar c$ is defined as
+        \begin{align*}
+            \bar c^\intercal = c^\intercal - c_B^\intercal B^{-1} A \iff \bar c_j = c_j - c_B^\intercal B^{-1} A_j
+        \end{align*}
+    \end{definition}
+    
+    If, for a basic feasible solution $x$, $\bar c \geq 0$, then $x$ is optimal.
+
+    \subsection{The simplex method}
+
+    Let
+    \begin{align*}
+        x = (x_{B(1)}, x_{B(2)}, \dots, x_{B(m)}, 0, \dots, 0)
+    \end{align*}
+    Suppose, for some $j \notin \{B(1), \dots, B(m)\}$, $\bar c_j < 0$. Let us attempt to make $c_j > 0$ while keeping all non-basic $x_i$'s = 0. In other words, we want to perturb
+    \begin{align*}
+        x' = x + t(d_{B(1)}, \dots, d_{B(m)}, 0, \dots, 0, 1, 0, \dots, 0)
+    \end{align*}
+    where 1 is in the $j^\text{th}$ position. But we want $Ax' = b$ so, since $Ax = b$ already, we need to solve
+    \begin{align*}
+        A \begin{pmatrix}
+            d_B \\
+            0 \\
+            \vdots \\
+            0 \\
+            \vdots \\
+        \end{pmatrix} = 0 \iff Bd_B + A_j = 0 \implies d_B = -B^{-1}A_j
+    \end{align*}
+    What, then, is the new cost? We have
+    \begin{align*}
+        c^\intercal x' &= c^\intercal x + t(c_B^\intercal d_B + c_j) \\
+        &= c^\intercal x + t(c_j - c_B^\intercal B^{-1}A_j) \\
+        &= c^\intercal x + t \bar c_j
+    \end{align*}
+    So what should we make $t$? Well, since the cost decreases the further we go, we want to make $t$ as large as possible. But, if we go too far, we will leave the feasible set. Hence, we calculate
+    \begin{align*}
+        -\frac{x_{B(1)}}{d_{B(1)}}, \dots, -\frac{x_{B(m)}}{d_{B(m)}}
+    \end{align*}
+    and let $t^*$ be the smallest positive of these. Then, for some $i$,
+    \begin{align*}
+        t^* &\leq -\frac{x_{B(i)}}{d_{B(i)}} \\
+        \implies x_{B(i)} + t^*d_{B(i)} &\geq 0
+    \end{align*}
+    so the new solution is still feasible. It remains to check that $x'$ has at most $m$ non-zero entries. Observe that, since $t^* = -\frac{x_{B(i)}}{d_{B(i)}}$ for some $i$, the $i^\text{th}$ entry in $x'$ goes to zero, and $x'_j$ has become non-zero. Hence we still have at most $m$ non-zero entries, as required.
+
+    \begin{remark*}
+        Under the assumption of non-degeneracy mentioned earlier, we actually know that the $i$ is unique, so $x'$ has exactly $m$ non-zero entries.
+    \end{remark*}
+    
+    In practice, the algorithm goes as follows:
+    
+    \begin{algorithm}[Simplex algorithm]
+        \begin{enumerate}[label=\protect\circled{\arabic*}]
+            \item Sitting at a basic feasible solution $x$, we construct the \emph{simplex tableau} as follows:
+            \begin{center}    
+                \begin{tabular}{| c | c c c |}
+                    \hline
+                    $-c_B^\intercal x_B$ & $\bar c_1$ & $\cdots$ & $\bar c_n$ \\
+                    \hline
+                    $x_{B(1)}$ & $\mid$ & $\cdots$ & $\mid$ \\
+                    $\vdots$ & $B^{-1}A_1$ & $\cdots$ & $B^{-1}A_n$ \\
+                    $x_{B(1)}$ & $\mid$ & $\cdots$ & $\mid$ \\
+                    \hline
+                \end{tabular}        
+            \end{center}
+            \item We find
+            \begin{itemize}
+                \item the \emph{pivot column} -- any with $\bar c_i < 0$;
+                \item the \emph{pivot row} -- with the minimal value of $\frac{x_{B(j)}}{(B^{-1}A_j)(j)}$;
+                \item the \emph{pivot entry}, at the intersection of these.
+            \end{itemize}
+            and then perform row operations to make the pivot column all zeores except in the pivot entry.
+            \item Continue until $\bar c \geq 0$.       
+        \end{enumerate}       
+    \end{algorithm}
+    
+    \begin{remark*}[History of the simplex algorithm]
+        The simplex algorithm was developed by George Danzig while working for the US military in 1947. It was practical to run even on computers at that time, and so it was assumed that it ran in polynomial time.
+
+        However, Klee and Minty in 1970 found that certain pathological cases could take exponential time. Indeed, in 1979, Khachiyan's ellipsoid algorithm showed that linear programs are in P -- but the algorithm was useless in practice.
+
+        Then, in 1984, Narendra Karmarkar invented his eponymous algorithm, which turned out to be a special case of barrier methods innovated by Soviet mathematicians in the 60s.
+    \end{remark*}
+
+    \section{Applications of linear programs}
+
+    \subsection{Game theory}
+
+    \subsubsection{Two-person zero-sum games}
+
+    \begin{definition}[Payoff matrix]
+        For a two-person zero-sum game, the \emph{payoff matrix} is an $m$ by $n$ matrix $A$ such that, if player 1 plays action $i$ and player 2 plays action $j$, then player 1 gains $A_{ij}$ points and player 2 loses $A_{ij}$ points.
+    \end{definition}
+    
+    \begin{example*}[Rock-paper-scissors]
+        For rock-paper-scissors, the payoff matrix is
+        \begin{align*}
+            \begin{pmatrix}
+                0 & -1 & 1 \\
+                1 & 0 & -1 \\
+                -1 & 1 & 0 \\
+            \end{pmatrix}
+        \end{align*}
+        where actions 1, 2, and 3 are rock, paper, scissors respectively.        
+    \end{example*}
+    
+    If P1 plays $i$, then they can expect to have a payoff of
+    \begin{align*}
+        \min_{j \in \{1, \dots, n\}} A_{ij}
+    \end{align*}
+    Hence, they should try and solve
+    \begin{align*}
+        \max_{i \in \{1, \dots, m\}} \min_{j \in \{1, \dots, n\}} A_{ij} && (\dagger)
+    \end{align*}
+    Conversely, P2 should solve
+    \begin{align*}
+        \min_{j \in \{1, \dots, n\}} \max_{i \in \{1, \dots, m\}} A_{ij} && (\ddagger)
+    \end{align*}
+    
+    \begin{example*}
+        Suppose
+        \begin{align*}
+            A = \begin{pmatrix}
+                1 & 2 \\
+                3 & 4 \\
+            \end{pmatrix}
+        \end{align*}
+        Then, P1 should play $i=2$, and P2 should play $j=1$, so 3 will be chosen every time. In other words, $(\dagger)$ and $(\ddagger)$ have the same solution. This is called a \emph{saddle point}.        
+    \end{example*}
+    
+    \begin{example*}
+        Suppose instead
+        \begin{align*}
+            A = \begin{pmatrix}
+                4 & 2 \\
+                1 & 3 \\
+            \end{pmatrix}
+        \end{align*}
+        Then P1 should play $i=1$ in which case P2 would play $j=2$ -- but, P2 should play $j=2$ in which case P1 would play $i=2$. Indeed, the solutions to $(\dagger)$ and $(\ddagger)$ are not the same.        
+    \end{example*}
+    
+    \subsubsection{Pure and mixed strategies}
+
+    A \emph{pure strategy}, which we have considered up to this point, is when the player in question, say P1, picks a fixed action. Alternatively, P1 could pick a distribution $p = (p(1), \dots, p(m))^\intercal$ and play their actions according to these probabilities. But we can do a similar analysis! P1's expected payoff is
+    \begin{align*}
+        \min_{j \in \{1, \dots, n\}} \sum_i A_{ij} p_i
+    \end{align*}
+    so P1 looks to solve
+    \begin{align*}
+        \max_p \min_{j \in \{1, \dots, n\}} \sum_i A_{ij} p_i
+    \end{align*}
+    Indeed, we can re-express this as
+    \begin{align*}
+        \max v \\
+        A^\intercal p \geq ve \\
+        e^\intercal p = 1 \\
+        p \geq 0
+    \end{align*}
+    where $e$ is the vector of all ones. Likewise, P2's problem is
+    \begin{align*}
+        \min w \\
+        Aq \leq we \\
+        e^\intercal q = 1 \\
+        q \geq 0
+    \end{align*}
+    Brilliantly, it turns out that these two problems are dual. Importantly, this means there will always be a saddle point. Observe
+    \begin{align*}
+        L(w, q, s, \lambda_1, \lambda_2) &= w + \lambda_1^\intercal (Aq+s-we) - \lambda_2^\intercal (e^\intercal q - 1) \\
+        &= w(1-\lambda_1^\intercal e) + (\lambda_1^\intercal A - \lambda_2  e^\intercal) q + \lambda_1^\intercal s + \lambda_2
+    \end{align*}
+    Hence, $\Lambda$ has
+    \begin{itemize}
+        \item $\lambda_1^\intercal e = 1$;
+        \item $\lambda_1^\intercal A \geq \lambda_2 e^\intercal$;
+        \item $\lambda_1 \geq 0$.
+    \end{itemize}
+    Then, when $\lambda \in \Lambda$, $\min L = \lambda_2$. The dual, then, is
+    \begin{align*}
+        \max \lambda_2 \\
+        A^\intercal \lambda_1 \geq \lambda_2e \\
+        \lambda_1^\intercal e = 1 \\
+        \lambda_1 \geq 0
+    \end{align*}
+    -- familiar!
+
+    \begin{theorem}[Optimal strategies in two-player zero-sum games]
+        A mixed strategy $p$ is optimal for P1 if and only if there exists a strategy $q$ for P2 and a number $v$ such that
+        \begin{itemize}
+            \item $A^\intercal p \geq ve$, $e^\intercal p = 1$, $p \geq 0$ (primal feasibility);
+            \item $Aq \leq ve$, $e^\intercal q = 1$, $q \geq 0$ (dual feasibility);
+            \item $v = p^\intercal Aq$ (complementary slackness).
+        \end{itemize}
+    \end{theorem}
+    
+    \begin{proof}
+        We have already established the duality of the problems. It remains only to check complementary slackness. If $(p, v)$ and $(q, w)$ are primal resp. dual optimal, then we need
+        \begin{align*}
+            (Aq-we)^\intercal p &= 0 \\
+            q^\intercal (A^\intercal p - ve) &= 0
+        \end{align*}
+        giving
+        \begin{align*}
+            p^\intercal Aq = w = v
+        \end{align*}
+        as required.       
+    \end{proof}
+    
+    Notably, the difference between playing first and second that we had with fixed strategies disappears in the case of fixed strategies.
+
+    In practice, how can we apply these techniques to solve a game?
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item Look for a saddle point.
+        \item Look for dominating actions -- whose payoffs are always greater than another for the same response. We can drop rows and columns which are dominated.
+        \item Solve the LP, either graphically or using the simplex method, to find the best mixed strategy.
+    \end{enumerate}
+    
+    \begin{example*}
+        Suppose the payoff matrix is
+        \begin{align*}
+            \begin{pmatrix}
+                2 & 3 & 4 \\
+                3 & 1 & 1/2 \\
+                -1 & 3 & 2 \\
+            \end{pmatrix}
+        \end{align*}
+        Observe that every entry in row 1 is greater than the corresponding entry in row 3, so row 3 is dominated and we can look at the submatrix
+        \begin{align*}
+            \begin{pmatrix}
+                2 & 3 & 4 \\
+                3 & 1 & 1/2
+            \end{pmatrix}
+        \end{align*}
+        Hence, P1's mixed strategy is $(p, 1-p, 0)$. The problem, then, is
+        \begin{align*}
+            &\max v \\
+            &\begin{cases}
+                2p + 3(1-p) \geq v \\
+                3p + (1-p) \geq v \\
+                4p + \frac 1 2 (1-p) \geq v \\
+                0 \leq p \leq 1
+            \end{cases}
+        \end{align*}
+        We can solve this graphically to obtain the optimal solution $(2/3, 1/3, 0)$, which satisfies optimality conditions.       
+    \end{example*}
+    
+    \subsection{Network flows}
+
+    \begin{definition}[Directed graph]
+        A \emph{directed graph} is $G = (V, E)$, where $V$ is the set of vertices and $E \subseteq V \times V$ is the set of edges.
+    \end{definition}
+    
+    In the \emph{minimum cost flow problem}, we define a \emph{flow} $x_{ij}$ for each edge $(i, j) \in E$. We also define
+    \begin{itemize}
+        \item a vector $b \in \RR^n$ such that $b_i$ is the net flow leaving vertex $i$, where flow into $i$ is counted as negative;
+        \item a cost matrix $C$ where $C_{ij}$ is the cost per unit flow along edge $(i, j)$;
+        \item optionally, matrices $\bar M$ and $\underline M$ which give the maximal and minimal flow along each edge, respectively.
+    \end{itemize}
+    
+    The problem, then, is
+    \begin{align*}
+        \min \sum c_{ij}x_{ij} \\
+        b_i + \sum_{(j, i) \in E} x_{ji} = \sum_{(i, j) \in E} x_{ij} \\
+        \underline M_{ij} \leq x_{ij} \leq \bar M_{ij}
+    \end{align*}
+    
+    \subsubsection{The transport problem}
+
+    Here, we have $n$ suppliers $i \in \{1, 2, \dots, n\}$ and $m$ consumers $j \in \{1, 2, \dots, m\}$ -- each supplier $i$ produces $s_i$ goods, and consumer $j$ demands $d_j$ goods, where $\sum s_i = \sum d_j$. Also, the graph is complete bipartite between the suppliers and consumers. The problem becomes
+    \begin{align*}
+        \min \sum c_{ij}x_{ij} \\
+        \sum_j x_{ij} = s_i && 1 \leq i \leq n \\
+        \sum_i x_{ij} = d_j && 1 \leq j \leq m \\
+        x_{ij} \geq 0
+    \end{align*}
+    Excitingly, this is already in standard form, although some of the constraints are redundant. Indeed, what is really exciting is the next theorem.
+
+    \begin{theorem}
+        Every minimum cost flow problem with finite capacities can be recast as an equivalent transport problem.
+    \end{theorem}
+    
+    \begin{remark*}
+        If $C_{ij} \geq 0$ for every $(i, j)$, then we can assume $M_{ij} < \infty$ without loss of generality. Indeed, we can just make $M_{ij} = \sum_{i \in V} |b_i|$.
+    \end{remark*}
+    
+    \begin{proof}
+        We can set
+        \begin{align*}
+            \tilde x_{ij} &= x_{ij} - \underline M_{ij} \\
+            \implies 0 \leq \tilde x_{ij} &\leq \bar M_{ij} - \underline M_{ij}
+        \end{align*}
+        Now $\sum c_{ij} x_{ij} = \sum c_{ij} \tilde x_{ij} + \sum \underline M_{ij} c_{ij}$. Then, we can rewrite the flow condition by putting
+        \begin{align*}
+            \tilde b_i = b_i + \sum_{(j, i) \in E} \underline M_{ij} - \sum_{(i, j) \in E} \underline M_{ij}
+        \end{align*}
+        Hence, we assume wlog $\underline M_{ij} = 0$. Now, for every vertex $i$, construct a consumer, and for every edge $(i, j)$, construct a supplier. Define
+        \begin{align*}
+            s_{ij} &= \bar M_{ij} \\
+            d_i &= \sum_{k: (i, k) \in E} \bar M_{ik} - b_i \\
+            C_{(i, j) \to i} &= 0 \\
+            C_{(i, j) \to j} &= c_{ij}
+        \end{align*}
+
+        Letting $x_{ij}$ be the flow from vertex $(i, j)$ to vertex $j$, we can see $\bar M_{ij} - x_{ij}$ is the flow from vertex $(i, j)$ to vertex $i$. Observe that the total flow into consumer $i$ is
+        \begin{align*}
+            \sum_{k: (i, k) \in E} (\bar M_{ik} - x_{ik}) + \sum_{k: (k, i) \in E} x_{ki}
+        \end{align*}
+        and the total demand is
+        \begin{align*}
+            \sum_{k: (i, k) \in E} \bar M_{ik} - b_i
+        \end{align*}
+        Setting these equal, we obtain
+        \begin{align*}
+            \sum_{k: (i, k) \in E} x_{ik} = b_i + \sum_{k: (k, i) \in E} x_{ki}
+        \end{align*}
+        which is exactly the flow condition from the original problem. Furthermore, for any solution to the transport problem, the cost is $\sum c_{ij} x_{ij}$ as required.  
+    \end{proof}
+    
+    \subsubsection{The transport algorithm}
+
+    Recall the statement of the transport problem. Let us apply the optimality conditions to obtain
+
+    \begin{theorem}[Optimality for the transport problem]
+        If, for some feasible $x$, we have dual variables $\lambda \in \RR^n$ and $\mu \in \RR^m$ such that
+        \begin{itemize}
+            \item $c_{ij} \geq \lambda_i + \mu_j$;
+            \item $\left(c_{ij}-(\lambda_i+\mu_j)\right)x_{ij} = 0$
+        \end{itemize}
+        for all $i$, $j$, then $x$ is optimal.
+    \end{theorem}
+    
+    \begin{proof}
+        The Lagrangian is
+        \begin{align*}
+            L(x, \lambda, \mu) &= \sum_i \sum_j c_{ij}x_{ij} - \sum_i \lambda_i\left(\sum_j x_{ij}-s_i\right) - \sum_j \mu_j \left(\sum_i x_{ij} - d_j\right) \\
+            &= \sum_i \sum_j \left(c_{ij}-\lambda_i-\mu_j\right)x_{ij} + \sum_i \lambda_i s_i + \sum_j \mu_j d_j
+        \end{align*}
+        Then, we can read off the conditions as dual feasibility and complementary slackness, respectively. The result follows.        
+    \end{proof}
+    
+    \begin{remark*}
+        For a given basic feasible solution $x$, when we solve for $(\lambda, \mu)$ using complementary slackness, we may withotu loss of generality take $\lambda_1 = 0$.
+    \end{remark*}
+    
+    We thus have the following algorithm:
+    
+    \begin{example*}
+        Take
+        \begin{align*}
+            (s_1, s_2, s_3) &= (14, 10, 9) \\
+            (d_1, d_2, d_3, d_4) &= (12, 5, 8, 8)
+        \end{align*}
+        We can easily construct a basic feasible solution, for example by alternately satisfying demand and supply of increasing consumers and suppliers.
+
+        Take also
+        \begin{align*}
+            C = \begin{pmatrix}
+                5 & 3 & 4 & 6 \\
+                2 & 7 & 4 & 1 \\
+                5 & 6 & 2 & 4
+            \end{pmatrix}
+        \end{align*}
+        giving the tableau
+        \begin{center}    
+            \begin{tabular}{| c | c c c c | c |}
+                \hline
+                & $\mu_1$ & $\mu_2$ & $\mu_3$ & $\mu_4$ &  \\
+                \hline
+                $\lambda_1$ & $\lambda_1 + \mu_1 \quad 12 \quad \mathbf{5}$ & $\lambda_1 + \mu_2 \quad 2 \quad \mathbf{3}$ & $\lambda_1 + \mu_3 \quad 0 \quad \mathbf{4}$ & $\lambda_1 + \mu_4 \quad 0 \quad \mathbf{6}$ & $\mathbf{14}$ \\
+                $\lambda_2$ & $\lambda_2 + \mu_1 \quad 0 \quad \mathbf{2}$ & $\lambda_2 + \mu_2 \quad 3 \quad \mathbf{7}$ & $\lambda_2 + \mu_3 \quad 7 \quad \mathbf{4}$ & $\lambda_2 + \mu_4 \quad 0 \quad \mathbf{1}$ & $\mathbf{10}$ \\
+                $\lambda_3$ & $\lambda_3 + \mu_1 \quad 0 \quad \mathbf{5}$ & $\lambda_3 + \mu_2 \quad 0 \quad \mathbf{6}$ & $\lambda_3 + \mu_3 \quad 1 \quad \mathbf{2}$ & $\lambda_3 + \mu_4 \quad 8 \quad \mathbf{4}$ & $\mathbf{9}$ \\
+                \hline
+                & $\mathbf{12}$ & $\mathbf{5}$ & $\mathbf{8}$ & $\mathbf{8}$ & \\
+                \hline
+            \end{tabular}        
+        \end{center}   
+        where the $\lambda_i$ and $\mu_j$ are as yet unknown. We obtain
+        \begin{align*}
+            \begin{cases}
+                \lambda_1 + \mu_1 = 5 \\
+                \lambda_2 + \mu_2 = 7 \\
+                \lambda_3 + \mu_3 = 2 \\
+                \lambda_1 + \mu_2 = 3 \\
+                \lambda_2 + \mu_3 = 4 \\
+                \lambda_3 + \mu_4 = 4           
+            \end{cases}
+        \end{align*}
+        Recalling we may without loss of generality take $\lambda_1 = 0$, we obtain
+        \begin{align*}
+            \lambda_1 = 0 && \mu_1 = 5 \\
+            \lambda_2 = 4 && \mu_2 = 3 \\
+            \lambda_3 = 2 && \mu_3 = 0 \\
+            && \mu_4 = 2
+        \end{align*}
+        Hence we have the following tableau:
+        \begin{center}    
+            \begin{tabular}{| c | c | c | c | c | c |}
+                \hline
+                & $5$ & $3$ & $0$ & $2$ &  \\
+                \hline
+                $0$ & $5 \quad 12 \quad \mathbf{5}$ & $3 \quad 2 \quad \mathbf{3}$ & $0 \quad 0 \quad \mathbf{4}$ & $2 \quad 0 \quad \mathbf{6}$ & $\mathbf{14}$ \\
+                $4$ & $9 \quad 0 \quad \mathbf{2}$ & $7 \quad 3 \quad \mathbf{7}$ & $4 \quad 7 \quad \mathbf{4}$ & $6 \quad 0 \quad \mathbf{1}$ & $\mathbf{10}$ \\
+                $2$ & $7 \quad 0 \quad \mathbf{5}$ & $5 \quad 0 \quad \mathbf{6}$ & $2 \quad 1 \quad \mathbf{2}$ & $4 \quad 8 \quad \mathbf{4}$ & $\mathbf{9}$ \\
+                \hline
+                & $\mathbf{12}$ & $\mathbf{5}$ & $\mathbf{8}$ & $\mathbf{8}$ & \\
+                \hline
+            \end{tabular}        
+        \end{center}    
+        Now, we find one edge which we want to add some mass to (by checking where $\lambda_i + \mu_j > c_{ij}$), and adjust the other edges to keep the total flow the same, by finding a cycle containing that edge. In particular, we add as much as possible without making any transports negative.
+    \end{example*}
+    
+    \subsection{Max flow/min cut problem}
+
+    \subsubsection{Max flow}
+
+    Given $G = (V, E)$ with source vertex 1 and sink vertex $n$ ($|V| = n$), the max flow problem is
+    \begin{align*}
+        \max_{x, \delta} \delta \\
+        \sum_{\{j: (1, j) \in E\}} x_{ij} = \delta \\
+        \sum_{\{i: (i, n) \in E\}} x_{in} = \delta \\
+        \sum_{\{j: (i, j) \in E\}} x_{ij} = \sum_{\{j: (j, i) \in E\}} \\
+        0 \leq x_{ij} \leq c_{ij}
+    \end{align*}
+    Alternatively, we can define
+    \begin{align*}
+        \phi_i(x) = \sum_{\{j: (i, j) \in E\}} x_{ij} - \sum_{\{j: (j, i) \in E\}} x_{ji}
+    \end{align*}
+    whereupon the problem becomes
+    \begin{align*}
+        \max \delta \\
+        \phi_1(x) = \delta \\
+        \phi_n(x) = -\delta \\
+        \phi_i(x) = 0 \\
+        0 \leq x_{ij} \leq c_{ij}
+    \end{align*}
+    and indeed we can also make
+    \begin{align*}
+        b_i = \begin{cases}
+            +1 & i=1 \\
+            -1 & i=n \\
+            0 & \text{o/w}
+        \end{cases}
+    \end{align*}
+    and obtain
+    \begin{align*}
+        \max \delta \\
+        \phi_i(x) - b_i\delta = 0 \\
+        0 \leq x_{ij} \leq c_{ij}
+    \end{align*}
+    
+    \subsubsection{Min cut}
+
+    \begin{definition}[Cuts]
+        A \emph{cut} of a graph $G$ is a partition of $V$ into $S$ and $V \setminus S$. The \emph{capacity} or \emph{value} of the cut is
+        \begin{align*}
+            \sum_{\{(i, j) \in E:\; i \in S,\, j \in V \setminus S\}} c_{ij}
+        \end{align*}
+    \end{definition}
+    
+    \begin{theorem}
+        Let $x$ be a feasible flow with flow value $\delta$. Then, for any cut $(S, V \setminus S)$ such that $1 \in S$, $n \in V \setminus S$, we have
+        \begin{align*}
+            \delta \leq C(S)
+        \end{align*}
+    \end{theorem}
+    
+    \begin{remark*}
+        It is immediate that the max flow must be less than or equal to the min cut.
+    \end{remark*}
+    
+    \begin{proof}
+        For any sets $A$, $B \subseteq V$, write
+        \begin{align*}
+            f_x(A, B) = \sum_{\{(i, j) \in E:\; i \in A,\, j \in B\}} x_{ij}
+        \end{align*}
+        which is defined regardless of whether $A$, $B$ are disjoint. Now, summing up the flow constraints over $i \in S$, we have
+        \begin{align*}
+            \sum_{i \in S} \left(\sum_{\{j:\;(i, j) \in E\}} x_{ij} - \sum_{\{j:\;(j, i) \in E\}}\right) x_{ji} = \delta
+        \end{align*}
+        which gives
+        \begin{align*}
+            \delta &= f_x(S, V) - f_x(V, S) \\
+            &= f_x(S, S) + f_x(S, V \setminus S) - f_x(S, S) - \underbrace{f_x(V \setminus S, S)}_{\geq 0} \\
+            \leq f_x(S, V \setminus S) \\
+            \leq C(S)
+        \end{align*}
+    \end{proof}
+    
+    \begin{theorem}
+        Let $\delta^*$ be the max value of the flow. Then
+        \begin{align*}
+            \delta^* = \min \{C(S): S \subset V,\; 1 \in V,\; n \in V \setminus S\}
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        It suffices to produce a set $S$ such that $c(s) = \delta^*$, by the previous theorem. We define an \emph{augmenting path} to be a path from 1 to $n$, ignoring edge orientations, such that every edge traversed forward satisfies $x_{ij} < c_{ij}$ and every edge traversed backwards satisfies $x_{ij} > 0$.
+
+        It is clear that an optimal solution to the flow problem cannot have an augmenting path insofar as forward edges are concerned. For the backward edges, we can subtract off a bit of the backward flow and hence get more flow to the sink. Hence an optimal solution can have no augmenting path. Set
+        \begin{align*}
+            S = \{1\} \cup \{i \text{ s.t. there is an augmenting path 1 to } i\}
+        \end{align*}
+        which satisfies $1 \in S$, $n \notin S$. For this set, we have that, summing up the flow constraints as before,
+        \begin{align*}
+            S^* = f_x(S, V \setminus S) - f_x(V \setminus S, S)
+        \end{align*}
+        Observe that, for all forward paths $S$ to $V \setminus S$, it must be that $x_{ij} = c_{ij}$, as otherwise we could construct an augmenting path -- likewise, every backward path must have $x_{ij} = 0$. Hence, $f_x(S, V \setminus S) = C(S)$, while $f_x(V \setminus S, S) = 0$, giving that $\delta^* = C(S)$ as required.
+    \end{proof}
+    
+    \begin{remark*}
+        In the same way we used the dual problem as a certificate of validity for our proposed solutions to linear programs, we can construct a cut to act as a certificate of validity for proposed solutions to the max flow problem. Indeed, this is called the \emph{Ford-Fulkerson algorithm}.
+    \end{remark*}
+    
+    In fact, this algorithm is not a perfect application of simplex, and it is not guaranteed that it will ever converge to the solution.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+\end{document}

@@ -15,7 +15,7 @@
     \section{Fundamentals}
 
     \begin{definition}
-        Let \(\Omega\) be a set and \(\mathcal F\) is a collection of subsets of \(\Omega\). We call \(\mathcal F\) a \emph{\(\sigma\)-algebra} if
+        Let \(\Omega\) be a set and \(\mathcal F\) a collection of subsets of \(\Omega\). We call \(\mathcal F\) a \emph{\(\sigma\)-algebra} if
         \begin{itemize}
             \item \(\Omega \in \mathcal F\);
             \item if \(A \in \mathcal F\), then \(A^\comp \in \mathcal F\);
@@ -67,19 +67,19 @@
         \begin{itemize}
             \item \emph{Rolling a fair die}. Then \(\Omega = \{1, 2, 3, 4, 5, 6\}\), \(\mathcal F = \mathcal P(\Omega)\), and
             \begin{align*}
-                \PP(A) = \frac{\mid A\mid }{6}
+                \PP(A) = \frac{| A| }{6}
             \end{align*}
             since all outcomes are equally likely.
     
-            \item \(\Omega = \{\omega_1, \dots, \omega_n\}\), \(\mathcal F = \mathcal P(\Omega)\), \(\PP(A) = \frac{\mid A\mid }{\mid \Omega\mid }\) models the experiment of picking an element of \(\Omega\) uniformly at random.
+            \item \(\Omega = \{\omega_1, \dots, \omega_n\}\), \(\mathcal F = \mathcal P(\Omega)\), \(\PP(A) = \frac{| A| }{| \Omega| }\) models the experiment of picking an element of \(\Omega\) uniformly at random.
             
-            \item \emph{Picking balls from a bag}. Suppose we have \(n\) balls labelled \(\{1, \dots, n\}\), and we pick \(k \leq n\) balls uniformly at random without replacement. Then \(\Omega = \{A:  A \subseteq \{1, \dots, n\}, \mid A\mid  = k\}\), so \(\mid \Omega\mid  = \binom n k\) and \(\PP(\{\omega\}) = \binom n k ^{-1}\) for any \(\omega \in \Omega\).
+            \item \emph{Picking balls from a bag}. Suppose we have \(n\) balls labelled \(\{1, \dots, n\}\), and we pick \(k \leq n\) balls uniformly at random without replacement. Then \(\Omega = \{A:  A \subseteq \{1, \dots, n\}, | A|  = k\}\), so \(| \Omega|  = \binom n k\) and \(\PP(\{\omega\}) = \binom n k ^{-1}\) for any \(\omega \in \Omega\).
             
-            \item \emph{A deck of 52 cards}. Take a well-shuffled deck of 52 cards. Then \(\Omega = \{\text{all permutations of 52 cards}\}\), so \(\mid \Omega\mid  = 52!\).
+            \item \emph{A deck of 52 cards}. Take a well-shuffled deck of 52 cards. Then \(\Omega = \{\text{all permutations of 52 cards}\}\), so \(| \Omega|  = 52!\).
             
             What is, for example, \(\PP(\text{top 2 cards are aces})\)? It is \(\frac{4 \cdot 3 \cdot 50!}{52!}\).
 
-            \item \emph{Largest digit}. Consider a string of \(n\) random digits from 0 up to 9. Then \(\Omega = \{0, \dots, 9\}^n\), \(\mid \Omega\mid  = 10^n\).
+            \item \emph{Largest digit}. Consider a string of \(n\) random digits from 0 up to 9. Then \(\Omega = \{0, \dots, 9\}^n\), \(| \Omega|  = 10^n\).
             
             Consider the events \(A_k = \{\text{no digit exceeds } k\}\), \(B_k = \{\text{largest digit is } k\}\). Then
             \begin{align*}
@@ -89,7 +89,7 @@
 
             \item \emph{Birthday problem}. There are \(n\) people. What is the probability that at least 2 of them share the same birthday?
             
-            Assume each birthday is equally likely to be one of \(\{1, \dots, 365\}\). Then \(\Omega = \{1, \dots, 365\}^n\), \(\mid \Omega\mid  = 365^n\), and \(\PP(\{\omega\}) = \frac{1}{365^n}\).
+            Assume each birthday is equally likely to be one of \(\{1, \dots, 365\}\). Then \(\Omega = \{1, \dots, 365\}^n\), \(| \Omega|  = 365^n\), and \(\PP(\{\omega\}) = \frac{1}{365^n}\).
 
             Let \(A = \{\text{at least 2 people have the same birthday}\}\). Instead we count \(A^\comp = \{\text{all birthdays different}\}\).
 
@@ -107,7 +107,7 @@
     Let us introduce some notions.
 
     \begin{enumerate}
-        \item Let \(\Omega\) be a finite set with \(\mid \Omega\mid  = n\). We want to partition \(\Omega\) into \(k\) disjoint subsets \(\Omega_1, \dots, \Omega_k\) with \(\mid \Omega_i\mid  = n_i\) and \(\sum n_i = n\). How many ways are there to do this? It is
+        \item Let \(\Omega\) be a finite set with \(| \Omega|  = n\). We want to partition \(\Omega\) into \(k\) disjoint subsets \(\Omega_1, \dots, \Omega_k\) with \(| \Omega_i|  = n_i\) and \(\sum n_i = n\). How many ways are there to do this? It is
 
         \begin{align*}
             M &= \binom n {n_1} \cdot \binom {n-n_1} {n_2} \dots \binom{n-(n_1 + \dots + n_{k-1})}{n_k} \\
@@ -268,11 +268,11 @@
     \end{proposition}
     
     \begin{proof}
-        Define \(B_1 = A_1\), and for \(n \geq 2\), let \(B_n = A_n \setminus (A_1 \cup \cdots \cup A_n)\). Then
+        Define \(B_1 = A_1\), and for \(n \geq 2\), let \(B_n = A_n \setminus (A_1 \cup \cdots \cup A_{n-1})\). Then
         \begin{align*}
             \bigcup_{k=1}^n B_k = A_n
         \end{align*}
-        and the \(B_n\)'s are disjoint.Then
+        and the \(B_n\)'s are disjoint. Then
         \begin{align*}
             \PP(A_n) &= \PP\left(\bigcup_{k=1}^n B_k\right) \\
             &= \sum_{k=1}^n \PP(B_k) \to \sum_{k=1}^\infty \PP(B_k)
@@ -310,7 +310,6 @@
         \emph{Inductive step}. We have
         \begin{align*}
             \PP\left(\bigcup_{i=1}^n A_i\right) &= \PP\left(\left(\bigcup_{i=1}^{n-1} A_i\right) \cup A_n\right) \\
-            &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\bigcup_{i=1}^{n-1} A_i \cap A_n\right) \\
             &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\left(\bigcup_{i=1}^{n-1} A_i\right) \cap A_n\right) \\
             &= \PP\left(\bigcup_{i=1}^{n-1} A_i\right) + \PP(A_n) - \PP\left(\bigcup_{i=1}^{n-1} \underbrace{\left(A_i \cap A_n\right)}_{B_i}\right)
         \end{align*}
@@ -350,17 +349,17 @@
         where in the former, we choose to apply the identity for odd \(r\), and in the latter, we apply it for even \(r-1\). Substituting much as for the proof of the inclusion-exclusion formula, we obtain the result. The even case is analogous.
     \end{proof}
     
-    Let us now consider the special case where \(\Omega\) is a finite set and \(\PP(A) = \mid A\mid /\mid \Omega\mid \). Then we have
+    Let us now consider the special case where \(\Omega\) is a finite set and \(\PP(A) = | A| /| \Omega| \). Then we have
 
     \begin{corollary}[Inclusion-exclusion principle for sets]
         Suppose \(\Omega\) is finite. Then
         \begin{align*}
-            \mid A_1 \cup \dots \cup A_n\mid  = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \mid A_{i_1} \cap \dots \cap A_{i_n}\mid 
+            | A_1 \cup \dots \cup A_n|  = \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} | A_{i_1} \cap \dots \cap A_{i_n}| 
         \end{align*}
     \end{corollary}
     
     \begin{proof}
-        Consider the probability space \((\Omega, \mathcal F, \PP)\) where \(\PP(A) = \mid A\mid /\mid \Omega\mid \). Then, apply inclusion-exclusion and cancel \(1/\mid \Omega\mid \) from both sides.
+        Consider the probability space \((\Omega, \mathcal F, \PP)\) where \(\PP(A) = | A| /| \Omega| \). Then, apply inclusion-exclusion and cancel \(1/| \Omega| \) from both sides.
     \end{proof}
     
     \section{Basic applications}
@@ -372,16 +371,16 @@
         \Omega &= \{f: \{1, \dots, n\} \to \{1, \dots, m\}\} \\
         A &= \{f \in \Omega: f \text{ is a surjection}\}
     \end{align*}
-    What is \(\mid A\mid \)? Let us define a set of events
+    What is \(| A| \)? Let us define a set of events
     \begin{align*}
         A_i = \{f \in \Omega: i \notin \{f(1), \dots, f(n)\}\}, \, i \in \{1, \dots, m\}
     \end{align*}
     so that
     \begin{align*}
         A &= A_1^\comp \cap \dots \cap A_m^\comp = (A_1 \cup \dots \cup A_m)^\comp \\
-        \implies \mid A\mid  &= \mid \Omega\mid  - \mid A_1 \cup \dots \cup A_m\mid  \\
-        &= \mid \Omega\mid  - \sum_{k=1}^m (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq m} \mid A_{i_1} \cap \dots \cap A_{i_k}\mid  \\
-        &= \underbrace{\mid \Omega\mid }_{m^n} - \sum_{k=1}^m (-1)^{k+1} \binom{m}{k} (m-k)^n \\
+        \implies | A|  &= | \Omega|  - | A_1 \cup \dots \cup A_m|  \\
+        &= | \Omega|  - \sum_{k=1}^m (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq m} | A_{i_1} \cap \dots \cap A_{i_k}|  \\
+        &= \underbrace{| \Omega| }_{m^n} - \sum_{k=1}^m (-1)^{k+1} \binom{m}{k} (m-k)^n \\
         &= \sum_{k=0}^m (-1)^k \binom{m}{k} (m-k)^n
     \end{align*}
     
@@ -403,7 +402,7 @@
     \end{align*}
     so that
     \begin{align*}
-        A = A_1^\comp \cap \dots \cap A_n^\comp = (A_1 \cup \dots \cup A_n)^\comp \\
+        A = A_1^\comp \cap \dots \cap A_n^\comp &= (A_1 \cup \dots \cup A_n)^\comp \\
         \implies \PP(A) = 1 - \PP\left(\bigcup A_i\right) &= 1 - \sum_{k=1}^n (-1)^{k+1} \sum_{1 \leq i_1 < \dots < i_k \leq n} \underbrace{\PP(A_{i_1} \cap \dots \cap A_{i_k})}_{\frac{(n-k)!}{n!}} \\
         &= 1 - \sum_{k=1}^n (-1)^{k+1} \binom n k \frac{(n-k)!}{n!} \\
         &= 1 - \sum_{k=1}^n (-1)^{k+1} \frac{1}{k!} \\
@@ -458,35 +457,35 @@
     \begin{definition}[Conditional probability]
         Take a probability space \((\Omega, \mathcal F, \PP)\) and \(B \in \mathcal F\) with \(\PP(B) > 0\). For \(A \in \mathcal F\) we write the \emph{conditional probability of \(A\) given \(B\)} 
         \begin{align*}
-            \PP(A \mid  B) = \frac{\PP(A \cap B)}{\PP(B)}
+            \PP(A |  B) = \frac{\PP(A \cap B)}{\PP(B)}
         \end{align*}
     \end{definition}
     
     \begin{remark*}
-        Notably, if \(A \perp B\), then \(\PP(A \mid  B) = \PP(A)\), as we would expect.
+        Notably, if \(A \perp B\), then \(\PP(A |  B) = \PP(A)\), as we would expect.
     \end{remark*}
     
     \begin{proposition}[Countable additivity for conditional probability]
-        Suppose \((A_n)_{n \in \NN}\) is a disjoint sequence in \(\mathcal F\). Then
+        Suppose \((A_n)_{n \in \NN}\) is a disjoint collection in \(\mathcal F\). Then
         \begin{align*}
-            \PP\left(\bigcup A_n \mid  B \right) = \sum \PP(A_n \mid  B)
+            \PP\left(\bigcup A_n |  B \right) = \sum \PP(A_n |  B)
         \end{align*}
     \end{proposition}
     
     \begin{proof}
         We have
         \begin{align*}
-            \PP\left(\bigcup A_n \mid  B\right) &= \frac{\PP\left(\bigcup A_n \cap B\right)}{\PP(B)} \\
+            \PP\left(\bigcup A_n |  B\right) &= \frac{\PP\left(\bigcup A_n \cap B\right)}{\PP(B)} \\
             &= \frac{\PP\left(\bigcup (A_n \cap B)\right)}{\PP(B)} \\
             &= \sum \frac{\PP(A_n \cap B)}{\PP(B)} \\
-            &= \sum \PP(A_n \mid  B)
+            &= \sum \PP(A_n |  B)
         \end{align*}
     \end{proof}
     
     \begin{proposition}[Law of total probability]
         Suppose \((B_n)_{n \in \NN}\) is a disjoint collection in \(\mathcal F\), \(\bigcup B_n = \Omega\), and \(\PP(B_n) > 0\) for every \(n\). Let \(A \in \mathcal F\), then
         \begin{align*}
-            \PP(A) = \sum_n \PP(A \mid  B_n) \PP(B_n)
+            \PP(A) = \sum_n \PP(A |  B_n) \PP(B_n)
         \end{align*}
     \end{proposition}
 
@@ -496,40 +495,40 @@
             \PP(A) &= \PP\left(A \cap \left(\bigcup B_n\right)\right) \\
             &= \PP\left(\bigcup (B_n \cap A)\right) \\
             &= \sum \PP(B_n \cap A) \\
-            &= \sum \PP(A \mid  B_n) \PP(B_n)
+            &= \sum \PP(A |  B_n) \PP(B_n)
         \end{align*}
     \end{proof}
     
     \begin{proposition}[Bayes' theorem]
         Suppose \((B_n)\) are disjoint, \(\bigcup B_n = \Omega\) and \(P(B_n) > 0\) for every \(n\). Let \(A \in \mathcal F\), then
         \begin{align*}
-            \PP(B_n \mid  A) = \frac{\PP(A \mid  B_n) \cdot \PP(B_n)}{\sum_k \PP(A \mid  B_k)\PP(B_k)}
+            \PP(B_n |  A) = \frac{\PP(A |  B_n) \cdot \PP(B_n)}{\sum_k \PP(A |  B_k)\PP(B_k)}
         \end{align*}
     \end{proposition}
     
     \begin{proof}[Proof sketch]
-        Use the definitions of \(\PP(B_n \mid  A) \) and \(\PP(A \mid  B_n)\), and expand the bottom using the law of total probability.
+        Use the definitions of \(\PP(B_n |  A) \) and \(\PP(A |  B_n)\), and expand the bottom using the law of total probability.
     \end{proof}
     
-    This formula is the basis of so-called Bayesian statistics. We know the probability of \(\PP(B_n)\) and we have a model which gives us \(\PP(A \mid  B_n)\). With the formula, we find the \emph{posterior} probability of \(B_n\) given that \(A\) occurred.
+    This formula is the basis of so-called Bayesian statistics. We know the probability of \(\PP(B_n)\) and we have a model which gives us \(\PP(A |  B_n)\). With the formula, we find the \emph{posterior} probability of \(B_n\) given that \(A\) occurred.
     
     \begin{example*}[False positives for a rare condition]
         Suppose that condition \(A\) affects \(0.1\%\) of the population. We have a medical test which is positive for \(98\%\) of the affected population and \(1\%\) of the unaffected population. What is the probability that a random individual who tests positive has the disease?
 
-        Put \(A = \{\text{individual suffers from }A\}\), \(P = \{\text{individual tests positive}\}\). We have \(\PP(A) = 0.001\), \(\PP(P \mid  A) = 0.98\), \(\PP(P \mid  A^\comp) = 0.01\), so
+        Put \(A = \{\text{individual suffers from }A\}\), \(P = \{\text{individual tests positive}\}\). We have \(\PP(A) = 0.001\), \(\PP(P |  A) = 0.98\), \(\PP(P |  A^\comp) = 0.01\), so
         \begin{align*}
-            \PP(A \mid  P) &= \frac{\PP(P \mid  A) \PP(A)}{\PP(P \mid  A)\PP(A) + \PP(P\mid A^\comp)\PP(A^\comp)} \\
+            \PP(A |  P) &= \frac{\PP(P |  A) \PP(A)}{\PP(P |  A)\PP(A) + \PP(P| A^\comp)\PP(A^\comp)} \\
             &= 0.089
         \end{align*}
         In particular, we can see
         \begin{align*}
-            \PP(A \mid  P) = \frac{1}{1 + \frac{\PP(P\mid A^\comp)\PP(A^\comp)}{\PP(P \mid  A)\PP(A)}}
+            \PP(A |  P) = \frac{1}{1 + \frac{\PP(P| A^\comp)\PP(A^\comp)}{\PP(P |  A)\PP(A)}}
         \end{align*}
-        Since \(\PP(A^\comp)\) and \(\PP(P\mid A)\) are both very close to one, the relevant ratio is
+        Since \(\PP(A^\comp)\) and \(\PP(P| A)\) are both very close to one, the relevant ratio is
         \begin{align*}
-            \frac{\PP(P \mid  A^\comp)}{\PP(A)}
+            \frac{\PP(P |  A^\comp)}{\PP(A)}
         \end{align*}
-        But since \(\PP(P \mid  A^\comp) \gg \PP(A)\), this causes a very small value for \(\PP(A \mid  P)\).
+        But since \(\PP(P |  A^\comp) \gg \PP(A)\), this causes a very small value for \(\PP(A |  P)\).
     \end{example*}
 
     \lecture{Lecture \(n\)}
@@ -544,20 +543,20 @@
             \end{align*}
             with GB, BB, GG defined analogously. Then we want
             \begin{align*}
-                \PP(\text{BB} \mid  \text{BB} \cup \text{BG} \cup \text{GB}) &= \frac{\PP(\text{BB})}{\PP(\text{BB} \cup \text{BG} \cup \text{GB})} \\
+                \PP(\text{BB} |  \text{BB} \cup \text{BG} \cup \text{GB}) &= \frac{\PP(\text{BB})}{\PP(\text{BB} \cup \text{BG} \cup \text{GB})} \\
                 &= \frac{\frac 1 4}{\frac 3 4} = \frac 1 3 
             \end{align*}
-            \item What about \(\PP(\text{both boys} \mid \text{eldest a boy})\)? This is
+            \item What about \(\PP(\text{both boys} | \text{eldest a boy})\)? This is
             \begin{align*}
-                \PP(\text{BB} \mid  \text{BB} \cup \text{BG}) = \frac 1 2
+                \PP(\text{BB} |  \text{BB} \cup \text{BG}) = \frac 1 2
             \end{align*}
-            \item What about \(\PP(\text{both boys} \mid \text{one a boy born on a Thursday})\)?
+            \item What about \(\PP(\text{both boys} | \text{one a boy born on a Thursday})\)?
             Denote a boy born on Thursday by T, a boy not born on Thursday by N, and a girl by G. Then we want
             \begin{align*}
-                &\; \PP(\text{TT} \cup \text{TN} \cup \text{NT} \mid \text{TT} \cup \text{TG} \cup \text{GT} \cup \text{TN} \cup \text{NT}) \\
+                &\; \PP(\text{TT} \cup \text{TN} \cup \text{NT} | \text{TT} \cup \text{TG} \cup \text{GT} \cup \text{TN} \cup \text{NT}) \\
                 =&\; \frac{\PP(\text{TT} \cup \text{TN} \cup \text{NT})}{\PP(\text{TT} \cup \text{TG} \cup \text{GT} \cup \text{TN} \cup \text{NT})} \\
                 =&\; \frac{\left(\frac 1 2 \cdot \frac 1 7\right)^2 + \left(\frac 1 2 \cdot \frac 1 7\right)\left(\frac 1 2 \cdot \frac 6 7\right) + \left(\frac 1 2 \cdot \frac 6 7\right)\left(\frac 1 2 \cdot \frac 1 7\right)}{\left(\frac 1 2 \cdot \frac 1 7\right)^2 + \left(\frac 1 2 \cdot \frac 1 7\right)\cdot \frac 1 2 + \frac 1 2 \cdot \left(\frac 1 2 \cdot \frac 1 7\right) + \left(\frac 1 2 \cdot \frac 1 7\right)\left(\frac 1 2 \cdot \frac 6 7\right) + \left(\frac 1 2 \cdot \frac 6 7\right)\left(\frac 1 2 \cdot \frac 1 7\right)} \\
-                =&; \frac{13}{27}
+                =&\; \frac{13}{27}
             \end{align*}
             Morally speaking, we're providing information that helps specify the boy in question more, which brings the probability closer to a half.
         \end{itemize}
@@ -599,19 +598,19 @@
         \end{align*}
         Then
         \begin{align*}
-            \PP(A \mid B \cap C) &> \PP(A \mid B \cap C^\comp) \\
-            \PP(A \mid B^\comp \cap C) &> \PP(A \mid B^\comp \cap C^\comp) \\
-            \text{but } \PP(A \mid C) &< \PP(A \mid C^\comp)
+            \PP(A | B \cap C) &> \PP(A | B \cap C^\comp) \\
+            \PP(A | B^\comp \cap C) &> \PP(A | B^\comp \cap C^\comp) \\
+            \text{but } \PP(A | C) &< \PP(A | C^\comp)
         \end{align*}
         Let's examine how this can happen. We have
         \begin{align*}
-            \PP(A \mid C) &= \PP(A \cap B \mid C) + \PP(A \cap B^\comp \mid C) \\
+            \PP(A | C) &= \PP(A \cap B | C) + \PP(A \cap B^\comp | C) \\
             &= \frac{\PP(A \cap B \cap C)}{\PP(C)} + \frac{\PP(A \cap B^\comp \cap C)}{\PP(C)} \\
-            &= \frac{\PP(A \mid B \cap C)\PP(B \cap C)}{\PP(C)} + \frac{\PP(A \mid B^\comp \cap C)\PP(B^\comp \cap C)}{\PP(C)} \\
-            &= \PP(A \mid B \cap C)\PP(B \mid C) + \PP(A \mid B^\comp \cap C^\comp)\PP(B^\comp \mid C^\comp) \\
-            &> P(A \mid B \cap C^\comp)\PP(B \mid C) + \PP(A \mid B^\comp \cap C^\comp)\PP(B^\comp \mid C)
+            &= \frac{\PP(A | B \cap C)\PP(B \cap C)}{\PP(C)} + \frac{\PP(A | B^\comp \cap C)\PP(B^\comp \cap C)}{\PP(C)} \\
+            &= \PP(A | B \cap C)\PP(B | C) + \PP(A | B^\comp \cap C^\comp)\PP(B^\comp | C^\comp) \\
+            &> P(A | B \cap C^\comp)\PP(B | C) + \PP(A | B^\comp \cap C^\comp)\PP(B^\comp | C)
         \end{align*}
-        by the first two inequalities from above. Now, if \(\PP(B \mid C) = \PP(B \mid C^\comp)\), then we would get \(\PP(A \mid C) > \PP(A \mid C^\comp)\), which is the intuitive expectation -- but here this does not hold, and so we can make the `paradox' hold.
+        by the first two inequalities from above. Now, if \(\PP(B | C) = \PP(B | C^\comp)\), then we would get \(\PP(A | C) > \PP(A | C^\comp)\), which is the intuitive expectation -- but here this does not hold, and so we can make the `paradox' hold.
 
         Even more simply, this is just the fact that, if \(\frac{a_1}{a_2} > \frac{b_1}{b_2}\) and \(\frac{c_1}{c_2} > \frac{d_1}{d_2}\), it does not necessarily hold that \(\frac{a_1+c_1}{a_2+c_2} > \frac{b_1+d_1}{b_2+d_2}\).       
     \end{example*}
@@ -1111,7 +1110,7 @@
         We have
         \begin{align*}
             X &\geq a \cdot 1(X \geq a) \\
-            \implies E[X] &\geq a \cdot \PP(X \geq a)
+            \implies \EE[X] &\geq a \cdot \PP(X \geq a)
         \end{align*}
         by taking expectations.
     \end{proof}
@@ -1155,7 +1154,7 @@
     \end{proof}
     
     \begin{remark*}
-        We could also have just put in our value for \(t*\) from the beginning -- the minimisation approach is purely to provide rationale.
+        We could also have just put in our value for \(t^*\) from the beginning -- the minimisation approach is purely to provide rationale.
     \end{remark*}
     
     \begin{remark*}
@@ -1206,7 +1205,7 @@
         \end{align*}
         so that, for any \(x < m < y\),
         \begin{align*}
-             \frac{f(m)-f(x)}{m-x} \leq a \leq \frac{f(y)-f(m)}{y-m}
+            \frac{f(m)-f(x)}{m-x} \leq a \leq \frac{f(y)-f(m)}{y-m}
         \end{align*}
         Hence, by rearrangement, we conclude \(f(z) \geq a(z-m) + f(m)\), for any \(z\) (depending on whether \(z\) is greater than \(m\) or less than \(m\), we use either the left or right inequality.)        
     \end{proof}
@@ -1297,12 +1296,12 @@
     \begin{definition}
         Let \(X\) and \(Y\) be discrete random variables. The \emph{conditional distribution} of \(X\) given \(Y = y\) is
         \begin{align*}
-            \PP(X = x \mid Y = y) = \frac{\PP(X = x, Y = y)}{\PP(Y = y)}
+            \PP(X = x | Y = y) = \frac{\PP(X = x, Y = y)}{\PP(Y = y)}
         \end{align*}
     \end{definition}
     By the law of probability we of course have
     \begin{align*}
-        \PP(X = x) = \sum_y \PP(X = x\mid Y = y)\PP(Y = y)
+        \PP(X = x) = \sum_y \PP(X = x| Y = y)\PP(Y = y)
     \end{align*}
     
     % \subsubsection{Distribution of the sum of independent random variables}
@@ -1327,68 +1326,68 @@
     \end{example*}
     Let us derive conditional expectation for random variables. First, take \(B \in \mathcal F\) to be an event with \(\PP(B) > 0\). We have
     \begin{align*}
-        \EE[X \mid B] = \frac{\EE[X \cdot 1(B)]}{\PP(B)}
+        \EE[X | B] = \frac{\EE[X \cdot 1(B)]}{\PP(B)}
     \end{align*}
     and, if \(X = 1(A)\), then
     \begin{align*}
-        \EE[1(A) \mid B] = \frac{\EE[1(A) \cdot 1(B)]}{\PP(B)} = \frac{\EE[1(A \cap B)]}{\PP(B)} = \PP(A \mid B)
+        \EE[1(A) | B] = \frac{\EE[1(A) \cdot 1(B)]}{\PP(B)} = \frac{\EE[1(A \cap B)]}{\PP(B)} = \PP(A | B)
     \end{align*}
     We can now formulate the \emph{law of total expectation}.
     \begin{proposition}[Law of total expectation]
         Let \(X\) be a random variable and \((\Omega_n)\) a partition of \(\Omega\) with \(\PP(\Omega_n) > 0\) for any \(n\). Then
         \begin{align*}
-            \EE[X] = \sum_n \EE[X \mid \Omega_n] \PP(\Omega_n)
+            \EE[X] = \sum_n \EE[X | \Omega_n] \PP(\Omega_n)
         \end{align*}
     \end{proposition}
     \begin{proof}
         Use indicators. We have
         \begin{align*}
-            \EE[X] = \EE[X \cdot 1(\Omega)] = \EE\left[X \cdot \sum_n 1(\Omega_n)\right] = \sum_n \EE[X \mid \Omega_n]\PP(\Omega_n)
+            \EE[X] = \EE[X \cdot 1(\Omega)] = \EE\left[X \cdot \sum_n 1(\Omega_n)\right] = \sum_n \EE[X | \Omega_n]\PP(\Omega_n)
         \end{align*}
     \end{proof}
     Now, we want to condition expectation not on an event but on a particular random variable. We have
     \begin{align*}
-        \EE[X \mid Y = y] &= \frac{\EE[X \cdot 1(Y=y)]}{\PP(Y=y)} \\
+        \EE[X | Y = y] &= \frac{\EE[X \cdot 1(Y=y)]}{\PP(Y=y)} \\
         &= \sum_x x \cdot \frac{\PP(X = x, Y = y)}{\PP(Y = y)} \\
-        &= \sum_x x \cdot \PP(X = x \mid Y = y)
+        &= \sum_x x \cdot \PP(X = x | Y = y)
     \end{align*}
-    Let us now define \(g(y) = \EE[X \mid Y = y]\).
+    Let us now define \(g(y) = \EE[X | Y = y]\).
     \begin{definition}
-        The expectation of \(X\) given \(Y\), \(\EE[X \mid Y]\), is a random variable which is a function of \(Y\). In particular,
+        The expectation of \(X\) given \(Y\), \(\EE[X | Y]\), is a random variable which is a function of \(Y\). In particular,
         \begin{align*}
-            \EE[X \mid Y] = g(Y)
+            \EE[X | Y] = g(Y)
         \end{align*}
     \end{definition}
     
     \begin{example*}
-        Toss a \(p\)-coin independently \(n\) times, and let \(X_i = 1(i^\text{th} \text{ toss is H})\). Let \(Y_n = X_1 + \dots + X_n\). Let us attempt to calculate \(\EE[X_1 \mid Y_n]\). First, let
+        Toss a \(p\)-coin independently \(n\) times, and let \(X_i = 1(i^\text{th} \text{ toss is H})\). Let \(Y_n = X_1 + \dots + X_n\). Let us attempt to calculate \(\EE[X_1 | Y_n]\). First, let
         \begin{align*}
-            g(y) = \EE[X_1 \mid Y_n = y] &= \frac{\EE[X_1 \cdot 1(Y_n=y)]}{\PP(Y_n=y)} \\
+            g(y) = \EE[X_1 | Y_n = y] &= \frac{\EE[X_1 \cdot 1(Y_n=y)]}{\PP(Y_n=y)} \\
             &= \frac{\PP(X_1 = 1, Y_n = y)}{\PP(Y_n=y)} \\
             &= \frac{p \binom{n-1}{y-1} p^{y-1} (1-p)^{n-y}}{\binom{n}{y} p^y (1-p)^{n-y}} \\
             &= \frac{y}{n}
         \end{align*}
-        Hence, \(\EE[X_1 \mid Y_n] = \frac{Y_n}{n}\).        
+        Hence, \(\EE[X_1 | Y_n] = \frac{Y_n}{n}\).        
     \end{example*}
     We have some simple and uninspiring properties:
     \begin{itemize}
-        \item \(\EE[cX \mid Y] = c\EE[X \mid Y]\);
-        \item \(\EE[c + X \mid Y] = c + \EE[X \mid Y]\);
-        \item \(\EE[c \mid Y] = c\);
+        \item \(\EE[cX | Y] = c\EE[X | Y]\);
+        \item \(\EE[c + X | Y] = c + \EE[X | Y]\);
+        \item \(\EE[c | Y] = c\);
         \item If \(X_1, \dots, X_n\) are random variables,
         \begin{align*}
-            \EE\left[\sum_{i=1}^n X_i \mid Y\right] = \sum_{i=1}^n \EE[X_i \mid Y]
+            \EE\left[\sum_{i=1}^n X_i | Y\right] = \sum_{i=1}^n \EE[X_i | Y]
         \end{align*}
     \end{itemize}
     and some more interesting properties. We have
     \begin{align*}
-        \EE[X \mid Y] &= \sum_y 1(Y = y) \EE[X \mid Y = y] \\
-        \implies \EE[\EE[X \mid Y]] &= \sum_y \EE[X \mid Y = y]\PP(Y = y)= \EE[X]
+        \EE[X | Y] &= \sum_y 1(Y = y) \EE[X | Y = y] \\
+        \implies \EE[\EE[X | Y]] &= \sum_y \EE[X | Y = y]\PP(Y = y)= \EE[X]
     \end{align*}
     Suppose now \(X\) and \(Y\) are independent random variables. Then
     \begin{align*}
-        \EE[X \mid Y] &= \sum_y 1(Y = y) \EE[X \mid Y = y] \\
-        &= \sum_y 1(Y = y) \sum_x x \cdot \PP(X = x \mid Y = y) \\
+        \EE[X | Y] &= \sum_y 1(Y = y) \EE[X | Y = y] \\
+        &= \sum_y 1(Y = y) \sum_x x \cdot \PP(X = x | Y = y) \\
         &= \sum_y 1(Y = y) \sum_x x \cdot \PP(X = x) \\
         &= \sum_y 1(Y = y) \EE[X] = \EE[X]
     \end{align*}
@@ -1396,47 +1395,47 @@
     \begin{proposition}
         Let \(Y\) and \(Z\) be independent. Then
         \begin{align*}
-            \EE[\EE[X \mid Y] \mid Z] = \EE[X]
+            \EE[\EE[X | Y] | Z] = \EE[X]
         \end{align*}
     \end{proposition}
     
     \begin{proof}
-        Let \(g(Y) = \EE[X \mid Y]\), \(g(y) = \EE[X \mid Y = y]\). We claim \(g(Y)\) is independent of \(\ZZ\). Observe
+        Let \(g(Y) = \EE[X | Y]\), \(g(y) = \EE[X | Y = y]\). We claim \(g(Y)\) is independent of \(Z\). Observe
         \begin{align*}
-            \PP(g(Y) = w, Z = z) &= \sum_{y \in g^{-1}(\{\omega\})} \PP(Y = y, Z = z) \\
-            &= \sum_{y \in g^{-1}(\{\omega\})} \PP(Y = y) \PP(Z = z) \\
+            \PP(g(Y) = w, Z = z) &= \sum_{y \in g^{-1}(\{w\})} \PP(Y = y, Z = z) \\
+            &= \sum_{y \in g^{-1}(\{w\})} \PP(Y = y) \PP(Z = z) \\
             &= \PP(g(Y) = w) \PP(Z = z)
         \end{align*}
-        Hence, previous results give \(\EE[g(Y) \mid Z] = \EE[g(Y)]\), and this is \(\EE[\EE[X \mid Y]] = \EE[X]\).        
+        Hence, previous results give \(\EE[g(Y) | Z] = \EE[g(Y)]\), and this is \(\EE[\EE[X | Y]] = \EE[X]\).        
     \end{proof}
     
     \begin{proposition}
         Let \(X\), \(Y\) be two random variables, and \(h: \RR \to \RR\). Then
         \begin{align*}
-            \EE[h(Y) \cdot X \mid Y] = h(Y) \cdot \EE[X \mid Y]
+            \EE[h(Y) \cdot X | Y] = h(Y) \cdot \EE[X | Y]
         \end{align*}
     \end{proposition}
     
     \begin{proof}
         We have
         \begin{align*}
-            \EE[h(Y) \cdot X \mid Y] &= \sum_y 1(Y = y) \EE[h(Y) \cdot X \mid Y = y] \\
-            &= \sum_y 1(Y = y) h(y) \EE[X \mid Y = y] \\
-            &= h(Y) \sum_y 1(Y = y) \EE[X \mid Y = y] \\
-            &= h(Y) \EE[X \mid Y]
+            \EE[h(Y) \cdot X | Y] &= \sum_y 1(Y = y) \EE[h(Y) \cdot X | Y = y] \\
+            &= \sum_y 1(Y = y) h(y) \EE[X | Y = y] \\
+            &= h(Y) \sum_y 1(Y = y) \EE[X | Y = y] \\
+            &= h(Y) \EE[X | Y]
         \end{align*}
     \end{proof}
     
     \begin{corollary}
-        \[\EE[\EE[X \mid Y] \mid Y] = \EE[X \mid Y]\]
+        \[\EE[\EE[X | Y] | Y] = \EE[X | Y]\]
     \end{corollary}
     
     \begin{example*}
-        Toss a \(p\)-coin independently \(n\) times, and let \(X_i = 1(i^\text{th} \text{ toss is H})\). Let \(Y_n = X_1 + \dots + X_n\). What is \(\EE[X_1 \mid Y_n]\)?
+        Toss a \(p\)-coin independently \(n\) times, and let \(X_i = 1(i^\text{th} \text{ toss is H})\). Let \(Y_n = X_1 + \dots + X_n\). What is \(\EE[X_1 | Y_n]\)?
 
-        By symmetry, \(\EE[X_1 \mid Y_n] = \EE[X_i \mid Y_n]\) for any \(i\), \(1 \leq i \leq n\). Then
+        By symmetry, \(\EE[X_1 | Y_n] = \EE[X_i | Y_n]\) for any \(i\), \(1 \leq i \leq n\). Then
         \begin{align*}
-            Y_n = \EE[Y_n \mid Y_n] = \EE[X_1 + \dots + X_n \mid Y_n] = n \EE[X_1 \mid Y_n] 
+            Y_n = \EE[Y_n | Y_n] = \EE[X_1 + \dots + X_n | Y_n] = n \EE[X_1 | Y_n] 
         \end{align*}
         which was what we wanted.
     \end{example*}
@@ -1464,13 +1463,13 @@
     \end{align*}
     We will write
     \begin{itemize}
-        \item \(\PP_x(A) = \PP(A \mid X_0 = x)\);
+        \item \(\PP_x(A) = \PP(A | X_0 = x)\);
         \item \(h(x) = \PP_x((X_n) \text{ reaches } a \text{ before }0)\), where \(a\) is some arbitrary constant at which the game ends.
     \end{itemize}
     so \(h(0) = 0\), \(h(a) = 1\). Then
     \begin{align*}
         h(x) &= \PP_x((X_n) \text{ hits } a \text{ bef. }0) \\
-        &= \PP_x((X_n) \text{ hits } a \text{ bef. }0 \mid Y_1 = 1) \cdot p + \PP_x((X_n) \text{ hits } a \text{ bef. }0 \mid Y_1 = -1) \cdot q \\
+        &= \PP_x((X_n) \text{ hits } a \text{ bef. }0 | Y_1 = 1) \cdot p + \PP_x((X_n) \text{ hits } a \text{ bef. }0 | Y_1 = -1) \cdot q \\
         &= p \cdot h(x+1) + q \cdot h(x-1)
     \end{align*}
 
@@ -1483,7 +1482,7 @@
             \implies h(x+1) - h(x) &= h(x) - h(x-1) \\
             \implies \Aboxed{h(x) &= cx}
         \end{align*}
-        for some constant \(c\). Since \(h(a) = 1\), \(c = \frac 1 a\), and hence \(h(x) = \frac h a\).
+        for some constant \(c\). Since \(h(a) = 1\), \(c = \frac 1 a\), and hence \(h(x) = \frac x a\).
         \item \emph{Case \(p\neq q\)}. Let us try a solution of the form \(\lambda^x\) for some lambda -- we have
         \begin{align*}
             \lambda^x &= p\lambda^{x+1} + q\lambda^{x-1} \\
@@ -1501,9 +1500,9 @@
     
     These results are called the \emph{gambler's ruin estimates}.
 
-    Now let us consider a new quantity -- let \(T = \min\{n \geq 0: X_n \in \{0, a\}\}\) -- the first \(n\) such that \(X_n\) is either 0 or \(a\), i.e. the duration of the game. We want to find \(\EE[T \mid X_0 = x] = \EE_x[T] = k(x)\). We have from the law of total expectation
+    Now let us consider a new quantity -- let \(T = \min\{n \geq 0: X_n \in \{0, a\}\}\) -- the first \(n\) such that \(X_n\) is either 0 or \(a\), i.e. the duration of the game. We want to find \(\EE[T | X_0 = x] = \EE_x[T] = k(x)\). We have from the law of total expectation
     \begin{align*}
-        k(x) &= \EE_x[T \mid Y_1 = 1]\cdot\PP(Y_1 = 1) + \EE_x[T \mid Y_1 = -1]\cdot\PP(Y_1 = -1) \\
+        k(x) &= \EE_x[T | Y_1 = 1]\cdot\PP(Y_1 = 1) + \EE_x[T | Y_1 = -1]\cdot\PP(Y_1 = -1) \\
         &= p(1 + k(x+1)) + q(1 + k(x-1)) \\
         &= 1 + pk(x+1) + qk(x-1)
     \end{align*}
@@ -1598,7 +1597,7 @@
             \end{align*}
             \item \emph{Poisson}. Suppose \(X \sim \Poi(\lambda)\). Then
             \begin{align*}
-                \EE[z^X] &= \sum_{r=0}^\infty z^r e^{\lambda} \frac{\lambda^r}{r!} \\
+                \EE[z^X] &= \sum_{r=0}^\infty z^r e^{-\lambda} \frac{\lambda^r}{r!} \\
                 &= e^{\lambda(z-1)}
             \end{align*}
         \end{enumerate}
@@ -1721,11 +1720,11 @@
     \begin{proof}[Proof 2]
         We have
         \begin{align*}
-            r(z) = \EE[z^{S_n}] = \EE[\EE[z^{S_N} \mid N]] = g(N)
+            r(z) = \EE[z^{S_n}] = \EE[\EE[z^{S_N} | N]] = g(N)
         \end{align*}
         where
         \begin{align*}
-            g(n) &= \EE[z^{S_N} \mid N = n] \\
+            g(n) &= \EE[z^{S_N} | N = n] \\
             &= \EE[z^{S_n}] \\
             &= p(z)^n
         \end{align*}
@@ -1762,7 +1761,7 @@
     
     \section{Branching processes}
     
-    Think of a branching process as a series of generations of offspring. We have \(X_0 = 1\), there being one person in the first generation; then, in each generation, each individual produces \(k\) offspring independently with a fixed distribution (in particular, the distribution of \(X_1\))
+    Think of a branching process as a series of generations of offspring. We have \(X_0 = 1\), there being one person in the first generation; then, in each generation, each individual produces \(k\) offspring independently with a fixed distribution (in particular, the distribution of \(X_1\)).
 
     Let \(Y_{k,n}\) with \(k \geq 1\), \(n \geq 0\) be i.i.d. random variables with the distribution of \(X_1\), interpreted as the number of offspring produced by the \(k^\text{th}\) individual in the \(n^\text{th}\) generation. Hence
     \begin{align*}
@@ -1781,13 +1780,13 @@
     \end{proposition}
     
     \begin{proof}
-        We will proceed by induction. The base case is clear. Let us consider the conditional expectation \(\EE[X_{n+1} \mid X_n = m]\) -- we have
+        We will proceed by induction. The base case is clear. Let us consider the conditional expectation \(\EE[X_{n+1} | X_n = m]\) -- we have
         \begin{align*}
-            \EE[X_{n+1} \mid X_n = m] &= \EE[Y_{1,n} + \dots + Y_{m,n} \mid X_n = m] \\
+            \EE[X_{n+1} | X_n = m] &= \EE[Y_{1,n} + \dots + Y_{m,n} | X_n = m] \\
             &= \EE[Y_{1,n} + \dots + Y_{m,n}] && \text{(independence)} \\
             &= m\EE[X_1]
         \end{align*}
-        so that \(\EE[X_{n+1} \mid X_n] = X_n\EE[X_1]\). Hence \(\EE[X_{n+1}] = \EE[\EE[X_{n+1} \mid X_n]] = \EE[X_n\EE[X_1]] = \EE[X_n] \EE[X_1]\), which completes the result by induction.        
+        so that \(\EE[X_{n+1} | X_n] = X_n\EE[X_1]\). Hence \(\EE[X_{n+1}] = \EE[\EE[X_{n+1} | X_n]] = \EE[X_n\EE[X_1]] = \EE[X_n] \EE[X_1]\), which completes the result by induction.        
     \end{proof}
     
     \begin{proposition}
@@ -1798,13 +1797,13 @@
     \end{proposition}
     
     \begin{proof}
-        Again, let us consider \(\EE[z^{X_{n+1}} \mid X_n = m]\). We have
+        Again, let us consider \(\EE[z^{X_{n+1}} | X_n = m]\). We have
         \begin{align*}
-            \EE[z^{X_{n+1}} \mid X_n = m] &= \EE[z^{Y_{1, n} + \dots + Y_{m, n}} \mid X_n = m] \\
+            \EE[z^{X_{n+1}} | X_n = m] &= \EE[z^{Y_{1, n} + \dots + Y_{m, n}} | X_n = m] \\
             &= \EE[z^{Y_{1, n} + \dots + Y_{m, n}}] \\
             &= (G(z))^m
         \end{align*}
-        Hence \(G_{n+1}(z) = \EE[\EE[z^{X_{n+1}} \mid X_n]] = \EE[G(z)^{X_n}] = G_n(G(z))\)
+        Hence \(G_{n+1}(z) = \EE[\EE[z^{X_{n+1}} | X_n]] = \EE[G(z)^{X_n}] = G_n(G(z))\)
     \end{proof}
     
     \subsection{Extinction probability}
@@ -1838,8 +1837,8 @@
         So
         \begin{align*}
             q_{n+1} &= \PP(X_{n+1} = 0) \\
-            &= \sum_m \PP(X_{n+1} = 0 \mid X_1 = m) \PP(X_1 = m) \\
-            &= \sum_m \PP(X_n^{(1)} + \dots + X_n^{(m)} = 0 \mid X_1 = m) \PP(X_1 = m) \\
+            &= \sum_m \PP(X_{n+1} = 0 | X_1 = m) \PP(X_1 = m) \\
+            &= \sum_m \PP(X_n^{(1)} + \dots + X_n^{(m)} = 0 | X_1 = m) \PP(X_1 = m) \\
             &= \sum_m \left(\PP(X_n^{(1)} = 0)\right)^m \PP(X_1 = m) \\
             &= \sum_m q_n^m \PP(X_1 = m) \\ &= G(q_n)
         \end{align*}
@@ -1863,7 +1862,7 @@
     \end{itemize}
     
     \begin{proposition}
-        Assume \(P(X_1 = 1) < 1\). The extinction probability \(q\) is the minimal non-negative solution to \(G(x) = x\). Furthermore, \(q < 1\) if and only if \(\EE[X_1] > 1\).
+        Assume \(\PP(X_1 = 1) < 1\). The extinction probability \(q\) is the minimal non-negative solution to \(G(x) = x\). Furthermore, \(q < 1\) if and only if \(\EE[X_1] > 1\).
     \end{proposition}
     
     \begin{proof}
@@ -1875,19 +1874,19 @@
         \end{align*}
         since \(G\) is increasing.      
         
-        Now, we show \(q < 1\) if and only if \(\EE[X_1] > 1\). Suppose for now \(g_0 + g_1 = \PP(X_1) \leq 1 < 1\).
+        Now, we show \(q < 1\) if and only if \(\EE[X_1] > 1\). Suppose for now \(g_0 + g_1 = \PP(X_1 \leq 1) < 1\).
 
         Let \(H(z) = G(z) - z = \sum_{r=0}^\infty g_rz^r - z\), so \(H(1) = 0\). First, we show that \(H\) can have at most one root in \([0, 1)\). Observe
         \begin{align*}
-            H''(z) = \sum_{r=0}^\infty r(r-1)g_rz^{r-1} > 0
+            H''(z) = \sum_{r=0}^\infty r(r-1)g_rz^{r-2} > 0
         \end{align*}
-        in \((0, 1)\), because \(g_0 + g_1 < 1\), so there must be some later \(r\) with a positive value of \(g_r\), making the sum strictly larger than zero. Hence \(H'(z)\) is strictly increasing, and hence can have at most one more root other than 1 -- otherwise, we would have a point \(c\) with \(H'(c) = 0\) by Rolle's theorem.
+        in \((0, 1)\), because \(g_0 + g_1 < 1\), so there must be some later \(r\) with a positive value of \(g_r\), making the sum strictly larger than zero. Hence \(H'(z)\) is strictly increasing, and so can have at most one more root other than 1 -- otherwise, we would have more than one point \(c\) with \(H'(c) = 0\) by Rolle's theorem.
 
         We now split into two cases.
         \begin{itemize}
             \item \(H\) has no root other than 1, so \(q=1\). Then \(H'(1-) = G'(1-) - 1 = \EE[X_1] - 1\). Furthermore, \(H(0) = G(0) = g_0 \geq 0\) while \(H(1) = 0\), so \(H(z) \geq 0\) for all \(z \in [0, 1]\). Now
             \begin{align*}
-                H'(1-) = \lim_{z \to 1^-} \frac{H(z)-H(0)}{z-1} \leq 0
+                H'(1-) = \lim_{z \to 1^-} \frac{H(z)-H(1)}{z-1} \leq 0
             \end{align*}
             since the denominator is \(H(z) - 0 \geq 0\) while the denominator is \(z-1 \leq 0\). Hence \(H'(1-) \leq 0 \implies \EE[X_1] \leq 1\), as required.
             \item \(H\) has one more root \(r\), so \(r\) is the extinction probability. We hence have \(H(r) = 0\) and \(H(1) = 0\) with \(r<1\), so we have \(z \in (r, 1)\) with \(H'(z) = 0\) by Rolle. Hence \(\EE[X_1] - 1 = H'(-1) > H'(z) = 0\), so \(\EE[X_1] > 1\) as required. 
@@ -1958,7 +1957,7 @@
     \begin{proof}
         Let \((x_n)\) be a decreasing sequence satisfying \(x_n \to x\) as \(n \to \infty\). We want to show \(F(x_n) \to F(x)\) as \(n \to \infty\).
 
-        Let \(A_n = \{x < X \leq x_n\}\), so \(\PP(A_n) = F(x_n) - F(x)\) by the previous. Furthermore, \(A_{n+1} \subseteq A_n\) -- the sequence is decreasing -- so \(\PP(A_n) \to \PP\left(\bigcap_n A_n\right)\) by continuity of probability measures. But \(\PP\left(\bigcap_n A_n\right)\), so \(\PP(A_n) \to 0\). Hence \(\PP(A_n)= F(x_n) - F(x) \to 0\) as \(n \to \infty\).
+        Let \(A_n = \{x < X \leq x_n\}\), so \(\PP(A_n) = F(x_n) - F(x)\) by the previous. Furthermore, \(A_{n+1} \subseteq A_n\) -- the sequence is decreasing -- so \(\PP(A_n) \to \PP\left(\bigcap_n A_n\right)\) by continuity of probability measures. But \(\bigcap_n A_n = \emptyset\), so \(\PP(A_n) \to 0\). Hence \(\PP(A_n)= F(x_n) - F(x) \to 0\) as \(n \to \infty\).
 
         Since \(F\) is increasing (and bounded), left limits always exist. That \(\lim_{y \to x^-} F(y) \leq F(x)\) follows again from the fact \(F\) is increasing.
     \end{proof}
@@ -2053,10 +2052,10 @@
         
         The exponential distribution has a cool property! Let \(T \sim \Exp(\lambda)\), and let \(t\), \(s \in \RR^+\). Then
         \begin{align*}
-            \PP(T \geq s + t \mid T \geq s) &= \frac{\PP(T \geq s + t \mid T \geq s)}{\PP(T \geq s)} \\
+            \PP(T \geq s + t | T \geq s) &= \frac{\PP(T \geq s + t | T \geq s)}{\PP(T \geq s)} \\
             &= \frac{e^{-\lambda(s+t)}}{e^{-\lambda s}} = e^{-\lambda t}
         \end{align*}
-        so \(\PP(T \geq s + t \mid T \geq s) = \PP(T \geq t)\). This is called the \emph{memoryless} property (the geometric distribution also has it).
+        so \(\PP(T \geq s + t | T \geq s) = \PP(T \geq t)\). This is called the \emph{memoryless} property (the geometric distribution also has it).
     \end{enumerate}
 
     \begin{proposition}
@@ -2170,7 +2169,7 @@
         \end{align*}
         Let this integral be \(I\). We find
         \begin{align*}
-            I^2 &= \frac 2 \pi \int_0^\infty \int_0^\infty \exp\left(-\frac{u^2}2\right)\exp\left(\frac{v^2}2\right) \D u \D v \\
+            I^2 &= \frac 2 \pi \int_0^\infty \int_0^\infty \exp\left(-\frac{u^2}2\right)\exp\left(-\frac{v^2}2\right) \D u \D v \\
             &= \frac 2 \pi \int_0^\infty \int_0^{\pi/2} re^{-\frac{r^2}2} d\theta dr \\
             &= \int_0^\infty r e^{-\frac{r^2}2} \D r = 1
         \end{align*}
@@ -2180,7 +2179,7 @@
     Let \(X\) be a random variable with density \(f\). We have
     \begin{align*}
         \EE[X] &= \int_{-\infty}^\infty xf(x) \D x \\
-        &= \underbrace{\int_{-\infty}^\infty (x-\mu)\frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x}_{\text{odd around } -\mu} + \underbrace{\int_{-\infty}^\infty \frac{\mu}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}_{\mu} \\
+        &= \underbrace{\int_{-\infty}^\infty (x-\mu)\frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x}_{\text{odd around } \mu} + \underbrace{\int_{-\infty}^\infty \frac{\mu}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)}_{\mu} \\
         &= \mu
     \end{align*}
     Furthermore, 
@@ -2304,7 +2303,7 @@
         Suppose \(X = (X_1, \dots, X_n)\) has density \(f\). Then
         \begin{itemize}
             \item Suppose \(X_1, \dots X_n\) are independent and have densities given by \(f_1, \dots, f_n\). Then \(f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)\).
-            \item Suppose \(f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)\) for some non-negative functions \(f_1, \dots, f_n\). Then \(X_1, \dots X_n\) are independent with densities proportional to each of \(f_1, \dots, f_n\).
+            \item Suppose \(f(x_1, \dots, x_n) = f_1(x_1) \dots f_n(x_n)\) for some non-negative functions \(f_1, \dots, f_n\). Then \(X_1, \dots, X_n\) are independent with densities proportional to each of \(f_1, \dots, f_n\).
         \end{itemize}
     \end{proposition}
     
@@ -2312,7 +2311,7 @@
         \begin{itemize}
             \item We have
             \begin{align*}
-                \PP(X_1 \leq x_1, \dots, X_n \leq x_n) &= \PP(X_1 \leq x_1) \dots \PP(X_n \leq x)n \\
+                \PP(X_1 \leq x_1, \dots, X_n \leq x_n) &= \PP(X_1 \leq x_1) \dots \PP(X_n \leq x_n) \\
                 &= \left(\int_{-\infty}^{x_1} f_1(y_1) \D y_1\right) \dots \left(\int_{-\infty}^{x_n}f_n(y_n)\right) \\
                 &= \int_{-\infty}^{x_1} \cdots \int_{-\infty}^{x_n} f_1(y_1) \dots f_n(y_n) \D y_n \dots \D y_1
             \end{align*}
@@ -2384,27 +2383,27 @@
     \begin{definition}[Conditional density]
         Let \(X\) and \(Y\) be random variables with joint density \(f_{X, Y}\) and marginal densities \(f_X\) and \(f_Y\). The \emph{conditional density} of \(X\) given \(Y=y\) is
         \begin{align*}
-            f_{X \mid Y}(x \mid y) = \frac{f_{X, Y}(x, y)}{f_Y(y)}
+            f_{X | Y}(x | y) = \frac{f_{X, Y}(x, y)}{f_Y(y)}
         \end{align*}
         for \(f_Y(y) > 0\).
     \end{definition}
     
     \begin{proposition}[Law of total probability for continuous random variables]
         \[
-            f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x, y) \D y = \int_{-\infty}^\infty f_{X \mid Y}(x \mid y)f_Y(y) \D y
+            f_X(x) = \int_{-\infty}^\infty f_{X,Y}(x, y) \D y = \int_{-\infty}^\infty f_{X | Y}(x | y)f_Y(y) \D y
         \]
     \end{proposition}
     
     \begin{definition}[Conditional expectation for continuous random variables]
-        We define \(\EE[X \mid Y]\), the \emph{conditional expectation of \(X\) given y}, to be \(g(Y)\), where
+        We define \(\EE[X | Y]\), the \emph{conditional expectation of \(X\) given y}, to be \(g(Y)\), where
         \begin{align*}
-            g(y) = \int_{-\infty}^\infty x f_{X \mid Y}(x \mid y) \D x
+            g(y) = \int_{-\infty}^\infty x f_{X | Y}(x | y) \D x
         \end{align*}
     \end{definition}
     
     \begin{theorem}
         \label{functions-multivariate}
-        Let \(X\) be a random variable with values in \(D \subseteq \RR^n\) and density \(f\). Let \(g\) be a bijection from \(D\) to \(g(D)\) with a continuous derivative on \(D\) and \(|J| \neq 0\) for any \(x \in D\), where \(|J|\) is the Jacobian. Then, the random variable \(Y = g(X)\) has density
+        Let \(X\) be a random variable with values in \(D \subseteq \RR^n\) and density \(f\). Let \(g\) be a bijection from \(D\) to \(g(D)\) with continuous derivatives on \(D\) and \(|J| \neq 0\) for any \(x \in D\), where \(|J|\) is the Jacobian of \(g^{-1}\). Then, the random variable \(Y = g(X)\) has density
         \begin{align*}
             f_Y(y) = f_X\left(g^{-1}(y)\right) |J|
         \end{align*}  
@@ -2583,11 +2582,10 @@
     
     What is the mgf of a normally distributed random variable? We have
     \begin{align*}
-        m(\theta) &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x \\
-        &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac{x^2}{2\sigma^2}+2\frac{x}{2\sigma^2}\left(\mu+\theta\sigma^2\right)-\frac{\mu^2}{2\sigma^2}\right) \D x \\
-        &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac{x^2}{2\sigma^2}+2\frac{x}{2\sigma^2}\left(\mu+\theta\sigma^2\right)-\frac{\mu^2}{2\sigma^2}\right) \D x \\
-        &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2+\mu\theta+\frac{\theta^2\sigma^2}2\right) \\
-        &= \exp\left(\mu\theta + \frac{\theta^2\sigma^2}2\right) \int_{-\infty}^\infty e^{\theta x} \frac{1}{2\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2\right)
+        m(\theta) &= \int_{-\infty}^\infty e^{\theta x} \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) \D x \\
+        &= \int_{-\infty}^\infty \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac{x^2}{2\sigma^2}+2\frac{x}{2\sigma^2}\left(\mu+\theta\sigma^2\right)-\frac{\mu^2}{2\sigma^2}\right) \D x \\
+        &= \int_{-\infty}^\infty \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2+\mu\theta+\frac{\theta^2\sigma^2}2\right) \D x \\
+        &= \exp\left(\mu\theta + \frac{\theta^2\sigma^2}2\right) \int_{-\infty}^\infty \frac{1}{\sigma \sqrt{2\pi}} \exp\left(-\frac 1{2\sigma^2}\left(x-(\mu+\theta\sigma^2)\right)^2\right) \D x
     \end{align*}
     Then, the integrand is the density of \(\mc N(\mu+\theta\sigma^2, \sigma^2)\), so we obtain
     \begin{align*}
@@ -2601,7 +2599,7 @@
     \subsection{Multivariate moment generating functions}
 
     \begin{definition}[Multivariate moment generating functions]
-        Let \( X = (X_1, \dots, X_n)\) be a random variable. The mgf of \( X\) is defined to be
+        Let \(X = (X_1, \dots, X_n)\) be a random variable. The mgf of \( X\) is defined to be
         \begin{align*}
             m( \theta) = \EE[e^{ \theta^\intercal  X}]
         \end{align*}
@@ -2646,7 +2644,7 @@
         where \(v^\intercal X\) is Gaussian (since \(X\) is) and \(u^\intercal b\) is constant. The result follows.        
     \end{proof}
     
-    \begin{proposition}[Multivariate mean]
+    \begin{definition}[Multivariate mean and variance]
         A random vector variable \(X\) has mean
         \begin{align*}
             \mu = \EE[X] = \begin{pmatrix}
@@ -2660,7 +2658,7 @@
             V = \Var(X) = \EE[(X-\mu) \cdot (X-\mu)^\intercal]
         \end{align*}
         which is an \(n\)-by-\(n\) symmetric matrix, where expectation is taken pointwise.
-    \end{proposition}
+    \end{definition}
     
     \begin{remark*}
         Observe that \(\Var(X)_{i,j} = \Cov(X_i, X_j)\).
@@ -2688,7 +2686,7 @@
         \(u^\intercal V u = \Var(u^\intercal X) \geq 0\).
     \end{proof}
     
-    Let us also find the mgf. We have, for any vector \(\lambda\), \(\lambda^\intercal X \sim \mc N(\lambda^\intercal mu, \lambda^\intercal V \lambda)\). It follows immediately from the expression for the mgf of a Gaussian random variable in \(\RR\) that 
+    Let us also find the mgf. We have, for any vector \(\lambda\), \(\lambda^\intercal X \sim \mc N(\lambda^\intercal \mu, \lambda^\intercal V \lambda)\). It follows immediately from the expression for the mgf of a Gaussian random variable in \(\RR\) that 
     \begin{align*}
         m(\lambda) = \exp\left(\lambda^\intercal \mu + \frac{\lambda^\intercal V \lambda} 2\right)
     \end{align*}
@@ -2755,7 +2753,7 @@
     \end{proposition}
     
     \begin{proof}
-        We can write \(X = \mu + \sigma Z\), where \(Z \sim \mc N(0, I_N)\), and \(Z = \sigma^{-1}(x-\mu)\). Hence, by \cref{functions-multivariate}, we have
+        We can write \(X = \mu + \sigma Z\), where \(Z \sim \mc N(0, I_n)\), and \(Z = \sigma^{-1}(x-\mu)\). Hence, by \cref{functions-multivariate}, we have
         \begin{align*}
             f_X(x) &= f_Z(z) |J| \\
             &= \frac 1{(2\pi)^{n/2}}\exp\left(-\frac{z^\intercal z}2\right) \frac 1{\det \sigma} \\
@@ -2835,7 +2833,7 @@
                 \rho\sigma_1\sigma_2 & \sigma_2^2 \\
             \end{pmatrix}
         \end{align*}
-        is positive-definite.        
+        is positive semi-definite.        
     \end{lemma}
     
     \begin{proof}
@@ -2843,10 +2841,16 @@
         \begin{align*}
             u^\intercal V u = (1 \pm \rho)(\sigma_1^2 u_1^2 + \sigma_2^2 u_2^2) \mp \rho(\sigma_1 u_1 - \sigma_2 u_2)^2
         \end{align*}
-        Depending on whether \(\rho \in [-1, 0]\) or \(\rho \in [0, 1]\), we use take the first plus sign or the first minus sign, respectively.       
+        Depending on whether \(\rho \in [-1, 0]\) or \(\rho \in [0, 1]\), we take the first plus sign or the first minus sign, respectively.       
     \end{proof}
-    
-    What is \(\EE[X_2 \mid X_1]\)
+
+    \begin{proposition}[Conditional expectation for bivariate Gaussians]
+        Suppose \(X\) is a bivariate Gaussian, then
+        \begin{align*}
+            \EE[X_2 \mid X_1] = \mu_2 + a(X_1 - \mu_1)
+        \end{align*}
+        where \(a = \frac{\Cov(X_1, X_2)}{\Var(X_1)}\).        
+    \end{proposition}
 
     \begin{proof}
         Let \(Y = X_2 - aX_1\). Observe
@@ -2869,7 +2873,7 @@
         \end{align*}
         Taking \(a = \frac{\Cov(X_1, X_2)}{\Var(X_1)}\) gives \(\Cov(X_1, Y) = 0\), so \(X_1\) and \(Y\) are independent. Then
         \begin{align*}
-            \EE[X_2 \mid X_1] &= \EE[X_2 - aX_1 \mid X_1] + \EE[aX_1 \mid X_1]\\
+            \EE[X_2 | X_1] &= \EE[X_2 - aX_1 | X_1] + \EE[aX_1 | X_1]\\
             &= \EE[X_2 - aX_1] + aX_1 \\
             &= \mu_2 - a\mu_1 + aX_1
         \end{align*}
@@ -2906,17 +2910,17 @@
     \begin{definition}[Almost sure/probability 1 convergence]
         Let \((X_n)\) be a sequence of random variables and \(X\) a random variable. We say that \(X_n \to X\) \emph{almost surely} or \emph{with probability 1} if
         \begin{align*}
-            \PP(\lim_{n \to \infty} X_n = X) = 1
+            \PP\left(\lim_{n \to \infty} X_n = X\right) = 1
         \end{align*}
         Perhaps it is most helpful to return to the definition of random variables. We have that there exists \(A \in \mc F\) such that \(\PP(A) = 1\) and, for \(\omega\) in that set, the functions \(X_n\) converge pointwise to the function \(X\).
     \end{definition}
     
     \begin{proposition}
-        If \(X_n \to 0\) as \(n \to \infty\) a.s., then \(X_n \pto 0\) as \(n \to \infty\).
+        If \(X_n \to 0\) a.s. as \(n \to \infty\), then \(X_n \pto 0\) as \(n \to \infty\).
     \end{proposition}
     
     \begin{proof}
-        We want to show that \(\PP(|X_n| \leq \eps) \to 1\) as \(n \to \infty\). Observe
+        Given an \(\eps > 0\), we want to show that \(\PP(|X_n| \leq \eps) \to 1\) as \(n \to \infty\). Observe
         \begin{align*}
             \PP(|X_n| \leq \eps) &\geq \PP\left(\underbrace{\bigcap_{m=n}^\infty |X_m| \leq \eps}_{A_n}\right)
         \end{align*}
@@ -2995,7 +2999,7 @@
     
     \subsection{Central limit theorem}
 
-    \begin{definition}[Convergence in probability]
+    \begin{definition}[Convergence in distribution]
         A sequence of random variables \((X_n)\) \emph{converges to \(X\) in distribution}, \(X_n \dto X\), if
         \begin{align*}
             F_{X_n}(x) \to F_X(x)
@@ -3010,7 +3014,7 @@
     \end{proposition}
     
     \begin{proof}
-        Let \(x\) be a continuity point of \(F_X\), and let \(\eps > 0\). We claim that
+        Let \(x\) be a continuity point of \(F_X\), and let \(\eps > 0\). Observe that
         \begin{align*}
             \{X \leq x - \eps\} \subseteq \{X_n \leq x\} \cup \{|X_n-X| > \eps\}
         \end{align*}
@@ -3188,7 +3192,7 @@
     \end{align*}
     where the \(R\) expression comes from the inverse of the CDF for \(R\). Indeed, we have
     \begin{align*}
-        \PP(R \geq r) = \PP\left(\sqrt{-2\log V} \geq r\right) = \PP\left(V \leq e^{-\frac{r^2}2}\right) = re^{-\frac{r^2}{2}}
+        \PP(R \geq r) = \PP\left(\sqrt{-2\log V} \geq r\right) = \PP\left(V \leq e^{-\frac{r^2}2}\right) = e^{-\frac{r^2}{2}}
     \end{align*}
     so \(R\) has the correct cdf.
 

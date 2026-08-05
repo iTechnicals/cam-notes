@@ -29,9 +29,9 @@
 \contentsline {subsection}{\numberline {9.1}Multivariate moment generating functions}{57}{subsection.294}%
 \contentsline {subsection}{\numberline {9.2}Multivariate Gaussian random variables}{57}{subsection.301}%
 \contentsline {subsection}{\numberline {9.3}Bivariate Gaussians}{61}{subsection.323}%
-\contentsline {section}{\numberline {10}Convergence results and limit theorems}{62}{section.330}%
-\contentsline {subsection}{\numberline {10.1}Central limit theorem}{65}{subsection.342}%
-\contentsline {section}{\numberline {11}Simulation of random variables}{69}{section.354}%
-\contentsline {subsection}{\numberline {11.1}Box-Muller transform}{69}{subsection.357}%
-\contentsline {subsection}{\numberline {11.2}Rejection sampling}{70}{subsection.358}%
+\contentsline {section}{\numberline {10}Convergence results and limit theorems}{62}{section.332}%
+\contentsline {subsection}{\numberline {10.1}Central limit theorem}{65}{subsection.344}%
+\contentsline {section}{\numberline {11}Simulation of random variables}{69}{section.356}%
+\contentsline {subsection}{\numberline {11.1}Box-Muller transform}{69}{subsection.359}%
+\contentsline {subsection}{\numberline {11.2}Rejection sampling}{70}{subsection.360}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

@@ -16,7 +16,8 @@
 \contentsline {subsection}{\numberline {4.1}Basics}{34}{subsection.212}%
 \contentsline {subsection}{\numberline {4.2}Integration and differentiation}{46}{subsection.263}%
 \contentsline {subsection}{\numberline {4.3}Improper integrals}{51}{subsection.284}%
-\contentsline {section}{\numberline {5}?}{55}{section.302}%
-\contentsline {subsection}{\numberline {5.1}Exponential and logarithm}{55}{subsection.303}%
-\contentsline {subsection}{\numberline {5.2}Trigonometric functions}{59}{subsection.325}%
+\contentsline {section}{\numberline {5}Sequences and series of functions}{55}{section.302}%
+\contentsline {subsection}{\numberline {5.1}Basics of power series}{55}{subsection.309}%
+\contentsline {subsection}{\numberline {5.2}Exponential and logarithm}{58}{subsection.330}%
+\contentsline {subsection}{\numberline {5.3}Trigonometric functions}{62}{subsection.352}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

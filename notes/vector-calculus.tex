@@ -178,7 +178,7 @@
 
     \begin{proposition}
         \label{2.2} \[
-            df = \grad f \cdot \D x
+            df = \grad f \cdot \D{\V x}
         \]
     \end{proposition}
     
@@ -954,7 +954,7 @@
         \V t &= \V x' = \frac{d \V x}{dt} \frac{dt}{ds} = \frac{\dot{\V x}}{|\dot{\V x}|} \\
         \V x'' &= \frac{d\V t}{ds} = \frac{d \V t}{dt} \frac{dt}{ds} = \frac{\dot{\V t}}{|\dot{\V x}|}
     \end{align*}
-    so that \(\kappa = \frac{|\dot{\V t}|}{|\dot{\V x}|}\), \(\V n = \)
+    so that \(\kappa = \frac{|\dot{\V t}|}{|\dot{\V x}|}\), \(\V n = \frac{\dot{\V t}}{|\dot{\V t}|}\), and so on.
     
     \begin{example*}
         Consider \(\V x(t) = (\frac 1 {\sqrt 2}t^2, t, t)\). Then \(\dot{\V x} = (\sqrt 2 t, 1, 1)\), so \(\frac{ds}{dt} = |\dot{\V x}| = \sqrt 2 \sqrt{1 + t^2}\). Hence
@@ -2578,7 +2578,7 @@
     
     \section{Cartesian tensors}
 
-    In this chapter, \(\{\V e_1, \V e_2, \V e_3\}\) will refer to any general right-handed orthonormal basis of \(\RR^3\), not just the standard basis, as will \(\{V e_1', \V e_2', \V e_3'\}\).
+    In this chapter, \(\{\V e_1, \V e_2, \V e_3\}\) will refer to any general right-handed orthonormal basis of \(\RR^3\), not just the standard basis, as will \(\{\V e_1', \V e_2', \V e_3'\}\).
 
     \subsection{What is a vector?}
 

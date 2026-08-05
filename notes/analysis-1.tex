@@ -573,7 +573,7 @@
         \begin{align*}
             |s_k - s| < \eps \text{ and } \sum_{k > N} |a_n| < \eps
         \end{align*}
-        Furthermore, there exists \(N_1 \geq N\) such that \(a_1, \dots, a_N\) are included in \(a_1', \dots, a_N'\). Hence, for \(m \geq N_1\), 
+        Furthermore, there exists \(N_1 \geq N\) such that \(a_1, \dots, a_N\) are included in \(a_1', \dots, a_{N_1}'\). Hence, for \(m \geq N_1\), 
         \begin{align*}
             \sum^m a_n' &= \underbrace{\sum^N a_n}_{s_N} + \;(m-N\text{ terms of }(a_n)\text{ with index}\geq N) \\
             \implies \left|\sum^m a_n'-s\right| &\leq \underbrace{|s_N - s|}_{<\eps} + \underbrace{\sum_{k > N}|a_n|}_{<\eps} \\
@@ -720,7 +720,7 @@
     \begin{proof}
         \begin{itemize}
             \item[\(\implies\)] By continuity of \(f\), for any \(\eps > 0\) we have \(\delta\) such that \(|z-a| < \delta\), \(z \in X\) implies \(|f(z) - f(a)| < \eps\). Take \((z_n)\) on \(X\) with \(z_n \to a\), then there exists \(N = N(\delta(\eps))\) such that, for any \(n \geq N\), \(|z_n-a| < \delta\) and hence \(|f(z_n)-f(a)| < \eps\).
-            \item[\(\impliedby\)] Let us take the contrapositive. If \(f\) is not continuous at \(a\), then there exists \(\eps > 0\) suchb that, for any \(\delta > 0\), one can find \(z = z(\delta) \in X\) such that \(|f(z)-f(a)| \geq \eps\) while \(|z-a| < \delta\). Now take \(\delta = 1, \frac 1 2, \dots, \frac 1 n, \dots\) to find \((z_n)\) with \(|z_n-a| < \frac 1 n\), so \(z_n \to a\), but \(|f(z_n)-f(a)| \geq \eps\) for all \(n\) and a non-zero \(\eps\). Hence \(f\) cannot be sequentially continuous, as required.
+            \item[\(\impliedby\)] Let us take the contrapositive. If \(f\) is not continuous at \(a\), then there exists \(\eps > 0\) such that, for any \(\delta > 0\), one can find \(z = z(\delta) \in X\) such that \(|f(z)-f(a)| \geq \eps\) while \(|z-a| < \delta\). Now take \(\delta = 1, \frac 1 2, \dots, \frac 1 n, \dots\) to find \((z_n)\) with \(|z_n-a| < \frac 1 n\), so \(z_n \to a\), but \(|f(z_n)-f(a)| \geq \eps\) for all \(n\) and a non-zero \(\eps\). Hence \(f\) cannot be sequentially continuous, as required.
         \end{itemize}
     \end{proof}
     
@@ -957,7 +957,7 @@
         \begin{align*}
             (fg)'(a) &= \lim_{h \to 0} \frac{(fg)(a+h) - (fg)(a)}{h} \\
             &= \lim_{h \to 0} \frac{f(a+h)g(a+h)-f(a)g(a)}{h} \\
-            &= \lim_{h \to 0} \frac{\left(f(a+h)-f(a)\right)g(a+h) + \left(f(a+h)-g(a)\right)f(a)}{h} \\
+            &= \lim_{h \to 0} \frac{\left(f(a+h)-f(a)\right)g(a+h) + \left(g(a+h)-g(a)\right)f(a)}{h} \\
             &= \lim_{h \to 0} \frac{\left(f(a+h)-f(a)\right)g(a+h)}{h} + f(a)\lim_{h \to 0} \frac{g(a+h)-g(a)}{h} \\
             &= \lim_{h \to 0} g(a+h) f'(a) + g'(a)f(a)
         \end{align*}
@@ -1096,7 +1096,7 @@
         \begin{align*}
             \sup_{[a, b]} f = f(x_M) \qquad \qquad \inf_{[a, b]} f = f(x_m)
         \end{align*}
-        If \(f\) is constant, then \(f'(c) = 0\) for any \(c \in (a, b)\), so we are done. Otherwise, it either holds that \(f(x_M) > f(a)\) (so \(x_M \in (a, b)\)) or \(f(x_m) < f(a)\) (so \(x_m \in (a, b)\)). It reamins to show that, at either of these points, \(f' = 0\). We take cases.
+        If \(f\) is constant, then \(f'(c) = 0\) for any \(c \in (a, b)\), so we are done. Otherwise, it either holds that \(f(x_M) > f(a)\) (so \(x_M \in (a, b)\)) or \(f(x_m) < f(a)\) (so \(x_m \in (a, b)\)). It remains to show that, at either of these points, \(f' = 0\). We take cases.
         \begin{itemize}
             \item \(x_m \in (a,b)\). Then, for sufficiently small \(h\),
             \begin{align*}
@@ -1366,7 +1366,7 @@
         Note that \(g\) is continuous on \([0, h]\) and differentiable on \((0, h)\) with
         \begin{align*}
             g'(t) &= -\sum_{k=1}^{n-1} \frac 1 {(k-1)!} f^{(k)}(t) (-1) (h-t)^{k-1} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
-            &= -\sum_{k=0}^{n-2} \frac 1 {k!} f^{(k+1)}(t)(h-t)^{k} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
+            &= \sum_{k=0}^{n-2} \frac 1 {k!} f^{(k+1)}(t)(h-t)^{k} - \sum_{k=0}^{n-1} \frac 1 {k!} f^{(k+1)}(t) (h-t)^k \\
             &= -\frac 1 {(n-1)!} f^{(n)}(t) (h-t)^{n-1}
         \end{align*}
         For \(p \in \{1, \dots, n\}\), set
@@ -1692,7 +1692,7 @@
         \end{align*}
         so that \(|I_j| = \frac{b-a}{n}\). Then
         \begin{align*}
-            U(f, \mc P_n) - L(f, \mc P_n) &= \frac{b-a}n \sum_{j=1}^n \frac{b-a}{n} \left[f\left(a + \frac j n (b-a)\right) - f\left(a + \frac{j-1} n (b-a)\right)\right] \\
+            U(f, \mc P_n) - L(f, \mc P_n) &= \sum_{j=1}^n \frac{b-a}{n} \left[f\left(a + \frac j n (b-a)\right) - f\left(a + \frac{j-1} n (b-a)\right)\right] \\
             &= \frac{b-a}{n}(f(b)-f(a))
         \end{align*}
         since the sum telescopes. But this clearly goes to 0 as \(n \to \infty\).
@@ -1733,7 +1733,7 @@
         \begin{align*}
             |z_{n_k}-y_{n_k}| < \frac{b-a}{n_k} \to 0
         \end{align*}
-        as \(k \to infty\), so \(z_{n_k} \to y\) also. However, since \(|f(z_{n_k})-f(y_{n_k})| \geq \frac{\eps}{b-a}\), we conclude \(f(z_{n_k})\) and \(f(y_{n_k})\) do not have the same limit, so at least one must not tend to \(f(y)\). Hence \(f\) is not sequentially continuous, and so it is not continuous either.       
+        as \(k \to \infty\), so \(z_{n_k} \to y\) also. However, since \(|f(z_{n_k})-f(y_{n_k})| \geq \frac{\eps}{b-a}\), we conclude \(f(z_{n_k})\) and \(f(y_{n_k})\) do not have the same limit, so at least one must not tend to \(f(y)\). Hence \(f\) is not sequentially continuous, and so it is not continuous either.       
     \end{proof}
 
     \begin{lemma}
@@ -1782,7 +1782,7 @@
             U(f, \mc P') - U(g, \mc P') &= \sum_j |I_j| \left(\sup_{I_j}f - \sup_{I_j}g\right) \\
             &= \sum_{I_j \subset J} |I_j| \left(\sup_{I_j}f - \sup_{I_j}g\right) \\
             &\leq \sum_{I_j \subset J} |I_j| \sup_{I_j}f 
-            &\leq M|J| < M\eps
+            \leq M|J| < M\eps
         \end{align*}
         A similar argument could be employed to bound the difference below, so that
         \begin{align*}
@@ -1817,7 +1817,7 @@
 
             \item[\(\impliedby\)] Fix \(\eps > 0\), so there exist \(\mc P_L\), \(\mc P_R\) partitions of \(I_L\), \(I_R\) respectively such that
             \begin{align*}
-                U(f_R, \mc P_R) - L(f_R, \mc P_R) &< \eps
+                U(f_R, \mc P_R) - L(f_R, \mc P_R) &< \eps \\
                 U(f_L, \mc P_L) - L(f_L, \mc P_L) &< \eps
             \end{align*}
             so \(U(f, \mc P) - L(f, \mc P) < 2\eps\), since \(\mc P = \mc P_L \cup \mc P_R\) is a partition of \([a, b]\). 
@@ -1926,7 +1926,7 @@
             \item [6.] We have
             \begin{align*}
                 f(x)^2 - f(y)^2 &= (f(x)-f(y))(f(x)+f(y)) \\
-                \sup_I f^2 - \inf_I f^2 &\leq \sup_{x \in I} \inf_{y \in I} \left((f(x)-f(y))(f(x)+f(y))\right) \\
+                \sup_I f^2 - \inf_I f^2 &\leq \sup_{x \in I} \sup_{y \in I} \left((f(x)-f(y))(f(x)+f(y))\right) \\
                 &\leq 2 \sup_I |f| \left(\sup_I f - \inf_I f\right)
             \end{align*}
         \end{enumerate}
@@ -1994,7 +1994,7 @@
             |F(x+h)-F(x)| &= \left|\int_a^{x+h} f(t) \D t - \int_a^x f(t) \D t \right| \\
             &= \left|\int_a^{x+h} f(t) \D t\right| \\
             &\leq \int_x^{x+h} |f(t)| \D t \\
-            &\leq \sup_{[a,b]} f \int_x^{x+h} 1 \D t
+            &\leq \sup_{[a,b]} |f| \int_x^{x+h} 1 \D t
         \end{align*}
         which goes to 0 as \(h \to 0\).
     \end{proof}
@@ -2014,10 +2014,10 @@
         \end{align*}
         and we will show \(\xi(h) \to 0\) as \(h \to 0\). Observe
         \begin{align*}
-            |F(x_0+h)-F(x_0)-hf(x_0)| &= \left|\int_x^{x_0+h} f(t) \D t - hf(x_0)\right| \\
-            &= \left|\int_x^{x_0+h} (f(t)-f(x_0)) \D t\right| \\
-            &\leq \int_x^{x_0+h} |f(t)-f(x_0)| \D t \\
-            &= \sup_{t \in [0, h]}|f(x_0+t)-f(x_0)| \cdot \underbrace{\int_x^{x_0+h} \D t}_h
+            |F(x_0+h)-F(x_0)-hf(x_0)| &= \left|\int_{x_0}^{x_0+h} f(t) \D t - hf(x_0)\right| \\
+            &= \left|\int_{x_0}^{x_0+h} (f(t)-f(x_0)) \D t\right| \\
+            &\leq \int_{x_0}^{x_0+h} |f(t)-f(x_0)| \D t \\
+            &= \sup_{t \in [0, h]}|f(x_0+t)-f(x_0)| \cdot \underbrace{\int_{x_0}^{x_0+h} \D t}_h
         \end{align*}
         Hence
         \begin{align*}
@@ -2091,7 +2091,7 @@
     \end{proposition}
     
     \begin{proof}
-        The product rule gives \(f'g = (fg)' - fg'\). Integrating this over \([a, b]\) and applying \cref{ftc-2} to evaluate the \((fg')\) integral gives the result.
+        The product rule gives \(f'g = (fg)' - fg'\). Integrating this over \([a, b]\) and applying \cref{ftc-2} to evaluate the \((fg)'\) integral gives the result.
     \end{proof}
     
     \begin{proposition}[Integration by substitution]
@@ -2106,7 +2106,7 @@
         \begin{align*}
             h'(t) = F'(g(t))g(t) = f(g(t))g'(t)
         \end{align*}
-        by the chain rule and \cref{ftc-1}. Hence, applying \(\cref{ftc-2}\),
+        by the chain rule and \cref{ftc-1}. Hence, applying \cref{ftc-2},
         \begin{align*}
             \int_a^b f(x) \D x &= F(b) - F(a) = h(\beta) - h(\alpha) \\
             &= \int_\alpha^\beta h'(t) \D t \\
@@ -2124,7 +2124,7 @@
     \end{theorem}
     
     \begin{remark*}
-        Letting \(M_n = \sup_{[a,a+h]}|f^(n)|\) as before, we know
+        Letting \(M_n = \sup_{[a,a+h]}|f^{(n)}|\) as before, we know
         \begin{align*}
             \left|R_{n,f,a}(h)\right| &\leq \frac{h^n}{n!} \int_0^1 \left|(1-t)^{h-1} f^{(n)}(a+th)\right| \D t \\
             &\leq \frac{h^n}{n!} M_n \int_0^1 1 \D t
@@ -2140,9 +2140,9 @@
         We will use integration by parts. Observe
         \begin{align*}
             &\; \frac{1}{(n-1)!} \int_0^h (h-u)^{n-1} f^{(n)}(a+u) \D u \\
-            =&\; h^{n-1} \frac{f^{(n-1)}(a)}{(n-1)!} + \frac{1}{(n-2)!} \int_0^h (h-u)^{n-2} f^{(n-1)}(a+u) \D u \\
-            =&; \dots = -\sum_{k=1}^{n-1} \frac 1 {n!} f^{(k)}(a) h^k + \underbrace{\int_0^h f'(a+u) \D u}_{f(a+h)-f(a)} \\
-            =&; R_{n,f,a}(h)
+            =&\; -h^{n-1} \frac{f^{(n-1)}(a)}{(n-1)!} + \frac{1}{(n-2)!} \int_0^h (h-u)^{n-2} f^{(n-1)}(a+u) \D u \\
+            =&\; \dots = -\sum_{k=1}^{n-1} \frac 1 {n!} f^{(k)}(a) h^k + \underbrace{\int_0^h f'(a+u) \D u}_{f(a+h)-f(a)} \\
+            =&\; R_{n,f,a}(h)
         \end{align*}
         as required.        
     \end{proof}
@@ -2167,7 +2167,7 @@
     \begin{proof}[Lagrange remainder (\emph{assuming \(f^{(n)}\) continuous})]
         Let \(g(t) = (1-t)^{n-1}\), then there exists \(\theta \in (0, 1)\) such that
         \begin{align*}
-            R_{n,f,a} &= \frac{h^n}{(h-1)!} f^{(n)}(a + \theta h) \int_0^1 (1-t)^{n-1} \D t \\
+            R_{n,f,a} &= \frac{h^n}{(n-1)!} f^{(n)}(a + \theta h) \int_0^1 (1-t)^{n-1} \D t \\
             &= \frac{h^n}{n!} f^{(n)}(a+\theta h)
         \end{align*}
     \end{proof}
@@ -2239,7 +2239,7 @@
             \begin{align*}
                 0 \leq F(R) \leq \int_a^R g(x) \D x \leq \int_a^\infty g(x) \D x
             \end{align*}
-            Since \(F\) is monotone and bounded, \(L = \sup_{R \geq a} F(R) < \infty\) exists. We claim \(L = \int_a^\infty f(x) \D x\). By definition of sup, for any \(\eps > 0\), there exists \(R_0 \in [a, \infty)\) such that
+            Hence, \(L = \sup_{R \geq a} F(R) < \infty\) exists. We claim \(L = \int_a^\infty f(x) \D x\). By definition of sup, for any \(\eps > 0\), there exists \(R_0 \in [a, \infty)\) such that, for \(R \geq R_0\),
             \begin{align*}
                 L-\eps \leq F(R_0) \leq F(R) \leq L
             \end{align*}
@@ -2312,7 +2312,7 @@
     \begin{definition}[Improper integrals with an isolated singularity]
         Let \(f: (a, b] \to \RR\) be integrable on \([a + \delta, b]\) for any \(0 < \delta \leq b-a\). Set 
         \begin{align*}
-            F: (0, b-a] &\to \RR
+            F: (0, b-a] &\to \RR \\
             \delta &\mapsto \int_{a+\delta}^b f(x) \D x
         \end{align*}
         Then, we say \(\int_a^b f(x) \D x\) exists/converges if \(\lim_{\delta \to 0} F(\delta)\) exists and is finite, and we say
@@ -2355,19 +2355,171 @@
         \end{align*}
     \end{lemma}
     
-    \lecture{Lecture \(n\)}
+    \lecture{Lecture 21}
 
-    \section{?}
+    \section{Sequences and series of functions}
 
-    \lecture{Lecture \(n+1\)}
+    \begin{definition}[Sequences of functions]
+        We say \((f_n)_n = (f_1, \dots)\) is a \emph{sequence of \(\CC\)-valued functions} on \(X \subseteq \CC\) if \(f_n: X \to \CC\) for each \(n \in \NN\). 
+    \end{definition}
 
-    \lecture{Lecture \(n+2\)}
+    \begin{definition}[Convergent sequences of functions]
+        Suppose there exists a set \(Y \subseteq X\) such that, for each \(x \in Y\), the numerical sequence \((f_n(x))_n\) converges. Then, we can define
+        \begin{align*}
+            f: Y &\to \CC \\
+            x &\mapsto \lim_{n \to \infty} f_n(x)
+        \end{align*}
+        and we say \(f_n \to f\) on the set \(Y\).        
+    \end{definition}
+    
+    \begin{definition}[Convergent series of functions]
+        Given a sequence of functions, we call
+        \begin{align*}
+            \sum_{n=1}^\infty f_n = f_1 + f_2 + \dots
+        \end{align*}
+        a \emph{series} of \(\CC\)-valued functions on \(X\). This series converges if and only if the sequence of partial sums converges.    
+    \end{definition}
+    
+    \subsection{Basics of power series}
+
+    \begin{definition}[Power series]
+        Let \(a \in \CC\) and \((c_n)_{n \in \NN \cup \{0\}}\) a numerical sequence in \(\CC\). Then
+        \begin{align*}
+            \sum_{n=0}^\infty c_n(x-a)^n
+        \end{align*}
+        is a \emph{power series} with \emph{centre} at \(a\), and \emph{coefficients} \((c_n)\).
+    \end{definition}
+    
+    \begin{example*}
+        If \(f\) is a smooth function, then its Taylor series at \(a\) is a power series with coefficients \(a_n = \frac{f^{(n)}(a)}{n!}\).
+    \end{example*}
+    
+    \begin{lemma}
+        \label{rad-conv-lemma}
+        If \(\sum_{n=0}^\infty c_n (x-a)^n\) converges for some \(x\), and \(|y-a| < |x-a|\), then \(\sum_{n=0}^\infty c_n (y-a)^n\) converges absolutely.
+    \end{lemma}
+    
+    \begin{proof}
+        Let \(x\) be such that \(\sum a_n(x-a)^n\) converges, and fix \(y\) with \(r := \frac{|y-a|}{|x-a|} < 1\). Then
+        \begin{align*}
+            \left|c_n(y-a)^n\right| = \left|c_n(x-a)^n\right| \cdot \left|\frac{y-a}{x-a}\right|^n = \left|c_n(x-a)^n\right|\cdot r^n
+        \end{align*}
+        Since \(\sum c_n(x-a)^n\) converges, \(c_n(x-a)^n \to 0\) by the \(n^\text{th}\) term test. Hence, \((c_n(x-a)^n)_n\) is bounded, that is we have \(M > 0\) with
+        \begin{align*}
+            |c_n(x-a)^n| \leq M
+        \end{align*}
+        for all \(n\). Hence
+        \begin{align*}
+            |c_n(x-a)^n| \leq Mr^n
+        \end{align*}
+        so, by comparison to geometric series, \(\sum_{n=0}^\infty c_n(y-a)^n\) converges as required.
+    \end{proof}
+    
+    \begin{proposition}[Radius of convergence]
+        Let \(\sum c_n(x-a)^n\) be a power series. Then there exists \(R \in [0, \infty]\), the \emph{radius of convergence} of the power series, such that
+        \begin{itemize}
+            \item \(\sum_{n=0}^\infty c_n(x-a)^n\) converges absolutely for \(|x-a| < R\);
+            \item if \(R < \infty\), then \(\sum_{n=0}^\infty c_n(x-a)^n\) diverges for \(|x-a| > R\).
+        \end{itemize}       
+    \end{proposition}
+
+    \begin{proof}
+        Let
+        \begin{align*}
+            A = \left\{r \geq 0: \exists x \in \CC \text{ with } |x-a| = r \text{ s.t. } \sum_{n=0}^\infty c_n(x-a)^n \text{ converges}\right\}
+        \end{align*}
+        Clearly \(0 \in A\), so \(A\) is non-empty. If \(A\) is unbounded, let \(R = \infty\) -- otherwise, let \(R = \sup A\). Then
+        \begin{itemize}
+            \item \(\sum c_n (x-a)^n\) diverges for \(|x-a| > R\) by the definition of \(A\);
+            \item If \(|y-a| < R = \sup A\), there exists \(r \in A\) with \(|y-a| < r \leq R\). Hence, by the definition of \(A\), there exists \(x \in \CC\) with \(|x-a| = r > |y-a|\) such that \(\sum c_n(x-a)^n\) converges. Hence, by \cref{rad-conv-lemma}, \(\sum c_n (y-a)^n\) converges absolutely.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{remark*}
+        We don't know anything (yet!) about what happens when \(|x-a| = R\).
+    \end{remark*}
+    
+    \begin{proposition}[Root test for power series]
+        Suppose a power series' sequence of coefficients \((c_n)\) has
+        \begin{align*}
+            L = \lim_{n \to \infty} \sqrt[n]{|c_n|}
+        \end{align*}
+        Then the power series has radius of convergence \(R = \frac 1 L\), taking \(R = \infty\) if \(L = 0\). Also, if the sequence of roots diverges to \(\infty\), then \(R = 0\).        
+    \end{proposition}
+    
+    \begin{proposition}[Ratio test for power series]
+        Suppose a power series' sequence of coefficients \((c_n)\) has
+        \begin{align*}
+            L = \lim_{n \to \infty} \left|\frac{c_{n+1}}{c_n}\right|
+        \end{align*}
+        Then the power series has radius of convergence \(R = \frac 1 L\), taking \(R = \infty\) if \(L = 0\). Also, if the sequence of ratios diverges to \(\infty\), then \(R = 0\).         
+    \end{proposition}
+    
+    We prove these by simply applying the root/ratio test to \(\sum c_n (x-a)^n\) for some fixed \(x\).
+    
+    \begin{example*}
+        \begin{itemize}
+            \item \(\sum \frac{x^n}{n!}\) has \(R = \infty\), since 
+            \begin{align*}
+                \lim_{n \to \infty} \left|\frac{\frac 1{(n+1)!}}{\frac 1 {n!}}\right| = \lim_{n \to \infty} \frac 1 {n+1} = 0
+            \end{align*}
+            \item \(\sum n!x^n\) has \(R = 0\).
+            \item \(\sum_{n=1}^\infty \frac{x^n}{n^2}\) converges absolutely on \(|x| \leq 1\), and diverges on \(|x| > 1\). Observe
+            \begin{align*}
+                \lim_{n \to \infty} \left|\frac{\frac 1 {(n+1)^2}}{\frac 1 {n^2}}\right| = 1
+            \end{align*}
+            so \(R = 1\). What about on the circle \(|x| = 1\)? We have
+            \begin{align*}
+                \sum_{n=1}^\infty \left|\frac{x^n}{n^2}\right| = \sum_{n=1}^\infty \frac 1 {n^2} < \infty
+            \end{align*}
+            so the series converges absolutely.
+            \item \(\sum_{n=1}^\infty \frac{x^n}{n}\) has \(R=1\), so converges absolutely on \(|x| < 1\) and diverges on \(|x| > 1\). What happens when \(|x|=1\) is more subtle, however. Observe that, for \(x=1\), we have the harmonic series, which diverges, while for \(x=-1\), we have the alternating harmonic series, which converges.    
+        \end{itemize}
+    \end{example*}
+    
+    \begin{remark*}
+        We should note here that the set \(Y\) of values for which a power series converges may well be larger than \(\{x \in \CC: |x-a| < R\}\).
+    \end{remark*}
+
+    \lecture{Lecture 22}
+
+    \begin{proposition}[Continuity of power series]
+        Let \(\sum c_n(x-a)^n\) have radius of convergence \(R > 0\). Let \(B_R(a) = \{x \in \CC: |z-a| < R\}\), and \(D_r(a) = \{x \in \CC: |z-a| \leq r\}\). Then \(f\), defined on \(B_R(a)\), is continuous inside \(D_r(a)\) for every \(r < R\).       
+    \end{proposition}
+    
+    \begin{proof}[Proof (non-examinable)]
+    \end{proof}
+
+    \begin{proposition}[Integration of power series]
+        Let \(\sum c_n(x-a)^n\) have radius of convergence \(R > 0\). Let \(B_R(a) = \{x \in \CC: |z-a| < R\}\), and \(D_r(a) = \{x \in \CC: |z-a| \leq r\}\). Then \(f\), defined on \(B_R(a)\), is integrable inside \(D_r(a)\) for every \(r < R\), and
+        \begin{align*}
+            \int_a^x f(t) \D t = \sum_{n=0}^\infty c_n \frac{(x-a)^{n+1}}{n+1}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}[Proof (non-examinable)]
+    \end{proof}
+
+    \begin{proposition}[Differentiation of power series]
+        Let \(\sum c_n(x-a)^n\) have radius of convergence \(R > 0\). Let \(B_R(a) = \{x \in \CC: |z-a| < R\}\). Then \(f\), defined on \(B_R(a)\), is differentiable in \(B_R(a)\), and 
+        \begin{align*}
+            f'(x) = \sum_{n=1}^\infty nc_n(x-a)^{n-1}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}[Proof (non-examinable)]
+    \end{proof}
+    
+    
+    
+
+    \lecture{Lecture 23}
 
     \subsection{Exponential and logarithm}
     
     Taylor's theorem with Lagrange remainder says that
     \begin{align*}
-        R_{N,0}(x) = e^x - \sum_{n=1}^{N-1} \sum_{x^n}{n!} = e^\xi \frac{x^N}{N!}
+        R_{N,0}(x) = e^x - \sum_{n=1}^{N-1} \frac{x^n}{n!} = e^\xi \frac{x^N}{N!}
     \end{align*}
     For fixed \(x \in \RR\), \(|R_{N,0}(x)| \leq |e^\xi| \frac{|x|^N}{N!}\), which goes to 0 as \(N \to \infty\). We conclude that, for \(x \in \RR\),
     \begin{align*}
@@ -2406,7 +2558,7 @@
     \end{lemma}
     
     \begin{proof}
-        For \(x < 0\), every term in the series is positive, so \(\exp(x) \geq 1 + x\), so that \(\exp(x) > 0\) and \(\lim_{x \to \infty}\exp(x) = \infty\). On the other hand, for \(x < 0\), \(\exp(-x)\exp(x) = 1\), so \(\exp(-x) > 0 \implies \exp(x) > 0\), and furthermore \(\exp(-x) \to \infty \implies \exp(x) \to 0^+\).
+        For \(x > 0\), every term in the series is positive, so \(\exp(x) \geq 1 + x\), so that \(\exp(x) > 0\) and \(\lim_{x \to \infty}\exp(x) = \infty\). On the other hand, for \(x < 0\), \(\exp(-x)\exp(x) = 1\), so \(\exp(-x) > 0 \implies \exp(x) > 0\), and furthermore \(\exp(-x) \to \infty \implies \exp(x) \to 0^+\).
 
         That \(\exp\) is strictly increasing follows from \(\exp' = \exp > 0\). From this it follows that \(\exp\) is injective. Now, given
         \begin{align*}
@@ -2509,7 +2661,7 @@
         \begin{itemize}
             \item \(x^r e^{-x} \to 0\) as \(x \to \infty\);
             \item \(x^{-r} \log x \to 0\) as \(x \to \infty\);
-            \item \(x^r \log x \to 0^+\) as \(x \to 0^+\).
+            \item \(x^r \log x \to 0^-\) as \(x \to 0^+\).
         \end{itemize}
     \end{proposition}
     
@@ -2522,7 +2674,7 @@
             for any \(n\). Choose \(n-r \geq 1\), then \(0 \leq x^r e^{-x} \leq \frac{n!}{x^{n-r}} \leq \frac{n!}{x}\), so \(x^r e^{-x} \to 0\) by sandwich.         
             \item We have \(t^{-1} \leq t^{\eps-1}\) for \(t \geq 1\) and any \(\eps > 0\). Pick \(\eps \in (0, r)\), so
             \begin{align*}
-                0 \leq x^{-r} \log x &= x^-r \int_1^x \frac 1 t \D t  
+                0 \leq x^{-r} \log x &= x^{-r} \int_1^x \frac 1 t \D t  
                 \\
                 &\leq x^{-r} \int_1^x t^{\eps-1} \D t \\
                 &\leq \frac 1 \eps x^{\eps-r}
@@ -2530,10 +2682,12 @@
             which goes to 0 as \(x \to \infty\), giving the result.
             \item By putting \(x = e^{-t}\) and \(y=rt\), we have
             \begin{align*}
-                \lim_{x \to 0^+} x^r \log x = -\lim_{t \to \infty} -t e^{-tr} = -\lim_{y \to \infty} \frac 1 r ye^{-y} = 0
+                \lim_{x \to 0^+} x^r \log x = -\lim_{t \to \infty} t e^{-tr} = -\lim_{y \to \infty} \frac 1 r ye^{-y} = 0
             \end{align*}
         \end{itemize}
     \end{proof}
+
+    \lecture{Lecture 24}
 
     \subsection{Trigonometric functions}
 
@@ -2581,16 +2735,16 @@
     \begin{proof}
         Once we have shown the very first part of the statement, the rest of the results follow by the addition theorems. Let us look at \(x \in (0, 2)\), and note that
         \begin{align*}
-            \cos(x) = -\sin(x) = -\left[\left(x-\frac{x^3}{3!}\right)+\left(\frac{x^5}{5!}-\frac{x^7}{7!}\right)+\dots\right]
+            \cos'(x) = -\sin(x) = -\left[\left(x-\frac{x^3}{3!}\right)+\left(\frac{x^5}{5!}-\frac{x^7}{7!}\right)+\dots\right]
         \end{align*}
-        since we can rearrange and combine terms by the absolute convergence of the series. Examining each of these parirs of terms, they are all positive, so we conclude \(\cos\) is decreasing on this interval (and \(\sin\) is positive).
+        since we can rearrange and combine terms by the absolute convergence of the series. Examining each of these pairs of terms, they are all positive, so we conclude \(\cos\) is decreasing on this interval (and \(\sin\) is positive).
 
         It follows \(\cos\) has at most one root in this interval by Rolle's theorem. To see the existence of the root, observe
         \begin{align*}
             \cos(\sqrt 2) &= \underbrace{\left(1 - \frac{(\sqrt 2)^2}{2!}\right)}_{>0} + \underbrace{\left(\frac{(\sqrt 2)^4}{4!} - \frac{(\sqrt 2)^6}{6!}\right)}_{>0} + \dots \\
             \cos(\sqrt 3) &= \underbrace{1 - \frac{(\sqrt 3)^2}{2!} + \frac{(\sqrt 3)^4}{4!}}_{-\frac 1 8} - \underbrace{\left(\frac{(\sqrt 3)^6}{6!}-\frac{(\sqrt 3)^8}{8!}\right)}_{>0} - \dots
         \end{align*}
-        so that \(\cos(\sqrt 2) > 0\) and \(\cos(\sqrt 3) < 0\). Hence, by the intermediate value theorem, we have \(\omega \in (\sqrt 2, \sqrt 3) \subset (0, 2)\) with \(\cos(\omega/2) = 0\). Hence, \(\sin(\omega/2) = \pm 1\), but we know \(\sin\) is positive, so \(\sin(\omega/2)=1\).
+        so that \(\cos(\sqrt 2) > 0\) and \(\cos(\sqrt 3) < 0\). Hence, by the intermediate value theorem, we have \(\omega/2 \in (\sqrt 2, \sqrt 3) \subset (0, 2)\) with \(\cos(\omega/2) = 0\). Hence, \(\sin(\omega/2) = \pm 1\), but we know \(\sin\) is positive, so \(\sin(\omega/2)=1\).
     \end{proof}
     
     \begin{corollary}
@@ -2614,7 +2768,7 @@
         \end{align*}
         is a bijection. We show
         \begin{itemize}
-            \item \emph{\(\gamma\) is surjective.} Take \(z \in \S^1\) with \(z=a+ib\), \(a\), \(b \in \RR\), and \(a^2+b^2=1\). Hence \(|a|\), \(|b| \leq 1\), so, since \(c: [0, \omega] \to [-1, 1]\) is continuous and strictly monotone, we have \(t \in [0, \omega]\) with \(c(t) = a\).
+            \item \emph{\(\gamma\) is surjective.} Take \(z \in S^1\) with \(z=a+ib\), \(a\), \(b \in \RR\), and \(a^2+b^2=1\). Hence \(|a|\), \(|b| \leq 1\), so, since \(c: [0, \omega] \to [-1, 1]\) is continuous and strictly monotone, we have \(t \in [0, \omega]\) with \(c(t) = a\).
             
             Furthermore, since \(s: [0, \omega] \to [-1, 1]\) is non-negative, we have \(\sin(t) = \sqrt{1-a^2}\). Hence, if \(b=\sqrt{1-a^2}\), we get the result as desired. On the other hand, if \(b=-\sqrt{1-a^2}\), we can make \(b=-\sin(t)=\sin(2\omega-t)\), and use that \(\cos(t)=\cos(2\omega-t)\). This gives the result.
 

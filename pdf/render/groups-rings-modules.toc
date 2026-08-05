@@ -1,15 +1,20 @@
 \contentsline {section}{\numberline {1}Groups}{1}{section.2}%
 \contentsline {subsection}{\numberline {1.1}Groups -- a reminder}{1}{subsection.3}%
 \contentsline {subsection}{\numberline {1.2}Normal subgroups, quotients and homomorphisms}{3}{subsection.24}%
-\contentsline {subsubsection}{\numberline {1.2.1}Correspondence between subgroups of $G$ and $G/K$}{6}{subsubsection.47}%
-\contentsline {subsection}{\numberline {1.3}Group actions and permutations}{8}{subsection.58}%
-\contentsline {subsection}{\numberline {1.4}Finite $p$-groups}{11}{subsection.75}%
-\contentsline {subsection}{\numberline {1.5}Finite abelian groups}{12}{subsection.84}%
-\contentsline {subsection}{\numberline {1.6}Sylow theorems}{13}{subsection.93}%
-\contentsline {section}{\numberline {2}Rings}{15}{section.104}%
-\contentsline {subsection}{\numberline {2.1}Basic definitions}{15}{subsection.105}%
-\contentsline {subsection}{\numberline {2.2}Homomorphisms, ideals and quotients}{16}{subsection.119}%
-\contentsline {subsection}{\numberline {2.3}Factorisation in integral domains}{21}{subsection.169}%
-\contentsline {subsection}{\numberline {2.4}Hilbert's basis theorem}{22}{subsection.183}%
-\contentsline {section}{\numberline {3}Modules}{23}{section.194}%
+\contentsline {subsection}{\numberline {1.3}Group actions and permutations}{8}{subsection.59}%
+\contentsline {subsection}{\numberline {1.4}Conjugacy, centralisers and normalisers}{11}{subsection.80}%
+\contentsline {subsection}{\numberline {1.5}Simplicity of the alternating groups $A_n$ ($n \geq 5$)}{12}{subsection.90}%
+\contentsline {subsection}{\numberline {1.6}Finite $p$-groups}{14}{subsection.96}%
+\contentsline {subsection}{\numberline {1.7}Finite abelian groups}{15}{subsection.105}%
+\contentsline {subsection}{\numberline {1.8}Sylow theorems}{15}{subsection.114}%
+\contentsline {section}{\numberline {2}Rings}{18}{section.126}%
+\contentsline {subsection}{\numberline {2.1}Basic definitions}{18}{subsection.127}%
+\contentsline {subsection}{\numberline {2.2}Homomorphisms, ideals and quotients}{20}{subsection.155}%
+\contentsline {subsection}{\numberline {2.3}Integral domains, fields of fractions, and prime ideals}{25}{subsection.197}%
+\contentsline {subsection}{\numberline {2.4}Factorisation in integral domains}{28}{subsection.228}%
+\contentsline {subsection}{\numberline {2.5}Factorisation in polynomial rings}{33}{subsection.269}%
+\contentsline {subsection}{\numberline {2.6}Gaussian integers}{36}{subsection.289}%
+\contentsline {subsection}{\numberline {2.7}Algebraic integers}{38}{subsection.301}%
+\contentsline {subsection}{\numberline {2.8}Hilbert's basis theorem}{39}{subsection.309}%
+\contentsline {section}{\numberline {3}Modules}{41}{section.320}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

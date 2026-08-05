@@ -47,7 +47,7 @@
     \end{definition}
 
     \begin{proposition}[Galilean relativity principle]
-        A frame related to an inertial frame by a \emph{Galilean transformation} is also an inertial frame, and all laws of physics are the same in both frames.
+        A frame related to an inertial frame by a Galilean transformation is also an inertial frame, and all laws of physics are the same in both frames.
     \end{proposition}
     
     Example of a boost: dropping a ball on a boat moving at constant velocity.
@@ -161,7 +161,7 @@
         We have
         \begin{align*}
             \frac{dE}{dt} &= m \dot x_i\ddot x_i + \pd{V}{x_i} \dot x_i \\
-            &= m \dot x_i \left(m \ddot x_i + \pd{V}{x_i}\right) \\
+            &= \dot x_i \left(m \ddot x_i + \pd{V}{x_i}\right) \\
             &= 0 && (m \ddot{\vec x} = -\grad V)
         \end{align*}
     \end{proof}
@@ -664,7 +664,7 @@
 
     Now, let us focus on the \(\hvec r\) equation. Applying the definition of \(l\), we have
     \begin{align*}
-        m(\ddot r - r\frac{l^2}{r^4}) &= -\frac{dV}{dr} \\
+        m\left(\ddot r - r\frac{l^2}{r^4}\right) &= -\frac{dV}{dr} \\
         \implies m \ddot r &= -\frac{dV_\text{eff}}{dr}
     \end{align*}
     where the \emph{effective potential} is
@@ -699,7 +699,6 @@
     \subsection{The orbit equation}
 
     The cleanest solution starts with a clever change of variables, to \(u = \frac 1 r\). We now want to find the orbit equation for \(u(\theta)\) (instead of \(r(t)\)). We have
-
     \begin{align*}
         \frac{dr}{dt} &= \frac{dr}{d\theta} \dot \theta = \frac{dr}{d\theta} \frac{l}{r^2} = -l \frac{du}{d\theta} \\
         \frac{d^2r}{dt^2} &= \frac{d}{dt}\left(-l \frac{du}{d\theta}\right) = -l \frac{d^2u}{d\theta^2}\dot \theta = -l^2u^2 \frac{d^2u}{d\theta^2}
@@ -731,7 +730,7 @@
     
     Let us consider the elliptical case. We have
     \begin{align*}
-        r_0 - re\cos \theta &= r^2 \\
+        (r_0 - re\cos \theta)^2 &= r^2 \\
         \implies (r_0-ex)^2 &= x^2 + y^2 \\
         \implies \frac{(x-x_c)^2}{a^2} + \frac{y^2}{b^2} &= 1
     \end{align*}
@@ -797,7 +796,7 @@
     \begin{proof}[Direct]
         It is in fact true that K3 only holds for inverse-square law orbits, which is a subtlety we would not notice doing dimensional analysis. So let us derive the law directly. Recall that \(\frac{dA}{dt} = \frac l 2\). Then
         \begin{align*}
-            T = \int_0^T \D t &= \int_0^A \frac 2 l \D A \\
+            T &= \int_0^T \D t = \int_0^A \frac 2 l \D A \\
             &= \frac{2\pi ab}{l} \\
             &= \frac{2\pi} l \cdot \frac{r_0^2}{(1-e^2)^{3/2}}
         \end{align*}
@@ -912,7 +911,7 @@
         \implies \dot{\V L} &= \sum_i (\V x_i - \V a) \times \dot{\V p}_i \\
         &= \sum_i (\V x_i - \V a) \times \left(\V F_i^\text{ext} + \sum_{j \neq i}\V F_{ij}\right) \\
         &= \V G + \sum_{i < j}\left((\V x_i - \V a) \times \V F_{ij} - (\V x_j - \V a) \times \V F_{ij} \right) \\
-        &= \V G + \sum_{i < j}\left(\V x_i - \V x_j\right)\V F_{ij} && (\dagger)
+        &= \V G + \sum_{i < j}\left(\V x_i - \V x_j\right)\times\V F_{ij} && (\dagger)
     \end{align*}
     Here the total torque 
     \begin{align*}
@@ -1058,11 +1057,11 @@
 
     The rotation of a particle involves kinetic energy. We have
     \begin{align*}
-        T &= \frac 1 2 m \dot{\V x} \dot \dot{\V x} \\
+        T &= \frac 1 2 m \dot{\V x}^2 \\
         &= \frac 1 2 m (\V \omega \times \V x) \cdot (\V \omega \times \V x) \\
         &= \frac 1 2 m \omega^2 d^2
     \end{align*}
-    where \(d = |\hvec n \times \V x\) is the perpendicular distance of the particle from the axis of rotation.
+    where \(d = |\hvec n \times \V x|\) is the perpendicular distance of the particle from the axis of rotation.
 
     In a rigid body, all particles rotate with the same angular velocity (in order to keep the distances between the particles fixed) -- we have
     \begin{align*}
@@ -1095,7 +1094,7 @@
         &= \sum_i m_i \V x_i \times (\V \omega \times \V x_i)
     \end{align*}
     
-    We will for now only consider the component of \(\V L\) along the direction of \(\V omega\), which is
+    We will for now only consider the component of \(\V L\) along the direction of \(\V \omega\), which is
     \begin{align*}
         L &= \V L \cdot \hvec n \\
         &= \omega \sum_i m_i \left(\V x_i \times (\hvec n \times \V x_i)\right) \\
@@ -1181,8 +1180,8 @@
         Set \(\V x_i = \V R + \V y_i\). Then, recalling a unit vector along the rotation axis is given by \(\hvec n\),
         \begin{align*}
             I &= \sum_i m_i d^2 = \sum_i m_i (\hvec n \times \V x_i) \cdot (\hvec n \times \V x_i) \\
-            &= \sum_i m_i (\hvec n \times (R + \V y_i)) \cdot (\hvec n \times (R + \V y_i)) \\
-            &= \sum_i m_i (\hvec n \times \V R) \cdot (\hvec n \times \V R) + (\hvec n \times \V y_i) \cdot (\hvec n \times \V y_i) + 2(\hvec n \times \V R) \cdot (\hvec n \times \V y_i) \\
+            &= \sum_i m_i (\hvec n \times (\V R + \V y_i)) \cdot (\hvec n \times (\V R + \V y_i)) \\
+            &= \sum_i m_i \left((\hvec n \times \V R) \cdot (\hvec n \times \V R) + (\hvec n \times \V y_i) \cdot (\hvec n \times \V y_i) + 2(\hvec n \times \V R) \cdot (\hvec n \times \V y_i)\right) \\
             &= Mh^2 + I_{\text{c.o.m.}} + 0
         \end{align*}
         where the last term vanishes by linearity of the cross product and the fact that \(\sum_i m_i \V y_i = 0\).        
@@ -1354,8 +1353,8 @@
             \implies \dot{\V x} &=  \dot x_i' \V e'_i + x_i' \dot{\V e}_i' \\
             &= \dot x_i' \V e'_i + x_i' \V \omega \times \V e_i' \\
             &= \dot x_i' \V e'_i + \omega \times \V x \\
-            &= \left(\frac{d\V x}{dt}\right)_S' + \V \omega \times \V x \\
-            \implies \left(\frac{d\V x}{dt}\right)_S &= \left(\frac{d\V x}{dt}\right)_S' + \V \omega \times \V x
+            &= \left(\frac{d\V x}{dt}\right)_{S'} + \V \omega \times \V x \\
+            \implies \left(\frac{d\V x}{dt}\right)_S &= \left(\frac{d\V x}{dt}\right)_{S'} + \V \omega \times \V x
         \end{align*}
         where this notation indicates coordinate-wise differentiation in a given frame. This makes sense -- the difference, \(\V \omega \times \V x\), is the relative velocity of the frames.
 
@@ -1372,7 +1371,7 @@
     \begin{itemize}
         \item \(-\dot{\V \omega} \times \V x\) -- the \emph{Euler force};
         \item \(-2 \V \omega \times \left(\frac{d\V x}{dt}\right)_{S'}\) -- the \emph{Coriolis force};
-        \item \(\V \omega \times (\V \omega \times \V x)\) -- the \emph{centrifugal force}.
+        \item \(-\V \omega \times (\V \omega \times \V x)\) -- the \emph{centrifugal force}.
     \end{itemize}
     
     \lecture{Lecture 15 -- 24/02/26}
@@ -2158,9 +2157,96 @@
     \end{align*}
     to eliminate \(|\V p_i|\).
     
-    \lecture{Lecture \(n\)}
+    \lecture{Lecture 23}
 
-    \lecture{Lecture \(n+1\)}
+    \subsubsection{Particle creation}
+
+    If two particles collide with enough energy, some of the energy can be used to create new particles. Let $P_1$ and $P_2$ have mass $m$, and the created particle have mass $P_M$. Starting from conservation of 4-momentum,
+    \begin{align*}
+        P_1 + P_2 = P_1' + P_2' + P_M
+    \end{align*}
+    In the centre of momentum frame, $\vec p_1 = -\vec p_2$, and, since they have the same mass, $E_1 = E_2$. Hence, when adding them, the spatial components cancel, and we obtain
+    \begin{align*}
+        (P_1+P_2) \cdot (P_1+P_2) &= \frac{4E_1^2}{c^2}
+    \end{align*}
+    Meanwhile,
+    \begin{align*}
+        (P_1'+P_2'+P_M)^2 = \underbrace{P_1'^2 + P_2'^2 + P_M'^2}_{2m^2c^2 + M^2c^2} + 2(P_1'\cdot P_2' + P_1'\cdot P_M + P_2' \cdot P_M)
+    \end{align*}
+    We will now show, as a lemma, that $P_1 \cdot P_2 \geq m_1m_2c^2$. Since $P_1 \cdot P_2$ is invariant, we can work in any frame. A convenient one happens to be in the rest frame of $P_2$, so
+    \begin{align*}
+        P_1 &= \begin{pmatrix}
+            E_1/c \\
+            \vec p_1 \\
+        \end{pmatrix} \qquad P_2 = \begin{pmatrix}
+            m_2c \\
+            \vec 0 \\
+        \end{pmatrix} \\
+        \implies P_1 \cdot P_2 &= E_1m_2 \\
+        &= m_2 \sqrt{p_1^2 c^2 + m_1^2 c^4} \\
+        &\geq m_1m_2c^2
+    \end{align*}
+    
+    Note we chose the plus sign of the energy -- the other sign would lead to the wrong non-relativistic limit. In general we can always take energies to be positive when doing these calculations, and this is preserved by proper orthochronous Lorentz transformations.
+    
+    We have
+    \begin{align*}
+        \frac{4E_1^2}{c^2} &= (P_1'+P_2'+P_M)^2 \geq 2m^2c^2 + M^2c^2 + 2(m^2c^2 + 2mMc^2) \\
+        &= 4\left(m + \frac 1 2 M\right)^2c^2 \\
+        \implies E_1 &\geq \left(m + \frac 1 2 M\right)c^2 \\
+        \implies E_1 - mc^2 &\geq \frac 1 2 Mc^2
+    \end{align*}
+    On the right hand side, we have approximately the kinetic energy of each incoming particle, and on the left hand side, we have half the rest mass energy of the created particle. So we are saying that $P_1$ and $P_2$ need to have enough kinetic energy to create the new particle.
+    
+    If the inequality is saturated, then all kinetic energy is converted into rest mass energy, and the particles are stationary after the collision (in the centre of momentum frame).
+
+    \subsection{Accelerated motion}
+
+    \begin{definition}[4-acceleration]
+        The \emph{4-acceleration} of an object is given by
+        \begin{align*}
+            A = \frac{dU}{d\tau} = \gamma \begin{pmatrix}
+                \dot \gamma c \\
+                \dot \gamma \vec u + \gamma \vec a \\
+            \end{pmatrix}
+        \end{align*}
+        where $\vec a = \dot{\vec u}$ is the 3-acceleration.
+    \end{definition}
+
+    \begin{remark*}
+        Note that, differentiating $U \cdot U = c^2$, we can see that $U \cdot A = 0$.
+    \end{remark*}
+
+    We want to solve motion for a constant acceleration -- but constant in which frame? Take an inertial frame $S'$ that, at some moment in time is instantaneously travelling at the same speed as the particle. Then, in this frame, the particle's velocity $\vec u' = \vec 0$, so $\gamma = 1$ and $\dot \gamma = 0$.
+
+    Let us focus on two dimensions. We have
+    \begin{align*}
+        A' = \begin{pmatrix}
+            0 \\
+            a' \\
+        \end{pmatrix}
+    \end{align*}
+    We say the acceleration is constant when $a'$ is constant -- we will see next time that this is what happens when we have a constant force.
+
+    Given $a'$ constant, what is $a$? Since $A'$ is a 4-vector, we can take it to $A$ with an inverse Lorentz transformation by speed $u$, which will of course give us $a$. In particular, we have
+    \begin{align*}
+        A = \begin{pmatrix}
+            \gamma ua'/c \\
+            \gamma a' \\
+        \end{pmatrix}
+    \end{align*}
+    However, it is \emph{not} the case that $a = \gamma a'$! Instead, we have
+    \begin{align*}
+        \gamma \dot \gamma c &= \gamma ua'/c \\
+        \gamma(\dot \gamma u + \gamma a) &= \gamma a'
+    \end{align*}
+    and we have to solve the first equation for $\dot \gamma$, which we can sub into the second to obtain
+    \begin{align*}
+        a = \dot u = \left(1-\frac{u^2}{c^2}\right)^{3/2}a'
+    \end{align*}
+    which is a differential equation.   
+
+    \lecture{Lecture 24}
 
     We have
     \begin{align*}

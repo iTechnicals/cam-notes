@@ -248,6 +248,9 @@
                 &= h'h^{-1}k''
             \end{align*}
             by normality of $K$.
+        \end{itemize}
+    \lecture{Lecture 3}
+        \begin{itemize}[resume]
             \item \emph{$H \cap K$ is a kernel}. Consider
             \begin{align*}
                 \varphi: H &\to G/K \\
@@ -261,17 +264,19 @@
             so we must show $\im \varphi \cong HK/K$. But $\im \varphi$ is the set of $K$-cosets in $G$ that are representable by elements of $H$, i.e. $\{hK : h \in H\} \subseteq G/K = HK/K$.
         \end{itemize}
     \end{proof}
-    
-    \subsubsection{Correspondence between subgroups of $G$ and $G/K$}
 
-    Let $p: G \to G/K$ be the quotient homomorphism. We have a bijection
-    \begin{align*}
-        \{\text{subgroups of } G \text{ containing } K\}& \leftrightarrow \{\text{subgroups of } G/K\} \\
-        K \norm L \leq G &\mapsto L/K \leq G/K \\
-        \{g \in G : gK \in A\} &\mapsfrom A \leq G/K
-    \end{align*}
-    
-    The forward bijection is just applying the projection map on a subset, and, since the quotient map is a homomorphism, its image is a subgroup; and the backward bijection is actually just applying the preimage of $p$. It is an exercise to check that the forward and backward directions are inverses.
+    \begin{theorem}[Correspondence between subgroups of $G$ and $G/K$]
+        Let $p: G \to G/K$ be the quotient homomorphism. We have a bijection
+        \begin{align*}
+            \{\text{subgroups of } G \text{ containing } K\}& \leftrightarrow \{\text{subgroups of } G/K\} \\
+            K \norm L \leq G &\mapsto L/K \leq G/K \\
+            \{g \in G : gK \in A\} &\mapsfrom A \leq G/K
+        \end{align*}
+    \end{theorem}
+
+    \begin{proof}
+        The forward bijection is just applying the projection map on a subset, and, since the quotient map is a homomorphism, its image is a subgroup; and the backward bijection is actually just applying the preimage of $p$. It is an exercise to check that the forward and backward directions are inverses.
+    \end{proof}
 
     \begin{remark*}
         In fact the correspondence matches normal subgroups on the two sides.
@@ -420,7 +425,7 @@
         \begin{align*}
             (g, g_1H) \to gg_1H
         \end{align*}
-        We get a homomorphism $\varphi: G \to \Sym(X)$. Consider the kernel -- it is clear that $\ker \varphi \subseteq H$. But more is true. If $g in \ker \varphi$, then
+        We get a homomorphism $\varphi: G \to \Sym(X)$. Consider the kernel -- it is clear that $\ker \varphi \subseteq H$. But more is true. If $g \in \ker \varphi$, then
         \begin{align*}
             gg_1H &= g_1H \\
             \implies g_1^{-1}gg_1 &\in H \\
@@ -446,15 +451,160 @@
     \end{proof}
     
     \begin{corollary}
-        Let $G$ be a non-abelian simple group. Let $H \leq G$ be a proper subgroup with index $n > 1$. Then $G$ is isomorphic to a subgroup of $A_n$ with $n \geq 5$.
+        Let $G$ be a non-abelian simple group. Let $H \leq G$ be a proper subgroup with index $n > 1$. Then $G$ is isomorphic to a subgroup of $A_n$, and we must have $n \geq 5$.
     \end{corollary}
+
+    \lecture{Lecture 5}
+
+    \begin{proof}
+        The action of $G$ on $X = G/H$ gives a homomorphism
+        \begin{align*}
+            \phi: G &\to \Sym(X) \cong S_n
+        \end{align*}
+        Since $\ker \phi$ is normal, have $\ker \phi = G$ or $\{e\}$ by simplicity. If $\ker \phi = G$, every element acts trivially, but, since $H$ is a proper subgroup, this is impossible, since some $g \in G$ gives $gH \neq H$. Hence $\ker \phi = \{e\}$.
+
+        Thus, the first isomorphism theorem gives
+        \begin{align*}
+            G \cong \im \phi \leq \Sym(X) \cong S_n
+        \end{align*}
+        and we would like to show $\im \phi \leq A_n$. Observe $A_n \norm S_n$, and, as $G$ is simple, $\im \phi \cap A_n$ is either $\{e\}$ or $\im \phi$ itself.
+
+        The second isomorphism theorem gives that, if $\im \phi \cap A_n = \{e\}$,
+        \begin{align*}
+            \im \phi \cong \frac{\im \phi}{\im \phi \cap A_n} \cong \frac{\im \phi \cdot A_n}{A_n} \leq S_n/A_n \cong C_2
+        \end{align*}
+        which would mean $\im \phi$ is abelian, a contradiction.
+
+        It remains to check that $n \geq 5$. This follows from the fact that $S_1$, $S_2$ are abelian, and $S_3$, $S_4$ have no non-abelian simple subgroups.
+    \end{proof}
     
-    \lecture{Lecture $n$}
+    \begin{definition}[Orbit and stabiliser]
+        Let $G \acts X$ be a group action. The \emph{orbit} of $x \in X$ is
+        \begin{align*}
+            Gx = \{gx \mid g \in G\} \subseteq X
+        \end{align*}
+        and the \emph{stabiliser} of $x \in X$ is
+        \begin{align*}
+            G_x = \{g \in G \mid gx = x\} \subseteq G
+        \end{align*}
+    \end{definition}
+    
+    \begin{theorem}[Orbit-stabiliser]
+        Suppose $G \acts X$, $x \in X$. Then there exists a bijection
+        \begin{align*}
+            Gx &\to G/G_x \\
+            gx &\mapsto gG_x
+        \end{align*}
+        In particular, if $G$ is finite, have
+        \begin{align*}
+            |G| = |Gx||G_x|
+        \end{align*}
+        for any $x \in X$.       
+    \end{theorem}
+    
+    \begin{proof}
+        Exercise.
+    \end{proof}
+    
+    \subsection{Conjugacy, centralisers and normalisers}
 
-    \lecture{Lecture $n+1$}
+    A group $G$ can act on itself by conjugation
+    \begin{align*}
+        (g, h) &\mapsto ghg^{-1}
+    \end{align*}
+    which of course gives a homomorphism $G \to \Sym(G)$. Now, fix $g \in G$ and take the following map:
+    \begin{align*}
+        G &\to G \\
+        h &\mapsto ghg^{-1}
+    \end{align*}
+    This is both a permutation and a homomorphism. This motivates the following definition.
 
-    \emph{Claim 3}. Any non-trivial $H \norm A_n$ contains a 3-cycle.
+    \begin{definition}[Automorphism]
+        Let $G$ be a group. A permutation
+        \begin{align*}
+            a: G \to G
+        \end{align*}
+        is called an \emph{automorphism} if it is also a homomorphism.
+    \end{definition}
+    
+    \begin{remark*}
+        It is easy to see that the set of all automorphisms
+        \begin{align*}
+            \Aut(G) = \{f: G \to G \mid f \text{ an automorphism}\} \subseteq \Sym(G)
+        \end{align*}
+        is in fact a subgroup of $\Sym(G)$.        
+    \end{remark*}
+    
+    \begin{definition}[Conjugacy class, centraliser and centre]
+        Fix $g \in G$. The \emph{conjugacy class} of $g$ is the the orbit of $g$ under conjugation, that is
+        \begin{align*}
+            \ccl_G(g) = \{hgh^{-1} \mid h \in G\}
+        \end{align*}
+        The \emph{centraliser} of $g$ is the stabiliser of $g$, that is
+        \begin{align*}
+            C_G(g) = \{h \in G \mid hgh^{-1} = g\}
+        \end{align*}
+        The \emph{centre} of $G$ is the kernel of the action homomorphism, that is
+        \begin{align*}
+            Z(G) = \bigcap_{g \in G} C_G(g) = \{z \in G \mid gzg^{-1} = z \text{ for any } g \in G\}
+        \end{align*} 
+    \end{definition}
+    
+    \begin{proposition}
+        Let $G$ be a finite group. Then
+        \begin{align*}
+            |\ccl(x)| = |G\colon C_G(x)| = |G|/|C_G(x)|
+        \end{align*}
+    \end{proposition}
+    
+    \begin{proof}
+        Apply orbit-stabiliser to the conjugation action.
+    \end{proof}
+    
+    \begin{definition}[Normaliser]
+        Let $H \leq G$. The \emph{normaliser} of $H$ in $G$ is given by
+        \begin{align*}
+            N_G(H) = \{g \in G \mid gHg^{-1} = H\}
+        \end{align*}
+        Observe that $H \norm N_G(H)$. By definition, this is the largest subgroup of $G$ in which $H$ is normal.        
+    \end{definition}
+    
+    \subsection{Simplicity of the alternating groups $A_n$ ($n \geq 5$)}
+    
+    Recall that, in $S_n$, a conjugacy class is a collection of elements all of the same cycle type.
 
+    \begin{theorem}
+        Let $n \geq 5$. Then $A_n$ is simple.
+    \end{theorem}
+    
+    When $n=5$, it is simple to check which conjugacy classes in $S_n$ split in $A_n$, and then use the fact that any normal subgroup is a union of conjugacy classes. For $n \geq 5$, we will need a more powerful strategy. We prove the following three claims:
+    \begin{enumerate}
+        \item $A_n$ is generated by 3-cycles;
+        \item any $H \norm A_n$ that contains a 3-cycle contains every 3-cycle;
+        \item any non-trivial $H \norm A_n$ contains a 3-cycle.
+    \end{enumerate}
+    
+    \emph{Claim 1 -- $A_n$ is generated by 3-cycles.} Observe that any $g \in A_n$ is a product of an even number of transpositions (when viewed in $S_n$). Consider a product of two transpositions -- there are three possibilities:
+    \begin{align*}
+        (a\, b)(a\, b) &= e \\
+        (a\, b)(b\, c) &= (a\, b\, c) \\
+        (a\, b)(c\, d) &= (a\, c\, b)(a\, c\, d)
+    \end{align*}
+    In each case, the product is a product of 3-cycles. The result follows.
+    
+    \emph{Claim 2 -- Any two 3-cycles are conjugate in $A_n$.} Let $\delta$, $\delta'$ be 3-cycles, and write
+    \begin{align*}
+        \delta' = \sigma \delta \sigma^{-1}
+    \end{align*}
+    where $\sigma \in S_n$. If $\sigma$ even, we're done, so suppose $\sigma$ odd. Now, since $n \geq 5$, there exists a transposition $\tau$ that commutes with $\delta$. Thus,
+    \begin{align*}
+        \delta' = \sigma \tau \delta \tau^{-1} \sigma^{-1} = (\sigma \tau)\delta(\sigma \tau)^{-1}
+    \end{align*}
+    Since $\sigma \tau$ is even, we're done.
+
+    \lecture{Lecture 6}
+
+    \emph{Claim 3 -- Any non-trivial $H \norm A_n$ contains a 3-cycle.}
 
     \begin{itemize}
         \item If $H$ contains an element of the form $\sigma = (1 \; 2 \; \dots \; \gamma)\tau$ with $\tau$ disjoint from $(1 \; 2 \; \dots \; \gamma)$ and $\gamma \geq 4$, then normality of $H$ gives that $\delta^{-1}\sigma\delta \in H$, so furthermore $\sigma^{-1}\delta^{-1}\sigma\delta \in H$. Since $\tau$ misses 1, 2, 3, it commutes with $\delta$, and with $(1 \; 2 \; \dots \; \gamma)$ by assumption.
@@ -512,7 +662,7 @@
         \emph{Base case}. $n=1$, the result is clear.s
         \emph{Inductive step}. Suppose $n > 1$. If $k=0$, take $\{e\}$. Otherwise, note $Z(G)$ is non-trivial. Let $x \in Z(G)$ with $x \neq e$, and its order is a power of $p$ -- if we replace $x$ with some power of $x$, say $x'$, we can produce an element of order $p$. Then $\gen x'$ has order $p$ and is normal.
 
-        Now consider $G/\gen x'$. This is a group of size $p^{n-1}$, and so it contains a subgroup, say $L$. of size $p^{k-1}$ by induction. By the correspondence of subgroups, we find $K \leq G$ containing $\gen x'$ such that $K/\gen x' \cong L$. But then $|K| = p^k$, as required.
+        Now consider $G\dgen x'$. This is a group of size $p^{n-1}$, and so it contains a subgroup, say $L$. of size $p^{k-1}$ by induction. By the correspondence of subgroups, we find $K \leq G$ containing $\gen x'$ such that $K\dgen x' \cong L$. But then $|K| = p^k$, as required.
     \end{proof}
     
     \subsection{Finite abelian groups}
@@ -617,21 +767,107 @@
         Let $T \in \Theta$. By the orbit-stabiliser theorem, $|G| = |\Theta|\cdot|\Stab(T)|$, so $p^am = |\Theta||\Stab(T)|$. By claim 2, $|\Stab(T)|$ divides $p^a$, but there are no factors of $p$ in $\Theta$, so we are done.
     \end{proof}
     
-    \lecture{Lecture $n$}
+    \lecture{Lecture 8}
+
+    \begin{proof}[Proof of Sylow part 2]
+        We will show a stronger statement, namely that if $Q \leq G$ is a $p$-group in $G$, and $P \in \Syl_p(G)$, there exists $g \in G$ s.t. $gQg^{-1} \subseteq P$. This clearly implies the claim.
+
+        Let $Q$ act on $G/P$ by $q \cdot gP = qgP$. The orbits of this action have size either 1 or divisible by $p$, but $|G/P|$ is not divisible by $p$, so there must be a size 1 orbit. In other words, have $g \in G$ such that $qgP = gP$ for all $q \in Q$. Rearranging, we obtain $g^{-1}qg \in P$ for all $q \in Q$, so $g^{-1}Qg \subseteq P$.
+    \end{proof}
+
+    \begin{proof}[Proof of Sylow part 3]
+        Recall $n_p = |\Syl_p(G)|$, and we would like to show $n_p \mid |G|$ and $n_p \equiv 1 \pmod p$. The first part is not so bad -- the conjugation action of $G$ on $\Syl_p(G)$ has one orbit of size $n_p$, whence the result.
+
+        Let $P \in \Syl_p(G)$, and consider $P$ acting on $\Syl_p(G)$ by conjugation. Orbit-stabiliser gives that the orbits have size 1 or a multiple of $p$ -- but $\{P\}$ clearly constitutes a size 1 orbit. It suffices, then, to show that all other orbits have size divisible by $p$.
+
+        Say $Q$ is another size 1 orbit, so, for every $h \in P$, we have $hQh^{-1} = Q$. Thus, $P$ is contained in the normaliser $N_G(Q)$ of $Q$. Observe that
+        \begin{align*}
+            Q \leq N_G(Q) \leq G
+        \end{align*}
+        so $Q \in \Syl_p(N_G(Q))$. But, by definition, $Q \norm N_G(Q)$, and $P$ is another Sylow $p$-subgroup of $N_G(Q)$, so therefore $Q=P$. Hence, there is only one orbit of size 1, so the result follows.
+    \end{proof}
+    
+    \begin{example*}
+        Let $G = \GL_n(\ZZ/p\ZZ)$, the set of invertible $n$ by $n$ matrices with integer entries mod $p$. What is $|G|$? A bad way -- to start with $p^{n^2}$, and remove the singular matrices. Instead, let us consider building it column by column:
+        \begin{align*}
+            M = \begin{pmatrix}
+                \vline & & \vline \\ 
+                \V v_1 & \cdots & \V v_n \\
+                \vline & & \vline \\ 
+            \end{pmatrix}   
+        \end{align*}
+        For $\V v_1$, we can have any non-zero vector, so $p^n-1$ choices. For $\V v_2$, we need to pick something linearly independent from $\V v_1$, i.e. something which is not a multiple of $\V v_1$. There are $p^n-p$ such choices. Similarly, $\V v_3$ should not be of the form $a \V v_1 + b \V v_2$, so there are $p^n - p^2$ choices -- etc. Hence,
+        \begin{align*}
+            |G| = (p^n-1)(p^n-p)\cdots(p^n-p^{n-1})
+        \end{align*}
+        What is the largest power of $p$ dividing this? -- $p^{\binom{n}{2}}$. Let's look for a Sylow $p$-subgroup. Motivated by the fact that $\binom n 2$ counts triangle numbers, we consider the subgroup of upper triangular matrices with 1 on the diagonal. Thanks to the second Sylow theorem, we've found all of the Sylow $p$-subgroups, since we can just conjugate!
+    \end{example*}
 
     \section{Rings}
     
-    \lecture{Lecture $n+1$}
-    
     \subsection{Basic definitions}
 
-    Let $R$ be a ring. We have
-    \begin{align*}
-        0 + 0 &= 0 \\
-        \implies r \cdot 0 + r \cdot 0 &= r \cdot 0 \\
-        \implies r \cdot 0 &= 0
-    \end{align*}
-    Furthermore, if $1 = 0$, we have $r = 1 \cdot r = 0 \cdot r = 0$, so we have the \emph{zero ring}.
+    \begin{definition}[Ring]
+        A \emph{ring} is a quintuple $(R, +, \cdot, 0_R, 1_R)$, where $R$ is a set, $0_R$, $1_R \in R$, and
+        \begin{align*}
+            +: R \times R &\to R && \text{(addition)}\\
+            \cdot: R \times R &\to R && \text{(multiplication)}
+        \end{align*}
+        such that
+        \begin{itemize}
+            \item $(R, +, 0_R)$ is an abelian group;
+            \item the operation $\cdot$ is associative, and $1_R$ is a multiplicative unit;
+            \item multiplication is distributive over addition, that is $a \cdot (b + c) = a \cdot b + a \cdot c$, and $(b + c) \cdot a = b \cdot a + c \cdot a$.
+        \end{itemize}
+    \end{definition}
+    
+    As usual, we will write $R$ for the ring. The symbol $-r$ will refer to the additive inverse of $r$, $r-s$ will refer to $r+(-s)$, etc.
+
+    \begin{remark*}
+        We will take $R$ to be commutative, that is $ab = ba$ for all $a$, $b \in R$. The additive structure is always abelian.
+    \end{remark*}
+    
+    \begin{definition}[Subring]
+        A \emph{subring} of a ring $R$ is a subset $S \subseteq R$ such that $0_R$, $1_R \in S$, $S$ is closed under addition and multiplication, and $(S, +, \cdot, 0_R, 1_R)$ is a ring. We write $S \leq R$.
+    \end{definition}
+    
+    \begin{example*}
+        We have the familiar number systems $\ZZ \leq \QQ \leq \RR \leq \CC$. We also have the mildly less familiar $\ZZ[i] \leq \CC$ (the \emph{Gaussian integers}), and other fun stuff like $\QQ[\sqrt 2]$. Weirder examples include $\CC\langle\eps\rangle = \{a + b \eps \mid a, b \in \CC\}$ where
+        \begin{align*}
+            (a + b\eps) + (c + d\eps) &= (a + c) + (b + d)\eps \\
+            (a + b\eps) \cdot (c + d\eps) &= ac + (ad+bc)\eps
+        \end{align*}
+        or in other words $\eps^2 = 0$. These are called the \emph{dual numbers}.        
+    \end{example*}
+    
+    \begin{definition}[Units]
+        An element $u \in R$ is an \emph{unit} if there exists $v \in R$ such that $uv = 1$.
+    \end{definition}
+    
+    \begin{remark*}
+        This notion does not interact well with subrings. For example, 2 is a unit in $\QQ$, but not in $\ZZ$.
+    \end{remark*}
+    
+    \begin{definition}[Field]
+        A ring $R$ is a \emph{field} if every non-zero element is a unit.
+    \end{definition}
+    
+    \begin{proposition} 
+        Let $R$ be a ring with additive identity $0$. Then, for any $r \in R$, $0 \cdot r = 0$.
+    \end{proposition}
+    
+    \begin{proof}
+        Have
+        \begin{align*}
+            0 + 0 &= 0 \\
+            \implies r \cdot 0 + r \cdot 0 &= r \cdot 0 \\
+            \implies r \cdot 0 &= 0
+        \end{align*}
+    \end{proof}
+    
+    \begin{remark*}
+        If $1 = 0$, we have $r = 1 \cdot r = 0 \cdot r = 0$, so we have the \emph{zero ring}.
+    \end{remark*}
 
     \begin{definition}[Ring direct product]
         Let $R$, $S$ be rings. The \emph{direct product} $R \times S$ is a ring with operations and identities defined pointwise.
@@ -691,9 +927,9 @@
         Let $R$ and $S$ be rings. A function $f: R \to S$ is a \emph{ring homomorphism} if
         \begin{itemize}
             \item $f(r_1 + r_2) = f(r_1) + f(r_2)$;
-            \item $\implies f(0) = 0$;
+            \item ($\implies$) $f(0) = 0$;
             \item $f(r_1r_2) = f(r_1)f(r_2)$;
-            \item $\centernot\implies f(1) = 1$.
+            \item ($\centernot\implies$) $f(1) = 1$.
         \end{itemize}
         The kernel of $f$ is $\ker f = \{r \in R : f(r) = 0\}$, and the image of $f$ is $\im f = \{s \in S: s = f(r) \text{ for some }r \in R\}$.
     \end{definition}
@@ -728,12 +964,14 @@
     \begin{example}
         Observe that $n\ZZ$ is an ideal of $\ZZ$ for any $n$. In fact, every ideal of $\ZZ$ has this form. Indeed, if $I \neq \{0\}$, let $n \in \ZZ$ be the minimal positive element of $I$. By the Euclidean algorithm, we can write $m \in I$ as $m = qn + r$, with $0 \leq r < n$, and $qn \in I$, so $r \in I$ -- this contradicts minimality of $n$.
     \end{example}
+
+    \lecture{Lecture}
     
     \begin{definition}
         Let $A \subseteq R$ be a subset. The \emph{ideal generated by $A$}
         is
         \begin{align*}
-            \gen A = \left\{\sum_{a \in A}r_aa : r_a \in \RR, r_a = 0 \text{ for all but finitely many }a\right\}
+            \gen A = \left\{\sum_{a \in A}r_aa : r_a \in R, r_a = 0 \text{ for all but finitely many }a\right\}
         \end{align*}
     \end{definition}
     
@@ -779,7 +1017,7 @@
     \begin{example}
         \begin{itemize}
             \item We have $n\ZZ \norm \ZZ$. The quotient ring $\ZZ/n\ZZ$ consists of cosets of $n\ZZ$, i.e. $0 + n\ZZ$, $1 + n\ZZ, \dots, (n-1) + n\ZZ$. The ring structure is modular arithmetic.
-            \item Take $\gen x \norm \CC[x]$. The elements of the quotient $\CC[x]/\gen x$ can be represented by elements of the form $(a_0 + a_1x + \dots + a_nx^n) + \gen x$ -- but all the terms $a_1x, \dots, a_nx^n$ lie in $\gen x$, so every element is uniquely represented by $a_0$. Hence $\CC[X]/\gen x \cong \CC$.
+            \item Take $\gen x \norm \CC[x]$. The elements of the quotient $\CC[x]\dgen x$ can be represented by elements of the form $(a_0 + a_1x + \dots + a_nx^n) + \gen x$ -- but all the terms $a_1x, \dots, a_nx^n$ lie in $\gen x$, so every element is uniquely represented by $a_0$. Hence $\CC[X]\dgen x \cong \CC$.
         \end{itemize}
     \end{example}
     
@@ -800,7 +1038,7 @@
         \begin{align*}
             f = (a_nb_m^{-1}x^{n-m})g + f_1
         \end{align*}
-        Otherwise, if $n > m$< we can write by induction
+        Otherwise, if $n > m$ we can write by induction
         \begin{align*}
             f_1 = gq_1 + r_1
         \end{align*}
@@ -843,7 +1081,7 @@
             \varphi: \RR[x] &\to \CC \\
             f(x) &\mapsto f(i)
         \end{align*}
-        The map is clearly surjective, and the kernel is exactly those polynomials $f$ satisfying $f(i) = 0$. However, since coefficients of $f$ are real, $-i$ is also a root. In conclusion, $x^2 + 1 \mid f$, and we conclude $\ker \varphi = \gen{x^2+1}$. Hence, by the first isomorphism theorem, $\CC \cong \RR[x]/\gen{x^2+1}$.        
+        The map is clearly surjective, and the kernel is exactly those polynomials $f$ satisfying $f(i) = 0$. However, since coefficients of $f$ are real, $-i$ is also a root. In conclusion, $x^2 + 1 \mid f$, and we conclude $\ker \varphi = \gen{x^2+1}$. Hence, by the first isomorphism theorem, $\CC \cong \RR[x]\dgen{x^2+1}$.        
     \end{example}
     
     \begin{proposition}[Second isomorphism theorem for rings]
@@ -867,6 +1105,138 @@
     \end{proof}
     
     \lecture{Lecture 11 -- 14/02/26}
+
+    \begin{theorem}[Correspondence between subrings and ideals]
+        If $I \norm R$, there exists a bijection
+        \begin{align*}
+            \{\text{subrings of } R \text{ containing } I\} &\leftrightarrow \{\text{subrings of } R/I\} \\
+            I \norm S \leq R &\mapsto S/I \leq R/I \\
+            L \leq R/I &\mapsfrom \{r \in R \mid r + I \in L\}
+        \end{align*}
+        Similarly, there is a bijection between ideals of $R/I$ and ideals of $R$ containing $I$.        
+    \end{theorem}
+    
+    \begin{remark*}
+        This is powerful, because it allows us to talk about the structure of quotient rings using only information about the original ring.
+    \end{remark*}
+    
+    \begin{theorem}[Third isomorphism theorem for rings]
+        Let $I$, $J \norm R$ with $I \subseteq J$. Then $J/I \norm R/I$, and $(R/I)/(J/I) \cong R/J$.
+    \end{theorem}
+
+    \begin{proof}
+        Define a function
+        \begin{align*}
+            \phi: R/I &\to R/J \\
+            r+I &\mapsto r+J
+        \end{align*}
+        which is well-defined by the groups result. It is easy to check that this is a ring homomorphism. Have
+        \begin{align*}
+            \ker \phi = \{r + I \mid r + J = 0\} = J/I
+        \end{align*}
+        so the result follows by the first isomorphism theorem.
+    \end{proof}
+    
+    \begin{proposition}
+        Let $R$ be a ring. There is a \emph{unique} homomorphism $i: \ZZ \to R$ sending 1 to $1_R$. Then $\ker i \norm \ZZ$, so $\ker i = n\ZZ$ for some $n \in \ZZ$ -- $n$ is called the \emph{characteristic} of $R$.
+    \end{proposition}
+    
+    \begin{remark*}
+        Why does this work? The integers are a special ring for which addition and multiplication are particularly closely related. Sometimes, $\ZZ$ is called the \emph{initial} ring.
+
+        Recall that, in group theory, there exists a homomorphism from the trivial group to any other group. In ring theory, this is not the case -- the existence of a homomorphism from the zero ring would imply $1=0$. Instead, $\ZZ$ plays this role.
+    \end{remark*}
+    
+    \begin{example*}
+        $\ZZ$, $\RR$, $\CC$ have characteristic zero. $\ZZ/k\ZZ$ has characteristic $k$.
+    \end{example*}
+    
+    \subsection{Integral domains, fields of fractions, and prime ideals}
+
+    Notice that, in $\ZZ\dgen 6$, $2\cdot 3 = 0$, while $2,\, 3 \neq 0$.
+    
+    \begin{definition}[Zero divisor]
+        A \emph{zero divisor} in a ring $R$ is a non-zero $a$ such that there exists $b \neq 0$ with $a \cdot b = 0$.
+    \end{definition}
+    
+    \begin{definition}[Integral domain]
+        A non-zero ring $R$ is an \emph{integral domain} if $R$ lacks zero divisors -- for all $a$, $b \in \RR$, $a \cdot b = 0 \implies a = 0$ or $b=0$.
+    \end{definition}
+    
+    \begin{example*}
+        $\ZZ$, $\ZZ[i]$, $\QQ$, $\CC$, $\RR[x]$, $\ZZ[x]$ are all integral domains. On the other hand, $\ZZ\dgen 6$, $\ZZ\dgen{pq}$, $\ZZ\dgen 2 \times \ZZ\dgen 2$ are all not integral domains.
+    \end{example*}
+
+    Any field is an integral domain, because, if $ab=0$ with $b\neq 0$, then $a = abb^{-1} = 0$. In fact, we can say something stronger -- all subrings of fields are integral domains. On the other hand, products of rings are clearly never integral domains.
+
+    \begin{lemma}
+        Let $R$ be a \emph{finite} integral domain. Then $R$ is a field.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $a \in R$ be non-zero. Define
+        \begin{align*}
+            \mu_a: R &\to R \\
+            r &\mapsto ar
+        \end{align*}
+        which is a group homomorphism. Since $R$ is an integral domain, $\ker \mu_a = \{0\}$. Hence, $\mu_a$ is injective. Since $R$ is finite, $\mu_a$ is also surjective, so $1 \in \im \mu_a$. The result follows.
+    \end{proof}
+    
+    \begin{definition}
+        Let $R$ be an integral domain. A \emph{field of fractions} of $R$ is a field $F$ satisfying the following two properties:
+        \begin{itemize}
+            \item $R \leq F$ is a subring;
+            \item every $x \in F$ can be written as $ab^{-1}$, for $a$, $b \in R$ and $b^{-1}$ the multiplicative inverse of $b$ when viewed as an element of $F$.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{example*}
+        $\QQ$ is a field of fractions of $\ZZ$.
+    \end{example*}
+    
+    \begin{theorem}
+        Every integral domain $R$ has a field of fractions.
+    \end{theorem}
+
+    \begin{proof}
+        Define
+        \begin{align*}
+            S = \{(a, b) \in R \times R \mid b \neq 0\}
+        \end{align*}
+        and an equivalence relation $\sim$ such that
+        \begin{align*}
+            (a, b) \sim (c, d) \iff ad = bc \text{ in } R
+        \end{align*}
+        That $\sim$ is symmetric and reflexive are clear, but transitivity is not quite so trivial. Suppose $(a, b) \sim (c, d)$, $(c, d) \sim (e, f)$, so $ad = bc$, $cf = de$. Multiplying the first equality by $f$ and the second by $b$, we obtain
+        \begin{align*}
+            adf = bcf &= bde \\
+            \implies d(af-be) &= 0
+        \end{align*}
+        Since $d \neq 0$ by hypothesis, and $R$ is an integral domain, obtain $af = be$, so $(a, b) \sim (e, f)$ as required.
+        
+        Now, define $F = S/\sim$. As notation, write $\frac ab = [(a, b)]$. We make $F$ into a ring with the following well-defined operations:
+        \begin{align*}
+            \frac a b + \frac c d &= \frac{ad+bc}{bd} \\
+            \frac a b \cdot \frac c d &= \frac{ac}{bd}
+        \end{align*}
+        To see that $F$ is a field, let $\frac a b \neq 0_F$, so $\frac a b \neq \frac 0 1$, so $a \cdot 1 \neq b \cdot 0$, so $a \neq 0$. Hence, we have ${\frac a b}^{-1} = \frac b a$ as required.
+
+        Finally, define
+        \begin{align*}
+            \phi: R &\to F \\
+            r &\mapsto \frac r 1
+        \end{align*}
+        which is clearly a ring homomorphism. Have $\ker \phi = \{r \in R \mid \frac r 1 = 0\} = \{0\}$. By the first isomorphism theorem, have $\im \phi \cong R$, and
+        \begin{align*}
+            \frac a b = \frac a 1 \cdot \frac 1 b = \frac a 1 \cdot {\frac b 1}^{-1}
+        \end{align*}
+        as required.
+    \end{proof}
+    
+    
+    \begin{remark*}
+        It follows that every integral domain is a subring of some field.
+    \end{remark*}
 
     \lecture{Lecture 12 -- 17/02/26}
 
@@ -977,7 +1347,479 @@
         The converse is false -- for example, $R = \ZZ[\sqrt{-5}]$.
     \end{remark*}
 
-    \lecture{Lecture $n+1$}
+    \lecture{Lecture 13 -- 19/02/26}
+
+    \begin{example*}
+        Take $R = \ZZ[\sqrt{-5}] \leq \CC$, which is clearly an integral domain. There exists on this ring a \emph{norm}
+        \begin{align*}
+            N\colon \ZZ[\sqrt{-5}] &\to \ZZ_{\geq 0} \\
+            a + b\sqrt{-5} &\mapsto a^2 + 5b^2
+        \end{align*}
+        Observe that this function is multiplicative. Such a norm is useful for classifying units -- supposing $ab = 1$, we have $N(a)N(b) = N(1) = 1$, so $N(a) = N(b) = 1$. Hence, the only units in $R$ are $\pm 1$.
+        
+        Furthermore, we can show 2 is irreducible -- have $N(2) = 4$, and there is clearly no element of norm 2, so $2 = ab \implies a$ or $b$ a unit. Similarly, 3, $1 \pm \sqrt{-5}$ are all irreducible. Yet --
+        \begin{align*}
+            2 \cdot 3 = 6 = (1 + \sqrt{-5})(1 - \sqrt{-5})
+        \end{align*}
+        Observing that $4 = N(2) \nmid N(1 \pm \sqrt{-5}) = 6$, we conclude that 2 is not prime. Hence, we have an irreducible which is not prime. Now, unique factorisation also fails.
+    \end{example*}
+
+    \begin{definition}[Euclidean domain]
+        An integral domain $R$ is an \emph{Euclidean domain} if there exists a function
+        \begin{align*}
+            \phi: R \setminus \{0\} \to \ZZ_{\geq 0}
+        \end{align*}
+        such that
+        \begin{itemize}
+            \item $\phi(ab) \geq \phi(b)$ for all non-zero $a$, $b$;
+            \item if $a$, $b \in R$ with $b \neq 0$, there exist $q$, $r \in R$ with $a = bq + r$ such that either $r = 0$ or $\phi(r) < \phi(b)$.
+        \end{itemize}       
+    \end{definition}
+    
+    \begin{example*}
+        Examples include $\ZZ$ with $\phi = |\cdot|$ and $K[x]$ with $K$ a field, $\phi = \deg$. $\ZZ[\sqrt{-5}]$, on the other hand, is \emph{not} a Euclidean domain.
+    \end{example*}
+    
+    \begin{example*}
+        The Gaussian integers $R = \ZZ[i] \leq \CC$ are a Euclidean domain. Indeed, define
+        \begin{align*}
+            \phi: \ZZ[i] &\to \ZZ_{\geq 0} \\
+            z &\mapsto |z|^2
+        \end{align*}
+        We claim that $\phi$ makes $R$ Euclidean, which requires us to check the two properties. The first one is obvious. Let us attack the second. Take $a$, $b \in \ZZ[i]$, $b \neq 0$. Consider the ratio $a/b \in \CC$. There is a point $q \in \ZZ[i]$ such that
+        \begin{align*}
+            \left|\frac a b - q\right| < 1
+        \end{align*}
+        Hence, $\frac a b = q + c$, where $|c| < 1$, giving $a = bq + bc$. Taking $r=bc$, we see
+        \begin{align*}
+            \phi(r) = \phi(bc) = \phi(b)\phi(c) = \phi(b)|c|^2 < \phi(b)
+        \end{align*}
+        as required.
+    \end{example*}
+    
+    \begin{remark*}
+        This is pretty easy to generalise -- all we needed was that $\left|\frac a b - q\right| < 1$ for a suitable choice of $q$.
+    \end{remark*}
+
+    \begin{remark*}
+        By the same proof as for $\ZZ$, we conclude that every ideal in $\ZZ[i]$ is principal.
+    \end{remark*}
+    
+    \begin{definition}[Principal ideal domain]
+        A \emph{principal ideal domain (PID)} is an integral domain $R$ such that every ideal $I \norm R$ is principal.
+    \end{definition}
+    
+    \begin{proposition}
+        Every Euclidean domain is a PID.
+    \end{proposition}
+    
+    \begin{proof}
+        Replicate the proof for $\ZZ$, taking the element of the ideal with smallest size w.r.t. the Euclidean function.
+    \end{proof}
+    
+    \begin{example*}
+        Let $R = \ZZ[x]$ -- we claim this is neither a Euclidean domain nor a principal ideal domain. Take $I = \gen{2, x}$, which we claim is not principal. Indeed, if $I = \gen f$, have $f \mid 2$, so $f \in \{\pm 1, \pm 2\}$. If $f = \pm 1$, have $\gen f = \ZZ[x] \neq \gen{2, x}$ clearly. Hence, $f = \pm 2$, but $2 \nmid x$.
+    \end{example*}
+    
+    \begin{definition}[Unique factorisation domain]
+        A \emph{unique factorisation domain (UFD)} is an integral domain $R$ such that
+        \begin{itemize}
+            \item (existence) every non-unit in $R$ is a product of finitely many irreducibles;
+            \item (uniqueness) if $p_1\dots p_n = q_1 \dots q_m$ with $p_i$, $q_j$ all irreducible, then $n=m$ and, up to reordering, $p_i$ and $q_i$ are associates for all $i$.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{lemma}
+        In a PID, every irreducible is prime.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $p \in R$ be irreducible. Suppose $p \mid ab$, $p \nmid a$. Consider $\gen{p, a} \norm R$, which is principal, so is equal to $\gen d$ for some $d$. Then $d \mid a$, $d \mid p$. But $d \mid p \implies p = q_1d$ which, by irreducibility, implies either $q_1$ or $d$ a unit. If $q_1$ is a unit, then $d$ and $p$ are associates, so $d \mid a \implies p \mid a$, contradiction.
+
+        Hence, $\gen d = \gen 1 = R$. Therefore, $1 = rp + sa$ for some $r$, $s \in R$. But then
+        \begin{align*}
+            b = rpb + sab
+        \end{align*}
+        where $p \mid \text{RHS}$. The result follows.        
+    \end{proof}
+    
+    \lecture{Lecture 14 -- 21/02/26}
+
+    \begin{theorem}[PID $\implies$ UFD]
+        Any PID is a UFD.
+    \end{theorem}
+
+    \begin{remark*}
+        The converse is false -- take $\CC[x, y]$.
+    \end{remark*}
+    
+    \begin{lemma}
+        Let $R$ be a PID. If $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$ is a chain of ideals in $R$, there exists $N > 0$ such that, for all $n \geq N$, $I_n = I_N$.
+    \end{lemma}
+    
+    \begin{remark*}
+        In $\ZZ$, this follows from the fact that every decreasing sequence of naturals is eventually constant.
+    \end{remark*}
+
+    \begin{proof}
+        Take
+        \begin{align*}
+            I = \bigcup_j I_j
+        \end{align*}
+        which is a principal ideal by assumption, so $I = \gen r$. But then there exists some $N$ with $r \in I_N$, after which point the sequence clearly stabilises.
+    \end{proof}
+    
+    \begin{proof}[Proof of theorem]
+        First, we show existence. Let $r \in R$. If $r$ is irreducible, we are done. Assuming not, write $r = r_1s_1$, where $r_1$, $s_1$ are not units. If $r_1$, $s_1$ are products of irreducibles, we are done. Otherwise, without loss of generality, say $r_1$ is not a product of irreducibles. Continuing, we obtain a sequence $r, r_1, \dots$, which gives
+        \begin{align*}
+            \gen r \subseteq \gen {r_1} \subseteq \dots 
+        \end{align*}
+        Now, by the lemma, this stabilises, so have some $N$ such that, for $n \geq N$, $\gen {r_n} = \gen {r_{n+1}} = \gen{r_{n+1}s_{n+1}}$. Then $s_{n+1}$ is a unit, contradiction.
+
+        It remains to show uniqueness. Suppose $p_1 \dots p_n = q_1 \dots q_m$. Now $p_1 \mid q_1 \dots q_m$, so, since $p_1$ is prime (PID), $p_1 \mid q_i$ for some $i$. Then, since $q_i$ is irreducible, have $q_i = ap_1$, $a$ a unit. Relabelling for simplicity, take $i=1$, so we have $p_1 \cdots p_n = ap_1 \cdots q_m$ so, cancelling, have $p_2 \cdots p_n = (aq_2) \cdots q_m$. Replacing $q_2$ with $aq_2$, we can continue this procedure, to obtain that $p_i$, $q_i$ are associates for every $i$ (and $n=m$).
+    \end{proof}
+    
+    \begin{remark*}
+        In any UFD, irreducible $\implies$ prime.
+    \end{remark*}
+    
+    \begin{definition}[GCD and LCM]
+        Let $a_1, \dots, a_n \in R$. We say that $d$ is an \emph{greatest common divisor (GCD)} if
+        \begin{itemize}
+            \item $d \mid a_i$ for each $i$;
+            \item if $d' \mid a_i$ for all $i$, $d' \mid d$.
+        \end{itemize}
+        Similarly, we say that $m$ is an \emph{least common multiple (LCM)} if
+        \begin{itemize}
+            \item $a_i \mid m$ for each $i$;
+            \item if $a_i \mid m'$ for each $i$, $m \mid m'$.
+        \end{itemize}
+    \end{definition}
+    
+    \begin{theorem}[Existence of GCD and LCM]
+        Let $R$ be a UFD, then GCDs and LCMs exist and are unique up to associates.
+    \end{theorem}
+    
+    \begin{proof}
+        Let $p_1, \dots, p_m$ be all irreducible factors in the unique factorisations of all the $a_i$ (up to associates). Hence, we can write
+        \begin{align*}
+            a_i = u_i \prod_{j=1}^m p_j^{n_{ij}}
+        \end{align*}
+        where $0 \leq n_{ij}$ and $u_i$ is a unit. Let $m_j = \min_i n_{ij}$, and put
+        \begin{align*}
+            d = \prod_{j=1}^m p_j^{m_j}
+        \end{align*}
+        By definition, $m_j \leq n_{ij}$, so $d \mid a_i$ for each $i$. For the greatest part, suppose $d' \mid a_i$ for all $i$, then
+        \begin{align*}
+            d' = v \prod_{j=1}^m p_j^{t_j}
+        \end{align*}
+        for $v$ a unit, so we must have $t_j \leq m_j$ for all $j$. Hence, we have existence. Uniqueness is immediate -- if $d' \mid d$ and $d \mid d'$, $d'$ and $d$ are associates. LCM is analogous.       
+    \end{proof}
+    
+    \subsection{Factorisation in polynomial rings}
+
+    Recall that, if $k$ is a field, then $k[x]$ has the following properties:
+    \begin{itemize}
+        \item $k[x]$ is Euclidean;
+        \item every $I \norm k[x]$ is principal;
+        \item $f \in k[x]$ is irreducible $\iff f$ prime.
+    \end{itemize}
+    
+    Now, let $f$ be irreducible, and take $\gen f \norm k[x]$, which is clearly a prime ideal. Suppose $\gen f \subseteq J \norm k[x]$, then $J = \gen g$, so $f = gh$, and hence either $g$ and $f$ are associates or $g$ is a unit. Hence, $\gen f$ is maximal. In particular, $f$ irreducible if and only if $k[x] \dgen f$ is a field. Now, we work more generally.
+    
+    \begin{definition}[Content and primitive polynomials]
+        Let $R$ be a UFD, and $f = a_0 + a_1x + \dots + a_nx^n \in R[x]$. The \emph{content} of $f$
+        \begin{align*}
+            c(f) = \gcd(a_0, \dots, a_n) \in R
+        \end{align*}
+        If $c(f)$ is a unit, we say $f$ is primitive.        
+    \end{definition}
+    
+    \begin{theorem}[Gauss's lemma]
+        Let $R$ be a UFD, and $f \in R[x]$. If $f$ is primitive, then $f$ is reducible in $R[x]$ if and only if $f$ is reducible in $F[x]$, where $F$ is the field of fractions of $R$.
+    \end{theorem}
+    
+    \begin{example*}
+        Consider $2x+2 \in \ZZ[x]$, which is not primitive. Indeed, it is reducible in $\ZZ[x]$ but not in $\QQ[x]$. This is the only way in which the theorem can fail.
+    \end{example*}
+
+    \lecture{Lecture}
+    
+    \begin{example*}
+        Consider the polynomial $f = x^3+x+1 \in \ZZ[x]$. Clearly $c(f) = 1$. We will show that $f$ is irreducible in $\ZZ[x]$, and conclude it is also irreducible in $\QQ[x]$. Supposing for contradiction it were irreducible, have $f=gh$, $g$, $h \in \ZZ[x]$ not units. In order for the content to be 1, $\deg g$, $\deg h \geq 1$. Hence, we may take wlog $g = b_0 + b_1x$, $h = c_0 + c_1x + c_2x^2$, giving
+        \begin{align*}
+            b_0c_0 &= 1 \\
+            b_1c_2 &= 1
+        \end{align*}
+        so $b_0$, $b_1 = \pm 1$. Hence, $\pm 1$ is a root of $g$ and hence of $f$. But it is not.        
+    \end{example*}
+    
+    \begin{lemma}
+        Let $R$ be a UFD. If $f$, $g \in R[x]$ are primitive, then $fg$ is primitive.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $f = a_0 + \dots + a_nx^n$, $g = b_0 + \dots + b_mx^m$, with $a_n$, $b_m \neq 0$, and suppose $c(f) = c(g) = 1$. Suppose $c(fg)$ is not a unit, so we have an irreducible $p \in R$ with $p \mid c(fg)$. But $p \nmid c(f)$, $c(g)$. Suppose $k$, $l$ are the smallest indices such that $p \nmid a_k$, $p \nmid b_l$. Then, the coefficient of $x^{k+l}$ in $fg$ is
+        \begin{align*}
+            \sum_{i+j=k+l}a_ib_j
+        \end{align*}
+        We have $p \mid a_{k+l}b_0, \dots, a_{k+1}b_{l-1}, a_{k-1}b_{l+1}, \dots, a_0b_{l+k}$ by minimality -- but, by assumption, the sum is divisible by $p$. Hence, $p \mid a_kb_l$ also. Now, by primality of $p$ ($R$ a UFD), have $p \mid a_k$ or $b_l$, contradiction.        
+    \end{proof}
+
+    \begin{corollary}
+        Let $R$ be a UFD, $f$, $g \in R[x]$. Then $c(fg)$ and $c(f)c(g)$ are associates.
+    \end{corollary}
+    
+    \begin{proof}
+        Write $f=c(f)f_1$, $g=c(g)g_1$ with $f_1$, $g_1$ primitive. The result immediately follows by the lemma.
+    \end{proof}
+    
+    \begin{proof}[Proof of Gauss's lemma]
+        Take $f \in R[x]$ primitive ($R$ a UFD). If $f = gh$ in $R[x]$ with $g$, $h$ not units, since $f$ is primitive, $g$, $h$ primitive, so $\deg g$, $\deg h > 0$. Hence $f$ is reducible in $F[x]$.
+
+        The other direction is not quite so simple. Let $f=gh$ in $F[x]$ with $g$, $h$ non-units, so $\deg g, \deg h > 0$. Let $a$, $b \in R[x]$ such that $abf = (ag)(bh)$, where $ag$, $bh \in R[x]$. (Note that they are not \emph{products} in $R[x]$, since $g$, $h$ not necessarily elements of $R[x]$). Now write $ag = c(ag) g_1$, $bh = c(bh) h_1$, with $g$, $h$ primitive. Since $f$ primitive, $c(abf) = ab$ so, by the corollary,
+        \begin{align*}
+            ab = c(abf) = c((ag)(bh)) = c(ag)c(bh)u
+        \end{align*}
+        for $u$ a unit. But now
+        \begin{align*}
+            abf = c(ag)c(bh)g_1h_1 = u^{-1}abg_1h_1
+        \end{align*}
+        so, cancelling $ab$, we are done.
+    \end{proof}
+    
+    \begin{proposition}
+        \label{gauss-lemma-reformulated}
+        Let $R$ a UFD, $F$ its field of fractions. Take $g \in R[x]$ primitive. Then, if $f \in R[x]$ is divisible by $g$ in $F[x]$, it is also divisible by $g$ in $R[x]$.
+
+        In other words, if $I = \gen g \norm R[x]$, $J = \gen g \norm F[x]$, then $I = J \cap R[x]$.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $f \in J \cap R[x]$, so $f = gh$ in $F[x]$. Multiplying by $b \in R$, have $bf = g(bh)$ in $R[x]$. Setting $bh = c(bh)h_1$ with $h_1$ primitive, have $gh_1$ primitive, so $c(bh) = uc(bf)$ for $u$ a unit. But $c(bf) = bc(f)$, since $b$, $f \in R[x]$. Now observe
+        \begin{align*}
+            bf = gubc(f)h_1
+        \end{align*}
+        which gives the result after cancelling $b$.        
+    \end{proof}
+    
+    \begin{theorem}
+        If $R$ is a UFD, so is $R[x]$.
+    \end{theorem}
+    
+    \begin{proof}
+        Let $f \in R[x]$. Write $f = c(f)f_1$ with $f_1$ primitive. Factorise $c(f) \in R$ as $p_1 \dots p_n$, with $p_i$ irreducible. It remains, then, to produce a factorisation of $f_1$, which we will do by induction on the degree. If $f_1$ is irreducible, we are done -- otherwise, write $f_1 = f_{11}f_{12}$ where $f_{11}$ and $f_{12}$ are necessarily primitive and have smaller degrees. Since the degree is strictly decreasing, the process terminates. Hence, $f_1 = q_1 \dots q_m$, a factorisation into irreducibles, so $f = p_1 \dots p_n q_1 \dots q_m$.
+
+        It remains to show uniqueness. The uniqueness of the $p_i$ follows immediately from $R$ being a UFD. Uniqueness for the $q_i$ is as follows: consider two factorisations $f_1 = q_1 \dots q_m = r_1 \dots r_l$. We can view this not just in $R[x]$ but in $F[x]$, which is a Euclidean domain hence a UFD. Thus, $l=m$ and, up to reordering, the $r_i$ and $q_i$ are associates in $F[x]$. Then \cref{gauss-lemma-reformulated} gives that $r_i$ and $q_i$ are associates in $R[x]$ also, as required.
+    \end{proof}
+    
+    \begin{remark*}
+        This gives many examples of UFDs which are not PIDs.
+    \end{remark*}
+    
+    \lecture{Lecture}
+
+    \begin{theorem}[Eisenstein's criterion]
+        Take $R$ a UFD, $f = a_0 + \dots + a_n x^n \in R[x]$ primitive with $a_n \neq 0$. Suppose there exists $p \in R$ irreducible such that
+        \begin{itemize}
+            \item $p \nmid a_n$;
+            \item $p \mid a_i$ for $0 \leq i < n$;
+            \item $p^2 \nmid a_0$.
+        \end{itemize}
+        Then $f$ is irreducible in $R[x]$ or indeed $F[x]$.        
+    \end{theorem}
+
+    \begin{proof}
+        Suppose $f=gh$ with $g = r_0 + \dots + r_kx^k$, $h = s_0 + \dots + s_lx^l$, $r_k$, $s_l \neq 0$. Since $p \nmid a_n$, know $p \nmid r_k$, $s_l$. Also, $p$ divides \emph{either} $r_0$ or $s_0$, but not both -- without loss of generality, suppose $p \mid r_0$. Let $j$ be the index such that
+        \begin{align*}
+            p \mid r_0,\, p \mid r_1, \dots, p \mid r_{j-1},\, p \nmid r_j
+        \end{align*}
+        Now,
+        \begin{align*}
+            a_j = r_0s_j + r_1s_{j-1} + \dots + r_js_0
+        \end{align*}
+        Then, $p \nmid s_0$, $p \nmid r_j \implies p \nmid a_j$. Hence, we must have $j=n$, and so furthermore $k=n$. Hence $\deg g = n$, $\deg h = 0$ so, since $f$ primitive, $f=gh$ is not a proper factorisation.       
+    \end{proof}
+    
+    \begin{example*}
+        Let us work with $R=\ZZ$, and $f=x^n-p$, $p$ a prime. The irreducibility of $f$ is immediate -- since this extends to $\QQ$, we conclude $\sqrt[n]{p}$ is irrational.
+    \end{example*}
+    
+    \begin{example*}
+        Fix $p$ a prime, take $f(x) = x^{p-1} + x^{p-2} + \dots + x + 1 = \frac{x^p-1}{x-1}$. Eisenstein's criterion does not immediately apply -- but it does apply to
+        \begin{align*}
+            \hat f(y) = f(y+1) = y^{p-1} + \binom p 1 y^{p-2} + \dots + \binom p {p-1}
+        \end{align*}
+        Now Eisenstein applies to show $\hat f$ is irreducible, whence the irreducibility of $f$ follows.
+    \end{example*}
+    
+    \subsection{Gaussian integers}
+
+    The ring of Gaussian integers $\ZZ[i] = \{a + bi \mid a,\, b \in \ZZ\} \leq \CC$. It has a norm
+    \begin{align*}
+        N\colon \ZZ[i] &\to \ZZ_{\geq 0} \\
+        a + bi &\mapsto a^2+b^2
+    \end{align*}
+    This norm enables division with smaller remainder, making $\ZZ[i]$ into a Euclidean domain, hence PID, hence UFD.
+
+    \begin{remark*}
+        Let us make some observations.
+        \begin{itemize}
+            \item $\alpha \in \ZZ[i]$ is irreducible iff it is prime;
+            \item the units in $\ZZ[i]$ have norm 1, namely $\pm 1$, $\pm i$.
+            \item $2 = (1+i)(1-i)$, so 2 is not prime in $\ZZ[i]$.
+            \item 3 is prime, since there are no elements of norm 3.
+        \end{itemize}
+    \end{remark*}
+    
+    \begin{proposition}
+        A prime $p \in \ZZ$ remains prime in $\ZZ[i]$ if and only if $p \neq a^2 + b^2$ for $a$, $b \in \ZZ \setminus \{0\}$.
+    \end{proposition}
+    
+    \begin{proof}
+        If $p = a^2 + b^2$, $p=(a+bi)(a-bi)$, so $p$ is not irreducible. Conversely, suppose $p = uv$ with $u$, $v$ not units in $\ZZ[i]$. Then
+        \begin{align*}
+            p^2 = N(p) = N(u)N(v)
+        \end{align*}
+        so $N(u) = N(v) = p$. But then, taking $u=a+bi$ gives the result.        
+    \end{proof}
+    
+    \begin{theorem}[Primes in the Gaussian integers]
+        The primes in $\ZZ[i]$ (up to associates) fall into the following classes:
+        \begin{itemize}
+            \item the primes $p \equiv 3 \pmod 4$ in $\ZZ$;
+            \item $z \in \ZZ[i]$ with $N(z) = p$ such that $p \equiv 1 \pmod 4$, or $p=2$.
+        \end{itemize}
+    \end{theorem}
+    
+    \begin{lemma}
+        Let $p$ be a prime, $\FF_p$ the field with $p$ elements. Then the group $\FF_p^\times$ is cyclic.
+    \end{lemma}
+    
+    \begin{proof}
+        Clearly $\FF_p^\times$ is abelian with order $p-1$. By the classification of finite abelian groups, if $\FF_p^\times$ is not cyclic, it contains as a subgroup $C_m \times C_m$ with $m > 1$. Hence, there are at least $m^2$ elements in $\FF_p$ such that $x^m - 1 = 0$. But such a polynomial can have at most $m$ roots over a field -- contradiction.
+    \end{proof}
+    
+    \begin{proof}[Proof of theorem]
+        There are many steps
+        \begin{enumerate}
+            \item[$\impliedby$] If $p \equiv 3 \pmod 4$, then $p \neq a^2 + b^2$, because a sum of two squares is never 3 mod 4. If $N(z) = p$, $z=uv$, then $N(u)N(v) = p$. Hence, either $u$ or $v$ has norm 1, so $z$ is irreducible.
+            \item[$\implies$] Let $z \in \ZZ[i]$ a prime. Then, $\bar z$ is also irreducible, so $N(z) = z\bar z$ is a factorisation of the norm into irreducibles. Suppose $p \mid N(z)$, $p$ a prime in $\ZZ$. If $p \equiv 3 \pmod 4$, know $p$ prime in $\ZZ[i]$, so $p \mid z$ or $p \mid \bar z$. Since $p$ is fixed by conjugation, we may assume without loss of generality $p \mid z$. Then, $z$ prime gives $z=p$.
+            
+            If $p \equiv 1 \pmod 4$, $p=2$, want to show $N(z) = p$. First, we claim that $p$ is not a prime in $\ZZ[i]$. If $p \equiv 1 \pmod 4$, have $p-1 = 4k$, $k \in \ZZ$. By the lemma, it follows $\FF_p^\times \cong C_{4k}$, so there is a unique element in $\FF_p^\times$ of order 2, namely $-1$. We also know that there exists $a \in \FF_p^\times$ of order 4. Hence, $a^2 \equiv -1 \pmod 4$, so $p \mid a^2+1$. Thus, $p \mid (a+i)(a-i)$ -- but clearly $p \nmid a+i$, $p \nmid a-i$, so $p$ is not irreducible.
+
+            Thus, can have $p = z_1z_2$, where neither are units. Observe $p^2 = N(z_1)N(z_2)$, where neither $N(z_1)$, $N(z_2)$ are units, so $N(z_1)$, $N(z_2) = p$. Then
+            \begin{align*}
+                p = z_1 \bar z_1 = z_2 \bar z_2 = z_1 z_2
+            \end{align*}
+            Thus, $\bar z_1 = z_2$ and vice versa. Finally, then, 
+            \begin{align*}
+                p = z_1 \bar z_1 \mid N(z) = z \bar z
+            \end{align*}
+            By assumption, $z_1$, $\bar z_1$, $z$, $\bar z$ are all irreducible, so either $z$, $z_1$ or $z$, $\bar z_1$ are associates. Thus $N(z) = N(z_1) = p$ as required.         
+        \end{enumerate}
+    \end{proof}
+    
+    \begin{remark*}
+        The proof gives a way to find $\alpha \in \ZZ[i]$ such that $N(\alpha) = p$ whenever $p \equiv 1 \pmod 4$.
+    \end{remark*}
+    
+    \begin{corollary}
+        An integer $n$ can be written as a sum of squares if and only if
+        \begin{align*}
+            n = \prod p_i^{n_i}
+        \end{align*}
+        satisfies $n_i$ even whenever $p_i \equiv 3 \pmod 4$.        
+    \end{corollary}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] If $n=x^2+y^2$, have $n=N(x+iy)$ for $x+iy \in \ZZ[i]$. Factorising $z = x+iy$ into Gaussian primes gives $z = \alpha_1 \cdots \alpha_q$. Then, for each $i$, either $\alpha_i$ is 3 mod 4 or $N(\alpha_i)$ is a prime which is 1 mod 4, or 2. Then
+            \begin{align*}
+                x^2+y^2 = N(z) = \prod N(\alpha_i)
+            \end{align*}
+            and each $N(\alpha_i)$ is $p^2$ if $p \equiv 3 \pmod 4$.
+            \item[$\impliedby$] Conversely, let $n = \prod p_i^{n_i}$ satisfying the given conditions. In this case, if $p_i \equiv 3 \pmod 4$,
+            \begin{align*}
+                p_i^{n_i} = \left(p_i^{n_i/2}\right)^2 = N(p_i^{n_i/2})
+            \end{align*}
+            If $p \equiv 1 \pmod 4$ or 2, then $p_i = N(\alpha_i)$ from the proof of the theorem. Hence $n$ is the norm of some Gaussian integer and we are done.                        
+        \end{itemize}
+    \end{proof}
+    
+    \begin{example*}
+        Take $n = 65 = 13\cdot 5$. Following the proof, we can write
+        \begin{align*}
+            13 = (2+3i)(2-3i) = N(2+3i) && 5 = (2+i)(2-i) = N(2+i)
+        \end{align*}
+        Then
+        \begin{align*}
+            65 = N\left((2+3i)(2+i)\right) = N(1+8i)
+        \end{align*}
+        as required. Picking other pairs of factors, we could get other expressions -- $7^2+4^2$, for example.       
+    \end{example*}
+    
+    \subsection{Algebraic integers}
+
+    \begin{definition}[Algebraic integer]
+        A complex number $\alpha$ is an \emph{algebraic integer} if it is the root of a monic polynomial in $\ZZ[x]$.
+    \end{definition}
+    
+    We write
+    \begin{align*}
+        \ZZ[\alpha] = \bigcap_{\substack{R \leq \CC \\ \alpha \in R}} R
+    \end{align*}
+    or, equivalently, the image of the homomorphism
+    \begin{align*}
+        e_\alpha: \ZZ[x] &\to \CC \\
+        g(x) &\mapsto g(\alpha)
+    \end{align*}
+    
+    \begin{proposition}
+        Let $\alpha$ be an algebraic integer. The ideal $I = \ker e_\alpha \norm \ZZ[x]$ is principal. It is equal to $\gen {f_\alpha}$, with $f_\alpha$ irreducible and monic.
+    \end{proposition}
+    
+    \begin{proof}
+        By definition, $I = \ker e_\alpha$ is nonzero. Take $f_\alpha \in I$ of minimal degree. We can assume that $f_\alpha$ is primitive, since $\alpha$ is the root of some monic polynomial. We claim that $I=\gen{f_\alpha}$. Let $h \in I$. In $\QQ[x]$, we can run the division algorithm, to obtain
+        \begin{align*}
+            h = f_\alpha q + r && \deg r < \deg f_\alpha
+        \end{align*}
+        Clearing denominators, we obtain $ah = af_\alpha q + ar$, $a \in \ZZ$. Plugging in $\alpha$, we obtain $0 = 0 + ar(\alpha)$. Hence $r \in I$, so $r=0$. Therefore, $ah = af_\alpha q$. Taking contents and recalling $f_\alpha$ primitive, we have
+        \begin{align*}
+            c(ah) = c(aq)
+        \end{align*}
+        Then, because $h \in \ZZ[x]$, $a \mid c(ah)$, so $a \mid c(aq)$. Therefore, can write $aq = a \bar q$, where $\bar q \in \ZZ[x]$. Thus $q = \bar q \in \ZZ[x]$, so $f_\alpha \mid h$ as required.       
+        
+        To see $f_\alpha$ irreducible, observe $\ZZ[x]\dgen{f_\alpha} = \ZZ[x]/\ker(e_\alpha) \cong \im(e_\alpha) \leq \CC$, so $\ZZ[x]\dgen{f_\alpha}$ is an integral domain. The result follows. 
+    \end{proof}
+    
+    \begin{example*}
+        Algebraic integers include $\sqrt 2$, $i$, $\sqrt{-3}$. What about $\frac{1+\sqrt{-3}}{2}$? Yes, it is a root of unity! So, somehow, we have ended up with an algebraic \emph{integer} which looks like a fraction.
+    \end{example*}
+    
+    \begin{proposition}
+        Let $\alpha \in \CC$ be an algebraic integer. If $\alpha \in \QQ$, then $\alpha \in \ZZ$.
+    \end{proposition}
+    
+    \begin{proof}
+        Let $f_\alpha$ be the polynomial generating $\ker e_\alpha$. This is irreducible over $\ZZ[x]$, and thus $\QQ[x]$. But $x-\alpha \mid f_\alpha$ in $\QQ[x]$, so $f_\alpha = x-\alpha$. The result follows.
+    \end{proof}
+    
+    
+    
+    
+    
+    
+    \lecture{Lecture}
+    
+    
+    
+    \lecture{Lecture}
+    
+    
+    
+    
+    
     
     \subsection{Hilbert's basis theorem}
 

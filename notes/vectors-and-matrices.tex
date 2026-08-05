@@ -1525,8 +1525,8 @@
     \begin{itemize}
         \item \(\Rot(\theta)\Rot(\phi) = \Rot(\theta + \phi)\)
         \item \(\Rfl(\theta)\Rfl(\phi) = \Rot(\theta - \phi)\)
-        \item \(\Rot(\theta)\Rfl(\phi) = \Rfl(\phi + \theta/2)\)
-        \item \(\Rfl(\phi)\Rot(\theta) = \Rfl(\phi - \theta/2)\)
+        \item \(\Rot(\theta)\Rfl(\phi) = \Rfl(\phi + \theta)\)
+        \item \(\Rfl(\phi)\Rot(\theta) = \Rfl(\phi - \theta)\)
     \end{itemize}
 
     \begin{enumerate}[resume]
@@ -2381,8 +2381,8 @@
         \end{align*}
         where the \(\Delta_{ij}\) are called \emph{cofactors}. The cofactors are explicitly given by
         \begin{align*}
-            \Delta_{ij} &= [\vec C_1, \dots, \vec C_{j-1}, \vec e_j, \vec C_{j+1}, \dots, \vec C_n] \\
-            &= [\vec R_1, \dots, \vec R_{i-1}, \vec e_j, \vec R_{j+1}, \dots, \vec R_n]
+            \Delta_{ij} &= [\vec C_1, \dots, \vec C_{j-1}, \vec e_i, \vec C_{j+1}, \dots, \vec C_n] \\
+            &= [\vec R_1, \dots, \vec R_{i-1}, \vec e_j, \vec R_{i+1}, \dots, \vec R_n]
         \end{align*}
         In particular, the cofactor is the determinant of the matrix obtained by replacing the entry \(M_{ij}\) by 1 and all other entries in row \(i\) and column \(j\) by 0.
     \end{definition}

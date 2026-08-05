@@ -15,6 +15,7 @@
 \RequirePackage{environ}
 \RequirePackage{etoolbox}
 \RequirePackage{float}
+\RequirePackage{stmaryrd}
 
 \newcommand{\multiline}[2][c]{%
     \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}

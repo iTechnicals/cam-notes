@@ -1,0 +1,1775 @@
+\documentclass{../template/note}
+
+\author{Oliver West}
+\title{Variational Principles}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \lecture{Lecture 1 -- 01/05/26}
+
+    How do we find the shortest path between two points -- in Euclidean space, on the surface of a sphere? What about on a general curved surface?
+
+    \begin{definition}[Functionals]
+        A \emph{functional} is a map from a function to $\RR$.
+    \end{definition}
+    
+    The distance between a curve is a functional from the parameterisation of that curve to its distance. So we would like to find a way to determine minima and maxima of functionals.
+
+    \section{Calculus on $\RR^n$}
+
+    Consider a function $f: \RR^n \to \RR$, and assume that $f$ is nice and differentiable (at least $C^2$).
+
+    \begin{definition}[Stationary points]
+        We say that $\V a \in \RR^n$ is a \emph{stationary point} of $f$ if $\grad f(\V a) = \V 0$.
+    \end{definition}
+    
+    Around such a point, we have a Taylor series given by
+
+    \begin{align*}
+        f(\V x) = f(\V a) + \underbrace{\sum_i (x_i-a_i) \grad f(\V a)}_{0} + \frac 1 2 \sum_{i, j} (x_i-a_i)(x_j-a_j) H_{ij}(\V a) + O(|\V x-\V a|^3)
+    \end{align*}
+    
+    where $H_{ij} = \pd{^2f}{x_i \pr x_j}$ is the symmetric Hessian matrix. Let us assume without loss of generality that $\V a = \V 0$, and we obtain
+    
+    \begin{align*}
+        f(\V x) - f(\V 0) = \frac 1 2 x_i H_{ij} x_j + O(|\V x|^3)
+    \end{align*}
+    
+    under the summation convention, where we are implicitly evaluating $H$ at $\V 0$. Since $H$ is symmetric, we may diagonalise with a special orthogonal/rotation matrix $R$ satisfying $x_i = R_{ij} x_j'$ and
+
+    \begin{align*}
+        H' = R^\intercal HR = \begin{pmatrix}
+            \lambda_1 &  &  \\
+             & \ddots &  \\
+             & & \lambda_n \\
+        \end{pmatrix}
+    \end{align*}
+    
+    for real eigenvalues $\lambda_1, \dots, \lambda_n$. We now obtain
+
+    \begin{align*}
+        f(\V x) - f(\V 0) = \frac 1 2 \sum_{i=1}^n \lambda_i (x'_i)^2 + O(|\V x|^3)
+    \end{align*}
+    
+    Hence, we conclude that
+    \begin{itemize}
+        \item if every $\lambda_i > 0$, then $f(\V x) > f(\V 0)$ for small $\V x$ -- we are at a local minimum;
+        \item if every $\lambda_i < 0$, we are analogously at a local maximum;
+        \item if there are mixed eigenvalues, we are at a saddle point.
+    \end{itemize}
+    
+    However, we must worry about \emph{degenerate} cases, where at least one $\lambda_i = 0$ -- it is then necessary to go to higher-order terms of the Taylor expansion.
+
+    Let us consider specifically the $n=2$ case, in which
+    \begin{align*}
+        \det H = \lambda_1 \lambda_2 \qquad \Tr H = \lambda_1 + \lambda_2
+    \end{align*}
+    
+    so that
+    \begin{itemize}
+        \item $\det H > 0$, $\Tr H > 0 \implies$ local min;
+        \item $\det H > 0$, $\Tr H < 0 \implies$ local max;
+        \item $\det H < 0 \implies$ saddle;
+        \item $\det H = 0 \implies$ degenerate.
+    \end{itemize}
+    
+    If a local minimum is not a global minimum, then either
+
+    \begin{itemize}
+        \item there is another local minimum which is the global minimum;
+        \item the global minimum occurs on the boundary of $f$'s domain;
+        \item or there is just no global minimum.
+    \end{itemize}
+    
+    \begin{example*}
+        Consider $f: \RR^2 \to \RR$ given by $f(x, y) = x^3 + y^3 - 3xy$. We have
+        \begin{align*}
+            \grad f &= (3x^2 - 3y, 3y^2 - 3x) \\
+            H &= \begin{pmatrix}
+                6x & -3 \\
+                -3 & 6y \\
+            \end{pmatrix}
+        \end{align*}
+        Solving $\grad f = \V 0$, we obtain $x^2 = y$, $y^2 = x \implies x^4 = x$, which gives $(x, y) = (0, 0)$ and $(x, y) = (1, 1)$.
+
+        Now, let us classify these points. We have $\det H = 9(4xy-1)$, $\Tr H = 6(x+y)$.
+
+        \begin{itemize}
+            \item at $(x, y) = (1, 1)$, we have $\det H = 27 > 0$, $\Tr H = 12 > 0$, so we have a local minimum, with $f(x, y) = -1$.
+            \item at $(x, y) = (0, 0)$, we have $\det H = -9 < 0$, so we have a saddle point, with $f(x, y) = 0$. Furthermore, we have
+            \begin{align*}
+                \lambda_1 &= -3 && \V e_1 = \begin{pmatrix}
+                    1 \\
+                    1 \\
+                \end{pmatrix} \\
+                \lambda_2 &= 3 && \V e_2 = \begin{pmatrix}
+                    1 \\
+                    -1 \\
+                \end{pmatrix}
+            \end{align*}
+            which indicates the directions in which $f$ is increasing and decreasing.
+        \end{itemize}
+        However, there is no global maximum or minimum, since $f$ increases/decreases without bound as $x^2+y^2 \to \infty$.
+    \end{example*}
+    
+    \section{Convex functions}
+    
+    \begin{definition}[Convex sets]
+        A set $S \subseteq \RR^n$ is called \emph{convex} if, for every $\V x$, $\V y \in S$ and $\lambda \in [0, 1]$, the point $\lambda \V x + (1-\lambda)\V y \in S$ -- that is, every line segment with endpoints in $S$ is contained in $S$.
+    \end{definition}
+    
+    \begin{definition}[Graphs, chords and convexity]
+        Let $f: D(f) \to \RR$, where $D(f)$, its domain, is a subset of $\RR^n$. The \emph{graph} of $f$ is the surface $z = f(\V x)$ in $\RR^{n+1}$, whose points have coordinates $(\V x, z)$. A \emph{chord} of $f$ is a line segment joining 2 points of its graph. Then $f$ is \emph{convex} if and only if
+        \begin{itemize}
+            \item $D(f)$ is convex;
+            \item the graph of $f$ lies below, or on, its chords -- i.e., for any $\V x$, $\V y \in D(f)$ and $t \in [0, 1]$,
+            \begin{align*}
+                f((1-t)\V x + t\V y) \leq (1-t)f(\V x) + tf(\V y)
+            \end{align*}
+            where the LHS is well-defined since $D(f)$ is convex.            
+        \end{itemize}
+        Furthermore, $f$ is \emph{strictly convex} if the above inequality is strict for $\V x \neq \V y$.
+    \end{definition}
+    
+    \begin{definition}[Concavity]
+        We say that $f$ is (strictly) \emph{concave} if and only if $-f$ is (strictly) convex.
+    \end{definition}
+    
+    \begin{example*}
+        Let us have some examples.
+        \begin{itemize}
+            \item $f(x) = x^2$. Let us formally prove that this is (strictly) convex. We have
+            \begin{align*}
+                [(1-t)x + ty]^2 - (1-t)x^2 - ty^2 &= -t(1-t)(x-y)^2
+            \end{align*}
+            which is strictly negative, as required.
+            \item $f(x) = e^x$. This is also strictly convex.
+            \item $f(x) = |x|$. This is convex, but not strictly.
+        \end{itemize}
+    \end{example*}
+    
+    \subsection{First order conditions}
+
+    \begin{theorem}
+        \label{first-order-condition}
+        If $f$ is differentiable, then it is convex if and only if
+        \begin{align*}
+            f(\V y) \geq f(\V x) + (\V y - \V x) \cdot \grad f(\V x)
+        \end{align*}
+        for all $\V x$, $\V y \in D(f)$ -- in other words, $f$ lies above its tangent planes.        
+    \end{theorem}
+
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] Let
+            \begin{align*}
+                h(t) &= (1-t)f(\V x) + tf(\V y) - f\left((1-t)\V x + t\V y\right) \\
+                \implies h'(0) &= -f(\V x) + f(\V y) - (\V y - \V x) \dot \grad f(\V x)
+            \end{align*}
+            However,
+            \begin{align*}
+                h'(0) = \lim_{h \to 0} \frac{h(t)-h(0)}{t} = \lim_{h \to 0} \frac{h(t)}{t}
+            \end{align*}
+            By assumption, $h(t) \geq 0$ for all $t$, so $h'(0) \geq 0$, which gives the result.
+            \item[$\impliedby$] We know
+            \begin{align*}
+                f(\V x) &\geq f(\V z) + (\V x - \V z) \cdot \grad f(\V z) \\
+                f(\V y) &\geq f(\V z) + (\V y - \V z) \cdot \grad f(\V z) \\
+                \implies (1-t)f(\V x) + tf(\V y) &\geq f(\V z) + \left((1-t)\V x + t\V y - \V z\right)\cdot \grad f(\V z)
+            \end{align*}
+            Now, choose $\V z = (1-t)\V x + t\V y$, which gives the result.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{corollary}
+        If $f$ is convex and differentiable, then any stationary point is a global minimum.
+    \end{corollary}
+    
+    \begin{proof}
+        If $\V a$ is a stationary point, then $\grad f(\V a) = \V 0$, so we immediately obtain $f(\V y) \geq f(\V a)$ for all $\V y \in D(f)$.
+    \end{proof}
+    
+    \begin{proposition}
+        \label{grad-dot-criterion}
+        The criterion in \cref{first-order-condition} is equivalent to
+        \begin{align*}
+            (\V y - \V x) \cdot (\grad f(\V y) - \grad f(\V x)) \geq 0
+        \end{align*}
+        for all $\V x$, $\V y \in D(f)$.        
+    \end{proposition}
+    
+    \begin{remark*}
+        If $n=1$, this tells us that $f'(y) \geq f'(x)$ if and only if $y \geq x$, in other words $f'$ is monotonically increasing.
+    \end{remark*}
+
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] We have
+            \begin{align*}
+                f(\V y) &\geq f(\V x) + (\V y - \V x) \cdot \grad f(\V x) \\
+                f(\V x) &\geq f(\V y) + (\V x - \V y) \cdot \grad f(\V y)
+            \end{align*}
+            and adding these gives the result.
+            \item[$\impliedby$] Let $\V z = (1-t) \V x + t \V y$. Then
+            \begin{align*}
+                f(\V y) - f(\V x) &= \left[f(\V z)\right]_{t=0}^{t=1} \\
+                &= \int_0^1 \frac{d}{dt} f(\V z) \D t \\
+                &= \int_0^1 (\V y - \V x) \cdot \grad f(\V z) \D t
+            \end{align*}
+            On the other hand,
+            \begin{align*}
+                f(\V y) - f(\V x) - (\V y - \V x) \cdot \grad f(\V x) &= \int_0^1 (\V y - \V x) \cdot (\grad f(\V z) - \grad f(\V x)) \D t
+            \end{align*}
+            Replacing $\V y$ by $\V z$ in the assumption, we obtain
+            \begin{align*}
+                t \left((\V y - \V x) \cdot (\grad f(\V z) - \grad f(\V x))\right) \geq 0
+            \end{align*}
+            so the LHS is $\geq 0$ and we obtain the result.           
+        \end{itemize}
+    \end{proof}
+    
+    \subsection{Second order condition}
+
+    \begin{theorem}
+        \label{second-order-condition}
+        If $f \in C^2$, then it is convex if and only if the Hessian $H(\V x)$ is positive semi-definite, or equivalently has all eigenvalues $\geq 0$.
+    \end{theorem}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item[$\implies$] Use \cref{grad-dot-criterion} writing $\V y = \V x + \V h$ to obtain
+            \begin{align*}
+                \V h \cdot \left(\grad f(\V x + \V h) - \grad f(\V x)\right) \geq 0
+            \end{align*}
+            Taylor expanding, we can see
+            \begin{align*}
+                \grad_i f(\V x + \V h) = \grad_i f(\V x) + h_j H_{ij} (\V x) + O(h^2)
+            \end{align*}
+            so, substituting tis in, we obtain
+            \begin{align*}
+                h_i h_j H_{ij}(\V x) + O(h^3) \geq 0
+            \end{align*}
+            If $H(\V x)$ had some negative eigenvalue $\lambda$ with eigenvector $\V e$, we could make $\V h = h \V e$, giving
+            \begin{align*}
+                \lambda h^2 \V e^2 + O(h^3) \geq 0
+            \end{align*}
+            This is a clear contradiction for sufficiently small $h$.
+            \item[$\impliedby$] For simplicity, let us take $n=1$. Then
+            \begin{align*}
+                0 &\leq \sign(y-x) \int_x^y f''(z) \D z = \sign(y-x) \left(f'(y)-f'(x)\right) \\
+                \implies 0 &\leq (y-x) \left(f'(y)-f'(x)\right)
+            \end{align*}
+            so we conclude by \cref{grad-dot-criterion}.            
+        \end{itemize}
+    \end{proof}
+    
+    \begin{example*}
+        Let
+        \begin{align*}
+            f: \RR^+ \times \RR^+ &\to \RR \\
+            (x, y) &\mapsto \frac 1 {xy}
+        \end{align*}
+        with
+        \begin{align*}
+            H &= \frac 1 {xy} \begin{pmatrix}
+                \frac 2 {x^2} & \frac 1 {xy} \\
+                \frac 1 {xy} & \frac 2 {y^2} \\
+            \end{pmatrix} \\
+            \det H &= \frac 3 {x^4y^4} \\
+            \Tr H &= \frac 2 {xy} \left(\frac 1 {x^2} + \frac 1 {y^2}\right)
+        \end{align*}
+        so the eigenvalues of $H$ are strictly positive, and hence $f$ is strictly convex.
+        
+        Importantly, if we had taken $D(f) = \{(x, y): xy > 0\}$, the domain would not have been a convex set, so $f$ would not have been convex.
+    \end{example*}
+    
+    \section{Legendre transform}
+
+    \begin{definition*}[Legendre transform]
+        The \emph{Legendre transform} of $f: D(f) \subseteq \RR^n \to \RR$ is given by
+        \begin{align*}
+            f^*(\V p) = \sup_{\V x} \left(\V p \cdot \V x - f(\V x)\right)
+        \end{align*}
+        with domain the set of $\V p$ such that this is finite.        
+    \end{definition*}
+    
+    \begin{lemma}
+        For any $f$, $f^*$ is convex.
+    \end{lemma}
+    
+    \begin{proof}
+        Let $\V p$, $\V q \in D(f^*)$, and $t \in (0, 1)$. Observe
+        \begin{align*}
+            &\;\sup_{\V x} \left(\left((1-t)\V x + t\V y\right) \cdot \V x - f(\V x)\right) \\
+            =&\; \sup_{\V x} \left((1-t)\left(\V p \cdot \V x - f(\V x)\right) + t\left(\V q \cdot \V x - f(\V x)\right)\right) \\
+            \leq&\; (1-t) \sup_{\V x} (\V p \cdot \V x - f(\V x)) + t \sup_{\V x} (\V q \cdot \V x - f(\V x))
+        \end{align*}
+        Since the RHS is finite, the LHS is finite, so $(1-t)\V x + t\V y \in D(f^*)$ as required. Furthermore, we have also shown that
+        \begin{align*}
+            f^*\left((1-t)\V p + t\V q\right) \leq (1-t)f^*(\V p) + tf^*(\V q)
+        \end{align*}
+        which completes the proof.
+    \end{proof}
+    
+    \begin{lemma}
+        If $f$ is convex, then so is
+        \begin{align*}
+            F_{\V p}(\V x) := f(\V x) - \V p \cdot \V x
+        \end{align*}
+    \end{lemma}
+    
+    \begin{proof}
+        Clearly $D(F_{\V p}) = D(f)$. Also,
+        \begin{align*}
+            F_{\V p}((1-t)\V x + t\V y) &= f((1-t) \V x + t\V y) - \V p \cdot ((1-t)\V x + t\V y) \\
+            &\leq (1-t)f(\V x) + tf(\V y) - \V p \cdot (\cdots) \\
+            &= (1-t)F_{\V p}(\V x) + tF_{\V p}(\V y)
+        \end{align*}
+    \end{proof}
+    
+    \begin{corollary}
+        \label{magic-formula}
+        If $f$ is convex and differentiable, then any stationary point of $\V p \cdot \V x - f(\V x)$ is a global maximum, occurring at $\V x(\V p)$ obtained by solving
+        \begin{align*}
+            \grad f(\V x) = \V p
+        \end{align*}
+        Then, the Legendre transformation is $f^*(\V p) = \V p \cdot \V x(\V p) - f(\V x(\V p))$.        
+    \end{corollary}
+    
+    \begin{remark*}
+        One can check that, if $f$ is strictly convex, then the solution $\V x(\V p)$ is unique.
+    \end{remark*}
+    
+    \begin{example*}
+        Let us check some examples.
+        \begin{itemize}
+            \item $f(x) = \frac 1 5 ax^2$. For $a > 0$, this is strictly convex, and $x(p) = \frac p a$. Then
+            \begin{align*}
+                f^*(p) = \frac{p^2}{a} - \frac{p^2}{2a} = \frac{p^2}{2a}
+            \end{align*}
+            \item $f(v) = -\sqrt{1-v^2}$, $D(f) = (-1, 1)$. Then, solving for $v$, we have
+            \begin{align*}
+                p = \frac{v}{\sqrt{1-v^2}} \implies v = \frac{p}{\sqrt{1+p^2}}
+            \end{align*}
+            so
+            \begin{align*}
+                f^*(p) = \frac{p^2}{\sqrt{1+p^2}} + \frac{1}{\sqrt{1+p^2}} = \sqrt{1+p^2}
+            \end{align*}
+            \item $f(x) = cx$, which is convex, but not strictly. Then
+            \begin{align*}
+                px - f(x) = (p-c)x
+            \end{align*}
+            which has a supremum only if $p=c$. Hence $D(f^*) = \{c\}$, and $f^*(c) = 0$.
+        \end{itemize}
+    \end{example*}
+    
+    \begin{theorem}
+        If $f$ is convex and $C^2$, then $f^{**} = f$.
+    \end{theorem}
+    
+    \begin{proof}
+        To determine $f^{**}$, we need to find $\V p(\V x)$ satisfying $\grad f^*(\V p(\V x)) = \V x$. Observe
+        \begin{align*}
+            f^*(\V p) &= \V p \cdot \V x(\V p) - f(\V x(\V p)) \\
+            \implies \pd{f^*}{p_i} &= x_i + p_j \pd{x_j}{p_i} - \pd[\V x = \V x(\V p)]{f}{x_j} \pd{x_j}{p_i} \\
+            &= x_i + \underbrace{\left(p_j - \pd[\V x = \V x(\V p)]{f}{x_j}\right)}_0 \pd{x_j}{p_i} \\
+            \implies \grad f^*(\V p) &= \V x(\V p)
+        \end{align*}
+        We then obtain $\V x(\V p(\V x)) = \V x$, i.e. $\V p(\V x)$ is the inverse of $\V x(\V p)$. Then
+        \begin{align*}
+            f^{**}(\V x) &= \V x \cdot \V p(\V x) - f^*(\V p(\V x)) \\
+            &= \V x \cdot \V p(\V x) - \left(\V p(\V x) \cdot \V x - f(\underbrace{\V x(\V p(\V x))}_{\V x})\right) \\
+            &= f(\V x)
+        \end{align*}
+        as required.        
+    \end{proof}
+    
+    \begin{remark*}
+        The convexity of $f$ is clearly necessary, since $f^{**}$ must be convex, being the Legendre transform of $f^*$. The $C^2$ condition, on the other hand, is not really necessary.
+    \end{remark*}
+    
+    \begin{example*}
+        Let us return to the example of $f(x) = cx$. Then
+        \begin{align*}
+            f^{**}(x) = \sup_{p \in \{c\}} \left(xp-f^*(p)\right) = cx = f(x)
+        \end{align*}
+        as expected.
+    \end{example*}
+    
+    \subsection{Legendre transforms in thermodynamics}
+
+    Consider a system with a few molecules, say $10^{23}$. Suppose it is at thermal equilibrium, and define its macroscopic properties as follows:
+    \begin{itemize}
+        \item total energy $E$;
+        \item volume $V$;
+        \item temperature $T$;
+        \item pressure $P$.
+    \end{itemize}
+    Suppose also that the system is \emph{isolated}, i.e. is not interacting with anything else. At equilibrium, the macroscopic physics of such a system is fully determined by $E$ and $V$. And yet, there must be a huge number of microstates, $\Omega(E, V)$, all of which `look identical' macroscopically. Indeed, $\Omega(E, V)$ is on the order of $10^{10^{23}}$! We quantify this with the following definition.
+
+    \begin{definition}[Entropy]
+        The \emph{entropy}
+        \begin{align*}
+            S(E, V) := k_B \log \Omega(E, V)
+        \end{align*}
+    \end{definition}
+    
+    Clearly, if $E$ increases at fixed $V$, then there are more ways to partition $E$ between molecules, so $S$ should increase too. Hence, we should be able to invert to define $E(S, V)$. We now define
+
+    \begin{definition}[Temperature and pressure]
+        \label{temp-pressure}
+        The \emph{temperature} and \emph{pressure} are defined as follows:
+        \begin{align*}
+            T &:= \pd[V]{E}{S} \\
+            P &:= -\pd[S]{E}{V}
+        \end{align*}
+    \end{definition}
+    
+    \begin{proposition}[Fundamental thermodynamic relation]
+        We have
+        \begin{align*}
+            dE = T \D S - P \D V
+        \end{align*}        
+    \end{proposition}
+    
+    \begin{proof}
+        Apply the chain rule.
+    \end{proof}
+    
+    Now, forget \cref{temp-pressure}. Consider the Legendre transform of $E(S, V)$ with respect to $S$ (at fixed $V$) with parameter $T$. Call this $-F$ -- we have
+    \begin{align*}
+        -F(T, V) = \sup_S \left(TS - E(S, V)\right)
+    \end{align*}
+    As we will show on the example sheet, $E$ is convex w.r.t. $S$, so we can evaluate the sup using \cref{magic-formula}. This gives that $T$ should be the temperature as defined earlier! Indeed, we obtain
+    \begin{align*}
+        \Aboxed{F(T, V) = E - TS}
+    \end{align*}
+    which is the \emph{Helmholtz free energy}. Then we obtain
+    \begin{proposition}[Properties of Helmholtz free energy]
+        We have
+        \begin{align*}
+            dF &= -S \D T - P \D V \\
+            S &= -\pd[V]{F}{T} \\
+            P &= -\pd[T]{F}{V}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{remark*}
+        $F$ is useful when considering a non-isolated system in equilibrium with an environment at temperature $T$.
+    \end{remark*}
+    
+    Similarly, let us take the Legendre transform of $E(S, V)$ w.r.t. $V$ (at fixed $S$) with parameter $-P$. Call this $-H(S, P)$:
+    \begin{align*}
+        -H(S, P) = \sup_V \left(-PV - E(S, V)\right)
+    \end{align*}
+    and the same argument for the convexity of $E$ gives that $P$ should be the pressure as defined earlier, and we obtain
+    \begin{align*}
+        \Aboxed{H(S, P) = E + PV}
+    \end{align*}
+    which is the \emph{enthalpy}.
+    
+    \begin{proposition}[Properties of enthalpy]
+        We have
+        \begin{align*}
+            dH &= T \D S + V \D P \\
+            T &= \pd[P]{H}{S} \\
+            V &= \pd[S]{H}{P}
+        \end{align*}
+    \end{proposition}
+    
+    \begin{remark*}
+        Enthalpy is useful when temperature and pressure are fixed, for example in chemistry.
+    \end{remark*}
+    
+    Finally, let's take the Legendre transform of $E(S, V)$ with respect to both parameters at once, with parameters $T$ and $-P$. Call this $-G(T, P)$.
+
+    \begin{remark*}
+        This is the same as doing the Legendre transform twice, once with respect to $S$ and once with respect to $V$.
+    \end{remark*}
+    
+    We have
+    \begin{align*}
+        -G(T, P) = \sup_{S, V} \left(TS-PV-E(S, V)\right)
+    \end{align*}
+    Now, this is once again maximised when $T$ is temperature and $P$ is pressure, and we obtain
+    \begin{align*}
+        \Aboxed{G(T, P) = E - TS + PV}
+    \end{align*}
+    which is the \emph{Gibbs free energy}.
+    
+    \begin{proposition}[Properties of Gibbs free energy]
+        We have
+        \begin{align*}
+            dG &= -S \D T + V \D P \\
+            S &= -\pd[P]{G}{T} \\
+            V &= \pd[T]{G}{P}
+        \end{align*}
+    \end{proposition}
+    
+    We have now recovered all four \emph{thermodynamic potentials}.
+    
+    \lecture{Lecture 4 -- 08/05/26}
+
+    Let us consider some second derivatives. Observe
+    \begin{align*}
+        \left(\pd{}{S}\left(\pd{E}{V}\right)_S\right)_V &= \left(\pd{}{V}\left(\pd{E}{S}\right)_V\right)_S \\
+        \implies -\left(\pd{P}{S}\right)_V &= \left(\pd{T}{V}\right)_S
+    \end{align*}
+    and there are three similar equations that follow from doing the same thing with the other potentials, $F$, $H$ and $G$. These are called the \emph{Maxwell relations}.
+    
+    \section{Constraints and Lagrange multipliers}
+
+    Consider a smooth surface $S$ in $\RR^3$. If $f: \RR^3 \to \RR$, how do we determine the max/min value of $f$ \emph{on $S$}?
+
+    Let $(u, v)$ parameterise $S$, i.e. $\V x = \V x(u, v)$. We then need to minimise $f(\V x(u, v))$, which we can just do by differentiating with respect to $u$ and $v$. Indeed, we have
+    \begin{align*}
+        0 &= \pd{}{u} f(\V x(u, v)) = \pd{\V x}{u} \cdot \grad f \\
+        0 &= \pd{}{v} f(\V x(u, v)) = \pd{\V x}{v} \cdot \grad f
+    \end{align*}
+    Recall that $\{\pd{\V x}{u}, \pd{\V x}{v}\}$ are linearly independent vectors tangent to $S$, and so $\grad f$ is normal to $S$. Hence, $\V x_0 \in S$ is a stationary point of $f$ on $S$ if and only if $\grad f(\V x_0)$ is normal to $S$.
+
+    Often, however, we suffer from not having an explicit parameterisation $\V x(u, v)$, and instead being limited to an implicit equation of the form $g(\V x) = 0$.
+
+    Recall that $\grad g$ is normal to such a surface $S$, and we already know that $\grad f$ is normal to it, so we have
+    \begin{align*}
+        \grad f(\V x_0) = \lambda g(\V x_0)
+    \end{align*}
+    for some $\lambda$. Hence, define
+    \begin{align*}
+        \varphi(\V x, \lambda)  = f(\V x) - \lambda g(\V x)
+    \end{align*}
+    Observe
+    \begin{align*}
+        0 &= \pd{\varphi}{\lambda} = 0 \\
+        0 &= \pd{\varphi}{\V x} = \grad f - \lambda \grad g
+    \end{align*}
+    so extremising $\varphi$ is equivalent to solving our problem! Of course, these ideas could be generalised to $\RR^n$.
+
+    \begin{example*}[Direct method]
+        Suppose we would like to determine $(x, y, z)$ that minimises surface area $A$ for some open box of fixed volume $V = \frac{L^3}{2}$. In particular, we are minimising
+        \begin{align*}
+            A = 2z(x+y) + xy
+        \end{align*}
+        subject to
+        \begin{align*}
+            xyz = \frac{L^3}{2}
+        \end{align*}
+        Solving this directly, we have $z = \frac{L^3}{2xy}$, so
+        \begin{align*}
+            A = \frac{L^3}{x} + \frac{L^3}{y} + xy
+        \end{align*}
+        which is stationary if
+        \begin{align*}
+            0 = \pd{A}{x} = -\frac{L^3}{x^2} + y \implies x^2y = L^3 \\
+            0 = \pd{A}{y} = -\frac{L^3}{y^2} + x \implies xy^2 = L^3
+        \end{align*}
+        This gives $x=y=L$, $z = \frac L 2$, so $A = 3L^2$. We can compute the Hessian to check that this is the minimum.       
+    \end{example*}
+    
+    \begin{example*}[Lagrange multipliers]
+        Let us consider the same problem, and define
+        \begin{align*}
+            \varphi(x,y,z,\lambda) = A(x,y,z) - \lambda\left(xyz-\frac{L^3}{2}\right)
+        \end{align*}
+        Hence
+        \begin{align*}
+            0 &= \pd{\varphi}{z} = 2(x+y)-\lambda xy \implies \lambda = \frac{2(x+y)}{xy} \\
+            0 &= \pd{\varphi}{x} = 2z+y-\lambda yz = 2z + y - \frac{2(x+y)z}{x} \\
+            &= \frac y x (x-2z) \implies x = 2z
+        \end{align*}
+        and by symmetry, $y=2z$ also. Finally,
+        \begin{align*}
+            0 = \pd{\varphi}{\lambda} = xyz-\frac{L^3}{2} = 4z^3 - \frac{L^3}{2}
+        \end{align*}
+        which just recovers the constraint. Hence $z = \frac L 2$, and $x=y=L$ as required.
+    \end{example*}
+    
+    However, to find the nature of the stationary point this way is not so easy, and in particular it does not correspond to the nature of the stationary point of $\varphi$. Observe
+    \begin{align*}
+        \pd{^2\varphi}{\lambda^2} = 0
+    \end{align*}
+    from which it's clear that $H$ cannot be definite, so we always have a saddle point.
+
+    However, the clear advantage of this method over the direct one is that it does not require us to solve the constraint at any point.
+    
+    \begin{example*}
+        Let us minimise the quadratic form $f(\V x) = x_iA_{ij}x_j$ on the surface $|\V x|^2 = 1$, and let's not solve it directly! Have
+        \begin{align*}
+            \varphi(\V x, \lambda) &= x_i A_{ij} x_j - \lambda(|\V x|^2 - 1) \\
+            \implies 0 = \pd{\varphi}{x_i} &= A_{ij} x_j - \lambda x_i
+        \end{align*}
+        Hence, the stationary points are the normalised eigenvectors of $A$, and the Lagrange multiplier is the eigenvalue. Furthermore, evaluating $f$ at a stationary point, we have
+        \begin{align*}
+            f = x_i A_{ij} x_j = \lambda x_i x_i = \lambda
+        \end{align*}
+        and so the minimum of $f$ is just given by the lowest eigenvalue.
+    \end{example*}
+    
+    Alternatively, we could have used a rotation to diagonalise $A$. Let us try out one more method.
+    
+    \begin{example*}
+        Define
+        \begin{align*}
+            \Lambda(\V x) = \frac{f(\V x)}{g(\V x)} = \hat{x_i} A_{ij} \hat{x_j} = f(\hvec x)
+        \end{align*}
+        where $g(\V x) = |\V x|^2$. Then, minimising $f$ with respect to $\hvec x$ is equivalent to minimising $\Lambda$ with respect to $\V x$. Observe:
+        \begin{align*}
+            0 = \pd{\Lambda}{x_i} &= \frac 1 g \left(\grad_i f - \frac f g \grad_i g\right) = \frac 2 g \left(A_{ij} x_j - \frac f g x_i\right) \\
+            &= \frac 2 g \left(A_{ij}x_j - \Lambda x_i\right)
+        \end{align*}
+        so the extrema of $\Lambda$ are the eigenvalues as required.
+    \end{example*}
+    
+    \begin{example*}
+        Which probability distribution $\{p_1, \dots, p_n\}$ with $\sum p_i = 1$ maximises the information entropy
+        \begin{align*}
+            S = -\sum_i p_i \log_2 p_i
+        \end{align*}
+        Define
+        \begin{align*}
+            \varphi(p_1, \dots, p_n, \lambda) &= -\sum_i p_i \log_2 p_i - \lambda\left(\sum p_i -1\right) \\
+            \implies 0 = \pd{\varphi}{p_i} &= -\log_2 p_i - \frac 1 {ln 2} - \lambda
+        \end{align*}
+        from which it's immediately clear that all the $p_i$ are equal, and hence each is $\frac 1 n$, giving $S_{max} = \log_2 n$.        
+    \end{example*}
+    
+    Let us briefly discuss how to generalise these notions to multiple constraints.
+
+    Suppose we have $f: \RR^n \to \RR$ and $m < n$ constraints $g_k(\V x) = 0$ for $1 \leq k \leq m$. We introduce $m$ Lagrange multipliers $\lambda_1, \dots, \lambda_m$ and extremise
+
+    \begin{align*}
+        \varphi(x_1, \dots, x_n, \lambda_1, \dots, \lambda_m) = f(\V x) - \sum_{k=1}^m \lambda_k g_k(\V x)
+    \end{align*}
+    
+    \section{Functionals and the Euler-Lagrange equations}
+
+    \begin{definition}[Continuous differentiability and smoothness]
+        For $\Omega \subset \RR^n$, define
+        \begin{align*}
+            C^k(\Omega) &= \{y: \Omega \to \RR: y \text{ is } k \text{ times continuously differentiable}\} \\
+            C^\infty(\Omega) &= \{y: \Omega \to \RR: y \text{ is smooth}\}
+        \end{align*}      
+    \end{definition}
+    
+    \begin{definition}[Functionals]
+        Let $\mc C$ be a set of functions, normally in $C^\infty(\Omega)$. A \emph{functional} is a map
+        \begin{align*}
+            F: \mc C &\to \RR \\
+            y &\mapsto F[y]
+        \end{align*}
+        or indeed
+        \begin{align*}
+            F: \mc C^n &\to \RR \\
+            (y_1, \dots, y_n) &\mapsto F[y_1, \dots, y_n]
+        \end{align*}       
+    \end{definition}
+    
+    A particular important case that we will focus on is when $\Omega = [\alpha, \beta]$, $\mc C = C^\infty(\Omega)$, and
+    \begin{align*}
+        F[y] = \int_\alpha^\beta f(y(x), y'(x), x) \D x
+    \end{align*}
+    for some smooth $f$.
+
+    Which $y \in \mc C$ extremises $f$? Consider varying $y$ to $y + \delta y$ (where $\delta y$ is of course a function). Then
+    \begin{align*}
+        \delta F[y] = F[y+\delta y] - F[y] &= \int_a^b \left(f(y+\delta y, y'+\delta y', x) - f(y, y', x)\right) \D x \\
+        &= \int_\alpha^\beta \left(\delta y \pd{f}{y} + \delta y' \pd{f}{y'} + \dots\right) \D x \\
+        &= \left[\delta y \pd{f}{y'}\right]_\alpha^\beta + \int_\alpha^\beta \delta y(x) \left(\pd{f}{y} - \frac{d}{dx} \pd{f}{y'}\right) \D x
+    \end{align*}
+    after integration by parts. We would really like to not bother with this boundary term, and so we will assume that functions in $\mc C$ have suitable boundary conditions for this term to vanish. For example, we could have
+    \begin{itemize}
+        \item $y(\alpha) = a$, $y(\beta = b)$ for any $y \in \mc C$, so $\delta y(\alpha) = \delta y(\beta) = 0$;
+        \item $\pd{f}{y'} = 0$ at $x = \alpha$, $\beta$
+    \end{itemize}
+
+    \begin{definition}[Functional derivative]
+        We now define the \emph{functional derivative} of $F[y]$ with respect to $y(x)$
+        \begin{align*}
+            \frac{\delta F[y]}{\delta y(x)} = \pd{f}{y} - \frac{d}{dx} \pd{f}{y'}
+        \end{align*}
+        which is a function of $x$.
+    \end{definition}
+    
+    Now
+    \begin{align*}
+        \delta F[y] = \int_\alpha^\beta \delta y(x) \frac{\delta F[y]}{\delta y(x)} \D x
+    \end{align*}
+    In order to minimise $F$, then, recall that we want $\delta F[y]$ to vanish to first order for \emph{arbitrary $\delta y(x)$}.
+
+    \begin{theorem}[Euler-Lagrange equation]    
+        It follows that $F$ must satisfy the \emph{Euler-Lagrange equation}
+        \begin{align*}
+            0 = \frac{\delta F[y]}{\delta y(x)} = \pd{f}{y} - \frac{d}{dx} \pd{f}{y'}
+        \end{align*}  
+        which is a second-order ODE for $y(x)$.        
+    \end{theorem}   
+
+    Let us also now note that we could define $\V y(x) = (y_1(x), \dots, y_n(x))$,
+    \begin{align*}
+        F[\V y] = \int_\alpha^\beta f(\V y, \V y', x) \D x
+    \end{align*}
+    We obtain
+    \begin{align*}
+        0 = \delta F[\V y] = (\delta F[y_1], \dots, \delta F[y_n])
+    \end{align*}
+    and so solving this system involves $n$ simultaneous Euler-Lagrange equations.
+    
+    \subsection{Geodesics of the Euclidean plane}
+
+    What is the shortest path between two points $A$, $B$ in Euclidean space? Recall
+    \begin{align*}
+        L = \int_C \D l && \D l = \sqrt{dx^2 + dy^2}
+    \end{align*}
+    Let us consider how to parameterise $C$. We could
+    \begin{enumerate}[label=\protect\circled{\arabic*}]
+        \item use $x$ as a parameter and write $y = y(x)$, giving
+        \begin{align*}
+            L = \int_{x_a}^{x_b} \sqrt{1+y'^2} \D x
+        \end{align*}
+        Observe $f = \sqrt{1+y'^2}$ depends only on $y'$, so $\pd{f}{y} = 0$, meaning
+        \begin{align*}
+            0 = \frac{d}{dx} \pd{f}{y'} \implies \pd{f}{y'} = c
+        \end{align*}
+        Now
+        \begin{align*}
+            \frac{y'}{\sqrt{1+y'^2}} &= c \\
+            \implies y' &= m
+        \end{align*}
+        for some constant $m$. Hence $y = mx + c$, and $m$ and $c$ are fixed by boundary conditions, giving a line as required.
+
+        However, by using $x$ as a parameter, we are excluding curves for which $y$ is not a function of $x$. This motivates another parameterisation.
+
+        \item use an arbitary parameter $t$, with $\V x(t) = (x(t), y(t))$. Then
+        \begin{align*}
+            L[\V x] = \int_0^1 \sqrt{\dot{\V x}(t)^2} \D t
+        \end{align*}
+        Now we have two Euler-Lagrange equations to solve. Looking first at the one for $x$, we have
+        \begin{align*}
+            0 = \underbrace{\pd{f}{x}}_0 - \frac{d}{dt} \pd{f}{\dot x} \implies \pd{f}{\dot x} &= c \\
+            \implies \frac{\dot x}{\sqrt{\dot x^2 + \dot y^2}} &= c
+        \end{align*}
+        Similarly, the Euler-Lagrange equation for $y$ gives
+        \begin{align*}
+            \frac{\dot y}{\sqrt{\dot x^2 + \dot y^2}} = s
+        \end{align*}
+        so, squaring each and taking the sum, we have
+        \begin{align*}
+            c^2 + s^2 = 1 \implies c = \cos \theta, \, s = \sin \theta
+        \end{align*}
+        for some $\theta$.
+
+        Now, it will be desirable to fix our parameterisation to in fact be by arc length. We have
+        \begin{align*}
+            \cos \theta = \frac{\dot x}{\sqrt{\dot x^2 + \dot y^2}} = \frac{dx}{dt} \frac{dt}{dl} = \frac{dx}{dl}
+        \end{align*}
+        and analogously for $y$. Hence
+        \begin{align*}
+            x = x_A + l \cos \theta && y = y_A + l \sin \theta
+        \end{align*}
+        as required.   
+        
+        \emph{Importantly}, we couldn't have used $l$ as our original parameter, since, for different curves, it has a different upper limit -- it was necessary to apply Euler-Lagrange with $t$, and only then change to $l$.
+    \end{enumerate}
+    
+    \section{First integrals and Fermat's principle}
+
+    Recall the Euler-Lagrange equation:
+    \begin{align*}
+        0 = \pd{f}{y} - \frac{d}{dx} \pd{f}{y'}
+    \end{align*}
+    If $\pd{f}{y} = 0$, then we can integrate directly to get $\pd{f}{y'} = \text{const.}$.
+    
+    \begin{lemma}
+        Furthermore, if $f$ has no explicit $x$-dependence, in other words $\pd{f}{x} = 0$, then we claim
+        \begin{align*}
+            f - y'\pd{f}{y'} = \text{const.}
+        \end{align*}
+        for a solution $y$ (note $f$ still depends implicitly on $x$ via $y$ and $y'$)        
+    \end{lemma}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            \frac{df}{dx} &= \pd{f}{x} + \pd{f}{y}y' + \pd{f}{y'}y'' \\
+            &= \pd{f}{x} + y' \left(\pd{f}{y} - \frac{d}{dx} \pd{f}{y'}\right) + \frac{d}{dx} \left(y' \pd{f}{y'}\right)
+        \end{align*}
+        If the Euler-Lagrange equation holds, the contents of the second bracket is zero, giving
+        \begin{align*}
+            \frac{d}{dx}\left(f-y'\pd{f}{y'}\right) = \pd{f}{x}
+        \end{align*}
+        giving the result.       
+    \end{proof}
+    
+    \subsection{Fermat's principle}
+
+    Consider light propagating in a medium, and let the speed in that medium be given by $c(\V x)$. Define the \emph{refractive index}
+    \begin{align*}
+        n(\V x) = \frac c {c(\V x)}
+    \end{align*}
+    where $c$ is the speed of light in a vacuum. Then, the time for light to travel between points $A$ and $B$ along a path $C$ is
+    \begin{align*}
+        T[C] = \int_C \frac{1}{c(\V x)} \D l = \frac{1}{c} \underbrace{\int_C n(\V x) \D l}_{P[C]}
+    \end{align*}
+    where $P[C]$ is called the \emph{optical path length}.
+
+    \begin{proposition}[Fermat's principle]
+        Light travels from $A$ to $B$ along a path that locally minimises $T$ or $P$.
+    \end{proposition}
+    
+    \begin{example*}
+        Let us find the path of a light ray in the $(x, z)$ plane in a medium with
+        \begin{align*}
+            n(z) = \sqrt{a-bz}
+        \end{align*}
+        for constants $a$, $b$. For simplicity, assume a path $C$ may be parameterised as $z(x)$ by $\alpha \leq x \leq \beta$. Then
+        \begin{align*}
+            P[z] = \int_\alpha^\beta n(z) \sqrt{1+z'^2} \D x = \int_\alpha^\beta f(z, z') \D x
+        \end{align*}
+        Observe we lack any explicit $x$-dependence, so we know
+        \begin{align*}
+            k &= f - z' \pd{f}{z'} = \frac{n(z)}{\sqrt{1+z'^2}} = \sqrt{\frac{a-bz}{1+z'^2}} \\
+            \implies z'^2 &= \frac{b}{k^2}(z_0-z) && z_0 = \frac{a-k^2}{b} \\
+            \implies z' &= \pm \sqrt{\frac{b}{k^2}(z_0-z)} 
+        \end{align*}
+        This is a separable differential equation -- we obtain
+        \begin{align*}
+            z = z_0 - \frac{b}{4k^2}(x-x_0)^2
+        \end{align*}
+        which is a parabola.      
+    \end{example*}
+    
+    \begin{example*}[The brachistochrone!]
+        A bead slides on a frictionless wire in a vertical plane. What shape of wire minimises the time for the bead to fall from rest at $A$ to a lower, horizontally displaced, point $B$?
+
+        Since the wire is frictionless, we may apply energy conservation and, making $A$ the origin, we have
+        \begin{align*}
+            \frac 1 2 mv^2 + mgy = 0
+        \end{align*}
+        so $v = \sqrt{-2gy}$. Then
+        \begin{align*}
+            T = \int_A^B \frac 1 v \D l = \frac 1 {\sqrt{2g}} \int_A^b \frac{dx^2+dy^2}{\sqrt{-y}}
+        \end{align*}
+        Assume for simplicity that the path may be parameterised by $x$, then
+        \begin{align*}
+            T \propto \int_0^{x_B} \frac{\sqrt{1+y'^2}}{\sqrt{-y}} \D x
+        \end{align*}
+        Once again, $f$ has no explicit $x$-dependence, so there exists a first integral given by
+        \begin{align*}
+            k &= \frac{1}{\sqrt{-y(1+y'^2)}} \\
+            \implies 2c &= -y(1+y'^2) && (*)
+        \end{align*}
+        for some constant $c \geq 0$. The simplest way to solve this equation is to substitute
+        \begin{align*}
+            y = -c(1-\cos \theta) && \theta \geq 0
+        \end{align*}
+        which will give us
+        \begin{align*}
+            \frac{dx}{d\theta} &= \pm c(1-\cos \theta) \\
+            \implies x &= c(\theta - \sin \theta)
+        \end{align*}
+        where we have chosen $c$ positive for $x$ to be increasing, and applying that $C$ passes through the origin. Requiring the curve to pass through $B = (x_B, y_B)$ fixes $c$ and the value of $\theta$ at $B$.
+    \end{example*}
+    
+    \section{Constrained variation of functionals}
+
+    How can we extremise a functional $F[y]$ subject to a functional constraint $P[y] = c$ constant? We can use a Lagrange multiplier! Define
+    \begin{align*}
+        \varphi_\lambda[y] = F[y] - \lambda(P[y]-c)
+    \end{align*}
+    and we want to extremise this with respect to $y$ (recall differentiating with respect to $\lambda$ just recovers the constraint). Hence, we obtain
+    \begin{align*}
+        \frac{\delta F}{\delta y(x)} - \lambda \frac{\delta P}{\delta y(x)} = 0
+    \end{align*}
+
+    \begin{example*}
+        Let us try to minimise the functional
+        \begin{align*}
+            P[y] = \int_0^1 \frac 1 2 y'^2 \D x \\
+            \int_0^1 y(x) \D x = 1
+        \end{align*}
+        over smooth functions on $[0, 1]$ with $y(0) = y(1) = 0$. We obtain
+        \begin{align*}
+            \varphi_\lambda[y] &= \int_0^1 \frac 1 2 y'^2 \D x - \lambda \left(\int_0^1 y \D x - 1\right) \\
+            &= \int_0^1 \left(\frac 1 2 y'^2 - \lambda y\right) \D x + \lambda
+        \end{align*}
+        Extremising this, we obtain the Euler-Lagrange equation
+        \begin{align*}
+            0 &= \pd{f}{y} - \frac{d}{dx} \pd{f}{y'} = -\lambda - y'' \\
+            \implies y &= - \frac 1 2 \lambda x^2 + Ax + B
+        \end{align*}
+        where the values at the endpoints will give the values of $A$ and $B$. Finally, substituting back into the constraint will give
+        \begin{align*}
+            1 = \int_0^1 y \D x = \left[-\frac 1 6 \lambda x^3 + \frac 1 2\left(\frac 1 2 \lambda\right) x^2\right]_0^1 = \frac{\lambda}{12}
+        \end{align*}
+        so $\lambda = 12$ (and $B = 0$, $A = \frac 1 2 \lambda$).           
+    \end{example*}
+    
+    \begin{example*}[Dido's problem]
+        Given a straight wall and a fence of length $L$, what shape of fence maximises the enclosed area? See example sheet 1.
+    \end{example*}
+
+    \begin{example*}[Isoperimetric problem]
+        Given a fence of length $L$, what shape of fence maximises the enclosed area? See example sheet 2.
+    \end{example*}
+    
+    \subsection{Sturm-Liouville problem}
+    \label{sturm-liouville}
+
+    Consider
+    \begin{align*}
+        \mc C = \{y: [\alpha, \beta] \to \RR: y \in C^2,\; y(\alpha) = y(\beta) = 0\}
+    \end{align*}
+    and let
+    \begin{align*}
+        F[y] &= \int_\alpha^\beta \left(\rho(x) y'(x)^2 + \sigma(x) y(x)^2\right) \D x \\
+        G[y] &= \int_\alpha^\beta w(x) y(x)^2 \D x 
+    \end{align*}
+    where $\rho$, $\sigma$ and $w$ are known, $\rho$ and $w$ are positive on $(\alpha, \beta)$, and we would like to minimise $F[y]$ subject to the constraint $G[y] = 1$.
+
+    Let us introduce a Lagrange multiplier -- we need to extremise
+    \begin{align*}
+        \varphi_\lambda[y] = F[y] - \lambda(G[y]-1)
+    \end{align*}
+    so we obtain
+    \begin{align*}
+        0 &= \frac{\delta F[y]}{\delta y(x)} - \lambda \frac{\delta G[y]}{\delta y(x)}
+    \end{align*}
+    Observe
+    \begin{align*}
+        \frac{\delta F[y]}{\delta y(x)} &= 2\sigma y - \frac{d}{dx}\left(2 \rho y'\right) =: 2 \mc L y \\
+        \frac{\delta G[y]}{\delta y(x)} &= 2wy
+    \end{align*}
+    so we obtain
+    \begin{align*}
+        \mc L y = \lambda w y
+    \end{align*}
+    so we have obtained an eigenvalue problem. With the boundary conditions $y(\alpha) = y(\beta) = 0$, the solution will be trivial for all but a small collection of $\lambda$. Note that, if $y(x)$ solves the equation, so does $Cy(x)$ -- the constraint $G[y] = 1$ is essentially normalising $y$. Now
+    \begin{align*}
+        F[y] &= \underbrace{-\left[\rho y y'\right]_\alpha^\beta}_0 + \int_\alpha^\beta y\mc L y \D x \\
+        &= \lambda \int_\alpha^\beta wy^2 \D x \\
+        &= \lambda G[y] = \lambda
+    \end{align*}
+    Hence, the solution is given by the lowest eigenvalue of $\mc L$. Note, by the way, that we can change the boundary conditions to any combination of $y$ and $y'$ being zero at the endpoints, and this will still work.
+
+    Another approach would be to define
+    \begin{align*}
+        \Lambda[y] &= \frac{F[y]}{G[y]} \\
+        \implies 0 = \frac{\delta \Lambda[y]}{\delta y(x)} &= \frac 1 G \left(\frac{\delta F[y]}{\delta y(x)} - \frac F G \frac{\delta G[y]}{\delta y(x)}\right) \\
+        &= \frac 2 G \left(\mc L y - \Lambda w y\right)
+    \end{align*}
+    recovering the same solution.
+    
+    \subsection{Geodesics on a surface and function constraints}
+
+    Consider a surface $S$ in Euclidean space with equation $g(\V x) = 0$. Let $A$, $B \in S$ -- what is the shortest curve between $A$ and $B$ on $S$? Let $\V x(t)$, $0 \leq t \leq 1$ be a curve on $S$, with $\V x(0) = \V x_A$, $\V x(1) = \V x_B$.
+
+    We want to extremise the functional
+    \begin{align*}
+        L(\V x) = \int_0^1 \sqrt{\dot{\V x}^2} \D t
+    \end{align*}
+    subject to
+    \begin{align*}
+        g(\V x(t)) = 0
+    \end{align*}
+    In order to do this, we need to define a Lagrange multiplier \emph{function} $\lambda(t)$, and let
+    \begin{align*}
+        \varphi[\V x, \lambda] = L[\V x] - \int_0^1 \lambda(x) g(\V x(t)) \D t
+    \end{align*}
+    Extremising with respect to $\lambda$, we obtain
+    \begin{align*}
+        0 = \frac{\delta \varphi}{\delta \lambda(t)} = -g(\V x(t)) && (*)
+    \end{align*}
+    which recovers the constraint as we would hope. Extremising with respect to $x_i$, we have
+    \begin{align*}
+        0 = \frac{\delta \varphi}{\delta x_i(t)} = -\lambda \grad_i g(\V x(t)) - \frac{d}{dt} \left(\frac{\dot x_i}{\sqrt{\dot{\V x}^2}}\right) && (\dagger)
+    \end{align*}
+    How do we solve this? Taking the time derivative of $(*)$, we obtain
+    \begin{align*}
+        0 &= \dot x_i \pr_i g \implies \frac{\dot x_i \pr_i g}{\sqrt{\dot{\V x}^2}} = 0 \\
+        \implies 0 &= \frac{d}{dt} \left(\frac{\dot x_i}{\sqrt{\dot{\V x}^2}}\right) \pr_i g + \frac{\dot x_i \dot x_j \pr_i \pr_j g}{\sqrt{\dot{\V x}^2}}
+    \end{align*}
+    By $(\dagger)$, the first term is $-\lambda (\grad g)^2$, so
+    \begin{align*}
+        \lambda(t) = \frac{\dot x_i \dot x_j \pr_i \pr_j g}{(\grad g)^2 \sqrt{\dot{\V x}^2}}
+    \end{align*}
+    Finally, then, dividing $(\dagger)$ by $\sqrt{\dot{\V x}^2}$, we obtain
+    \begin{align*}
+        \Aboxed{\frac{1}{\sqrt{\dot{\V x}^2}} \frac{d}{dt} \left(\frac{\dot x_i}{\sqrt{\dot{\V x}^2}}\right) + \frac{\dot x_j \dot x_k \pr_j \pr_k g}{(\grad g)^2 \dot{\V x}^2}\grad_i g = 0}
+    \end{align*}
+    This is the equation for the geodesics on the surface, to be solved along with $(*)$. However, we can simplify this heavily by using arc length as a parameter -- since $\frac{d}{dl} = \frac{1}{\sqrt{\dot{\V x}^2}} \frac{d}{dt}$, we obtain
+    \begin{align*}
+        \frac{d^2x_i}{dl^2} + \frac{1}{(\grad g)^2} \frac{dx_j}{dl} \frac{dx_k}{dl} \pr_j \pr_k g \grad_i g = 0
+    \end{align*}
+    
+    \begin{example*}
+        As a sanity check, let us consider the surface $g = z$, i.e. the plane $z=0$. Then $\pr_j \pr_k g = 0$, so $\frac{d^2x_i}{dl^2} = 0$, and we obtain a straight line as expected.
+    \end{example*}
+    
+    \section{Principle of least action}
+
+    Consider a system of $N$ particles in 3D. The positions $\V x_1, \dots, \V x_N$ correspond to a single point $(\V x_1, \dots, \V x_N)$ in a $3N$-dimensional \emph{configuration space}. Recall that it is sometimes preferable to use non-Cartesian coordinates $\V q = (\V q_1, \dots, \V q_N)$ for this space. 
+
+    If we know the kinetic energy $T$ and potential energy $V$ in terms of $\V q$ and $\dot{\V q}$, then we can easily determine the equations of motion.
+
+    \begin{definition}[Lagrangian]
+        The \emph{Lagrangian} for a system is given by
+        \begin{align*}
+            L(\V q, \dot{\V q}, t) = T-V
+        \end{align*}
+    \end{definition}
+    
+    \begin{definition}[Action]
+        The \emph{action} of a path $\V q(t)$ in configuration space between $\V q_A$ at time $t_A$ and $\V q_B$ at time $t_B$ is given by
+        \begin{align*}
+            I[\V q] = \int_{t_A}^{t_B} L(\V q, \dot{\V q}, t) \D t
+        \end{align*}
+    \end{definition}
+    
+    \begin{remark*}
+        The dimensions of $I$ are energy multiplied by time, i.e. $\si{ML^2 T^{-1}}$, notably the same as those of Planck's constant from quantum mechanics. Indeed, the path integral formulation of quantum mechanics produces, in the classical limit, the principle of least action.
+    \end{remark*}
+    
+    \begin{proposition}[Principle of least action]
+        The physical path taken from $\V q_A$ to $\V q_B$ is the one which extremises the action.
+    \end{proposition}
+    
+    Since $\V q_A$ and $\V q_B$ are fixed, the boundary term vanishes, so the path satisfies the Euler-Lagrange equations:
+    \begin{align*}
+        \pd{L}{q_i} - \frac{d}{dt} \pd{L}{\dot q_i} = 0 && i = 1, \dots, 3N
+    \end{align*}
+    
+    \begin{example*}
+        Take $N=1$, $\V q = \V x$, and
+        \begin{align*}
+            T &= \frac 1 2 m \dot{\V x}^2 \qquad V = V(\V x, t) \\
+            \implies L &= \frac 1 2 m \dot{\V x}^2 - V = V(\V x, t)
+        \end{align*}
+        Hence Euler-Lagrange gives
+        \begin{align*}
+            -\pd{V}{x_i} - \frac{d}{dt}(m \dot x_i) = 0
+        \end{align*}
+        or, in vector notation,
+        \begin{align*}
+            m \ddot{\V x} = -\grad V
+        \end{align*}
+        which is Newton's second law for a conservative force $\V F = -\grad V$.  
+    \end{example*}
+    
+    \begin{proposition}
+        If $L$ has no explicit $t$-dependence, then the Euler-Lagrange equations admit a first integral
+        \begin{align*}
+            L - \sum_{i=1}^{3N} \dot q_i \pd{L}{\dot q_i} = -E
+        \end{align*}
+        where $-E$ is a constant.        
+    \end{proposition}
+    
+    \begin{proof}
+        Have
+        \begin{align*}
+            \frac{dL}{dt} &= \frac{d}{dt} L(\V q(t), \dot{\V q}(t), t) \\
+            &= \pd{L}{t} + \sum_{i=1}^{3N} \left(\pd{L}{q_i}\dot q_i + \pd{L}{\dot q_i} \ddot q_i \right) \\
+            &= \pd{L}{t} + \sum_{i=1}^{3N} \dot q_i \underbrace{\left(\pd{L}{\dot q_i} - \frac{d}{dt} \pd{L}{\dot q_i}\right)}_0 + \frac{d}{dt} \sum_{i=1}^{3N} \dot q_i \frac{L}{\dot q_i} \\
+            \implies 0 = \pd{L}{t} &= \frac{d}{dt} \left(L - \sum_{i=1}^{3N} \dot q_i \pd{L}{\dot q_i}\right)
+        \end{align*}
+        so this quantity is a constant as required.        
+    \end{proof}
+    
+    \begin{example*}
+        Suppose $V = V(\V x)$, so this result applies. We obtain
+        \begin{align*}
+            -E = \frac 1 2 m \dot x^2 - V - \sum_i \dot x_i m \dot x_i = -(T+V)
+        \end{align*}
+        so $E$ is the total energy.        
+    \end{example*}
+    
+    \begin{remark*}
+        Why is energy conserved? It is a consequence of the lack of dependence of the Lagrangian on time, which itself represents the fact that the laws of physics do not change over time. This is a special case of Noether's theorem.
+    \end{remark*}
+    
+    \subsection{Central force field}
+    
+    Consider a particle in 2D, and use polar coordinates. Assume $V = V(r)$, so the Lagrangian is given by
+    \begin{align*}
+        L = \frac 1 2 m(\dot r^2 + r^2 \dot \varphi^2) - V(r)
+    \end{align*}
+    The Euler-Lagrange equations give
+    \begin{align*}
+        0 &= \underbrace{\pd{L}{\varphi}}_0 - \frac d {dt} \pd{L}{\dot \varphi} \\
+        \implies \pd{L}{\dot \varphi} &= mr^2 \dot \varphi = mh
+    \end{align*}
+    where $mh$ is a constant. Recall also that, since $V$ is time-independent, we have a conserved energy
+    \begin{align*}
+        E = \dot r + \pd{L}{\dot r} + \dot \varphi \pd{L}{\dot \varphi} - L = \frac 1 2 m(\dot r^2 + r^2 \dot \varphi^2) + V(r)
+    \end{align*}
+    Now, eliminating $\dot \varphi$, we obtain
+    \begin{align*}
+        \frac 1 2 m \dot r^2 + V_\text{eff}(r) = E
+    \end{align*}
+    where $V_\text{eff}(r)$, the effective potential, is $\frac{mh^2}{2r^2} + V(r)$.
+    
+    \subsection{The Hamiltonian and Hamilton's equations}
+
+    Assume that $L(\V q, \dot{\V q}, t)$ is a convex function of $\dot{\V q}$. Then, we can easily take the Legendre transform with respect to $\dot{\V q}$ to obtain the \emph{Hamiltonian}
+    \begin{align*}
+        H(\V q, \V p, t) &= \sup_{\dot{\V q}} \left(\V p \cdot \dot{\V q} - L(\V q, \dot{\V q}, t)\right) \\
+        &= \left.\left(\V p \cdot \dot{\V q} - L(\V q, \dot{\V q}, t)\right)\right|_{\dot{\V q} = \dot{\V q}^*}
+    \end{align*}
+    
+    where $\dot{\V q}^*$ is the stationary point of $\V p \cdot \dot{\V q} - L(\V q, \dot{\V q}, t)$. Indeed, we obtain
+
+    \begin{proposition}
+        \label{min-crit}
+        \[
+            p_i = \pd{L}{\dot q_i}
+        \]
+    \end{proposition}
+    
+    
+    
+    \begin{example*}
+        Take $N=1$, $\V q = \V x$, $L = \frac 1 2 m \dot{\V x}^2 - V(\V x, t)$. To find the Hamiltonian, solve for the stationary point of $\dot{\V x}$,
+        \begin{align*}
+            p_i = \pd{L}{\dot x_i} = m \dot x_i
+        \end{align*}
+        so that
+        \begin{align*}
+            H = \V p \cdot \frac{\V p}{m} - \left(\frac{\V p^2}{2m} - V\right) = \frac{\V p^2}{2m} + V
+        \end{align*}
+        which is the system's total energy.       
+    \end{example*}
+    
+    \begin{example*}[Central force]
+        Take $N=1$, and work in 2D polars, so $L = \frac 1 2 m(\dot r^2 + r^2 \dot \phi^2) - V(r)$. Solving for the stationary point, we obtain
+        \begin{align*}
+            p_r &= \pd{L}{\dot r} = m \dot r && \implies \dot r = \frac{p_r}{m} \\
+            p_\phi &= \pd{L}{\dot \phi} = mr^2 \dot \phi && \implies \dot \phi = \frac{p_\phi}{mr^2}
+        \end{align*}
+        We obtain
+        \begin{align*}
+            H &= p_r \frac{p_r}{m} + p_\phi \frac{p_\phi}{mr^2} - L \\
+            &= \frac{p_r^2}{2m} + \frac{p_\phi^2}{2mr^2} + V(r)
+        \end{align*}
+        which is again the total energy.       
+    \end{example*}
+    
+    In general, $p_i$ is called the \emph{conjugate momentum} to $q_i$, and we can importantly construct this in any coordinate system.
+
+    Furthermore, we see that
+    \begin{align*}
+        H = \sum_i \dot q_i \pd{L}{\dot q_i} - L
+    \end{align*}
+    so the Hamiltonian really is the total energy -- \emph{but}, with $\dot{\V q}$ eliminated in favour of $\V q$, $\V p$ and $t$ using $p_i = \pd{L}{\dot q_i}$. We see that, if $\pd{L}{t} = 0$, $H$ is conserved.
+
+    Once we know about the Hamiltonian, we can actually forget about the Lagrangian and write the equations of motion solely in terms of $H$. Observe
+    \begin{align*}
+        \left(\pd{H}{p_i}\right)_{\V q,\, t} &= \dot q_i + \sum_j p_j \pd{\dot q_j}{p_i} - \sum_j \pd{L}{\dot q_j} \pd{\dot q_j}{p_i} \\
+        &= \dot q_i
+    \end{align*}
+    since the second and third terms cancel by \cref{min-crit}. Also,
+    \begin{align*}
+        \left(\pd{H}{q_i}\right)_{\V p,\, t} &= \sum_j p_j \pd{\dot q_j}{q_i} - \pd{L}{q_i} - \sum_j \pd{L}{\dot q_j} \pd{\dot q_j}{q_i} \\
+        &= -\pd{L}{q_i} = -\frac{d}{dt} \pd{L}{\dot q_i} && \text{(Euler-Lagrange)} \\
+        &= -\dot p_i
+    \end{align*}
+    where again we have cancellation by \cref{min-crit}. We obtain
+    \begin{proposition}[Hamilton's equations]
+        We have
+        \begin{align*}
+            \dot q_i = \left(\pd{H}{p_i}\right)_{\V q,\, t} && \dot p_i = -\left(\pd{H}{q_i}\right)_{\V p,\, t}
+        \end{align*}
+    \end{proposition}
+    Recall that the Euler-Lagrange equations are second order ODEs in a 3N-dimensional configuration space. On the other hand, Hamilton's equations are first order ODEs but in six-dimensional \emph{phase space} with coordinates $(\V q, \V p)$.
+
+    Let us derive these equations another way. Parameterise the action by both $\V p$ and $\V q$, to obtain
+    \begin{align*}
+        I[\V p, \V q] = \int_{t_A}^{t_B} (\V p \cdot \dot{\V q} - H(\V q, \V p, t))
+    \end{align*}
+    using the Lagrangian-Hamiltonian relationship from earlier, and where $\V q(t_A)$, $\V q(t_B)$ are fixed. Then, minimising this new functional will recover Hamilton's equations.
+    
+    \begin{remark*}
+        Recall
+        \begin{align*}
+            \frac{dH}{dt} &= \frac{d}{dt}\left(H(\V q, \V p, t)\right) \\
+            &= \sum_i \left(\pd{H}{q_i} \dot q_i + \pd{H}{p_i} \dot p_i\right) + \pd{H}{t} \\
+            &= \pd{H}{t}
+        \end{align*}
+        by Hamilton's equations. Hence, if $H$ has no \emph{explicit} $t$-dependence, then it has no $t$-dependence at all -- that is, it is conserved.        
+    \end{remark*}
+    
+    \section{Symmetries and Noether's theorem}
+
+    Informally, Noether's theorem states that continuous symmetries of the action correspond to first integrals (i.e. conservation laws) of the Euler-Lagrange equations.
+
+    \begin{definition}[Symmetries of the action]
+        Define a smooth map
+        \begin{align*}
+            \V Q: \RR^{6n+1} \to \RR^{3n}
+        \end{align*}
+        which we should think of as going from Hamiltonian phase space to Lagrangian configuration space. Given a curve $\V q(t)$, define
+        \begin{align*}
+            \V q^*(t) = \V Q(\V q(t), \dot{\V q}(t), t)
+        \end{align*}
+        If, for any curve $\V q(t)$ and any $t_A$, $t_B$,
+        \begin{align*}
+            I[\V q^*] = \int_{t_A}^{t_B} L(\V q^*(t), \dot{\V q}^*(t), t) \D t = \int_{t_A}^{t_B} L(\V q(t), \dot{\V q}(t), t) \D t = I[\V q]
+        \end{align*}
+        then $\V Q$ is an \emph{symmetry of the action}.        
+    \end{definition}
+    
+    \begin{definition}[Continuous symmetries of the action]
+        Consider a parameterised family of symmetries of the action,
+        \begin{align*}
+            \V Q(\V q, \dot{\V q}, t, s)
+        \end{align*}
+        such that $\V Q(\V q, \dot{\V q}, t, 0) = \V q$, that is, for $s=0$, we have the identity map. Such a family is called a continuous symmetry of the action.  
+    \end{definition}
+    
+    \begin{theorem}[Noether's theorem, 1]
+        If there exists a 1-parameter family of symmetries of the action, then any solution of the Euler-Lagrange equations has a conserved quantity given by
+        \begin{align*}
+            \sum_{i=1}^{3N} \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0}
+        \end{align*}
+    \end{theorem}
+    
+    \begin{proof}
+        Take $s$ small, so we may Taylor expand $\V Q$ to obtain
+        \begin{align*}
+            \V q^* = \V q + s\left(\pd{\V Q}{s}\right)_{s=0} + O(s^2)
+        \end{align*}
+        Then, substituting this into the definition of a symmetry of the action, we obtain
+        \begin{align*}
+            0 & = \int_{t_A}^{t_B} \left(L(\V q + s \left(\pd{\V Q}{s}\right)_{s=0} + \cdots,\, \dot{\V q} + s \frac{d}{dt}\left(\pd{\V Q}{s}\right)_{s=0} + \cdots, t) - L(\V q, \dot{\V q}, t)\right) \D t \\
+            &= \int_{t_A}^{t_B} \left(s \left(\pd{Q_i}{s}\right)_{s=0} \pd{L}{q_i} + s \frac{d}{dt} \left(\pd{Q_i}{s}\right)_{s=0} \pd{L}{\dot q_i} + \cdots\right) \D t \\
+            &= \int_{t_A}^{t_B} \left(s \left(\pd{Q_i}{s}\right)_{s=0} \underbrace{\left(\pd{L}{q_i} - \frac{d}{dt} \pd{L}{\dot q_i}\right)}_{0 \text{ by E-L}} + s \frac{d}{dt} \left( \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0} \right) + \cdots\right) \D t \\
+            &= \left[s \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0}\right]_{t_A}^{t_B} + O(s^2)
+        \end{align*}
+        Hence,
+        \begin{align*}
+            \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0}
+        \end{align*}
+        takes the same value at every time, as required.  
+    \end{proof}
+    
+    \begin{example*}
+        Say $L$ doesn't depend on $\V q$, then consider
+        \begin{align*}
+            \V Q(\V q) = (q_1 + s, \dots, q_{3N})
+        \end{align*}
+        so
+        \begin{align*}
+            q_1^* = q_1 + s \qquad &\cdots \qquad q_{3N}^* = q_{3N} \\
+            \dot q_1^* = \dot q_1 \qquad &\cdots \qquad \dot q_{3N}^* = \dot q_{3N}
+        \end{align*}
+        but, since $L$ doesn't depend on $\V q$, this is a symmetry of the action. Hence, by Noether's theorem, we have the conserved quantity
+        \begin{align*}
+            \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0} = \pd{L}{\dot q_i} = p_i
+        \end{align*}
+        so the conjugate momentum is conserved.       
+    \end{example*}
+    
+    \lecture{Lecture $n+1$}
+
+    \begin{example*}
+        Let us use Cartesian coordinates, $\V q = (\V x_1, \dots, \V x_n)$. Suppose $L$ depends only on the pairwise differences between the $\V x_i$. Define
+        \begin{align*}
+            \V Q(\V q) = (\V x_1 + s \V a, \dots, \V x_N + s \V a)
+        \end{align*}
+        Clearly this preserves the pairwise differences, so this is a continuous symmetry of the action. Hence, by Noether's theorem, we have the conserved quantity
+        \begin{align*}
+            \sum_i \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0} = \V a \cdot \sum_i \pd{L}{\dot{\V x}_i} = \V a \cdot \sum_i \V p_i = \V a \cdot \V P
+        \end{align*}
+        where $\V P$ is the total momentum. Thus, since $\V a$ is arbitrary, $\V P$ is conserved. In other words, invariance of physical laws under spatial translations implies conservation of momentum.       
+    \end{example*}
+    
+    \begin{example*}
+        Let us now consider a rotation $R$, and the corresponding transformation $\V Q$ which maps
+        \begin{align*}
+            \V Q(\V q) = (R \V x_1, \dots, R \V x_n)
+        \end{align*}
+        In particular, let us take $R = R(s)$, a rotation through angle $s$ about some fixed axis $\hvec n$. For infinitesimal $s$, $R(s) \V x = \V x + s \hvec n \times \V x$. Hence
+        \begin{align*}
+            \left(\pd{Q_i}{s}\right)_{s=0} = (\hvec n \times \V x_1, \dots, \hvec n \times \V x_N)
+        \end{align*}
+        Thus, our conserved quantity is given by
+        \begin{align*}
+            \sum_{i,\, a} \pd{L}{(\dot x_i)_a} (\hvec n \times \V x_i)_a = \sum_i \V p_i \cdot (\hvec n \times \V x_i) = \hvec n \cdot \sum_i \V x_i \times \V p_i = \hvec n \cdot \V L
+        \end{align*}
+        so, since $\hvec n$ is arbitrary, total angular momentum $\V L$ is conserved.       
+    \end{example*}
+    
+    We can generalise our definition of continuous symmetries of the action to allow for a boundary term for small $s$ as follows:
+    \begin{align*}
+        I[\V q^*] = \int_{t_A}^{t_B} L(\V q^*(t), \dot{\V q}^*(t), t) \D t &= \int_{t_A}^{t_B} L(\V q(t), \dot{\V q}(t), t) \D t + \left[sK(\V q, \dot{\V q}, t)\right]_{t_A}^{t_B} \\
+        &= I[\V q] + \left[sK(\V q, \dot{\V q}, t)\right]_{t_A}^{t_B}
+    \end{align*}
+    Going once again through the proof of Noether's theorem, we obtain the conserved quantity
+    \begin{align*}
+        \sum_i \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0}-K
+    \end{align*}
+    
+    \begin{example*}
+        Take
+        \begin{align*}
+            L = \sum_{i=1}^N \frac 1 2 m_i \dot{\V x}_i^2 - V(\V x_1, \dots, \V x_N)
+        \end{align*}
+        where $V$ depends only on the pairwise differences. Define a Galilean boost $\V x^* = \V x - \V v t$. Set $\V v = \hvec n s$, so we obtain
+        \begin{align*}
+            \V Q(\V q) = (\V x_1 - \hvec n st, \dots, \V x_N - \hvec n st)
+        \end{align*}
+        Then
+        \begin{align*}
+            L(\V x^*, \dot{\V x}^*, t) &= \sum_{i=1}^N \frac 1 2 m_i (\V x_i - \hvec n s)^2 - V(\V x_1^*, \dots, \V x_N^*) \\
+            &= \sum_{i=1}^N \frac 1 2 m_i \dot{\V x}_i^2 - V(\V x_1, \dots, \V x_N) - s\hvec n \cdot \sum m_i \dot{\V x}_i + O(s^2) \\
+            &= L(\V x, \dot{\V x}, t) - \frac{d}{dt}\left(s\hvec n \cdot \sum_i m_i \V x_i\right)
+        \end{align*}
+        so we have the scenario from above with $K = -\hvec n \cdot \sum_i m_i \V x_i = -\hvec n \cdot (M\V R)$, where $M$ is the total mass and $\V R$ the centre of mass. Hence, we have the conserved quantity
+        \begin{align*}
+            \sum_i \pd{L}{\dot q_i} \left(\pd{Q_i}{s}\right)_{s=0} - K &= \sum_i \V p_i \cdot (-\hvec n t) + M \hvec n \cdot \V R \\
+            &= \hvec n \cdot (M \V R - \V P t)
+        \end{align*}
+        so, since $\hvec n$ was arbitrary, $M \V R - \V P t$ is conserved.
+    \end{example*}
+    
+    Of course, there is an analogous statement of Noether's theorem for symmetry of the action under transformation of the time coordinate. Define a new time coordinate $t^* = T(t)$, for invertible $T$, so
+    \begin{align*}
+        \V q^*(t^*) = \V q(t) = \V q(T^{-1}(t^*))
+    \end{align*}
+    This is a symmetry of the action if
+    \begin{align*}
+        \int_{t_A^*}^{t_B^*} L\left(\V q^*(t^*), \frac{d \V q^*}{dt^*}(t^*), t^*\right) \D t^* = \int_{t_A}^{t_B} L(\V q(t), \dot{\V q}(t), t) \D t && (\dagger)
+    \end{align*}
+    for all $\V q(t)$, $t_A$ and $t_B$. Let us consider a one-parameter family of these transformations, $T(t, s)$, with
+    \begin{align*}
+        t^* = t + s \left(\pd{T}{s}\right)_{s=0} + O(s^2)
+    \end{align*}
+    
+    \begin{theorem}[Noether's theorem, 2]
+        If there exists a 1-parameter family of symmetries of the action of this type, then any solution of the Euler-Lagrange equations has a conserved quantity given by
+        \begin{align*}
+            \left(L - \sum_i \dot q_i \pd{L}{\dot q_i}\right) \left(\pd{T}{s}\right)_{s=0}
+        \end{align*}    
+    \end{theorem}
+    
+    \begin{proof}
+        Observe
+        \begin{align*}
+            \frac{dt^*}{dt} = 1 + s \frac{d}{dt} \left(\pd{T}{s}\right)_{s=0} + O(s^2)
+        \end{align*}
+        Let $I^*$, $I$ be the LHS and RHS of $(\dagger)$, respectively. We start by changing the variable of integration in $I^*$ from $t^*$ to $t$, obtaining
+        \begin{align*}
+            I^* = \int_{t_A}^{t_B} L\left(\V q(t), \frac{dt}{dt^*}\frac{d}{dt} \V q(t), T(t)\right) \frac{dt^*}{dt} \D t 
+        \end{align*}
+        Taking the reciprocal of $\frac{dt^*}{dt}$ and expanding using the binomial theorem, we obtain
+        \begin{align*}
+            \frac{dt}{dt^*} = 1 - s \frac{d}{dt} \left(\pd{T}{s}\right)_{s=0} + O(s^2)
+        \end{align*}
+        so that
+        \begin{align*}
+            I^* &= \int_{t_A}^{t_B} L\left(\V q(t), \dot{\V q}(t) - s \frac{d}{dt} \left(\pd{T}{s}\right)_{s=0} \dot{\V q}(t), t + s\left(\pd{T}{s}\right)_{s=0}\right) \left(1 + s \frac{d}{dt} \left(\pd{T}{s}\right)_{s=0}\right) \D t \\
+            &= \int_{t_A}^{t_B} L(\V q(t), \dot{\V q}(t), t) - s \frac{d}{dt} \left(\pd{T}{s}\right)_{s=0} \dot q_i \pd{L}{\dot q_i} + s \left(\pd{T}{s}\right)_{s=0} \pd{L}{t} + sL \frac{d}{dt} \left(\pd{T}{s}\right)_{s=0} \D t \\
+            &= I + \int_{t_A}^{t_B} \underbrace{\frac{d}{dt} \left(\pd{T}{s}\right)_{s=0} \left(-s \dot q_i \pd{L}{\dot q_i} + sL\right)}_{\text{integrate by parts}} + s\left(\pd{T}{s}\right)_{s=0} \pd{L}{t} \D t \\
+            &= I + \left[s\left(\pd{T}{s}\right)_{s=0}\left(L - \dot q_i \pd{L}{\dot q_i}\right)\right]_{t_A}^{t_B} + \int_{t_A}^{t_B} s \left(\pd{T}{s}\right)_{s=0} \underbrace{\left(-\frac{d}{dt} \left(L - \dot q_i \pd{L}{\dot q_i}\right) + \pd{L}{t}\right)}_{0 \text{ by E-L}} \D t \\
+            &= I + \left[s\left(\pd{T}{s}\right)_{s=0}\left(L - \dot q_i \pd{L}{\dot q_i}\right)\right]_{t_A}^{t_B}
+        \end{align*}
+        Hence, since $I^* = I$,
+        \begin{align*}
+            s\left(\pd{T}{s}\right)_{s=0}\left(L - \dot q_i \pd{L}{\dot q_i}\right) = \text{const.}
+        \end{align*}
+        which gives the conserved quantity as required.
+    \end{proof}
+    
+    \begin{example*}
+        Suppose $L$ has no explicit $t$-dependence, and define $T(t, s) = t+s$. We have
+        \begin{align*}
+            \V q^*(t^*) = \V q(t) = \V q(t^* - s) \implies \pd{\V q^*}{t^*} = \dot{\V q}(t^*-s)
+        \end{align*}
+        so
+        \begin{align*}
+            \int_{t_A^*}^{t_B^*} L\left(\V q^*(t^*), \frac{d \V q^*}{dt^*}(t^*)\right) \D t^* &= \int_{t_A+s}^{t_B+s} L\left(\V q(t^*-s), \dot{\V q}(t^*-s)\right) \D t^* \\
+            &= \int_{t_A}^{t_B} L(\V q(t), \dot{\V q}(t)) \D t
+        \end{align*}
+        by a simple substitution. Note that this only worked since the Lagrangian was independent of $t$. Hence, we have the conserved quantity
+        \begin{align*}
+            \underbrace{\left(\pd{T}{s}\right)_{s=0}}_1 \left(L - \dot q_i \pd{L}{\dot q_i}\right) = -E
+        \end{align*}
+        Hence, we have recovered conservation of energy as a consequence of invariance under time translation.      
+    \end{example*}
+
+    \section{PDEs from variational principles}
+
+    Consider functionals of functions
+    \begin{align*}
+        \V y: \RR^m \to \RR^n
+    \end{align*}
+    of the form
+    \begin{align*}
+        F[\V y] = \int_V f(\V y, \grad \V y, x_1, \dots, x_m) \D x_1 \dots \D x_m
+    \end{align*}
+    where $V \subseteq \RR^m$, and $\grad y = \left(\pd{\V y}{x_1}, \dots, \pd{\V y}{x_m}\right)$ is an $m$ by $n$ matrix. Varying $\V y$ and integrating by parts using the divergence theorem, we obtain a generalisation of the Euler-Lagrange equations, provided boundary terms vanish as before.
+
+    \subsection{Minimal surfaces}
+
+    Consider surfaces spanning a closed curve $C$ in $\RR^3$. Which has the minimal area? We will restrict to surfaces which are the graphs of functions of $x$ and $y$, i.e. $z = h(x, y)$, where $C$ has equation $z = h(x, y)$ for $x$, $y \in \pr D$ -- so $h$ is fixed on $\pr D$. Let us parameterise using $(x, y)$ to obtain
+    \begin{align*}
+        \V x(x, y) = (x, y, h(x,y)) 
+    \end{align*}
+    giving
+    \begin{align*}
+        d \V S &= \pd{\V x}{x} \times \pd{\V x}{y} \D x \D y = \begin{pmatrix}
+            1 \\
+            0 \\
+            h_x \\
+        \end{pmatrix} \times \begin{pmatrix}
+            0 \\
+            1 \\
+            h_y \\
+        \end{pmatrix}\D x \D y = \begin{pmatrix}
+            -h_x \\
+            -h_y \\
+            1 \\
+        \end{pmatrix} \D x \D y \\
+        \implies dS &= \sqrt{1+h_x^2+h_y^2} \D x \D y
+    \end{align*}
+    so the surface has total area
+    \begin{align*}
+        A[h] = \int_D \sqrt{1+h_x^2+h_y^2} \D x \D y
+    \end{align*}
+    Now, expanding to first order,
+    \begin{align*}
+        \delta A &= \int_D \frac{h_x(\delta h)_x + h_y(\delta h)_y}{\sqrt{1+h_x^2+h_y^2}} \D x \D y \\
+        &= \int_D \left(\left(\frac{h_x(\delta h)_x}{\sqrt{\cdots}}\right)_x + \left(\frac{h_y(\delta h)_y}{\sqrt{\cdots}}\right)_y - \left(\left(\frac{h_x}{\sqrt{\cdots}}\right)_x + \left(\frac{h_y}{\sqrt{\cdots}}\right)_y\right)\delta h\right)\D x \D y
+    \end{align*}
+    Applying Green's theorem to the first term produces a boundary term whcih is zero on $\pr D$. Hence, $A$ is extremised only if
+    \begin{align*}
+        0 &= \left(\frac{h_x}{\sqrt{\cdots}}\right)_x + \left(\frac{h_y}{\sqrt{\cdots}}\right)_y \\
+        &= (1+h_y^2) h_{xx} + (1+h_x^2) h_{yy} - 2h_xh_yh_{xy} = 0 && (*)
+    \end{align*}
+    which is called the \emph{minimal surface equation}. This is a second-order non-linear PDE for $h(x, y)$, so is hard to solve. Notably, however, if $|h_x| \ll 1$ and $|h_y| \ll 1$, however, this is approximately $h_{xx} + h_{yy} = 0$, which is Laplace's equation.
+    
+    Anyhow, note that, if all second derivatives are zero, the equation is certainly satisfied. Hence
+    \begin{align*}
+        h = Ax + By + C
+    \end{align*}
+    that is, a plane, is a solution. But this only satisfies the boundary conditions if the curve $C$ is planar.
+
+    Another approach would be to look for surfaces of revolution about the $z$-axis, i.e. $h(x, y) = z(r)$, where $r = \sqrt{x^2+y^2}$. Plugging this into $(*)$, we obtain
+    \begin{align*}
+        rz'' + z' + z'^3 = 0
+    \end{align*}
+    Disturbingly, this is still hard to solve. A better approach would be to plug this back into the original area functional, to obtain
+    \begin{align*}
+        A[z] = 2\pi \int_D r\sqrt{1+z'^2} \D r
+    \end{align*}
+    Indeed, this equation has a conserved quantity, and we obtain
+    \begin{align*}
+        r = r_0 \cosh \left(\frac{z-z_0}{r_0}\right)
+    \end{align*}
+    which is a catenoid.
+    
+    \subsection{Vibrating string}
+
+    A string with tension $T$ and mass per unit length $\rho$ has
+    \begin{align*}
+        \mathrm{KE} &= \frac 1 2 \rho \int_0^a \dot y(t, x)^2 \D x \\
+        \mathrm{PE} &= \frac 1 2 T \int_0^a y'(t, x)^2 \D x
+    \end{align*}
+    where dot and prime denote $\pd{}{t}$ and $\pd{}{x}$ respectively. Hence the action is given by
+    \begin{align*}
+        I[y] = \frac 1 2 \int_{t_0}^{t_1} \int_0^a (\rho \dot y^2 - Ty'^2) \D x \D t
+    \end{align*}
+    which, upon variation, gives
+    \begin{align*}
+        \delta I &= \int_{t_0}^{t_1} \int_0^a (\rho \dot y \delta \dot y - T y' \delta y') \D x \D t \\
+        &= \int_{t_0}^{t_1} \int_0^a \left(\pr_t(\rho \dot y \delta y) - \pr_x (Ty' \delta y) + (-\rho \ddot y + Ty'')\right) \delta y
+    \end{align*}
+    Integrating the derivatives away to boundary terms, we obtain
+    \begin{align*}
+        \ddot y - v^2 y'' = 0
+    \end{align*}
+    where $v = \sqrt{T/\rho}$ -- the wave equation! The general solution is given by
+    \begin{align*}
+        y(t, x) = f(x - vt) + g(x + vt)
+    \end{align*}
+    i.e., a superposition of a right and left-moving wave. 
+
+    \subsection{Maxwell's equations}
+
+    Consider electric and magnetic fields $\V E(t, \V x)$ and $\V B(t, \V x)$ -- then Maxwell's equations are given by
+    \begin{align*}
+        \div \V B &= 0 \\
+        \curl \V E &= -\pr_t \V B
+    \end{align*}
+    Hence, since $\V B$ is solenoidal, $\V B = \curl \V A$ for some $\V A(t, \V x)$, giving
+    \begin{align*}
+        \curl(\V E + \pr_t \V A) = 0
+    \end{align*}
+    Now, this expression is conservative, so $\V E = -\grad \phi - \pr_t A$ for some scalar potential $\phi$. The action is then a functional of $\V A$ and $\phi$ -- it is
+    \begin{align*}
+        I[\V A, \phi] = \int \left(\frac 1 2 \eps_0 \V E^2 - \frac{1}{2\mu_0} \V B^2 + \V A \cdot \V j - \phi\rho\right) d^3 x \D t
+    \end{align*}
+    where $\V j(t, \V x)$ is the \emph{current density} and $\rho(t, \V x)$ is the \emph{charge density}. Varying $\V A$ and $\phi$, we obtain
+    \begin{align*}
+        \delta I &= \int \left(\eps_0 \V E \cdot (-\grad \delta \phi - \pr_t \delta \V A) - \frac 1 {\mu_0} \V B \cdot (\curl \delta \V A) + \delta \V A \cdot \V j - \delta \phi \rho \right) d^3 x \D t \\
+        &= \int \left(\eps_0 \left(-\div(\V E \delta \phi) + \div \V E \delta \phi - \pr_t (\V E \cdot \delta \V A) + (\pr_t \V E) \cdot \delta \V A\right) -\right.  \\
+        & \qquad \left.\frac 1 {\mu_0} \left(\pr_j (\eps_{ijk} B_i \delta A_k) - (\eps_{ijk} \delta_j B_i)\delta A_k\right) + \delta \V a \cdot \V j - \delta \phi \rho\right) d^3 x \D t \\
+        &= \text{boundary terms} + \int \left( (\eps_0 \div \V E - \rho) \delta \phi + \left(-\frac 1 {\mu_0} \curl \V B + \eps_0 \pr_t \V E + \V j\right) \cdot \delta \V A\right) d^3 x \D t
+    \end{align*}
+    Hence, making $\delta I = 0$ for arbitrary $\delta \phi, \delta \V A$, we obtain
+    \begin{align*}
+        \div \V E &= \frac{\rho}{\eps_0} \\
+        \curl \V B &= \mu_0 \left(\V j + \eps_0 \pd{\V E}{t}\right)
+    \end{align*}
+    
+    \section{The second variation}
+
+    Recall that, for a function, we write
+    \begin{align*}
+        f(\V x + \eps \V \xi) = f(\V x) + \eps \V \xi \cdot \grad f(\V x) + \frac 1 2 \eps^2 \xi_i \xi_j H_{ij}(\V x) + O(\eps^3)
+    \end{align*}
+    so that a stationary point $\V a$ is a local minimum if $H_{ij}(\V a)$ is positive-definite, i.e. $\xi_i \xi_j H_{ij}(\V a) > 0$ for any $\V \xi \neq \V 0$, or, equivalently, $H_{ij}(\V a)$ has all positive eigenvalues.
+
+    Consider, now, a functional
+    \begin{align*}
+        F[y] = \int_{\alpha}^{\beta} f(y, y', x) \D x
+    \end{align*}
+    with $y \in \mc C := \{y \in C^2$, $y: [\alpha, \beta] \to \RR$, $y(\alpha) = a$, $y(\beta) = b\}$. Consider $y + \eps \xi$, where we must have $\xi(\alpha) = \xi(\beta) = 0$ to retain boundary conditions. For small $\eps$, we have
+    \begin{align*}
+        f(y + \eps \xi, y' + \eps \xi', x) &= f(y, y', x) + \eps \xi\left(\pd{f}{y} - \frac{d}{dx} \pd{f}{y'}\right) + \eps \frac{d}{dx}\left(\xi \pd{f}{y'}\right) \\
+        &\qquad + \frac 1 2 \eps^2 \left(\xi^2 \pd{^2f}{y^2} + 2\xi \xi' \pd{^2f}{y\pr y'} + \xi'^2 \pd{^2f}{y'^2}\right) + O(\eps^3)
+    \end{align*}
+    so
+    \begin{align*}
+        F[y+\eps \xi] - F[y] = \eps \int_\alpha^\beta \xi(x) \frac{\delta F[y]}{\delta y(x)} \D x + \eps^2 \delta^2F[y, \xi] + O(\eps^3)
+    \end{align*}
+    where the boundary terms have vanished due to the constraint on $\xi$, and
+    \begin{align*}
+        \delta^2 F[y, \xi] := \frac 1 2 \int_\alpha^\beta \left(\xi^2 \pd{^2f}{y^2} + 2\xi \xi' \pd{^2f}{y\pr y'} + \xi'^2 \pd{^2f}{y'^2}\right) \D x
+    \end{align*}
+    Note that $2 \xi \xi' = (\xi^2)'$, so we integrate this term by parts to obtain
+    \begin{align*}
+        \delta^2 F[y, \xi] = \frac 1 2 \int_\alpha^\beta \left(\xi^2 \left(\pd{^2f}{y^2} - \frac{d}{dx} \pd{^2f}{y \pr y'}\right) + \xi'^2 \pd{^2f}{y'^2}\right) \D x
+    \end{align*}
+    Recall that, in the case of functions, if $H(\V x)$ is positive definite everywhere, then $f(\V x)$ is convex, so any stationary point is a global minimum. Similarly, for functionals, if $\delta^2 F[y, \xi] \geq 0$ for all $y \in \mc C$ and allowed $\xi$, then $y = y_0$ is a global minimum of $F$ so long as $y_0$ satisfies the Euler-Lagrange equations.
+    
+    \begin{remark*}
+        Note that $\mc C$ is a convex set, since it is closed under linear combinations.
+    \end{remark*}
+    
+    \begin{example*}[Geodesics in the Euclidean plane]
+        Recall that
+        \begin{align*}
+            F[y] = \int_\alpha^\beta \sqrt{1 + y'^2} \D x
+        \end{align*}
+        is the length of a path in the Euclidean plane. Observe that the first two terms in $\delta^2 F[y, \xi]$ are both zero, since $F$ has no explicit dependence on $y$, so we obtain
+        \begin{align*}
+            \delta^2 F[y, \xi] = \frac 1 2 \int_\alpha^\beta \xi'^2 \left(1 + y'^2\right)^{3/2}
+        \end{align*}
+        which is clearly positive for all $y$, $\xi$. Hence any solution of the Euler-Lagrange equation is a global minimum.
+    \end{example*}
+    
+    However, we can make weaker statements. Indeed, if $\delta^2 F[y_0, \xi]$ is positive for all non-trivial allowed $\xi$ and a fixed $y_0$, where $y$ satisfies the Euler-Lagrange equations, then $y_0$ is a local minimum. Conversely, if $\delta^2 F[y_0, \xi] < 0$ for some allowed $\xi$, then $y_0$ cannot be a local minimum.
+    
+    \begin{example*}[Geodesics on a sphere]
+        A geodesic between points $A$, $B$ on a sphere is a great circle through these points. However, there is some subtlety, since there is a minor and major arc, one of which is longer. Evaluating $\delta^2 F$ on each arc will give that the minor arc is the local minimum, while the major arc has $\delta^2 F < 0$ for some $\xi$.
+    \end{example*}
+    
+    \begin{proposition}[Legendre condition]
+        If $y \in \mc C$ satisfies the Euler-Lagrange equations, a \emph{necessary} criterion for it to be a local minimum is that
+        \begin{align*}
+            \left(\pd{^2f}{y'^2}\right)_{y=y_0} \geq 0
+        \end{align*}
+        for every $x \in [\alpha, \beta]$.        
+    \end{proposition}
+    
+    \begin{proof}
+        Observe that, if
+        \begin{align*}
+            \left(\pd{^2f}{y'^2}\right)_{y=y_0} < 0
+        \end{align*}
+        at some $x = x_0 \in [\alpha, \beta]$, then we may choose $\xi$ such that it is non-zero only near $x_0$, and $\xi'$ is large with $\xi$ small. This allows us to make $\delta^2 F[x, \xi]$ negative, as required.        
+    \end{proof}
+    
+    \begin{example*}
+        Take
+        \begin{align*}
+            F[y] = \int_{-1}^1 x\sqrt{1+y'^2} \D x
+        \end{align*}
+        so
+        \begin{align*}
+            \pd{^2f}{y'^2} = x(1+y'^2)^{-3/2}
+        \end{align*}
+        which violates the Legendre condition for $x < 0$. Hence this functional has no local minima.       
+    \end{example*}
+    
+    Let us introduce some new notation -- given $y_0$ satisfying the Euler-Lagrange equations, write
+    \begin{align*}
+        \delta^2 F[y_0, \xi] = \frac 1 2 \int_\alpha^\beta \left(\rho(x) \xi'^2 + \sigma(x) \xi^2\right) \D x && (*)
+    \end{align*}
+    where
+    \begin{align*}
+        \rho = \left(\pd{^2f}{y'^2}\right)_{y=y_0} && \sigma = \left(\pd{^2f}{y^2} - \frac{d}{dx} \pd{^2f}{y\pr y'}\right)_{y=y_0}
+    \end{align*}
+    Then $\rho \geq 0$ is a necessary condition for $y_0$ to be a local minimum, while $\rho > 0$, $\sigma \geq 0$ is a sufficient condition.
+
+    \begin{proof}
+        Clearly $\delta^2 F \geq 0$ for such $\rho$, $\sigma$. If $\delta^2 F = 0$, then $\xi'$ vanishes. Then $\xi$ is a constant, but, since $\xi$ vanishes at the endpoints, it must vanish everywhere, so it is trivial.
+    \end{proof}
+    
+    \begin{example*}[Brachistochrone]
+        Recall that
+        \begin{align*}
+            T[y] = \int_0^{x_B} \sqrt{\frac{1+y'^2}{-y}}
+        \end{align*}
+        (we add the condition $y < 0$). Then
+        \begin{align*}
+            \pd{f}{y'} &= \frac{y'}{\sqrt{-y(1+y'^2)}} && \pd{f}{y} = -\frac{f}{2y} \\
+            \implies \rho &= \pd{^2f}{y'^2} = \frac 1 {\sqrt{-y(1+y'^2)^3}} > 0 \\
+            \sigma &= \pd{^2f}{y^2} - \frac{d}{dx} \left(-\frac{1}{2y} \pd{f}{y'}\right) = \pd{^2f}{y^2} - \frac{y'}{2y^2} \pd{f}{y'} + \frac 1 {2y} \pd{f}{y} \\
+            &= \frac{3f}{4y^2} - \frac{y'^2}{2y^2\sqrt{-y(1+y'^2)}} - \frac{f}{4y^2} = \frac 1 {2\sqrt{-y(1+y'^2)}} > 0
+        \end{align*}
+        where we have used the Euler-Lagrange equation in the evaluation of $\sigma$. Hence the cycloid is a local minimum, as required.       
+    \end{example*}
+    
+    Observe integrating $(*)$ by parts gives
+    \begin{align*}
+        \delta^2 F[y_0, \xi] = \frac 1 2 \int_\alpha^\beta \xi(x) \mc L \xi(x) \D x + \underbrace{\frac 1 2 [\rho \xi \xi']_\alpha^\beta}_{0} && (**)
+    \end{align*}
+    where
+    \begin{align*}
+        \mc L \xi = -\frac d {dx} \left(\rho \frac{d\xi}{dx}\right) + \sigma \xi
+    \end{align*}
+    as in \cref{sturm-liouville}.
+    
+    \begin{proposition}[Second variation and eigenvalues of the Sturm-Liouville problem]
+        Consider the following Sturm-Liouville problem:
+        \begin{align*}
+            \mc L \eta = \lambda w(x) \eta \\
+            \eta(\alpha) = \eta(\beta) = 0
+        \end{align*}
+        where $w(x) > 0$ on $(\alpha, \beta)$. $y_0$ is a local minimum if and only if all eigenvalues admitted by this problem are positive.
+    \end{proposition}
+    
+    \begin{proof}
+        \begin{itemize}
+            \item [$\implies$] Suppose there is a negative eigenvalue $\lambda$ with corresponding eigenfunction $\eta$. Set $\xi = \eta$ in $(**)$, so we obtain
+            \begin{align*}
+                \delta^2 F[y_0, \eta] = \frac 1 2 \int_\alpha^\beta \eta \mc L \eta \D x = \frac \lambda 2 \int_\alpha^\beta w\eta^2 \D x < 0
+            \end{align*}
+            which suffices.    
+            \item [$\impliedby$] Let $\lambda_n$ and $y_n(x)$ be the $n^\text{th}$ eigenvalue and eigenfunction respectively. Recall from 1B Methods that $\{y_n\}$ form a complete set for the space of allowed $\eta$, so that every $\eta$ is expressible as
+            \begin{align*}
+                \eta(x) = \sum_n a_n y_n(x)
+            \end{align*}
+            for some $a_n$, and furthermore we may choose $y_n$ to be orthogonal with respect to the weight function $w$, so
+            \begin{align*}
+                \int_\alpha^\beta w y_m y_n \D x = 0
+            \end{align*}
+            for $m \neq n$. Now, $(**)$ gives
+            \begin{align*}
+                \delta^2 F[y_0, \eta] &= \frac 1 2 \sum_{m,\, n} a_m a_n \lambda_n \int_\alpha^\beta w y_m y_n \D x \\
+                &= \frac 1 2 \sum_m \lambda_m a_m^2 \int_\alpha^\beta wy_m^2 \D x \geq 0
+            \end{align*}
+            by orthogonality. But observe this vanishes only if $a_m = 0$ for all $m$, in which case $\eta \equiv 0$. Hence, if $\eta \not\equiv 0$, the second variation is strictly positive as required.
+        \end{itemize}
+    \end{proof}
+    
+    \begin{example*}
+        Take
+        \begin{align*}
+            F[y] = \frac 1 2 \int_0^a \left(y'^2-y^2\right) \D x
+        \end{align*}
+        where $y(0) = y(a)$. The Euler-Lagrange equation is
+        \begin{align*}
+            -y-\frac{d}{dx}(y') = 0 \iff y'' + y = 0
+        \end{align*}
+        Suppose we have some solution $y_0$, and expand to obtain
+        \begin{align*}
+            \delta^2 F = \frac 1 2 \int_0^a \left(\xi'^2 - \xi^2\right) \D x
+        \end{align*}
+        for which $\rho = 1$, $\sigma = -1$. Hence, the associated Sturm-Liouville problem is
+        \begin{align*}
+            -\frac{d^2\eta}{dx^2}-\eta = \lambda w \eta
+        \end{align*}
+        where $\eta(0) = \eta(a) = 0$. Let us select $w(x) = 1$, and we obtain
+        \begin{align*}
+            0 &= \eta'' + (\lambda+1)\eta \\
+            \implies \eta &= A \sin\left(x\sqrt{\lambda+1}\right) + B\cos\left(x\sqrt{\lambda+1}\right)
+        \end{align*}
+        Now, applying the boundary conditions, we have that $\eta(0) = 0$ implies $B=0$, but furthermore that $\eta(a) = A \sin\left(a\sqrt{\lambda+1}\right) = 0$. Hence, a non-trivial solution must have $a\sqrt{\lambda+1} = n\pi$, giving
+        \begin{align*}
+            \eta = A \sin \left(\frac{n\pi x}{a}\right)
+        \end{align*}
+        and we may without loss of generality take $n \in \NN$. The eigenvalues, then, are
+        \begin{align*}
+            \lambda_n = \frac{n^2\pi^2}{a^2}-1
+        \end{align*}
+        Since these are increasing in $n$, they are all positive if and only if $\lambda_1 > 0$, that is $a < \pi$. Otherwise, if $a > \pi$, we do not have a local minimum.
+    \end{example*}
+    
+    \section{The Jacobian condition}
+
+    The Jacobian condition is another, slightly less sharp, method for determining whether solutions to the Euler-Lagrange equations are local minima. Given a $y_0 \in \mc C$, observe
+    \begin{align*}
+        0 = \int_\alpha^\beta \left(\phi \xi^2\right)' \D x = \int_\alpha^\beta 2\phi \xi \xi' + \phi' \xi^2 \D x
+    \end{align*}
+    for any $\phi$. Adding this to $(*)$, we obtain
+    \begin{align*}
+        \delta^2 F[y_0, \xi] = \frac 1 2 \int_\alpha^\beta \left(\rho \xi'^2 + 2\phi \xi \xi' + (\sigma+\phi')\xi^2\right) \D x
+    \end{align*}
+    Assume $\rho > 0$ for $\alpha \leq x \leq \beta$, and we complete the square to obtain
+    \begin{align*}
+        \delta^2 F[y_0, \xi] = \frac 1 2 \int_\alpha^\beta \left(\rho \left(\xi' + \frac \phi \rho \xi\right)^2 + \left(\sigma + \phi' - \frac{\phi^2}{\rho}\right)\xi^2 \right) \D x
+    \end{align*}
+    Now, the first term is nice and positive, so we would like to choose $\phi$ to make the second term vanish, i.e. satisfying the Ricatti equation
+    \begin{align*}
+        \phi' + \sigma = \frac{\phi^2}{\rho} && (**)
+    \end{align*}
+    If we can pull this off, then $\delta^2 F[y_0, \xi] \geq 0$ if and only if $\xi' + \frac \phi \rho \xi$ vanishes, in which case
+    \begin{align*}
+        \xi(x) = C \exp\left(-\int_\alpha^x \frac{\phi(s)}{\rho(s)} \D s\right)
+    \end{align*}
+    However, since $\xi(\alpha) = 0$, $C=0$, so $\xi(x) \equiv 0$. So $\delta^2F[y_0, \xi]$ is strictly positive for all non-trivial allowed $\xi$. We conclude that $y_0$ is a local minimum if there exists a solution to $(**)$ on the interval $[\alpha, \beta]$.  
+    
+    This is a priori hard to solve, however we can convert to a linear second order ODE by means of the substitution $\phi = -\rho \frac{u'}{u}$ for some $u \neq 0$. We obtain
+    \begin{align*}
+        \rho \frac {u'^2} {u^2} &= \sigma - \left(\rho \frac{u'} u\right)' \\
+        &= \sigma - \frac 1 u (\rho u')' + \rho \frac{u'^2}{u^2}
+    \end{align*}
+    and the non-linear terms cancel to give the \emph{Jacobi accessory equation}
+    \begin{align*}
+        -(\rho u')' + \sigma u = 0
+    \end{align*}
+    While this can always be solved, the solution may not be everywhere non-zero.
+
+    \begin{example*}
+        Let us consider again
+        \begin{align*}
+            F[y] = \frac 1 2 \int_0^a \left(y'^2-y^2\right) \D x
+        \end{align*}
+        which gives $\rho = 1$, $\sigma = -1$. The Jacobi accessory equation is
+        \begin{align*}
+            -u''-u=0 \implies u = A \sin (x-x_0)
+        \end{align*}
+        Of course, these solutions oscillate with period $2\pi$, and have roots on any interval of size at least $\pi$ -- so we can find a solution with $u \neq 0$ on $[0, a]$ if and only if $a < \pi$. Hence we can determine that a solution $y_0$ is a local minimum if $a < \pi$, but not the converse as we had with Sturm-Liouville -- we cannot show that the solutions for $a > \pi$ fail to be local minima.       
+    \end{example*}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+\end{document}
