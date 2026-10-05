@@ -1,4 +1,5 @@
 {
+    "latex.linter.enabled": false,
     "latex-workshop.latex.recipes": [
         {
             "name": "pdflatex ➞ build",
@@ -16,7 +17,7 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-output-directory=%WORKSPACE_FOLDER%/pdf/render",
+                "-output-directory=%WORKSPACE_FOLDER%/pdf/_render",
                 "%DOC%"
             ]
         },
@@ -27,7 +28,7 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-output-directory=%WORKSPACE_FOLDER%/pdf/render",
+                "-output-directory=%WORKSPACE_FOLDER%/pdf/_render",
                 "%DOC%"
             ],
             "env": {}
@@ -39,7 +40,7 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-output-directory=%WORKSPACE_FOLDER%/pdf/render",
+                "-output-directory=%WORKSPACE_FOLDER%/pdf/_render",
                 "%DOC%"
             ],
             "env": {}
@@ -49,7 +50,7 @@
             "command": "powershell",
             "args": [
                 "-Command",
-                "Copy-Item -Path %WORKSPACE_FOLDER%/pdf/render/%DOCFILE%.pdf -Destination %WORKSPACE_FOLDER%/pdf/ -Force"
+                "Copy-Item -Path %WORKSPACE_FOLDER%/pdf/_render/%DOCFILE%.pdf -Destination %WORKSPACE_FOLDER%/pdf/$((Split-Path -Leaf (Split-Path -Parent '%DOC%')))/ -Force"
             ]
         }
     ]

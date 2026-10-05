@@ -1,6 +1,6 @@
 \LoadClass[11pt]{scrartcl}
 
-\RequirePackage[sexy,hdr]{../template/evan}
+\RequirePackage[sexy,hdr]{../../template/evan}
 
 \RequirePackage{import}
 \RequirePackage{subcaption}
@@ -24,11 +24,11 @@
 
 \newcommand{\incfig}[2]{
     \def\svgwidth{#1}
-    \import{../notes/figures/\jobname}{#2.pdf_tex}
+    \import{_figures/\jobname}{#2.pdf_tex}
 }
 
 \newcommand{\fig}[2]{
-    \includegraphics[width=#1]{../notes/figures/\jobname/#2.pdf}
+    \includegraphics[width=#1]{_figures/\jobname/#2.pdf}
 }
 
 \setcounter{MaxMatrixCols}{15}
